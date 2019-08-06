@@ -1,0 +1,7 @@
+url:
+  capturehandler-capture:
+    pattern: /$YAMLURL/capture
+    handler: CaptureHandler
+    kwargs:
+      engine: chrome
+      port: 9900

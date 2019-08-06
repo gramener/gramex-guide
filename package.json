@@ -1,0 +1,21 @@
+{
+  "name": "gramex-guide",
+  "version": "0.0.1",
+  "license": "MIT",
+  "dependencies": {
+    "anchor-js": "4.2",
+    "asciinema-player": "2.6",
+    "clipboard": "1",
+    "highlight.js": "9.15",
+    "lunr": "2",
+    "prismjs": "1",
+    "vue": "2"
+  },
+  "devDependencies": {
+    "bootstrap-select": "1.13",
+    "bootstrap-select-dropdown": "0.14",
+    "front-matter": "3",
+    "glob": "7",
+    "marked": "0.7"
+  }
+}

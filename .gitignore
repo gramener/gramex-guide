@@ -1,0 +1,123 @@
+TODO
+
+# Ignore byte-compiled / optimised / DLL files
+*.py[cod]
+
+# Filenames should NOT have spaces
+* *
+
+# Ignore SQLite3 files. Gramex creates some automatically
+*.sqlite3
+*.sqlite3-journal
+
+# Cache folders used for testing
+.cache-*
+.pytest_cache
+
+# Ignore log files
+*.log*
+
+# Don't commit data files
+*.csv
+*.xls*
+
+*.ppt*
+!formhandler/input.pptx
+!pptxhandler/examples-input.pptx
+
+# Don't commit ZIP files
+*.7z
+*.zip
+
+# Documents
+*.doc*
+*.pdf
+
+# Avoid media files
+*.avi
+*.mp*
+*.wmv
+
+# Backup files
+~$*
+*~
+*.bak*
+
+# Sublime-text workspaces, etc
+*.sublime-*
+.vscode/
+
+# IPython Notebook checkpoints
+.ipynb_checkpoints
+
+# Typically bash.exe.stackdump on Cygwin
+*.stackdump
+
+# Node modules and bower components
+node_modules
+bower_components
+
+# Prefer yarn.lock over package-lock.json
+package-lock.json
+
+# Windows shortcut files
+*.lnk
+
+# Windows / Mac OS junk files
+Desktop.ini
+$RECYCLE.BIN/
+*[Tt]humbs.db
+*.DS_Store
+
+# R history files
+.RHistory
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.eggs
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+htmlcov
+cover
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# Pycharm
+.idea
+
+# Complexity
+output/*.html
+output/*/index.html
+
+# Sphinx
+docs/_build
+
+# For Linux FUSE file system
+.fuse_hidden*
