@@ -34,7 +34,7 @@ To expose `data.csv` under `/data` URL use
 ```
 
 You can read from multiple file formats: `CSV`, `XLSX`, `HDF`, `JSON`.
-If `XLSX` is mentioned, it accepts an optional parameter: `sheet_name`.
+If `XLSX` is mentioned, it accepts an optional parameter: `sheetname`.
 
 ```YAML
   app/file/data:
@@ -43,7 +43,7 @@ If `XLSX` is mentioned, it accepts an optional parameter: `sheet_name`.
     handler: FormHandler
     kwargs:
       url: $YAMLURL/flags.xlsx
-      sheet_name: countries
+      sheetname: countries
 ```
 
 Additionally, a file with no extension can be passed with `ext` parameter.
