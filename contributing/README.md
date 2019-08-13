@@ -13,7 +13,7 @@ prefix: Contributing
   latest development version
 - All other branches are temporary feature branches
 
-Gramex can be developed on Python 2.7 and 3.6 on Windows or Linux.
+Gramex can be developed on Python >= 3.6 on Windows or Linux.
 To set up the development environment:
 
 1. Download and install [Anaconda 5.0](http://continuum.io/downloads) or later
@@ -27,7 +27,7 @@ DEBIAN_FRONTEND=noninteractive apt-get -y -q install mysql-server
 Clone and install the [dev branch](http://github.com/gramener/gramex/tree/dev/).
 
 ```bash
-git clone git@code.gramener.com:cto/gramex.git
+git clone git@github.com:gramener/gramex.git
 cd gramex
 git checkout dev
 pip install -e .
@@ -88,15 +88,14 @@ If possible:
 
 - Write unit tests
 - Document Python docstrings
-- Document the feature in the guide at `gramex/apps/guide/`
+- Document the feature in the guide at [gramex-guide][gramex-guide]
 
 ## Release Gramex Community Edition
 
 Check [build errors](https://travis-ci.com/gramener/gramex).
-Test the `dev` branch locally on Python 2.7 and 3.6:
+Test the `dev` branch locally on Python >= 3.6:
 
 ```bash
-PYTHON=/path/to/python2.7 make release-test
 PYTHON=/path/to/python3.6 make release-test
 ```
 
@@ -104,14 +103,15 @@ Update the following and commit to `dev` branch:
 
 - `cd gramex/apps/admin2/; yarn run build; cd ../../..`
 - `cd gramex/apps/ui/; yarn upgrade; cd ../../..` -- upgrade UI components
-- `gramex/apps/guide/release/1.xx/README.md` -- add guide release notes
-    - `make stats` for code size stats
-    - `make coverage` for test coverage stats (part of `make release-test`)
-- `gramex/apps/guide/release/README.md` -- add release entry
 - `gramex/release.json` -- update the version number
 - `pkg/docker-py3/Dockerfile` -- update the version number
-- `python gramex/apps/guide/search/search.py` to update search index
-- `node gramex/apps/guide/search/searchindex.js` to update search index
+- In [gramex-guide][gramex-guide], `release/1.xx/README.md` -- add guide release notes
+    - `make stats` for code size stats
+    - `make coverage` for test coverage stats (part of `make release-test`)
+- In [gramex-guide][gramex-guide]
+    - `release/README.md` -- add release entry
+    - `python search/search.py` to update search index
+    - `node search/searchindex.js` to update search index
 
 Commit and push the `dev` branch to the server. **Ensure pipeline passes.**:
 
@@ -198,3 +198,5 @@ docker push gramener/gramex
 ```
 
 Re-start gramex on deployed servers.
+
+[gramex-guide]: https://github.com/gramexrecipes/gramex-guide/

@@ -32,7 +32,7 @@ class IndexerTreeProcessor(Treeprocessor):
 
 
 class IndexerExtension(Extension):
-    def extendMarkdown(self, md, md_globals):
+    def extendMarkdown(self, md, md_globals):    # noqa
         md.treeprocessors.add('indexer', IndexerTreeProcessor(md), '>toc')
 
 

@@ -23,6 +23,7 @@ TODO
 
 *.ppt*
 !formhandler/input.pptx
+!formhandler/flags.csv
 !pptxhandler/examples-input.pptx
 
 # Don't commit ZIP files
