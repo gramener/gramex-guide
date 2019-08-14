@@ -27,7 +27,7 @@ This configuration mounts the app at [nlg/](nlg/):
 
 <div class="example">
   <a class="example-demo" href="nlg/">NLG</a>
-  <a class="example-src" href="http://github.com/gramener/gramex/blob/master/gramex/apps/guide/nlg/gramex.yaml">Source</a>
+  <a class="example-src" href="http://github.com/gramexrecipes/gramex-guide/blob/master/nlg/gramex.yaml">Source</a>
 </div>
 
 ## The NLG Component
