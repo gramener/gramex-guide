@@ -304,7 +304,7 @@ Template files can contain any template feature. Here's a sample `page.html`.
 
 <div class="example">
   <a class="example-demo" href="template">Template example</a>
-  <a class="example-src" href="http://github.com/gramener/gramex/tree/master/gramex/apps/guide/filehandler/template.html">Source</a>
+  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/master/filehandler/template.html">Source</a>
 </div>
 
 ### Template syntax

@@ -33,7 +33,7 @@ You can read from multiple file formats as well as databases. The URL may be a
     url: /path/to/filename      # which treats this file as an Excel file
 
     url: /path/to/file.xlsx     # Reads the sheet named sales
-    sheetname: sales
+    sheet_name: sales
 
     url: /path/to/file.hdf      # Reads the dataframe at key named 'sales'
     key: sales
@@ -188,7 +188,7 @@ This requires the [UI components library](../uicomponents/) mounted at `ui/`.
 
 <div class="example">
   <a class="example-demo" href="table.html">FormHandler table example</a>
-  <a class="example-src" href="http://github.com/gramener/gramex/blob/master/gramex/apps/guide/formhandler/table.html">Source</a>
+  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/master/formhandler/table.html">Source</a>
 </div>
 
 You can configure the data attributes:
@@ -352,7 +352,7 @@ When you visit [vega-1?_format=barchart](vega-1?_format=barchart) it renders Jav
 <script src="ui/vega/build/vega.min.js"></script>
 ```
 
-This script draws a barchart from [`/vega-1`](http://github.com/gramener/gramex/blob/master/gramex/apps/guide/formhandler/vega.yaml) formhandler data within `<div id="chart1"></div>`. If `data-id` is missing, random ID is created.
+This script draws a barchart from [`/vega-1`](https://github.com/gramexrecipes/gramex-guide/blob/master/formhandler/vega.yaml) formhandler data within `<div id="chart1"></div>`. If `data-id` is missing, random ID is created.
 
 To manipulate the `Vega` object, use this:
 
@@ -1108,7 +1108,7 @@ For example, this writes back to an Excel file:
 ```yaml
       # Saves data to Sheet1 of file.xlsx with plant & machine id as keys
       url: /path/to/file.xlsx
-      sheetname: Sheet1
+      sheet_name: Sheet1
       id: [plant, machine id]
 ```
 
@@ -1136,7 +1136,7 @@ If you are using [multiple datasets](#formhandler-multiple-datasets), add an
 ```yaml
   excel:
       url: /path/to/file.xlsx
-      sheetname: Sheet1
+      sheet_name: Sheet1
       id: [plant, machine id]
   oracle:
       url: 'oracle://$USER:$PASS@server/db'

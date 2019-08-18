@@ -107,19 +107,23 @@ On a system **with an Internet connection** and the **same platform** (Windows/L
 
 1. Create a folder called `offline`
 2. Download [Anaconda][anaconda] into `offline`
-3. In the `offline` folder, run `pip download https://github.com/gramener/gramex/archive/master.zip`
+3. In the `offline` folder, run `pip download gramex` or `pip download gramexenterprise` if you need enterprise features.
 
 If you are behind a HTTP proxy, use `pip download --proxy=http://{proxy-host}:{port} ...`.
 
 Copy the `offline` folder to the target machine (which need not have an Internet connection). Then:
 
 1. Install the [Anaconda][anaconda] executable. When prompted, say "Install for all users", not "Just me"
-2. Open the Command Prompt or terminal **as administrator**. From the `offline` folder,
-   run `pip install --verbose --no-index --find-links . archive.tar.bz2`
+2. Open the Command Prompt or terminal **as administrator**. From the `offline` folder, run
+- For open-source gramex version `pip install --verbose --no-index --find-links . gramex-XYZ.tar.gz`
+- Or, for gramex enterprise `pip install --verbose --no-index --find-links . gramexenterprise-XYZ.tar.gz`
 
-**Note**: This does not set up dependencies for
-[CaptureHandler](../capturehandler/) such as node.js, Chrome / PhantomJS. That
-requires an Internet-enabled machine or Docker.
+**Note**:
+
+- This does not set up dependencies for [CaptureHandler](../capturehandler/) such as node.js, Chrome / PhantomJS.
+That requires an Internet-enabled machine or Docker.
+- If certain python packages don't compile well. Download specific stable versions in offline folder.
+`pip download psycopg2==2.7.7`
 
 ### Offline Docker Install
 

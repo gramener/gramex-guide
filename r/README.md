@@ -225,7 +225,7 @@ Use below configuration to renders all `*.Rmd` files as HTML
 
 <div class="example">
   <a class="example-demo" href="RMarkdown-story.Rmd" target="_blank">RMarkdown example</a>
-  <a class="example-src" href="http://github.com/gramener/gramex/blob/master/gramex/apps/guide/r/RMarkdown-story.Rmd">Source</a>
+  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/master/r/RMarkdown-story.Rmd">Source</a>
 </div>
 
 <iframe class="w-100" src="RMarkdown-story.Rmd" style="height: 600px !important"></iframe>

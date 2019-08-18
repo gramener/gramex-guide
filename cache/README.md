@@ -317,7 +317,7 @@ example:
     file_size = gramex.cache.open('data.csv', lambda path: os.stat(path).st_size)
 
     # Read Excel file. Keyword arguments are passed to pd.read_excel
-    data = gramex.cache.open('data.xlsx', pd.read_excel, sheetname='Sheet1')
+    data = gramex.cache.open('data.xlsx', pd.read_excel, sheet_name='Sheet1')
 
 To transform the data after loading, you can use a `transform=` function. For
 example:
