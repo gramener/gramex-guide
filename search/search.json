@@ -922,6 +922,29 @@
       "Vega parameter substitution": -1
     }
   },
+  "1.57": {
+    "": {
+      "Gramex 1.57 release notes": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "developer-updates": {
+      "Developer updates": -1
+    },
+    "how-to-upgrade": {
+      "How to upgrade": -1
+    },
+    "other-enhancements": {
+      "Other enhancements": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "ui-component-upgrades": {
+      "UI component upgrades": -1
+    }
+  },
   "about": {
     "": {}
   },
@@ -1497,39 +1520,17 @@
     "": {
       "DataHandler connects to data": -1
     },
-    "database-edits": {
-      "Database edits": -1
-    },
-    "datahandler-defaults": {
-      "DataHandler defaults": -1
-    },
-    "datahandler-delete": {
-      "DataHandler delete": -1
-    },
-    "datahandler-formats": {
-      "DataHandler formats": -1
-    },
-    "datahandler-insert": {
-      "DataHandler insert": -1
-    },
-    "datahandler-on-databases": {
-      "DataHandler on databases": -1
-    },
-    "datahandler-on-files": {
-      "DataHandler on files": -1
-    },
-    "datahandler-on-sqlite3": {
-      "DataHandler on sqlite3": -1
-    },
-    "datahandler-templates": {
-      "DataHandler templates": -1
-    },
-    "datahandler-update": {
-      "DataHandler update": -1
-    },
-    "datahandler-usage": {
-      "DataHandler usage": -1
-    }
+    "database-edits": {},
+    "datahandler-defaults": {},
+    "datahandler-delete": {},
+    "datahandler-formats": {},
+    "datahandler-insert": {},
+    "datahandler-on-databases": {},
+    "datahandler-on-files": {},
+    "datahandler-on-sqlite3": {},
+    "datahandler-templates": {},
+    "datahandler-update": {},
+    "datahandler-usage": {}
   },
   "debug": {
     "": {
@@ -2586,15 +2587,9 @@
     "": {
       "QueryHandler runs SQL queries": -1
     },
-    "multiple-sql-queries": {
-      "Multiple SQL queries": -1
-    },
-    "queryhandler-post": {
-      "QueryHandler POST": -1
-    },
-    "queryhandler-templates": {
-      "QueryHandler templates": -1
-    }
+    "multiple-sql-queries": {},
+    "queryhandler-post": {},
+    "queryhandler-templates": {}
   },
   "quickstart": {
     "": {
