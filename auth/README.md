@@ -1016,6 +1016,32 @@ It accepts the following configuration:
   <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
 </div>
 
+### Azure Active Directory
+
+Here is a sample configuration for Azure Active Directory:
+
+```yaml
+url:
+  auth/aad:
+    pattern: /$YAMLURL/login
+    handler: OAuth2
+    kwargs:
+      client_id: '1239bdca-----------------------------'
+      client_secret: 'Pyum-----------------------------'
+      authorize:
+        url: 'https://login.microsoftonline.com/{TENANT_ID}/oauth2/authorize'
+      access_token:
+        url: 'https://login.microsoftonline.com/{TENANT_ID}/oauth2/token'
+        body:
+          grant_type: 'authorization_code'
+          resource: https://graph.microsoft.com/
+      user_info:
+        url: 'https://graph.microsoft.com/v1.0/me/'
+        headers:
+          Authorization: 'Bearer {access_token}'
+          Accept: 'application/json'
+          Content-Type: 'application/json'
+```
 
 ## Email Auth
 
