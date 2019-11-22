@@ -945,6 +945,29 @@
       "UI component upgrades": -1
     }
   },
+  "1.58": {
+    "": {
+      "Gramex 1.58 release notes": -1
+    },
+    "azure-active-directory": {
+      "Azure Active Directory": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "developer-updates": {
+      "Developer updates": -1
+    },
+    "how-to-upgrade": {
+      "How to upgrade": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "ui-component-upgrades": {
+      "UI component upgrades": -1
+    }
+  },
   "about": {
     "": {}
   },
@@ -1106,6 +1129,9 @@
     },
     "automated-logins": {
       "Automated logins": -1
+    },
+    "azure-active-directory": {
+      "Azure Active Directory": -1
     },
     "bind-ldap-login": {
       "Bind LDAP login": -1
@@ -1313,6 +1339,9 @@
     "next-steps-faq": {
       "Next Steps / FAQ": -1
     },
+    "outcome": {
+      "Outcome": -1
+    },
     "requirements": {
       "Requirements": -1
     },
@@ -1499,6 +1528,9 @@
     },
     "next-steps-faq": {
       "Next Steps / FAQ": -1
+    },
+    "outcome": {
+      "Outcome": -1
     },
     "requirements": {
       "Requirements": -1
@@ -2097,6 +2129,9 @@
     "next-steps-faq": {
       "Next Steps / FAQ": -1
     },
+    "outcome": {
+      "Outcome": -1
+    },
     "step-0-laying-out-the-scaffolding": {
       "Step 0: Laying out the Scaffolding": -1
     },
@@ -2619,6 +2654,9 @@
     },
     "next-steps": {
       "Next steps": -1
+    },
+    "outcome": {
+      "Outcome": -1
     },
     "readmemd": {},
     "requirements": {
