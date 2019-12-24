@@ -185,15 +185,19 @@ they take time. This frees up Gramex to handle other requests.
 To do this, you must:
 
 - Decorate your FunctionHandler with `@tornado.gen.coroutine`
-- Call `yield gramex.service.threadpool.submit(gramex.ml.r, **kwargs)` instead
+- Create a `pool = concurrent.futures.ProcessPoolExecutor()`
+- Call `yield pool.submit(gramex.ml.r, **kwargs)` instead
   of `gramex.ml.r(**kwargs)`
 
 For example, here the asynchronous version of the plotting code above:
 
 ```python
+import concurrent.futures
+pool = concurrent.futures.ProcessPoolExecutor()
+
 @tornado.gen.coroutine
 def plot_async(handler):
-    path = yield gramex.service.threadpool(gramex.ml.r, path='path/to/plot.R')
+    path = yield pool.submit(gramex.ml.r, path='path/to/plot.R')
     raise tornado.gen.Return(gramex.cache.open(path[0], 'bin'))
 ```
 

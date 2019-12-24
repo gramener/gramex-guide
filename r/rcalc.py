@@ -1,10 +1,12 @@
 import os
 import json
 import tornado.gen
+import concurrent.futures
 import gramex
 import gramex.ml
 
 folder = os.path.dirname(os.path.abspath(__file__))
+pool = concurrent.futures.ProcessPoolExecutor()
 
 
 def prime(handler):
@@ -21,8 +23,5 @@ def plot(handler):
 
 @tornado.gen.coroutine
 def plot_async(handler):
-    path = yield gramex.service.threadpool.submit(
-        gramex.ml.r,
-        path=os.path.join(folder, 'plot.R'),
-    )
+    path = yield pool.submit(gramex.ml.r, path=os.path.join(folder, 'plot.R'))
     raise tornado.gen.Return(gramex.cache.open(path[0], 'bin'))
