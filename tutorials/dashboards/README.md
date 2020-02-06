@@ -49,7 +49,7 @@ Think of FormHandler as 'SQL over HTTP'. If [data](../../quickstart/data)
 is our typical data endpoint, then [data?Segment=Consumer](../../quickstart/data?Segment=Consumer)
 returns only those rows which have "Consumer" in the "Segment" column.
 Check out the list of possible operations in the
-[formhandler documentation](/formhandler/#formhandler-filters).
+[formhandler documentation](guide/formhandler/#formhandler-filters).
 
 Add the formhandler table to the page as follows:
 
