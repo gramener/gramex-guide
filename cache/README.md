@@ -34,13 +34,13 @@ Here are some typical Cache-Control headers. The durations given here are
 indicative. Change them based on your needs.
 
 - **External libraries**: cache publicly for 10 years. They never change.
-  <br>`Cache-Control: public, max-age=315360000`
+  <br>`Cache-Control: "public, max-age=315360000"`
 - **Static files**: cache publicly for a day. They change rarely.
-  <br>`Cache-Control: public, max-age=86400`
+  <br>`Cache-Control: "public, max-age=86400"`
 - **Shared dashboards**: cache publicly for an hour. Data refreshes slowly.
-  <br>`Cache-Control: public, max-age=3600`
+  <br>`Cache-Control: "public, max-age=3600"`
 - **User dashboards**: cache *privately* for an hour.
-  <br>`Cache-Control: private, max-age=3600`
+  <br>`Cache-Control: "private, max-age=3600"`
 
 To [reload ignoring the cache](http://stackoverflow.com/a/385491/100904), press
 Ctrl-F5 on the browser. Below is a useful reference for `cache-control` checks ([Google Dev Docs](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/images/http-cache-decision-tree.png)):
@@ -260,10 +260,10 @@ to cache the `bower_components` and `assets` directories, use this configuration
       pattern: /$YAMLURL/(bower_components/.*|assets/.*)    # Map all static files
       handler: FileHandler
       kwargs:
-        path: $YAMLPATH/                            # from under this directory
+        path: $YAMLPATH/                              # from under this directory
         headers:
-          Cache-Control: public, max-age=315360000  # Cache for 10 years on the browser
-      cache: true                                   # Also cache on the server
+          Cache-Control: "public, max-age=315360000"  # Cache for 10 years on the browser
+      cache: true                                     # Also cache on the server
 
 To force a refresh, append `?v=xx` where `xx` is a new number. (The use of `?v=`
 is arbitrary. You can use any query parameter instead of `v`.)
