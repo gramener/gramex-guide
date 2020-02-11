@@ -177,6 +177,8 @@ def plot(handler):
 
 [See the plot](plot.png).
 
+Note: Requires `conda install -c r r-ggplot2` to be installed
+
 ## R async
 
 [Run computations asynchronously](../functionhandler/#asynchronous-functions) if
@@ -229,6 +231,8 @@ Use below configuration to renders all `*.Rmd` files as HTML
 </div>
 
 <iframe class="w-100" src="RMarkdown-story.Rmd" style="height: 600px !important"></iframe>
+
+Note: Requires `conda install -c r r-rmarkdown` to be installed
 
 To learn more about Rmarkdown, head over to
 [RStudio's: Get started with Rmarkdown](https://rmarkdown.rstudio.com/lesson-1.html).

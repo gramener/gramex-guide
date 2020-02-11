@@ -3,9 +3,9 @@
 
 
 anchor-js@4.2:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/anchor-js/-/anchor-js-4.2.0.tgz#6360fcec75074de2361dc67525cbf6882a765687"
-  integrity sha512-qIh35DLc0YNlRD6k39ULIPNI6iHxFFhtaJr02I7ttsh31bhZjeSa3jjEUx1/sQ4zPOyxrUhuXGuWl981ZLNzBQ==
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/anchor-js/-/anchor-js-4.2.2.tgz#e4edd682752cb2afaecdbc03df5c7b31e3c02922"
+  integrity sha512-Rg1tGaG4K3avYqDh7rOYCE/odWxpUiHStnlKL/bGOt9cl6NjR06zhPGVQcCAjE5PT48oQeHVgqNmLzxh0Kuk4A==
 
 argparse@^1.0.7:
   version "1.0.10"
@@ -25,14 +25,14 @@ balanced-match@^1.0.0:
   integrity sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
 
 bootstrap-select-dropdown@0.14:
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/bootstrap-select-dropdown/-/bootstrap-select-dropdown-0.14.0.tgz#1afa49509ae4dfb999dd82331c2e1623353ef1d2"
-  integrity sha512-pxCH8gYhxqfmM5R2ei+iuH2TrfBwnCclB/uvgP57WgGAF96SzY/1VPP0MNHLYd9j22XLveYAw0EtEf/icY1vVQ==
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/bootstrap-select-dropdown/-/bootstrap-select-dropdown-0.14.1.tgz#ba6266b11d2ccc59ca12195da5e15666a45f4eb0"
+  integrity sha512-PN0QRDEPn5x/TobGLaJ8IBwBQ2+QMW+g2VlT1kVdGM8VhO7Wv4oLb0aIBI0dH3l+WAHCCXe2iMtQF4fEv+zC8g==
 
 bootstrap-select@1.13:
-  version "1.13.10"
-  resolved "https://registry.yarnpkg.com/bootstrap-select/-/bootstrap-select-1.13.10.tgz#b0cf57f8d448bc0488faba04ecaa2f4c5216e144"
-  integrity sha512-mwfyd+VWHY8wDN4je4Y8PPEaOAzDPUz95z5F5zxzlIqebqxtbrujclFWLrhkVOyETpsgZCL1rsfyEnHpAugtGg==
+  version "1.13.12"
+  resolved "https://registry.yarnpkg.com/bootstrap-select/-/bootstrap-select-1.13.12.tgz#81b9f1394cb8d7151aea16fb9030c112330dbf98"
+  integrity sha512-epsPt6WpgmL9Q9Y22JFntajdhhqvCwV/JKiBZF3YFvMHK9YzzDPQft/Cjqvsgq0bhF32BlvG03Qs3qA/pVRAqQ==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -88,9 +88,9 @@ fs.realpath@^1.0.0:
   integrity sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
 
 glob@7:
-  version "7.1.4"
-  resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.4.tgz#aa608a2f6c577ad357e1ae5a5c26d9a8d1969255"
-  integrity sha512-hkLPepehmnKk41pUGm3sYxoFs/umurYfYJCerbXEyFIWcAzvpipAgVkBqqT9RBKMGjnq6kMuyYwha6csxbiM1A==
+  version "7.1.6"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.6.tgz#141f33b81a7c2492e125594307480c46679278a6"
+  integrity sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA==
   dependencies:
     fs.realpath "^1.0.0"
     inflight "^1.0.4"
@@ -107,9 +107,9 @@ good-listener@^1.2.2:
     delegate "^3.1.2"
 
 highlight.js@9.15:
-  version "9.15.9"
-  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.15.9.tgz#865257da1dbb4a58c4552d46c4b3854f77f0e6d5"
-  integrity sha512-M0zZvfLr5p0keDMCAhNBp03XJbKBxUx5AfyfufMdFMEP4N/Xj6dh0IqC75ys7BAzceR34NgcvXjupRVaHBPPVQ==
+  version "9.15.10"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.15.10.tgz#7b18ed75c90348c045eef9ed08ca1319a2219ad2"
+  integrity sha512-RoV7OkQm0T3os3Dd2VHLNMoaoDVx77Wygln3n9l5YV172XonWG6rgQD3XnF/BuFFZw9A0TJgmMSO8FEWQgvcXw==
 
 inflight@^1.0.4:
   version "1.0.6"
@@ -133,9 +133,9 @@ js-yaml@^3.13.1:
     esprima "^4.0.0"
 
 lunr@2:
-  version "2.3.6"
-  resolved "https://registry.yarnpkg.com/lunr/-/lunr-2.3.6.tgz#f278beee7ffd56ad86e6e478ce02ab2b98c78dd5"
-  integrity sha512-swStvEyDqQ85MGpABCMBclZcLI/pBIlu8FFDtmX197+oEgKloJ67QnB+Tidh0340HmLMs39c4GrkPY3cmkXp6Q==
+  version "2.3.8"
+  resolved "https://registry.yarnpkg.com/lunr/-/lunr-2.3.8.tgz#a8b89c31f30b5a044b97d2d28e2da191b6ba2072"
+  integrity sha512-oxMeX/Y35PNFuZoHp+jUj5OSEmLCaIH4KTFJh7a93cHBoFmpw2IoPs22VIz7vyO2YUnx2Tn9dzIwO2P/4quIRg==
 
 marked@0.7:
   version "0.7.0"
