@@ -89,3 +89,9 @@ sysctl fs.inotify
 # List file descriptors used by a process
 for f in `/bin/ls /proc/<proc-id>/fd/`; do readlink -f "/proc/<proc-id>/fd/$f"; done | sort | uniq -c | sort -k 1nr
 ```
+
+Alternatively, you can disable the Watch by setting it as `False` in gramex.yaml. This can be useful in containerized apps where you can't modify the host inotify limit.
+
+    :::yaml
+        app:
+            watch: False
