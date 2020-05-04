@@ -673,21 +673,26 @@ url:
       modify: data.sum(numeric_only=True).to_frame().T
 ```
 
-This runs the following steps:
+Here, `modify:` returns the sum of numeric columns, rather than the data itself.
 
-1. Load `flags.csv`
-2. Filter the data using the URL query parameters
-3. Evaluate the `modify:` expression. It can use a DataFrame `data`. The result
-   of the expression must be a DataFrame (or dict of DataFrames.)
+`modify:` runs *after filtering*. e.g. the [Asia result](totals?Continent=Asia) shows totals only for Asia. To transform the data before filtering, use [function](#formhandler-functions).
 
-This transforms the data *after filtering*.
-e.g. the [Asia result](totals?Continent=Asia) shows totals only for Asia.
-To transform the data before filtering, use [function](#formhandler-functions).
+`modify:` can be any expression / function that uses `data` & `handler`. For single datasets, `data` is a DataFrame. `modify:` should return a DataFrame.
+
+If you have [multiple datasets](#formhandler-multiple-datasets), `data:` is a dict of DataFrames. `modify:` can modify all of these datasets -- and join them if required. It should return a dict of DataFrames.
+
+**v1.59**. `modify:` can also return a bytestring that has the exact content to be written. For example, to add a chart to an Excel output, you could use `modify: add_chart(data, handler)` as follows:
+
+```python
+def add_chart(data, handler):
+    # Create an Excel file called chart.xlsx with the relevant chart using xlwt
+    # OPTIONAL: set any headers you want
+    handler.set_header('Content-Length', os.stat('chart.xlsx').st_size)
+    # Return the contents of the file, read in binary mode
+    return open('charts.xlsx', 'rb').read()
+```
 
 `modify:` also works with [database queries](#formhandler-query).
-
-If you have [multiple datasets](#formhandler-multiple-datasets), `modify:` can
-modify all of these datasets -- and join them if required.
 
 [This example](modify-multi?_format=html) has two `modify:` -- the first for a
 single query, the second applies on both datasets.
@@ -711,29 +716,18 @@ url:
       modify: data['colors'].merge(data['symbols'], on='Continent')
 ```
 
-`modify:` can be any expression that uses `data`, which is a dict of DataFrames
-`{'colors': DataFrame(...), 'symbols': DataFrame(...)`. It can return a single
-DataFrame or any dict of DataFrames.
-
-`modify:` can be applied to [FormHandler edit](#formhandler-edits) methods
-
-Below configuration has two `modify:` -- which are called after edit operations.
+`modify:` can modify the results of [FormHandler edit](#formhandler-edits) methods too. E.g. The `modify:` below returns the number of URL query parameters passed.
 
 ```yaml
   formhandler-edits-multidata-modify:
     pattern: /$YAMLURL/edits-multidata-modify
     handler: FormHandler
     kwargs:
-      csv:
-        url: $YAMLPATH/sales-edits.csv
-        encoding: utf-8
-        id: [city, product]
-        modify: len(handler.args.keys())
       sql:
         url: mysql+pymysql://root@$MYSQL_SERVER/DB?charset=utf8
         table: sales
         id: [city, product]
-      modify: len(handler.args.keys())
+        modify: len(handler.args.keys())
 ```
 
 `modify:` can be any expression/function that uses `data` -- count of records edited and `handler` --
