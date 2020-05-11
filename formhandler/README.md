@@ -97,14 +97,6 @@ By default, FormHandler renders data as JSON. Use `?_format=` to change that.
 - JSON: [flags?_format=json](flags?_format=json)
 - XLSX: [flags?_format=xlsx](flags?_format=xlsx)
 
-To include the table format, you must include this in your gramex.yaml:
-
-```yaml
-import:
-  path: $GRAMEXPATH/apps/formhandler/gramex.yaml
-  YAMLURL: $YAMLURL         # Mount this app at the current folder
-```
-
 You can also create custom PPTX downloads using FormHandler. For example, this
 configuration adds a custom PPTX format called `pptx-table`:
 
@@ -493,17 +485,17 @@ Note: You can use `FormHandler` to render specific columns in navbar filters usi
 
 **v1.38**. The URL supports grouping by columns using `?_by=col`. For example:
 
-- [?_by=Continent](flags?_by=Continent&_format=table): group by Continent, and sum all numeric columns.
-  ([Test on SQLite](db?_by=Continent&_format=table))
-- [?_by=Text](flags?_by=Text&_format=table): group by Text, and sum all numeric columns.
-  ([Test on SQLite](db?_by=Text&_format=table))
-- [?_by=Text&_by=Symbols](flags?_by=Text&_by=Symbols&_format=table): group by Text *and* by Symbols.
-  ([Test on SQLite](db?_by=Text&_by=Symbols&_format=table))
+- [?_by=Continent](flags?_by=Continent&_format=html): group by Continent, and sum all numeric columns.
+  ([Test on SQLite](db?_by=Continent&_format=html))
+- [?_by=Text](flags?_by=Text&_format=html): group by Text, and sum all numeric columns.
+  ([Test on SQLite](db?_by=Text&_format=html))
+- [?_by=Text&_by=Symbols](flags?_by=Text&_by=Symbols&_format=html): group by Text *and* by Symbols.
+  ([Test on SQLite](db?_by=Text&_by=Symbols&_format=html))
 
 You can specify custom aggregations using `?_c=col|aggregation`. For example:
 
-- [?_by=Continent&_c=Name|count](flags?_by=Continent&_c=Name|count&_format=table): group by Continent, count names of countries
-- [?_by=Continent&_c=Name|count&_c=c1|min&_c=c1|avg&_c=c1|max](flags?_by=Continent&_c=Name|count&_c=c1|min&_c=c1|avg&_c=c1|max&_format=table)
+- [?_by=Continent&_c=Name|count](flags?_by=Continent&_c=Name|count&_format=html): group by Continent, count names of countries
+- [?_by=Continent&_c=Name|count&_c=c1|min&_c=c1|avg&_c=c1|max](flags?_by=Continent&_c=Name|count&_c=c1|min&_c=c1|avg&_c=c1|max&_format=html)
     - `_by=Continent`: group by "Continent"
     - `_c=Name|count`: count values in "Name"
     - `_c=c1|min`: min value of "c1" in each continent
@@ -517,15 +509,15 @@ You can also aggregate on entire column using empty `?by=`. For example:
 
 Filters on columns apply BEFORE the grouping. For example:
 
-- [?c1>=80&_by=Continent&_c=Name|count](flags?c1>=80&_by=Continent&_c=Name|count&_format=table): count of countries by continent where c1 > 80
+- [?c1>=80&_by=Continent&_c=Name|count](flags?c1>=80&_by=Continent&_c=Name|count&_format=html): count of countries by continent where c1 > 80
 
 You can also filter AFTER the grouping by filtering with the derived column names. For example:
 
-- [?_by=Continent&_c=Name|count&Name|count>=30](flags?_by=Continent&_c=Name|count&Name|count>=30&_format=table): count of countries by continent where count of countries is > 30
+- [?_by=Continent&_c=Name|count&Name|count>=30](flags?_by=Continent&_c=Name|count&Name|count>=30&_format=html): count of countries by continent where count of countries is > 30
 
 Sorting (`?_sort=`) and pagination (`?_limit=` and `?_offset=`) apply *after* the group by.
 
-- [?_by=Continent&_sort=Continent&_offset=2&_limit=2](flags?_by=Continent&_sort=Continent&_offset=2&_limit=2&_format=table): count of countries by continent sorted by Continent, 2 per page
+- [?_by=Continent&_sort=Continent&_offset=2&_limit=2](flags?_by=Continent&_sort=Continent&_offset=2&_limit=2&_format=html): count of countries by continent sorted by Continent, 2 per page
 
 
 ## FormHandler metadata
@@ -1017,8 +1009,8 @@ URL like this: `url: dir:///path/to/directory`:
 
 Here is a sample output:
 
-- [All files in this directory](dir?_format=table&_c=dir&_c=name&_c=size&_c=type)
-- [Largest files in this directory](dir?_format=table&_c=dir&_c=name&_c=size&_c=type&_sort=-size)
+- [All files in this directory](dir?_format=html&_c=dir&_c=name&_c=size&_c=type)
+- [Largest files in this directory](dir?_format=html&_c=dir&_c=name&_c=size&_c=type&_sort=-size)
 
 This URL is interpolatable using arguments as well for example:
 

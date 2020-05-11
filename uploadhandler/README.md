@@ -5,6 +5,8 @@ prefix: UploadHandler
 
 [TOC]
 
+From **v1.59** UploadHandler is deprecated. Use [DriveHandler](../drivehandler/).
+
 [UploadHandler][uploadhandler] lets you upload files and manage them. Here is a sample configuration:
 
 ```yaml

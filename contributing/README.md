@@ -101,19 +101,21 @@ PYTHON=/path/to/python3.6 make release-test
 
 Update the following and commit to `dev` branch:
 
-- `cd gramex/apps/admin2/; yarn run build; cd ../../..`
-- `cd gramex/apps/ui/; yarn upgrade; cd ../../..` -- upgrade UI components
-- `gramex/release.json` -- update the version number
-- `pkg/docker-py3/Dockerfile` -- update the version number
-- In [gramex-guide][gramex-guide], `release/1.xx/README.md` -- add guide release notes
+- In gramex:
+    - `cd gramex/apps/admin2/; yarn run build; cd ../../..`
+    - `cd gramex/apps/ui/; yarn upgrade; cd ../../..` -- upgrade UI components
+    - `gramex/release.json` -- update the version number
+    - `pkg/docker-py3/Dockerfile` -- update the version number
+- In [gramex-guide][gramex-guide]
+    - `release/1.xx/README.md` -- add guide release notes
     - `make stats` for code size stats
     - `make coverage` for test coverage stats (part of `make release-test`)
-- In [gramex-guide][gramex-guide]
     - `release/README.md` -- add release entry
     - `python search/search.py` to update search index
     - `node search/searchindex.js` to update search index
 
-Commit and push the `dev` branch to the server. **Ensure pipeline passes.**:
+Commit and push the `dev` branch of both repos to the server.
+**Ensure pipeline passes.**:
 
 ```bash
 git commit -m"DOC: Add v1.x.x release notes"

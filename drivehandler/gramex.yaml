@@ -1,0 +1,21 @@
+url:
+  drivehandler/drive:
+    pattern: /$YAMLURL/drive
+    handler: DriveHandler
+    kwargs:
+        path: $GRAMEXDATA/apps/guide/drive/
+        tags: [desc]
+        user_fields: [id]
+
+  drivehandler/form:
+    pattern: /$YAMLURL/form
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/form.html
+      template: true
+
+  drivehandler/data:
+    pattern: /$YAMLURL/data/(.*)
+    handler: FormHandler
+    kwargs:
+      url: $GRAMEXDATA/apps/guide/drive/{_0}

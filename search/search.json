@@ -968,6 +968,29 @@
       "UI component upgrades": -1
     }
   },
+  "1.59": {
+    "": {
+      "Gramex 1.58 release notes": -1
+    },
+    "api-changes": {
+      "API changes": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "drivehandler-manages-files": {
+      "DriveHandler manages files": -1
+    },
+    "how-to-upgrade": {
+      "How to upgrade": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "ui-component-upgrades": {
+      "UI component upgrades": -1
+    }
+  },
   "about": {
     "": {}
   },
@@ -1311,10 +1334,13 @@
   },
   "chart": {
     "": {
-      "Gramex Charts": -1
+      "Charts": -1
     },
     "d3": {
       "D3": -1
+    },
+    "deprecations": {
+      "Deprecations": -1
     },
     "gramex-charts": {
       "Gramex Charts": -1
@@ -1716,6 +1742,35 @@
     },
     "works-locally-but-not-on-server": {
       "Works locally but not on server": -1
+    }
+  },
+  "drivehandler": {
+    "": {
+      "DriveHandler uploads files": -1
+    },
+    "ajax-uploads": {
+      "AJAX uploads": -1
+    },
+    "delete-files": {
+      "Delete files": -1
+    },
+    "expose-datasets": {
+      "Expose datasets": -1
+    },
+    "list-files": {
+      "List files": -1
+    },
+    "process-files": {
+      "Process files": -1
+    },
+    "tags": {
+      "Tags": -1
+    },
+    "update-files": {
+      "Update files": -1
+    },
+    "user-fields": {
+      "User fields": -1
     }
   },
   "email": {

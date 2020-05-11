@@ -37,7 +37,7 @@ prefix: Guide
 - [PPTXHandler generates PPTX](pptxhandler/)
 - [Auth handlers log in users](auth/)
 - [ProxyHandler proxies APIs](proxyhandler/)
-- [UploadHandler uploads files](uploadhandler/)
+- [DriveHandler uploads files](drivehandler/)
 - [ProcessHandler runs programs](processhandler/)
 - [WebSocketHandler](websockethandler/)
 - [TwitterRESTHandler](twitterresthandler/)
@@ -75,6 +75,7 @@ prefix: Guide
 
 - [DataHandler](datahandler/) - use [FormHandler](formhandler/) instead
 - [QueryHandler](queryhandler/) - use [FormHandler](formhandler/) instead
+- [UploadHandler](uploadhandler/) - use [DriveHandler](drivehandler/) instead
 
 ## Additional links
 

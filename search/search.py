@@ -23,12 +23,12 @@ from markdown.treeprocessors import Treeprocessor
 
 class IndexerTreeProcessor(Treeprocessor):
     def run(self, root):
-        self.markdown.index = []
-        self.markdown.index.append(('', self.markdown.Meta['title'][0]))
+        self.md.index = []
+        self.md.index.append(('', self.md.Meta['title'][0]))
         for el in root.findall('*'):
             if el.get('id'):
                 text = el.text if el.text else el.findtext('*')[0]
-                self.markdown.index.append((el.get('id'), text))
+                self.md.index.append((el.get('id'), text))
 
 
 class IndexerExtension(Extension):
