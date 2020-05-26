@@ -94,10 +94,10 @@ If possible:
 ## Release Gramex Community Edition
 
 Check [build errors](https://travis-ci.com/gramener/gramex).
-Test the `dev` branch locally on Python >= 3.6:
+Test the `dev` branch locally on Python >= 3.7:
 
 ```bash
-PYTHON=/path/to/python3.6 make release-test
+PYTHON=/path/to/python3.7 make release-test
 ```
 
 Update the following and commit to `dev` branch:
@@ -124,15 +124,33 @@ git commit -m"DOC: Add v1.x.x release notes"
 git push                    # Push the dev branch
 ```
 
-Merge with master, create an annotated tag and push the master branch:
+Merge `dev` branch with `master` on both repos:
 
 ```bash
 git checkout master
 git merge dev
 git tag -a v1.x.x -m"One-line summary of features"
 git push --follow-tags
+git push gitlab master      # To deploy into Gramener servers. See one-time setup below
 git checkout dev            # Switch back to dev
 git merge master
+```
+
+Note: Gramener.com administrators: re-start Gramex after deployment. Also, `git push gitlab master` requires this one-time setup:
+
+```bash
+git remote add gitlab git@code.gramener.com:cto/gramex.git        # For Gramex
+git remote add gitlab git@code.gramener.com:cto/gramex-guide.git  # For Guide
+```
+
+Create [docker instance](https://hub.docker.com/r/gramener/gramex/):
+
+```bash
+export VERSION=1.x.x        # Replace with Gramex version
+docker build https://github.com/gramener/gramex.git#master:pkg/docker-py3 -t gramener/gramex:$VERSION
+docker tag gramener/gramex:$VERSION gramener/gramex:latest
+docker login                # log in as sanand0 / pratapvardhan
+docker push gramener/gramex
 ```
 
 Deploy on [gramener.com](https://gramener.com/gramex-update/) and
@@ -144,18 +162,6 @@ make push-docs push-coverage
 # Push to pypi
 make push-pypi              # log in as gramener
 ```
-
-Deploy [docker instance](https://hub.docker.com/r/gramener/gramex/):
-
-```bash
-export VERSION=1.x.x        # Replace with Gramex version
-docker build https://github.com/gramener/gramex.git#master:pkg/docker-py3 -t gramener/gramex:$VERSION
-docker tag gramener/gramex:$VERSION gramener/gramex:latest
-docker login                # log in as sanand0 / pratapvardhan
-docker push gramener/gramex
-```
-
-Re-start gramex on deployed servers.
 
 ## Release Gramex Enterprise Edition
 

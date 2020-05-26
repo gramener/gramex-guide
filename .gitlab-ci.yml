@@ -1,0 +1,11 @@
+# Deploy the dev / master branches on gramener.com
+deploy-gramener:
+  only: [dev, master, deploy]
+  script:
+    - 'ssh ubuntu@gramener.com "
+        cd /mnt/gramener/apps/v1/guide;
+        git checkout -- .;
+        git pull;
+        export PATH=/mnt/gramener/anaconda3/bin:$PATH;
+        gramex setup .;
+      "'
