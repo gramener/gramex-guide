@@ -5,7 +5,7 @@ prefix: DriveHandler
 
 [TOC]
 
-**v1.59**. [DriveHandler](drivehandler] lets you upload files and manage them with a [FormHandler](../formhandler/)-like interface. It's better than [UploadHandler](../uploadhandler/).
+**v1.59**. [DriveHandler](drivehandler) lets you upload files and manage them with a [FormHandler](../formhandler/)-like interface. It's better than [UploadHandler](../uploadhandler/). Here's how to create a DriveHandler:
 
 ```yaml
 url:
@@ -35,6 +35,74 @@ This saves the uploaded files in the `path:` you specified.
   <a class="example-demo" href="form">Try the uploader example</a>
   <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/master/drivehandler/form.html">Source</a>
 </div>
+
+## File Manager
+
+**v1.60**. File Manager is an app designed to work with DriveHandler and simplifies its usage.
+
+<div class="example">
+  <a class="example-demo" href="filemanager/">Try the File Manager</a>
+  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/master/drivehandler/gramex.yaml">Source</a>
+</div>
+
+
+FileManager can be imported in a Gramex app as follows:
+
+```yaml
+import:
+  filemanager:
+    path: $GRAMEXAPPS/filemanager/gramex.yaml
+    YAMLURL: $YAMLURL/filemanager/
+```
+
+This mounts the File Manager page at `/filemanager/`. For each `DriveHandler` endpoint configured in your Gramex app, the page shows a table of files in that drive. This table can be used to:
+
+- **Upload new files** - Click the "Upload" button, or drop files anywhere on the table.
+- **Download files** - Click any file under the "File" column to download it.
+- **Delete existing files** - Click the cross for a file under the "Delete" column.
+- **Rename files** - Click the "Edit" button, make changes to filenames, and click "Save".
+
+File Manager can be configured by using `FILEMANAGER_KWARGS`:
+
+```yaml
+import:
+  filemanager:
+    path: $GRAMEXAPPS/filemanager/gramex.yaml
+    YAMLURL: $YAMLURL/filemanager/
+    FILEMANAGER_KWARGS:
+      drives: ['drive1', 'drive2']              # Show only these drives in the File Manager page
+      title: "MyAwesomeFileManager"             # Title of the File Manager page
+      logo: $YAMLPATH/data/assets/gramener.png  # Logo for the File Manager page
+      theme: '?font-family-base=roboto'         # UI component theme query?
+```
+
+Once you import the File Manager, the File Manager component can be embedded in any `<div>` in any page:
+
+```html
+<link rel="stylesheet" href="ui/dropzone/dist/min/dropzone.min.css">
+<script src="ui/dropzone/dist/min/dropzone.min.js"></script>
+<script src="ui/moment/min/moment-with-locales.min.js"></script>
+<script src="filemanager/filemanager.js"></script>
+
+<div class="filemanager" data-src="drive"></div>
+<script>
+  Dropzone.autodiscover = false
+  var options = {}
+  $('.filemanager').filemanager(options)
+</script>
+```
+
+`$().filemanager()` accepts the same parameters as [FormHandler](../g1/formhandler). For example:
+
+```js
+var options = {
+  pageSize: 10,
+  columns: [
+    { name: "file" },
+    { name: "size" }
+  ]
+}
+```
 
 ## AJAX uploads
 

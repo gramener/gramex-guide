@@ -22,23 +22,6 @@
       <button type="submit">Submit</button>
     </form>
 
-    <button id="put">PUT</button>
-    <script src="/ui/jquery/dist/jquery.min.js"></script>
-    <script>
-      $('#put').on('click', function () {
-        var formData = new FormData()
-        formData.append('id', '1')
-        formData.append('file', document.querySelector('input').files[0])
-        $.ajax('drive', {
-          type: 'PUT',
-          data: formData,
-          contentType: false,
-          processData: false,
-        }).done(console.log).fail(console.log)
-      })
-    </script>
-
-
     <hr>
     <p>When you submit the form, you'll see a JSON response.</p>
     <p>Come back to this page and <strong><a href="drive?_format=html">click here to see uploaded files</a></strong></p>
