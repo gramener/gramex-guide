@@ -7,25 +7,29 @@ prefix: Install
 
 ## Installation
 
-- Install [Anaconda][anaconda] 5.2.0 or later. [Update Anaconda][update] if required.
-- Install [node.js][nodejs] 8 or later.
-- On a Mac, install [Xcode][xcode].
+1. Install [Anaconda][anaconda] (any version from 5.2.0 to 2019.10)
+2. Install [node.js][nodejs] 10 or later.
+3. On a Mac, install [Xcode][xcode].
+4. Run the following commands on the terminal
 
-```shell
-npm install -g yarn             # Required for UI components and built-in apps
-pip install --verbose gramex    # Install latest version. --verbose shows progress
-gramex setup --all              # Set up UI components and built-in apps
-gramex                          # Start gramex. Press Ctrl-C to stop Gramex
+```bash
+pip install gramex      # Install latest version of Gramex
+npm install -g yarn     # Required for UI components and built-in apps
+gramex setup --all      # Set up UI components and built-in apps
 ```
 
-Gramex runs at `http://127.0.0.1:9988/` and shows the Gramex Guide by default.
-You may also run Gramex via `python -m gramex`.
+5. Create an empty `gramex.yaml` text file in a directory
+6. Run `gramex` from that directory
 
-Note: Gramex Enterprise is offered under a [commercial license](../license/) and
+Gramex runs at `http://127.0.0.1:9988/` and lists the files in your folder by
+default. Press Ctrl-C to exit Gramex.
+
+Gramex Enterprise is offered under a [commercial license](../license/) and
 provides additional features. To install it, run:
 
-```shell
-pip install gramexenterprise
+```bash
+pip install gramexenterprise    # Install Gramex Enterprise
+gramex license accept           # Accept the Gramex license
 ```
 
 ## VSCode Extension
@@ -54,7 +58,7 @@ To remove Gramex, run `pip uninstall gramex`
 
 ## Alternate installations
 
-```shell
+```bash
 # Install a specific version of Gramex
 pip install --verbose gramex==1.47.0
 
@@ -67,8 +71,7 @@ git clone https://github.com/gramener/gramex.git
 pip install --verbose -e gramex
 ```
 
-[anaconda]: http://continuum.io/downloads
-[update]: http://docs.continuum.io/anaconda/install#updating-from-older-anaconda-versions
+[anaconda]: https://repo.anaconda.com/archive/
 [xcode]: https://developer.apple.com/xcode/download/
 [gramex]: https://github.com/gramener/gramex/archive/master.zip
 [conda-proxy]: https://conda.io/docs/user-guide/configuration/use-winxp-with-proxy.html

@@ -13,7 +13,7 @@ prefix: Contributing
   latest development version
 - All other branches are temporary feature branches
 
-Gramex can be developed on Python >= 3.6 on Windows or Linux.
+Gramex can be developed on Python >= 3.7 on Windows or Linux.
 To set up the development environment:
 
 1. Download and install [Anaconda 5.0](http://continuum.io/downloads) or later
@@ -90,6 +90,7 @@ If possible:
 - Document Python docstrings
 - Document the feature in the guide at [gramex-guide][gramex-guide]
 
+
 ## Release Gramex Community Edition
 
 Check [build errors](https://travis-ci.com/gramener/gramex).
@@ -106,6 +107,7 @@ Update the following and commit to `dev` branch:
     - `cd gramex/apps/ui/; yarn upgrade; cd ../../..` -- upgrade UI components
     - `gramex/release.json` -- update the version number
     - `pkg/docker-py3/Dockerfile` -- update the version number
+    - `gramex/apps/apps.yaml` -- update the version number on the guide
 - In [gramex-guide][gramex-guide]
     - `release/1.xx/README.md` -- add guide release notes
     - `make stats` for code size stats
