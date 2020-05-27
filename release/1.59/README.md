@@ -1,6 +1,6 @@
 ---
-title: Gramex 1.58 release notes
-prefix: 1.58
+title: Gramex 1.59 release notes
+prefix: 1.59
 ...
 
 [TOC]
@@ -44,10 +44,10 @@ removed.
 
 The Gramex code base has:
 
-- 17,984 lines of Python
-- 2,340 lines JavaScript
-- 10,213 lines of test code
-- 78% test coverage
+- 17,984 lines of Python (633 more than 1.58)
+- 2,340 lines JavaScript (1 more than 1.58)
+- 10,213 lines of test code (246 more than 1.58)
+- 78% test coverage (2% less than 1.58)
 
 ## How to upgrade
 

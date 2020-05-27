@@ -31,6 +31,7 @@ git clone git@github.com:gramener/gramex.git
 cd gramex
 git checkout dev
 pip install -e .
+gramex setup --all
 ```
 
 ## Test Gramex
@@ -120,7 +121,7 @@ Commit and push the `dev` branch of both repos to the server.
 **Ensure pipeline passes.**:
 
 ```bash
-git commit -m"DOC: Add v1.x.x release notes"
+git commit -m"DOC: Add v1.x.x release changes"
 git push                    # Push the dev branch
 ```
 

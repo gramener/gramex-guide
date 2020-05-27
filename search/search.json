@@ -970,7 +970,7 @@
   },
   "1.59": {
     "": {
-      "Gramex 1.58 release notes": -1
+      "Gramex 1.59 release notes": -1
     },
     "api-changes": {
       "API changes": -1
@@ -989,6 +989,26 @@
     },
     "ui-component-upgrades": {
       "UI component upgrades": -1
+    }
+  },
+  "1.60": {
+    "": {
+      "Gramex 1.60 release notes": -1
+    },
+    "api-changes": {
+      "API changes": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "file-manager-is-a-ui-for-drivehandler": {
+      "File Manager is a UI for DriveHandler": -1
+    },
+    "how-to-upgrade": {
+      "How to upgrade": -1
+    },
+    "statistics": {
+      "Statistics": -1
     }
   },
   "about": {
@@ -1756,6 +1776,9 @@
     },
     "expose-datasets": {
       "Expose datasets": -1
+    },
+    "file-manager": {
+      "File Manager": -1
     },
     "list-files": {
       "List files": -1

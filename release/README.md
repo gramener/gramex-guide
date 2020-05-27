@@ -5,6 +5,9 @@ prefix: Release
 
 Gramex is released *twice a month* -- on the 1<sup>st</sup> and the 15<sup>th</sup>.
 
+- [v1.60.0: File Manager](1.60/) <small>27 May 2020</small>
+- [v1.59.0: DriveHandler](1.59/) <small>11 May 2020</small>
+- There was a pause in Gramex development as we restructured the product team's focus.
 - [v1.58.0: UI component upgrades, FileHandler bugfix, dependencies](1.58/) <small>22 Nov 2019</small>
 - [v1.57.0: UI component upgrades, pptxhandler, Cache and Guide](1.57/) <small>18 Aug 2019</small>
 - [v1.56.0: Vega parameter substitution, Tutorials, Chrome device emulation and UI component upgrades](1.56/) <small>07 Jun 2019</small>
