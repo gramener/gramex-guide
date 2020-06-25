@@ -56,7 +56,23 @@ The `ADMIN_KWARGS` section accepts the following parameters:
     - `logs`: [Log viewer component](#admin-logs)
 
 The `ADMIN_AUTH` section is the same as specifying the `auth:`
-[authorization](../auth/#authorization) on all admin pages.
+[authorization](../auth/#authorization) on all admin pages. For example:
+
+```yaml
+    ADMIN_AUTH:
+      login_url: /$YAMLURL/login/
+      membership:
+        email: [admin1@example.org, admin2@example.org]     # Only allow these users
+```
+
+... is the same as specifying this on every admin page:
+
+```yaml
+    auth:
+      login_url: /$YAMLURL/login/
+      membership:
+        email: [admin1@example.org, admin2@example.org]     # Only allow these users
+```
 
 <div class="example">
   <a class="example-demo" href="admin-kwargs/">Admin page options example</a>
