@@ -183,11 +183,22 @@ cache:
         type: disk          # This is an on-disk cache
         path: $YAMLPATH/.cache  # Location of the disk cache directory
         size: 1000000000    # Allow ~1GB of data in the cache
+
+    distributed-cache:      # Define a name for the cache
+        type: redis         # This is a redis cache
+        path: localhost:6379:0 # Connection string for Redis instance
+        size: 1000000000   # Allow ~1GB of data in the cache
 ```
 
 Disk caches are based on the
 [diskcache](http://www.grantjenks.com/docs/diskcache/) library. When the size
 limit is reached, the oldest items are discarded.
+
+Redis cache allows multiple gramex instances to cache objects in a Redis instance. This requires
+[Redis 5.0 or later](https://redis.io/) to be running. `redis` cache is an implementation of
+[approximate LRU](https://redis.io/topics/lru-cache). When the size limit is reached, the oldest
+items are discarded. However, the size limit is set for redis instance and not for a specific DB.
+Hence avoid using same redis instance for caching and other uses.
 
 By default, Gramex provides a cache called `memory` that has a 500 MB in-memory
 cache based on [cachetools](http://pythonhosted.org/cachetools/). When the size
@@ -217,6 +228,11 @@ cache:
 
 Avoid disk caches when using `default: true`. Disk caches are MUCH slower than
 memory caches, and defeats the purpose of data caching.
+
+**Note**: Persistent caches like `disk` and `redis` pickle Python objects. Some objects (e.g. Tornado
+templates) are not pickle-able. These caches do not cache such objects, ignoring them with a log
+error. Use `memory` cache if you need to cache pickle-able objects.
+
 
 ### Using cache stores
 
