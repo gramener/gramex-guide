@@ -1,0 +1,19 @@
+url:
+  pptxhandler/groups:
+    pattern: /$YAMLURL/output.pptx
+    handler: PPTXHandler
+    kwargs:
+      version: 2
+      source: $YAMLPATH/template.pptx
+      rules:
+        - Risk:
+            Count:
+                text: 6
+                color: f'#FFA500'
+        - Breached:
+            Count:
+                text: 9
+                color: f"#C00000"
+        - Active:
+            Count:
+                text: f"10"

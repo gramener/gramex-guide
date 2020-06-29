@@ -58,13 +58,19 @@ table tbody td { border-bottom: 1px solid #eee; }
   border: none;
 }
 .example:before {
-  content: "\25cd";
-  color: var(--info);
-  font-size: 4rem;
+  content: "\23F5";
+  color: var(--primary);
+  font-size: 3rem;
   line-height: 0;
   position: relative;
-  top: 0.8rem;
+  top: 0.4rem;
 }
 .example-src {
   float: right;
+}
+
+.slide iframe {
+  width: 640px;
+  height: 480px;
+  max-width: 100%;
 }

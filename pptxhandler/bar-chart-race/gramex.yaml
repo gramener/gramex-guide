@@ -1,0 +1,41 @@
+url:
+  pptxhandler/bar-chart-race:
+    pattern: /$YAMLURL/output.pptx
+    handler: PPTXHandler
+    kwargs:
+      version: 2
+      source: $YAMLPATH/template.pptx
+      data:
+        covid:
+          url: $YAMLPATH/covid.csv
+          transform: data.set_index('country')
+        comments:
+          url: $YAMLPATH/covid-comments.csv
+          transform: data.set_index('period')
+      rules:
+        -
+          copy-slide: covid.columns
+          transition: f'morph'
+          Period:
+            text: copy.val
+          Title:
+            text: comments['title'][copy.val]
+          Body:
+            text: comments['body'][copy.val]
+          Label:
+            # TODO: allow iterating over enumerate as well as any other iterable
+            clone-shape: covid[copy.val]
+            text: clone.key
+            add-top: clone.pos
+          Bar:
+            clone-shape: covid[copy.val]
+            text: clone.val
+            add-top: clone.pos
+            width: clone.val / 30000
+            name: f'!!Bar-{clone.key}'
+            print: [copy, copy.pos, clone, shape.name]
+      headers:
+        Content-Disposition: attachment; filename=output.pptx
+    # cache:
+    #   expiry:
+    #     duration: 86400

@@ -41,3 +41,18 @@ mq.addListener(toggle_menu)
 // Add anchors
 anchors.options.placement = 'left'
 anchors.add()
+
+// a.slide links to a PPTX file. Convert that into an iframe that displays the PPTX
+$('a.slide').each(function() {
+  var $frame = $('<div class="slide"><iframe></iframe></div>').insertAfter(this)
+  $frame.find('iframe').attr('src', 'https://view.officeapps.live.com/op/view.aspx?src=' + encodeURIComponent(this.href))
+})
+
+// a.source links to a YAML file. Load the YAML file and display it in-place
+$('a.source').each(function () {
+  var $this = $(this)
+  $.get(this.href)
+    .done(function (source) {
+      $('<div class="codehilite"><pre><code>' + source + '</code></pre></pre>').insertAfter($this)
+    })
+})

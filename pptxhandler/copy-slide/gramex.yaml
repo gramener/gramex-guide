@@ -1,0 +1,24 @@
+url:
+  pptxhandler/copy:
+    pattern: /$YAMLURL/output.pptx
+    handler: PPTXHandler
+    kwargs:
+      version: 2
+      source: $YAMLPATH/template.pptx
+      data:
+        incidents:
+          url: '$YAMLPATH/incidents.csv'
+      rules:
+        - copy: incidents.set_index('Level')
+          Title:
+            text: f'{copy_index}'                     # update title with index
+          total:
+            text: f'{copy_val["Total"]}'
+          p1:
+            text: f'{copy_val["P1"]}'
+          p2:
+            text: f'{copy_val["P2"]}'
+          p3:
+            text: f'{copy_val["P3"]}'
+          p4:
+            text: f'{copy_val["P4"]}'

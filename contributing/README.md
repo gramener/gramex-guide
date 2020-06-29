@@ -137,22 +137,14 @@ git checkout dev            # Switch back to dev
 git merge master
 ```
 
-Note: Gramener.com administrators: re-start Gramex after deployment. Also, `git push gitlab master` requires this one-time setup:
+Note: `git push gitlab master` requires this one-time setup:
 
 ```bash
 git remote add gitlab git@code.gramener.com:cto/gramex.git        # For Gramex
 git remote add gitlab git@code.gramener.com:cto/gramex-guide.git  # For Guide
 ```
 
-Create [docker instance](https://hub.docker.com/r/gramener/gramex/):
-
-```bash
-export VERSION=1.x.x        # Replace with Gramex version
-docker build https://github.com/gramener/gramex.git#master:pkg/docker-py3 -t gramener/gramex:$VERSION
-docker tag gramener/gramex:$VERSION gramener/gramex:latest
-docker login                # log in as sanand0 / pratapvardhan
-docker push gramener/gramex
-```
+Gramener.com administrators: re-start Gramex after deployment.
 
 Deploy on [gramener.com](https://gramener.com/gramex-update/) and
 [pypi](https://pypi.python.org/pypi/gramex):
@@ -162,6 +154,16 @@ Deploy on [gramener.com](https://gramener.com/gramex-update/) and
 make push-docs push-coverage
 # Push to pypi
 make push-pypi              # log in as gramener
+```
+
+Create [docker instance](https://hub.docker.com/r/gramener/gramex/):
+
+```bash
+export VERSION=1.x.x        # Replace with Gramex version
+docker build pkg/docker-py3 -t gramener/gramex:$VERSION
+docker tag gramener/gramex:$VERSION gramener/gramex:latest
+docker login                # log in as sanand0 / pratapvardhan
+docker push gramener/gramex
 ```
 
 ## Release Gramex Enterprise Edition

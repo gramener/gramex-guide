@@ -1,0 +1,18 @@
+url:
+  pptxhandler/add-position:
+    pattern: /$YAMLURL/output.pptx
+    handler: PPTXHandler
+    kwargs:
+      version: 2
+      source: $YAMLPATH/template.pptx
+      rules:
+        - Task1:
+            add-width: f'10 cm'
+        - Task2:
+            add-top: f'2 cm'
+            add-left: f'6 cm'
+            add-width: f'4 cm'
+        - Task3:
+            add-top: f'4 cm'
+            add-left: f'6 cm'
+            add-width: f'6 cm'

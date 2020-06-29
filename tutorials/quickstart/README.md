@@ -53,7 +53,7 @@ In order to start this tutorial, we will need to:
 
 We need a place to hold together all the files related to our application -
 including data, source code and configuration files. Create a folder at a convenient
-location on your computer and move the downloaded dataset file into it. 
+location on your computer and move the downloaded dataset file into it.
 
 For the remainder of the tutorial, we will refer to this folder as the "project folder".
 At this time, the project folder should only contain the file `store-sales.csv`.
@@ -65,7 +65,7 @@ At this time, the project folder should only contain the file `store-sales.csv`.
 throughout this guide.
 For now, let's put some text in `"index.html"`.
 
-Open a terminal, navigate to the project folder and type the following: 
+Open a terminal, navigate to the project folder and type the following:
 
 ```bash
 $ echo "Hello Gramex!" > index.html
@@ -118,7 +118,7 @@ url:
 After you save the file, Gramex will be able to serve the CSV data through the
 `/data` resource endpoint.
 To verify this, visit
-[`http://localhost:9988/tutorials/data?_limit=10`](http://localhost:9988/tutorials/data?_limit=10)
+[`http://localhost:9988/data?_limit=10`](http://localhost:9988/data?_limit=10)
 in your browser. You should now see a JSON payload representing the
 first ten rows of the dataset as follows:
 
@@ -141,7 +141,7 @@ first ten rows of the dataset as follows:
 ```
 
 You could also visit
-[http://localhost:9988/tutorials/data?_limit=10&_format=html](http://localhost:9988/tutorials/data?_limit=10&_format=html)
+[http://localhost:9988/data?_limit=10&_format=html](http://localhost:9988/data?_limit=10&_format=html)
 to see the first ten rows as a simple HTML table.
 
 <img src="https://cloud.gramener.com/f/379c20a01b3c416ca3cd/?dl=1" width="500">
@@ -181,7 +181,7 @@ lot of common css and js files ([bootstrap](https://getbootstrap.com),
 [lodash](https://lodash.com), [g1](https://www.npmjs.com/package/g1)) as part of
 a feature called [UI Components](../uicomponents).
 To use these in our dashboard, we add the following lines to our
-<kbd>gramex.yaml</kbd>: 
+<kbd>gramex.yaml</kbd>:
 
 ```yaml
 import:

@@ -1,0 +1,28 @@
+url:
+  pptxhandler/position:
+    pattern: /$YAMLURL/output.pptx
+    handler: PPTXHandler
+    kwargs:
+      version: 2
+      source: $YAMLPATH/template.pptx
+      rules:
+        - Priority1:
+            width: f'2 cm'
+        - Level1:
+            text: 50
+            left: f'1 cm'
+        - Priority2:
+            width: f'4 cm'
+        - Level2:
+            text: 100
+            left: f'1 cm'
+        - Priority3:
+            width: f'6 cm'
+        - Level3:
+            text: 150
+            left: f'1 cm'
+        - Priority4:
+            width: f'8 cm'
+        - Level4:
+            text: 200
+            left: f'1 cm'
