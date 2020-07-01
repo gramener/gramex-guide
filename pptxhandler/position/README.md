@@ -1,7 +1,7 @@
-# Position examples
-
-[This is the output PPTX](output.pptx){.slide}
+# Position example
 
 [This is the template PPTX](template.pptx){.slide}
 
-[This is the source](gramex.yaml.source){.source}
+[This is the configuration](gramex.yaml.source){.source}
+
+[This is the output PPTX](output.pptx){.slide}

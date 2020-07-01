@@ -1,0 +1,22 @@
+url:
+  pptxhandler/clone-shape:
+    pattern: /$YAMLURL/output.pptx
+    handler: PPTXHandler
+    kwargs:
+      version: 2
+      source: $YAMLPATH/template.pptx
+      data:
+        votes:
+          url: $YAMLPATH/vote-share.csv
+      rules:
+        - Candidate:
+            clone-shape: votes
+            add-top: clone.pos * 0.75
+            Name:
+              text: clone.parent.val.Candidate
+            Picture:
+              image: r"$YAMLPATH/" + clone.parent.val.Image
+            Share:
+              text: f'{clone.parent.val.Share:.1%}'
+            Bar:
+              width: 3 * clone.parent.val.Share / votes.Share.max()

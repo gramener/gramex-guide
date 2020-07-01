@@ -1,24 +1,32 @@
 url:
-  pptxhandler/copy:
+  pptxhandler/morph:
     pattern: /$YAMLURL/output.pptx
     handler: PPTXHandler
     kwargs:
       version: 2
       source: $YAMLPATH/template.pptx
       data:
-        incidents:
-          url: '$YAMLPATH/incidents.csv'
+        sales:
+          url: '$YAMLPATH/sales.csv'
+          transform: data.set_index('month')
+        max_sales: {function: sales.values.max()}
+      # Copy slides, update data and apply morph transition
       rules:
-        - copy: incidents.set_index('Level')
-          Title:
-            text: f'{copy_index}'                     # update title with index
-          total:
-            text: f'{copy_val["Total"]}'
-          p1:
-            text: f'{copy_val["P1"]}'
-          p2:
-            text: f'{copy_val["P2"]}'
-          p3:
-            text: f'{copy_val["P3"]}'
-          p4:
-            text: f'{copy_val["P4"]}'
+        - copy-slide: sales
+          Month:
+              text: 'copy.key'
+          '!!Visitors Value':
+              text: copy.val['visitors']
+          '!!Leads Value':
+              text: copy.val['leads']
+          '!!Cart Value':
+              text: copy.val['cart']
+          '!!Visitors Bar':
+              width: (copy.val['visitors'] / max_sales) * 3
+          '!!Leads Bar':
+              width: (copy.val['leads'] / max_sales) * 3
+          '!!Cart Bar':
+              width: (copy.val['cart'] / max_sales) * 3
+          transition:            # All slides have morph transition for a duration of 1 second
+            type: f'morph'
+            duration: 1

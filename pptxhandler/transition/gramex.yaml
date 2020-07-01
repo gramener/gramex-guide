@@ -1,0 +1,28 @@
+url:
+  pptxhandler/wipe:
+    pattern: /$YAMLURL/output.pptx
+    handler: PPTXHandler
+    kwargs:
+      version: 2
+      source: $YAMLPATH/template.pptx
+      data:
+        incidents:
+          url: $YAMLPATH/incidents.csv
+          transform: data.iloc[0]           # take 1st row which has Executive level numbers
+      rules:
+        - Total:
+            text: f'{incidents.Total:,.0f}'
+          P1:
+            text: f'{incidents.P1:,.0f}'
+          P2:
+            text: f'{incidents.P2:,.0f}'
+          P3:
+            text: f'{incidents.P3:,.0f}'
+          P4:
+            text: f'{incidents.P4:,.0f}'
+          Title:
+            text: f'Out of a total {incidents.Total:,.0f} incidents this month, {incidents.P1:,.0f} incidents need priority action'
+        - slide-number: 2                   # Set a 0.5s wipe-top transition for slide 2
+          transition:
+            type: f'wipe top'
+            duration: 0.5

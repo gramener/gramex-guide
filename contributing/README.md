@@ -98,22 +98,19 @@ Check [build errors](https://travis-ci.com/gramener/gramex).
 Test the `dev` branch locally on Python >= 3.7:
 
 ```bash
-PYTHON=/path/to/python3.7 make release-test
 ```
 
 Update the following and commit to `dev` branch:
 
 - In gramex:
-    - `cd gramex/apps/admin2/; yarn run build; cd ../../..`
+    - `cd gramex/apps/admin2/; yarn upgrade; yarn run build; cd ../../..` -- upgrade and build app
     - `cd gramex/apps/ui/; yarn upgrade; cd ../../..` -- upgrade UI components
     - `gramex/release.json` -- update the version number
     - `pkg/docker-py3/Dockerfile` -- update the version number
     - `gramex/apps/apps.yaml` -- update the version number on the guide
 - In [gramex-guide][gramex-guide]
-    - `release/1.xx/README.md` -- add guide release notes
-    - `make stats` for code size stats
-    - `make coverage` for test coverage stats (part of `make release-test`)
     - `release/README.md` -- add release entry
+    - `release/1.xx/README.md` -- add guide release notes. Run `make stats` for code size stats. Take coverage stats from Travis
     - `python search/search.py` to update search index
     - `node search/searchindex.js` to update search index
 
@@ -134,7 +131,6 @@ git tag -a v1.x.x -m"One-line summary of features"
 git push --follow-tags
 git push gitlab master      # To deploy into Gramener servers. See one-time setup below
 git checkout dev            # Switch back to dev
-git merge master
 ```
 
 Note: `git push gitlab master` requires this one-time setup:
@@ -160,10 +156,7 @@ Create [docker instance](https://hub.docker.com/r/gramener/gramex/):
 
 ```bash
 export VERSION=1.x.x        # Replace with Gramex version
-docker build pkg/docker-py3 -t gramener/gramex:$VERSION
-docker tag gramener/gramex:$VERSION gramener/gramex:latest
-docker login                # log in as sanand0 / pratapvardhan
-docker push gramener/gramex
+make release-docker
 ```
 
 ## Release Gramex Enterprise Edition

@@ -6,14 +6,11 @@ url:
       version: 2
       source: $YAMLPATH/template.pptx
       rules:
-        - Risk:
-            Count:
-                text: 6
-                color: f'#FFA500'
-        - Breached:
-            Count:
-                text: 9
-                color: f"#C00000"
-        - Active:
-            Count:
-                text: f"10"
+        - Internal:
+            Tickets: {text: 100}
+            On time: {text: 84}
+            SLA: {text: f'84%', fill: f'red'}
+        - External:
+            Tickets: {text: 200}
+            On time: {text: 196}
+            SLA: {text: f'98%', fill: f'green'}

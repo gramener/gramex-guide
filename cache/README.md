@@ -53,23 +53,25 @@ The `url:` handlers accept a `cache:` key that defines caching behaviour. For
 example, this configuration at [random](random) generates random letters every
 time it is called:
 
-    :::yaml
-    random:
-        pattern: /$YAMLURL/random
-        handler: FunctionHandler
-        kwargs:
-            function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
+```yaml
+random:
+    pattern: /$YAMLURL/random
+    handler: FunctionHandler
+    kwargs:
+        function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
+```
 
 But adding the `cache:` to this URL caches it the first time it is called. When
 [random-cached](random-cached) is reloaded, the same letter is shown every time.
 
-    :::yaml
-    random-cached:
-        pattern: /$YAMLURL/random-cached
-        handler: FunctionHandler
-        kwargs:
-            function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
-        cache: true
+```yaml
+random-cached:
+    pattern: /$YAMLURL/random-cached
+    handler: FunctionHandler
+    kwargs:
+        function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
+    cache: true
+```
 
 ## Cache keys
 
@@ -84,22 +86,23 @@ cache the full URL. But
 [cache-only-path?x=2](cache-only-path?x=2) return the same value because they
 only cache the path.
 
-    :::yaml
-    cache-full-url:
-        pattern: /$YAMLURL/cache-full-url
-        handler: FunctionHandler
-        kwargs:
-            function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
-        cache:
-            key: request.uri          # This is the default cache key
+```yaml
+cache-full-url:
+    pattern: /$YAMLURL/cache-full-url
+    handler: FunctionHandler
+    kwargs:
+        function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
+    cache:
+        key: request.uri          # This is the default cache key
 
-    cache-only-path:
-        pattern: /$YAMLURL/cache-only-path
-        handler: FunctionHandler
-        kwargs:
-            function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
-        cache:
-            key: request.path     # only use the request path, not arguments
+cache-only-path:
+    pattern: /$YAMLURL/cache-only-path
+    handler: FunctionHandler
+    kwargs:
+        function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
+    cache:
+        key: request.path     # only use the request path, not arguments
+```
 
 The key can accept multiple values. The values can either be:
 
@@ -124,13 +127,14 @@ The key can accept multiple values. The values can either be:
 For example, this configuration caches based on the request URI and user. Each
 URI is cached independently for each user ID.
 
-    :::yaml
-    cache-by-user-and-browser:
-        ...
-        cache:
-            key:                # Cache based on
-              - request.uri     # the URL requested
-              - user.id         # and handler.current_user['id'] if it exists
+```yaml
+cache-by-user-and-browser:
+    ...
+    cache:
+        key:                # Cache based on
+            - request.uri     # the URL requested
+            - user.id         # and handler.current_user['id'] if it exists
+```
 
 Google, Facebook, Twitter and LDAP provide the `user.id` attribute. DB Auth
 provides it if your user table has an `id` column. But you can use any other
@@ -143,15 +147,16 @@ for Twitter, etc.
 You can specify a expiry duration. For example [cache-expiry](cache-expiry)
 caches the response for 5 seconds.
 
-    :::yaml
-    cache-expiry:
-        pattern: /$YAMLURL/cache-expiry
-        handler: FunctionHandler
-        kwargs:
-            function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
-        cache:
-            expiry:
-                duration: 5             # Cache the request for 5 seconds
+```yaml
+cache-expiry:
+    pattern: /$YAMLURL/cache-expiry
+    handler: FunctionHandler
+    kwargs:
+        function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
+    cache:
+        expiry:
+            duration: 5             # Cache the request for 5 seconds
+```
 
 By default, the cache expires either after 10 years, or when the cache store
 runs out of space.
@@ -160,13 +165,14 @@ runs out of space.
 
 By default, only requests that return a HTTP 200 or HTTP 304 status code are cached. You can cache other status codes via the `status:` configuration.
 
-    :::yaml
-    url:
-      cache-errors:
-        pattern: /$YAMLURL/cache-errors
-        ...
-        cache:
-            status: [200, 404, 500]         # Cache all of these HTTP responses
+```yaml
+url:
+    cache-errors:
+    pattern: /$YAMLURL/cache-errors
+    ...
+    cache:
+        status: [200, 404, 500]         # Cache all of these HTTP responses
+```
 
 ## Cache stores
 
@@ -190,16 +196,6 @@ cache:
         size: 1000000000   # Allow ~1GB of data in the cache
 ```
 
-Disk caches are based on the
-[diskcache](http://www.grantjenks.com/docs/diskcache/) library. When the size
-limit is reached, the oldest items are discarded.
-
-Redis cache allows multiple gramex instances to cache objects in a Redis instance. This requires
-[Redis 5.0 or later](https://redis.io/) to be running. `redis` cache is an implementation of
-[approximate LRU](https://redis.io/topics/lru-cache). When the size limit is reached, the oldest
-items are discarded. However, the size limit is set for redis instance and not for a specific DB.
-Hence avoid using same redis instance for caching and other uses.
-
 By default, Gramex provides a cache called `memory` that has a 500 MB in-memory
 cache based on [cachetools](http://pythonhosted.org/cachetools/). When the size
 limit is reached, the least recently used items are discarded. This cache is
@@ -212,9 +208,20 @@ cache:
         size: 5000000       # Just allow 5MB of data in the cache instead of 500 MB (default)
 ```
 
-If you want to use a different cache by default, specify a `default: true`
-against the cache. The **last** cache with `default: true` is used as the
-default cache.
+Disk caches are based on the [diskcache](http://www.grantjenks.com/docs/diskcache/) library. When
+the size limit is reached, the oldest items are discarded. But disk caches are MUCH slower than
+memory caches, and defeat the purpose of data caching. Use this if your app is computation or query
+intensive, and you need to share the cache across different instances on the same server.
+
+Redis cache allows multiple gramex instances to cache objects in a Redis server. This allows the
+same cache to be used across different servers.
+
+Redis cache requires [Redis 5.0 or later](https://redis.io/) to be running. When the size limit is
+reached, the oldest items are discarded. (Note: the size limit is set for the Redis instance, not
+for a specific DB. So avoid using the same Redis instance for other apps.)
+
+To use a different cache by default, specify a `default: true` against the cache. The **last**
+cache with `default: true` is used as the default cache.
 
 ```yaml
 cache:
@@ -226,12 +233,9 @@ cache:
         default: true
 ```
 
-Avoid disk caches when using `default: true`. Disk caches are MUCH slower than
-memory caches, and defeats the purpose of data caching.
-
-**Note**: Persistent caches like `disk` and `redis` pickle Python objects. Some objects (e.g. Tornado
-templates) are not pickle-able. These caches do not cache such objects, ignoring them with a log
-error. Use `memory` cache if you need to cache pickle-able objects.
+**Note**: Persistent caches like `disk` and `redis` pickle Python objects. Some objects (e.g.
+Tornado templates) are not pickle-able. These caches do not cache such objects, ignoring them with
+a log error. Use `memory` cache if you need to cache pickle-able objects.
 
 
 ### Using cache stores
@@ -244,13 +248,14 @@ For example, the default in-memory Gramex cache is at
 The cache stores can be treated like a dictionary. They also support a `.set()`
 method which accepts an `expire=` parameter. For example:
 
-    :::python
-    from gramex import service      # Available only if Gramex is running
-    cache = service.cache['big-disk-cache']
-    cache['key'] = 'value'
-    cache['key']      # returns 'value'
-    del cache['key']  # clears the key
-    cache.set('key', 'value', expire=30)    # key expires in 30 seconds
+```python
+from gramex import service      # Available only if Gramex is running
+cache = service.cache['big-disk-cache']
+cache['key'] = 'value'
+cache['key']      # returns 'value'
+del cache['key']  # clears the key
+cache.set('key', 'value', expire=30)    # key expires in 30 seconds
+```
 
 ## Mixing Python versions
 
@@ -271,15 +276,16 @@ cache.)
 You can cache static files with both server and client side caching. For example,
 to cache the `bower_components` and `assets` directories, use this configuration:
 
-    :::yaml
-    static_files:
-      pattern: /$YAMLURL/(bower_components/.*|assets/.*)    # Map all static files
-      handler: FileHandler
-      kwargs:
-        path: $YAMLPATH/                              # from under this directory
-        headers:
-          Cache-Control: "public, max-age=315360000"  # Cache for 10 years on the browser
-      cache: true                                     # Also cache on the server
+```yaml
+static_files:
+    pattern: /$YAMLURL/(bower_components/.*|assets/.*)    # Map all static files
+    handler: FileHandler
+    kwargs:
+    path: $YAMLPATH/                              # from under this directory
+    headers:
+        Cache-Control: "public, max-age=315360000"  # Cache for 10 years on the browser
+    cache: true                                     # Also cache on the server
+```
 
 To force a refresh, append `?v=xx` where `xx` is a new number. (The use of `?v=`
 is arbitrary. You can use any query parameter instead of `v`.)
@@ -290,9 +296,10 @@ is arbitrary. You can use any query parameter instead of `v`.)
 `gramex.cache.open` opens files and caches them unless they are changed. You can
 use this to load any type of file. For example:
 
-    :::python
-    import gramex.cache
-    data = gramex.cache.open('data.csv', encoding='utf-8')
+```python
+import gramex.cache
+data = gramex.cache.open('data.csv', encoding='utf-8')
+```
 
 This loads `data.csv`  using `pd.read_csv('data.csv', encoding='utf-8')`. The
 next time this is called, if `data.csv` in unchanged, the cached results are
@@ -301,8 +308,9 @@ returned.
 You can also specify that the file is a CSV file by explicitly passing a 2nd
 parameter as `'csv'`. For example:
 
-    :::python
-    data = gramex.cache.open('data.csv', 'csv', encoding='utf-8')
+```python
+data = gramex.cache.open('data.csv', 'csv', encoding='utf-8')
+```
 
 (**v1.23** made the 2nd parameter optional. It was mandatory before then.)
 
@@ -328,30 +336,33 @@ The 2nd parameter can take the following values:
 The 2nd parameter can also be a function like `function(path, **kwargs)`. For
 example:
 
-    :::python
-    # Return file size if it has changed
-    file_size = gramex.cache.open('data.csv', lambda path: os.stat(path).st_size)
+```python
+# Return file size if it has changed
+file_size = gramex.cache.open('data.csv', lambda path: os.stat(path).st_size)
 
-    # Read Excel file. Keyword arguments are passed to pd.read_excel
-    data = gramex.cache.open('data.xlsx', pd.read_excel, sheet_name='Sheet1')
+# Read Excel file. Keyword arguments are passed to pd.read_excel
+data = gramex.cache.open('data.xlsx', pd.read_excel, sheet_name='Sheet1')
+```
 
 To transform the data after loading, you can use a `transform=` function. For
 example:
 
-    :::python
-    # After loading, return len(data)
-    row_count = gramex.cache.open('data.csv', 'csv', transform=len)
+```python
+# After loading, return len(data)
+row_count = gramex.cache.open('data.csv', 'csv', transform=len)
 
-    # Return multiple calculations
-    def transform(data):
-        return {'count': len(data), 'groups': data.groupby('city')}
-    result = gramex.cache.open('data.csv', 'csv', transform=transform)
+# Return multiple calculations
+def transform(data):
+    return {'count': len(data), 'groups': data.groupby('city')}
+result = gramex.cache.open('data.csv', 'csv', transform=transform)
+```
 
 You can also pass a `rel=True` parameter if you want to specify the filename
 relative to the current folder. For example, if `D:/app/calc.py` has this code:
 
-    :::python
-    conf = gramex.cache.open('config.yaml', 'yaml', rel=True)
+```python
+conf = gramex.cache.open('config.yaml', 'yaml', rel=True)
+```
 
 ... the `config.yaml` will be loaded from the **same directory** as the calling
 file, `D:/app/calc.py`, that is from `D:/app/config.yaml`.
@@ -362,18 +373,20 @@ functions that accept a handle or string into functions that accept a filename.
 
 For example, to read using [pickle.load][pickle-load], use:
 
-    :::python
-    loader = gramex.cache.opener(pickle.load)
-    data = gramex.cache.open('template.pickle', loader)
+```python
+loader = gramex.cache.opener(pickle.load)
+data = gramex.cache.open('template.pickle', loader)
+```
 
 If your function accepts a string instead of a handle, add the `read=True`
 parameter. This passes the results of reading the handle instead of the handle.
 For example, to compute the [MD5 hash][hashlib] of a file, use:
 
-    :::python
-    m = hashlib.md5
-    loader = gramex.cache.opener(m.update, read=True)
-    data = gramex.cache.open('template.txt', mode='rb', encoding=None, errors=None)
+```python
+m = hashlib.md5
+loader = gramex.cache.opener(m.update, read=True)
+data = gramex.cache.open('template.txt', mode='rb', encoding=None, errors=None)
+```
 
 [pickle-load]: https://docs.python.org/2/library/pickle.html#pickle.load
 [hashlib]: https://docs.python.org/3/library/hashlib.html
@@ -386,19 +399,21 @@ The next time it is called, the query re-runs only if required.
 
 For example, take this slow query:
 
-    :::python
-    query = '''
-        SELECT sales.date, product.name, SUM(sales.value)
-        FROM product, sales
-        WHERE product.id = sales.product_id
-        GROUP BY (sales.date, product.name)
-    '''
+```python
+query = '''
+    SELECT sales.date, product.name, SUM(sales.value)
+    FROM product, sales
+    WHERE product.id = sales.product_id
+    GROUP BY (sales.date, product.name)
+'''
+```
 
 If sales data is updated daily, we need not run this query unless the latest
 `date` has changed. Then we can use:
 
-    :::python
-    data = gramex.cache.query(query, engine, state='SELECT MAX(date) FROM sales')
+```python
+data = gramex.cache.query(query, engine, state='SELECT MAX(date) FROM sales')
+```
 
 `gramex.cache.query` is just like [pd.read_sql][read_sql] but with an additional
 `state=` parameter. `state` can be a query -- typically a fast running query. If
@@ -407,8 +422,9 @@ running the state query returns a different result, the original query is re-run
 `state` can also be a function. For example, if a local file called `.updated` is
 changed every time the data is loaded, you can use:
 
-    :::python
-    data = gramex.cache.query(query, engine, state=lambda: os.stat('.updated').st_mtime)
+```python
+data = gramex.cache.query(query, engine, state=lambda: os.stat('.updated').st_mtime)
+```
 
 [read_sql]: https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_sql.html
 
@@ -430,21 +446,24 @@ Instead, use `gramex.cache.reload_module(module_name)`. This is like
 
 For example, you can use it in a FunctionHandler:
 
-    :::python
-    import my_utils
-    import gramex.cache
+```python
+import my_utils
+import gramex.cache
 
-    def my_function_handler(handler):
-        # Code used during development -- reload module if source has changed
-        gramex.cache.reload_module(my_utils)
-        my_utils.method()
+def my_function_handler(handler):
+    # Code used during development -- reload module if source has changed
+    gramex.cache.reload_module(my_utils)
+    my_utils.method()
+```
 
 You can use it inside a template:
 
-    {% import my_utils %}
-    {% import gramex.cache %}
-    {% set gramex.cache.reload_module(my_utils) %}
-    (Now my_utils.method() will have the latest saved code)
+```html
+{% import my_utils %}
+{% import gramex.cache %}
+{% set gramex.cache.reload_module(my_utils) %}
+(Now my_utils.method() will have the latest saved code)
+```
 
 In both these cases, whenever `my_utils.py` is updated, the latest version will
 be used to render the FunctionHandler or template.
@@ -460,14 +479,15 @@ until the command runs.
 
 Basic usage:
 
-    :::python
-    @tornado.gen.coroutine
-    def function_handler(handler):
-        proc = gramex.cache.Subprocess(['python', '-V'])
-        out, err = yield proc.wait_for_exit()
-        # out contains stdout result. err contains stderr result
-        # proc.proc.returncode contains the return code
-        raise tornado.gen.Return('Python version is ' + err.decode('utf-8'))
+```python
+@tornado.gen.coroutine
+def function_handler(handler):
+    proc = gramex.cache.Subprocess(['python', '-V'])
+    out, err = yield proc.wait_for_exit()
+    # out contains stdout result. err contains stderr result
+    # proc.proc.returncode contains the return code
+    raise tornado.gen.Return('Python version is ' + err.decode('utf-8'))
+```
 
 `out` and `err` contain the stdout and stderr from running `python -V` as bytes.
 All keyword arguments supported by `subprocess.Popen` are supported here.
@@ -475,14 +495,15 @@ All keyword arguments supported by `subprocess.Popen` are supported here.
 Streaming is supported. This lets you read the contents of stdout and stderr
 *while the program runs*. Example:
 
-    :::python
-    @tornado.gen.coroutine
-    def function_handler(handler):
-        proc = gramex.cache.Subprocess(['flake8'],
-                                       stream_stdout=[handler.write],
-                                       buffer_size='line')
-        out, err = yield proc.wait_for_exit()
-        # out will be an empty byte string since stream_stdout is specified
+```python
+@tornado.gen.coroutine
+def function_handler(handler):
+    proc = gramex.cache.Subprocess(['flake8'],
+                                    stream_stdout=[handler.write],
+                                    buffer_size='line')
+    out, err = yield proc.wait_for_exit()
+    # out will be an empty byte string since stream_stdout is specified
+```
 
 This reads the output of `flake8` line by line (since `buffer_size='line'`) and
 writes the output by calling `handler.write`. The returned value for `out` is an
@@ -491,11 +512,12 @@ empty string.
 `stream_stdout` is a list of functions. You can provide any other method here.
 For example:
 
-    :::python
-    out = []
-    proc = gramex.cache.Subprocess(['flake8'],
-                                   stream_stdout=[out.append],
-                                   buffer_size='line')
+```python
+out = []
+proc = gramex.cache.Subprocess(['flake8'],
+                                stream_stdout=[out.append],
+                                buffer_size='line')
+```
 
 ... will write the output line-by-line into the `out` list using `out.append`.
 

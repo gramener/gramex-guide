@@ -1,0 +1,25 @@
+url:
+  pptxhandler/text:
+    pattern: /$YAMLURL/output.pptx
+    handler: PPTXHandler
+    kwargs:
+      version: 2
+      source: $YAMLPATH/template.pptx
+      rules:
+        - TextBox text:
+            text: f'New text'
+        - TextBox replace:
+            replace:
+              ABC: f'XYZ'
+        - TextBox bold:
+            bold: true
+        - TextBox color:
+            color: f'red'
+        - TextBox font-name:
+            font-name: f'Courier New'
+        - TextBox font-size:
+            font-size: f'24 pt'
+        - TextBox italic:
+            italic: true
+        - TextBox underline:
+            underline: true

@@ -24,7 +24,8 @@ from markdown.treeprocessors import Treeprocessor
 class IndexerTreeProcessor(Treeprocessor):
     def run(self, root):
         self.md.index = []
-        self.md.index.append(('', self.md.Meta['title'][0]))
+        if 'title' in self.md.Meta:
+            self.md.index.append(('', self.md.Meta['title'][0]))
         for el in root.findall('*'):
             if el.get('id'):
                 text = el.text if el.text else el.findtext('*')[0]

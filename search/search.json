@@ -1011,8 +1011,39 @@
       "Statistics": -1
     }
   },
+  "1.61": {
+    "": {
+      "Gramex 1.61 release notes": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "create-interactive-presentations": {
+      "Create interactive presentations": -1
+    },
+    "fast-persistent-distributed-cache": {
+      "Fast, persistent, distributed cache": -1
+    },
+    "how-to-upgrade": {
+      "How to upgrade": -1
+    },
+    "reduce-login-issues-on-shared-servers": {
+      "Reduce login issues on shared servers": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "use-python-expressions-in-yaml": {
+      "Use Python expressions in YAML": -1
+    }
+  },
   "about": {
     "": {}
+  },
+  "add-position": {
+    "add-position-examples": {
+      "Add position examples": -1
+    }
   },
   "admin": {
     "": {
@@ -1295,6 +1326,9 @@
     "": {
       "Caching requests": -1
     },
+    "after-loading-return-lendata": {
+      "After loading, return len(data)": -1
+    },
     "browser-caching": {
       "Browser caching": -1
     },
@@ -1324,6 +1358,15 @@
     },
     "query-caching": {
       "Query caching": -1
+    },
+    "read-excel-file-keyword-arguments-are-passed-to-pdread_excel": {
+      "Read Excel file. Keyword arguments are passed to pd.read_excel": -1
+    },
+    "return-file-size-if-it-has-changed": {
+      "Return file size if it has changed": -1
+    },
+    "return-multiple-calculations": {
+      "Return multiple calculations": -1
     },
     "server-caching": {
       "Server caching": -1
@@ -1408,6 +1451,11 @@
     },
     "troubleshooting": {
       "Troubleshooting": -1
+    }
+  },
+  "clone-shape": {
+    "copy-slide-example": {
+      "Copy slide example": -1
     }
   },
   "config": {
@@ -1552,6 +1600,11 @@
     "update-gramex": {},
     "update-gramex-community-edition": {
       "Update Gramex Community Edition": -1
+    }
+  },
+  "copy-slide": {
+    "copy-slide-example": {
+      "Copy slide example": -1
     }
   },
   "dashboard": {
@@ -2243,6 +2296,11 @@
       "Upload your data": -1
     }
   },
+  "groups": {
+    "groups-example": {
+      "Groups example": -1
+    }
+  },
   "handlers": {
     "": {
       "Writing handlers": -1
@@ -2385,6 +2443,11 @@
     },
     "third-party-libraries": {
       "Third party libraries": -1
+    }
+  },
+  "link": {
+    "add-link-examples": {
+      "Add link examples": -1
     }
   },
   "linkcheck": {
@@ -2559,99 +2622,110 @@
       "v1.29.0 (2018-02-15)": -1
     }
   },
+  "position": {
+    "position-example": {
+      "Position example": -1
+    }
+  },
   "pptxhandler": {
     "": {
       "PPTXHandler generates PPTX": -1
     },
-    "bullet": {
-      "Bullet": -1
+    "bullet": {},
+    "calendarmap": {},
+    "chart": {},
+    "clone-shapes": {
+      "Clone shapes": -1
     },
-    "calendarmap": {
-      "Calendarmap": -1
-    },
-    "chart": {
-      "Chart": -1
+    "color-units": {
+      "Color units": -1
     },
     "commands": {
       "Commands": -1
     },
-    "css": {
-      "CSS": -1
+    "copy-slides": {
+      "Copy slides": -1
     },
-    "custom-charts": {
-      "Custom charts": -1
-    },
+    "css": {},
+    "custom-charts": {},
     "data": {
       "Data": -1
     },
-    "deprecated-commands": {
-      "Deprecated commands": -1
+    "debug": {
+      "Debug": -1
     },
+    "deprecated-commands": {},
     "expressions": {
       "Expressions": -1
     },
     "groups": {
       "Groups": -1
     },
-    "heatgrid": {
-      "Heatgrid": -1
-    },
+    "heatgrid": {},
     "image": {
       "Image": -1
     },
-    "native-charts": {
-      "Native charts": -1
+    "length-units": {
+      "Length units": -1
     },
-    "pptgen": {
-      "PPTGen": -1
+    "link": {
+      "Link": -1
     },
-    "pptgen-command-line": {
-      "PPTGen Command Line": -1
+    "literals": {
+      "Literals": -1
     },
-    "pptgen-configuration": {
-      "PPTGen Configuration": -1
+    "native-charts": {},
+    "position": {
+      "Position": -1
     },
+    "pptgen": {},
+    "pptgen-command-line": {},
+    "pptgen-configuration": {},
     "pptgen-library": {
       "PPTGen Library": -1
     },
-    "pptx-url-arguments": {
-      "PPTX URL arguments": -1
+    "pptx-url-arguments": {},
+    "register": {
+      "Register": -1
     },
-    "register-register-a-new-command-to-pptgen": {
-      "Register: Register a new command to PPTGen": -1
-    },
-    "replace": {
-      "Replace": -1
-    },
-    "replicate": {
-      "Replicate": -1
-    },
+    "register-register-a-new-command-to-pptgen": {},
+    "replace": {},
+    "replicate": {},
     "rules": {
       "Rules": -1
     },
-    "sankey": {
-      "Sankey": -1
-    },
+    "sankey": {},
     "shapes": {
       "Shapes": -1
     },
-    "slides": {
-      "Slides": -1
+    "slide-filters": {
+      "Slide filters": -1
     },
-    "stack": {
-      "Stack": -1
+    "slides": {},
+    "stack": {},
+    "style": {
+      "Style": -1
     },
-    "table": {
-      "Table": -1
+    "support": {
+      "Support": -1
     },
-    "templates": {
-      "Templates": -1
-    },
+    "table": {},
+    "templates": {},
     "text": {
       "Text": -1
     },
-    "treemap": {
-      "Treemap": -1
+    "text-format": {
+      "Text format": -1
+    },
+    "transition": {
+      "Transition": -1
+    },
+    "treemap": {},
+    "units": {
+      "Units": -1
+    },
+    "usage": {
+      "Usage": -1
     }
   },
   "privacy": {
@@ -2802,6 +2876,11 @@
   "release": {
     "": {
       "Gramex release notes": -1
+    }
+  },
+  "sales-funnel": {
+    "sales-funnel": {
+      "Sales funnel": -1
     }
   },
   "scheduler": {
@@ -2960,6 +3039,16 @@
       "Waiting": -1
     }
   },
+  "text": {
+    "text-example": {
+      "Text example": -1
+    }
+  },
+  "text-format": {
+    "text-format-example": {
+      "Text format example": -1
+    }
+  },
   "tips": {
     "": {
       "Tips & Tricks": -1
@@ -2969,6 +3058,11 @@
     },
     "reuse-code": {
       "Reuse code": -1
+    }
+  },
+  "transition": {
+    "transition-example": {
+      "Transition example": -1
     }
   },
   "translate": {
@@ -3049,6 +3143,101 @@
     },
     "upload-listing": {
       "Upload listing": -1
+    }
+  },
+  "v1": {
+    "": {
+      "PPTXHandler generates PPTX": -1
+    },
+    "bullet": {
+      "Bullet": -1
+    },
+    "calendarmap": {
+      "Calendarmap": -1
+    },
+    "chart": {
+      "Chart": -1
+    },
+    "commands": {
+      "Commands": -1
+    },
+    "css": {
+      "CSS": -1
+    },
+    "custom-charts": {
+      "Custom charts": -1
+    },
+    "data": {
+      "Data": -1
+    },
+    "deprecated-commands": {
+      "Deprecated commands": -1
+    },
+    "expressions": {
+      "Expressions": -1
+    },
+    "groups": {
+      "Groups": -1
+    },
+    "heatgrid": {
+      "Heatgrid": -1
+    },
+    "image": {
+      "Image": -1
+    },
+    "native-charts": {
+      "Native charts": -1
+    },
+    "pptgen": {
+      "PPTGen": -1
+    },
+    "pptgen-command-line": {
+      "PPTGen Command Line": -1
+    },
+    "pptgen-configuration": {
+      "PPTGen Configuration": -1
+    },
+    "pptgen-library": {
+      "PPTGen Library": -1
+    },
+    "pptx-url-arguments": {
+      "PPTX URL arguments": -1
+    },
+    "register-register-a-new-command-to-pptgen": {
+      "Register: Register a new command to PPTGen": -1
+    },
+    "replace": {
+      "Replace": -1
+    },
+    "replicate": {
+      "Replicate": -1
+    },
+    "rules": {
+      "Rules": -1
+    },
+    "sankey": {
+      "Sankey": -1
+    },
+    "shapes": {
+      "Shapes": -1
+    },
+    "slides": {
+      "Slides": -1
+    },
+    "stack": {
+      "Stack": -1
+    },
+    "table": {
+      "Table": -1
+    },
+    "templates": {
+      "Templates": -1
+    },
+    "text": {
+      "Text": -1
+    },
+    "treemap": {
+      "Treemap": -1
     }
   },
   "watch": {

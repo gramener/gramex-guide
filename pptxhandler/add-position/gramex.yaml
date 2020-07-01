@@ -5,14 +5,15 @@ url:
     kwargs:
       version: 2
       source: $YAMLPATH/template.pptx
-      rules:
-        - Task1:
-            add-width: f'10 cm'
-        - Task2:
-            add-top: f'2 cm'
-            add-left: f'6 cm'
-            add-width: f'4 cm'
-        - Task3:
-            add-top: f'4 cm'
-            add-left: f'6 cm'
-            add-width: f'6 cm'
+      rules:                      # Take in rect shapes, move them using postion commands
+        - Spring:
+            add-width: f'4.46 cm'
+          Referral:
+            add-top: f'1.94 cm'
+            add-width: f'0.86 cm'
+          Collection:
+            add-top: f'{1.94 * 2} cm'
+            add-width: f'3.96 cm'
+          Discount:
+            add-top: f'{1.94 * 3} cm'
+            add-width: f'2.28 cm'

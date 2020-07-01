@@ -3,8 +3,9 @@ title: Gramex release notes
 prefix: Release
 ...
 
-Gramex is released *twice a month* -- on the 1<sup>st</sup> and the 15<sup>th</sup>.
+Gramex is released on the first of every month.
 
+- [v1.61.0: PPTXHandler v2 and Redis Cache](1.61/) <small>1 July 2020</small>
 - [v1.60.0: File Manager](1.60/) <small>27 May 2020</small>
 - [v1.59.0: DriveHandler](1.59/) <small>11 May 2020</small>
 - There was a pause in Gramex development as we restructured the product team's focus.

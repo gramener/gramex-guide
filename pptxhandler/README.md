@@ -1,57 +1,86 @@
 ---
-title: PPTXHandler v2 generates PPTX
+title: PPTXHandler generates PPTX
 prefix: PPTXHandler
 ...
+
+PowerPoint presentations are the most common way businesses communicate data. Many, in fact,
+copy-paste screenshots from their BI tools into PowerPoint.
+
+PPTXHandler makes it easy for users to:
+
+- **Automate** slides from data (and embed it into their presentation)
+- **Edit** the output by themselves
+- **Design** or change the templates by themselves, without programming.
+
+Here are examples of what PPTXHandler can create. Click to see details.
+
+[![App store sales](appstore.png)](https://gramener.com/appstore/appstore.pptx)
+[![FMCG revenue breakup](fmcg.png)](https://gramener.com/fmcg/)
+[![Bar chart race](bar-chart-race.gif)](https://blog.gramener.com/bar-chart-race-in-powerpoint/)
+
+[TOC]
+
+## Usage
 
 There are two versions of PPTXHandler.
 
 - [Version 1](v1/) was introduced in **v1.23**. This is deprecated and no longer maintained.
 - Version 2 was introduced in **v1.61** is documented on this page.
 
-PPTXHandler v2 lets you:
-
-- Update charts, images and text from data
-- Create a series of slides using a template from spreadsheets or database
-
-This example sets first slide's title to "Total sales is ...", and calculates the total sales from [sales.csv](sales.csv).
+Here is an example that shows how to change the text of a slide from data:
 
 ```yaml
 url:
-  pptxhandler2/example:
-    pattern: /$YAMLURL/example.pptx
+  pptxhandler/sales-funnel:
+    pattern: /$YAMLURL/output.pptx
     handler: PPTXHandler
     kwargs:
       version: 2                                  # Use PPTXHandler v2 instead of v1
-      source: $YAMLPATH/example-input.pptx        # Input file to load
+      source: $YAMLPATH/template.pptx             # Template to use
       data:
-        products: {url: $YAMLPATH/products.csv}   # Load products data from products.csv
-      rules:                                      # Apply these rules
-        - slide-number: 1                           # Take only the first slide
-          Visitors:                                 # Find all shapes named "Visitors"
-            text: products['visitors']              # Replace text with data template
+        products: {url: $YAMLPATH/products.yaml}  # Load products data from products.yaml
+      rules:
+        - Visitors:                               # Find all shapes named 'Visitors'
+            text: products['visitors']            # Replace text with value from data
           Leads:
-            text: products["leads"]
+            text: products['leads']               # Same for leads
           Cart:
-            text: products['cart']
+            text: products['cart']                # ... and cart
       headers:
-        Content-Disposition: attachment; filename=example.pptx
+        Content-Disposition: attachment; filename=output.pptx
 ```
 
+This takes the following PPTX as the source or template:
+
+[![Source or template PPTX](sales-funnel/template.png)](sales-funnel/template.pptx)
+
+... and this [dataset: products.yaml](sales-funnel/products.yaml):
+
+```yaml
+visitors: 839
+leads: 420
+cart: 142
+```
+
+... and creates this presentation:
+
+[![Output PPTX](sales-funnel/output.png)](sales-funnel/output.pptx)
+
 <div class="example">
-  <a class="example-demo" href="sales-funnel/">PPTXHandler example</a>
+  <a class="example-demo" href="sales-funnel/">Run example</a>
   <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/sales-funnel/">Source</a>
 </div>
 
-## Configuration
+The most important keys for PPTXHandler are:
 
-Both PPTXHandler and `pptgen()` accepts the following top-level keys:
-
-- `source`: path to input PPTX.
-- `target`: (optional) path to save target PPTX. This is optional because:
-  - PPTXHandler lets users downloads the file anyway
-  - `pptgen()` returns the Presentation object, which you can save using `.save(filename)`
+- `version`: always set this to 2. Otherwise, [PPTXHandler v1](v1/) is used
+- `source`: path to the source or template PPTX, e.g. `$YAMLPATH/source.pptx`
+- `data`: dataset dictionary. Rules can use data to change slides. See [how to specify the dataset](#data), e.g. `data: {products: {url: data.csv}}`
 - `rules`: list of rules to modify the source using data. See [how to specify rules](#rules)
-- `data`: (optional) dataset dictionary to change the PPTX using data. See [how to specify the dataset](#data)
+
+Less important keys are:
+
+- `target`: path to save target PPTX
 - `unit`: (optional) set the [unit of length][length] used by width, height, etc. See [length unit](#length-unit)
 - `mode`: (optional) toggle whether value are [expressions](#expressions) (default for PPTXHandler)
   or [literals](#literals) (default for [`pptgen()`](#pptgen-library))
@@ -73,51 +102,38 @@ rules:                              # Apply these rules
       fill: f'#ffff00'              # Make its background yellow
 ```
 
-[EXAMPLE]
-
 A rule can pick one or more shape names, and apply one or more [commands](#commands) to each shape.
 
 ### Shapes
 
-The keys in each rule are shape name. All shapes in PowerPoint have names. To see them in
-PowerPoint, select Home tab > Drawing group > Arrange drop-down > Selection pane. Or press ALT +
-F10.
+A `rule:` is a dictionary of shape names.
+
+All shapes in PowerPoint have names. To see them in PowerPoint, select
+Home tab > Drawing group > Arrange drop-down > Selection pane. Or press <kbd>Alt + F10</kbd>.
 
 ![Selection pane](selection-pane.png)
 
 To change shape names, double-click on the name in the selection pane.
 
-You can specify changes to one or more shapes in a [rule](#rules). For example:
+Shapes shouldn't have the same name as [commands](#commands), e.g. don't name a shape "text".
+**Start shape names with a capital letter**, e.g. "Text" instead of "text".
+
+You can use wildcards in a shape name. Use `?` to match a single character, and `*` to match
+anything. For example:
 
 ```yaml
 rules:
-  - Title 1:                # Shape name "Title 1" will be updated by text "New title"
-      text: f'New title'
-      style:                # Text color will be `red`(accepts only hex color code in 6 digit)
-        color: f'#ff0000'
-    Text 1:                 # Shape name "Text 1" will be updated by text "New text"
-      text: New text
-      style:                # Text color will be `green`(accepts only hex color code in 6 digit)
-        color: '#00ff00'
-        bold: True          # Text will appear in bold
+  - 'TextBox ?':      # Select TextBox 1, TextBox 2, ... but not TextBox 10, ...
+      color: red      #     ... and set font color to red
+  - 'Text *':         # Select ALL shapes starting with Text (case-sensitive)
+      color: red
+  - '*box*':          # Select ALL shapes with "box" anywhere in the text (case-sensitive)
+      color: red
 ```
-
-... changes 2 shapes named `Title 1` and `Text 1`.
-
-Shapes shouldn't have the same name as a [command](#commands), e.g. don't name a shape "text".
-Instead, **start shape names with a capital letter**, e.g. "Text" instead of "text".
-
-You can use wildcards in a shape name. Use `?` to match a single char, and `*` to match anything.
-
-<div class="example">
-  <a class="example-demo" href="shapes/">Shapes examples</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/shapes/">Source</a>
-</div>
 
 ### Groups
 
-Groups are shapes too. You can change the [position](#position) of a group, and also change shapes
-inside a group, like this:
+Groups are shapes that contain other shapes. You can apply commands to the group itself (e.g. change its [size or position](#position)), or to the shapes inside a group, like this:
 
 ```yaml
 rules:
@@ -130,23 +146,22 @@ rules:
 ```
 
 <div class="example">
-  <a class="example-demo" href="groups/">Groups examples</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/shapes/">Source</a>
+  <a class="example-demo" href="groups/">Groups example</a>
+  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/groups/">Source</a>
 </div>
 
 ### Slide filters
 
-By default, changes are applied to all slides, but you can restrict changes to a specific
-slide using:
+By default, rules are applied to all slides. You can restrict changes to specific slides with:
 
-- `slide-number`: filter slides with given number (starting with 1) or list of numbers
-    - e.g. `slide-number: 1` picks the first slide
-    - e.g. `slide-number: [4, 5]` picks the 4th and 5th slide
-- `slide-title`: apply rule only to slides whose title that match this title. Use `?` to match a single char, and `*` to match anything
-    - e.g. `slide-title: Business Update` matches all slides with the exact title "Business Update" (case-insensitive)
-    - e.g. `slide-title: *Update*` matches all slides with "Update" anywhere in the title (case-insensitive)
-
-(Note: To create multiple slides from data, use [`copy-slide:`](#copy-slides).)
+- `slide-number`: apply rule to specific slide numbers
+    - e.g. `slide-number: 1` picks only the 1st slide
+    - e.g. `slide-number: [2, 4]` picks the 2nd and 4th slide (not the 3rd)
+- `slide-title`: apply rule to specific slide titles
+    - e.g. `slide-title: Business Update` picks all slides with the *exact* title "Business Update" (case-insensitive)
+    - e.g. `slide-title: *Update*` picks all slides with "Update" anywhere in the title (case-insensitive)
+    - e.g. `slide-title: Day ?` picks Day 1, Day 2, ... but not Day 10, ...
+    - Use `?` to match a single char, and `*` to match anything
 
 For example:
 
@@ -154,21 +169,13 @@ For example:
 source: input.pptx        # optional path to source. Default to blank PPT with 1 slide
 target: output.pptx       # required path to save output as
 rules:
-  -                       # This rule applies to all slides
-    Title 1:                # Take the shape named "Title 1"
-      text: f'Alpha'        # Replace its text with "Alpha"
-  - slide-number: 1       # This rule applies only to the first slide
-    Title 1:                # Take the shape named "Title 1"
-      text: f'Beta'         # Replace its text with "Beta"
-  - slide-title: Hello    # This applies to all slides with "Hello" (regex) in the title
-    Title 1:                # Take the shape named "Title 1"
-      text: f'Gamma'        # Replace its text with "New Title"
+  - slide-number: [2, 4]            # Pick the 2nd and 4th slide (not the 3rd)
+    Title: {text: f'X'}
+  - slide-title: 'Business Update'  # Pick the slide titled "Business Update" (case-insensitive)
+    Title: {text: f'X'}
+  - slide-title: 'Day ?'            # Picks the slide titled "Day 1" or "Day 2", etc, not "Day 10"
+    Title: {text: f'X'}
 ```
-
-<div class="example">
-  <a class="example-demo" href="slide-filters/">Slide filter examples</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/slide-filter/">Source</a>
-</div>
 
 ### Transition
 
@@ -178,29 +185,23 @@ For example:
 
 ```yaml
 rules:
-  - transition: f'fade'   # All slides have fade transition for a default duration of 0.3 seconds
-  - slide-number: 1       # Slide 1 has morph transition of 1.5 seconds
+  - transition: f'fade'   # All slides have fade transition (0.3 seconds duration)
+  - slide-number: 1       # Slide 1: Morph transition for 1.5s
     transition:
       type: f'morph'
       duration: 1.5
-  - slide-number: 2       # Slide 2 has Comb - Horizontal transition. Auto-advances after 5 seconds
-    transition:
-      type: f'comb horizontal'
-      advance: 5
-  - slide-number: 3       # Slide 3 has Glitter - Diamonds from Left transition for 3 seconds
+  - slide-number: 3       # Slide 3: Glitter - Diamonds from Left transition for 3s
     transition:
       type: f'glitter diamond left'
       duration: 3
-  - slide-number: 4       # Remove all transitions from slide 4. Auto-advance after 2 seconds
+  - slide-number: 4       # Remove all transitions from slide 4. Auto-advance in 2s
     transition:
       type: f'none'
       advance: 2
 ```
 
-`duration:` is the length of the transition in seconds. If `advance:` is specified, the presentation auto-advances to the next slide after the specified seconds.
-
-`type:` is a transition name, followed by options (which are optional). Here are all transition
-names and their options. These names are similar to those from PowerPoint's UI.
+You can specify transitions by name (with space-separated options). The transition names and their
+options are below, e.g. `transition: airplane left`, `transition: fly-through in bounce`. These are similar to PowerPoint's UI.
 
 - `none`: (removes all transitions)
 - `airplane`: left|right
@@ -275,14 +276,28 @@ names and their options. These names are similar to those from PowerPoint's UI.
 - `zoom-and-rotate`
 - `zoom`: in|out
 
-[EXAMPLE] (morph with sand dance, one other)
+You can also specify transitions as a dict with 3 keys:
+
+- `type`: transition name, followed by options, e.g. `type: morph`
+- `duration`: length of the transition in seconds (default: `0.3` seconds), e.g. `duration: 3`
+- `advance`: auto-advance timeto the next slide, in seconds  (default: `f'none'`), e.g. `advance: 3`
+
+<div class="example">
+  <a class="example-demo" href="transition/">Transition example</a>
+  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/transition/">Source</a>
+</div>
 
 ### Copy slides
 
-You can copy one or more slides, and apply different layouts or content to each slide.
-`copy-slide:` repeats the selected slides for as many times specified.
+You can repeat a slide, changing the layouts or content based on data. This is used to:
 
-For example:
+- Show a report across **time**, e.g. copy the slide and change data across months
+- Show a report across **teams**, e.g. copy the slide and change data across teams
+- ... across **customers**
+- ... across **regions**
+- ... across **products**, **channels**, and so on.
+
+`copy-slide:` repeats the selected slides based on data. For example:
 
 ```yaml
 rules:
@@ -294,16 +309,17 @@ rules:
 
 This repeats slide 1 three times, with titles "Copy 0: A", "Copy 1: B" and "Copy 2: C".
 
-`copy-slide:` must be an [expression](#expressions) that returns one of these types. When copying,
-the values of (`copy.key`, `copy.val`) are set as follows (just like [`clone-shape:`](#clone-shapes)):
+`copy-slide:` must be an [expression](#expressions) that returns one of the following types. When
+copying, the values of (`copy.key`, `copy.val`) are set as follows (just like
+[`clone-shape:`](#clone-shapes)):
 
-- tuple, list or pandas Index, e.g. `[x, y]` -> `(0, 'x'), (1, 'y')`
-- dict, e.g. `{x: 1, y: 2}` -> `(1, 'x'), (2, 'y')`
-- pandas Series, e.g. `pd.Series(['x', 'y'], index=[3, 4])` -> `(3, 'x'), (4, 'y')`
-- pandas DataFrame, e.g. `pd.DataFrame({'x': row1, 'y': row2})` -> `('x', row1)), ('y', row2)`
-- pandas GroupBy, e.g. `data.groupby('key')` -> [GroupBy iterator](https://pandas.pydata.org/pandas-docs/stable/reference/groupby.html) with group name and subsetted data
+- tuple, list or pd.Index, e.g. `[x, y]` 🡆 `(0, 'x'), (1, 'y')`
+- dict, e.g. `{x: 1, y: 2}` 🡆 `(1, 'x'), (2, 'y')`
+- `pd.Series(['x', 'y'], index=[3, 4])` 🡆 `(3, 'x'), (4, 'y')`
+- `pd.DataFrame({'x': row1, 'y': row2})` 🡆 `('x', row1)), ('y', row2)`
+- `data.groupby('key')` 🡆 [GroupBy iterator](https://pandas.pydata.org/pandas-docs/stable/reference/groupby.html) with group name and subsetted data
 
-The `copy` variable has these attributes:
+Commands can use the `copy` variable, which has these attributes:
 
 - `copy.pos`: 0, 1, 2, ... for each copied slide
 - `copy.key`: For lists or tuples, this is the same as `copy.pos`. For dicts, Series, DataFrames, etc, it's the key or index
@@ -352,8 +368,6 @@ content, or add new content (like charts). Here are some common commands:
 - `adjustment3`: sets 3rd shape adjustment
 - `adjustment4`: sets 4th shape adjustment
 
-[EXAMPLE]
-
 ### Style
 
 - `fill`: sets fill (background) [color](#color-units), e.g. `f'red'`
@@ -362,7 +376,11 @@ content, or add new content (like charts). Here are some common commands:
 - `stroke-opacity`: sets line transparency on solid color strokes.  0 is transparent, 1 is opaque, e.g. `0.5` is half transparent
 - `stroke-width`: sets width of the line in [length units](#length-units), e.g. `f'0.5 pt'`
 
-[EXAMPLE]
+<div class="example">
+  <a class="example-demo" href="groups/">Style example (from Groups example)</a>
+  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/groups/">Source</a>
+</div>
+
 
 ### Image
 
@@ -370,7 +388,10 @@ content, or add new content (like charts). Here are some common commands:
 - `image-width`: sets width in [length units](#length-units), e.g. `3 inches`. Retains aspect ratio and position (top and left). May change the height
 - `image-height`: sets height in [length units](#length-units), e.g. `3 inches`. Retains aspect ratio and position (top and left). May change the width
 
-[EXAMPLE]
+<div class="example">
+  <a class="example-demo" href="clone-shapes/">Image example (from Clone shape example)</a>
+  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/clone-shapes/">Source</a>
+</div>
 
 ### Link
 
@@ -387,7 +408,10 @@ content, or add new content (like charts). Here are some common commands:
 - URL, e.g. `link: f'https://gramener.com/'`
 - `noaction`. This removes any prior link or hover on the shape
 
-[EXAMPLE]
+<div class="example">
+  <a class="example-demo" href="link/">Link example</a>
+  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/link/">Source</a>
+</div>
 
 ### Text
 
@@ -403,13 +427,10 @@ content, or add new content (like charts). Here are some common commands:
 - `italic`: makes the text italicized or normal. It can be true/yes/y/1 or false/no/n/0/"", e.g. `italic: true`
 - `underline`: underlines the text or makes it normal. It can be true/yes/y/1 or false/no/n/0/"", e.g. `underline: true`
 
-[EXAMPLE]
-- How to color text in red
-- How to add bold, italics, underline, strike
-- How to change the font size and family
-- How to create an indented bullet list
-- How to create a indented number list
-- How to create superscript, subscript
+<div class="example">
+  <a class="example-demo" href="text/">Text example</a>
+  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/text/">Source</a>
+</div>
 
 ### Text format
 
@@ -442,25 +463,10 @@ Runs (`<a>`) can have attributes like `<a href="https://gramener.com/" bold="y" 
 You can't use `<p>` inside another `<p>`, nor an `<a>` inside another `<a>`. If you do, the previous
 tag is closed.
 
-Example:
-
-```yaml
-rules:
-  - Rectangle 1:
-      color: f'#ff0000'
-      fill: f'#ffff00'
-      stroke: f'#ffff00'
-      width: f'3 in'
-      height: f'2 in'
-      left: f'5 in'
-      top: f'1 in'
-      text: f'New text'
-      font-size: f'12 pt'
-```
-
-[Run example](css-example)
-[Run example](rules-example)
-[Run example](text-xml-style)
+<div class="example">
+  <a class="example-demo" href="text-format/">Text format example</a>
+  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/text-format/">Source</a>
+</div>
 
 ### Clone shapes
 
@@ -478,13 +484,13 @@ This repeats the shape three times, with text "Clone 0: A", "Clone 1: B" and "Cl
 `clone-shape:` must be an [expression](#expressions) that returns one of these types. When cloning,
 the variables (`clone.key`, `clone.val`) are set as follows (just like [`copy-slide:`](#copy-slides)):
 
-- tuple or list, e.g. `[x, y]` -> `(0, 'x'), (1, 'y')`
-- dict, e.g. `{x: 1, y: 2}` -> `(1, 'x'), (2, 'y')`
-- pandas Series, e.g. `pd.Series(['x', 'y'], index=[3, 4])` -> `(3, 'x'), (4, 'y')`
-- pandas DataFrame, e.g. `pd.DataFrame({'x': row1, 'y': row2})` -> `('x', row1)), ('y', row2)`
-- pandas GroupBy, e.g. `data.groupby('key')` -> [GroupBy iterator](https://pandas.pydata.org/pandas-docs/stable/reference/groupby.html) with group name and subsetted data
+- tuple or list, e.g. `[x, y]` 🡆 `(0, 'x'), (1, 'y')`
+- dict, e.g. `{x: 1, y: 2}` 🡆 `(1, 'x'), (2, 'y')`
+- pandas Series, e.g. `pd.Series(['x', 'y'], index=[3, 4])` 🡆 `(3, 'x'), (4, 'y')`
+- pandas DataFrame, e.g. `pd.DataFrame({'x': row1, 'y': row2})` 🡆 `('x', row1)), ('y', row2)`
+- pandas GroupBy, e.g. `data.groupby('key')` 🡆 [GroupBy iterator](https://pandas.pydata.org/pandas-docs/stable/reference/groupby.html) with group name and subsetted data
 
-The `clone` variable has these attributes:
+Commands can use the `clone` variable, which has these attributes:
 
 - `clone.pos`: 0, 1, 2, ... for each cloned shape
 - `clone.key`: For lists or tuples, this is the same as `clone.pos`. For dicts, Series, DataFrames, etc, it's the key or index
@@ -492,9 +498,10 @@ The `clone` variable has these attributes:
 - `clone.parent`: If a group was cloned, and a shape inside the group was cloned too, `clone.parent` returns the `clone` object of the parent group
 - `clone.shape`: Currently cloned shape
 
-[EXAMPLE]
-
-
+<div class="example">
+  <a class="example-demo" href="clone-shape/">Clone shape example</a>
+  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/clone-shape/">Source</a>
+</div>
 
 ### Debug
 
@@ -567,8 +574,6 @@ To use literal values, you can also use `{value: ...}`. For example:
       text: {value: 'Color {colors[0]}'}  # These can be templates. This sets text to 'Color red'
 ```
 
-[EXAMPLE]
-
 To fully switch to [literal values](#literals) instead of expressions, use `mode: literal`. For example:
 
 ```yaml
@@ -607,8 +612,6 @@ pptgen('source.pptx', rules=[
   }
 ])
 ```
-
-[EXAMPLE]
 
 To fully switch to [expressions](#expressions) instead of literals, use `mode='expr'`. For example:
 
@@ -674,12 +677,11 @@ They will be over-ridden.)
 - `shape`: the current shape being processed, e.g. `shape.width` or `slide.name`
 - `handler`: the PPTXHandler instance (if available), e.g. `handler.get_arg('title')`
 
-[EXAMPLE]
-
 ## PPTGen Library
 
-You can access the [pptgen][pptgen] library to make the same changes programmatically.
-PPTXHandler is just a wrapper around pptgen. Here's an example:
+You can access the [pptgen][pptgen] library to change presentations programmatically.
+[PPTXHandler](#usage) is just a wrapper around pptgen. The keyword arguments for `pptgen()` are the
+same as for [PPTXHandler](#usage). Here's an example:
 
 ```python
 from gramex.pptgen2 import pptgen
@@ -699,6 +701,7 @@ target = pptgen(
 )
 target.save('slide1.pptx')  # Save the target
 ```
+
 
 The Python library does not treat strings as [expressions](#expressions). So `'red'` means the
 string "red", not the variable `red`. You can specify string values as-is. (If you want to use the
@@ -724,15 +727,13 @@ target = pptgen(
 target.save('slide1.pptx')  # Save the target
 ```
 
-[EXAMPLE]
-
 ## Units
 
 ### Length units
 
 Any command that sets a length, e.g. `width: 5`, uses "inches" by default. You can change the unit
 to "cm" using `width: 5 cm`. Or, you can change the default unit from "inches" to "cm" by passing
-`unit: inches` to the [PPTXHandler or `pptgen()` configuration](#configuration).
+`unit: inches` to the [PPTXHandler configuration](#usage).
 
 [Valid length units][length-units] are:
 

@@ -20,13 +20,13 @@ TODO
 # Don't commit data files
 *.csv
 *.xls*
-
 *.ppt*
+
+# ... but there are exceptions
 !formhandler/input.pptx
 !formhandler/flags.csv
-!pptxhandler/v1/examples-input.pptx
-!pptxhandler/v1/sales.csv
-!pptxhandler/v1/treemap.csv
+!pptxhandler/**/*.ppt*
+!pptxhandler/**/*.csv
 
 # Don't commit ZIP files
 *.7z

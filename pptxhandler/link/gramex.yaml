@@ -1,0 +1,19 @@
+url:
+  pptxhandler/link:
+    pattern: /$YAMLURL/output.pptx
+    handler: PPTXHandler
+    kwargs:
+      version: 2
+      source: $YAMLPATH/template.pptx
+      rules:
+        - slide-number: 1
+          total:
+            link: 2                      # link to detail slide (slide 2) from summary table
+          site1:
+            link: 3                      # link to site 1 detail slide
+          site2:
+            link: 4
+          site3:
+            link: 5
+        - Back:                          # takes shape name Back from all slides
+            link: f'first'               # links back to first slide from all slides
