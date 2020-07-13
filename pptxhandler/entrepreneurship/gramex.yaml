@@ -1,0 +1,21 @@
+url:
+  pptxhandler/link:
+    pattern: /$YAMLURL/output.pptx
+    handler: PPTXHandler
+    kwargs:
+      version: 2
+      source: $YAMLPATH/template.pptx
+      data: {url: $YAMLPATH/data.csv}
+      rules:
+        - copy-slide: data.groupby('year')
+          data:
+            rne: copy.val.groupby('code')['rne'].first().fillna(0)
+          'Rectangle *':
+            fill: >
+              "ACCENT_1+40%" if rne[shape.text] < 0.002 else
+              "ACCENT_1" if rne[shape.text] < 0.003 else
+              "ACCENT_1-25%" if rne[shape.text] < 0.004 else
+              "ACCENT_1-50%"
+            text: f'<p>{shape.text}</p><p><a bold="n" font-size="8 pt">{rne[shape.text]:.2%}</a></p>'
+          Caption:
+            text: f'BY STATE, {copy.key}'

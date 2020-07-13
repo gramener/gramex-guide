@@ -1,0 +1,39 @@
+url:
+  pptxhandler/death:
+    pattern: /$YAMLURL/output.pptx
+    handler: PPTXHandler
+    kwargs:
+      version: 2
+      source: $YAMLPATH/template.pptx
+      data:
+        url: $YAMLPATH/mortality.xlsx
+        transform: data[data['rank'] <= 10]
+      rules:
+        - copy-slide: data.groupby('year')
+          Year:
+            text: copy.key
+          Rank:
+            clone-shape: '["#1", 2, 3, 4, 5, 6, 7, 8, 9, 10]'
+            add-top: clone.pos * 0.5
+            text: clone.val
+          Age:
+            clone-shape: copy.val.groupby('age', sort=False)
+            add-left: clone.pos * 1
+            text: clone.key if clone.pos else f'Age {clone.key}'
+          Cause:
+            clone-shape: copy.val
+            add-top: clone.pos % 10 * 0.5
+            add-left: clone.pos // 10 * 1
+            text: clone.val.cause
+            fill: >
+              '#f0f0f0' if clone.val.rate < 10 else
+              '#d4d4dd' if clone.val.rate < 50 else
+              '#c6b9c9' if clone.val.rate < 100 else
+              '#ba9cb3' if clone.val.rate < 500 else
+              '#b67b9a' if clone.val.rate < 1000 else
+              '#ca4471'
+            name: f'!!{clone.val.age} {clone.val.cause}'
+          transition:
+            type: f'morph'
+            duration: 0.3
+            advance: 1

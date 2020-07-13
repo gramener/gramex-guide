@@ -1,0 +1,1681 @@
+name,code,fips,type,category,year,rne,ose,sjc,ssr,zindex
+United States,US,0,Total,Total,1996,0.00315697,0.811127591,7.680162954,0.788449989,1.40247
+United States,US,0,Total,Total,1997,0.002794477,0.795369701,7.874205807,0.782098557,0.20327
+United States,US,0,Total,Total,1998,0.002865471,0.808415286,7.522425695,0.785374753,0.525
+United States,US,0,Total,Total,1999,0.002689452,0.839230236,7.300701596,0.801359106,1.09231
+United States,US,0,Total,Total,2000,0.002713487,0.864330384,7.633412234,0.791286709,1.28842
+United States,US,0,Total,Total,2001,0.00267818,0.829930854,6.904415255,0.783960133,0.10201
+United States,US,0,Total,Total,2002,0.002780781,0.768400126,6.593323694,0.757207138,-1.7251
+United States,US,0,Total,Total,2003,0.003017641,0.770872546,6.447465882,0.783520621,-0.23525
+United States,US,0,Total,Total,2004,0.003011646,0.792707868,6.332699622,0.792769677,0.37318
+United States,US,0,Total,Total,2005,0.002844364,0.790686045,6.598590423,0.78947127,-0.03835
+United States,US,0,Total,Total,2006,0.002979827,0.807862304,6.676722929,0.800554473,0.97076
+United States,US,0,Total,Total,2007,0.002999092,0.801634509,6.234712594,0.782691614,0.05711
+United States,US,0,Total,Total,2008,0.003184845,0.807359498,5.69898845,0.772929412,-0.04312
+United States,US,0,Total,Total,2009,0.003358031,0.738422409,4.732443733,0.752460938,-1.87464
+United States,US,0,Total,Total,2010,0.003362002,0.741548871,4.469263398,0.766592911,-1.4047
+United States,US,0,Total,Total,2011,0.003198963,0.741029152,4.697367069,0.785658987,-0.96218
+United States,US,0,Total,Total,2012,0.00301068,0.78387206,4.976863502,0.794324792,-0.29754
+United States,US,0,Total,Total,2013,0.002767422,0.782019043,4.906505815,0.792384504,-0.9733
+United States,US,0,Total,Total,2014,0.003089607,0.79566919,4.937442737,0.795799567,0.09292
+United States,US,0,Total,Total,2015,0.003337513,0.840129036,5.14195943,0.797043414,1.44673
+United States,US,0,Total,Total,2016,0.003068726,0.862533302,5.239670313,0.796132039,1.18764
+United States,US,0,Total,Total,2017,0.003310751,0.843741516,5.261929516,0.796366042,1.46791
+United States,US,0,Total,Total,2018,0.003205187,0.861611826,5.153665184,0.790985562,1.24858
+United States,US,0,Total,Total,2019,0.003063321,0.868645218,5.156527113,0.796320649,1.23719
+United States,US,0,Age,Ages 20-34,1996,0.002836658,,,,
+United States,US,0,Age,Ages 20-34,1997,0.002711878,,,,
+United States,US,0,Age,Ages 20-34,1998,0.002564274,0.77777,,,
+United States,US,0,Age,Ages 20-34,1999,0.002560517,0.79003,,,
+United States,US,0,Age,Ages 20-34,2000,0.002239696,0.81496,,,
+United States,US,0,Age,Ages 20-34,2001,0.002259293,0.83169,,,
+United States,US,0,Age,Ages 20-34,2002,0.002372059,0.80345,,,
+United States,US,0,Age,Ages 20-34,2003,0.002347856,0.77339,,,
+United States,US,0,Age,Ages 20-34,2004,0.002501643,0.75565,,,
+United States,US,0,Age,Ages 20-34,2005,0.002663461,0.7657,,,
+United States,US,0,Age,Ages 20-34,2006,0.002369466,0.77558,,,
+United States,US,0,Age,Ages 20-34,2007,0.002395592,0.7729,,,
+United States,US,0,Age,Ages 20-34,2008,0.002634954,0.77099,,,
+United States,US,0,Age,Ages 20-34,2009,0.002436174,0.74109,,,
+United States,US,0,Age,Ages 20-34,2010,0.00255057,0.71774,,,
+United States,US,0,Age,Ages 20-34,2011,0.002734169,0.70216,,,
+United States,US,0,Age,Ages 20-34,2012,0.002295868,0.7316,,,
+United States,US,0,Age,Ages 20-34,2013,0.001824836,0.74404,,,
+United States,US,0,Age,Ages 20-34,2014,0.002208512,0.76072,,,
+United States,US,0,Age,Ages 20-34,2015,0.002406699,0.76874,,,
+United States,US,0,Age,Ages 20-34,2016,0.002163318,0.79989,,,
+United States,US,0,Age,Ages 20-34,2017,0.002441344,0.82357,,,
+United States,US,0,Age,Ages 20-34,2018,0.002304979,0.83167,,,
+United States,US,0,Age,Ages 20-34,2019,0.002398919,0.83896,,,
+United States,US,0,Age,Ages 35-44,1996,0.003112591,,,,
+United States,US,0,Age,Ages 35-44,1997,0.002714867,,,,
+United States,US,0,Age,Ages 35-44,1998,0.003054232,0.79575,,,
+United States,US,0,Age,Ages 35-44,1999,0.002721677,0.80899,,,
+United States,US,0,Age,Ages 35-44,2000,0.0027482,0.83117,,,
+United States,US,0,Age,Ages 35-44,2001,0.002702485,0.82346,,,
+United States,US,0,Age,Ages 35-44,2002,0.002886045,0.78689,,,
+United States,US,0,Age,Ages 35-44,2003,0.003551378,0.75414,,,
+United States,US,0,Age,Ages 35-44,2004,0.003111824,0.7441,,,
+United States,US,0,Age,Ages 35-44,2005,0.002991753,0.74965,,,
+United States,US,0,Age,Ages 35-44,2006,0.002999628,0.77582,,,
+United States,US,0,Age,Ages 35-44,2007,0.003330009,0.78733,,,
+United States,US,0,Age,Ages 35-44,2008,0.003390268,0.79571,,,
+United States,US,0,Age,Ages 35-44,2009,0.003962337,0.74521,,,
+United States,US,0,Age,Ages 35-44,2010,0.003988054,0.73013,,,
+United States,US,0,Age,Ages 35-44,2011,0.003275698,0.71493,,,
+United States,US,0,Age,Ages 35-44,2012,0.003405264,0.74793,,,
+United States,US,0,Age,Ages 35-44,2013,0.003116507,0.76388,,,
+United States,US,0,Age,Ages 35-44,2014,0.003342699,0.79375,,,
+United States,US,0,Age,Ages 35-44,2015,0.004046896,0.81478,,,
+United States,US,0,Age,Ages 35-44,2016,0.003507601,0.83703,,,
+United States,US,0,Age,Ages 35-44,2017,0.003538529,0.83638,,,
+United States,US,0,Age,Ages 35-44,2018,0.00361444,0.84745,,,
+United States,US,0,Age,Ages 35-44,2019,0.003271294,0.86291,,,
+United States,US,0,Age,Ages 45-54,1996,0.003645468,,,,
+United States,US,0,Age,Ages 45-54,1997,0.002836272,,,,
+United States,US,0,Age,Ages 45-54,1998,0.002842784,0.81087,,,
+United States,US,0,Age,Ages 45-54,1999,0.002757472,0.80993,,,
+United States,US,0,Age,Ages 45-54,2000,0.002992332,0.832,,,
+United States,US,0,Age,Ages 45-54,2001,0.002967448,0.83426,,,
+United States,US,0,Age,Ages 45-54,2002,0.003108807,0.823,,,
+United States,US,0,Age,Ages 45-54,2003,0.003119165,0.78725,,,
+United States,US,0,Age,Ages 45-54,2004,0.003145572,0.77648,,,
+United States,US,0,Age,Ages 45-54,2005,0.00261463,0.78512,,,
+United States,US,0,Age,Ages 45-54,2006,0.003495797,0.79614,,,
+United States,US,0,Age,Ages 45-54,2007,0.003453813,0.79463,,,
+United States,US,0,Age,Ages 45-54,2008,0.003456684,0.808,,,
+United States,US,0,Age,Ages 45-54,2009,0.003608124,0.79099,,,
+United States,US,0,Age,Ages 45-54,2010,0.003526562,0.76349,,,
+United States,US,0,Age,Ages 45-54,2011,0.003739091,0.73535,,,
+United States,US,0,Age,Ages 45-54,2012,0.003373103,0.74026,,,
+United States,US,0,Age,Ages 45-54,2013,0.003587395,0.76559,,,
+United States,US,0,Age,Ages 45-54,2014,0.003619658,0.77625,,,
+United States,US,0,Age,Ages 45-54,2015,0.00374613,0.80205,,,
+United States,US,0,Age,Ages 45-54,2016,0.003613486,0.83237,,,
+United States,US,0,Age,Ages 45-54,2017,0.00391651,0.84972,,,
+United States,US,0,Age,Ages 45-54,2018,0.003769306,0.86462,,,
+United States,US,0,Age,Ages 45-54,2019,0.003591083,0.84743,,,
+United States,US,0,Age,Ages 55-64,1996,0.003411021,,,,
+United States,US,0,Age,Ages 55-64,1997,0.003115918,,,,
+United States,US,0,Age,Ages 55-64,1998,0.003304405,0.87433,,,
+United States,US,0,Age,Ages 55-64,1999,0.002840889,0.88421,,,
+United States,US,0,Age,Ages 55-64,2000,0.003352259,0.89869,,,
+United States,US,0,Age,Ages 55-64,2001,0.003160862,0.91566,,,
+United States,US,0,Age,Ages 55-64,2002,0.003010928,0.90073,,,
+United States,US,0,Age,Ages 55-64,2003,0.003470211,0.87614,,,
+United States,US,0,Age,Ages 55-64,2004,0.003723378,0.86145,,,
+United States,US,0,Age,Ages 55-64,2005,0.003309402,0.86073,,,
+United States,US,0,Age,Ages 55-64,2006,0.003424039,0.85749,,,
+United States,US,0,Age,Ages 55-64,2007,0.003100098,0.86455,,,
+United States,US,0,Age,Ages 55-64,2008,0.003576623,0.86321,,,
+United States,US,0,Age,Ages 55-64,2009,0.003963272,0.86918,,,
+United States,US,0,Age,Ages 55-64,2010,0.003872515,0.85073,,,
+United States,US,0,Age,Ages 55-64,2011,0.003276546,0.81963,,,
+United States,US,0,Age,Ages 55-64,2012,0.003374837,0.80924,,,
+United States,US,0,Age,Ages 55-64,2013,0.003050345,0.80513,,,
+United States,US,0,Age,Ages 55-64,2014,0.003697391,0.81873,,,
+United States,US,0,Age,Ages 55-64,2015,0.003707928,0.83798,,,
+United States,US,0,Age,Ages 55-64,2016,0.003518526,0.86232,,,
+United States,US,0,Age,Ages 55-64,2017,0.003846458,0.88424,,,
+United States,US,0,Age,Ages 55-64,2018,0.003666832,0.87809,,,
+United States,US,0,Age,Ages 55-64,2019,0.003392993,0.88278,,,
+United States,US,0,Education,Less than High School,1996,0.003934683,,,,
+United States,US,0,Education,Less than High School,1997,0.003499181,,,,
+United States,US,0,Education,Less than High School,1998,0.003285843,0.74235,,,
+United States,US,0,Education,Less than High School,1999,0.002934469,0.73855,,,
+United States,US,0,Education,Less than High School,2000,0.003454566,0.75994,,,
+United States,US,0,Education,Less than High School,2001,0.003100179,0.78828,,,
+United States,US,0,Education,Less than High School,2002,0.003456911,0.79798,,,
+United States,US,0,Education,Less than High School,2003,0.004376595,0.76555,,,
+United States,US,0,Education,Less than High School,2004,0.003922242,0.75592,,,
+United States,US,0,Education,Less than High School,2005,0.003532775,0.7464,,,
+United States,US,0,Education,Less than High School,2006,0.003776422,0.77989,,,
+United States,US,0,Education,Less than High School,2007,0.004247363,0.77872,,,
+United States,US,0,Education,Less than High School,2008,0.004596409,0.75789,,,
+United States,US,0,Education,Less than High School,2009,0.004930437,0.6999,,,
+United States,US,0,Education,Less than High School,2010,0.00594172,0.67337,,,
+United States,US,0,Education,Less than High School,2011,0.005664986,0.67578,,,
+United States,US,0,Education,Less than High School,2012,0.005217868,0.70339,,,
+United States,US,0,Education,Less than High School,2013,0.004811745,0.70995,,,
+United States,US,0,Education,Less than High School,2014,0.004829775,0.74306,,,
+United States,US,0,Education,Less than High School,2015,0.004953207,0.75473,,,
+United States,US,0,Education,Less than High School,2016,0.005640579,0.81054,,,
+United States,US,0,Education,Less than High School,2017,0.006060362,0.8158,,,
+United States,US,0,Education,Less than High School,2018,0.005964964,0.83943,,,
+United States,US,0,Education,Less than High School,2019,0.004414475,0.82644,,,
+United States,US,0,Education,High School Graduate,1996,0.003135448,,,,
+United States,US,0,Education,High School Graduate,1997,0.002702823,,,,
+United States,US,0,Education,High School Graduate,1998,0.002994474,0.80796,,,
+United States,US,0,Education,High School Graduate,1999,0.002863308,0.82121,,,
+United States,US,0,Education,High School Graduate,2000,0.002907056,0.84584,,,
+United States,US,0,Education,High School Graduate,2001,0.002573752,0.84768,,,
+United States,US,0,Education,High School Graduate,2002,0.002855025,0.82777,,,
+United States,US,0,Education,High School Graduate,2003,0.003105569,0.80568,,,
+United States,US,0,Education,High School Graduate,2004,0.002870319,0.78143,,,
+United States,US,0,Education,High School Graduate,2005,0.00278252,0.7855,,,
+United States,US,0,Education,High School Graduate,2006,0.00291954,0.78903,,,
+United States,US,0,Education,High School Graduate,2007,0.003039462,0.78806,,,
+United States,US,0,Education,High School Graduate,2008,0.003484468,0.79059,,,
+United States,US,0,Education,High School Graduate,2009,0.003770633,0.76315,,,
+United States,US,0,Education,High School Graduate,2010,0.003360018,0.74558,,,
+United States,US,0,Education,High School Graduate,2011,0.003337694,0.71917,,,
+United States,US,0,Education,High School Graduate,2012,0.003384398,0.74138,,,
+United States,US,0,Education,High School Graduate,2013,0.002790141,0.76732,,,
+United States,US,0,Education,High School Graduate,2014,0.003418241,0.77973,,,
+United States,US,0,Education,High School Graduate,2015,0.003466364,0.79905,,,
+United States,US,0,Education,High School Graduate,2016,0.003170067,0.80913,,,
+United States,US,0,Education,High School Graduate,2017,0.003694698,0.82687,,,
+United States,US,0,Education,High School Graduate,2018,0.003742652,0.84011,,,
+United States,US,0,Education,High School Graduate,2019,0.003443358,0.8591,,,
+United States,US,0,Education,Some College,1996,0.003318733,,,,
+United States,US,0,Education,Some College,1997,0.003057789,,,,
+United States,US,0,Education,Some College,1998,0.003000634,0.81111,,,
+United States,US,0,Education,Some College,1999,0.002870359,0.81991,,,
+United States,US,0,Education,Some College,2000,0.00279188,0.84159,,,
+United States,US,0,Education,Some College,2001,0.002678237,0.86629,,,
+United States,US,0,Education,Some College,2002,0.002678262,0.83696,,,
+United States,US,0,Education,Some College,2003,0.003157983,0.8017,,,
+United States,US,0,Education,Some College,2004,0.002971924,0.79172,,,
+United States,US,0,Education,Some College,2005,0.003096463,0.78813,,,
+United States,US,0,Education,Some College,2006,0.003272463,0.78797,,,
+United States,US,0,Education,Some College,2007,0.002825074,0.77713,,,
+United States,US,0,Education,Some College,2008,0.002984131,0.80619,,,
+United States,US,0,Education,Some College,2009,0.002972722,0.79576,,,
+United States,US,0,Education,Some College,2010,0.003096467,0.77876,,,
+United States,US,0,Education,Some College,2011,0.003078336,0.74532,,,
+United States,US,0,Education,Some College,2012,0.002825917,0.75416,,,
+United States,US,0,Education,Some College,2013,0.002739423,0.77106,,,
+United States,US,0,Education,Some College,2014,0.002651438,0.77941,,,
+United States,US,0,Education,Some College,2015,0.003336585,0.79916,,,
+United States,US,0,Education,Some College,2016,0.003120736,0.82957,,,
+United States,US,0,Education,Some College,2017,0.003149201,0.86095,,,
+United States,US,0,Education,Some College,2018,0.002911199,0.86864,,,
+United States,US,0,Education,Some College,2019,0.002871918,0.86132,,,
+United States,US,0,Education,College Graduate,1996,0.003077083,,,,
+United States,US,0,Education,College Graduate,1997,0.002629865,,,,
+United States,US,0,Education,College Graduate,1998,0.002930985,0.83896,,,
+United States,US,0,Education,College Graduate,1999,0.002581602,0.85097,,,
+United States,US,0,Education,College Graduate,2000,0.002562262,0.8677,,,
+United States,US,0,Education,College Graduate,2001,0.003123947,0.85249,,,
+United States,US,0,Education,College Graduate,2002,0.003085761,0.81647,,,
+United States,US,0,Education,College Graduate,2003,0.002938459,0.77807,,,
+United States,US,0,Education,College Graduate,2004,0.003291192,0.78221,,,
+United States,US,0,Education,College Graduate,2005,0.002858014,0.80629,,,
+United States,US,0,Education,College Graduate,2006,0.002989368,0.83396,,,
+United States,US,0,Education,College Graduate,2007,0.003250483,0.85027,,,
+United States,US,0,Education,College Graduate,2008,0.003017785,0.85941,,,
+United States,US,0,Education,College Graduate,2009,0.0033984,0.84302,,,
+United States,US,0,Education,College Graduate,2010,0.003322236,0.82115,,,
+United States,US,0,Education,College Graduate,2011,0.002924151,0.79812,,,
+United States,US,0,Education,College Graduate,2012,0.002808026,0.80189,,,
+United States,US,0,Education,College Graduate,2013,0.002756292,0.8072,,,
+United States,US,0,Education,College Graduate,2014,0.003203552,0.82597,,,
+United States,US,0,Education,College Graduate,2015,0.003331158,0.85066,,,
+United States,US,0,Education,College Graduate,2016,0.002787247,0.8733,,,
+United States,US,0,Education,College Graduate,2017,0.003013909,0.87893,,,
+United States,US,0,Education,College Graduate,2018,0.002850687,0.87154,,,
+United States,US,0,Education,College Graduate,2019,0.003049065,0.87448,,,
+United States,US,0,Nativity,Native-Born,1996,0.003097677,,,,
+United States,US,0,Nativity,Native-Born,1997,0.002728382,,,,
+United States,US,0,Nativity,Native-Born,1998,0.002826491,0.80732,,,
+United States,US,0,Nativity,Native-Born,1999,0.002610923,0.82009,,,
+United States,US,0,Nativity,Native-Born,2000,0.002635001,0.83894,,,
+United States,US,0,Nativity,Native-Born,2001,0.002607138,0.84409,,,
+United States,US,0,Nativity,Native-Born,2002,0.002648324,0.81492,,,
+United States,US,0,Nativity,Native-Born,2003,0.002887132,0.78792,,,
+United States,US,0,Nativity,Native-Born,2004,0.002816941,0.77866,,,
+United States,US,0,Nativity,Native-Born,2005,0.002758379,0.78863,,,
+United States,US,0,Nativity,Native-Born,2006,0.002820913,0.79405,,,
+United States,US,0,Nativity,Native-Born,2007,0.002689242,0.79471,,,
+United States,US,0,Nativity,Native-Born,2008,0.002799286,0.80091,,,
+United States,US,0,Nativity,Native-Born,2009,0.00302236,0.78729,,,
+United States,US,0,Nativity,Native-Born,2010,0.002825871,0.76961,,,
+United States,US,0,Nativity,Native-Born,2011,0.002749247,0.74945,,,
+United States,US,0,Nativity,Native-Born,2012,0.002630015,0.75943,,,
+United States,US,0,Nativity,Native-Born,2013,0.002461925,0.77332,,,
+United States,US,0,Nativity,Native-Born,2014,0.002654461,0.78761,,,
+United States,US,0,Nativity,Native-Born,2015,0.002923337,0.80909,,,
+United States,US,0,Nativity,Native-Born,2016,0.002623144,0.83173,,,
+United States,US,0,Nativity,Native-Born,2017,0.002835851,0.84481,,,
+United States,US,0,Nativity,Native-Born,2018,0.002745725,0.84816,,,
+United States,US,0,Nativity,Native-Born,2019,0.00277907,0.84963,,,
+United States,US,0,Nativity,Immigrant,1996,0.003607372,,,,
+United States,US,0,Nativity,Immigrant,1997,0.003274476,,,,
+United States,US,0,Nativity,Immigrant,1998,0.003138583,0.79098,,,
+United States,US,0,Nativity,Immigrant,1999,0.003232739,0.78074,,,
+United States,US,0,Nativity,Immigrant,2000,0.003222197,0.8277,,,
+United States,US,0,Nativity,Immigrant,2001,0.003124386,0.8458,,,
+United States,US,0,Nativity,Immigrant,2002,0.003606266,0.85036,,,
+United States,US,0,Nativity,Immigrant,2003,0.003757913,0.79981,,,
+United States,US,0,Nativity,Immigrant,2004,0.004104212,0.77284,,,
+United States,US,0,Nativity,Immigrant,2005,0.003322632,0.76867,,,
+United States,US,0,Nativity,Immigrant,2006,0.00384208,0.80957,,,
+United States,US,0,Nativity,Immigrant,2007,0.004632767,0.82074,,,
+United States,US,0,Nativity,Immigrant,2008,0.005213087,0.82395,,,
+United States,US,0,Nativity,Immigrant,2009,0.005139601,0.76747,,,
+United States,US,0,Nativity,Immigrant,2010,0.006154036,0.74124,,,
+United States,US,0,Nativity,Immigrant,2011,0.005524663,0.71418,,,
+United States,US,0,Nativity,Immigrant,2012,0.004924068,0.74558,,,
+United States,US,0,Nativity,Immigrant,2013,0.004292076,0.75722,,,
+United States,US,0,Nativity,Immigrant,2014,0.005240382,0.78542,,,
+United States,US,0,Nativity,Immigrant,2015,0.005330513,0.79698,,,
+United States,US,0,Nativity,Immigrant,2016,0.005165715,0.83472,,,
+United States,US,0,Nativity,Immigrant,2017,0.005550375,0.8577,,,
+United States,US,0,Nativity,Immigrant,2018,0.005298452,0.87468,,,
+United States,US,0,Nativity,Immigrant,2019,0.004380216,0.87966,,,
+United States,US,0,Race,White,1996,0.003328802,,,,
+United States,US,0,Race,White,1997,0.002911852,,,,
+United States,US,0,Race,White,1998,0.003076927,0.82779,,,
+United States,US,0,Race,White,1999,0.002775099,0.83402,,,
+United States,US,0,Race,White,2000,0.002780268,0.84663,,,
+United States,US,0,Race,White,2001,0.002726791,0.85096,,,
+United States,US,0,Race,White,2002,0.002827782,0.8276,,,
+United States,US,0,Race,White,2003,0.002950827,0.80491,,,
+United States,US,0,Race,White,2004,0.00311087,0.79605,,,
+United States,US,0,Race,White,2005,0.002895536,0.80552,,,
+United States,US,0,Race,White,2006,0.002950207,0.81041,,,
+United States,US,0,Race,White,2007,0.002953042,0.81076,,,
+United States,US,0,Race,White,2008,0.003059967,0.81188,,,
+United States,US,0,Race,White,2009,0.003250819,0.7949,,,
+United States,US,0,Race,White,2010,0.003058376,0.7782,,,
+United States,US,0,Race,White,2011,0.002935824,0.76008,,,
+United States,US,0,Race,White,2012,0.002928806,0.7703,,,
+United States,US,0,Race,White,2013,0.002664785,0.77962,,,
+United States,US,0,Race,White,2014,0.002896923,0.79713,,,
+United States,US,0,Race,White,2015,0.003247674,0.81907,,,
+United States,US,0,Race,White,2016,0.002756101,0.84678,,,
+United States,US,0,Race,White,2017,0.002968326,0.85524,,,
+United States,US,0,Race,White,2018,0.00286252,0.86172,,,
+United States,US,0,Race,White,2019,0.002932529,0.8625,,,
+United States,US,0,Race,Black,1996,0.002142116,,,,
+United States,US,0,Race,Black,1997,0.001906775,,,,
+United States,US,0,Race,Black,1998,0.001830815,0.67163,,,
+United States,US,0,Race,Black,1999,0.002062255,0.7217,,,
+United States,US,0,Race,Black,2000,0.002320482,0.75981,,,
+United States,US,0,Race,Black,2001,0.002128528,0.79404,,,
+United States,US,0,Race,Black,2002,0.00236529,0.74331,,,
+United States,US,0,Race,Black,2003,0.002290348,0.69668,,,
+United States,US,0,Race,Black,2004,0.002156643,0.68271,,,
+United States,US,0,Race,Black,2005,0.002344395,0.6894,,,
+United States,US,0,Race,Black,2006,0.002379901,0.70503,,,
+United States,US,0,Race,Black,2007,0.002197112,0.71679,,,
+United States,US,0,Race,Black,2008,0.002187514,0.75864,,,
+United States,US,0,Race,Black,2009,0.00265359,0.73767,,,
+United States,US,0,Race,Black,2010,0.002359321,0.73245,,,
+United States,US,0,Race,Black,2011,0.002329175,0.68518,,,
+United States,US,0,Race,Black,2012,0.002078817,0.69699,,,
+United States,US,0,Race,Black,2013,0.001905668,0.71592,,,
+United States,US,0,Race,Black,2014,0.002210548,0.74027,,,
+United States,US,0,Race,Black,2015,0.002299714,0.76779,,,
+United States,US,0,Race,Black,2016,0.002195079,0.7631,,,
+United States,US,0,Race,Black,2017,0.003027696,0.80064,,,
+United States,US,0,Race,Black,2018,0.002411711,0.805,,,
+United States,US,0,Race,Black,2019,0.002368522,0.81994,,,
+United States,US,0,Race,Latino,1996,0.003192823,,,,
+United States,US,0,Race,Latino,1997,0.003189786,,,,
+United States,US,0,Race,Latino,1998,0.002652032,0.74447,,,
+United States,US,0,Race,Latino,1999,0.003101211,0.76221,,,
+United States,US,0,Race,Latino,2000,0.002882029,0.83078,,,
+United States,US,0,Race,Latino,2001,0.002859738,0.84393,,,
+United States,US,0,Race,Latino,2002,0.002961097,0.82884,,,
+United States,US,0,Race,Latino,2003,0.003972709,0.78833,,,
+United States,US,0,Race,Latino,2004,0.003357544,0.76001,,,
+United States,US,0,Race,Latino,2005,0.003072571,0.75482,,,
+United States,US,0,Race,Latino,2006,0.003421935,0.78344,,,
+United States,US,0,Race,Latino,2007,0.004019008,0.78996,,,
+United States,US,0,Race,Latino,2008,0.004591212,0.79676,,,
+United States,US,0,Race,Latino,2009,0.004570197,0.7382,,,
+United States,US,0,Race,Latino,2010,0.005612589,0.7001,,,
+United States,US,0,Race,Latino,2011,0.005152934,0.67777,,,
+United States,US,0,Race,Latino,2012,0.004041357,0.71028,,,
+United States,US,0,Race,Latino,2013,0.003841994,0.73791,,,
+United States,US,0,Race,Latino,2014,0.004599595,0.75346,,,
+United States,US,0,Race,Latino,2015,0.004597224,0.77213,,,
+United States,US,0,Race,Latino,2016,0.004794259,0.80747,,,
+United States,US,0,Race,Latino,2017,0.005007906,0.84662,,,
+United States,US,0,Race,Latino,2018,0.005061177,0.84753,,,
+United States,US,0,Race,Latino,2019,0.004369846,0.84663,,,
+United States,US,0,Race,Asian,1996,0.002921722,,,,
+United States,US,0,Race,Asian,1997,0.002263647,,,,
+United States,US,0,Race,Asian,1998,0.002549795,0.84936,,,
+United States,US,0,Race,Asian,1999,0.002398319,0.82808,,,
+United States,US,0,Race,Asian,2000,0.00222562,0.86853,,,
+United States,US,0,Race,Asian,2001,0.002959813,0.86219,,,
+United States,US,0,Race,Asian,2002,0.002561671,0.86583,,,
+United States,US,0,Race,Asian,2003,0.002927321,0.80447,,,
+United States,US,0,Race,Asian,2004,0.002821686,0.78627,,,
+United States,US,0,Race,Asian,2005,0.002566365,0.80041,,,
+United States,US,0,Race,Asian,2006,0.003138883,0.85446,,,
+United States,US,0,Race,Asian,2007,0.003273887,0.86829,,,
+United States,US,0,Race,Asian,2008,0.003354144,0.88262,,,
+United States,US,0,Race,Asian,2009,0.003092382,0.87742,,,
+United States,US,0,Race,Asian,2010,0.003745118,0.88632,,,
+United States,US,0,Race,Asian,2011,0.003163032,0.86452,,,
+United States,US,0,Race,Asian,2012,0.003130955,0.86631,,,
+United States,US,0,Race,Asian,2013,0.002785103,0.85677,,,
+United States,US,0,Race,Asian,2014,0.003338784,0.8734,,,
+United States,US,0,Race,Asian,2015,0.002874938,0.86365,,,
+United States,US,0,Race,Asian,2016,0.00343932,0.88231,,,
+United States,US,0,Race,Asian,2017,0.003146302,0.89379,,,
+United States,US,0,Race,Asian,2018,0.003315472,0.9195,,,
+United States,US,0,Race,Asian,2019,0.003016658,0.9306,,,
+United States,US,0,Sex,Male,1996,0.003779062,,,,
+United States,US,0,Sex,Male,1997,0.003555384,,,,
+United States,US,0,Sex,Male,1998,0.003249414,0.754,,,
+United States,US,0,Sex,Male,1999,0.00319171,0.76997,,,
+United States,US,0,Sex,Male,2000,0.003405046,0.79296,,,
+United States,US,0,Sex,Male,2001,0.003133253,0.79472,,,
+United States,US,0,Sex,Male,2002,0.003453962,0.76549,,,
+United States,US,0,Sex,Male,2003,0.003838904,0.7333,,,
+United States,US,0,Sex,Male,2004,0.003726046,0.72259,,,
+United States,US,0,Sex,Male,2005,0.00345222,0.73083,,,
+United States,US,0,Sex,Male,2006,0.003616887,0.74001,,,
+United States,US,0,Sex,Male,2007,0.004027049,0.74378,,,
+United States,US,0,Sex,Male,2008,0.00418157,0.75075,,,
+United States,US,0,Sex,Male,2009,0.004334438,0.7282,,,
+United States,US,0,Sex,Male,2010,0.00438569,0.7041,,,
+United States,US,0,Sex,Male,2011,0.004161286,0.67842,,,
+United States,US,0,Sex,Male,2012,0.003792725,0.69696,,,
+United States,US,0,Sex,Male,2013,0.00341172,0.72368,,,
+United States,US,0,Sex,Male,2014,0.004090886,0.75218,,,
+United States,US,0,Sex,Male,2015,0.004159423,0.78046,,,
+United States,US,0,Sex,Male,2016,0.003891328,0.80749,,,
+United States,US,0,Sex,Male,2017,0.004005929,0.8215,,,
+United States,US,0,Sex,Male,2018,0.004059567,0.82611,,,
+United States,US,0,Sex,Male,2019,0.003843819,0.8254,,,
+United States,US,0,Sex,Female,1996,0.002604018,,,,
+United States,US,0,Sex,Female,1997,0.002114149,,,,
+United States,US,0,Sex,Female,1998,0.002521937,0.87255,,,
+United States,US,0,Sex,Female,1999,0.002242333,0.87307,,,
+United States,US,0,Sex,Female,2000,0.002097258,0.89509,,,
+United States,US,0,Sex,Female,2001,0.002270727,0.91004,,,
+United States,US,0,Sex,Female,2002,0.002178819,0.89652,,,
+United States,US,0,Sex,Female,2003,0.002280484,0.86802,,,
+United States,US,0,Sex,Female,2004,0.002367234,0.85664,,,
+United States,US,0,Sex,Female,2005,0.002295498,0.8618,,,
+United States,US,0,Sex,Female,2006,0.002402493,0.87578,,,
+United States,US,0,Sex,Female,2007,0.002070706,0.88305,,,
+United States,US,0,Sex,Female,2008,0.002279031,0.89212,,,
+United States,US,0,Sex,Female,2009,0.002469506,0.87295,,,
+United States,US,0,Sex,Female,2010,0.002427808,0.8579,,,
+United States,US,0,Sex,Female,2011,0.002315107,0.84138,,,
+United States,US,0,Sex,Female,2012,0.002299333,0.84946,,,
+United States,US,0,Sex,Female,2013,0.002181222,0.83957,,,
+United States,US,0,Sex,Female,2014,0.002175852,0.8415,,,
+United States,US,0,Sex,Female,2015,0.002587968,0.84569,,,
+United States,US,0,Sex,Female,2016,0.002317801,0.87299,,,
+United States,US,0,Sex,Female,2017,0.002674387,0.88805,,,
+United States,US,0,Sex,Female,2018,0.002417775,0.8998,,,
+United States,US,0,Sex,Female,2019,0.002343581,0.90585,,,
+United States,US,0,Veteran Status,Veterans,1996,0.003571686,,,,
+United States,US,0,Veteran Status,Veterans,1997,0.003183123,,,,
+United States,US,0,Veteran Status,Veterans,1998,0.002657375,0.77512,,,
+United States,US,0,Veteran Status,Veterans,1999,0.002995213,0.81787,,,
+United States,US,0,Veteran Status,Veterans,2000,0.003199875,0.85802,,,
+United States,US,0,Veteran Status,Veterans,2001,0.003622243,0.84587,,,
+United States,US,0,Veteran Status,Veterans,2002,0.003225846,0.782,,,
+United States,US,0,Veteran Status,Veterans,2003,0.003692755,0.75459,,,
+United States,US,0,Veteran Status,Veterans,2004,0.003095195,0.74916,,,
+United States,US,0,Veteran Status,Veterans,2005,0.003271764,0.76988,,,
+United States,US,0,Veteran Status,Veterans,2006,0.003544288,0.7415,,,
+United States,US,0,Veteran Status,Veterans,2007,0.003512003,0.73878,,,
+United States,US,0,Veteran Status,Veterans,2008,0.003533754,0.7527,,,
+United States,US,0,Veteran Status,Veterans,2009,0.003001899,0.78005,,,
+United States,US,0,Veteran Status,Veterans,2010,0.002710115,0.75996,,,
+United States,US,0,Veteran Status,Veterans,2011,0.002982987,0.71715,,,
+United States,US,0,Veteran Status,Veterans,2012,0.002819901,0.68735,,,
+United States,US,0,Veteran Status,Veterans,2013,0.002304653,0.69808,,,
+United States,US,0,Veteran Status,Veterans,2014,0.003114742,0.70038,,,
+United States,US,0,Veteran Status,Veterans,2015,0.002606443,0.75726,,,
+United States,US,0,Veteran Status,Veterans,2016,0.002509108,0.79514,,,
+United States,US,0,Veteran Status,Veterans,2017,0.002149836,0.82161,,,
+United States,US,0,Veteran Status,Veterans,2018,0.002562169,0.78878,,,
+United States,US,0,Veteran Status,Veterans,2019,0.001914715,0.78543,,,
+United States,US,0,Veteran Status,Non-Veterans,1996,0.003101941,,,,
+United States,US,0,Veteran Status,Non-Veterans,1997,0.002746087,,,,
+United States,US,0,Veteran Status,Non-Veterans,1998,0.002893016,0.80833,,,
+United States,US,0,Veteran Status,Non-Veterans,1999,0.002648643,0.81301,,,
+United States,US,0,Veteran Status,Non-Veterans,2000,0.002648786,0.83364,,,
+United States,US,0,Veteran Status,Non-Veterans,2001,0.002569451,0.8429,,,
+United States,US,0,Veteran Status,Non-Veterans,2002,0.002727585,0.82378,,,
+United States,US,0,Veteran Status,Non-Veterans,2003,0.002960661,0.79162,,,
+United States,US,0,Veteran Status,Non-Veterans,2004,0.00299137,0.77748,,,
+United States,US,0,Veteran Status,Non-Veterans,2005,0.002805891,0.78354,,,
+United States,US,0,Veteran Status,Non-Veterans,2006,0.002932578,0.80086,,,
+United States,US,0,Veteran Status,Non-Veterans,2007,0.002958031,0.80555,,,
+United States,US,0,Veteran Status,Non-Veterans,2008,0.003157694,0.81092,,,
+United States,US,0,Veteran Status,Non-Veterans,2009,0.003384537,0.78296,,,
+United States,US,0,Veteran Status,Non-Veterans,2010,0.003408372,0.76246,,,
+United States,US,0,Veteran Status,Non-Veterans,2011,0.00321393,0.74171,,,
+United States,US,0,Veteran Status,Non-Veterans,2012,0.003023041,0.75963,,,
+United States,US,0,Veteran Status,Non-Veterans,2013,0.002795763,0.77318,,,
+United States,US,0,Veteran Status,Non-Veterans,2014,0.00308814,0.79223,,,
+United States,US,0,Veteran Status,Non-Veterans,2015,0.003377915,0.8087,,,
+United States,US,0,Veteran Status,Non-Veterans,2016,0.003098734,0.83495,,,
+United States,US,0,Veteran Status,Non-Veterans,2017,0.00337157,0.84974,,,
+United States,US,0,Veteran Status,Non-Veterans,2018,0.003238358,0.85853,,,
+United States,US,0,Veteran Status,Non-Veterans,2019,0.003121265,0.86069,,,
+Alabama,AL,1,Total,Total,1996,,,6.131234037,0.802179724,
+Alabama,AL,1,Total,Total,1997,,,6.507193903,0.797267892,
+Alabama,AL,1,Total,Total,1998,0.0023,0.77638,5.954320168,0.821526936,-0.550552558
+Alabama,AL,1,Total,Total,1999,0.00206,0.82585,6.540875336,0.814954098,-0.339631327
+Alabama,AL,1,Total,Total,2000,0.00193,0.75509,4.982735397,0.775368249,-3.853652842
+Alabama,AL,1,Total,Total,2001,0.00218,0.75826,5.397487798,0.770332545,-3.253614959
+Alabama,AL,1,Total,Total,2002,0.00219,0.76817,5.100568315,0.783131038,-2.733918109
+Alabama,AL,1,Total,Total,2003,0.00171,0.8605,5.050082258,0.800615312,-1.798980398
+Alabama,AL,1,Total,Total,2004,0.00195,0.84154,5.624039752,0.801174599,-1.271346685
+Alabama,AL,1,Total,Total,2005,0.00177,0.79181,5.457125632,0.793775273,-2.766035231
+Alabama,AL,1,Total,Total,2006,0.00246,0.73579,5.409613909,0.804432394,-1.677480806
+Alabama,AL,1,Total,Total,2007,0.00173,0.74041,5.786416826,0.794706559,-3.44196883
+Alabama,AL,1,Total,Total,2008,0.00196,0.752,4.767490016,0.794712462,-3.201548204
+Alabama,AL,1,Total,Total,2009,0.0017,0.79729,3.771381636,0.75597574,-4.998762719
+Alabama,AL,1,Total,Total,2010,0.00224,0.80337,3.569997892,0.775533428,-3.054375911
+Alabama,AL,1,Total,Total,2011,0.00242,0.71126,3.716970937,0.770904042,-4.133064785
+Alabama,AL,1,Total,Total,2012,0.00247,0.73556,3.830684851,0.796811001,-2.637520533
+Alabama,AL,1,Total,Total,2013,0.00247,0.64316,3.909458247,0.791097761,-4.194020759
+Alabama,AL,1,Total,Total,2014,0.00223,0.68967,3.796522739,0.794196668,-3.97155426
+Alabama,AL,1,Total,Total,2015,0.00251,0.66449,3.683578277,0.795151185,-3.733800409
+Alabama,AL,1,Total,Total,2016,0.00229,0.72129,4.254321711,0.807603843,-2.662294667
+Alabama,AL,1,Total,Total,2017,0.00238,0.78906,4.344868362,0.800619435,-1.673228504
+Alabama,AL,1,Total,Total,2018,0.00209,0.84109,4.172121708,0.791143256,-1.97830535
+Alabama,AL,1,Total,Total,2019,0.00231,0.89712,4.694907494,0.814976872,0.472377092
+Alaska,AK,2,Total,Total,1996,,,6.28523635,0.788488211,
+Alaska,AK,2,Total,Total,1997,,,6.948160426,0.788764045,
+Alaska,AK,2,Total,Total,1998,0.00604,0.73331,6.179710033,0.786023055,5.946464715
+Alaska,AK,2,Total,Total,1999,0.00524,0.72246,5.449927094,0.793571429,3.956839884
+Alaska,AK,2,Total,Total,2000,0.00523,0.75243,6.623001674,0.791765637,4.828289046
+Alaska,AK,2,Total,Total,2001,0.00511,0.76026,5.846485954,0.749019608,2.732303512
+Alaska,AK,2,Total,Total,2002,0.00517,0.83877,6.20390854,0.763621123,4.740977086
+Alaska,AK,2,Total,Total,2003,0.00492,0.81865,5.442510495,0.799295775,4.88528763
+Alaska,AK,2,Total,Total,2004,0.00456,0.80722,5.395230598,0.785656728,3.376893267
+Alaska,AK,2,Total,Total,2005,0.00448,0.78683,4.688535504,0.767102229,1.887886097
+Alaska,AK,2,Total,Total,2006,0.00369,0.82455,4.178871083,0.761752988,0.257281921
+Alaska,AK,2,Total,Total,2007,0.00357,0.834,5.252094664,0.732567678,-0.4939308
+Alaska,AK,2,Total,Total,2008,0.00351,0.78011,4.413379785,0.789695946,0.34313282
+Alaska,AK,2,Total,Total,2009,0.00373,0.75678,3.920474463,0.746005046,-1.367048727
+Alaska,AK,2,Total,Total,2010,0.00396,0.76006,3.59288986,0.754590985,-0.6251593
+Alaska,AK,2,Total,Total,2011,0.00393,0.80565,4.044989254,0.792470156,1.606113868
+Alaska,AK,2,Total,Total,2012,0.00424,0.79455,3.558114733,0.769980507,1.077402431
+Alaska,AK,2,Total,Total,2013,0.00438,0.7881,3.536987089,0.79665493,2.285791933
+Alaska,AK,2,Total,Total,2014,0.0045,0.741,3.225661872,0.790833333,1.497567538
+Alaska,AK,2,Total,Total,2015,0.00477,0.71319,3.015601398,0.784482759,1.357142517
+Alaska,AK,2,Total,Total,2016,0.00438,0.72391,3.553818433,0.744791667,-0.608381578
+Alaska,AK,2,Total,Total,2017,0.00404,0.79246,3.483844802,0.777988615,0.866326193
+Alaska,AK,2,Total,Total,2018,0.00411,0.82498,4.170639838,0.77393617,1.657099531
+Alaska,AK,2,Total,Total,2019,0.00442,0.85342,3.470736592,0.817803661,4.112713828
+Arizona,AZ,4,Total,Total,1996,,,9.934727727,0.799715909,
+Arizona,AZ,4,Total,Total,1997,,,7.950618431,0.790594271,
+Arizona,AZ,4,Total,Total,1998,0.00399,0.82953,7.95193128,0.793400825,3.846318232
+Arizona,AZ,4,Total,Total,1999,0.00335,0.82187,6.934758649,0.765815565,0.818531436
+Arizona,AZ,4,Total,Total,2000,0.00345,0.88697,7.854340573,0.784332282,3.110550899
+Arizona,AZ,4,Total,Total,2001,0.00344,0.81853,7.36800407,0.760650912,0.966714996
+Arizona,AZ,4,Total,Total,2002,0.00377,0.78742,6.871988073,0.736539467,0.11977274
+Arizona,AZ,4,Total,Total,2003,0.00355,0.7413,6.422806188,0.77028489,0.008529726
+Arizona,AZ,4,Total,Total,2004,0.00327,0.76916,6.299974312,0.781419742,0.160605347
+Arizona,AZ,4,Total,Total,2005,0.00323,0.73839,7.272553522,0.818022477,1.412311255
+Arizona,AZ,4,Total,Total,2006,0.0032,0.73702,10.20178496,0.806723427,2.186937244
+Arizona,AZ,4,Total,Total,2007,0.00336,0.7568,7.576753726,0.78044455,0.701826094
+Arizona,AZ,4,Total,Total,2008,0.0042,0.8153,6.772539545,0.731652818,1.270756608
+Arizona,AZ,4,Total,Total,2009,0.00469,0.83996,5.657122624,0.720584653,1.830210302
+Arizona,AZ,4,Total,Total,2010,0.00439,0.79892,4.815385009,0.725263428,0.35313569
+Arizona,AZ,4,Total,Total,2011,0.00435,0.7085,4.507277784,0.753001017,-0.178687909
+Arizona,AZ,4,Total,Total,2012,0.00396,0.71936,4.655240643,0.775480966,0.018231943
+Arizona,AZ,4,Total,Total,2013,0.00361,0.74981,4.588283256,0.765250813,-0.724534206
+Arizona,AZ,4,Total,Total,2014,0.00314,0.8085,4.194244841,0.785178939,-0.327634607
+Arizona,AZ,4,Total,Total,2015,0.0033,0.80778,4.66391085,0.771428571,-0.289740343
+Arizona,AZ,4,Total,Total,2016,0.00397,0.82675,4.822886148,0.782561701,1.979941417
+Arizona,AZ,4,Total,Total,2017,0.00393,0.89601,5.16609294,0.778424317,2.917920666
+Arizona,AZ,4,Total,Total,2018,0.00346,0.85684,4.737061513,0.761266842,0.450419919
+Arizona,AZ,4,Total,Total,2019,0.00331,0.87828,4.492412605,0.778452437,0.971268388
+Arkansas,AR,5,Total,Total,1996,,,6.517608702,0.780109328,
+Arkansas,AR,5,Total,Total,1997,,,6.070531969,0.770117012,
+Arkansas,AR,5,Total,Total,1998,0.00327,0.80994,5.238189704,0.776577918,0.120529843
+Arkansas,AR,5,Total,Total,1999,0.00325,0.78673,5.337762929,0.790830382,0.30816341
+Arkansas,AR,5,Total,Total,2000,0.00313,0.85005,5.84263052,0.786055923,1.02564349
+Arkansas,AR,5,Total,Total,2001,0.00341,0.89875,5.82708017,0.770079595,1.772027224
+Arkansas,AR,5,Total,Total,2002,0.003,0.88266,5.438062446,0.766823444,0.321657452
+Arkansas,AR,5,Total,Total,2003,0.00289,0.8025,5.573220357,0.795564666,0.018266914
+Arkansas,AR,5,Total,Total,2004,0.00296,0.76218,5.387524248,0.787085843,-0.825354052
+Arkansas,AR,5,Total,Total,2005,0.00384,0.80503,5.6218823,0.779348604,1.595577317
+Arkansas,AR,5,Total,Total,2006,0.00414,0.75166,6.626358504,0.793121238,2.429341467
+Arkansas,AR,5,Total,Total,2007,0.00382,0.79015,5.597388237,0.788645306,1.667003677
+Arkansas,AR,5,Total,Total,2008,0.00374,0.78564,5.350395227,0.781879711,1.058564455
+Arkansas,AR,5,Total,Total,2009,0.0036,0.77252,5.107629236,0.750376619,-0.738375924
+Arkansas,AR,5,Total,Total,2010,0.00381,0.73289,4.24098312,0.727816389,-2.085403449
+Arkansas,AR,5,Total,Total,2011,0.00361,0.71559,4.484016721,0.745904836,-2.005762459
+Arkansas,AR,5,Total,Total,2012,0.00331,0.82945,4.746010046,0.779873136,0.408287735
+Arkansas,AR,5,Total,Total,2013,0.00275,0.82497,4.536730418,0.769584469,-1.389680769
+Arkansas,AR,5,Total,Total,2014,0.00253,0.82488,3.795588854,0.772138607,-2.113031341
+Arkansas,AR,5,Total,Total,2015,0.00273,0.81371,4.134923279,0.786869648,-1.130355126
+Arkansas,AR,5,Total,Total,2016,0.00288,0.81958,4.092754383,0.778340264,-1.045539263
+Arkansas,AR,5,Total,Total,2017,0.00286,0.84164,3.948229877,0.783593357,-0.628033439
+Arkansas,AR,5,Total,Total,2018,0.00294,0.84545,4.359855177,0.78407297,-0.193501347
+Arkansas,AR,5,Total,Total,2019,0.00322,0.86749,4.319034636,0.780216012,0.599068533
+California,CA,6,Total,Total,1996,,,9.449375952,0.759886351,
+California,CA,6,Total,Total,1997,,,9.612260785,0.733513058,
+California,CA,6,Total,Total,1998,0.00347,0.73888,9.48633088,0.759711283,0.741756134
+California,CA,6,Total,Total,1999,0.00344,0.74686,8.775760761,0.780612621,1.265457491
+California,CA,6,Total,Total,2000,0.00327,0.78832,10.08194751,0.778713118,2.004902469
+California,CA,6,Total,Total,2001,0.00309,0.81009,8.679892822,0.764786368,0.78856169
+California,CA,6,Total,Total,2002,0.00317,0.82293,8.029199948,0.752518858,0.413208607
+California,CA,6,Total,Total,2003,0.00348,0.79684,7.903518661,0.7878517,1.988297031
+California,CA,6,Total,Total,2004,0.00388,0.78758,7.877760792,0.800883991,3.223112434
+California,CA,6,Total,Total,2005,0.00362,0.78691,8.295619986,0.787810996,2.324310515
+California,CA,6,Total,Total,2006,0.0035,0.78784,7.820477507,0.804548484,2.48870457
+California,CA,6,Total,Total,2007,0.00356,0.79311,6.783003875,0.778520398,1.269907168
+California,CA,6,Total,Total,2008,0.00396,0.77475,6.317092972,0.770627859,1.391125897
+California,CA,6,Total,Total,2009,0.00417,0.76241,5.164871547,0.784728102,1.700290806
+California,CA,6,Total,Total,2010,0.00438,0.73531,4.899422291,0.746249374,0.206884502
+California,CA,6,Total,Total,2011,0.00441,0.74727,5.201792883,0.791760537,2.291852988
+California,CA,6,Total,Total,2012,0.00441,0.75705,5.704264693,0.827400239,3.994811553
+California,CA,6,Total,Total,2013,0.00417,0.77167,5.793712503,0.840395882,4.202117338
+California,CA,6,Total,Total,2014,0.00392,0.75992,6.321894889,0.799596503,2.169174337
+California,CA,6,Total,Total,2015,0.00394,0.78486,6.498065358,0.80527385,2.875825954
+California,CA,6,Total,Total,2016,0.00422,0.82495,6.390079719,0.80778093,4.146543758
+California,CA,6,Total,Total,2017,0.00444,0.87012,6.750054505,0.820222227,5.936669915
+California,CA,6,Total,Total,2018,0.00452,0.87938,6.455366165,0.804067578,5.518476842
+California,CA,6,Total,Total,2019,0.00421,0.87409,6.33672269,0.813259532,5.038420673
+Colorado,CO,8,Total,Total,1996,,,8.431182672,0.781879458,
+Colorado,CO,8,Total,Total,1997,,,8.902785337,0.789243619,
+Colorado,CO,8,Total,Total,1998,0.00446,0.81856,8.255035236,0.784088414,4.518687312
+Colorado,CO,8,Total,Total,1999,0.00387,0.81226,6.981749723,0.801528369,3.19928656
+Colorado,CO,8,Total,Total,2000,0.00402,0.859,8.580928563,0.787267752,4.398705187
+Colorado,CO,8,Total,Total,2001,0.00393,0.89533,7.965091069,0.766447154,3.687372697
+Colorado,CO,8,Total,Total,2002,0.00407,0.89272,7.004489126,0.738223166,2.481617401
+Colorado,CO,8,Total,Total,2003,0.00406,0.84231,6.931962412,0.766926097,2.752741064
+Colorado,CO,8,Total,Total,2004,0.00388,0.80502,7.170690007,0.77740113,2.291860526
+Colorado,CO,8,Total,Total,2005,0.00428,0.8179,8.163625718,0.774103937,3.69136168
+Colorado,CO,8,Total,Total,2006,0.00401,0.83117,7.860948055,0.782247683,3.457288704
+Colorado,CO,8,Total,Total,2007,0.00383,0.82764,7.375723063,0.781715231,2.768802472
+Colorado,CO,8,Total,Total,2008,0.00349,0.80438,7.116139337,0.778795241,1.437709296
+Colorado,CO,8,Total,Total,2009,0.00376,0.74497,5.571784695,0.739060281,-1.011396064
+Colorado,CO,8,Total,Total,2010,0.00419,0.7372,5.22947789,0.744224547,-0.121280767
+Colorado,CO,8,Total,Total,2011,0.00417,0.70841,5.533763397,0.764330095,0.292593777
+Colorado,CO,8,Total,Total,2012,0.00415,0.79575,5.413038861,0.798659405,2.783739637
+Colorado,CO,8,Total,Total,2013,0.00391,0.75903,5.710533333,0.794103624,1.659130814
+Colorado,CO,8,Total,Total,2014,0.00351,0.84897,5.935962704,0.79396477,2.19770878
+Colorado,CO,8,Total,Total,2015,0.00332,0.85084,6.423118972,0.783800495,1.63294936
+Colorado,CO,8,Total,Total,2016,0.00345,0.87184,6.410836192,0.788987865,2.426001486
+Colorado,CO,8,Total,Total,2017,0.0033,0.83584,6.888416281,0.798317791,2.113404281
+Colorado,CO,8,Total,Total,2018,0.00351,0.80426,6.43562695,0.811803502,2.419890494
+Colorado,CO,8,Total,Total,2019,0.00304,0.85409,6.640519725,0.787381158,1.284372217
+Connecticut,CT,9,Total,Total,1996,,,5.935531823,0.871084687,
+Connecticut,CT,9,Total,Total,1997,,,6.480664296,0.835175598,
+Connecticut,CT,9,Total,Total,1998,0.00218,0.82264,5.495116113,0.76824147,-2.329882122
+Connecticut,CT,9,Total,Total,1999,0.0018,0.78291,5.553093092,0.869021339,0.032682405
+Connecticut,CT,9,Total,Total,2000,0.00206,0.76986,5.081516172,0.880733945,0.652445806
+Connecticut,CT,9,Total,Total,2001,0.00271,0.80209,4.865366381,0.817503293,0.121297088
+Connecticut,CT,9,Total,Total,2002,0.00248,0.77295,4.651103622,0.826566757,-0.581866674
+Connecticut,CT,9,Total,Total,2003,0.00229,0.76481,4.653971374,0.783861671,-2.7288074
+Connecticut,CT,9,Total,Total,2004,0.00187,0.73496,3.910936033,0.817183841,-3.190163618
+Connecticut,CT,9,Total,Total,2005,0.00216,0.79867,4.385569708,0.791148833,-2.359788839
+Connecticut,CT,9,Total,Total,2006,0.00264,0.79962,4.402892997,0.806484005,-0.688490807
+Connecticut,CT,9,Total,Total,2007,0.00265,0.82387,4.54657568,0.780567686,-1.21366506
+Connecticut,CT,9,Total,Total,2008,0.0027,0.81752,4.340334823,0.795901527,-0.711822662
+Connecticut,CT,9,Total,Total,2009,0.00262,0.77619,3.570940256,0.766633705,-2.94216871
+Connecticut,CT,9,Total,Total,2010,0.00273,0.76049,3.079533091,0.684871919,-6.212040994
+Connecticut,CT,9,Total,Total,2011,0.00287,0.73859,3.651607189,0.863251156,0.716139478
+Connecticut,CT,9,Total,Total,2012,0.00297,0.76903,4.047519757,0.82411714,0.099660176
+Connecticut,CT,9,Total,Total,2013,0.00311,0.76864,4.129807132,0.784741566,-1.033412817
+Connecticut,CT,9,Total,Total,2014,0.00295,0.74882,4.012214135,0.819150511,-0.448016232
+Connecticut,CT,9,Total,Total,2015,0.00289,0.76296,3.732797491,0.821924005,-0.390270554
+Connecticut,CT,9,Total,Total,2016,0.00266,0.81118,3.881624564,0.780558368,-1.672637312
+Connecticut,CT,9,Total,Total,2017,0.00234,0.81856,3.916271164,0.793180917,-1.790329347
+Connecticut,CT,9,Total,Total,2018,0.00196,0.8733,3.999137622,0.783635365,-2.146861991
+Connecticut,CT,9,Total,Total,2019,0.00189,0.75096,3.782865166,0.694364727,-7.569458466
+Delaware,DE,10,Total,Total,1996,,,7.845047822,0.818822345,
+Delaware,DE,10,Total,Total,1997,,,8.568345161,0.795530195,
+Delaware,DE,10,Total,Total,1998,0.00229,0.82985,7.161993096,0.813493769,0.452695065
+Delaware,DE,10,Total,Total,1999,0.00174,0.91195,6.948476755,0.793226381,-0.408905116
+Delaware,DE,10,Total,Total,2000,0.00166,0.93794,8.485794909,0.816387816,1.342840292
+Delaware,DE,10,Total,Total,2001,0.00168,0.93326,10.26518822,0.829195205,2.579370848
+Delaware,DE,10,Total,Total,2002,0.00169,0.93326,7.433925145,0.728070175,-2.433814751
+Delaware,DE,10,Total,Total,2003,0.00153,0.94115,6.918067538,0.784701114,-0.776944121
+Delaware,DE,10,Total,Total,2004,0.00146,0.89952,7.814126815,0.8,-0.586787398
+Delaware,DE,10,Total,Total,2005,0.00159,0.81324,7.302845649,0.793775934,-2.039308524
+Delaware,DE,10,Total,Total,2006,0.00168,0.72496,9.339344651,0.783027523,-2.662353478
+Delaware,DE,10,Total,Total,2007,0.0016,0.80487,7.231439325,0.693390692,-5.937870162
+Delaware,DE,10,Total,Total,2008,0.00163,0.81824,7.016837242,0.776449757,-2.650638275
+Delaware,DE,10,Total,Total,2009,0.00194,0.83923,6.227221244,0.753351206,-2.856932966
+Delaware,DE,10,Total,Total,2010,0.00225,0.78534,4.415330044,0.763402062,-3.384521371
+Delaware,DE,10,Total,Total,2011,0.00263,0.79338,5.50485408,0.778158948,-1.382396867
+Delaware,DE,10,Total,Total,2012,0.00254,0.85505,5.365070658,0.746835443,-1.901062592
+Delaware,DE,10,Total,Total,2013,0.00275,0.8734,5.205852036,0.790719697,0.418364314
+Delaware,DE,10,Total,Total,2014,0.0029,0.83598,5.08961519,0.843778383,2.135437127
+Delaware,DE,10,Total,Total,2015,0.0024,0.86217,5.0305338,0.801006404,-0.223557326
+Delaware,DE,10,Total,Total,2016,0.00197,0.86086,6.190188646,0.765757711,-2.018443972
+Delaware,DE,10,Total,Total,2017,0.00162,0.9341,5.19218288,0.784337843,-1.451842197
+Delaware,DE,10,Total,Total,2018,0.00231,0.9341,6.512829383,0.77806563,0.437149172
+Delaware,DE,10,Total,Total,2019,0.00247,0.89002,4.895436677,0.787701821,-0.210181077
+District of Columbia,DC,11,Total,Total,1996,,,12.32928647,0.816473988,
+District of Columbia,DC,11,Total,Total,1997,,,10.10681021,0.766623207,
+District of Columbia,DC,11,Total,Total,1998,0.00266,0.807,6.639774959,0.803488372,0.33589964
+District of Columbia,DC,11,Total,Total,1999,0.00234,0.68425,9.605182625,0.734151329,-3.508015114
+District of Columbia,DC,11,Total,Total,2000,0.00284,0.62463,21.96152058,0.863768116,7.008489936
+District of Columbia,DC,11,Total,Total,2001,0.00263,0.6311,13.11566151,0.723026973,-2.526948113
+District of Columbia,DC,11,Total,Total,2002,0.00328,0.7555,9.260971669,0.700768298,-1.745431373
+District of Columbia,DC,11,Total,Total,2003,0.00273,0.78627,10.38518774,0.74158286,-0.493766586
+District of Columbia,DC,11,Total,Total,2004,0.00252,0.78406,11.61066236,0.762689225,0.332823792
+District of Columbia,DC,11,Total,Total,2005,0.00203,0.81466,8.750987417,0.735874439,-2.569092344
+District of Columbia,DC,11,Total,Total,2006,0.00233,0.75109,10.77134161,0.757105943,-1.161596549
+District of Columbia,DC,11,Total,Total,2007,0.00314,0.81088,9.507245771,0.76208981,1.174331175
+District of Columbia,DC,11,Total,Total,2008,0.00351,0.82301,8.589608366,0.759201774,1.672097024
+District of Columbia,DC,11,Total,Total,2009,0.00356,0.82319,8.383595507,0.718186025,0.157987474
+District of Columbia,DC,11,Total,Total,2010,0.00316,0.77194,9.705465396,0.783995816,1.547459875
+District of Columbia,DC,11,Total,Total,2011,0.0031,0.75395,8.793159084,0.734427813,-1.114424113
+District of Columbia,DC,11,Total,Total,2012,0.00289,0.77661,9.779123171,0.802165354,1.726466464
+District of Columbia,DC,11,Total,Total,2013,0.00282,0.76876,10.69966691,0.758561644,0.221611345
+District of Columbia,DC,11,Total,Total,2014,0.00246,0.70498,10.33475861,0.780272654,-0.880488495
+District of Columbia,DC,11,Total,Total,2015,0.00227,0.74275,7.978975422,0.734715026,-3.485791629
+District of Columbia,DC,11,Total,Total,2016,0.00215,0.72007,11.74952429,0.749371333,-1.887364852
+District of Columbia,DC,11,Total,Total,2017,0.0024,0.74505,9.709226859,0.764342774,-1.28977561
+District of Columbia,DC,11,Total,Total,2018,0.00273,0.74004,11.32782265,0.772493573,0.390489186
+District of Columbia,DC,11,Total,Total,2019,0.00246,0.71404,9.404193276,0.76865448,-1.589745784
+Florida,FL,12,Total,Total,1996,,,9.967845659,0.769036681,
+Florida,FL,12,Total,Total,1997,,,10.01277203,0.68832757,
+Florida,FL,12,Total,Total,1998,0.0034,0.7944,9.677747006,0.749682687,1.120268617
+Florida,FL,12,Total,Total,1999,0.00318,0.81665,9.815715945,0.838407965,4.347521433
+Florida,FL,12,Total,Total,2000,0.00295,0.86144,10.29872849,0.809934938,3.644283984
+Florida,FL,12,Total,Total,2001,0.0029,0.88108,8.913266678,0.834393356,4.134082735
+Florida,FL,12,Total,Total,2002,0.00284,0.8623,8.481326737,0.753079157,0.480692231
+Florida,FL,12,Total,Total,2003,0.00286,0.81794,8.855225083,0.761554454,0.346474585
+Florida,FL,12,Total,Total,2004,0.0029,0.80089,8.880056052,0.77170843,0.573672538
+Florida,FL,12,Total,Total,2005,0.00288,0.82385,9.774892308,0.766753728,1.078039129
+Florida,FL,12,Total,Total,2006,0.003,0.83697,9.767275702,0.781240358,2.082102357
+Florida,FL,12,Total,Total,2007,0.00319,0.84087,8.329884371,0.740255614,0.397369324
+Florida,FL,12,Total,Total,2008,0.00353,0.85168,7.74402969,0.733071303,0.792842371
+Florida,FL,12,Total,Total,2009,0.00387,0.81308,6.496022762,0.669883871,-1.938968945
+Florida,FL,12,Total,Total,2010,0.00399,0.75593,6.17774914,0.750010061,0.343418367
+Florida,FL,12,Total,Total,2011,0.00405,0.69775,6.606436481,0.764475796,0.341528654
+Florida,FL,12,Total,Total,2012,0.00381,0.73642,7.000893676,0.778560034,1.081920994
+Florida,FL,12,Total,Total,2013,0.00361,0.77341,6.993382303,0.76777196,0.777527991
+Florida,FL,12,Total,Total,2014,0.00349,0.80309,6.890537804,0.783706016,1.503622197
+Florida,FL,12,Total,Total,2015,0.00356,0.79542,6.987515786,0.78913738,1.792292213
+Florida,FL,12,Total,Total,2016,0.00377,0.83312,6.844066142,0.79912965,3.135871953
+Florida,FL,12,Total,Total,2017,0.00423,0.85381,6.457045358,0.782185579,3.668419447
+Florida,FL,12,Total,Total,2018,0.00455,0.86719,6.284739585,0.786125023,4.656159801
+Florida,FL,12,Total,Total,2019,0.00469,0.88266,6.366126934,0.779428746,4.984629064
+Georgia,GA,13,Total,Total,1996,,,7.825951208,0.813344838,
+Georgia,GA,13,Total,Total,1997,,,7.330809922,0.805707347,
+Georgia,GA,13,Total,Total,1998,0.00317,0.8639,8.694434667,0.774630342,2.145002973
+Georgia,GA,13,Total,Total,1999,0.00274,0.83239,8.281418077,0.812986135,1.970191576
+Georgia,GA,13,Total,Total,2000,0.00275,0.80822,7.59981734,0.799085682,0.81187418
+Georgia,GA,13,Total,Total,2001,0.00248,0.74028,7.924877504,0.808341704,-0.314976355
+Georgia,GA,13,Total,Total,2002,0.00219,0.76053,7.764811026,0.748164698,-2.98952578
+Georgia,GA,13,Total,Total,2003,0.00267,0.77723,6.708383235,0.775337838,-1.110953398
+Georgia,GA,13,Total,Total,2004,0.00301,0.85526,6.007695981,0.787591492,0.964730109
+Georgia,GA,13,Total,Total,2005,0.00362,0.85089,6.864388911,0.757919622,1.528272083
+Georgia,GA,13,Total,Total,2006,0.00384,0.87192,6.552886128,0.799526851,3.757763809
+Georgia,GA,13,Total,Total,2007,0.00399,0.86329,6.611987096,0.786158742,3.489506763
+Georgia,GA,13,Total,Total,2008,0.0047,0.85804,5.789785271,0.772392091,4.12323788
+Georgia,GA,13,Total,Total,2009,0.0047,0.75939,4.934181464,0.74092441,1.097508495
+Georgia,GA,13,Total,Total,2010,0.00505,0.746,4.123094177,0.760169689,2.047116447
+Georgia,GA,13,Total,Total,2011,0.00431,0.69579,4.097861031,0.772460172,0.092457961
+Georgia,GA,13,Total,Total,2012,0.00376,0.69709,4.450266275,0.786417865,-0.44107534
+Georgia,GA,13,Total,Total,2013,0.00286,0.64654,4.295220877,0.788003716,-3.217392504
+Georgia,GA,13,Total,Total,2014,0.00288,0.69673,4.155741006,0.798115512,-2.106763623
+Georgia,GA,13,Total,Total,2015,0.00292,0.76721,5.064525069,0.788537106,-0.927308091
+Georgia,GA,13,Total,Total,2016,0.00331,0.86596,5.155947113,0.784372921,1.301033547
+Georgia,GA,13,Total,Total,2017,0.00383,0.87299,6.068203409,0.73409386,1.084525554
+Georgia,GA,13,Total,Total,2018,0.00416,0.90918,5.80346682,0.760346606,3.230798215
+Georgia,GA,13,Total,Total,2019,0.00412,0.88428,5.841907212,0.755767167,2.615367793
+Hawaii,HI,15,Total,Total,1996,,,7.867049358,0.808188021,
+Hawaii,HI,15,Total,Total,1997,,,7.182826582,0.792815372,
+Hawaii,HI,15,Total,Total,1998,0.00215,0.83067,7.818253783,0.761538462,-1.508898931
+Hawaii,HI,15,Total,Total,1999,0.00262,0.76237,6.403371065,0.797089041,-0.76243107
+Hawaii,HI,15,Total,Total,2000,0.00269,0.78524,7.482371516,0.805652174,0.529871396
+Hawaii,HI,15,Total,Total,2001,0.00261,0.74296,6.883652488,0.767405063,-1.976464506
+Hawaii,HI,15,Total,Total,2002,0.00272,0.84376,7.109476909,0.797137014,0.985943406
+Hawaii,HI,15,Total,Total,2003,0.00267,0.86134,5.877773639,0.815885947,1.298417758
+Hawaii,HI,15,Total,Total,2004,0.00268,0.87658,5.643196403,0.833184657,2.093680755
+Hawaii,HI,15,Total,Total,2005,0.00272,0.86463,5.393241739,0.81018936,1.032998023
+Hawaii,HI,15,Total,Total,2006,0.00327,0.84756,5.185034179,0.823367065,2.412547837
+Hawaii,HI,15,Total,Total,2007,0.00324,0.85876,4.965512,0.798994975,1.501853617
+Hawaii,HI,15,Total,Total,2008,0.00272,0.85027,4.367920145,0.801886792,0.057520669
+Hawaii,HI,15,Total,Total,2009,0.00231,0.83221,4.205040851,0.761991777,-2.697042305
+Hawaii,HI,15,Total,Total,2010,0.00232,0.80626,3.05800084,0.776458952,-3.022305403
+Hawaii,HI,15,Total,Total,2011,0.0023,0.83993,3.50242763,0.799673381,-1.499622859
+Hawaii,HI,15,Total,Total,2012,0.00273,0.837,2.967442021,0.798679868,-0.852919443
+Hawaii,HI,15,Total,Total,2013,0.00308,0.90139,3.566856004,0.808589608,1.52475049
+Hawaii,HI,15,Total,Total,2014,0.00354,0.88928,3.266790995,0.784257942,1.329667357
+Hawaii,HI,15,Total,Total,2015,0.00331,0.88693,3.402829151,0.81085117,1.836915685
+Hawaii,HI,15,Total,Total,2016,0.00311,0.84633,4.043265462,0.793551276,0.416620935
+Hawaii,HI,15,Total,Total,2017,0.00271,0.81359,5.14675374,0.794570502,-0.443894084
+Hawaii,HI,15,Total,Total,2018,0.00301,0.88728,3.903299538,0.814715974,1.535286217
+Hawaii,HI,15,Total,Total,2019,0.00335,0.88393,4.363388781,0.766152717,0.627055143
+Idaho,ID,16,Total,Total,1996,,,6.605529294,0.798816568,
+Idaho,ID,16,Total,Total,1997,,,6.616090906,0.802211302,
+Idaho,ID,16,Total,Total,1998,0.00397,0.79119,7.539546286,0.788694075,2.872700931
+Idaho,ID,16,Total,Total,1999,0.00378,0.73863,6.7164495,0.783655192,1.113918485
+Idaho,ID,16,Total,Total,2000,0.00397,0.7745,7.490207245,0.799250072,2.998245928
+Idaho,ID,16,Total,Total,2001,0.00423,0.78327,7.657038612,0.792322563,3.524320386
+Idaho,ID,16,Total,Total,2002,0.004,0.81298,5.811819405,0.741194104,0.724596251
+Idaho,ID,16,Total,Total,2003,0.00354,0.82407,6.517625314,0.797245825,2.272242766
+Idaho,ID,16,Total,Total,2004,0.0038,0.86446,6.703539728,0.7904944,3.284454267
+Idaho,ID,16,Total,Total,2005,0.00436,0.86083,8.229003368,0.812349639,5.973189554
+Idaho,ID,16,Total,Total,2006,0.00437,0.82759,9.132758981,0.816468477,6.051507706
+Idaho,ID,16,Total,Total,2007,0.00443,0.80621,8.75088449,0.782488661,4.425198965
+Idaho,ID,16,Total,Total,2008,0.00396,0.81502,7.106079566,0.724423418,0.604676004
+Idaho,ID,16,Total,Total,2009,0.00427,0.76576,6.040764546,0.714451135,-0.277124758
+Idaho,ID,16,Total,Total,2010,0.00391,0.70179,4.378811087,0.733090689,-2.066660435
+Idaho,ID,16,Total,Total,2011,0.00408,0.70744,4.611373121,0.765056022,-0.301020562
+Idaho,ID,16,Total,Total,2012,0.00394,0.76508,4.377794103,0.740289664,-0.786908066
+Idaho,ID,16,Total,Total,2013,0.00369,0.85238,4.470564285,0.770330368,1.121708438
+Idaho,ID,16,Total,Total,2014,0.00331,0.90327,5.479697286,0.761600928,1.145053826
+Idaho,ID,16,Total,Total,2015,0.00318,0.89363,5.916202873,0.787856258,1.886745609
+Idaho,ID,16,Total,Total,2016,0.00324,0.89313,6.213221745,0.766098694,1.327986515
+Idaho,ID,16,Total,Total,2017,0.00345,0.83939,5.948018152,0.802564624,2.248485223
+Idaho,ID,16,Total,Total,2018,0.00379,0.87896,6.03015305,0.776743265,2.666780573
+Idaho,ID,16,Total,Total,2019,0.00381,0.87208,6.796059461,0.788089423,3.370799659
+Illinois,IL,17,Total,Total,1996,,,7.888202253,0.793809904,
+Illinois,IL,17,Total,Total,1997,,,5.908475621,0.823202545,
+Illinois,IL,17,Total,Total,1998,0.0025,0.78481,6.147729841,0.807762761,-0.408580999
+Illinois,IL,17,Total,Total,1999,0.00229,0.81748,6.056952736,0.825841184,0.246336142
+Illinois,IL,17,Total,Total,2000,0.00227,0.86279,5.541990328,0.800332395,-0.306048252
+Illinois,IL,17,Total,Total,2001,0.00243,0.93467,5.350065601,0.808993476,1.363709293
+Illinois,IL,17,Total,Total,2002,0.00251,0.82658,5.158493563,0.769615636,-1.628764785
+Illinois,IL,17,Total,Total,2003,0.00252,0.76499,5.111259106,0.799779451,-1.413569634
+Illinois,IL,17,Total,Total,2004,0.00251,0.69807,5.401447667,0.80737899,-2.020687756
+Illinois,IL,17,Total,Total,2005,0.00254,0.73816,5.096867121,0.781310389,-2.467572361
+Illinois,IL,17,Total,Total,2006,0.00244,0.75091,5.681529237,0.786280893,-2.058338052
+Illinois,IL,17,Total,Total,2007,0.00216,0.76672,5.132064248,0.788155836,-2.620395539
+Illinois,IL,17,Total,Total,2008,0.00233,0.76411,4.563099286,0.769642379,-3.222882517
+Illinois,IL,17,Total,Total,2009,0.00247,0.7382,4.036250375,0.751802733,-4.195942526
+Illinois,IL,17,Total,Total,2010,0.00269,0.72198,4.261982572,0.758246962,-3.60441072
+Illinois,IL,17,Total,Total,2011,0.00233,0.71583,3.923153718,0.775622407,-3.998944996
+Illinois,IL,17,Total,Total,2012,0.00224,0.77424,4.257555399,0.777705346,-3.10513024
+Illinois,IL,17,Total,Total,2013,0.00203,0.80954,3.915742138,0.776421096,-3.247415032
+Illinois,IL,17,Total,Total,2014,0.00225,0.86386,4.291127326,0.790134116,-1.26648842
+Illinois,IL,17,Total,Total,2015,0.00225,0.82221,4.791384777,0.788076612,-1.744645264
+Illinois,IL,17,Total,Total,2016,0.00228,0.78796,5.326068109,0.803977942,-1.356740903
+Illinois,IL,17,Total,Total,2017,0.00237,0.74096,5.396739044,0.782457836,-2.631688268
+Illinois,IL,17,Total,Total,2018,0.00248,0.79464,4.415207618,0.791993328,-1.658886382
+Illinois,IL,17,Total,Total,2019,0.00269,0.83751,4.711951029,0.78901982,-0.531295541
+Indiana,IN,18,Total,Total,1996,,,5.760739098,0.796223513,
+Indiana,IN,18,Total,Total,1997,,,6.275453309,0.80936298,
+Indiana,IN,18,Total,Total,1998,0.00239,0.87255,5.383004828,0.789541521,-0.366518305
+Indiana,IN,18,Total,Total,1999,0.0027,0.86014,5.527240917,0.825769777,1.564487201
+Indiana,IN,18,Total,Total,2000,0.00301,0.80725,5.29755579,0.817084494,1.043712818
+Indiana,IN,18,Total,Total,2001,0.00305,0.89529,5.301121454,0.778530534,1.00071668
+Indiana,IN,18,Total,Total,2002,0.00256,0.86293,5.196746506,0.767174836,-1.04995998
+Indiana,IN,18,Total,Total,2003,0.00234,0.84461,5.310944419,0.799398292,-0.556720284
+Indiana,IN,18,Total,Total,2004,0.00225,0.77026,5.228455543,0.791967245,-2.180936392
+Indiana,IN,18,Total,Total,2005,0.00253,0.75184,5.359779926,0.787849473,-1.925451783
+Indiana,IN,18,Total,Total,2006,0.00263,0.74742,5.474626891,0.792290829,-1.550489758
+Indiana,IN,18,Total,Total,2007,0.00265,0.71134,4.859866584,0.784690799,-2.598252929
+Indiana,IN,18,Total,Total,2008,0.00253,0.74906,4.464103663,0.777626987,-2.743470736
+Indiana,IN,18,Total,Total,2009,0.00264,0.77654,4.459444292,0.763649727,-2.614039349
+Indiana,IN,18,Total,Total,2010,0.0025,0.83345,3.332751965,0.778719494,-2.008860731
+Indiana,IN,18,Total,Total,2011,0.00224,0.76442,4.150983468,0.801924828,-2.389904457
+Indiana,IN,18,Total,Total,2012,0.00218,0.7946,3.871390303,0.760827474,-3.738577413
+Indiana,IN,18,Total,Total,2013,0.00205,0.72175,3.883409124,0.773901946,-4.619441271
+Indiana,IN,18,Total,Total,2014,0.00229,0.75198,3.195046624,0.793145519,-3.212275301
+Indiana,IN,18,Total,Total,2015,0.00232,0.7498,3.549561454,0.786939998,-3.254707697
+Indiana,IN,18,Total,Total,2016,0.00223,0.80225,3.484314255,0.801594999,-2.1536423
+Indiana,IN,18,Total,Total,2017,0.00199,0.83406,3.364033885,0.802462854,-2.237112513
+Indiana,IN,18,Total,Total,2018,0.00207,0.86786,3.709657401,0.803410553,-1.367132779
+Indiana,IN,18,Total,Total,2019,0.00254,0.90317,3.588564187,0.798981151,-0.008257694
+Iowa,IA,19,Total,Total,1996,,,5.125,0.821249518,
+Iowa,IA,19,Total,Total,1997,,,4.790532662,0.812952534,
+Iowa,IA,19,Total,Total,1998,0.004,0.85239,5.501103735,0.826161137,4.36205093
+Iowa,IA,19,Total,Total,1999,0.00285,0.85621,4.117034556,0.822160472,1.087223849
+Iowa,IA,19,Total,Total,2000,0.00305,0.86981,4.462171743,0.822155086,1.888854631
+Iowa,IA,19,Total,Total,2001,0.00327,0.865,5.371765387,0.79556004,1.711506427
+Iowa,IA,19,Total,Total,2002,0.00296,0.8169,4.106011995,0.785420761,-0.635036321
+Iowa,IA,19,Total,Total,2003,0.00287,0.76541,4.870837821,0.814022579,-0.195260891
+Iowa,IA,19,Total,Total,2004,0.0026,0.71125,4.971839784,0.816396568,-1.473250802
+Iowa,IA,19,Total,Total,2005,0.00314,0.73723,4.973259831,0.813975997,0.032409791
+Iowa,IA,19,Total,Total,2006,0.00295,0.79707,4.769593689,0.827044025,0.899471223
+Iowa,IA,19,Total,Total,2007,0.00305,0.84996,4.766585356,0.816472227,1.51358663
+Iowa,IA,19,Total,Total,2008,0.00258,0.90292,4.164437435,0.8010481,0.407882566
+Iowa,IA,19,Total,Total,2009,0.00239,0.88827,3.69353121,0.781380356,-1.180051147
+Iowa,IA,19,Total,Total,2010,0.00244,0.88215,3.352951492,0.814949495,-0.049855014
+Iowa,IA,19,Total,Total,2011,0.00255,0.86014,2.816716759,0.810947562,-0.517099516
+Iowa,IA,19,Total,Total,2012,0.00249,0.84429,3.89410277,0.812633833,-0.351351197
+Iowa,IA,19,Total,Total,2013,0.00187,0.83455,3.497901873,0.800637959,-2.508084292
+Iowa,IA,19,Total,Total,2014,0.00178,0.8687,3.82202068,0.803811855,-1.939355598
+Iowa,IA,19,Total,Total,2015,0.0018,0.89586,3.594086435,0.802547771,-1.637363137
+Iowa,IA,19,Total,Total,2016,0.00201,0.9253,3.62588783,0.812998052,-0.322748144
+Iowa,IA,19,Total,Total,2017,0.00217,0.93976,3.59472235,0.801025641,-0.21185093
+Iowa,IA,19,Total,Total,2018,0.00276,0.93624,3.824852681,0.799093919,1.084899596
+Iowa,IA,19,Total,Total,2019,0.00314,0.85337,3.576148865,0.813957334,1.148918725
+Kansas,KS,20,Total,Total,1996,,,7.895036783,0.803560076,
+Kansas,KS,20,Total,Total,1997,,,8.971301852,0.799191375,
+Kansas,KS,20,Total,Total,1998,0.00323,0.85307,8.289113951,0.807776733,3.183124269
+Kansas,KS,20,Total,Total,1999,0.00277,0.84207,7.768997042,0.837013186,2.857740743
+Kansas,KS,20,Total,Total,2000,0.0028,0.92988,9.060464101,0.821135647,4.204795333
+Kansas,KS,20,Total,Total,2001,0.00279,0.88722,8.644929505,0.830885625,3.729997998
+Kansas,KS,20,Total,Total,2002,0.00308,0.86212,6.836469771,0.802308215,2.139409622
+Kansas,KS,20,Total,Total,2003,0.00292,0.76411,7.533591578,0.749907987,-1.338320984
+Kansas,KS,20,Total,Total,2004,0.00282,0.76704,7.383411115,0.800408612,0.30956481
+Kansas,KS,20,Total,Total,2005,0.00248,0.81317,6.675775571,0.808574778,0.231501852
+Kansas,KS,20,Total,Total,2006,0.00253,0.83419,6.405516461,0.810520851,0.610968914
+Kansas,KS,20,Total,Total,2007,0.00238,0.84761,6.147026441,0.79227672,-0.322528912
+Kansas,KS,20,Total,Total,2008,0.00238,0.86462,4.912260209,0.803477345,-0.19106975
+Kansas,KS,20,Total,Total,2009,0.00242,0.84978,4.463932695,0.768225949,-1.841558718
+Kansas,KS,20,Total,Total,2010,0.00272,0.85486,4.103296142,0.790553256,-0.415314085
+Kansas,KS,20,Total,Total,2011,0.00286,0.82516,4.190330141,0.787048832,-0.63771563
+Kansas,KS,20,Total,Total,2012,0.00285,0.91699,5.126406417,0.773693991,0.618298702
+Kansas,KS,20,Total,Total,2013,0.00229,0.89959,4.238196164,0.760969096,-1.761609308
+Kansas,KS,20,Total,Total,2014,0.00221,0.90118,4.639240124,0.782149149,-0.946580068
+Kansas,KS,20,Total,Total,2015,0.00273,0.81245,4.52078043,0.797593391,-0.577549239
+Kansas,KS,20,Total,Total,2016,0.003,0.82458,5.368889573,0.782755389,0.023382559
+Kansas,KS,20,Total,Total,2017,0.003,0.80156,4.842339477,0.740424431,-2.138380855
+Kansas,KS,20,Total,Total,2018,0.0027,0.84518,3.954510591,0.764088029,-1.66219623
+Kansas,KS,20,Total,Total,2019,0.0027,0.88133,4.023596495,0.763326617,-1.121768282
+Kentucky,KY,21,Total,Total,1996,,,6.19665343,0.79883091,
+Kentucky,KY,21,Total,Total,1997,,,6.478532524,0.79933927,
+Kentucky,KY,21,Total,Total,1998,0.00287,0.76332,5.909082925,0.786021505,-0.820767238
+Kentucky,KY,21,Total,Total,1999,0.00237,0.86753,6.530526103,0.815577191,0.994133884
+Kentucky,KY,21,Total,Total,2000,0.00193,0.94848,5.593944808,0.856502242,2.339165108
+Kentucky,KY,21,Total,Total,2001,0.00223,0.90615,5.262120305,0.76880531,-1.054760322
+Kentucky,KY,21,Total,Total,2002,0.00252,0.82282,5.384272135,0.759623861,-1.93802378
+Kentucky,KY,21,Total,Total,2003,0.00301,0.75808,5.007080106,0.767694829,-1.668793694
+Kentucky,KY,21,Total,Total,2004,0.00286,0.81308,5.336338888,0.790734571,-0.176377406
+Kentucky,KY,21,Total,Total,2005,0.00241,0.89641,5.163120269,0.795398394,0.156902824
+Kentucky,KY,21,Total,Total,2006,0.00226,0.88353,5.337929423,0.796715171,-0.244639807
+Kentucky,KY,21,Total,Total,2007,0.00225,0.83311,5.099758685,0.770830386,-2.09365878
+Kentucky,KY,21,Total,Total,2008,0.00306,0.7267,4.582181591,0.788172354,-1.442994072
+Kentucky,KY,21,Total,Total,2009,0.00301,0.74542,4.039309959,0.770403587,-2.180702427
+Kentucky,KY,21,Total,Total,2010,0.00303,0.71913,3.251474582,0.776007964,-2.663348136
+Kentucky,KY,21,Total,Total,2011,0.00301,0.74051,3.50609327,0.772216177,-2.419970058
+Kentucky,KY,21,Total,Total,2012,0.00343,0.70757,3.44478069,0.789175352,-1.361566672
+Kentucky,KY,21,Total,Total,2013,0.00368,0.72417,3.734000748,0.782181515,-0.689962333
+Kentucky,KY,21,Total,Total,2014,0.00352,0.69349,4.162335148,0.78028169,-1.388455299
+Kentucky,KY,21,Total,Total,2015,0.00283,0.75864,4.033686581,0.790066833,-1.651630192
+Kentucky,KY,21,Total,Total,2016,0.00245,0.79945,3.922777389,0.78774076,-2.030034797
+Kentucky,KY,21,Total,Total,2017,0.00225,0.85903,4.124190188,0.785183066,-1.597430382
+Kentucky,KY,21,Total,Total,2018,0.00259,0.85384,4.237693708,0.785637003,-0.846875831
+Kentucky,KY,21,Total,Total,2019,0.00256,0.84839,4.060055425,0.798168687,-0.603226235
+Louisiana,LA,22,Total,Total,1996,,,5.994711832,0.794579008,
+Louisiana,LA,22,Total,Total,1997,,,6.715793526,0.794891945,
+Louisiana,LA,22,Total,Total,1998,0.00309,0.7936,6.47472358,0.799095453,0.861505572
+Louisiana,LA,22,Total,Total,1999,0.00303,0.84449,6.408475948,0.784122719,0.894869148
+Louisiana,LA,22,Total,Total,2000,0.00306,0.87038,6.608846158,0.792581465,1.752998029
+Louisiana,LA,22,Total,Total,2001,0.00284,0.86095,7.022974067,0.769213149,0.425443764
+Louisiana,LA,22,Total,Total,2002,0.00274,0.83119,6.718302471,0.764312629,-0.559374106
+Louisiana,LA,22,Total,Total,2003,0.00272,0.80147,6.135311284,0.791651365,-0.277602014
+Louisiana,LA,22,Total,Total,2004,0.00306,0.77831,6.103371572,0.784143818,-0.157250979
+Louisiana,LA,22,Total,Total,2005,0.00308,0.7717,6.482283463,0.790841584,0.206563206
+Louisiana,LA,22,Total,Total,2006,0.00302,0.77301,7.328481302,0.751968981,-0.994620897
+Louisiana,LA,22,Total,Total,2007,0.00347,0.8188,7.298230795,0.770216366,1.366003147
+Louisiana,LA,22,Total,Total,2008,0.00352,0.8215,6.019272313,0.789925587,1.695860641
+Louisiana,LA,22,Total,Total,2009,0.00387,0.78188,5.663622795,0.767323291,0.8851029
+Louisiana,LA,22,Total,Total,2010,0.00391,0.77722,5.008216468,0.759834903,0.336625053
+Louisiana,LA,22,Total,Total,2011,0.0041,0.76383,4.869935801,0.76781309,0.800901151
+Louisiana,LA,22,Total,Total,2012,0.00398,0.81271,5.370821644,0.763717805,1.326941171
+Louisiana,LA,22,Total,Total,2013,0.00347,0.86121,5.049381266,0.778911114,1.336765563
+Louisiana,LA,22,Total,Total,2014,0.00331,0.8917,5.347745581,0.780391641,1.619459499
+Louisiana,LA,22,Total,Total,2015,0.00281,0.86358,4.54484259,0.782445309,-0.1941718
+Louisiana,LA,22,Total,Total,2016,0.00275,0.79725,4.699736113,0.795679094,-0.752502499
+Louisiana,LA,22,Total,Total,2017,0.00312,0.75552,4.578680073,0.801853544,-0.367693379
+Louisiana,LA,22,Total,Total,2018,0.00343,0.71897,5.025656213,0.801163263,-0.048086648
+Louisiana,LA,22,Total,Total,2019,0.00355,0.72697,5.130793062,0.805365665,0.543482394
+Maine,ME,23,Total,Total,1996,,,6.418426657,0.826402137,
+Maine,ME,23,Total,Total,1997,,,5.308525679,0.743740795,
+Maine,ME,23,Total,Total,1998,0.00388,0.77765,6.125672788,0.882853668,5.380187545
+Maine,ME,23,Total,Total,1999,0.00357,0.76497,5.388346142,0.837209302,2.461811541
+Maine,ME,23,Total,Total,2000,0.00366,0.81334,5.828175702,0.836809004,3.562077078
+Maine,ME,23,Total,Total,2001,0.00309,0.83946,5.195645613,0.817137229,1.659965234
+Maine,ME,23,Total,Total,2002,0.0029,0.86559,5.916849285,0.754330709,-0.414869536
+Maine,ME,23,Total,Total,2003,0.00267,0.80924,5.280467933,0.797171328,-0.442001402
+Maine,ME,23,Total,Total,2004,0.00301,0.78183,4.801748969,0.809327846,0.156370357
+Maine,ME,23,Total,Total,2005,0.00334,0.7918,5.449704918,0.772461274,-0.054617806
+Maine,ME,23,Total,Total,2006,0.00389,0.82171,5.611886804,0.785028155,2.164655026
+Maine,ME,23,Total,Total,2007,0.00357,0.84875,4.71801905,0.787082116,1.535915991
+Maine,ME,23,Total,Total,2008,0.00356,0.84285,4.487004597,0.77853067,1.003486291
+Maine,ME,23,Total,Total,2009,0.00329,0.79613,4.57133402,0.749734513,-1.339977796
+Maine,ME,23,Total,Total,2010,0.00324,0.74362,3.772891373,0.79566787,-0.862145677
+Maine,ME,23,Total,Total,2011,0.00328,0.71805,3.54517558,0.774534687,-2.046173635
+Maine,ME,23,Total,Total,2012,0.00333,0.75771,3.440461118,0.764455782,-1.767273535
+Maine,ME,23,Total,Total,2013,0.00335,0.80426,3.228140773,0.774687626,-0.738357839
+Maine,ME,23,Total,Total,2014,0.00291,0.80426,3.329542815,0.778239203,-1.545511025
+Maine,ME,23,Total,Total,2015,0.00285,0.77677,3.369817099,0.801805338,-1.187915153
+Maine,ME,23,Total,Total,2016,0.00287,0.75217,3.946468046,0.791179796,-1.655051846
+Maine,ME,23,Total,Total,2017,0.00328,0.78348,4.593844503,0.87740556,3.247243954
+Maine,ME,23,Total,Total,2018,0.00307,0.87616,4.191009046,0.719127616,-1.954776879
+Maine,ME,23,Total,Total,2019,0.00368,0.88403,4.322234886,0.789358372,2.219442157
+Maryland,MD,24,Total,Total,1996,,,6.946615269,0.781933727,
+Maryland,MD,24,Total,Total,1997,,,7.45017575,0.790812657,
+Maryland,MD,24,Total,Total,1998,0.00261,0.80031,7.147517977,0.778974401,-0.572178884
+Maryland,MD,24,Total,Total,1999,0.00277,0.77116,6.205146856,0.795213841,-0.453054362
+Maryland,MD,24,Total,Total,2000,0.00292,0.77235,6.672523655,0.80201482,0.360675739
+Maryland,MD,24,Total,Total,2001,0.00277,0.78463,5.625439676,0.751098682,-2.16134814
+Maryland,MD,24,Total,Total,2002,0.00281,0.75144,6.736834443,0.755979974,-1.895384426
+Maryland,MD,24,Total,Total,2003,0.00315,0.72908,5.765911385,0.772557109,-1.272053723
+Maryland,MD,24,Total,Total,2004,0.00328,0.80201,6.237318447,0.782040105,0.66823185
+Maryland,MD,24,Total,Total,2005,0.00369,0.79831,6.202548146,0.788815437,1.769658263
+Maryland,MD,24,Total,Total,2006,0.00323,0.80005,5.946653204,0.792689666,0.798910271
+Maryland,MD,24,Total,Total,2007,0.0034,0.78254,5.149990944,0.77534378,-0.08176674
+Maryland,MD,24,Total,Total,2008,0.00264,0.75688,4.84769915,0.761163905,-2.829766678
+Maryland,MD,24,Total,Total,2009,0.00278,0.74643,4.172143317,0.731041275,-4.098412385
+Maryland,MD,24,Total,Total,2010,0.00253,0.74799,4.124626748,0.758072108,-3.64183938
+Maryland,MD,24,Total,Total,2011,0.00276,0.7567,4.187231641,0.772898369,-2.413705033
+Maryland,MD,24,Total,Total,2012,0.00263,0.78032,4.413119637,0.78787569,-1.691857384
+Maryland,MD,24,Total,Total,2013,0.0027,0.79862,4.077533923,0.767562803,-2.171638913
+Maryland,MD,24,Total,Total,2014,0.0024,0.84322,4.167671739,0.775817923,-1.829401954
+Maryland,MD,24,Total,Total,2015,0.0028,0.82302,4.286147232,0.77754278,-1.118356691
+Maryland,MD,24,Total,Total,2016,0.00262,0.73111,4.50583785,0.792401244,-2.237065264
+Maryland,MD,24,Total,Total,2017,0.00318,0.7592,4.162441806,0.77598744,-1.331380997
+Maryland,MD,24,Total,Total,2018,0.00273,0.76499,4.054142266,0.776375033,-2.28536685
+Maryland,MD,24,Total,Total,2019,0.00297,0.85561,4.494945151,0.781867697,0.001636647
+Massachusetts,MA,25,Total,Total,1996,,,6.740395575,0.808130559,
+Massachusetts,MA,25,Total,Total,1997,,,6.645135654,0.822139012,
+Massachusetts,MA,25,Total,Total,1998,0.00204,0.79722,6.758784267,0.793531806,-1.518765769
+Massachusetts,MA,25,Total,Total,1999,0.00173,0.71175,5.853408354,0.841672727,-2.078175086
+Massachusetts,MA,25,Total,Total,2000,0.0016,0.80545,7.394156738,0.82462394,-0.935980981
+Massachusetts,MA,25,Total,Total,2001,0.00144,0.7955,6.442694284,0.817823109,-2.115134731
+Massachusetts,MA,25,Total,Total,2002,0.00162,0.81412,5.361211717,0.783159463,-3.209600122
+Massachusetts,MA,25,Total,Total,2003,0.0018,0.70333,5.675614026,0.78937675,-4.086331731
+Massachusetts,MA,25,Total,Total,2004,0.0019,0.65672,5.185206325,0.81271933,-3.896857683
+Massachusetts,MA,25,Total,Total,2005,0.00214,0.67125,5.691449239,0.804354469,-3.234625641
+Massachusetts,MA,25,Total,Total,2006,0.00261,0.72603,4.791824881,0.828634395,-0.850693754
+Massachusetts,MA,25,Total,Total,2007,0.00285,0.75149,4.593287568,0.810253575,-0.710643771
+Massachusetts,MA,25,Total,Total,2008,0.00279,0.74728,4.308261273,0.821724455,-0.602596421
+Massachusetts,MA,25,Total,Total,2009,0.00275,0.73258,3.736950936,0.796397506,-2.111847144
+Massachusetts,MA,25,Total,Total,2010,0.00294,0.74347,4.078243676,0.82395357,-0.340994698
+Massachusetts,MA,25,Total,Total,2011,0.00307,0.79276,4.5332462,0.848244221,1.795191012
+Massachusetts,MA,25,Total,Total,2012,0.00286,0.80544,5.229322205,0.871030405,2.674241406
+Massachusetts,MA,25,Total,Total,2013,0.0026,0.7415,4.912625134,0.838558727,-0.217328147
+Massachusetts,MA,25,Total,Total,2014,0.0029,0.73422,5.381365381,0.818075117,-0.216746183
+Massachusetts,MA,25,Total,Total,2015,0.00291,0.75666,5.819645735,0.824919237,0.58909777
+Massachusetts,MA,25,Total,Total,2016,0.00285,0.85395,5.309654365,0.827240443,1.7676378
+Massachusetts,MA,25,Total,Total,2017,0.0026,0.8863,6.092898776,0.831854328,2.206976473
+Massachusetts,MA,25,Total,Total,2018,0.00231,0.8463,5.882776001,0.812296396,0.136084078
+Massachusetts,MA,25,Total,Total,2019,0.00245,0.78607,5.654549588,0.840472991,0.508541948
+Michigan,MI,26,Total,Total,1996,,,8.872338322,0.824032459,
+Michigan,MI,26,Total,Total,1997,,,8.210580208,0.80406015,
+Michigan,MI,26,Total,Total,1998,0.00237,0.80401,7.16525341,0.799759091,-0.26694652
+Michigan,MI,26,Total,Total,1999,0.00255,0.81056,5.424105366,0.791248809,-0.849995401
+Michigan,MI,26,Total,Total,2000,0.00242,0.82697,8.967138745,0.881761305,4.053564003
+Michigan,MI,26,Total,Total,2001,0.00232,0.81896,6.392476519,0.772598716,-1.513985797
+Michigan,MI,26,Total,Total,2002,0.00235,0.79199,7.751921731,0.756073054,-1.871681286
+Michigan,MI,26,Total,Total,2003,0.00253,0.76142,6.729705914,0.778951224,-1.515020138
+Michigan,MI,26,Total,Total,2004,0.00243,0.73648,6.873877149,0.785851752,-1.788382017
+Michigan,MI,26,Total,Total,2005,0.0023,0.75574,6.710385104,0.785692816,-1.870116263
+Michigan,MI,26,Total,Total,2006,0.00199,0.79534,6.155590016,0.777875587,-2.510677924
+Michigan,MI,26,Total,Total,2007,0.00228,0.82312,4.968861998,0.772852357,-2.156997094
+Michigan,MI,26,Total,Total,2008,0.00249,0.82514,4.953106444,0.765547143,-1.937740775
+Michigan,MI,26,Total,Total,2009,0.00283,0.78527,3.71273667,0.727729741,-3.733637505
+Michigan,MI,26,Total,Total,2010,0.00275,0.74258,4.471471049,0.745848057,-3.536204536
+Michigan,MI,26,Total,Total,2011,0.00255,0.73135,3.49550292,0.783839881,-3.154804919
+Michigan,MI,26,Total,Total,2012,0.00217,0.73049,3.960536094,0.786735328,-3.705443393
+Michigan,MI,26,Total,Total,2013,0.00231,0.78064,4.139890135,0.843381738,-0.441590908
+Michigan,MI,26,Total,Total,2014,0.00257,0.76396,4.570362004,0.796014246,-1.695669308
+Michigan,MI,26,Total,Total,2015,0.0029,0.81997,4.316172987,0.799093173,-0.118555353
+Michigan,MI,26,Total,Total,2016,0.00258,0.84186,4.332917176,0.807967771,-0.168463975
+Michigan,MI,26,Total,Total,2017,0.00245,0.87585,4.203601804,0.814765985,0.245213894
+Michigan,MI,26,Total,Total,2018,0.00228,0.85276,4.310165231,0.809590039,-0.626695623
+Michigan,MI,26,Total,Total,2019,0.00248,0.82566,4.215540485,0.802096816,-0.905402085
+Minnesota,MN,27,Total,Total,1996,,,6.184822825,0.816235781,
+Minnesota,MN,27,Total,Total,1997,,,5.608190805,0.795908331,
+Minnesota,MN,27,Total,Total,1998,0.0031,0.82624,6.037505204,0.86355198,3.595698869
+Minnesota,MN,27,Total,Total,1999,0.0031,0.8609,5.081993754,0.831808992,2.502176916
+Minnesota,MN,27,Total,Total,2000,0.00283,0.88481,5.8516016,0.830005977,2.5243402
+Minnesota,MN,27,Total,Total,2001,0.00216,0.89774,6.378948687,0.819862473,1.068401619
+Minnesota,MN,27,Total,Total,2002,0.00239,0.86968,6.00864526,0.797360388,0.158618846
+Minnesota,MN,27,Total,Total,2003,0.0026,0.84716,6.701002776,0.83831554,2.133054016
+Minnesota,MN,27,Total,Total,2004,0.00295,0.80696,6.366121674,0.839294512,2.207170685
+Minnesota,MN,27,Total,Total,2005,0.00288,0.79422,6.844873367,0.809804902,0.964841741
+Minnesota,MN,27,Total,Total,2006,0.00298,0.83092,8.287313682,0.915829146,6.345133635
+Minnesota,MN,27,Total,Total,2007,0.00299,0.79225,5.866873252,0.753467727,-1.360531062
+Minnesota,MN,27,Total,Total,2008,0.00275,0.76456,8.064199513,0.777480994,-0.44508595
+Minnesota,MN,27,Total,Total,2009,0.00254,0.68025,3.726991748,0.726368159,-5.992418846
+Minnesota,MN,27,Total,Total,2010,0.00223,0.67397,4.721297696,0.792970895,-3.845482095
+Minnesota,MN,27,Total,Total,2011,0.00219,0.69611,4.685995118,0.805998347,-3.132029814
+Minnesota,MN,27,Total,Total,2012,0.00195,0.73282,4.581669268,0.803339281,-3.267757878
+Minnesota,MN,27,Total,Total,2013,0.00178,0.79225,4.507083153,0.810017814,-2.545005509
+Minnesota,MN,27,Total,Total,2014,0.00174,0.73819,3.544986231,0.806161892,-4.007043938
+Minnesota,MN,27,Total,Total,2015,0.0025,0.7524,5.519121377,0.819273536,-0.735767712
+Minnesota,MN,27,Total,Total,2016,0.00282,0.78649,4.677928218,0.802489708,-0.510295188
+Minnesota,MN,27,Total,Total,2017,0.00302,0.88043,4.279557259,0.833650391,2.330902867
+Minnesota,MN,27,Total,Total,2018,0.00204,0.8396,4.23616575,0.774975541,-2.690667356
+Minnesota,MN,27,Total,Total,2019,0.00182,0.81593,3.795992363,0.804368776,-2.626663964
+Mississippi,MS,28,Total,Total,1996,,,6.308392935,0.782131661,
+Mississippi,MS,28,Total,Total,1997,,,5.099380483,0.783247472,
+Mississippi,MS,28,Total,Total,1998,0.00285,0.72867,5.449163836,0.783062412,-1.694724628
+Mississippi,MS,28,Total,Total,1999,0.00308,0.83999,5.525723304,0.766952455,-0.091759921
+Mississippi,MS,28,Total,Total,2000,0.00379,0.84896,5.260935003,0.77747353,1.909460002
+Mississippi,MS,28,Total,Total,2001,0.00361,0.81052,5.372952064,0.747567031,-0.138664625
+Mississippi,MS,28,Total,Total,2002,0.0031,0.72307,4.478638925,0.767040732,-2.245532486
+Mississippi,MS,28,Total,Total,2003,0.00244,0.71863,4.50229961,0.777149075,-3.399500507
+Mississippi,MS,28,Total,Total,2004,0.00258,0.75659,4.684995898,0.798319328,-1.646327408
+Mississippi,MS,28,Total,Total,2005,0.00338,0.8353,4.575106945,0.787732887,0.871886568
+Mississippi,MS,28,Total,Total,2006,0.00427,0.78428,5.139453724,0.775041051,1.875534949
+Mississippi,MS,28,Total,Total,2007,0.0041,0.76673,5.301961856,0.774046105,1.267540163
+Mississippi,MS,28,Total,Total,2008,0.00392,0.78898,4.827997501,0.77173913,0.901581451
+Mississippi,MS,28,Total,Total,2009,0.00288,0.71411,4.131440928,0.754519888,-3.493483854
+Mississippi,MS,28,Total,Total,2010,0.00329,0.71008,3.826230042,0.74923186,-2.968127939
+Mississippi,MS,28,Total,Total,2011,0.00289,0.69403,3.948661359,0.770146025,-3.264497546
+Mississippi,MS,28,Total,Total,2012,0.00374,0.7798,3.909758511,0.77075994,-0.077943707
+Mississippi,MS,28,Total,Total,2013,0.00309,0.83173,3.790262759,0.769949676,-0.841925649
+Mississippi,MS,28,Total,Total,2014,0.00337,0.79734,3.799739706,0.775715003,-0.507235942
+Mississippi,MS,28,Total,Total,2015,0.00325,0.8125,3.845110091,0.790516809,0.025105354
+Mississippi,MS,28,Total,Total,2016,0.00368,0.78566,4.140982845,0.766487543,-0.183650974
+Mississippi,MS,28,Total,Total,2017,0.00367,0.82527,3.680094763,0.783465513,0.818590612
+Mississippi,MS,28,Total,Total,2018,0.00318,0.86327,3.745697781,0.818053264,1.614015932
+Mississippi,MS,28,Total,Total,2019,0.00325,0.86379,3.834149433,0.80474407,1.3181266
+Missouri,MO,29,Total,Total,1996,,,5.581092553,0.781771736,
+Missouri,MO,29,Total,Total,1997,,,8.059559297,0.822363904,
+Missouri,MO,29,Total,Total,1998,0.00294,0.81278,5.934515504,0.80367996,0.746331116
+Missouri,MO,29,Total,Total,1999,0.00239,0.85753,5.504905835,0.813837129,0.374380862
+Missouri,MO,29,Total,Total,2000,0.00251,0.88915,5.965810548,0.804142794,0.95289797
+Missouri,MO,29,Total,Total,2001,0.00213,0.91877,5.585393879,0.796372409,0.085255304
+Missouri,MO,29,Total,Total,2002,0.00249,0.85946,5.797535607,0.785915758,-0.291732583
+Missouri,MO,29,Total,Total,2003,0.00249,0.81164,6.02427259,0.801494033,-0.320485438
+Missouri,MO,29,Total,Total,2004,0.00237,0.80717,5.61785926,0.806422995,-0.64925245
+Missouri,MO,29,Total,Total,2005,0.0022,0.76136,5.911265392,0.796493192,-1.955967441
+Missouri,MO,29,Total,Total,2006,0.00227,0.74184,6.220236384,0.802179883,-1.741226689
+Missouri,MO,29,Total,Total,2007,0.00238,0.71158,5.709785224,0.808073242,-1.948965488
+Missouri,MO,29,Total,Total,2008,0.00208,0.73129,5.313208357,0.789297112,-3.205062923
+Missouri,MO,29,Total,Total,2009,0.00222,0.76111,4.322533068,0.763362785,-3.854923489
+Missouri,MO,29,Total,Total,2010,0.00233,0.77046,3.731837396,0.809871206,-1.984439254
+Missouri,MO,29,Total,Total,2011,0.00322,0.78741,4.525916035,0.787118016,-0.244490517
+Missouri,MO,29,Total,Total,2012,0.00347,0.78242,4.760666141,0.834889954,2.13545091
+Missouri,MO,29,Total,Total,2013,0.00321,0.8232,5.33364014,0.780576118,0.37566404
+Missouri,MO,29,Total,Total,2014,0.00279,0.76791,4.110827215,0.803177966,-1.077446262
+Missouri,MO,29,Total,Total,2015,0.00287,0.82998,4.576947731,0.797922335,0.034019481
+Missouri,MO,29,Total,Total,2016,0.00303,0.83202,4.778931303,0.780420923,-0.145155513
+Missouri,MO,29,Total,Total,2017,0.00323,0.88473,5.187770094,0.85040042,3.891936373
+Missouri,MO,29,Total,Total,2018,0.00324,0.83956,5.648665395,0.700449506,-2.180208043
+Missouri,MO,29,Total,Total,2019,0.00373,0.80807,5.353871361,0.752945099,0.286753798
+Montana,MT,30,Total,Total,1996,,,7.269924875,0.801264322,
+Montana,MT,30,Total,Total,1997,,,6.302079529,0.807224026,
+Montana,MT,30,Total,Total,1998,0.00521,0.81376,9.559282454,0.786739865,6.797932801
+Montana,MT,30,Total,Total,1999,0.00528,0.79263,5.92753037,0.838130715,6.972781839
+Montana,MT,30,Total,Total,2000,0.00487,0.84072,5.700546487,0.801752922,5.307659141
+Montana,MT,30,Total,Total,2001,0.00413,0.853,6.436880968,0.811902693,4.538183812
+Montana,MT,30,Total,Total,2002,0.00417,0.893,6.525408949,0.777907429,3.987634857
+Montana,MT,30,Total,Total,2003,0.00483,0.86791,6.421060644,0.788249694,5.433153126
+Montana,MT,30,Total,Total,2004,0.00579,0.86495,7.26982212,0.804296875,8.512302911
+Montana,MT,30,Total,Total,2005,0.00603,0.86843,7.367285678,0.783153498,8.351177374
+Montana,MT,30,Total,Total,2006,0.00577,0.8925,7.456764621,0.818151033,9.479706132
+Montana,MT,30,Total,Total,2007,0.0047,0.88185,6.550182128,0.791540785,5.529998227
+Montana,MT,30,Total,Total,2008,0.00498,0.8536,6.163362914,0.780692903,5.15913358
+Montana,MT,30,Total,Total,2009,0.00459,0.748,4.139303361,0.747757445,0.588885245
+Montana,MT,30,Total,Total,2010,0.00484,0.76989,4.036552044,0.765346104,2.089184933
+Montana,MT,30,Total,Total,2011,0.00397,0.73855,4.049869851,0.811515748,1.412254701
+Montana,MT,30,Total,Total,2012,0.00419,0.83656,4.130374792,0.791136256,2.636115786
+Montana,MT,30,Total,Total,2013,0.0049,0.84361,4.495007247,0.794461272,4.615163469
+Montana,MT,30,Total,Total,2014,0.00537,0.8403,4.50449128,0.77685624,4.961760542
+Montana,MT,30,Total,Total,2015,0.00496,0.84115,4.877362381,0.824244966,5.99768196
+Montana,MT,30,Total,Total,2016,0.00426,0.83931,4.762412584,0.788680632,3.019148474
+Montana,MT,30,Total,Total,2017,0.00398,0.86235,4.640459409,0.799471299,3.086880778
+Montana,MT,30,Total,Total,2018,0.00395,0.85422,4.684796802,0.795423497,2.766243526
+Montana,MT,30,Total,Total,2019,0.00335,0.85586,5.387461194,0.796982617,1.814625764
+Nebraska,NE,31,Total,Total,1996,,,6.198692748,0.796571798,
+Nebraska,NE,31,Total,Total,1997,,,5.340905991,0.808419768,
+Nebraska,NE,31,Total,Total,1998,0.00365,0.84502,5.34256075,0.803749622,2.558685496
+Nebraska,NE,31,Total,Total,1999,0.00363,0.90977,4.992479898,0.808872683,3.517178537
+Nebraska,NE,31,Total,Total,2000,0.00296,0.89267,5.935279084,0.800119689,1.848312807
+Nebraska,NE,31,Total,Total,2001,0.00286,0.8974,5.350510165,0.792340426,1.146485048
+Nebraska,NE,31,Total,Total,2002,0.00324,0.90158,5.301766137,0.800461361,2.342509039
+Nebraska,NE,31,Total,Total,2003,0.00323,0.93821,5.079823748,0.799097065,2.717331717
+Nebraska,NE,31,Total,Total,2004,0.00338,0.91909,5.244173617,0.808258735,3.183936735
+Nebraska,NE,31,Total,Total,2005,0.00293,0.88164,5.151867985,0.809313292,1.617686399
+Nebraska,NE,31,Total,Total,2006,0.00278,0.85195,5.263742791,0.813053097,1.028910867
+Nebraska,NE,31,Total,Total,2007,0.00263,0.86929,4.660095097,0.793741497,-0.03773813
+Nebraska,NE,31,Total,Total,2008,0.00295,0.92486,4.498496419,0.805684613,1.883529323
+Nebraska,NE,31,Total,Total,2009,0.00264,0.93124,4.068003065,0.798475868,0.825361374
+Nebraska,NE,31,Total,Total,2010,0.00264,0.88257,3.475733271,0.791615667,-0.417146258
+Nebraska,NE,31,Total,Total,2011,0.00258,0.829,4.204442725,0.801732756,-0.650326231
+Nebraska,NE,31,Total,Total,2012,0.00247,0.85413,6.624388996,0.820714718,1.252186205
+Nebraska,NE,31,Total,Total,2013,0.00252,0.85965,4.852893321,0.73757377,-2.449488894
+Nebraska,NE,31,Total,Total,2014,0.00248,0.88729,5.287015896,0.791650782,0.091532862
+Nebraska,NE,31,Total,Total,2015,0.00251,0.90292,4.977589216,0.780669895,-0.156092406
+Nebraska,NE,31,Total,Total,2016,0.00251,0.91441,4.565452851,0.784962406,-0.004828104
+Nebraska,NE,31,Total,Total,2017,0.00254,0.94035,5.112354361,0.772431183,0.218961068
+Nebraska,NE,31,Total,Total,2018,0.00298,0.92486,4.88623369,0.769180754,0.751846677
+Nebraska,NE,31,Total,Total,2019,0.00268,0.90051,5.069768115,0.789427313,0.557422877
+Nevada,NV,32,Total,Total,1996,,,12.072111,0.767366721,
+Nevada,NV,32,Total,Total,1997,,,12.39155968,0.780300322,
+Nevada,NV,32,Total,Total,1998,0.00356,0.79614,11.181794,0.790772351,3.705656401
+Nevada,NV,32,Total,Total,1999,0.00313,0.68281,15.86587813,0.768553033,2.27751649
+Nevada,NV,32,Total,Total,2000,0.00236,0.65485,10.33763123,0.765425972,-2.406840606
+Nevada,NV,32,Total,Total,2001,0.00193,0.72189,9.157934216,0.755327802,-3.267013055
+Nevada,NV,32,Total,Total,2002,0.00222,0.81154,8.176499029,0.720904665,-3.003933324
+Nevada,NV,32,Total,Total,2003,0.0026,0.83794,8.474108989,0.757873349,-0.242852211
+Nevada,NV,32,Total,Total,2004,0.0027,0.87463,8.815448836,0.811274907,2.680322235
+Nevada,NV,32,Total,Total,2005,0.00295,0.826,8.532804198,0.797057551,1.857997739
+Nevada,NV,32,Total,Total,2006,0.00315,0.83332,8.701536237,0.797387437,2.501184155
+Nevada,NV,32,Total,Total,2007,0.00321,0.79373,7.078235435,0.780504067,0.699731972
+Nevada,NV,32,Total,Total,2008,0.00328,0.77973,7.243285613,0.757634113,-0.137455853
+Nevada,NV,32,Total,Total,2009,0.00347,0.75726,5.063946526,0.717312959,-2.515949213
+Nevada,NV,32,Total,Total,2010,0.0042,0.70021,4.843093467,0.753157895,-0.484655234
+Nevada,NV,32,Total,Total,2011,0.00426,0.72534,4.954787244,0.77203954,0.781273457
+Nevada,NV,32,Total,Total,2012,0.00432,0.69254,4.604962981,0.775356875,0.397674655
+Nevada,NV,32,Total,Total,2013,0.00339,0.71857,4.68809101,0.770212766,-1.452550986
+Nevada,NV,32,Total,Total,2014,0.00374,0.79274,5.631332454,0.770060688,0.844427447
+Nevada,NV,32,Total,Total,2015,0.00381,0.87398,5.239734783,0.774745098,2.215403592
+Nevada,NV,32,Total,Total,2016,0.00407,0.92135,5.585140749,0.781465906,3.906905665
+Nevada,NV,32,Total,Total,2017,0.00376,0.86806,6.572264096,0.767406167,2.325023486
+Nevada,NV,32,Total,Total,2018,0.00337,0.85818,6.381507732,0.775072225,1.508620938
+Nevada,NV,32,Total,Total,2019,0.00341,0.82624,6.355522253,0.774635036,1.09442654
+New Hampshire,NH,33,Total,Total,1996,,,7.319197187,0.805728871,
+New Hampshire,NH,33,Total,Total,1997,,,7.376673603,0.792488517,
+New Hampshire,NH,33,Total,Total,1998,0.00257,0.85159,6.074099872,0.798030867,0.345849624
+New Hampshire,NH,33,Total,Total,1999,0.00231,0.80847,6.387815524,0.776179057,-1.560443992
+New Hampshire,NH,33,Total,Total,2000,0.00263,0.82295,6.319956254,0.784400104,-0.349881708
+New Hampshire,NH,33,Total,Total,2001,0.0024,0.87256,5.775310091,0.761568627,-1.220865326
+New Hampshire,NH,33,Total,Total,2002,0.00242,0.84001,5.163546449,0.726341463,-3.250850668
+New Hampshire,NH,33,Total,Total,2003,0.00256,0.84834,4.92639705,0.769451622,-1.30065505
+New Hampshire,NH,33,Total,Total,2004,0.00247,0.83602,5.240593712,0.778999132,-1.189672988
+New Hampshire,NH,33,Total,Total,2005,0.00238,0.8952,5.450168349,0.759743727,-1.139464695
+New Hampshire,NH,33,Total,Total,2006,0.00232,0.82144,5.421934914,0.757072905,-2.485391824
+New Hampshire,NH,33,Total,Total,2007,0.00261,0.80643,4.373200055,0.755549752,-2.577457769
+New Hampshire,NH,33,Total,Total,2008,0.0026,0.76119,4.080078668,0.755016722,-3.422615436
+New Hampshire,NH,33,Total,Total,2009,0.00274,0.79699,3.338647005,0.716617211,-4.341449226
+New Hampshire,NH,33,Total,Total,2010,0.00258,0.75336,3.503290648,0.74556962,-4.19157457
+New Hampshire,NH,33,Total,Total,2011,0.00268,0.71341,3.204055137,0.766456583,-3.911033162
+New Hampshire,NH,33,Total,Total,2012,0.00284,0.68058,3.573391974,0.765978368,-3.897877897
+New Hampshire,NH,33,Total,Total,2013,0.00267,0.71294,3.499112784,0.766961652,-3.791945167
+New Hampshire,NH,33,Total,Total,2014,0.0025,0.72573,3.020232634,0.76647077,-4.210526492
+New Hampshire,NH,33,Total,Total,2015,0.00243,0.77606,3.438470461,0.772132644,-3.221311305
+New Hampshire,NH,33,Total,Total,2016,0.00236,0.77404,3.683211069,0.754360465,-3.967184621
+New Hampshire,NH,33,Total,Total,2017,0.00239,0.82789,3.380074096,0.770896973,-2.610528528
+New Hampshire,NH,33,Total,Total,2018,0.00224,0.85087,3.740769063,0.766296613,-2.6180503
+New Hampshire,NH,33,Total,Total,2019,0.00278,0.91021,3.753003396,0.770042194,-0.379302365
+New Jersey,NJ,34,Total,Total,1996,,,9.020692559,0.800030177,
+New Jersey,NJ,34,Total,Total,1997,,,7.244967883,0.799493932,
+New Jersey,NJ,34,Total,Total,1998,0.00202,0.86572,9.722569804,0.800077964,1.003787059
+New Jersey,NJ,34,Total,Total,1999,0.00228,0.85344,10.5230016,0.792486121,1.469444492
+New Jersey,NJ,34,Total,Total,2000,0.00235,0.83599,10.48143429,0.783326864,1.004353522
+New Jersey,NJ,34,Total,Total,2001,0.00228,0.79545,8.542188906,0.75708502,-1.591923156
+New Jersey,NJ,34,Total,Total,2002,0.00223,0.75574,8.274167412,0.778393864,-1.614030821
+New Jersey,NJ,34,Total,Total,2003,0.00251,0.77678,7.762339209,0.778908667,-0.879177263
+New Jersey,NJ,34,Total,Total,2004,0.00248,0.76296,7.46094677,0.777339194,-1.343428433
+New Jersey,NJ,34,Total,Total,2005,0.00263,0.79793,8.189460579,0.808880929,1.016168405
+New Jersey,NJ,34,Total,Total,2006,0.00252,0.78747,8.264217596,0.807868714,0.608947831
+New Jersey,NJ,34,Total,Total,2007,0.00266,0.82851,7.033165339,0.767572892,-0.517873739
+New Jersey,NJ,34,Total,Total,2008,0.00265,0.8632,6.864238574,0.777631116,0.279709833
+New Jersey,NJ,34,Total,Total,2009,0.00291,0.86167,5.403511946,0.75624886,-0.604316053
+New Jersey,NJ,34,Total,Total,2010,0.00283,0.82757,5.880142909,0.773861968,-0.421680169
+New Jersey,NJ,34,Total,Total,2011,0.00282,0.75493,5.776203464,0.782218301,-1.258671383
+New Jersey,NJ,34,Total,Total,2012,0.00239,0.68879,5.948258338,0.783563299,-3.080702916
+New Jersey,NJ,34,Total,Total,2013,0.0022,0.72164,6.108521061,0.776622497,-3.206457558
+New Jersey,NJ,34,Total,Total,2014,0.0024,0.76141,5.996485993,0.787015832,-1.825584187
+New Jersey,NJ,34,Total,Total,2015,0.00323,0.85222,6.285557123,0.780971738,1.285580507
+New Jersey,NJ,34,Total,Total,2016,0.00336,0.88025,6.663527538,0.778036112,2.050059991
+New Jersey,NJ,34,Total,Total,2017,0.00323,0.85532,5.606759308,0.797915486,1.669238859
+New Jersey,NJ,34,Total,Total,2018,0.00285,0.86953,5.332868183,0.782461979,0.330593945
+New Jersey,NJ,34,Total,Total,2019,0.00313,0.84908,5.827279083,0.797544788,1.435332524
+New Mexico,NM,35,Total,Total,1996,,,7.843860104,0.705050108,
+New Mexico,NM,35,Total,Total,1997,,,8.366956101,0.737661075,
+New Mexico,NM,35,Total,Total,1998,0.00556,0.82646,8.061962081,0.777176586,6.754589962
+New Mexico,NM,35,Total,Total,1999,0.00562,0.83017,6.72646484,0.768629367,6.037321144
+New Mexico,NM,35,Total,Total,2000,0.00528,0.83708,6.103654505,0.747656448,4.31925596
+New Mexico,NM,35,Total,Total,2001,0.00406,0.89084,5.969350709,0.741752577,2.10915614
+New Mexico,NM,35,Total,Total,2002,0.00368,0.8747,5.848621443,0.740813327,0.929865731
+New Mexico,NM,35,Total,Total,2003,0.00409,0.78066,6.450877569,0.75650802,1.299349664
+New Mexico,NM,35,Total,Total,2004,0.00465,0.75592,6.275317679,0.765343915,2.438491561
+New Mexico,NM,35,Total,Total,2005,0.00506,0.77138,6.253771463,0.747936984,2.924278876
+New Mexico,NM,35,Total,Total,2006,0.00431,0.83384,6.527067172,0.785017082,3.68685606
+New Mexico,NM,35,Total,Total,2007,0.00352,0.82627,11.67245373,0.760402685,3.141486124
+New Mexico,NM,35,Total,Total,2008,0.00393,0.80713,5.953760503,0.760874365,1.281152124
+New Mexico,NM,35,Total,Total,2009,0.00358,0.81143,4.755494152,0.723958333,-1.34875157
+New Mexico,NM,35,Total,Total,2010,0.00391,0.74967,4.01152405,0.754390496,-0.715628848
+New Mexico,NM,35,Total,Total,2011,0.00277,0.78213,4.000576798,0.766410408,-2.33766986
+New Mexico,NM,35,Total,Total,2012,0.00365,0.74982,4.201582037,0.752170009,-1.295202767
+New Mexico,NM,35,Total,Total,2013,0.00371,0.79464,3.787268679,0.783693844,0.507333656
+New Mexico,NM,35,Total,Total,2014,0.00395,0.74178,5.061811819,0.745777778,-0.605591117
+New Mexico,NM,35,Total,Total,2015,0.00316,0.8106,4.450792159,0.760174047,-1.076741949
+New Mexico,NM,35,Total,Total,2016,0.0035,0.79933,4.230193677,0.803657999,1.050355315
+New Mexico,NM,35,Total,Total,2017,0.00384,0.75977,3.863209586,0.762317405,-0.489634724
+New Mexico,NM,35,Total,Total,2018,0.00421,0.69467,4.052102004,0.795040486,0.678706127
+New Mexico,NM,35,Total,Total,2019,0.00404,0.75388,3.861545219,0.786279683,0.768226775
+New York,NY,36,Total,Total,1996,,,9.113611348,0.782709569,
+New York,NY,36,Total,Total,1997,,,10.44711063,0.785111264,
+New York,NY,36,Total,Total,1998,0.00273,0.78175,10.26919201,0.790220722,1.212089574
+New York,NY,36,Total,Total,1999,0.00275,0.80218,11.15781753,0.806555626,2.564016822
+New York,NY,36,Total,Total,2000,0.003,0.84332,10.64668678,0.729927676,0.638341561
+New York,NY,36,Total,Total,2001,0.00284,0.8513,9.37816482,0.788549708,2.04080294
+New York,NY,36,Total,Total,2002,0.00295,0.82223,7.68949409,0.727704496,-1.169435033
+New York,NY,36,Total,Total,2003,0.00267,0.78807,6.745693131,0.795461645,-0.178322534
+New York,NY,36,Total,Total,2004,0.00273,0.7715,6.181445679,0.810986224,0.04360569
+New York,NY,36,Total,Total,2005,0.00258,0.77032,6.529271229,0.8141456,-0.038539618
+New York,NY,36,Total,Total,2006,0.00288,0.82452,6.725385065,0.819366339,1.722467417
+New York,NY,36,Total,Total,2007,0.00317,0.84189,6.69411235,0.818270592,2.575583975
+New York,NY,36,Total,Total,2008,0.00356,0.8678,6.422610855,0.81155328,3.463489998
+New York,NY,36,Total,Total,2009,0.00357,0.81208,5.635501531,0.784822474,1.307547543
+New York,NY,36,Total,Total,2010,0.00364,0.78483,5.564622623,0.795834812,1.440084975
+New York,NY,36,Total,Total,2011,0.00359,0.76391,6.342554564,0.816723109,2.14136726
+New York,NY,36,Total,Total,2012,0.00359,0.79433,6.271364965,0.8047403,2.113982334
+New York,NY,36,Total,Total,2013,0.00335,0.81321,6.287718579,0.796915231,1.571809124
+New York,NY,36,Total,Total,2014,0.00327,0.81835,6.408258409,0.80635256,1.876189273
+New York,NY,36,Total,Total,2015,0.00351,0.82957,6.360169132,0.807021338,2.584545209
+New York,NY,36,Total,Total,2016,0.00362,0.84103,6.276591128,0.802637604,2.800422513
+New York,NY,36,Total,Total,2017,0.00333,0.86963,6.295798601,0.796628835,2.360537698
+New York,NY,36,Total,Total,2018,0.00319,0.87034,6.078078167,0.795259218,1.910802422
+New York,NY,36,Total,Total,2019,0.003,0.89312,5.555486731,0.795013209,1.586305063
+North Carolina,NC,37,Total,Total,1996,,,6.646739558,0.807717942,
+North Carolina,NC,37,Total,Total,1997,,,6.377316969,0.824236995,
+North Carolina,NC,37,Total,Total,1998,0.00291,0.8348,6.149859888,0.788667504,0.538797007
+North Carolina,NC,37,Total,Total,1999,0.00278,0.8695,7.290900489,0.829300904,2.789714759
+North Carolina,NC,37,Total,Total,2000,0.00297,0.85745,6.583462165,0.821666575,2.438556733
+North Carolina,NC,37,Total,Total,2001,0.00287,0.86971,5.420747706,0.791972426,0.773305301
+North Carolina,NC,37,Total,Total,2002,0.00312,0.78999,5.33580681,0.772880494,-0.608301733
+North Carolina,NC,37,Total,Total,2003,0.00309,0.74661,8.053427361,0.787944437,0.436179307
+North Carolina,NC,37,Total,Total,2004,0.00302,0.68136,5.520888674,0.825942625,-0.379471696
+North Carolina,NC,37,Total,Total,2005,0.00246,0.699,5.301532714,0.817140353,-1.796517307
+North Carolina,NC,37,Total,Total,2006,0.00227,0.74422,6.192926759,0.825075123,-0.859082248
+North Carolina,NC,37,Total,Total,2007,0.00249,0.77245,9.075418316,0.831942315,1.576977992
+North Carolina,NC,37,Total,Total,2008,0.00265,0.80738,6.188765844,0.796105702,-0.15569963
+North Carolina,NC,37,Total,Total,2009,0.00271,0.78758,4.452267967,0.74957075,-2.824026359
+North Carolina,NC,37,Total,Total,2010,0.00286,0.78305,4.471334422,0.762173115,-2.074761809
+North Carolina,NC,37,Total,Total,2011,0.00293,0.73412,4.456079735,0.786625725,-1.736780786
+North Carolina,NC,37,Total,Total,2012,0.00297,0.70435,4.420750408,0.788814946,-2.024241332
+North Carolina,NC,37,Total,Total,2013,0.00285,0.75504,4.13406593,0.785479534,-1.788481675
+North Carolina,NC,37,Total,Total,2014,0.00309,0.79159,3.844904306,0.784276468,-0.878729377
+North Carolina,NC,37,Total,Total,2015,0.00333,0.82561,4.225228841,0.801784066,0.988964207
+North Carolina,NC,37,Total,Total,2016,0.00342,0.83876,4.709404076,0.789092296,1.122917098
+North Carolina,NC,37,Total,Total,2017,0.00284,0.872,4.527069068,0.784691137,0.074866532
+North Carolina,NC,37,Total,Total,2018,0.00266,0.90354,4.501900716,0.798802694,0.660124277
+North Carolina,NC,37,Total,Total,2019,0.00254,0.87464,4.676640652,0.796599117,-0.0450339
+North Dakota,ND,38,Total,Total,1996,,,5.029351981,0.810833333,
+North Dakota,ND,38,Total,Total,1997,,,6.074961983,0.783693844,
+North Dakota,ND,38,Total,Total,1998,0.00465,0.81401,4.500163698,0.789836348,3.443331628
+North Dakota,ND,38,Total,Total,1999,0.00407,0.82991,4.364704257,0.826086957,3.682100774
+North Dakota,ND,38,Total,Total,2000,0.00378,0.84927,5.734997033,0.806265458,3.179633767
+North Dakota,ND,38,Total,Total,2001,0.00334,0.88941,5.492424835,0.793774319,2.217910708
+North Dakota,ND,38,Total,Total,2002,0.00299,0.8631,4.503516315,0.811182401,1.261199195
+North Dakota,ND,38,Total,Total,2003,0.00284,0.78188,3.741290542,0.830426357,0.102334379
+North Dakota,ND,38,Total,Total,2004,0.003,0.81062,4.763418928,0.857273559,2.344317775
+North Dakota,ND,38,Total,Total,2005,0.00314,0.83353,5.712835229,0.817170111,1.911804927
+North Dakota,ND,38,Total,Total,2006,0.00268,0.85407,5.281619656,0.811172305,0.773976469
+North Dakota,ND,38,Total,Total,2007,0.0028,0.77175,5.768800684,0.799448656,-0.409848066
+North Dakota,ND,38,Total,Total,2008,0.00268,0.78164,6.111906127,0.805845511,-0.140546836
+North Dakota,ND,38,Total,Total,2009,0.00282,0.83868,4.676916784,0.786211699,-0.343574852
+North Dakota,ND,38,Total,Total,2010,0.00295,0.84752,3.906834738,0.784946237,-0.306401669
+North Dakota,ND,38,Total,Total,2011,0.00298,0.86472,5.266883141,0.811881188,1.624285574
+North Dakota,ND,38,Total,Total,2012,0.00314,0.85681,10.05025842,0.815312683,4.093187215
+North Dakota,ND,38,Total,Total,2013,0.00279,0.92803,8.187957387,0.767165324,1.747689534
+North Dakota,ND,38,Total,Total,2014,0.0027,0.89451,8.177368894,0.775624301,1.359372231
+North Dakota,ND,38,Total,Total,2015,0.00285,0.9084,7.604108924,0.778813559,1.770037479
+North Dakota,ND,38,Total,Total,2016,0.00314,0.87296,4.842040523,0.707879843,-1.981807598
+North Dakota,ND,38,Total,Total,2017,0.00388,0.88261,5.358027504,0.770133333,2.379649309
+North Dakota,ND,38,Total,Total,2018,0.00358,0.88232,4.882070494,0.789994183,2.23974574
+North Dakota,ND,38,Total,Total,2019,0.00383,0.9273,4.558684202,0.784411277,3.118205332
+Ohio,OH,39,Total,Total,1996,,,6.685062396,0.812972684,
+Ohio,OH,39,Total,Total,1997,,,6.091232192,0.812419332,
+Ohio,OH,39,Total,Total,1998,0.0026,0.84335,5.706652041,0.800474819,0.220565791
+Ohio,OH,39,Total,Total,1999,0.00267,0.8434,5.656853268,0.811506675,0.769874659
+Ohio,OH,39,Total,Total,2000,0.00236,0.87938,5.531725449,0.825356171,1.076595563
+Ohio,OH,39,Total,Total,2001,0.00224,0.81605,5.454535555,0.799171731,-1.151573415
+Ohio,OH,39,Total,Total,2002,0.00191,0.80186,5.530821697,0.788203316,-2.479536626
+Ohio,OH,39,Total,Total,2003,0.00208,0.71246,5.186541281,0.798287449,-3.204071665
+Ohio,OH,39,Total,Total,2004,0.00226,0.74577,5.008535003,0.80692586,-2.059001643
+Ohio,OH,39,Total,Total,2005,0.00246,0.73111,4.916725696,0.802362113,-2.041241225
+Ohio,OH,39,Total,Total,2006,0.00244,0.75739,5.118187425,0.816584073,-1.072593508
+Ohio,OH,39,Total,Total,2007,0.00221,0.76926,4.328084735,0.785721948,-2.914865103
+Ohio,OH,39,Total,Total,2008,0.00198,0.7618,4.129603589,0.766048589,-4.365811439
+Ohio,OH,39,Total,Total,2009,0.00216,0.74165,3.233700781,0.75925133,-4.911390812
+Ohio,OH,39,Total,Total,2010,0.00252,0.71024,3.297590087,0.756552936,-4.646769007
+Ohio,OH,39,Total,Total,2011,0.0028,0.73398,3.544235115,0.795186299,-2.10909851
+Ohio,OH,39,Total,Total,2012,0.00254,0.75257,4.059685912,0.79189501,-2.311216222
+Ohio,OH,39,Total,Total,2013,0.00221,0.83385,3.628413801,0.799778148,-1.732430647
+Ohio,OH,39,Total,Total,2014,0.00211,0.89193,3.431356495,0.800604027,-1.146375807
+Ohio,OH,39,Total,Total,2015,0.00238,0.90683,3.58320665,0.791658571,-0.588836116
+Ohio,OH,39,Total,Total,2016,0.00235,0.88222,3.762644647,0.83118458,0.538481442
+Ohio,OH,39,Total,Total,2017,0.00219,0.82589,3.648737312,0.75844565,-3.437030572
+Ohio,OH,39,Total,Total,2018,0.00195,0.81396,3.566014388,0.795744945,-2.789426883
+Ohio,OH,39,Total,Total,2019,0.00199,0.75852,3.701739227,0.796928747,-3.421998214
+Oklahoma,OK,40,Total,Total,1996,,,8.789181496,0.784407428,
+Oklahoma,OK,40,Total,Total,1997,,,10.0971948,0.775311086,
+Oklahoma,OK,40,Total,Total,1998,0.0038,0.88024,8.651195791,0.854485638,6.774566994
+Oklahoma,OK,40,Total,Total,1999,0.00331,0.89154,7.854479311,0.792225534,3.161370982
+Oklahoma,OK,40,Total,Total,2000,0.00304,0.83744,8.466100137,0.742508888,0.154816836
+Oklahoma,OK,40,Total,Total,2001,0.00268,0.86258,7.18265986,0.774742622,0.369079816
+Oklahoma,OK,40,Total,Total,2002,0.00275,0.79982,8.079207126,0.745332338,-1.11881727
+Oklahoma,OK,40,Total,Total,2003,0.00319,0.84877,5.973365228,0.771784777,0.663034976
+Oklahoma,OK,40,Total,Total,2004,0.00366,0.79519,7.001239351,0.810179641,2.807899176
+Oklahoma,OK,40,Total,Total,2005,0.0041,0.82556,7.513955515,0.796213968,3.946610837
+Oklahoma,OK,40,Total,Total,2006,0.00428,0.80113,7.47031933,0.805452996,4.312838011
+Oklahoma,OK,40,Total,Total,2007,0.00406,0.82182,6.812224142,0.78866242,3.210068666
+Oklahoma,OK,40,Total,Total,2008,0.00348,0.88168,6.556597808,0.793857296,2.886388127
+Oklahoma,OK,40,Total,Total,2009,0.00373,0.90203,5.849247842,0.778573359,2.86545382
+Oklahoma,OK,40,Total,Total,2010,0.0035,0.88536,4.837040126,0.770608339,1.35915497
+Oklahoma,OK,40,Total,Total,2011,0.00332,0.77458,5.121187716,0.769695044,-0.60393897
+Oklahoma,OK,40,Total,Total,2012,0.00278,0.75029,4.857267204,0.799591323,-1.169199616
+Oklahoma,OK,40,Total,Total,2013,0.00274,0.74842,4.841412909,0.801426135,-1.224743964
+Oklahoma,OK,40,Total,Total,2014,0.00357,0.81919,5.371839986,0.812267934,2.327064363
+Oklahoma,OK,40,Total,Total,2015,0.00401,0.8472,5.184550454,0.822469379,4.029674486
+Oklahoma,OK,40,Total,Total,2016,0.00452,0.89493,4.740558043,0.777329568,3.994577075
+Oklahoma,OK,40,Total,Total,2017,0.00413,0.87726,5.093968534,0.778987557,3.075663744
+Oklahoma,OK,40,Total,Total,2018,0.00386,0.85386,5.462110762,0.812448361,3.539180955
+Oklahoma,OK,40,Total,Total,2019,0.00393,0.82572,5.646237994,0.799973006,2.88951655
+Oregon,OR,41,Total,Total,1996,,,8.479845623,0.763546798,
+Oregon,OR,41,Total,Total,1997,,,8.814245637,0.777802198,
+Oregon,OR,41,Total,Total,1998,0.00429,0.82968,6.814123049,0.797640118,4.179540831
+Oregon,OR,41,Total,Total,1999,0.00422,0.83324,6.214309559,0.774486741,2.944229321
+Oregon,OR,41,Total,Total,2000,0.00434,0.83253,6.999721259,0.781071836,3.794021188
+Oregon,OR,41,Total,Total,2001,0.0039,0.83024,6.877864275,0.772239607,2.390287334
+Oregon,OR,41,Total,Total,2002,0.0034,0.82894,5.918443091,0.731576737,-0.694478071
+Oregon,OR,41,Total,Total,2003,0.00335,0.79702,5.527465935,0.787511985,0.644150671
+Oregon,OR,41,Total,Total,2004,0.00327,0.76497,6.243236027,0.781114448,0.061813693
+Oregon,OR,41,Total,Total,2005,0.00353,0.72826,6.407059445,0.791835358,0.570782293
+Oregon,OR,41,Total,Total,2006,0.00346,0.76174,6.093901658,0.797522426,0.988780308
+Oregon,OR,41,Total,Total,2007,0.00352,0.78796,5.973269518,0.795872952,1.398952358
+Oregon,OR,41,Total,Total,2008,0.00365,0.79758,5.018112116,0.751057342,-0.266819729
+Oregon,OR,41,Total,Total,2009,0.0037,0.76959,4.418946595,0.707378577,-2.473149241
+Oregon,OR,41,Total,Total,2010,0.00358,0.746,3.796490989,0.753283074,-1.644899615
+Oregon,OR,41,Total,Total,2011,0.00319,0.76159,4.448564011,0.775480256,-1.166797237
+Oregon,OR,41,Total,Total,2012,0.00266,0.71245,4.337008377,0.775030012,-3.15118952
+Oregon,OR,41,Total,Total,2013,0.00227,0.76877,4.163450154,0.765929624,-3.602439311
+Oregon,OR,41,Total,Total,2014,0.00273,0.72604,3.909676013,0.781828771,-2.72462641
+Oregon,OR,41,Total,Total,2015,0.00311,0.75833,4.364269863,0.801008443,-0.474028719
+Oregon,OR,41,Total,Total,2016,0.00337,0.76071,4.501004407,0.798099762,0.094341906
+Oregon,OR,41,Total,Total,2017,0.0032,0.80034,5.164318682,0.783307888,0.040773843
+Oregon,OR,41,Total,Total,2018,0.0027,0.89938,5.16417712,0.794275677,0.808632788
+Oregon,OR,41,Total,Total,2019,0.00256,0.89962,4.781948234,0.772108226,-0.500334594
+Pennsylvania,PA,42,Total,Total,1996,,,5.520657808,0.810516316,
+Pennsylvania,PA,42,Total,Total,1997,,,6.284115869,0.829324772,
+Pennsylvania,PA,42,Total,Total,1998,0.00167,0.77548,6.409693155,0.816781055,-1.952195246
+Pennsylvania,PA,42,Total,Total,1999,0.00153,0.82671,5.608210502,0.832296581,-1.27216458
+Pennsylvania,PA,42,Total,Total,2000,0.00151,0.91132,6.064144489,0.825506227,-0.110704862
+Pennsylvania,PA,42,Total,Total,2001,0.00167,0.88729,4.987084284,0.830938538,-0.37973287
+Pennsylvania,PA,42,Total,Total,2002,0.00161,0.845,6.126413923,0.764274062,-3.144209319
+Pennsylvania,PA,42,Total,Total,2003,0.0018,0.81179,5.264791964,0.798981551,-2.290349944
+Pennsylvania,PA,42,Total,Total,2004,0.00174,0.82593,4.969171012,0.80755814,-2.022077008
+Pennsylvania,PA,42,Total,Total,2005,0.00189,0.77489,4.780566089,0.819647581,-2.07624319
+Pennsylvania,PA,42,Total,Total,2006,0.00179,0.7705,4.609294251,0.847786019,-1.385367196
+Pennsylvania,PA,42,Total,Total,2007,0.0017,0.72255,4.006626267,0.811554451,-3.924714718
+Pennsylvania,PA,42,Total,Total,2008,0.00157,0.76758,3.846249906,0.793683018,-4.285388913
+Pennsylvania,PA,42,Total,Total,2009,0.00159,0.76498,3.494710369,0.795566502,-4.363053093
+Pennsylvania,PA,42,Total,Total,2010,0.00171,0.82801,3.1917622,0.80666437,-2.87204907
+Pennsylvania,PA,42,Total,Total,2011,0.00181,0.81434,3.6310742,0.821056414,-2.119281056
+Pennsylvania,PA,42,Total,Total,2012,0.00181,0.79424,4.210112259,0.784880355,-3.521338681
+Pennsylvania,PA,42,Total,Total,2013,0.00187,0.71632,3.924529377,0.751294682,-5.933069987
+Pennsylvania,PA,42,Total,Total,2014,0.00197,0.71512,3.733486974,0.76993865,-5.11175656
+Pennsylvania,PA,42,Total,Total,2015,0.00177,0.75564,3.765010177,0.79985829,-3.819699337
+Pennsylvania,PA,42,Total,Total,2016,0.00169,0.82998,3.830147607,0.799907855,-2.860604537
+Pennsylvania,PA,42,Total,Total,2017,0.00177,0.84708,3.823300951,0.799793555,-2.43403048
+Pennsylvania,PA,42,Total,Total,2018,0.0019,0.86522,3.672938559,0.8060979,-1.702320503
+Pennsylvania,PA,42,Total,Total,2019,0.00204,0.87266,3.678178446,0.799002005,-1.541919317
+Rhode Island,RI,44,Total,Total,1996,,,6.86163976,0.785020804,
+Rhode Island,RI,44,Total,Total,1997,,,6.291491808,0.785654008,
+Rhode Island,RI,44,Total,Total,1998,0.00181,0.74559,6.039829124,0.773865083,-3.856112397
+Rhode Island,RI,44,Total,Total,1999,0.0016,0.7968,5.515175865,0.773443983,-3.809225551
+Rhode Island,RI,44,Total,Total,2000,0.00154,0.74908,5.524304273,0.787676936,-4.116775729
+Rhode Island,RI,44,Total,Total,2001,0.00135,0.79305,5.574463979,0.775494071,-4.321772164
+Rhode Island,RI,44,Total,Total,2002,0.00133,0.72456,5.407154818,0.750378788,-6.402459184
+Rhode Island,RI,44,Total,Total,2003,0.0016,0.67337,5.071209754,0.762157744,-6.266587757
+Rhode Island,RI,44,Total,Total,2004,0.00216,0.71605,5.865552928,0.755656109,-4.272279892
+Rhode Island,RI,44,Total,Total,2005,0.00247,0.71566,5.693331685,0.790215589,-2.363683013
+Rhode Island,RI,44,Total,Total,2006,0.0028,0.74977,4.145439358,0.739888977,-3.683774008
+Rhode Island,RI,44,Total,Total,2007,0.00241,0.72685,4.664645825,0.801483421,-2.360254074
+Rhode Island,RI,44,Total,Total,2008,0.00249,0.7486,4.143116181,0.743345252,-4.266487177
+Rhode Island,RI,44,Total,Total,2009,0.00228,0.72388,3.802035978,0.726503341,-5.886260804
+Rhode Island,RI,44,Total,Total,2010,0.00248,0.66146,3.717412157,0.766253102,-4.915048684
+Rhode Island,RI,44,Total,Total,2011,0.00239,0.68241,3.625495777,0.772262027,-4.619323858
+Rhode Island,RI,44,Total,Total,2012,0.00226,0.78425,4.066863831,0.783585735,-2.774383882
+Rhode Island,RI,44,Total,Total,2013,0.00186,0.8326,3.901122284,0.773509934,-3.399925118
+Rhode Island,RI,44,Total,Total,2014,0.00196,0.8776,3.818413237,0.766397125,-2.808637233
+Rhode Island,RI,44,Total,Total,2015,0.00226,0.87302,4.068878336,0.782451379,-1.493320581
+Rhode Island,RI,44,Total,Total,2016,0.00211,0.80416,3.998031738,0.763888889,-3.582399054
+Rhode Island,RI,44,Total,Total,2017,0.00176,0.68721,3.914090822,0.771024465,-5.877672973
+Rhode Island,RI,44,Total,Total,2018,0.00123,0.72464,4.148213103,0.74298316,-7.455153102
+Rhode Island,RI,44,Total,Total,2019,0.00171,0.83968,4.00146881,0.798467433,-2.650113252
+South Carolina,SC,45,Total,Total,1996,,,8.978715558,0.789784879,
+South Carolina,SC,45,Total,Total,1997,,,7.386333017,0.792046396,
+South Carolina,SC,45,Total,Total,1998,0.0031,0.87672,5.654674956,0.814045836,2.323119755
+South Carolina,SC,45,Total,Total,1999,0.00265,0.89619,9.034936631,0.829519119,3.670254586
+South Carolina,SC,45,Total,Total,2000,0.00247,0.88393,6.308795512,0.842825264,2.386915807
+South Carolina,SC,45,Total,Total,2001,0.0019,0.91842,7.06765937,0.837324957,1.751844382
+South Carolina,SC,45,Total,Total,2002,0.00202,0.79675,5.842307126,0.784679322,-2.304881969
+South Carolina,SC,45,Total,Total,2003,0.00222,0.82556,6.713495444,0.819930697,0.276606975
+South Carolina,SC,45,Total,Total,2004,0.00251,0.8076,6.275111787,0.788278055,-0.721452915
+South Carolina,SC,45,Total,Total,2005,0.00243,0.84812,6.543798227,0.816395014,0.875712908
+South Carolina,SC,45,Total,Total,2006,0.00228,0.85812,5.774181608,0.786585366,-0.766889737
+South Carolina,SC,45,Total,Total,2007,0.0023,0.85689,7.984950868,0.818368332,1.42209076
+South Carolina,SC,45,Total,Total,2008,0.00235,0.90291,5.445356984,0.763001156,-0.971676159
+South Carolina,SC,45,Total,Total,2009,0.00238,0.8676,4.438032259,0.721825179,-3.417163859
+South Carolina,SC,45,Total,Total,2010,0.00236,0.7852,3.993399845,0.766352762,-3.214956571
+South Carolina,SC,45,Total,Total,2011,0.00249,0.67778,4.037676418,0.782726624,-3.891061895
+South Carolina,SC,45,Total,Total,2012,0.00292,0.57532,4.214014891,0.791886671,-4.034332086
+South Carolina,SC,45,Total,Total,2013,0.00301,0.6057,3.669543752,0.776056676,-4.212922517
+South Carolina,SC,45,Total,Total,2014,0.00324,0.72586,4.236862089,0.81561357,-0.175043345
+South Carolina,SC,45,Total,Total,2015,0.00294,0.79804,4.092652033,0.795459679,-0.590189918
+South Carolina,SC,45,Total,Total,2016,0.00287,0.79558,4.506483301,0.801130582,-0.389170828
+South Carolina,SC,45,Total,Total,2017,0.00254,0.77647,4.272625958,0.802085442,-1.479425663
+South Carolina,SC,45,Total,Total,2018,0.00259,0.83312,4.934742364,0.794945848,-0.500484239
+South Carolina,SC,45,Total,Total,2019,0.00259,0.84868,6.431897363,0.785181089,0.022409265
+South Dakota,SD,46,Total,Total,1996,,,5.855461977,0.781424149,
+South Dakota,SD,46,Total,Total,1997,,,5.71871603,0.782222222,
+South Dakota,SD,46,Total,Total,1998,0.00424,0.85891,6.035723764,0.805460751,4.45475186
+South Dakota,SD,46,Total,Total,1999,0.00432,0.84913,6.421805621,0.796658986,4.327479992
+South Dakota,SD,46,Total,Total,2000,0.00392,0.8889,6.805637142,0.832389581,5.53329583
+South Dakota,SD,46,Total,Total,2001,0.00347,0.90525,5.549017642,0.789285714,2.60142205
+South Dakota,SD,46,Total,Total,2002,0.00365,0.9401,5.178811084,0.810072816,4.140689928
+South Dakota,SD,46,Total,Total,2003,0.00338,0.92962,4.294717105,0.812274368,3.074625104
+South Dakota,SD,46,Total,Total,2004,0.00327,0.92417,5.215499561,0.830454255,3.833253938
+South Dakota,SD,46,Total,Total,2005,0.00312,0.93127,5.57838691,0.834143378,3.900965236
+South Dakota,SD,46,Total,Total,2006,0.00346,0.8742,5.191352089,0.81915493,3.079583206
+South Dakota,SD,46,Total,Total,2007,0.00337,0.86513,5.236078285,0.826010545,3.019734992
+South Dakota,SD,46,Total,Total,2008,0.00325,0.86589,4.005636172,0.82853717,2.317045518
+South Dakota,SD,46,Total,Total,2009,0.00336,0.89632,4.371384284,0.814176245,2.638655916
+South Dakota,SD,46,Total,Total,2010,0.00302,0.8663,3.831328431,0.770320197,-0.451572951
+South Dakota,SD,46,Total,Total,2011,0.00313,0.81829,3.061029968,0.809274984,0.202074796
+South Dakota,SD,46,Total,Total,2012,0.00262,0.82955,4.281604576,0.773737374,-1.568670376
+South Dakota,SD,46,Total,Total,2013,0.00334,0.83994,3.612658432,0.795968235,0.737831071
+South Dakota,SD,46,Total,Total,2014,0.0034,0.86915,4.403335653,0.805672903,2.018456262
+South Dakota,SD,46,Total,Total,2015,0.00354,0.84365,3.696773257,0.793614595,1.189435143
+South Dakota,SD,46,Total,Total,2016,0.00313,0.8968,4.079972561,0.811758055,1.912366059
+South Dakota,SD,46,Total,Total,2017,0.00278,0.92732,4.023517874,0.814438503,1.659456901
+South Dakota,SD,46,Total,Total,2018,0.00322,0.94053,4.070795654,0.804151144,2.476097012
+South Dakota,SD,46,Total,Total,2019,0.00285,0.96185,3.206885365,0.802290837,1.516559472
+Tennessee,TN,47,Total,Total,1996,,,7.965450188,0.778074374,
+Tennessee,TN,47,Total,Total,1997,,,7.506501361,0.777176286,
+Tennessee,TN,47,Total,Total,1998,0.00334,0.93502,7.123820364,0.768394935,2.661882594
+Tennessee,TN,47,Total,Total,1999,0.00245,0.92946,6.922155544,0.781220168,0.979383773
+Tennessee,TN,47,Total,Total,2000,0.00237,0.91026,6.442463242,0.780158033,0.263803177
+Tennessee,TN,47,Total,Total,2001,0.00204,0.93054,6.138983712,0.767142986,-0.794015273
+Tennessee,TN,47,Total,Total,2002,0.00216,0.9248,5.515605983,0.748577823,-1.580884676
+Tennessee,TN,47,Total,Total,2003,0.00225,0.90242,5.84646018,0.788698728,-0.06295435
+Tennessee,TN,47,Total,Total,2004,0.0027,0.85818,5.968726108,0.793464409,0.517506551
+Tennessee,TN,47,Total,Total,2005,0.00255,0.73947,6.220271314,0.78921659,-1.635970368
+Tennessee,TN,47,Total,Total,2006,0.00256,0.75489,6.238209844,0.796113921,-1.117265654
+Tennessee,TN,47,Total,Total,2007,0.00306,0.73368,5.870563903,0.786464901,-0.837416244
+Tennessee,TN,47,Total,Total,2008,0.00345,0.82817,5.377107413,0.778246206,0.918621634
+Tennessee,TN,47,Total,Total,2009,0.00377,0.66299,4.19170954,0.756883421,-2.147978062
+Tennessee,TN,47,Total,Total,2010,0.00372,0.61618,3.936707425,0.768838697,-2.620963201
+Tennessee,TN,47,Total,Total,2011,0.00356,0.55693,4.103892134,0.770194384,-3.737715743
+Tennessee,TN,47,Total,Total,2012,0.00315,0.66417,4.244411672,0.787447094,-2.348758973
+Tennessee,TN,47,Total,Total,2013,0.00278,0.61733,4.305749314,0.773939276,-4.354559849
+Tennessee,TN,47,Total,Total,2014,0.00236,0.69973,4.043433468,0.781799667,-3.88721622
+Tennessee,TN,47,Total,Total,2015,0.00245,0.78204,4.211847062,0.792834743,-1.971503508
+Tennessee,TN,47,Total,Total,2016,0.00229,0.88658,4.103364274,0.791003398,-0.888241766
+Tennessee,TN,47,Total,Total,2017,0.00258,0.89394,4.588600732,0.805700591,0.634774687
+Tennessee,TN,47,Total,Total,2018,0.00267,0.88107,4.793232236,0.795198675,0.340422548
+Tennessee,TN,47,Total,Total,2019,0.00288,0.91476,4.79604122,0.794153471,1.274506737
+Texas,TX,48,Total,Total,1996,,,6.794037044,0.809952343,
+Texas,TX,48,Total,Total,1997,,,9.886872637,0.821826661,
+Texas,TX,48,Total,Total,1998,0.00305,0.75104,7.384783384,0.793416353,0.324336302
+Texas,TX,48,Total,Total,1999,0.00278,0.77616,6.688808661,0.795153481,-0.146101083
+Texas,TX,48,Total,Total,2000,0.0029,0.77588,7.145599424,0.789443071,0.104696689
+Texas,TX,48,Total,Total,2001,0.00327,0.82617,6.660765374,0.785349194,1.31584713
+Texas,TX,48,Total,Total,2002,0.00355,0.79758,6.674634889,0.762355798,0.660312308
+Texas,TX,48,Total,Total,2003,0.0039,0.78528,6.311308405,0.77842193,1.703500243
+Texas,TX,48,Total,Total,2004,0.00393,0.7565,6.288419013,0.783461289,1.520761582
+Texas,TX,48,Total,Total,2005,0.00382,0.80111,6.656299116,0.794795591,2.525845204
+Texas,TX,48,Total,Total,2006,0.00346,0.79649,6.618312487,0.798665391,1.779660666
+Texas,TX,48,Total,Total,2007,0.00317,0.80275,6.510830425,0.795976235,1.075779728
+Texas,TX,48,Total,Total,2008,0.00326,0.77914,6.148535942,0.781486971,0.222968397
+Texas,TX,48,Total,Total,2009,0.00364,0.7985,5.210517108,0.772708537,0.620985698
+Texas,TX,48,Total,Total,2010,0.00401,0.77858,4.885236577,0.784251081,1.442446585
+Texas,TX,48,Total,Total,2011,0.00431,0.76222,5.206657244,0.789881712,2.222453859
+Texas,TX,48,Total,Total,2012,0.004,0.76369,5.518108641,0.79910547,2.033132877
+Texas,TX,48,Total,Total,2013,0.00374,0.77939,5.505193943,0.804791187,1.892672898
+Texas,TX,48,Total,Total,2014,0.00364,0.8063,5.516769134,0.80558168,2.104541451
+Texas,TX,48,Total,Total,2015,0.00385,0.80954,5.530640345,0.812309802,2.881293439
+Texas,TX,48,Total,Total,2016,0.00403,0.84586,5.317970181,0.799560571,3.253867597
+Texas,TX,48,Total,Total,2017,0.00424,0.83789,5.641719732,0.794002363,3.538832745
+Texas,TX,48,Total,Total,2018,0.00427,0.84638,5.686573031,0.790341472,3.614880309
+Texas,TX,48,Total,Total,2019,0.00407,0.83553,5.609038056,0.797994119,3.258510512
+Utah,UT,49,Total,Total,1996,,,10.09199333,0.795251726,
+Utah,UT,49,Total,Total,1997,,,10.52418548,0.766171394,
+Utah,UT,49,Total,Total,1998,0.00323,0.89229,9.227778906,0.774647887,2.937129857
+Utah,UT,49,Total,Total,1999,0.00303,0.88284,9.557146371,0.769901547,2.315238355
+Utah,UT,49,Total,Total,2000,0.00324,0.87148,9.689008965,0.782076589,3.130524278
+Utah,UT,49,Total,Total,2001,0.00295,0.86191,8.945512028,0.750468792,0.826978834
+Utah,UT,49,Total,Total,2002,0.00307,0.81202,9.118575026,0.745984067,0.259970133
+Utah,UT,49,Total,Total,2003,0.00284,0.79458,8.956683447,0.755869873,-0.215024498
+Utah,UT,49,Total,Total,2004,0.00299,0.74367,8.586846992,0.78086164,0.137077352
+Utah,UT,49,Total,Total,2005,0.00329,0.79307,9.113328253,0.776271641,1.603650361
+Utah,UT,49,Total,Total,2006,0.00331,0.81792,9.320504754,0.804156095,3.155435096
+Utah,UT,49,Total,Total,2007,0.00351,0.87628,9.314613515,0.786374008,3.80320782
+Utah,UT,49,Total,Total,2008,0.00325,0.90602,7.11520603,0.751129275,1.376997629
+Utah,UT,49,Total,Total,2009,0.00347,0.85825,5.518427008,0.710869565,-1.053277274
+Utah,UT,49,Total,Total,2010,0.00346,0.82173,5.135601795,0.740155131,-0.689556777
+Utah,UT,49,Total,Total,2011,0.00338,0.75789,4.93429468,0.767368596,-0.887628127
+Utah,UT,49,Total,Total,2012,0.00325,0.80869,5.159153634,0.766009056,-0.373937938
+Utah,UT,49,Total,Total,2013,0.00311,0.80269,5.03478693,0.778327338,-0.369317743
+Utah,UT,49,Total,Total,2014,0.00301,0.8575,4.903845204,0.818248712,1.663287162
+Utah,UT,49,Total,Total,2015,0.00275,0.83622,5.580791694,0.774336939,-0.585461242
+Utah,UT,49,Total,Total,2016,0.00282,0.88064,5.148809876,0.764454745,-0.327162882
+Utah,UT,49,Total,Total,2017,0.00296,0.90032,5.124084098,0.784863946,1.034025627
+Utah,UT,49,Total,Total,2018,0.00288,0.89508,5.6266747,0.791820192,1.258409666
+Utah,UT,49,Total,Total,2019,0.00245,0.91523,5.89839293,0.778778559,0.226339092
+Vermont,VT,50,Total,Total,1996,,,6.061973957,0.797366496,
+Vermont,VT,50,Total,Total,1997,,,5.21566743,0.818810512,
+Vermont,VT,50,Total,Total,1998,0.00391,0.72263,4.953232426,0.807568954,1.289298269
+Vermont,VT,50,Total,Total,1999,0.00409,0.77697,4.83889906,0.807333333,2.442865292
+Vermont,VT,50,Total,Total,2000,0.00375,0.78977,4.878464875,0.800417246,1.630543943
+Vermont,VT,50,Total,Total,2001,0.00355,0.77247,4.475493407,0.77692798,-0.132759374
+Vermont,VT,50,Total,Total,2002,0.00326,0.81077,4.107616965,0.786726324,-0.00520642
+Vermont,VT,50,Total,Total,2003,0.00302,0.80859,5.065888926,0.791508719,0.025157697
+Vermont,VT,50,Total,Total,2004,0.00343,0.83189,4.866757001,0.790344828,1.158988045
+Vermont,VT,50,Total,Total,2005,0.00418,0.81347,4.441296492,0.800137836,2.743773465
+Vermont,VT,50,Total,Total,2006,0.00454,0.77407,4.117888815,0.812641084,3.289440909
+Vermont,VT,50,Total,Total,2007,0.00446,0.80518,3.9119075,0.779127949,2.226615739
+Vermont,VT,50,Total,Total,2008,0.00372,0.8114,4.779292191,0.756994404,0.213611426
+Vermont,VT,50,Total,Total,2009,0.00356,0.82335,3.514629083,0.749512036,-0.802278061
+Vermont,VT,50,Total,Total,2010,0.00372,0.77114,3.340901356,0.776845638,-0.273241597
+Vermont,VT,50,Total,Total,2011,0.00403,0.73167,3.628105619,0.766859345,-0.415925968
+Vermont,VT,50,Total,Total,2012,0.00453,0.73821,3.820536984,0.808207705,2.435913338
+Vermont,VT,50,Total,Total,2013,0.0039,0.7438,3.251305473,0.781818182,-0.130563211
+Vermont,VT,50,Total,Total,2014,0.00396,0.79431,4.296129005,0.782392027,1.236570512
+Vermont,VT,50,Total,Total,2015,0.00359,0.75706,4.283319685,0.78539823,-0.039538053
+Vermont,VT,50,Total,Total,2016,0.00396,0.78272,4.233096077,0.783650458,1.083397808
+Vermont,VT,50,Total,Total,2017,0.00384,0.76546,3.776764092,0.786062718,0.447750884
+Vermont,VT,50,Total,Total,2018,0.00356,0.78723,4.334051938,0.801899593,0.984005595
+Vermont,VT,50,Total,Total,2019,0.00344,0.82306,4.242061959,0.781965007,0.461274641
+Virginia,VA,51,Total,Total,1996,,,6.005287604,0.792433326,
+Virginia,VA,51,Total,Total,1997,,,6.520985014,0.848635789,
+Virginia,VA,51,Total,Total,1998,0.00265,0.83206,6.675198865,0.753521127,-1.171511734
+Virginia,VA,51,Total,Total,1999,0.00236,0.82222,5.91471012,0.806013261,-0.33242971
+Virginia,VA,51,Total,Total,2000,0.00183,0.86257,6.164667624,0.797668664,-1.120736937
+Virginia,VA,51,Total,Total,2001,0.00186,0.91121,5.697962953,0.795123819,-0.6291531
+Virginia,VA,51,Total,Total,2002,0.00205,0.84132,5.55574387,0.764323763,-2.462838666
+Virginia,VA,51,Total,Total,2003,0.00245,0.77755,5.730301588,0.784536017,-1.683032907
+Virginia,VA,51,Total,Total,2004,0.00254,0.72409,5.728522555,0.799525348,-1.716782514
+Virginia,VA,51,Total,Total,2005,0.00252,0.7705,6.06128594,0.801132027,-0.863671719
+Virginia,VA,51,Total,Total,2006,0.00263,0.80638,6.18617425,0.789951192,-0.447325378
+Virginia,VA,51,Total,Total,2007,0.00248,0.76345,6.007482905,0.784137505,-1.719241953
+Virginia,VA,51,Total,Total,2008,0.00241,0.76805,5.639372255,0.767073818,-2.608948064
+Virginia,VA,51,Total,Total,2009,0.0023,0.74915,5.267011333,0.754018589,-3.789882169
+Virginia,VA,51,Total,Total,2010,0.00237,0.79912,4.437105629,0.770814531,-2.623031965
+Virginia,VA,51,Total,Total,2011,0.00237,0.7509,5.227032442,0.77953108,-2.667845089
+Virginia,VA,51,Total,Total,2012,0.00215,0.75861,5.019254546,0.780476808,-3.101143321
+Virginia,VA,51,Total,Total,2013,0.00214,0.79769,4.898922462,0.781799036,-2.544450439
+Virginia,VA,51,Total,Total,2014,0.00224,0.81446,3.787995009,0.770791639,-2.971264068
+Virginia,VA,51,Total,Total,2015,0.00239,0.8249,4.911258426,0.776145671,-1.786031785
+Virginia,VA,51,Total,Total,2016,0.00212,0.77637,7.168756256,0.780113816,-1.973627174
+Virginia,VA,51,Total,Total,2017,0.00214,0.79946,4.989137584,0.786763168,-2.292295026
+Virginia,VA,51,Total,Total,2018,0.00181,0.76141,4.638474697,0.783193648,-3.885728557
+Virginia,VA,51,Total,Total,2019,0.00202,0.83493,5.159967426,0.905392508,2.491734409
+Washington,WA,53,Total,Total,1996,,,6.680906676,0.705748951,
+Washington,WA,53,Total,Total,1997,,,6.665319176,0.730897436,
+Washington,WA,53,Total,Total,1998,0.00281,0.88416,6.885098037,0.73424811,-0.667732828
+Washington,WA,53,Total,Total,1999,0.00295,0.91273,6.369121502,0.706952624,-1.178872396
+Washington,WA,53,Total,Total,2000,0.0026,0.93676,6.939669524,0.693291472,-1.866108023
+Washington,WA,53,Total,Total,2001,0.00303,0.87573,6.074622243,0.693753707,-2.175429346
+Washington,WA,53,Total,Total,2002,0.00267,0.81884,4.929986688,0.684990289,-4.660092589
+Washington,WA,53,Total,Total,2003,0.00296,0.73762,5.380141102,0.724532129,-3.540586998
+Washington,WA,53,Total,Total,2004,0.00325,0.75118,5.221209505,0.689035029,-4.090483815
+Washington,WA,53,Total,Total,2005,0.00336,0.73056,5.181943345,0.703672373,-3.61979062
+Washington,WA,53,Total,Total,2006,0.00312,0.77336,5.4864786,0.726406394,-2.532931149
+Washington,WA,53,Total,Total,2007,0.0024,0.69575,5.386911915,0.742374402,-4.745807972
+Washington,WA,53,Total,Total,2008,0.00254,0.76658,5.152211192,0.725819148,-4.100963077
+Washington,WA,53,Total,Total,2009,0.00246,0.71584,3.828613921,0.707557503,-6.302043106
+Washington,WA,53,Total,Total,2010,0.0025,0.74268,3.495713224,0.807732772,-2.201719777
+Washington,WA,53,Total,Total,2011,0.00237,0.72534,3.732590048,0.745103663,-4.995950491
+Washington,WA,53,Total,Total,2012,0.00258,0.72959,3.97807297,0.71939549,-5.318970765
+Washington,WA,53,Total,Total,2013,0.00234,0.7482,3.884557477,0.727897221,-5.301075018
+Washington,WA,53,Total,Total,2014,0.0024,0.76243,4.51815149,0.867045877,0.542087112
+Washington,WA,53,Total,Total,2015,0.00238,0.81319,4.85045557,0.786259542,-1.630279752
+Washington,WA,53,Total,Total,2016,0.00269,0.8739,5.204961198,0.768470907,-0.543302386
+Washington,WA,53,Total,Total,2017,0.00315,0.9201,5.190640036,0.800572624,2.372404566
+Washington,WA,53,Total,Total,2018,0.00298,0.90131,5.083953482,0.801266268,1.691084155
+Washington,WA,53,Total,Total,2019,0.00321,0.8794,4.784571497,0.79742592,1.603970447
+West Virginia,WV,54,Total,Total,1996,,,6.037388469,0.7702407,
+West Virginia,WV,54,Total,Total,1997,,,5.200886366,0.785801341,
+West Virginia,WV,54,Total,Total,1998,0.00185,0.87649,4.797288403,0.778214826,-2.198446281
+West Virginia,WV,54,Total,Total,1999,0.0018,0.82949,4.822278851,0.781376518,-2.881141143
+West Virginia,WV,54,Total,Total,2000,0.00213,0.85081,4.278865603,0.796142433,-1.509586415
+West Virginia,WV,54,Total,Total,2001,0.00166,0.77153,4.310897534,0.771946565,-4.636308472
+West Virginia,WV,54,Total,Total,2002,0.00154,0.7773,3.778080817,0.7687434,-5.172975607
+West Virginia,WV,54,Total,Total,2003,0.00171,0.81081,4.425879893,0.772160665,-3.880590083
+West Virginia,WV,54,Total,Total,2004,0.00199,0.88965,4.756562019,0.788108108,-1.335826056
+West Virginia,WV,54,Total,Total,2005,0.00205,0.87505,4.596559611,0.780701754,-1.767086224
+West Virginia,WV,54,Total,Total,2006,0.00195,0.87939,4.726157496,0.806064645,-0.918139481
+West Virginia,WV,54,Total,Total,2007,0.00156,0.89912,3.996069904,0.786305732,-2.558661456
+West Virginia,WV,54,Total,Total,2008,0.00151,0.9447,4.202552831,0.778541953,-2.191938896
+West Virginia,WV,54,Total,Total,2009,0.00187,0.92919,3.290443912,0.768447837,-2.396239766
+West Virginia,WV,54,Total,Total,2010,0.0022,0.80011,2.717556906,0.782837787,-3.292767816
+West Virginia,WV,54,Total,Total,2011,0.00221,0.83474,2.823895478,0.790598291,-2.416642528
+West Virginia,WV,54,Total,Total,2012,0.00176,0.81908,3.474660612,0.798423891,-3.078053242
+West Virginia,WV,54,Total,Total,2013,0.00212,0.85749,3.438670834,0.768844221,-2.825086144
+West Virginia,WV,54,Total,Total,2014,0.00198,0.77588,2.771576365,0.763221154,-4.858236079
+West Virginia,WV,54,Total,Total,2015,0.0021,0.78765,3.295784588,0.780816155,-3.524236487
+West Virginia,WV,54,Total,Total,2016,0.0021,0.85663,2.949171037,0.77737359,-2.777673069
+West Virginia,WV,54,Total,Total,2017,0.00251,0.89004,2.889922092,0.792863002,-0.807217825
+West Virginia,WV,54,Total,Total,2018,0.00209,0.90403,3.002841559,0.803358209,-1.095673205
+West Virginia,WV,54,Total,Total,2019,0.00179,0.85295,3.229087792,0.799236641,-2.58354786
+Wisconsin,WI,55,Total,Total,1996,,,5.375540202,0.814896674,
+Wisconsin,WI,55,Total,Total,1997,,,5.150570248,0.820509752,
+Wisconsin,WI,55,Total,Total,1998,0.0023,0.81669,4.86213567,0.80567922,-1.023745535
+Wisconsin,WI,55,Total,Total,1999,0.00213,0.84326,4.794412401,0.864097608,1.152855188
+Wisconsin,WI,55,Total,Total,2000,0.00277,0.87489,4.553778294,0.836200023,1.904776366
+Wisconsin,WI,55,Total,Total,2001,0.00277,0.85109,4.247216717,0.808040437,0.359454612
+Wisconsin,WI,55,Total,Total,2002,0.0032,0.82239,4.522730453,0.810021402,1.089541359
+Wisconsin,WI,55,Total,Total,2003,0.00272,0.7238,4.195683204,0.828732527,-0.895734754
+Wisconsin,WI,55,Total,Total,2004,0.0028,0.70664,4.71978188,0.831722208,-0.630152281
+Wisconsin,WI,55,Total,Total,2005,0.00296,0.73625,4.880849221,0.826174076,0.031818052
+Wisconsin,WI,55,Total,Total,2006,0.00299,0.79797,5.018237951,0.825367218,1.048684331
+Wisconsin,WI,55,Total,Total,2007,0.00295,0.80123,4.575838454,0.818021201,0.538002823
+Wisconsin,WI,55,Total,Total,2008,0.00241,0.81384,3.970220862,0.798272598,-1.489331989
+Wisconsin,WI,55,Total,Total,2009,0.00252,0.78974,3.777386271,0.777312627,-2.472963189
+Wisconsin,WI,55,Total,Total,2010,0.00217,0.80163,3.181808197,0.804480382,-2.321768924
+Wisconsin,WI,55,Total,Total,2011,0.00237,0.73271,3.647493343,0.809031044,-2.525938943
+Wisconsin,WI,55,Total,Total,2012,0.00198,0.77696,3.719781257,0.820501914,-2.277599371
+Wisconsin,WI,55,Total,Total,2013,0.00195,0.78536,4.073906603,0.803756556,-2.692144538
+Wisconsin,WI,55,Total,Total,2014,0.00166,0.71176,3.85515146,0.824840442,-3.743241755
+Wisconsin,WI,55,Total,Total,2015,0.00191,0.74194,4.102108336,0.814643279,-3.007980256
+Wisconsin,WI,55,Total,Total,2016,0.00209,0.66388,4.250577034,0.79841362,-4.311720041
+Wisconsin,WI,55,Total,Total,2017,0.00258,0.73271,4.171368588,0.792860371,-2.432373036
+Wisconsin,WI,55,Total,Total,2018,0.00245,0.68433,3.872985632,0.797314968,-3.408171368
+Wisconsin,WI,55,Total,Total,2019,0.00225,0.84406,3.801674695,0.786032028,-1.930238477
+Wyoming,WY,56,Total,Total,1996,,,7.268004597,0.761294673,
+Wyoming,WY,56,Total,Total,1997,,,6.768808318,0.767132867,
+Wyoming,WY,56,Total,Total,1998,0.00368,0.80793,6.882822895,0.768369489,1.422452336
+Wyoming,WY,56,Total,Total,1999,0.00424,0.78562,6.445971776,0.751903553,1.534166113
+Wyoming,WY,56,Total,Total,2000,0.00459,0.85747,6.544608537,0.782380013,4.574490201
+Wyoming,WY,56,Total,Total,2001,0.00423,0.89026,8.199621152,0.782579338,4.991315197
+Wyoming,WY,56,Total,Total,2002,0.00354,0.92819,7.961729301,0.756112469,2.91498189
+Wyoming,WY,56,Total,Total,2003,0.0034,0.88749,6.721580763,0.785022595,2.534982561
+Wyoming,WY,56,Total,Total,2004,0.00378,0.88726,6.841404344,0.808333333,4.308980576
+Wyoming,WY,56,Total,Total,2005,0.0043,0.86973,7.563837505,0.801154586,5.259628975
+Wyoming,WY,56,Total,Total,2006,0.00398,0.87813,7.750632812,0.805392732,4.90947855
+Wyoming,WY,56,Total,Total,2007,0.00396,0.86487,7.297018374,0.790278536,3.901143038
+Wyoming,WY,56,Total,Total,2008,0.00338,0.88257,6.689949326,0.757349011,1.365139894
+Wyoming,WY,56,Total,Total,2009,0.00345,0.878,5.038840692,0.72875817,-0.343400005
+Wyoming,WY,56,Total,Total,2010,0.00276,0.81334,4.699842512,0.766750948,-1.575252721
+Wyoming,WY,56,Total,Total,2011,0.00254,0.80443,5.441574901,0.79057971,-0.98114404
+Wyoming,WY,56,Total,Total,2012,0.00224,0.82972,4.990413063,0.783469945,-1.740520546
+Wyoming,WY,56,Total,Total,2013,0.00275,0.88934,5.169019553,0.758106355,-0.583431547
+Wyoming,WY,56,Total,Total,2014,0.00317,0.88685,4.365432913,0.783625731,0.923874662
+Wyoming,WY,56,Total,Total,2015,0.00386,0.89478,5.635120805,0.799459824,3.737738073
+Wyoming,WY,56,Total,Total,2016,0.00453,0.86398,4.594199053,0.765306122,3.040604625
+Wyoming,WY,56,Total,Total,2017,0.00471,0.85588,4.698314652,0.773662551,3.681920628
+Wyoming,WY,56,Total,Total,2018,0.00445,0.88283,4.771459883,0.814126394,5.051202487
+Wyoming,WY,56,Total,Total,2019,0.00393,0.91765,5.162770687,0.799132052,4.015539546

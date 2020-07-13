@@ -1,0 +1,30 @@
+url:
+  pptxhandler/table:
+    pattern: /$YAMLURL/output.pptx
+    handler: PPTXHandler
+    kwargs:
+      version: 2
+      source: $YAMLPATH/template.pptx
+      data:
+        sales:
+          url: $YAMLPATH/sales.csv
+      rules:
+        - Table 1:
+            table:
+              data: sales
+              # align:
+              #   Sales: right
+              #   Margin: right
+              #   Growth %: right
+              text:
+                month: cell.val
+                Sales: cell.val
+                Margin: f'{cell.val:.1%}'
+                Growth %: f'{cell.val:.1%}'
+              width:
+                Sales: 1"
+                Margin: 1"
+              fill:
+                visitors: color(visitor(cell.val))
+                leads: color((cell.val - 350.0) / 200)
+                cart: color((cell.val - 200.0) / 40)

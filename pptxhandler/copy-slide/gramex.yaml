@@ -9,24 +9,23 @@ url:
         sales:
           url: '$YAMLPATH/sales.csv'
           transform: data.set_index('month')
-        max_sales: {function: sales.values.max()}
-      # Copy slides, update data and apply morph transition
+        max_visitors: {function: sales.values.max()}
       rules:
         - copy-slide: sales
-          Month:
-              text: 'copy.key'
+          transition:
+            type: f'morph'
+            duration: 1
+          '!!Visitors Bar':
+              width: (copy.val['visitors'] / max_visitors) * 3
+          '!!Leads Bar':
+              width: (copy.val['leads'] / max_visitors) * 3
+          '!!Cart Bar':
+              width: (copy.val['cart'] / max_visitors) * 3
           '!!Visitors Value':
               text: copy.val['visitors']
           '!!Leads Value':
               text: copy.val['leads']
           '!!Cart Value':
               text: copy.val['cart']
-          '!!Visitors Bar':
-              width: (copy.val['visitors'] / max_sales) * 3
-          '!!Leads Bar':
-              width: (copy.val['leads'] / max_sales) * 3
-          '!!Cart Bar':
-              width: (copy.val['cart'] / max_sales) * 3
-          transition:            # All slides have morph transition for a duration of 1 second
-            type: f'morph'
-            duration: 1
+          Month:
+              text: 'copy.key'
