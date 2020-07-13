@@ -27,6 +27,7 @@ TODO
 !formhandler/flags.csv
 !pptxhandler/**/*.ppt*
 !pptxhandler/**/*.csv
+!pptxhandler/**/*.xls*
 
 # Don't commit ZIP files
 *.7z
