@@ -1024,17 +1024,33 @@
     "fast-persistent-distributed-cache": {
       "Fast, persistent, distributed cache": -1
     },
-    "how-to-upgrade": {
-      "How to upgrade": -1
+    "how-to-install": {
+      "How to install": -1
     },
-    "reduce-login-issues-on-shared-servers": {
-      "Reduce login issues on shared servers": -1
+    "how-to-upgrade": {},
+    "improved-gramex-init": {
+      "Improved ": -1
     },
+    "reduce-login-issues-on-shared-servers": {},
     "statistics": {
       "Statistics": -1
     },
     "use-python-expressions-in-yaml": {
       "Use Python expressions in YAML": -1
+    },
+    "what-next": {
+      "What next": -1
+    }
+  },
+  "1.61.1": {
+    "": {
+      "Gramex 1.61.1 release notes": -1
+    },
+    "how-to-upgrade": {
+      "How to upgrade": -1
+    },
+    "statistics": {
+      "Statistics": -1
     }
   },
   "about": {
@@ -1605,6 +1621,18 @@
   "copy-slide": {
     "copy-slide-example": {
       "Copy slide example": -1
+    },
+    "create-the-data": {
+      "Create the data": -1
+    },
+    "create-the-rules": {
+      "Create the rules": -1
+    },
+    "create-the-source-template": {
+      "Create the source template": -1
+    },
+    "see-the-result": {
+      "See the result": -1
     }
   },
   "dashboard": {
@@ -1662,6 +1690,23 @@
     "datahandler-templates": {},
     "datahandler-update": {},
     "datahandler-usage": {}
+  },
+  "death": {
+    "create-the-data": {
+      "Create the data": -1
+    },
+    "create-the-rules": {
+      "Create the rules": -1
+    },
+    "create-the-source-template": {
+      "Create the source template": -1
+    },
+    "see-the-result": {
+      "See the result": -1
+    },
+    "shifting-causes-of-death": {
+      "Shifting Causes of Death": -1
+    }
   },
   "debug": {
     "": {
@@ -1879,6 +1924,23 @@
     },
     "test-email-service": {
       "Test email service": -1
+    }
+  },
+  "entrepreneurship": {
+    "create-the-data": {
+      "Create the data": -1
+    },
+    "create-the-rules": {
+      "Create the rules": -1
+    },
+    "create-the-source-template": {
+      "Create the source template": -1
+    },
+    "rate-of-new-entrepreneurs": {
+      "Rate of New Entrepreneurs": -1
+    },
+    "see-the-result": {
+      "See the result": -1
     }
   },
   "exercises": {
@@ -2631,14 +2693,29 @@
     "": {
       "PPTXHandler generates PPTX": -1
     },
+    "about": {
+      "About": -1
+    },
+    "bar-chart-race": {
+      "Bar chart race": -1
+    },
     "bullet": {},
     "calendarmap": {},
+    "causes-of-death": {
+      "Causes of death": -1
+    },
     "chart": {},
     "clone-shapes": {
       "Clone shapes": -1
     },
+    "color-scales": {
+      "Color scales": -1
+    },
     "color-units": {
       "Color units": -1
+    },
+    "command-line": {
+      "Command line": -1
     },
     "commands": {
       "Commands": -1
@@ -2685,6 +2762,15 @@
       "PPTGen Library": -1
     },
     "pptx-url-arguments": {},
+    "rate-of-entrepreneurship": {
+      "Rate of Entrepreneurship": -1
+    },
+    "reference": {
+      "Reference": -1
+    },
+    "reference_1": {
+      "Reference": -1
+    },
     "register": {
       "Register": -1
     },
@@ -2709,7 +2795,9 @@
     "support": {
       "Support": -1
     },
-    "table": {},
+    "table": {
+      "Table": -1
+    },
     "templates": {},
     "text": {
       "Text": -1
@@ -2721,9 +2809,10 @@
       "Transition": -1
     },
     "treemap": {},
-    "units": {
-      "Units": -1
+    "tutorials": {
+      "Tutorials": -1
     },
+    "units": {},
     "usage": {
       "Usage": -1
     }
@@ -2951,6 +3040,11 @@
     },
     "installation": {
       "Installation": -1
+    }
+  },
+  "table": {
+    "table-example": {
+      "Table example": -1
     }
   },
   "test": {

@@ -44,16 +44,23 @@ The tests are in 2 folders:
 - [tests/](https://github.com/gramener/gramex/tree/master/tests/)
   has URL-based tests that run after starting the Gramex server.
 
-To run the tests, just run `python setup.py nosetests` for the first time.
-Thereafter, you can run `nosetests`.
+Run `make test-setup` for the first time. Then you can run `nosetests`.
 
-The tests take a long time. To test a subset, use `nosetests tests.<module>:<ClassName>.<method>`. For example:
+The tests take long. To test a subset, use `nosetests tests.<module>:<ClassName>.<method>`. For example:
 
 ```bash
+make test-setup                             # Run once to install dependencies
 nosetests testlib                           # Only test the libraries
 nosetests testlib.test_data                 # Only run testlib/test_data.py
 nosetests testlib.test_data:TestFilter      # Only run the TestFilter class
 nosetests testlib.test_data:TestFilter.test_get_engine      # Run a single method
+```
+
+You can also see the code coverage and how long each test takes
+
+```bash
+NOSE_WITH_COVERAGE=1 nosetests      # Show code coverage. Store line-by-line results in htmlcov/
+NOSE_WITH_TIMER=1 nosetests         # Show time taken for each test
 ```
 
 ## Update Gramex Community Edition
@@ -98,6 +105,7 @@ Check [build errors](https://travis-ci.com/gramener/gramex).
 Test the `dev` branch locally on Python >= 3.7:
 
 ```bash
+make test
 ```
 
 Update the following and commit to `dev` branch:
@@ -107,7 +115,7 @@ Update the following and commit to `dev` branch:
     - `cd gramex/apps/ui/; yarn upgrade; cd ../../..` -- upgrade UI components
     - `gramex/release.json` -- update the version number
     - `pkg/docker-py3/Dockerfile` -- update the version number
-    - `gramex/apps/apps.yaml` -- update the version number on the guide
+    - `gramex/apps.yaml` -- update the version number on the guide
 - In [gramex-guide][gramex-guide]
     - `release/README.md` -- add release entry
     - `release/1.xx/README.md` -- add guide release notes. Run `make stats` for code size stats. Take coverage stats from Travis

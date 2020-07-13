@@ -211,9 +211,11 @@ Gramex renders RMarkdown files as HTML outputs using
 [`FileHandler`](../filehandler/#transforming-content)
 transform [`rmarkdown`](http://github.com/gramener/gramex/blob/master/gramex/transforms/rmarkdown.py).
 
+**Note**: This requires `conda install -c r r-rmarkdown` to install RMarkdown.
+
 Also saves the HTML file to the directory where `.Rmd` files are located.
 
-Use below configuration to renders all `*.Rmd` files as HTML
+Use below configuration to renders all `*.Rmd` files as HTML:
 
 ```yaml
   r/rmarkdown:
@@ -235,8 +237,6 @@ Use below configuration to renders all `*.Rmd` files as HTML
 </div>
 
 <iframe class="w-100" src="RMarkdown-story.Rmd" style="height: 600px !important"></iframe>
-
-Note: Requires `conda install -c r r-rmarkdown` to be installed
 
 To learn more about Rmarkdown, head over to
 [RStudio's: Get started with Rmarkdown](https://rmarkdown.rstudio.com/lesson-1.html).
