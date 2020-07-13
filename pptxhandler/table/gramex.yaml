@@ -12,19 +12,15 @@ url:
         - Table 1:
             table:
               data: sales
-              # align:
-              #   Sales: right
-              #   Margin: right
-              #   Growth %: right
               text:
                 month: cell.val
                 Sales: cell.val
                 Margin: f'{cell.val:.1%}'
                 Growth %: f'{cell.val:.1%}'
               width:
-                Sales: 1"
-                Margin: 1"
+                Sales: 1.5"
+                Margin: 1.5"
               fill:
-                visitors: color(visitor(cell.val))
-                leads: color((cell.val - 350.0) / 200)
-                cart: color((cell.val - 200.0) / 40)
+                Sales: "'#ffdddd' if cell.row['Growth %'] < 0 else '#ddddff'"
+                Margin: "'#ffdddd' if cell.row['Growth %'] < 0 else '#ddddff'"
+                Growth %: "'#ffdddd' if cell.row['Growth %'] < 0 else '#ddddff'"

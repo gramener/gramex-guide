@@ -5,3 +5,5 @@
 [This is the configuration](gramex.yaml.source){.source}
 
 [This is the output PPTX](output.pptx){.slide}
+
+Source: https://www.bbc.com/news/world-us-canada-50097838

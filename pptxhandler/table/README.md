@@ -1,4 +1,4 @@
-# Text example
+# Table example
 
 [This is the template PPTX](template.pptx){.slide}
 

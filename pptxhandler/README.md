@@ -14,10 +14,11 @@ PPTXHandler makes it easy for users to:
 
 Here are examples of what PPTXHandler can create. Click to see details.
 
+[![Bar chart race](copy-slide/output.gif){: height=180}](copy-slide/)
 [![Rate of entrepreneurship](entrepreneurship/output.svg){: height=180}](entrepreneurship/)
-[![App store sales](appstore.png)](https://gramener.com/appstore/appstore.pptx)
-[![FMCG revenue breakup](fmcg.png)](https://gramener.com/fmcg/)
-[![Bar chart race](bar-chart-race.gif)](https://blog.gramener.com/bar-chart-race-in-powerpoint/)
+[![Causes of death](death/output.gif){: height=180}](death/)
+[![App store sales](appstore.png){: height=180}](https://gramener.com/appstore/appstore.pptx)
+[![FMCG revenue breakup](fmcg.png){: height=180}](https://gramener.com/fmcg/)
 
 ## About
 
@@ -72,7 +73,13 @@ cart: 142
 
 ## Tutorials
 
-Here are some tutorials
+Here are some tutorials:
+
+### Bar chart race
+
+Create a [bar chart race in PowerPoint](https://blog.gramener.com/bar-chart-race-in-powerpoint/) from data.
+
+[![Bar chart race](copy-slide/output.gif){: height=180}](copy-slide/)
 
 ### Rate of Entrepreneurship
 
@@ -80,8 +87,11 @@ Re-create a portion of the [Kauffman Indicators of Rate of New Entrepreneurship]
 
 [![Rate of entrepreneurship](entrepreneurship/output.svg){: width=320}](entrepreneurship/)
 
-### Bar chart race
+### Causes of death
 
+Re-create the [Shifting Causes of Death](https://flowingdata.com/2018/10/02/shifting-death/) visualization in PowerPoint.
+
+[![Shifting causes of death](death/output.gif){: width=320}](death/)
 
 
 ## Usage
@@ -104,7 +114,59 @@ Less used keys are:
   - If `only=3`, only the 3rd slide will be used
   - If `only=[3, 5, 6]`, only the 3rd, 5th and 6th slide will be used
 
+## Command line
+
+Run `slidesense` to run `PPTXHandler` from the command line. It renders any `gramex.yaml` in the
+current folder, creating an `output.pptx` (or the file specified by `target:` in `gramex.yaml`).
+It also opens the target PPTX in PowerPoint, if possible.
+
+You can specify the path to your `gramex.yaml`, and also which PPTXHandler to run as the
+command-line arguments. For example:
+
+```bash
+slidesense                      # Render first PPTXHandler in gramex.yaml
+slidesense gramex.yaml my-url   # Render first PPTXHandler in gramex.yaml matching *my-url*
+```
+
+The second command above will render the 2nd PPTXHandler in this configuration:
+
+```yaml
+url:
+  first-pattern:
+    ...
+  my-url-pattern:
+    pattern: ...
+    handler: PPTXHandler
+    kwargs: ...
+```
+
+Run `slidesense config.yaml` to render `config.yaml` with a simplified configuration that just
+contains the `kwargs` of a PPTXHandler. Here is a sample `config.yaml`:
+
+```yaml
+source: $YAMLPATH/template.pptx
+rules:
+  - Title 1: {text: New title}
+```
+
+You can override configurations by adding these options at the end:
+
+- `--source=...` overrides source PPTX path in config file
+- `--target=...` overrides target PPTX path in config file (defaults to output.pptx)
+- `--data=...` overrides data file in config path
+- `--no-open` don't open target PPTX after generating it
+
+Examples:
+
+```bash
+slidesense --source=my-template.pptx
+slidesense config.yaml --target=my-output.pptx --no-open
+slidesense gramex.yaml my-url --data=my-data.xlsx
+```
+
 ------------------------------------------------------------------------
+
+# Reference
 
 [TOC]
 
@@ -424,8 +486,8 @@ content, or add new content (like charts). Here are some common commands:
 - `image-height`: sets height in [length units](#length-units), e.g. `image-height: 3 inches`. Retains aspect ratio and position (top and left). May change the width
 
 <div class="example">
-  <a class="example-demo" href="clone-shapes/">Image example (from Clone shape example)</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/clone-shapes/">Source</a>
+  <a class="example-demo" href="clone-shape/">Image example (from Clone shape example)</a>
+  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/clone-shape/">Source</a>
 </div>
 
 ## Link
@@ -532,6 +594,7 @@ The `table:` command supports these sub-commands:
   - If `data` has less rows, the last PPTX table rows are deleted. Same for columns
   - If `data` is not specified, it's auto-populated from the PPTX table text
 - `header-row`: turns header row on or off, e.g. `header-row: false`
+  - If `header-row` is a list, it sets the header row text, e.g. `header-row: ['Sales', None, 'Growth <a sub="y">%</a>']`. `None` retains the existing header
 - `total-row`: turns special formatting for last row on or off, e.g. `total-row: true`
 - `first-column`: turns special formatting for first column on or off, e.g. `first-column: true`
 - `last-column`: turns special formatting for last column on or off, e.g. `last-column: true`
