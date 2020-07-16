@@ -629,6 +629,8 @@ With this, you can log into `/db` as `alpha` and `alpha`, etc. It displays a
 [minimal HTML template][auth-template] that asks for an ID and password, and
 matches it with the `auth.xlsx` database.
 
+**Note** - Do not name user column as `_user_id` as it's an internal variable.
+
 <div class="example">
   <a class="example-demo" href="dbsimple">DBAuth example</a>
   <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
