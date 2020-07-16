@@ -48,6 +48,12 @@ If Gramex does not run:
 - If UI components are not working, install [node.js][nodejs], ensure that it's
   on your PATH, and run `gramex setup --all` to set up all apps again.
 
+If Gramex does not run and if you use `Python 3.8`:
+
+- Gramex is built on top of Tornado.
+- Tornado has a known issue with `asyncio` in Python 3.8. Read [Tornado #2751](https://github.com/tornadoweb/tornado/issues/2751). Multiple Gramex users have reported this, see: [Gramex #249](https://github.com/gramener/gramex/issues/249), [Gramex #260](https://github.com/gramener/gramex/issues/260).
+- Downgrade Python to 3.7, redo the installation process.
+
 ## Uninstall Gramex
 
 To remove Gramex, run `pip uninstall gramex`
