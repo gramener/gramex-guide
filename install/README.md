@@ -45,12 +45,14 @@ If Gramex does not install:
 
 If Gramex does not run:
 
-- Tru uninstalling and re-installing Gramex. Stop Gramex and all other Python
-  applications when re-installing.
-- Make sure that typing `gramex` runs the Gramex executable, and is not aliased
-  to a different command.
-- If UI components are not working, install [node.js][nodejs], ensure that it's
-  on your PATH, and run `gramex setup --all` to set up all apps again.
+- If you're using `Python 3.8`, install Python 3.7 instead and re-install Gramex. Gramex currently
+  does not work with Python 3.8.
+- Try uninstalling and re-installing Gramex. Stop Gramex and all other Python applications when
+  re-installing.
+- Make sure that typing `gramex` runs the Gramex executable, and is not aliased to a different
+  command.
+- If UI components are not working, install [node.js][nodejs], ensure that it's on your PATH, and
+  run `gramex setup --all` to set up all apps again.
 
 ## Uninstall Gramex
 
