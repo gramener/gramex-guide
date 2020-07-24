@@ -189,7 +189,7 @@ A rule can pick one or more shape names, and apply one or more [commands](#comma
 
 ## Shapes
 
-A `rule:` is a dictionary of shape names.
+Each rule in `rules:` is a dictionary of shape names.
 
 All shapes in PowerPoint have names. To see them in PowerPoint, select
 Home tab > Drawing group > Arrange drop-down > Selection pane. Or press <kbd>Alt + F10</kbd>.
@@ -207,11 +207,11 @@ anything. For example:
 ```yaml
 rules:
   - 'TextBox ?':      # Select TextBox 1, TextBox 2, ... but not TextBox 10, ...
-      color: red      #     ... and set font color to red
+      color: f'red'  #     ... and set font color to red
   - 'Text *':         # Select ALL shapes starting with Text (case-sensitive)
-      color: red
+      color: f'red'
   - '*box*':          # Select ALL shapes with "box" anywhere in the text (case-sensitive)
-      color: red
+      color: f'red'
 ```
 
 You can also change the shape name with the `name` command, e.g. `name: New TextBox`. This is
@@ -221,8 +221,8 @@ beginning with `!!`. For example:
 ```yaml
 rules:
   - Bar:
-      name: !!Bar         # Renames the shape "Bar" to "!!Bar"
-      text: New text
+      name: f'!!Bar'    # Renames the shape "Bar" to "!!Bar"
+      text: f'New text'
 ```
 
 This ensures that the morph will match the shape even if it's text changes.
@@ -256,9 +256,9 @@ By default, rules are applied to all slides. You can restrict changes to specifi
     - e.g. `slide-number: 1` picks only the 1st slide
     - e.g. `slide-number: [2, 4]` picks the 2nd and 4th slide (not the 3rd)
 - `slide-title`: apply rule to specific slide titles
-    - e.g. `slide-title: Business Update` picks all slides with the *exact* title "Business Update" (case-insensitive)
-    - e.g. `slide-title: *Update*` picks all slides with "Update" anywhere in the title (case-insensitive)
-    - e.g. `slide-title: Day ?` picks Day 1, Day 2, ... but not Day 10, ...
+    - e.g. `slide-title: f'Business Update'` picks all slides with the *exact* title "Business Update" (case-insensitive)
+    - e.g. `slide-title: f'*Update*'` picks all slides with "Update" anywhere in the title (case-insensitive)
+    - e.g. `slide-title: f'Day ?'` picks Day 1, Day 2, ... but not Day 10, ...
     - Use `?` to match a single char, and `*` to match anything
 
 For example:
@@ -269,9 +269,9 @@ target: output.pptx       # required path to save output as
 rules:
   - slide-number: [2, 4]            # Pick the 2nd and 4th slide (not the 3rd)
     Title: {text: f'X'}
-  - slide-title: 'Business Update'  # Pick the slide titled "Business Update" (case-insensitive)
+  - slide-title: f'Business Update' # Pick the slide titled "Business Update" (case-insensitive)
     Title: {text: f'X'}
-  - slide-title: 'Day ?'            # Picks the slide titled "Day 1" or "Day 2", etc, not "Day 10"
+  - slide-title: f'Day ?'           # Picks the slide titled "Day 1" or "Day 2", etc, not "Day 10"
     Title: {text: f'X'}
 ```
 
@@ -299,7 +299,8 @@ rules:
 ```
 
 You can specify transitions by name (with space-separated options). The transition names and their
-options are below, e.g. `transition: airplane left`, `transition: fly-through in bounce`. These are similar to PowerPoint's UI.
+options are below, e.g. `transition: f'airplane left'`, `transition: f'fly-through in bounce'`.
+These are similar to PowerPoint's UI.
 
 - `none`: (removes all transitions)
 - `airplane`: left|right
@@ -376,7 +377,7 @@ options are below, e.g. `transition: airplane left`, `transition: fly-through in
 
 You can also specify transitions as a dict with 3 keys:
 
-- `type`: transition name, followed by options, e.g. `type: morph`
+- `type`: transition name, followed by options, e.g. `type: f'morph'`
 - `duration`: length of the transition in seconds (default: `0.3` seconds), e.g. `duration: 3`
 - `advance`: auto-advance timeto the next slide, in seconds  (default: `f'none'`), e.g. `advance: 3`
 
@@ -437,29 +438,30 @@ content, or add new content (like charts). Here are some common commands:
 
 ## Position
 
-- `top`: sets top (Y) position in [length units](#length-units), e.g. `f'3 inches'`
-- `left`: sets left (X) position in [length units](#length-units), e.g. `f'3 inches'`
-- `width`: sets width in [length units](#length-units), e.g. `f'3 inches'`
-- `height`: sets height in [length units](#length-units), e.g. `f'3 inches'`
+- `top`: sets top (Y) position in [length units](#length-units), e.g. `top: f'3 inches'`
+- `left`: sets left (X) position in [length units](#length-units), e.g. `left: f'3 inches'`
+- `width`: sets width in [length units](#length-units), e.g. `width: f'3 inches'`
+- `height`: sets height in [length units](#length-units), e.g. `height: f'3 inches'`
 
 <div class="example">
   <a class="example-demo" href="position/">Position examples</a>
   <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/position/">Source</a>
 </div>
 
-- `add-top`: moves top (Y) position +/- in `[length units](#length-units)`, e.g. `f'-3 inches'`
-- `add-left`: moves left (X) position +/- in `[length units](#length-units)`, e.g. `f'+3 inches'`
-- `add-width`: adds width +/- in `[length units](#length-units)`, e.g. `f'-3 inch'`
-- `add-height`: adds width +/- in `[length units](#length-units)`, e.g. `f'+3 inches'`
+- `add-top`: moves top (Y) position +/- in `[length units](#length-units)`, e.g. `add-top: f'-3 inches'`
+- `add-left`: moves left (X) position +/- in `[length units](#length-units)`, e.g. `add-left: f'+3 inches'`
+- `add-width`: adds width +/- in `[length units](#length-units)`, e.g. `f'add-width: -3 inch'`
+- `add-height`: adds width +/- in `[length units](#length-units)`, e.g. `f'add-height: +3 inches'`
 
 <div class="example">
   <a class="example-demo" href="add-position/">Add position examples</a>
   <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/add-position/">Source</a>
 </div>
 
-- `rotation`: sets the rotation in angles, e.g. `30`
-- `add-rotation`: adds the rotation in angles, e.g. `-30`
-- `zoom`: increases/decreases width & height around the center, e.g. `1.2` increases the size to 120%, `0.6` shrinks it to 60% around the center
+- `rotation`: sets the rotation in angles, e.g. `rotation: 30`
+- `add-rotation`: adds the rotation in angles, e.g. `rotation: -30`
+- `zoom`: increases/decreases width & height around the center,
+  e.g. `zoom: 1.2` increases the size to 120%, `zoom: 0.6` shrinks it to 60% around the center
 - `adjustment1`: sets 1st shape adjustment
 - `adjustment2`: sets 2nd shape adjustment
 - `adjustment3`: sets 3rd shape adjustment
@@ -494,7 +496,7 @@ content, or add new content (like charts). Here are some common commands:
 
 - `link`: on click, shape opens another slide, file or URL, e.g. `link: 4`, `link: f'https://gramener.com/'`
 - `hover`: on hover, shape opens another slide, file or URL, e.g. `link: 4`, `link: f'https://gramener.com/'`
-- `tooltip`: adds a text tooltip, e.g. `f'Title text'`. Does not work with `hover:` nor `link: back`
+- `tooltip`: adds a text tooltip, e.g. `f'Title text'`. Does not work with `hover: f'back'` nor `link: f'back'`
 
 `link` and `hover` can be specified as a:
 
@@ -513,7 +515,7 @@ content, or add new content (like charts). Here are some common commands:
 ## Text
 
 - `text`: sets the shape's [text and format](#text-format), e.g. `text: f'<p><a italic="y">New</a> <a bold="y">text</a></p>'`
-- `replace`: updates the shape's [text and format](#text-format), e.g. `replace: {old: new, (rabbit|fox): <a color="red">animal</a>}`.
+- `replace`: updates the shape's [text and format](#text-format), e.g. `replace: {old: f'new', (rabbit|fox): f'<a color="red">animal</a>'}`.
     - Replace only works within a run, i.e. for words that have the same formatting. For example, in
       "some<u>where</u>", "where" is underlined. You cannot replace "somewhere". But you can replace
       "some" and "where" independently.
