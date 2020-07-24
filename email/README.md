@@ -214,3 +214,90 @@ email:
 
 When an email is sent via the `email-test` service above, it will not actually
 be sent. The email contents will be printed on the console.
+
+## Sending an Email to the user an OTP to log in
+
+One of the most common use cases of using an Email Service is to enable 2FA authentication. Here is a small example of how you can setup share OTP using Email with Gramex.
+
+Here are the steps that need to be followed to execute this exercise successfully:-
+
+- Create an event using an object which triggers the event of sending the OTP. This is usually triggered on a click of a button but can be based on any other object.
+- Route the event to an endpoint which triggers the execution of the function which sends the mail.
+- Create a function that fetches the details required like Email ID, OTP number generator from specific database or service, and send a mail.
+
+For this example we need to work on 3 files:-
+
+- gramex.yaml : To create specific endpoints to send mail to a particular address
+- index.html : The HTML page from which the event is fired
+- app.py : Add a Python function to send the Email
+
+**Step 1 - Create a Event to which the OTP should be generated**
+
+```html
+<form action="sendmail" method="POST">
+  <label for="destemail">Your Email ID : </label>
+  <!-- Get the Destination Email Address to which the OTP is to be sent -->
+  <input
+    type="text"
+    id="destemail"
+    name="destemail"
+    value="name@gmail.com"
+  /><br />
+  <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}" />
+  <!-- Submut button creates request to the server to base_url/sendmail -->
+  <button type="submit" class="btn btn-submit">Send Mail</button>
+</form>
+```
+
+**Step 2 - Create an endpoints**
+
+```yaml
+url:
+  myapp-root:
+    pattern: /$YAMLURL/ # Serve the base page where the an request call for mail would be fired
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/index.html
+      template: true
+
+  myapp-sendmail:
+    pattern: /$YAMLURL/sendmail # Capture the request call and execute the function to send the mail
+    handler: FunctionHandler
+    kwargs:
+      function: mailapp.sendmail
+
+email:
+  gramex-guide-gmail:
+    type: gmail
+    email: $GMAILID # Source email ID from which e-mails are to be send
+    password: $GMAILPASS # Source Email ID's Password
+```
+
+**Step 3 - Create a Python function to send the mail**
+
+```python
+import os
+import gramex
+from random import randint #Generate a Random Integer
+
+
+def sendmail(handler):
+    """
+    Sends a mail to the ID given in the form.
+    """
+
+    mailer = gramex.service.email['gramex-guide-gmail']
+    mailer.mail(
+
+        # Capture the email Address from Input Field.
+        # Alternatively, this address can be queried from a database
+        to=handler.get_argument('destemail'),
+
+        # Set the Subject Line
+        subject='OTP - ABC Services',
+
+        # Compose the body of the mail
+        body='Your OTP to login : <strong>' +
+        str(randint(1000, 9999)) + '</strong>'
+    )
+```
