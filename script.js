@@ -53,6 +53,9 @@ $('a.source').each(function () {
   var $this = $(this)
   $.get(this.href)
     .done(function (source) {
-      $('<div class="codehilite"><pre><code>' + source + '</code></pre></pre>').insertAfter($this)
+      $('<div class="codehilite"><pre><code></code></pre></pre>')
+        .insertAfter($this)
+        .find('code')
+        .text(source)
     })
 })

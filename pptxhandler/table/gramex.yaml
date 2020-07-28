@@ -8,19 +8,39 @@ url:
       data:
         sales:
           url: $YAMLPATH/sales.csv
+          transform: data.insert(3, 'Bar 2018', data['FY2018']) or
+                     data.insert(5, 'Bar 2017', data['FY2017']) or
+                     data.insert(6, 'Growth', data['FY2018'] / data['FY2017'] - 1) or
+                     data
       rules:
-        - Table 1:
+        - Sales Table:
             table:
               data: sales
+              vertical-align: f'middle'
+              font-size: f'11 pt'
+              header-row:
+                - Name
+                - Indication
+                - '<p align="right">FY2018</p>'
+                - ''
+                - '<p align="right">FY2017</p>'
+                - ''
+                - '<p align="right">Growth</p>'
               text:
-                month: cell.val
-                Sales: cell.val
-                Margin: f'{cell.val:.1%}'
-                Growth %: f'{cell.val:.1%}'
+                Name: cell.val
+                Indication: cell.val
+                FY2018: f'<p align="right">{cell.val:,d}</p>'
+                Bar 2018: f'<a color="accent_1" font-name="Arial" font-size="6pt">' + ('█' * int(cell.val / 1000)) + '</a>'
+                FY2017: f'<p align="right">{cell.val:,d}</p>'
+                Bar 2017: f'<a color="accent_1" font-name="Arial" font-size="6pt">' + ('█' * int(cell.val / 1000)) + '</a>'
+                Growth: f'<p align="right">{cell.val:.1%} ' +
+                  ('<a color="red">▼</a>' if cell.val < 0 else '<a color="green">▲</a>') +
+                  '</p>'
               width:
-                Sales: 1.5"
-                Margin: 1.5"
-              fill:
-                Sales: "'#ffdddd' if cell.row['Growth %'] < 0 else '#ddddff'"
-                Margin: "'#ffdddd' if cell.row['Growth %'] < 0 else '#ddddff'"
-                Growth %: "'#ffdddd' if cell.row['Growth %'] < 0 else '#ddddff'"
+                Name: 1
+                Indication: 2.5
+                FY2018: 1
+                Bar 2018: 1.5
+                FY2017: 1
+                Bar 2017: 1.5
+                Growth: 1

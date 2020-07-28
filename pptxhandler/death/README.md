@@ -25,7 +25,7 @@ The [data][data] is available from the [Flowing Data
 website](https://flowingdata.com/projects/2018/mortality-ranks/). To simplify things, we combine
 Male & Female rates, re-rank them, and save this as [mortality.xlsx](mortality.xlsx).
 
-[![Data](mortality.png)](mortality.xlsx)
+[![Data](mortality.png){.img-fluid}](mortality.xlsx)
 
 The relevant columns correspond to the shape names on the template:
 
@@ -147,7 +147,7 @@ The transition takes 0.3 seconds per slide, and waits for 1 second before auto-a
 This almost works magically... but there's one problem. It moves the causes from one age-group
 column to another. We want them to stay within the same column.
 
-![Animation of the wrong transition](wrong-transition.gif)
+![Animation of the wrong transition](wrong-transition.gif){.img-fluid}
 
 We can [use the shape name to match morph shapes][match-shape]. By setting:
 
@@ -168,4 +168,4 @@ We can [use the shape name to match morph shapes][match-shape]. By setting:
 
 [This is the output PPTX](output.pptx)
 
-[![Final Slide](output.gif)](output.pptx)
+[![Final Slide](output.gif){.img-fluid}](output.pptx)
