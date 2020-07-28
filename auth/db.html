@@ -29,6 +29,7 @@
     <p>You can log in as <code>alpha</code>, <code>beta</code>, <code>gamma</code> or <code>delta</code>. The password is the same as the username.</p>
 
     <form method="POST" class="pb-3">
+      <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
       <div class="form-group">
         <label for="user">Username</label>
         <input name="user" class="form-control" placeholder="Username">
