@@ -1,6 +1,6 @@
 # Deploy the dev / master branches on gramener.com
 deploy-gramener:
-  only: [dev, master]
+  only: [master, dev, /^dev-.*$/]
   script:
     - 'ssh ubuntu@gramener.com "
         cd /mnt/gramener/apps/v1/guide;

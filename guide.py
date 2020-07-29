@@ -2,6 +2,8 @@
 Utility functions for gramex-guide
 '''
 
+import re
+import hashlib
 import cachetools
 import gramex
 import markdown
@@ -21,25 +23,39 @@ md_cache = cachetools.LRUCache(maxsize=5000000, getsizeof=len)
 
 
 def markdown_template(content, handler):
-    if content not in md_cache:
-        md_cache[content] = {
+    # Cache the markdown contents locally, to avoid Markdown re-conversion
+    hash = hashlib.md5(content.encode('utf-8')).hexdigest()
+    if hash not in md_cache:
+        md_cache[hash] = {
             'content': md.convert(content),
             'meta': md.Meta
         }
-    content = md_cache[content]
+    content = md_cache[hash]
+    # GUIDE_ROOT has the absolute root URL path of the Gramex guide.
+    # Default to $YAMLURL when running locally, e.g. https://127.0.0.1/guide/
+    root = gramex.config.variables.GUIDE_ROOT
+    # When running via a reverse proxy, use everything up to the first /guide/
+    # e.g. https://gramener.com/gramex/guide/ or https://learn.gramener.com/guide/
+    # This requires an nginx config: proxy_set_header X-Request-URI $request_uri
+    uri = handler.request.headers.get('X-Request-URI', handler.request.uri)
+    match = re.match(r'.*/guide/', uri)
+    if match:
+        root = match.group(0)[1:]           # Ignore leading slash for consistency with $YAMLURL
+    # Set up template variable defaults
     kwargs = {
+        'GUIDE_ROOT': root,
         'classes': '',
-        # GUIDE_ROOT has the absolute URL of the Gramex guide
-        'GUIDE_ROOT': gramex.config.variables.GUIDE_ROOT,
         'body': content['content'],
-        'title': ''
+        'title': '',
     }
+    # ... which can be updated by the YAML frontmatter on the Markdown files
     for key, val in content['meta'].items():
         kwargs[key] = val[0]
+    # TODO: Document why we need this
     if 'xsrf' in content:
         handler.xsrf_token
-    return gramex.cache.open(
-        'markdown.template.html', 'template', rel=True).generate(**kwargs).decode('utf-8')
+    tmpl = gramex.cache.open('markdown.template.html', 'template', rel=True)
+    return tmpl.generate(**kwargs).decode('utf-8')
 
 
 def config(handler):
