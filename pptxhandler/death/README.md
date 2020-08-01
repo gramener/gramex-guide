@@ -4,7 +4,7 @@ Let's see how we can create this visual on the "[Shifting Causes of Death](https
 
 ![Shifting Causes of Death](shifting-causes-of-death.png){.img-fluid}
 
-Thsis shows the top 10 causes of death by age group, across years. Data is from the [CDC Wonder Database](https://wonder.cdc.gov/), and the visualization was created by [Nathan Yau](https://flowingdata.com/).
+This shows the top 10 causes of death by age group, across years. Data is from the [CDC Wonder Database](https://wonder.cdc.gov/), and the visualization was created by [Nathan Yau](https://flowingdata.com/).
 
 ## Create the source template
 

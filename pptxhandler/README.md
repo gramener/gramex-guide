@@ -68,8 +68,9 @@ cart: 142
 
 <div class="example">
   <a class="example-demo" href="sales-funnel/">Run example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/sales-funnel/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/sales-funnel/">Source</a>
 </div>
+
 
 ## Tutorials
 
@@ -92,6 +93,15 @@ Re-create a portion of the [Kauffman Indicators of Rate of New Entrepreneurship]
 Re-create the [Shifting Causes of Death](https://flowingdata.com/2018/10/02/shifting-death/) visualization in PowerPoint.
 
 [![Shifting causes of death](death/output.gif){: width=320}](death/)
+
+### Bestselling Pharmaceutical Drugs
+
+Visualize the [Bestselling Pharmaceutical Drugs of 2017-18][pharma-drugs] data in PowerPoint.
+
+[![Bestselling Pharmaceutical Drugs](table/output.jpg){: width=320}](table/)
+
+[pharma-drugs]: https://en.wikipedia.org/wiki/List_of_largest_selling_pharmaceutical_products#Best_selling_pharmaceuticals_of_2017/18
+
 
 
 ## Usage
@@ -245,7 +255,7 @@ rules:
 
 <div class="example">
   <a class="example-demo" href="groups/">Groups example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/groups/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/groups/">Source</a>
 </div>
 
 ## Slide filters
@@ -383,7 +393,7 @@ You can also specify transitions as a dict with 3 keys:
 
 <div class="example">
   <a class="example-demo" href="transition/">Transition example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/transition/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/transition/">Source</a>
 </div>
 
 ## Copy slides
@@ -400,10 +410,10 @@ You can repeat a slide, changing the layouts or content based on data. This is u
 
 ```yaml
 rules:
-  slide-number: 1
-  copy-slide: [A, B, C]
-  Title 1:
-    text: f'Copy {copy.key} {copy.val}'
+  - slide-number: 1
+    copy-slide: [A, B, C]
+    Title 1:
+      text: f'Copy {copy.key} {copy.val}'
 ```
 
 This repeats slide 1 three times, with titles "Copy 0: A", "Copy 1: B" and "Copy 2: C".
@@ -427,7 +437,7 @@ For each copied slide, the [data variable `copy`](#data) is set. It has these at
 
 <div class="example">
   <a class="example-demo" href="copy-slide/">Copy slides examples</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/copy-slide/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/copy-slide/">Source</a>
 </div>
 
 
@@ -445,7 +455,7 @@ content, or add new content (like charts). Here are some common commands:
 
 <div class="example">
   <a class="example-demo" href="position/">Position examples</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/position/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/position/">Source</a>
 </div>
 
 - `add-top`: moves top (Y) position +/- in `[length units](#length-units)`, e.g. `add-top: f'-3 inches'`
@@ -455,7 +465,7 @@ content, or add new content (like charts). Here are some common commands:
 
 <div class="example">
   <a class="example-demo" href="add-position/">Add position examples</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/add-position/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/add-position/">Source</a>
 </div>
 
 - `rotation`: sets the rotation in angles, e.g. `rotation: 30`
@@ -477,7 +487,7 @@ content, or add new content (like charts). Here are some common commands:
 
 <div class="example">
   <a class="example-demo" href="groups/">Style example (from Groups example)</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/groups/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/groups/">Source</a>
 </div>
 
 
@@ -489,7 +499,7 @@ content, or add new content (like charts). Here are some common commands:
 
 <div class="example">
   <a class="example-demo" href="clone-shape/">Image example (from Clone shape example)</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/clone-shape/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/clone-shape/">Source</a>
 </div>
 
 ## Link
@@ -509,7 +519,7 @@ content, or add new content (like charts). Here are some common commands:
 
 <div class="example">
   <a class="example-demo" href="link/">Link example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/link/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/link/">Source</a>
 </div>
 
 ## Text
@@ -528,7 +538,7 @@ content, or add new content (like charts). Here are some common commands:
 
 <div class="example">
   <a class="example-demo" href="text/">Text example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/text/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/text/">Source</a>
 </div>
 
 ## Text format
@@ -568,7 +578,7 @@ the para has no visible effect, since the bold run overrides it.
 
 <div class="example">
   <a class="example-demo" href="text-format/">Text format example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/text-format/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/text-format/">Source</a>
 </div>
 
 ## Table
@@ -644,8 +654,45 @@ For each cell, the [data variable `cell`](#data) is set. It has these attributes
 - `cell.cell`: currently rendered [PPTX cell object](https://python-pptx.readthedocs.io/en/latest/api/table.html#cell-objects), e.g. `cell.cell.text`
 
 <div class="example">
-  <a class="example-demo" href="text-format/">Table example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/table/">Table</a>
+  <a class="example-demo" href="table/">Table example</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/table/">Source</a>
+</div>
+
+
+## Charts
+
+To update a chart's data, use the `chart-data:` command. Example:
+
+```yaml
+data:
+  products: {url: $YAMLPATH/products.csv}
+rules:
+  - Chart 1:
+      chart-data: products.set_index('Name')
+```
+
+The dataset must be formatted with data for each series in a column. For a 1-series column chart like this:
+
+![Column chart with 1 series](chart/column-chart-1-series.png)
+
+... the data needs to look like this:
+
+![Column chart with 1 series data](chart/column-chart-1-series-data.png)
+
+The 1st column must be the index of the DataFrame, and the 2nd must be a column, like this:
+
+```python
+data = pd.DataFrame({
+  'Categories': ['A', 'B', 'C', 'D'],
+  'Series 1': [3, 4, 2, 1]
+}).set_index('Categories')
+```
+
+Note: The first column name "Categories" is not used. It's just a placeholder for the index name.
+
+<div class="example">
+  <a class="example-demo" href="chart/">Chart example</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/chart/">Source</a>
 </div>
 
 
@@ -655,9 +702,9 @@ Use `clone-shape:` to clone a shape for as many times specified. For example:
 
 ```yaml
 rules:
-  Rectangle 1:
-    clone-shape: [A, B, C]
-    text: f'Clone {clone.key} {clone.val}'
+  - Rectangle 1:
+      clone-shape: [A, B, C]
+      text: f'Clone {clone.key} {clone.val}'
 ```
 
 This repeats the shape three times, with text "Clone 0: A", "Clone 1: B" and "Clone 2: C".
@@ -681,7 +728,7 @@ For each cloned shape, the [data variable `clone`](#data) is set. It has these a
 
 <div class="example">
   <a class="example-demo" href="clone-shape/">Clone shape example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/clone-shape/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/clone-shape/">Source</a>
 </div>
 
 
