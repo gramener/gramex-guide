@@ -5,8 +5,8 @@ prefix: 1.61
 
 [TOC]
 
-Gramex 1.61 was is now available. It brings the ability to create interactive PPTs, a distributed
-cache, and a few minor enhancements and bug fixes.
+Gramex 1.61 brings the ability to create interactive PPTs, a distributed cache, and a few minor
+enhancements and bug fixes.
 
 ## Create interactive presentations
 

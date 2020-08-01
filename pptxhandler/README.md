@@ -130,6 +130,8 @@ Run `slidesense` to run `PPTXHandler` from the command line. It renders any `gra
 current folder, creating an `output.pptx` (or the file specified by `target:` in `gramex.yaml`).
 It also opens the target PPTX in PowerPoint, if possible.
 
+![SlideSense command line usage](slidesense-command-line.gif){.img-fluid}
+
 You can specify the path to your `gramex.yaml`, and also which PPTXHandler to run as the
 command-line arguments. For example:
 
@@ -659,7 +661,7 @@ For each cell, the [data variable `cell`](#data) is set. It has these attributes
 </div>
 
 
-## Charts
+## Chart
 
 To update a chart's data, use the `chart-data:` command. Example:
 

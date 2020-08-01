@@ -52,10 +52,11 @@ We add these columns with the Pandas `transform:` key. This needs a single expre
 combine the transforms using `or`.
 
 ```yaml
-          transform: data.insert(3, 'Bar 2018', data['FY2018']) or
-                     data.insert(5, 'Bar 2017', data['FY2017']) or
-                     data.insert(6, 'Growth', data['FY2018'] / data['FY2017'] - 1) or
-                     data
+          transform: >
+            data.insert(3, 'Bar 2018', data['FY2018']) or
+            data.insert(5, 'Bar 2017', data['FY2017']) or
+            data.insert(6, 'Growth', data['FY2018'] / data['FY2017'] - 1) or
+            data
 ```
 
 We now set up the basic formatting for the table, using `sales` data. This also sets the font size

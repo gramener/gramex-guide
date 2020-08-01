@@ -5,12 +5,17 @@ prefix: Install
 
 [TOC]
 
-## Installation
+## Install
 
-1. Install [Anaconda][anaconda] (any version from 5.2.0 to 2019.10)
-2. Install [node.js][nodejs] 10 or later.
-3. On a Mac, install [Xcode][xcode].
-4. Run the following commands on the terminal
+1. Install [Anaconda][anaconda]. Gramex does not yet work with Python 3.8. So use Anaconda3-2020.02 (not later):
+    - [Windows-x86_64](https://repo.anaconda.com/archive/Anaconda3-2020.02-Windows-x86_64.exe)
+    - [Windows-x86](https://repo.anaconda.com/archive/Anaconda2-2019.10-Windows-x86.exe)
+    - [MacOSX-x86_64](https://repo.anaconda.com/archive/Anaconda2-2019.10-MacOSX-x86_64.sh)
+    - [MacOSX-x86_64](https://repo.anaconda.com/archive/Anaconda2-2019.10-MacOSX-x86_64.pkg)
+    - [Linux-x86_64](https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-x86_64.sh)
+    - [Linux-ppc64le](https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-ppc64le.sh)
+2. Install [node.js][nodejs] 10 or later
+3. Run the following commands on the terminal
 
 ```bash
 pip install gramex      # Install latest version of Gramex
@@ -18,8 +23,8 @@ npm install -g yarn     # Required for UI components and built-in apps
 gramex setup --all      # Set up UI components and built-in apps
 ```
 
-5. Create an empty `gramex.yaml` text file in a directory
-6. Run `gramex` from that directory
+4. Create an empty `gramex.yaml` text file in a directory
+5. Run `gramex` from that directory
 
 Gramex runs at `http://127.0.0.1:9988/` and lists the files in your folder by
 default. Press Ctrl-C to exit Gramex.
@@ -30,6 +35,16 @@ provides additional features. To install it, run:
 ```bash
 pip install gramexenterprise    # Install Gramex Enterprise
 gramex license accept           # Accept the Gramex license
+```
+
+## Upgrade
+
+To upgrade Gramex, run:
+
+```bash
+pip install --upgrade gramex
+pip install --upgrade gramexenterprise    # If you use DBAuth, LDAPAuth, etc.
+gramex setup --all
 ```
 
 ## VSCode Extension

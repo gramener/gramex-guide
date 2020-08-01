@@ -5,8 +5,9 @@ prefix: Release
 
 Gramex now releases feature updates on the 1st of every month, and patch updates as required.
 
-- [v1.61.1: PPTXHandler bug fixes](1.61.1/) <small>13 July 2020</small>
-- [v1.61.0: PPTXHandler v2 and Redis Cache](1.61/) <small>1 July 2020</small>
+- [v1.62.0: Gramex Charts, PPTXHandler tables & charts](1.62/) <small>1 Aug 2020</small>
+- [v1.61.1: PPTXHandler bug fixes](1.61.1/) <small>13 Jul 2020</small>
+- [v1.61.0: PPTXHandler v2 and Redis Cache](1.61/) <small>1 Jul 2020</small>
 - Gramex now releases feature updates on the 1st of every month, and patch updates as required.
 - [v1.60.0: File Manager](1.60/) <small>27 May 2020</small>
 - [v1.59.0: DriveHandler](1.59/) <small>11 May 2020</small>

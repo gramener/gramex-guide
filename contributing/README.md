@@ -108,11 +108,22 @@ Test the `dev` branch locally on Python >= 3.7:
 make test
 ```
 
+Upgrade npm packages.
+
+```bash
+# yarn upgrade --cwd gramex/apps/admin/
+yarn upgrade --cwd gramex/apps/admin2/
+yarn upgrade --cwd gramex/apps/capture/
+yarn upgrade --cwd gramex/apps/configeditor/
+yarn upgrade --cwd gramex/apps/filemanager/
+yarn upgrade --cwd gramex/apps/logviewer/
+yarn upgrade --cwd gramex/apps/pynode/
+yarn upgrade --cwd gramex/apps/ui/
+```
+
 Update the following and commit to `dev` branch:
 
 - In gramex:
-    - `cd gramex/apps/admin2/; yarn upgrade; yarn run build; cd ../../..` -- upgrade and build app
-    - `cd gramex/apps/ui/; yarn upgrade; cd ../../..` -- upgrade UI components
     - `gramex/release.json` -- update the version number
     - `pkg/docker-py3/Dockerfile` -- update the version number
     - `gramex/apps.yaml` -- update the version number on the guide

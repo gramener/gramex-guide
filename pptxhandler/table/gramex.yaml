@@ -8,10 +8,11 @@ url:
       data:
         sales:
           url: $YAMLPATH/sales.csv
-          transform: data.insert(3, 'Bar 2018', data['FY2018']) or
-                     data.insert(5, 'Bar 2017', data['FY2017']) or
-                     data.insert(6, 'Growth', data['FY2018'] / data['FY2017'] - 1) or
-                     data
+          transform: >
+            data.insert(3, 'Bar 2018', data['FY2018']) or
+            data.insert(5, 'Bar 2017', data['FY2017']) or
+            data.insert(6, 'Growth', data['FY2018'] / data['FY2017'] - 1) or
+            data
       rules:
         - Sales Table:
             table:

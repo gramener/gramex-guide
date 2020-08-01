@@ -1053,6 +1053,32 @@
       "Statistics": -1
     }
   },
+  "1.62": {
+    "": {
+      "Gramex 1.62 release notes": -1
+    },
+    "create-presentations-from-the-command-line": {
+      "Create presentations from the command line": -1
+    },
+    "gramex-charts-preview": {
+      "Gramex Charts preview": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "other-features": {
+      "Other features": -1
+    },
+    "powerpoint-tables-and-charts": {
+      "PowerPoint tables and charts": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "what-next": {
+      "What next": -1
+    }
+  },
   "about": {
     "": {}
   },
@@ -1415,6 +1441,18 @@
     "": {
       "Charts": -1
     },
+    "chart-example": {
+      "Chart example": -1
+    },
+    "create-the-data": {
+      "Create the data": -1
+    },
+    "create-the-rules": {
+      "Create the rules": -1
+    },
+    "create-the-source-template": {
+      "Create the source template": -1
+    },
     "d3": {
       "D3": -1
     },
@@ -1423,6 +1461,9 @@
     },
     "gramex-charts": {
       "Gramex Charts": -1
+    },
+    "see-the-result": {
+      "See the result": -1
     },
     "vega": {
       "Vega": -1
@@ -1616,6 +1657,9 @@
     "update-gramex": {},
     "update-gramex-community-edition": {
       "Update Gramex Community Edition": -1
+    },
+    "yarn-upgrade-cwd-gramexappsadmin": {
+      "yarn upgrade --cwd gramex/apps/admin/": -1
     }
   },
   "copy-slide": {
@@ -2699,12 +2743,17 @@
     "bar-chart-race": {
       "Bar chart race": -1
     },
+    "bestselling-pharmaceutical-drugs": {
+      "Bestselling Pharmaceutical Drugs": -1
+    },
     "bullet": {},
     "calendarmap": {},
     "causes-of-death": {
       "Causes of death": -1
     },
-    "chart": {},
+    "chart": {
+      "Chart": -1
+    },
     "clone-shapes": {
       "Clone shapes": -1
     },
@@ -3043,9 +3092,22 @@
     }
   },
   "table": {
-    "table-example": {
-      "Table example": -1
-    }
+    "bestselling-pharmaceutical-drugs": {
+      "Bestselling Pharmaceutical Drugs": -1
+    },
+    "create-the-data": {
+      "Create the data": -1
+    },
+    "create-the-rules": {
+      "Create the rules": -1
+    },
+    "create-the-source-template": {
+      "Create the source template": -1
+    },
+    "see-the-result": {
+      "See the result": -1
+    },
+    "table-example": {}
   },
   "test": {
     "": {
