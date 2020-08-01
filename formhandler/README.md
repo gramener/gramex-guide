@@ -179,7 +179,7 @@ This requires the [UI components library](../uicomponents/) mounted at `ui/`.
 
 <div class="example">
   <a class="example-demo" href="table.html">FormHandler table example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/master/formhandler/table.html">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/formhandler/table.html">Source</a>
 </div>
 
 You can configure the data attributes:
@@ -343,7 +343,7 @@ When you visit [vega-1?_format=barchart](vega-1?_format=barchart) it renders Jav
 <script src="ui/vega/build/vega.min.js"></script>
 ```
 
-This script draws a barchart from [`/vega-1`](https://github.com/gramexrecipes/gramex-guide/blob/master/formhandler/vega.yaml) formhandler data within `<div id="chart1"></div>`. If `data-id` is missing, random ID is created.
+This script draws a barchart from [`/vega-1`](https://github.com/gramener/gramex-guide/blob/master/formhandler/vega.yaml) formhandler data within `<div id="chart1"></div>`. If `data-id` is missing, random ID is created.
 
 To manipulate the `Vega` object, use this:
 

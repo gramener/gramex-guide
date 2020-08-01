@@ -213,4 +213,4 @@ docker push gramener/gramex
 
 Re-start gramex on deployed servers.
 
-[gramex-guide]: https://github.com/gramexrecipes/gramex-guide/
+[gramex-guide]: https://github.com/gramener/gramex-guide/

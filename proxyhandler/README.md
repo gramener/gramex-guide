@@ -71,6 +71,7 @@ ProxyHandler configuration accepts these kwargs:
 All [standard handler kwargs](../handler/) like `auth:`, `cache:`,
 `xsrf_cookies`, `error:`, etc. are also available.
 
+NOTE: As of [v1.62](../release/1.62/), websockets are also supported.
 
 ## Google ProxyHandler
 
@@ -96,7 +97,7 @@ lists the permissions you need. Here is the
 
 <div class="example">
   <a class="example-demo" href="../auth/google">Log into Google</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/master/auth/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/">Source</a>
 </div>
 
 Once logged in, you can:
@@ -265,7 +266,7 @@ To access the Facebook APIs, set up a [Facebook Auth handler](../auth/#facebook-
 
 <div class="example">
   <a class="example-demo" href="../auth/facebook">Log into Facebook</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/master/auth/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/">Source</a>
 </div>
 
 Once logged in, you can:

@@ -37,10 +37,10 @@ def markdown_template(content, handler):
     # When running via a reverse proxy, use everything up to the first /guide/
     # e.g. https://gramener.com/gramex/guide/ or https://learn.gramener.com/guide/
     # This requires an nginx config: proxy_set_header X-Request-URI $request_uri
-    uri = handler.request.headers.get('X-Request-URI', handler.request.uri)
+    uri = handler.request.headers.get('X-Request-URI', handler.request.path)
     match = re.match(r'.*/guide/', uri)
     if match:
-        root = match.group(0)[1:]           # Ignore leading slash for consistency with $YAMLURL
+        root = match.group(0).strip('/')        # Strip slashes for consistency with $YAMLURL
     # Set up template variable defaults
     kwargs = {
         'GUIDE_ROOT': root,

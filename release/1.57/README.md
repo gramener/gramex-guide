@@ -28,8 +28,8 @@ via [@nivedita.deshmukh](https://code.gramener.com/nivedita.deshmukh)
 Fixes [#179](https://github.com/gramener/gramex/issues/179)
 - Added `gramex.cache.set_cache` to setup TTL caches.
 Fixes [#178](https://github.com/gramener/gramex/issues/178)
-- [gramex-guide](https://github.com/gramexrecipes/gramex-guide/) is now a separate repo
-on [GitHub](https://github.com/gramexrecipes/gramex-guide/).
+- [gramex-guide](https://github.com/gramener/gramex-guide/) is now a separate repo
+on [GitHub](https://github.com/gramener/gramex-guide/).
 - `DataHandler`, `QueryHandler` are deperacted. Use [FormHandler](../../formhandler/)
 
 ## Bug fixes
