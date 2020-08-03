@@ -7,10 +7,10 @@ prefix: Contributing
 
 ## Set up Gramex
 
-- The [master branch](http://github.com/gramener/gramex/tree/master/)
+- The [release branch](http://github.com/gramener/gramex/tree/release/)
   holds the latest stable version.
-- The [dev branch](http://github.com/gramener/gramex/tree/dev/) has the
-  latest development version
+- The [master branch](http://github.com/gramener/gramex/tree/master/) has the
+  latest working version
 - All other branches are temporary feature branches
 
 Gramex can be developed on Python >= 3.7 on Windows or Linux.
@@ -24,12 +24,12 @@ sudo apt-get install -y git make sqlite3 postgresql postgresql-contrib libpq-dev
 DEBIAN_FRONTEND=noninteractive apt-get -y -q install mysql-server
 ```
 
-Clone and install the [dev branch](http://github.com/gramener/gramex/tree/dev/).
+Clone and install the [master branch](http://github.com/gramener/gramex/tree/master/).
 
 ```bash
 git clone git@github.com:gramener/gramex.git
 cd gramex
-git checkout dev
+git checkout master     # Optional
 pip install -e .
 gramex setup --all
 ```
@@ -39,9 +39,9 @@ gramex setup --all
 Gramex uses [nosetests](https://nose.readthedocs.io/en/latest/) for unit tests.
 The tests are in 2 folders:
 
-- [testlib/](https://github.com/gramener/gramex/tree/master/testlib/)
+- [testlib/](https://github.com/gramener/gramex/tree/release/testlib/)
   has library tests that can run without starting Gramex.
-- [tests/](https://github.com/gramener/gramex/tree/master/tests/)
+- [tests/](https://github.com/gramener/gramex/tree/release/tests/)
   has URL-based tests that run after starting the Gramex server.
 
 Run `make test-setup` for the first time. Then you can run `nosetests`.
@@ -91,7 +91,7 @@ git commit -m"Your detailed description of your changes."
 git push --set-upstream origin <branch-name>
 ```
 
-Submit a pull request to the [dev branch](http://github.com/gramener/gramex/tree/dev/).
+Submit a pull request to the [master branch](http://github.com/gramener/gramex/tree/master/).
 If possible:
 
 - Write unit tests
@@ -102,7 +102,7 @@ If possible:
 ## Release Gramex Community Edition
 
 Check [build errors](https://travis-ci.com/gramener/gramex).
-Test the `dev` branch locally on Python >= 3.7:
+Test the `master` branch locally on Python >= 3.7:
 
 ```bash
 make test
@@ -121,7 +121,7 @@ yarn upgrade --cwd gramex/apps/pynode/
 yarn upgrade --cwd gramex/apps/ui/
 ```
 
-Update the following and commit to `dev` branch:
+Update the following and commit to `master` branch:
 
 - In gramex:
     - `gramex/release.json` -- update the version number
@@ -133,26 +133,26 @@ Update the following and commit to `dev` branch:
     - `python search/search.py` to update search index
     - `node search/searchindex.js` to update search index
 
-Commit and push the `dev` branch of both repos to the server.
+Commit and push the `master` branch of both repos to the server.
 **Ensure pipeline passes.**:
 
 ```bash
 git commit -m"DOC: Add v1.x.x release changes"
-git push                    # Push the dev branch
+git push                    # Push the master branch
 ```
 
-Merge `dev` branch with `master` on both repos:
+Merge `master` branch with `release` on both repos:
 
 ```bash
-git checkout master
-git merge dev
+git checkout release
+git merge master
 git tag -a v1.x.x -m"One-line summary of features"
 git push --follow-tags
-git push gitlab master      # To deploy into Gramener servers. See one-time setup below
-git checkout dev            # Switch back to dev
+git push gitlab release      # To deploy into Gramener servers. See one-time setup below
+git checkout master          # Switch back to master
 ```
 
-Note: `git push gitlab master` requires this one-time setup:
+Note: `git push gitlab release` requires this one-time setup:
 
 ```bash
 git remote add gitlab git@code.gramener.com:cto/gramex.git        # For Gramex
@@ -180,27 +180,27 @@ make release-docker
 
 ## Release Gramex Enterprise Edition
 
-Update the following and commit to `dev` branch:
+Update the following and commit to `master` branch:
 
 - `setup.py` -- update the version number to the Gramex version number
 - TODO: document CHANGELOG, etc.
 
-Commit and push the `dev` branch to the server. **Ensure pipeline passes.**:
+Commit and push the `master` branch to the server. **Ensure pipeline passes.**:
 
 ```bash
 git commit -m"DOC: Add v1.x.x release notes"
-git push                    # Push the dev branch
+git push                    # Push the master branch
 ```
 
-Merge with master, create an annotated tag and push the master branch:
+Merge with release, create an annotated tag and push the release branch:
 
 ```bash
-git checkout master
-git merge dev
+git checkout release
+git merge master
 git tag -a v1.x.x -m"One-line summary of features"
 git push --follow-tags
-git checkout dev            # Switch back to dev
-git merge master
+git checkout master         # Switch back to master
+git merge release
 ```
 
 Deploy on [pypi](https://pypi.python.org/pypi/gramexenterprise):
@@ -216,7 +216,7 @@ Deploy [docker instance](https://hub.docker.com/r/gramener/gramex/):
 
 ```bash
 export VERSION=1.x.x        # Replace with Gramex version
-docker build https://github.com/gramener/gramex.git#master:pkg/docker-py3 -t gramener/gramex:$VERSION
+docker build https://github.com/gramener/gramex.git#release:pkg/docker-py3 -t gramener/gramex:$VERSION
 docker tag gramener/gramex:$VERSION gramener/gramex:latest
 docker login                # log in as sanand0 / pratapvardhan
 docker push gramener/gramex

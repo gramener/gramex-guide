@@ -55,7 +55,6 @@ To install a Gramex application as a service on a Windows Server:
 - [Install Anaconda and Gramex](../install/)
     - Download and install [Anaconda][anaconda] 4.4.0 or later
     - Run `pip install https://github.com/gramener/gramex/archive/master.zip`.
-      (Replace ``master`` with ``dev`` for the development version).
 - Install your application in any folder - via `git clone` or by copying files
 - Run PowerShell or the Command Prompt **as administrator**
 - From your application folder, run `gramex service install`
