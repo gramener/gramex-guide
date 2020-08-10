@@ -4,7 +4,7 @@
   <meta charset="utf8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }}</title>
-  <link rel="stylesheet" href="/{{ GUIDE_ROOT }}/style.css?v=45">
+  <link rel="stylesheet" href="/{{ GUIDE_ROOT }}/style.css?v=58">
   <script>
     /* global dataLayer */
     window.dataLayer = window.dataLayer || []
@@ -14,26 +14,29 @@
     gtag('set', { 'user_id': '{% try %}{{ handler.current_user.email }}{% except %}{% end %}' })
   </script>
 </head>
-<body>
+<body data-spy="scroll" data-target=".menu">
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-0">
-    <button class="btn bg-dark" type="button" data-toggle="collapse" data-target=".menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle sidebar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand mr-auto" href="/{{ GUIDE_ROOT }}/">
-      <img height="36" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkAQAAAADJe6U1AAAABGdBTUEAALGPC/xhBQAAAAJ0Uk5TAAB2k804AAAANUlEQVR42mNgwAX4/x8AkvZgsh5M/geTP8CyH0ggP1BKMoLIH8wfwG54AHbPA7jb+P9jcz0AKpcxBQbNJ8sAAAAASUVORK5CYII=" alt="Logo">
-      <span class="h5 text-uppercase">Gramex Guide</span>
-    </a>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <button class="btn bg-dark navbar-toggler" type="button" data-toggle="collapse" data-target=".menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle sidebar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand mr-auto" href="/{{ GUIDE_ROOT }}/">
+        <img height="24" src="/{{ GUIDE_ROOT }}/gramex-logo.gif" alt="Gramex" class="mt-n2">
+        <span class="h5 text-uppercase d-none d-md-inline">Guide</span>
+      </a>
+      <a href="https://github.com/gramener/gramex/issues/new?labels=question&title={{ title }}" target="_blank"
+        class="d-none d-md-block btn btn-success btn-sm font-weight-bold text-decoration-none">Ask a question</a>
+    </div>
   </nav>
 
-  <div class="container d-flex py-3 ml-3">
-    <nav class="menu collapse pr-3 h-full">
-      <ul class="p-0">
-        <li><a href="/{{ GUIDE_ROOT }}/search/">Index of topics</a></li>
-        <li><a href="#">About</a></li>
-        <li>
+  <div class="container">
+    <nav class="menu collapse sm1 py-4">
+      <ul class="p-0 nav">
+        <li><div class="menu-section">Gramex Guide</div>
           <ul>
-            <li><a href="/{{ GUIDE_ROOT }}/server/">Gramex</a></li>
+            <li><a href="/{{ GUIDE_ROOT }}/">Overview</a></li>
+            <li><a href="/{{ GUIDE_ROOT }}/server/">Gramex server</a></li>
             <li><a href="/{{ GUIDE_ROOT }}/tutorials/quickstart/">Quickstart</a></li>
             <li><a href="/{{ GUIDE_ROOT }}/tutorials/">Tutorials</a></li>
             <li><a href="/{{ GUIDE_ROOT }}/faq/">FAQ</a></li>
@@ -41,10 +44,10 @@
             <li><a href="/{{ GUIDE_ROOT }}/release/">Release notes</a></li>
             <li><a href="/{{ GUIDE_ROOT }}/license/">License</a></li>
             <li><a href="/{{ GUIDE_ROOT }}/contributing/">Contributing</a></li>
+            <li><a href="/{{ GUIDE_ROOT }}/search/">Index</a></li>
           </ul>
         </li>
-        <li><a href="#">Usage</a></li>
-        <li>
+        <li><div class="menu-section">Usage</div>
           <ul>
             <li><a href="/{{ GUIDE_ROOT }}/install/">Install Gramex</a></li>
             <li><a href="/{{ GUIDE_ROOT }}/init/">Gramex init</a></li>
@@ -54,10 +57,11 @@
             <li><a href="/{{ GUIDE_ROOT }}/debug/">Debugging Gramex</a></li>
             <li><a href="/{{ GUIDE_ROOT }}/test/">Testing Gramex</a></li>
             <li><a href="/{{ GUIDE_ROOT }}/snippets/">Snippets</a></li>
+            <li><a href="/{{ GUIDE_ROOT }}/tips/">Tips</a></li>
+            <li><a href="/{{ GUIDE_ROOT }}/exercises/">Exercises</a></li>
           </ul>
         </li>
-        <li><a href="#">Handlers</a></li>
-        <li>
+        <li><div class="menu-section">Handlers</div>
           <ul>
             <li><a href="/{{ GUIDE_ROOT }}/filehandler/">FileHandler</a></li>
             <li><a href="/{{ GUIDE_ROOT }}/formhandler/">FormHandler</a></li>
@@ -77,8 +81,7 @@
             <li><a href="/{{ GUIDE_ROOT }}/handlers/">Write handlers</a></li>
           </ul>
         </li>
-        <li><a href="#">Services</a></li>
-        <li>
+        <li><div class="menu-section">Services</div>
           <ul>
             <li><a href="/{{ GUIDE_ROOT }}/cache/">Cache requests</a></li>
             <li><a href="/{{ GUIDE_ROOT }}/email/">Send email</a></li>
@@ -87,8 +90,7 @@
             <li><a href="/{{ GUIDE_ROOT }}/watch/">Watch files</a></li>
           </ul>
         </li>
-        <li><a href="#">Apps</a></li>
-        <li>
+        <li><div class="menu-section">Apps</div>
           <ul>
             <li><a href="/{{ GUIDE_ROOT }}/admin/">Admin page</a></li>
             <li><a href="/{{ GUIDE_ROOT }}/chart/">Charts</a></li>
@@ -98,8 +100,6 @@
             <li><a href="/{{ GUIDE_ROOT }}/logviewer/">View logs</a></li>
           </ul>
         </li>
-        <li><a href="/{{ GUIDE_ROOT }}/tips/">Tips</a></li>
-        <li><a href="/{{ GUIDE_ROOT }}/exercises/">Exercises</a></li>
       </ul>
     </nav>
 
@@ -108,16 +108,30 @@
     <script src="/{{ GUIDE_ROOT }}/ui/lodash/lodash.min.js"></script>
     <script src="/{{ GUIDE_ROOT }}/ui/g1/dist/g1.min.js"></script>
 
-    <section class="content">
+    <section class="content py-5">
       {% if title %}
         <h1>{{ title }}</h1>
       {% end %}
       {% raw body %}
+
+      <footer class="d-flex justify-content-between align-items-center border-top border-dark py-4 my-5">
+        <a href="https://gramener.com/" target="_blank"><img height="40" src="https://gramener.com/img-2019/gramener_icon.png" alt="Gramener"></a>
+        <div class="sm1 text-uppercase">
+          <a href="/{{ GUIDE_ROOT }}/" class="text-dark">Gramex Guide</a>
+          |
+          <a href="https://gramener.com/platform/" class="text-dark">Powered by Gramex</a>
+        </div>
+        <div>
+          <a href="https://stackoverflow.com/questions/tagged/gramex" target="_blank" class="text-dark"><i class="fab fa-stack-overflow fa-2x ml-3" title="Gramex on StackOverflow"></i></a>
+          <a href="https://github.com/gramener/gramex/" target="_blank" class="text-dark"><i class="fab fa-github fa-2x ml-3" title="Gramex on Github"></i></a>
+        </div>
+      </footer>
     </section>
   </div>
 
+
   <script src="/{{ GUIDE_ROOT }}/node_modules/clipboard/dist/clipboard.min.js"></script>
   <script src="/{{ GUIDE_ROOT }}/node_modules/anchor-js/anchor.min.js"></script>
-  <script src="/{{ GUIDE_ROOT }}/script.js?v=45"></script>
+  <script src="/{{ GUIDE_ROOT }}/script.js?v=58"></script>
 </body>
 </html>

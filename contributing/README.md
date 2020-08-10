@@ -108,7 +108,7 @@ Test the `master` branch locally on Python >= 3.7:
 make test
 ```
 
-Upgrade npm packages.
+Set up apps and & upgrade npm packages.
 
 ```bash
 # yarn upgrade --cwd gramex/apps/admin/
@@ -119,6 +119,7 @@ yarn upgrade --cwd gramex/apps/filemanager/
 yarn upgrade --cwd gramex/apps/logviewer/
 yarn upgrade --cwd gramex/apps/pynode/
 yarn upgrade --cwd gramex/apps/ui/
+python gramex/apps/setup.py
 ```
 
 Update the following and commit to `master` branch:
@@ -127,6 +128,7 @@ Update the following and commit to `master` branch:
     - `gramex/release.json` -- update the version number
     - `pkg/docker-py3/Dockerfile` -- update the version number
     - `gramex/apps.yaml` -- update the version number on the guide
+    - `curl 'https://www.googleapis.com/webfonts/v1/webfonts?key=$GOOGLE_FONTS_API_KEY' -H "Referer: https://learn.gramener.com/gramex/guide/" > `
 - In [gramex-guide][gramex-guide]
     - `release/README.md` -- add release entry
     - `release/1.xx/README.md` -- add guide release notes. Run `make stats` for code size stats. Take coverage stats from Travis
