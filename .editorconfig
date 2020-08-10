@@ -22,3 +22,8 @@ indent_size = 4
 [Makefile]
 indent_style = tab
 indent_size = 4
+
+# Newsletters are dumped from
+[newsletter/*.html]
+indent_style = unset
+indent_size = unset
