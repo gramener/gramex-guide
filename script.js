@@ -20,6 +20,30 @@ $(function () {
   // Scroll-spy offset must be the same as <html> scroll-padding-top. Otherwise it won't work
   $('body').attr('data-offset', parseInt(getComputedStyle(document.querySelector('html'))['scroll-padding-top']))
 
+  // When Feedback "Yes" or "No" is selected
+  $('.feedback').on('change', '[type="radio"]', function () {
+    // Show feedback-text and buttons
+    $('.feedback-details').removeClass('d-none')
+    // Make feedback text if "No", not otherwise
+    if ($('#helpful-no').is(':checked'))
+      $('.feedback-text').attr('required', true)
+    else
+      $('.feedback-text').removeAttr('required')
+  }).on('reset', function () {
+    // When reset, hide feedback-text and submit buttons
+    $('.feedback-details').addClass('d-none')
+  }).on('submit', function (e) {
+    e.preventDefault()
+    $.ajax({
+      url: feedback_url,
+      method: 'POST',
+      data: $('.feedback').serialize()
+    })
+    $('.feedback-details').addClass('d-none')
+    $('.feedback-thanks').removeClass('d-none')
+  })
+
+
   // Add a copy button to each .codehilite
   $('.codehilite')
     .css('position', 'relative')
