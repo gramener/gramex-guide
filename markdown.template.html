@@ -4,7 +4,7 @@
   <meta charset="utf8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }}</title>
-  <link rel="stylesheet" href="/{{ GUIDE_ROOT }}/style.css?v=58">
+  <link rel="stylesheet" href="/{{ GUIDE_ROOT }}/style.css?v=59">
   <script>
     /* global dataLayer */
     window.dataLayer = window.dataLayer || []
@@ -114,16 +114,46 @@
       {% end %}
       {% raw body %}
 
-      <footer class="d-flex justify-content-between align-items-center border-top border-dark py-4 my-5">
-        <a href="https://gramener.com/" target="_blank"><img height="40" src="https://gramener.com/img-2019/gramener_icon.png" alt="Gramener"></a>
-        <div class="sm1 text-uppercase">
-          <a href="/{{ GUIDE_ROOT }}/" class="text-dark">Gramex Guide</a>
-          |
-          <a href="https://gramener.com/platform/" class="text-dark">Powered by Gramex</a>
-        </div>
-        <div>
-          <a href="https://stackoverflow.com/questions/tagged/gramex" target="_blank" class="text-dark"><i class="fab fa-stack-overflow fa-2x ml-3" title="Gramex on StackOverflow"></i></a>
-          <a href="https://github.com/gramener/gramex/" target="_blank" class="text-dark"><i class="fab fa-github fa-2x ml-3" title="Gramex on Github"></i></a>
+      <footer class="border-top border-dark my-5">
+        <form class="feedback text-center">
+          <input type="hidden" name="page" value="{{ handler.request.path }}">
+          <div class="py-3">
+            <strong>Is this page helpful?</strong>
+            <div class="form-check d-inline">
+              <input class="form-check-input" type="radio" name="helpful" id="helpful-yes" value="y">
+              <label class="form-check-label" for="helpful-yes">
+                <i class="far fa-thumbs-up"></i> Yes
+              </label>
+            </div>
+            <div class="form-check d-inline">
+              <input class="form-check-input" type="radio" name="helpful" id="helpful-no" value="n">
+              <label class="form-check-label" for="helpful-no">
+                <i class="far fa-thumbs-down"></i> No
+              </label>
+            </div>
+          </div>
+          <div class="py-3 feedback-details d-none">
+            <textarea name="feedback" class="feedback-text form-control" placeholder="Any additional feedback?"></textarea>
+          </div>
+          <div class="py-3 feedback-details d-none">
+            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+            <button type="reset" class="feedback-skip btn btn-sm btn-light">Skip</button>
+          </div>
+          <div class="py-3 feedback-thanks d-none">
+            Thanks for your feedback.
+          </div>
+        </form>
+        <div class="d-flex justify-content-between align-items-center py-4 border-top border-dark">
+          <a href="https://gramener.com/" target="_blank"><img height="40" src="https://gramener.com/img-2019/gramener_icon.png" alt="Gramener"></a>
+          <div class="sm1 text-uppercase">
+            <a href="/{{ GUIDE_ROOT }}/" class="text-dark">Gramex Guide</a>
+            |
+            <a href="https://gramener.com/platform/" class="text-dark">Powered by Gramex</a>
+          </div>
+          <div>
+            <a href="https://stackoverflow.com/questions/tagged/gramex" target="_blank" class="text-dark"><i class="fab fa-stack-overflow fa-2x ml-3" title="Gramex on StackOverflow"></i></a>
+            <a href="https://github.com/gramener/gramex/" target="_blank" class="text-dark"><i class="fab fa-github fa-2x ml-3" title="Gramex on Github"></i></a>
+          </div>
         </div>
       </footer>
     </section>
@@ -132,6 +162,9 @@
 
   <script src="/{{ GUIDE_ROOT }}/node_modules/clipboard/dist/clipboard.min.js"></script>
   <script src="/{{ GUIDE_ROOT }}/node_modules/anchor-js/anchor.min.js"></script>
-  <script src="/{{ GUIDE_ROOT }}/script.js?v=58"></script>
+  <script>
+    var feedback_url = "/{{ GUIDE_ROOT }}/feedback"
+  </script>
+  <script src="/{{ GUIDE_ROOT }}/script.js?v=59"></script>
 </body>
 </html>

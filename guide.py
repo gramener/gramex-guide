@@ -2,11 +2,13 @@
 Utility functions for gramex-guide
 '''
 
-import re
-import hashlib
 import cachetools
 import gramex
+import hashlib
 import markdown
+import re
+import sqlalchemy as sa
+import time
 import yaml
 
 md = markdown.Markdown(extensions=[
@@ -47,6 +49,7 @@ def markdown_template(content, handler):
         'classes': '',
         'body': content['content'],
         'title': '',
+        'handler': handler,
     }
     # ... which can be updated by the YAML frontmatter on the Markdown files
     for key, val in content['meta'].items():
@@ -61,3 +64,9 @@ def markdown_template(content, handler):
 def config(handler):
     '''Dump the final resolved config'''
     return yaml.dump(gramex.conf, default_flow_style=False)
+
+
+def prepare_feedback(args, handler):
+    if handler.request.method == 'POST':
+        args['user'] = [handler.current_user.id if handler.current_user else '']
+        args['time'] = [time.time()]

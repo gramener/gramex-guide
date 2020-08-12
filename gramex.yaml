@@ -1,5 +1,6 @@
 variables:
     GUIDE_ROOT: $YAMLURL                # Used by guide.py to pass to markdown.template
+    GUIDE_FEEDBACK: $GRAMEXDATA/gramex-guide-feedback.db  # Used by guide.py for feedback location
 
     # Created by root.node@gmail.com
     # https://console.developers.google.com/apis/api/customsearch.googleapis.com/overview?project=big-query-1009
@@ -34,7 +35,7 @@ handlers:
 
 url:
     # Default FileHandler. Serve all .md files as Markdown
-    markdown:
+    guide-markdown:
         pattern: /$YAMLURL/(.*)
         handler: FileHandler
         priority: -0.5          # Lower than new handlers (0), higher than default (-1)
@@ -50,14 +51,14 @@ url:
                         Content-Type: text/html
             headers: &HEADERS
                 Cache-Control: public, max-age=300
-    markdown-g1:
+    guide-markdown-g1:
         pattern: /$YAMLURL/g1/([a-z0-0]+)
         handler: FileHandler
         kwargs:
             path: $GRAMEXAPPS/ui/node_modules/g1/docs/*.md
             transform: *MARKDOWN_TO_HTML
             headers: *HEADERS
-    markdown-g1-default:
+    guide-markdown-g1-default:
         pattern: /$YAMLURL/g1/(.*)
         handler: FileHandler
         kwargs:
@@ -65,23 +66,24 @@ url:
             default_filename: README.md
             transform: *MARKDOWN_TO_HTML
             headers: *HEADERS
-    # The welcome page is the first page that's served when users login.
-    # Normally, / points README.md. Make /welcome point to the static welcome page
-    welcome:
-        pattern: /$YAMLURL/welcome
-        handler: FileHandler
+    guide-feedback:
+        pattern: /$YAMLURL/feedback
+        handler: FormHandler
         kwargs:
-            path: $YAMLPATH/index.html
-            headers: *HEADERS
+            url: sqlite:///$GUIDE_FEEDBACK
+            table: feedback
+            id: [time, page]
+            prepare: guide.prepare_feedback(args, handler)
+
     # The final *computed* gramex.yaml configuration
-    final-config:
+    guide-final-config:
         pattern: /$YAMLURL/final-config
         handler: FunctionHandler
         kwargs:
             function: guide.config
             headers: *HEADERS
     # Just serve the root gramex.yaml file
-    root-config:
+    guide-root-config:
         pattern: /$YAMLURL/root.gramex.yaml
         handler: FileHandler
         kwargs:
@@ -91,7 +93,7 @@ url:
                 <<: *HEADERS
 
     # Static files are cached on the browser
-    static:
+    guide-static:
         pattern: /$YAMLURL/(.*.css|.*.js)
         handler: FileHandler
         kwargs:
@@ -100,7 +102,7 @@ url:
                 Cache-Control: public, max-age=300
 
     # /path.source shows the raw file as plain text
-    source:
+    guide-source:
         pattern: /$YAMLURL/(.*)\.source
         handler: FileHandler
         kwargs:
