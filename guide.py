@@ -67,5 +67,6 @@ def config(handler):
 
 
 def prepare_feedback(args, handler):
-    args['user'] = [handler.current_user.id if handler.current_user else '']
-    args['time'] = [time.time()]
+    if handler.request.method == 'POST':
+        args['user'] = [handler.current_user.id if handler.current_user else '']
+        args['time'] = [time.time()]
