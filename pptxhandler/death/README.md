@@ -46,7 +46,9 @@ url:
     kwargs:
       version: 2
       source: $YAMLPATH/template.pptx
-      data: {url: $YAMLPATH/mortality.xlsx}
+      data:
+        url: $YAMLPATH/mortality.xlsx
+        transform: data[data['rank'] <= 10]
 ```
 
 Now, we'll set up a rule that copies the slide for each year.
