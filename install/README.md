@@ -3,7 +3,7 @@ title: Install Gramex
 prefix: Install
 ...
 
-<link rel="stylesheet" type="text/css" href="../../node_modules/asciinema-player/resources/public/css/asciinema-player.css">
+<link rel="stylesheet" type="text/css" href="../node_modules/asciinema-player/resources/public/css/asciinema-player.css">
 
 [TOC]
 
@@ -218,4 +218,4 @@ pip install --upgrade gramexenterprise
 Install [`Gramex Snippets` extension](https://marketplace.visualstudio.com/items?itemName=gramener.gramexsnippets) for VSCode IDE for Gramex related code snippets. Visit [VSCode Extension](../extension/) page for more details.
 
 
-<script src="../../node_modules/asciinema-player/resources/public/js/asciinema-player.js"></script>
+<script src="../node_modules/asciinema-player/resources/public/js/asciinema-player.js"></script>
