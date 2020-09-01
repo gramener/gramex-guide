@@ -1079,6 +1079,35 @@
       "What next": -1
     }
   },
+  "1.63": {
+    "": {
+      "Gramex 1.63 release notes": -1
+    },
+    "conda-install": {
+      "Conda install": -1
+    },
+    "docker-install": {
+      "Docker install": -1
+    },
+    "embedding-other-apps": {
+      "Embedding other apps": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "new-gramex-guide": {
+      "New Gramex Guide": -1
+    },
+    "other-features": {
+      "Other features": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "what-next": {
+      "What next": -1
+    }
+  },
   "about": {
     "": {}
   },
@@ -1416,9 +1445,7 @@
     "subprocess-streaming": {
       "Subprocess streaming": -1
     },
-    "using-cache-stores": {
-      "Using cache stores": -1
-    }
+    "using-cache-stores": {}
   },
   "capturehandler": {
     "": {
@@ -1635,12 +1662,8 @@
     "if-this-fails-add-p-password": {
       "If this fails, add '-p PASSWORD'": -1
     },
-    "push-docs-and-coverage-tests": {
-      "Push docs and coverage tests": -1
-    },
-    "push-to-pypi": {
-      "Push to pypi": -1
-    },
+    "push-docs-and-coverage-tests": {},
+    "push-to-pypi": {},
     "release-gramex-community-edition": {
       "Release Gramex Community Edition": -1
     },
@@ -1736,6 +1759,9 @@
     "datahandler-usage": {}
   },
   "death": {
+    "automated-insights": {
+      "Automated insights": -1
+    },
     "create-the-data": {
       "Create the data": -1
     },
@@ -2439,6 +2465,9 @@
     "alternate-installations": {
       "Alternate installations": -1
     },
+    "conda-install": {
+      "Conda install": -1
+    },
     "docker-install": {
       "Docker install": -1
     },
@@ -2451,33 +2480,27 @@
     "install-a-specific-version-of-gramex": {
       "Install a specific version of Gramex": -1
     },
-    "installation": {
-      "Installation": -1
+    "install-gramex-enterprise": {
+      "Install Gramex Enterprise": -1
     },
+    "installation": {},
     "offline-docker-install": {
       "Offline Docker Install": -1
     },
     "offline-install": {
       "Offline install": -1
     },
-    "other-useful-commands": {
-      "Other useful commands": -1
+    "other-useful-commands": {},
+    "pip-install": {
+      "Pip install": -1
     },
-    "run-bash-inside-the-container": {
-      "Run bash inside the container": -1
-    },
-    "run-gramex-on-port-9988": {
-      "Run Gramex on port 9988": -1
-    },
-    "to-re-connect-to-the-instance": {
-      "To re-connect to the instance:": -1
-    },
+    "run-bash-inside-the-container": {},
+    "run-gramex-on-port-9988": {},
+    "to-re-connect-to-the-instance": {},
     "troubleshooting": {
       "Troubleshooting": -1
     },
-    "uninstall-gramex": {
-      "Uninstall Gramex": -1
-    },
+    "uninstall-gramex": {},
     "vscode-extension": {
       "VSCode Extension": -1
     }
@@ -2614,6 +2637,11 @@
     },
     "result-should-be-setosa": {
       "result should be ['setosa']": -1
+    }
+  },
+  "newsletter": {
+    "": {
+      "Gramex Newsletters": -1
     }
   },
   "node": {
@@ -2757,9 +2785,7 @@
     "clone-shapes": {
       "Clone shapes": -1
     },
-    "color-scales": {
-      "Color scales": -1
-    },
+    "color-scales": {},
     "color-units": {
       "Color units": -1
     },

@@ -915,15 +915,6 @@ They may also use these variables where available:
 - `clone`: info on the currently [cloned shape](#clone-shapes), e.g. `clone.key`, `clone.val`
 - `cell`: info on the currently processed cell in a [table](#table), e.g. `cell.val`
 
-## Color scales
-
-To convert numbers into continuous colors, you can
-
-```yaml
-fill: color(norm)
-
-```
-
 ## PPTGen Library
 
 You can access the [pptgen][pptgen] library to change presentations programmatically.

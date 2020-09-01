@@ -1,0 +1,558 @@
+{
+  "version": 1,
+  "width": 120,
+  "height": 30,
+  "duration": 197.967591,
+  "command": null,
+  "title": null,
+  "env": {
+    "TERM": "cygwin",
+    "SHELL": null
+  },
+  "stdout": [
+    [
+      0.059219,
+      "sh-4.4$ "
+    ],
+    [
+      0.368598,
+      "conda"
+    ],
+    [
+      9.3e-05,
+      " cr"
+    ],
+    [
+      0.00358,
+      "e"
+    ],
+    [
+      0.001921,
+      "at"
+    ],
+    [
+      0.000292,
+      "e "
+    ],
+    [
+      0.003803,
+      "-y"
+    ],
+    [
+      0.000128,
+      " -"
+    ],
+    [
+      0.004117,
+      "-na"
+    ],
+    [
+      0.003932,
+      "m"
+    ],
+    [
+      8.6e-05,
+      "e "
+    ],
+    [
+      0.00372,
+      "g"
+    ],
+    [
+      0.001922,
+      "ra"
+    ],
+    [
+      0.002047,
+      "me"
+    ],
+    [
+      0.000274,
+      "x "
+    ],
+    [
+      0.005834,
+      "pyth"
+    ],
+    [
+      0.000174,
+      "o"
+    ],
+    [
+      0.003926,
+      "n="
+    ],
+    [
+      7.9e-05,
+      "3."
+    ],
+    [
+      0.003862,
+      "7"
+    ],
+    [
+      0.471944,
+      "\r\n"
+    ],
+    [
+      0.494917,
+      "Collecting package metadata (current_repodata.json): ...working... "
+    ],
+    [
+      1.252537,
+      "done\r\r\nSolving environment: ...working... "
+    ],
+    [
+      0.024909,
+      "done\r\r\n"
+    ],
+    [
+      1.298596,
+      "\r\r\n\r\r\n==> WARNING: A newer version of conda exists. <==\r\r\n  current version: 4.8.3\r\r\n  latest version: 4.8.4\r\r\n\r\r\nPlease update conda by running\r\r\n\r\r\n    $ conda update -n base -c defaults conda\r\r\n\r\r\n\r\r\n"
+    ],
+    [
+      1.580483,
+      "\r\r\n## Package Plan ##\r\r\n\r\r\n  environment location: D:\\anaconda\\3.7\\envs\\gramex\r\r\n\r\r\n  added / updated specs:\r\r\n    - python=3.7\r\r\n\r\r\n\r\r\nThe following NEW packages will be INSTALLED:\r\r\n\r\r\n  ca-certificates    pkgs/main/win-64::ca-certificates-2020.7.22-0\r\r\n"
+    ],
+    [
+      0.000139,
+      "  certifi            pkgs/main/win-64::certifi-2020.6.20-py37_0\r\r\n  openssl            pkgs/main/win-64::openssl-1.1.1g-he774522_1\r\r\n  pip                pkgs/main/win-64::pip-20.2.2-py37_0\r\r\n  python             pkgs/main/win-64::python-3.7.7-h81c818b_4\r\r"
+    ],
+    [
+      0.000133,
+      "\n  setuptools         pkgs/main/win-64::setuptools-49.6.0-py37_0\r\r\n  sqlite             pkgs/main/win-64::sqlite-3.33.0-h2a8f88b_0\r\r\n  vc                 pkgs/main/win-64::vc-14.1-h0510ff6_4\r\r\n  vs2015_runtime     pkgs/main/win-64::vs2015_runtime-14.16.270"
+    ],
+    [
+      0.000133,
+      "12-hf0eaf9b_3\r\r\n  wheel              pkgs/main/noarch::wheel-0.35.1-py_0\r\r\n  wincertstore       pkgs/main/win-64::wincertstore-0.2-py37_0\r\r\n  zlib               pkgs/main/win-64::zlib-1.2.11-h62dcd97_4\r\r\n\r\r\n\r\r\nPreparing transaction: ...working... "
+    ],
+    [
+      0.173581,
+      "done\r\r\nVerifying transaction: ...working... "
+    ],
+    [
+      0.905032,
+      "done\r\r\nExecuting transaction: ...working... "
+    ],
+    [
+      2.863388,
+      "done\r\r\n"
+    ],
+    [
+      0.003992,
+      "#\r\r\n# To activate this environment, use\r\r\n#\r\r\n#     $ conda activate gramex\r\r\n#\r\r\n# To deactivate an active environment, use\r\r\n#\r\r\n#     $ conda deactivate\r\r\n\r\r\n"
+    ],
+    [
+      1.242276,
+      "sh-4.4$ "
+    ],
+    [
+      0.450103,
+      "conda "
+    ],
+    [
+      0.000113,
+      "a"
+    ],
+    [
+      0.00203,
+      "c"
+    ],
+    [
+      0.001998,
+      "ti"
+    ],
+    [
+      0.002018,
+      "va"
+    ],
+    [
+      0.001982,
+      "te"
+    ],
+    [
+      0.002054,
+      " g"
+    ],
+    [
+      0.001984,
+      "ra"
+    ],
+    [
+      0.001963,
+      "me"
+    ],
+    [
+      0.00194,
+      "x"
+    ],
+    [
+      0.337152,
+      "\r\n"
+    ],
+    [
+      0.215926,
+      "\r\r\n"
+    ],
+    [
+      0.164688,
+      "\r\r\n\u001b[32mTue Sep 01 02:21 PM \u001b[33m.../c/Users/anand\u001b[0m\u001b[32m\u001b[00m\r\r\n$ "
+    ],
+    [
+      1.773339,
+      "conda "
+    ],
+    [
+      0.000233,
+      "i"
+    ],
+    [
+      0.003845,
+      "ns"
+    ],
+    [
+      6.2e-05,
+      "t"
+    ],
+    [
+      0.003953,
+      "a"
+    ],
+    [
+      0.001931,
+      "ll"
+    ],
+    [
+      0.000136,
+      " -"
+    ],
+    [
+      0.005226,
+      "y -"
+    ],
+    [
+      0.00177,
+      "c"
+    ],
+    [
+      0.001984,
+      " c"
+    ],
+    [
+      0.001956,
+      "on"
+    ],
+    [
+      0.001995,
+      "da"
+    ],
+    [
+      0.001935,
+      "-f"
+    ],
+    [
+      0.003962,
+      "or"
+    ],
+    [
+      0.001919,
+      "ge"
+    ],
+    [
+      0.002063,
+      " "
+    ],
+    [
+      0.002018,
+      "-c"
+    ],
+    [
+      0.002002,
+      " g"
+    ],
+    [
+      0.002046,
+      "ra"
+    ],
+    [
+      0.00016,
+      "me"
+    ],
+    [
+      0.001813,
+      "ne"
+    ],
+    [
+      0.002015,
+      "r "
+    ],
+    [
+      0.002066,
+      "gr"
+    ],
+    [
+      0.001967,
+      "am"
+    ],
+    [
+      0.003944,
+      "ex"
+    ],
+    [
+      0.427797,
+      "\r\n"
+    ],
+    [
+      0.595804,
+      "Collecting package metadata (current_repodata.json): ...working... "
+    ],
+    [
+      2.136513,
+      "done\r\r\nSolving environment: ...working... "
+    ],
+    [
+      1.754958,
+      "done\r\r\n"
+    ],
+    [
+      0.956006,
+      "\r\r\n\r\r\n==> WARNING: A newer version of conda exists. <==\r\r\n  current version: 4.8.3\r\r\n  latest version: 4.8.4\r\r\n\r\r\nPlease update conda by running\r\r\n\r\r\n    $ conda update -n base -c defaults conda\r\r\n\r\r\n\r\r\n"
+    ],
+    [
+      1.154127,
+      "\r\r\n## Package Plan ##\r\r\n\r\r\n  environment location: D:\\anaconda\\3.7\\envs\\gramex-conda\r\r\n\r\r\n  added / updated specs:\r\r\n    - gramex\r\r\n\r\r\n\r\r\nThe following packages will be downloaded:\r\r\n\r\r\n    package                    |            build\r\r\n    --------------"
+    ],
+    [
+      0.000158,
+      "-------------|-----------------\r\r\n    openssl-1.1.1g             |       he774522_1         5.7 MB  conda-forge\r\r\n    ------------------------------------------------------------\r\r\n                                           Total:         5.7 MB\r\r\n\r\r\nThe f"
+    ],
+    [
+      7.8e-05,
+      "ollowing NEW packages will be INSTALLED:\r\r\n\r\r\n  argh               conda-forge/noarch::argh-0.26.2-pyh9f0ad1d_1002\r\r\n  argon2-cffi        conda-forge/win-64::argon2-cffi-20.1.0-py37h4ab8f01_1\r\r\n  atomicwrites       conda-forge/noarch::atomicwrites-1.4.0-py"
+    ],
+    [
+      0.000172,
+      "h9f0ad1d_0\r\r\n  attrs              conda-forge/noarch::attrs-20.1.0-pyh9f0ad1d_0\r\r\n  backcall           conda-forge/noarch::backcall-0.2.0-pyh9f0ad1d_0\r\r\n  backports          conda-forge/noarch::backports-1.0-py_2\r\r\n  backports.functoo~ conda-forge/noarch::"
+    ],
+    [
+      6.6e-05,
+      "backports.functools_lru_cache-1.6.1-py_0\r\r\n  bcrypt             conda-forge/win-64::bcrypt-3.2.0-py37h4ab8f01_0\r\r\n  blas               pkgs/main/win-64::blas-1.0-mkl\r\r\n  blinker            conda-forge/noarch::blinker-1.4-py_1\r\r\n  boto3              conda-f"
+    ],
+    [
+      0.000148,
+      "orge/noarch::boto3-1.14.51-pyh9f0ad1d_0\r\r\n  botocore           conda-forge/noarch::botocore-1.17.52-pyh9f0ad1d_0\r\r\n  brotlipy           conda-forge/win-64::brotlipy-0.7.0-py37h4ab8f01_1000\r\r\n  cachetools         conda-forge/noarch::cachetools-4.1.1-py_0\r\r\n"
+    ],
+    [
+      0.000117,
+      "  cffi               conda-forge/win-64::cffi-1.14.1-py37h26f1ce3_0\r\r\n  chardet            conda-forge/win-64::chardet-3.0.4-py37hc8dfbb8_1006\r\r\n  colorama           conda-forge/noarch::colorama-0.4.3-py_0\r\r\n  colorlog           conda-forge/win-64::colorlo"
+    ],
+    [
+      7.6e-05,
+      "g-4.2.1-py37hc8dfbb8_0\r\r\n  conda              conda-forge/win-64::conda-4.8.4-py37hc8dfbb8_2\r\r\n  conda-package-han~ conda-forge/win-64::conda-package-handling-1.7.0-py37h4ab8f01_4\r\r\n  crontab            conda-forge/noarch::crontab-0.22.9-pyh9f0ad1d_0\r\r\n  c"
+    ],
+    [
+      0.000116,
+      "ryptography       conda-forge/win-64::cryptography-3.1-py37h26f1ce3_0\r\r\n  cssselect          conda-forge/noarch::cssselect-1.1.0-py_0\r\r\n  cycler             conda-forge/noarch::cycler-0.10.0-py_2\r\r\n  decorator          conda-forge/noarch::decorator-4.4.2-p"
+    ],
+    [
+      9.3e-05,
+      "y_0\r\r\n  diskcache          conda-forge/noarch::diskcache-5.0.2-pyh9f0ad1d_0\r\r\n  docutils           conda-forge/win-64::docutils-0.15.2-py37_0\r\r\n  freetype           conda-forge/win-64::freetype-2.10.2-hd328e21_0\r\r\n  gramex             gramener/win-64::gram"
+    ],
+    [
+      8.2e-05,
+      "ex-1.62.0-py37_1\r\r\n  h5py               conda-forge/win-64::h5py-2.10.0-nompi_py37hde23a51_104\r\r\n  hdf5               conda-forge/win-64::hdf5-1.10.6-nompi_he0bbb20_101\r\r\n  icc_rt             pkgs/main/win-64::icc_rt-2019.0.0-h0cc432a_1\r\r\n  icu            "
+    ],
+    [
+      0.000131,
+      "    conda-forge/win-64::icu-67.1-h33f27b4_0\r\r\n  idna               conda-forge/noarch::idna-2.10-pyh9f0ad1d_0\r\r\n  importlib-metadata conda-forge/win-64::importlib-metadata-1.7.0-py37hc8dfbb8_0\r\r\n  importlib_metadata conda-forge/noarch::importlib_metadata-1"
+    ],
+    [
+      6.7e-05,
+      ".7.0-0\r\r\n  iniconfig          conda-forge/noarch::iniconfig-1.0.1-pyh9f0ad1d_0\r\r\n  intel-openmp       pkgs/main/win-64::intel-openmp-2020.2-254\r\r\n  ipdb               conda-forge/noarch::ipdb-0.13.3-pyh9f0ad1d_0\r\r\n  ipython            conda-forge/win-64::i"
+    ],
+    [
+      0.000112,
+      "python-7.18.1-py37hc6149b9_0\r\r\n  ipython_genutils   conda-forge/noarch::ipython_genutils-0.2.0-py_1\r\r\n  jedi               conda-forge/win-64::jedi-0.15.2-py37_0\r\r\n  jmespath           conda-forge/noarch::jmespath-0.10.0-pyh9f0ad1d_0\r\r\n  joblib            "
+    ],
+    [
+      0.000115,
+      " conda-forge/noarch::joblib-0.16.0-py_0\r\r\n  jpeg               conda-forge/win-64::jpeg-9d-he774522_0\r\r\n  kiwisolver         conda-forge/win-64::kiwisolver-1.2.0-py37heaa310e_0\r\r\n  ldap3              conda-forge/noarch::ldap3-2.8-pyh9f0ad1d_0\r\r\n  libblas  "
+    ],
+    [
+      0.000112,
+      "          conda-forge/win-64::libblas-3.8.0-14_mkl\r\r\n  libcblas           conda-forge/win-64::libcblas-3.8.0-14_mkl\r\r\n  libclang           conda-forge/win-64::libclang-10.0.1-default_hf44288c_1\r\r\n  libiconv           conda-forge/win-64::libiconv-1.16-he774"
+    ],
+    [
+      9.6e-05,
+      "522_0\r\r\n  liblapack          conda-forge/win-64::liblapack-3.8.0-14_mkl\r\r\n  libpng             conda-forge/win-64::libpng-1.6.37-ha81a0f5_2\r\r\n  libtiff            conda-forge/win-64::libtiff-4.1.0-h885aae3_6\r\r\n  libxml2            conda-forge/win-64::libxm"
+    ],
+    [
+      9.6e-05,
+      "l2-2.9.10-h1006b36_2\r\r\n  libxslt            conda-forge/win-64::libxslt-1.1.33-h579f668_1\r\r\n  line_profiler      conda-forge/win-64::line_profiler-3.0.2-py37h4b0228a_0\r\r\n  lxml               conda-forge/win-64::lxml-4.5.2-py37h8ba8a40_0\r\r\n  lz4-c          "
+    ],
+    [
+      0.000105,
+      "    conda-forge/win-64::lz4-c-1.9.2-h62dcd97_2\r\r\n  markdown           conda-forge/noarch::markdown-3.2.2-py_0\r\r\n  matplotlib         conda-forge/win-64::matplotlib-3.3.1-1\r\r\n  matplotlib-base    conda-forge/win-64::matplotlib-base-3.3.1-py37h35e8a6e_1\r\r\n  "
+    ],
+    [
+      0.000102,
+      "menuinst           conda-forge/win-64::menuinst-1.4.16-py37_0\r\r\n  mkl                pkgs/main/win-64::mkl-2019.4-245\r\r\n  mkl-service        conda-forge/win-64::mkl-service-2.3.0-py37hfa6e2cd_0\r\r\n  more-itertools     conda-forge/noarch::more-itertools-8.5."
+    ],
+    [
+      0.000104,
+      "0-py_0\r\r\n  nltk               conda-forge/noarch::nltk-3.4.4-py_0\r\r\n  nodejs             conda-forge/win-64::nodejs-14.9.0-0\r\r\n  numpy              conda-forge/win-64::numpy-1.19.1-py37h7cee19a_2\r\r\n  oauthlib           conda-forge/noarch::oauthlib-3.0.1-py"
+    ],
+    [
+      6.1e-05,
+      "_0\r\r\n  olefile            conda-forge/noarch::olefile-0.46-py_0\r\r\n  packaging          conda-forge/noarch::packaging-20.4-pyh9f0ad1d_0\r\r\n  pandas             conda-forge/win-64::pandas-0.25.3-py37he350917_0\r\r\n  parso              pkgs/main/noarch::parso-0."
+    ],
+    [
+      6.1e-05,
+      "5.2-py_0\r\r\n  passlib            conda-forge/noarch::passlib-1.7.2-pyh9f0ad1d_1\r\r\n  pathlib            conda-forge/win-64::pathlib-1.0.1-py37hc8dfbb8_2\r\r\n  pathtools          conda-forge/noarch::pathtools-0.1.2-py_1\r\r\n  patsy              conda-forge/noarch"
+    ],
+    [
+      6.1e-05,
+      "::patsy-0.5.1-py_0\r\r\n  pickleshare        conda-forge/win-64::pickleshare-0.7.5-py37hc8dfbb8_1001\r\r\n  pillow             conda-forge/win-64::pillow-7.2.0-py37hc826c6e_1\r\r\n  pluggy             conda-forge/win-64::pluggy-0.13.1-py37hc8dfbb8_2\r\r\n  prompt-tool"
+    ],
+    [
+      6.1e-05,
+      "kit     conda-forge/noarch::prompt-toolkit-3.0.7-py_0\r\r\n  psutil             conda-forge/win-64::psutil-5.7.2-py37h4ab8f01_0\r\r\n  py                 conda-forge/noarch::py-1.9.0-pyh9f0ad1d_0\r\r\n  pyasn1             conda-forge/noarch::pyasn1-0.4.8-py_0\r\r\n  p"
+    ],
+    [
+      6e-05,
+      "ycosat            conda-forge/win-64::pycosat-0.6.3-py37h8055547_1004\r\r\n  pycparser          conda-forge/noarch::pycparser-2.20-pyh9f0ad1d_2\r\r\n  pygments           conda-forge/noarch::pygments-2.6.1-py_0\r\r\n  pyjwt              conda-forge/noarch::pyjwt-1.7"
+    ],
+    [
+      5.9e-05,
+      ".1-py_0\r\r\n  pymysql            conda-forge/noarch::pymysql-0.10.0-pyh9f0ad1d_0\r\r\n  pyopenssl          conda-forge/noarch::pyopenssl-19.1.0-py_1\r\r\n  pyparsing          conda-forge/noarch::pyparsing-2.4.7-pyh9f0ad1d_0\r\r\n  pyqt               conda-forge/win-6"
+    ],
+    [
+      5.9e-05,
+      "4::pyqt-5.12.3-py37h6538335_1\r\r\n  pyreadline         conda-forge/win-64::pyreadline-2.1-py37_1001\r\r\n  pysocks            conda-forge/win-64::pysocks-1.7.1-py37hc8dfbb8_1\r\r\n  pytest             conda-forge/win-64::pytest-6.0.1-py37hc8dfbb8_0\r\r\n  python-date"
+    ],
+    [
+      6e-05,
+      "util    conda-forge/noarch::python-dateutil-2.8.1-py_0\r\r\n  python-pptx        conda-forge/noarch::python-pptx-0.6.18-py_0\r\r\n  python_abi         conda-forge/win-64::python_abi-3.7-1_cp37m\r\r\n  pytz               conda-forge/noarch::pytz-2020.1-pyh9f0ad1d_0\r"
+    ],
+    [
+      6e-05,
+      "\r\n  pywin32            conda-forge/win-64::pywin32-227-py37hfa6e2cd_0\r\r\n  pyyaml             conda-forge/win-64::pyyaml-5.3.1-py37h8055547_0\r\r\n  qt                 conda-forge/win-64::qt-5.12.6-hb2cf2c5_0\r\r\n  requests           conda-forge/noarch::requests"
+    ],
+    [
+      5.9e-05,
+      "-2.24.0-pyh9f0ad1d_0\r\r\n  ruamel_yaml        conda-forge/win-64::ruamel_yaml-0.15.80-py37h8055547_1001\r\r\n  s3transfer         conda-forge/win-64::s3transfer-0.3.3-py37hc8dfbb8_1\r\r\n  scikit-learn       conda-forge/win-64::scikit-learn-0.23.2-py37hdc70db3_0\r\r"
+    ],
+    [
+      6.4e-05,
+      "\n  scipy              pkgs/main/win-64::scipy-1.5.2-py37h9439919_0\r\r\n  seaborn            conda-forge/win-64::seaborn-0.10.1-1\r\r\n  seaborn-base       conda-forge/noarch::seaborn-base-0.10.1-py_1\r\r\n  selenium           conda-forge/win-64::selenium-3.141.0-p"
+    ],
+    [
+      6e-05,
+      "y37h8055547_1001\r\r\n  shutilwhich        conda-forge/noarch::shutilwhich-1.1.0-py_1\r\r\n  six                conda-forge/noarch::six-1.15.0-pyh9f0ad1d_0\r\r\n  sqlalchemy         conda-forge/win-64::sqlalchemy-1.3.19-py37h4ab8f01_0\r\r\n  sqlitedict         conda-f"
+    ],
+    [
+      6e-05,
+      "orge/noarch::sqlitedict-1.6.0-py_0\r\r\n  statsmodels        conda-forge/win-64::statsmodels-0.12.0-py37h4ab8f01_0\r\r\n  textblob           conda-forge/noarch::textblob-0.15.3-py_0\r\r\n  threadpoolctl      conda-forge/noarch::threadpoolctl-2.1.0-pyh5ca1d4c_0\r\r\n  "
+    ],
+    [
+      6.1e-05,
+      "tk                 conda-forge/win-64::tk-8.6.10-he774522_0\r\r\n  toml               conda-forge/noarch::toml-0.10.1-pyh9f0ad1d_0\r\r\n  tornado            conda-forge/win-64::tornado-5.1.1-py37hfa6e2cd_1000\r\r\n  tqdm               conda-forge/noarch::tqdm-4.48."
+    ],
+    [
+      6.5e-05,
+      "2-pyh9f0ad1d_0\r\r\n  traitlets          conda-forge/win-64::traitlets-4.3.3-py37hc8dfbb8_1\r\r\n  tzlocal            conda-forge/noarch::tzlocal-2.1-pyh9f0ad1d_0\r\r\n  urllib3            conda-forge/noarch::urllib3-1.25.10-py_0\r\r\n  watchdog           conda-forge/"
+    ],
+    [
+      6.1e-05,
+      "win-64::watchdog-0.10.3-py37hc8dfbb8_1\r\r\n  wcwidth            conda-forge/noarch::wcwidth-0.2.5-pyh9f0ad1d_1\r\r\n  win_inet_pton      conda-forge/win-64::win_inet_pton-1.1.0-py37_0\r\r\n  xlrd               conda-forge/noarch::xlrd-1.2.0-pyh9f0ad1d_1\r\r\n  xlsxwr"
+    ],
+    [
+      6.1e-05,
+      "iter         conda-forge/noarch::xlsxwriter-1.3.3-pyh9f0ad1d_0\r\r\n  xz                 conda-forge/win-64::xz-5.2.5-h62dcd97_1\r\r\n  yaml               conda-forge/win-64::yaml-0.2.5-he774522_0\r\r\n  yarn               conda-forge/win-64::yarn-1.22.5-0\r\r\n  zipp"
+    ],
+    [
+      6e-05,
+      "               conda-forge/noarch::zipp-3.1.0-py_0\r\r\n  zstd               conda-forge/win-64::zstd-1.4.5-h1f3a1b7_2\r\r\n\r\r\nThe following packages will be SUPERSEDED by a higher-priority channel:\r\r\n\r\r\n  ca-certificates    pkgs/main::ca-certificates-2020.7.22-"
+    ],
+    [
+      0.000136,
+      "0 --> conda-forge::ca-certificates-2020.6.20-hecda079_0\r\r\n  certifi               pkgs/main::certifi-2020.6.20-py37_0 --> conda-forge::certifi-2020.6.20-py37hc8dfbb8_0\r\r\n  openssl                                         pkgs/main --> conda-forge\r\r\n\r\r\n\r\r\n\r\r"
+    ],
+    [
+      0.000129,
+      "\nDownloading and Extracting Packages\r\r\n\ropenssl-1.1.1g       | 5.7 MB    |            |   0% "
+    ],
+    [
+      0.164529,
+      "\ropenssl-1.1.1g       | 5.7 MB    |            |   0% "
+    ],
+    [
+      0.096177,
+      "\ropenssl-1.1.1g       | 5.7 MB    | ##4        |  25% "
+    ],
+    [
+      0.114828,
+      "\ropenssl-1.1.1g       | 5.7 MB    | #######9   |  79% "
+    ],
+    [
+      0.647272,
+      "\ropenssl-1.1.1g       | 5.7 MB    | ########## | 100% \r\r\n"
+    ],
+    [
+      0.000164,
+      "Preparing transaction: ...working... "
+    ],
+    [
+      1.477838,
+      "done\r\r\nVerifying transaction: ...working... "
+    ],
+    [
+      1.103456,
+      "done\r\r\nExecuting transaction: ...working... "
+    ],
+    [
+      1.873984,
+      "\r\n"
+    ],
+    [
+      1.360709,
+      "done\r\r\n"
+    ],
+    [
+      1.978719,
+      "\r\r\n\u001b[32mTue Sep 01 02:24 PM \u001b[33m.../c/Users/anand\u001b[0m\u001b[32m\u001b[00m\r\r\n$ \r\n"
+    ],
+    [
+      0.024937,
+      "\r\r\n\u001b[32mTue Sep 01 02:24 PM \u001b[33m.../c/Users/anand\u001b[0m\u001b[32m\u001b[00m\r\r\n$ "
+    ],
+    [
+      0.767328,
+      "g"
+    ],
+    [
+      0.14499,
+      "r"
+    ],
+    [
+      0.058399,
+      "a"
+    ],
+    [
+      0.106903,
+      "m"
+    ],
+    [
+      0.10449,
+      "e"
+    ],
+    [
+      0.073642,
+      "x"
+    ],
+    [
+      0.284941,
+      "\r\n"
+    ]
+  ]
+}

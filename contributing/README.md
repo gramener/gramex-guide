@@ -119,16 +119,13 @@ yarn upgrade --cwd gramex/apps/filemanager/
 yarn upgrade --cwd gramex/apps/logviewer/
 yarn upgrade --cwd gramex/apps/pynode/
 yarn upgrade --cwd gramex/apps/ui/
-python gramex/apps/setup.py
 ```
 
 Update the following and commit to `master` branch:
 
 - In gramex:
     - `gramex/release.json` -- update the version number
-    - `pkg/docker-py3/Dockerfile` -- update the version number
     - `gramex/apps.yaml` -- update the version number on the guide
-    - `curl 'https://www.googleapis.com/webfonts/v1/webfonts?key=$GOOGLE_FONTS_API_KEY' -H "Referer: https://learn.gramener.com/gramex/guide/" > `
 - In [gramex-guide][gramex-guide]
     - `release/README.md` -- add release entry
     - `release/1.xx/README.md` -- add guide release notes. Run `make stats` for code size stats. Take coverage stats from Travis
@@ -163,21 +160,14 @@ git remote add gitlab git@code.gramener.com:cto/gramex-guide.git  # For Guide
 
 Gramener.com administrators: re-start Gramex after deployment.
 
-Deploy on [gramener.com](https://gramener.com/gramex-update/) and
-[pypi](https://pypi.python.org/pypi/gramex):
+Deploy on [gramener.com](https://gramener.com/gramex-update/),
+then [pypi](https://pypi.python.org/pypi/gramex),
+then [docker](https://hub.docker.com/r/gramener/gramex/).
 
 ```bash
-# Push docs and coverage tests
-make push-docs push-coverage
-# Push to pypi
-make push-pypi              # log in as gramener
-```
-
-Create [docker instance](https://hub.docker.com/r/gramener/gramex/):
-
-```bash
-export VERSION=1.x.x        # Replace with Gramex version
-make release-docker
+make push-pypi                # Log in as gramener
+make push-docker              # Log in as sanand0 / pratapvardhan
+make push-docs push-coverage  # Push docs and coverage tests
 ```
 
 ## Release Gramex Enterprise Edition
@@ -213,17 +203,6 @@ python setup.py sdist
 # If this fails, add '-p PASSWORD'
 twine upload -u gramener dist/*
 ```
-
-Deploy [docker instance](https://hub.docker.com/r/gramener/gramex/):
-
-```bash
-export VERSION=1.x.x        # Replace with Gramex version
-docker build https://github.com/gramener/gramex.git#release:pkg/docker-py3 -t gramener/gramex:$VERSION
-docker tag gramener/gramex:$VERSION gramener/gramex:latest
-docker login                # log in as sanand0 / pratapvardhan
-docker push gramener/gramex
-```
-
 Re-start gramex on deployed servers.
 
 [gramex-guide]: https://github.com/gramener/gramex-guide/

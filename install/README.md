@@ -3,17 +3,81 @@ title: Install Gramex
 prefix: Install
 ...
 
+<link rel="stylesheet" type="text/css" href="../../node_modules/asciinema-player/resources/public/css/asciinema-player.css">
+
 [TOC]
 
-## Install
+There are 4 ways of installing or upgrading the Gramex Community Edition.
 
-1. Install [Anaconda][anaconda]. Gramex does not yet work with Python 3.8. So use Anaconda3-2020.02 (not later):
-    - [Windows-x86_64](https://repo.anaconda.com/archive/Anaconda3-2020.02-Windows-x86_64.exe)
-    - [Windows-x86](https://repo.anaconda.com/archive/Anaconda2-2019.10-Windows-x86.exe)
-    - [MacOSX-x86_64](https://repo.anaconda.com/archive/Anaconda2-2019.10-MacOSX-x86_64.sh)
-    - [MacOSX-x86_64](https://repo.anaconda.com/archive/Anaconda2-2019.10-MacOSX-x86_64.pkg)
-    - [Linux-x86_64](https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-x86_64.sh)
-    - [Linux-ppc64le](https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-ppc64le.sh)
+1. [**Conda**](#conda-install) (**RECOMMENDED**). Best for beginners and Python developers
+2. [**Docker**](#docker-install). Best to try out new versions, or to deploy apps
+3. [**Pip**](#pip-install). Best for people contributing to Gramex
+4. [**Offline**](#offline-install). Best for machines without an Internet connection
+
+## Conda install
+
+Install [Anaconda3-2020.02][anaconda]. (Gramex does not yet work with Python 3.8. So avoid later versions). Here are downloads for:
+
+- [Windows-x86_64](https://repo.anaconda.com/archive/Anaconda3-2020.02-Windows-x86_64.exe)
+- [Windows-x86](https://repo.anaconda.com/archive/Anaconda2-2019.10-Windows-x86.exe)
+- [MacOSX-x86_64](https://repo.anaconda.com/archive/Anaconda2-2019.10-MacOSX-x86_64.pkg)
+- [Linux-x86_64](https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-x86_64.sh)
+- [Linux-ppc64le](https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-ppc64le.sh)
+
+To install [gramex](https://anaconda.org/gramener/gramex),
+type this in your Anaconda Prompt / shell:
+
+```bash
+conda create -y --name gramex python=3.7            # Create a new environment
+conda activate gramex                               # Activate it
+conda install -y -c conda-forge -c gramener gramex  # Install Gramex
+```
+
+Run `gramex --help` to verify that Gramex is installed.
+
+<asciinema-player src="gramex-conda.json" cols="100" rows="20" idle-time-limit="0.5" autoplay="1" font-size="medium" loop="1"></asciinema-player>
+
+**Upgrade Gramex via conda**
+
+To upgrade Gramex, run:
+
+```bash
+conda update gramex
+```
+
+## Docker install
+
+Install [Docker](https://docs.docker.com/engine/install/) first.
+
+Once Docker is running, to run [gramex](https://hub.docker.com/r/gramener/gramex/),
+type this in your Command Prompt / Terminal / shell:
+
+```bash
+docker run -it --name gramex -p 9988:9988 gramener/gramex /bin/bash
+```
+
+Run `gramex --help` to verify that Gramex is installed.
+
+<asciinema-player src="gramex-docker.json" cols="100" rows="20" idle-time-limit="0.5" autoplay="1" font-size="medium" loop="1"></asciinema-player>
+
+
+**Upgrade Gramex via docker**
+
+To upgrade Gramex, run:
+
+```bash
+docker pull gramener/gramex
+```
+
+
+## Pip install
+
+1. Install [Anaconda3-2020.02][anaconda]. (Gramex does not yet work with Python 3.8. So avoid later versions). Here are downloads for:
+   - [Windows-x86_64](https://repo.anaconda.com/archive/Anaconda3-2020.02-Windows-x86_64.exe)
+   - [Windows-x86](https://repo.anaconda.com/archive/Anaconda2-2019.10-Windows-x86.exe)
+   - [MacOSX-x86_64](https://repo.anaconda.com/archive/Anaconda2-2019.10-MacOSX-x86_64.pkg)
+   - [Linux-x86_64](https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-x86_64.sh)
+   - [Linux-ppc64le](https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-ppc64le.sh)
 2. Install [node.js][nodejs] 10 or later
 3. Run the following commands on the terminal
 
@@ -23,57 +87,9 @@ npm install -g yarn     # Required for UI components and built-in apps
 gramex setup --all      # Set up UI components and built-in apps
 ```
 
-4. Create an empty `gramex.yaml` text file in a directory
-5. Run `gramex` from that directory
+Run `gramex --help` to verify that Gramex is installed.
 
-Gramex runs at `http://127.0.0.1:9988/` and lists the files in your folder by
-default. Press Ctrl-C to exit Gramex.
-
-Gramex Enterprise is offered under a [commercial license](../license/) and
-provides additional features. To install it, run:
-
-```bash
-pip install gramexenterprise    # Install Gramex Enterprise
-gramex license accept           # Accept the Gramex license
-```
-
-## Upgrade
-
-To upgrade Gramex, run:
-
-```bash
-pip install --upgrade gramex
-pip install --upgrade gramexenterprise    # If you use DBAuth, LDAPAuth, etc.
-gramex setup --all
-```
-
-## VSCode Extension
-
-Install [`Gramex Snippets` extension](https://marketplace.visualstudio.com/items?itemName=gramener.gramexsnippets) for VSCode IDE for Gramex related code snippets. Visit [VSCode Extension](../extension/) page for more details.
-
-## Troubleshooting
-
-If Gramex does not install:
-
-- If you are behind a HTTP proxy, use `pip install --proxy=http://{proxy-host}:{port} ...`.
-  You can use [conda with a proxy][conda-proxy] too.
-
-If Gramex does not run:
-
-- If you're using `Python 3.8`, install Python 3.7 instead and re-install Gramex. Gramex currently
-  does not work with Python 3.8.
-- Try uninstalling and re-installing Gramex. Stop Gramex and all other Python applications when
-  re-installing.
-- Make sure that typing `gramex` runs the Gramex executable, and is not aliased to a different
-  command.
-- If UI components are not working, install [node.js][nodejs], ensure that it's on your PATH, and
-  run `gramex setup --all` to set up all apps again.
-
-## Uninstall Gramex
-
-To remove Gramex, run `pip uninstall gramex`
-
-## Alternate installations
+### Alternate installations
 
 ```bash
 # Install a specific version of Gramex
@@ -100,26 +116,33 @@ pip install --verbose -e gramex
 re-installing scandir fails on Windows.
 -->
 
-## Docker install
+**Upgrade Gramex via pip**
 
-Gramex is available as a docker instance. To run it:
+To upgrade Gramex, run:
 
 ```bash
-docker pull gramener/gramex     # or docker pull gramener/gramex:1.27.0
-
-# Run Gramex on port 9988
-docker run --name gramex-instance -p 9988:9988 gramener/gramex
-
-# Run bash inside the container
-docker run --name gramex-instance -i -t -p 9988:9988 gramener/gramex /bin/bash
-
-# To re-connect to the instance:
-docker start -i -a gramex-instance
-
-# Other useful commands
-docker container ls           # list instances
-docker rm gramex-instance     # delete instance
+pip install --upgrade gramex
+gramex setup --all
 ```
+
+## Troubleshooting
+
+If Gramex does not install:
+
+- If you are behind a HTTP proxy, use `pip install --proxy=http://{proxy-host}:{port} ...`.
+  You can use [conda with a proxy][conda-proxy] too.
+
+If Gramex does not run:
+
+- If you're using `Python 3.8`, install Python 3.7 instead and re-install Gramex. Gramex currently
+  does not work with Python 3.8.
+- Try uninstalling and re-installing Gramex. Stop Gramex and all other Python applications when
+  re-installing.
+- Make sure that typing `gramex` runs the Gramex executable, and is not aliased to a different
+  command.
+- If UI components are not working, install [node.js][nodejs], ensure that it's on your PATH, and
+  run `gramex setup --all` to set up all apps again.
+
 
 ## Offline install
 
@@ -147,16 +170,52 @@ That requires an Internet-enabled machine or Docker.
 
 ### Offline Docker Install
 
-On a system **with an Internet connection** and the **same platform** (Windows/Linux) as the target system:
+[Install Docker](https://docs.docker.com/engine/install/) on a system **with an Internet connection** and the **same platform** (Windows/Linux) as the target system. Then run:
 
-1. Install Docker (Docker CE/Docker Toolbox will both work - though CE is easier to use)
-2. In a Docker shell (Windows) or any shell(Linux) run the command `docker pull gramener/gramex`
-3. Run `docker images` to verify that the image has been downloaded to the machine.
-4. Run `docker save gramener/gramex > gramex-latest.tar`
-5. (Optional) Split the saved image into smaller files for easier transfer using `split -b 100M gramex-latest.tar "gramex-latest.part*"`
-6. Install docker on the target machine using [binaries](https://docs.docker.com/install/linux/docker-ce/binaries/#next-steps)
-7. Transfer the tar file/parts of the tar file to the destination machine
-8. (Optional, if files were split) recombine split files using the command `cat gramex-latest.part* > gramex-latest.tar`
-9. run `docker load < gramex-latest.tar`
-10. run `docker images` on the destination machine to verify that the image is loaded.
-11. Post this, you can create custom dockerfiles/use docker run to use the gramex.
+```bash
+docker pull gramener/gramex
+docker save gramener/gramex > gramex-latest.tar
+```
+
+Then:
+
+1. Copy files to the target machine.
+2. [Install Docker](https://docs.docker.com/engine/install/) on the target machine.
+3. Copy `gramex-latest.tar` to the target machine. Zip and split it if required.
+
+On the target machine, run:
+
+```bash
+docker load < gramex-latest.tar
+docker run -it --name gramex -p 9988:9988 gramener/gramex /bin/bash
+```
+
+
+# Install Gramex Enterprise
+
+Gramex Enterprise is offered under a [commercial license](../license/) and
+provides enterprise security features.
+
+To install it, [install Gramex first](#conda-install).
+
+Then run:
+
+```bash
+pip install gramexenterprise    # Install Gramex Enterprise
+gramex license accept           # Accept the Gramex license
+```
+
+**Upgrade Gramex Enterprise**
+
+To upgrade Gramex Enterprise, run:
+
+```bash
+pip install --upgrade gramexenterprise
+```
+
+## VSCode Extension
+
+Install [`Gramex Snippets` extension](https://marketplace.visualstudio.com/items?itemName=gramener.gramexsnippets) for VSCode IDE for Gramex related code snippets. Visit [VSCode Extension](../extension/) page for more details.
+
+
+<script src="../../node_modules/asciinema-player/resources/public/js/asciinema-player.js"></script>

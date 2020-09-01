@@ -69,8 +69,7 @@ In addition, the September 2020 release (1.63) will:
 
 ## How to install
 
-- [Gramex installation instructions](../../install/#install)
-- [Gramex upgrade instructions](../../install#upgrade).
+See the [Gramex installation and upgrade instructions](../../install/)
 
 Note: Gramex 1.62 does not work with Python 3.8. We recommend Python 3.7.
 
