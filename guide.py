@@ -7,7 +7,6 @@ import gramex
 import hashlib
 import markdown
 import re
-import sqlalchemy as sa
 import time
 import yaml
 
