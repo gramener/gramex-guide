@@ -48,7 +48,7 @@ app:
     domain: .example.org    # All subdomains in .example.org can access session
 ```
 
-You can store any variable against a session. These are stored in the `sid`
+You can store any variable against a session. These are stored in the
 secure cookie for a duration that's controlled by the `app.session.expiry`
 configuration in `gramex.yaml`. Here is the default configuration:
 
@@ -70,6 +70,17 @@ app:
   settings:
     cookie_secret: ...
 ```
+
+**v1.64**: If you deploy multiple Gramex applications, the `sid` cookie used in one can conflict
+with the others. To avoid this, change the cookie name to something unique for each app, using
+`app.session.cookie`:
+
+```yaml
+app:
+  session:
+    cookie: my-app-sid        # Instead of 'sid', use 'my-app-sid' as the cookie name for this app
+```
+
 
 ## Session data
 
@@ -1661,16 +1672,14 @@ url:
 `auth: true` just requires that you must log in. In this example, you can access
 this sample page "[must-login](must-login)" only if you are logged in.
 
-If you don't specify `auth:` in the `kwargs:` section, the `auth:` defined in `app.auth` of
-`gramex.yaml` will be used. For example:
+**v1.64**: If you don't specify `auth:` in the `kwargs:` section, the `auth:` defined in `app.auth`
+of `gramex.yaml` will be used. (Use this with care. The CSS/JS/images on your login page won't
+appear unless set `auth: false` on these URLs.) For example:
 
 ```yaml
 app:
   auth: true        # All pages require login -- including CSS/JS/images on login page!
 ```
-
-Use this with care. The CSS/JS/images on your login page won't appear unless set `auth: false` on
-these URLs.
 
 Note: Don't add `auth:` to an `AuthHandler`. (That's asking users to log into a login page!)
 But if you do, it'll be ignored anyway.
