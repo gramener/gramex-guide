@@ -10,10 +10,9 @@ Your session data is:
 
 # Sessions
 
-Gramex identifies sessions through a cookie named `sid`, and stores information
-against each session as a persistent key-value store. This is available as
-`handler.session` in every handler. For example, here is the contents of your
-[session](session) variable now:
+Gramex identifies sessions through a cookie named `sid` by default, and stores information against
+each session as a persistent key-value store. This is available as `handler.session` in every
+handler. For example, here is the contents of your [`handler.session`](session) variable now:
 
 <iframe class="w-100" frameborder="0" src="session"></iframe>
 
@@ -223,12 +222,12 @@ url:
 This setup is useful only for testing. It stores passwords in plain text.
 **DO NOT USE IT IN PRODUCTION.**
 
-The user object `handler.current_user` looks like this:
+The [user attributes](#user-attributes) in `handler.current_user` look like this:
 
 ```js
 {
-    "user": "alpha",
-    "id": "alpha"
+    "id": "alpha",        // same as the user name used to log in
+    "user": "alpha"       // same as id
 }
 ```
 
@@ -237,9 +236,9 @@ in the `gramex.yaml`:
 
 ```js
 {
-    "user": "gamma",
-    "role": "user",
-    "id": "gamma"
+    "id": "gamma",        // same as user name used to log in
+    "user": "gamma",      // same as id
+    "role": "user"        // any additional attributes are also added, except password
 }
 ```
 
@@ -247,6 +246,7 @@ The `template:` key is optional, but you should generally associate it with a
 [HTML login form file](simple) that requests a username and password (with an
 [xsrf][xsrf] field). See [login templates](#login-templates) to learn how to
 create one.
+
 
 
 ## Google auth
@@ -311,10 +311,12 @@ def contacts(handler):
     raise tornado.gen.Return(result)
 ```
 
-The user object `handler.current_user` looks like this:
+The [user attributes](#user-attributes) in `handler.current_user` look like this:
 
 ```js
 {
+    "id": "s.anand@gramener.com",     // email ID of the user
+    "hd": "gramener.com",             // hosted domain name for G Suite accounts
     "family_name": "S",
     "name": "Anand S",
     "picture": "https://lh6.googleusercontent.com/-g6rN5UZlBjI/AAAAAAAAAAI/AAAAAAAAAfk/H5t_W1k90GQ/photo.jpg",
@@ -323,8 +325,6 @@ The user object `handler.current_user` looks like this:
     "email": "s.anand@gramener.com",
     "link": "https://plus.google.com/105156369599800182273",
     "given_name": "Anand",
-    "id": "s.anand@gramener.com",
-    "hd": "gramener.com",
     "verified_email": true
 }
 ```
@@ -361,13 +361,13 @@ url:
 - Copy the Application ID and App secret to the application settings
 - If you need an `access_token` for [FacebookGraphHandler](../facebookgraphhandler/), go to Settings > Advanced and copy the Client Token
 
-The user object `handler.current_user` looks like this:
+The [user attributes](#user-attributes) in `handler.current_user` look like this:
 
 ```js
 {
+    "id": "10154519601793455",        // Facebook ID
     "last_name": "Subramanian",
     "link": "https://www.facebook.com/app_scoped_user_id/.../",
-    "id": "10154519601793455",
     "name": "Anand Subramanian",
     "locale": "en_GB",
     "picture": {
@@ -406,17 +406,17 @@ url:
 - Go to the Keys section of the app
 - Copy the Consumer Key (API Key) and Consumer Secret (API Secret) to the application settings
 
-The user object `handler.current_user` looks like this:
+The [user attributes](#user-attributes) in `handler.current_user` look like this:
 
 ```js
 {
+    "id": "sanand0",          // Twitter ID
     "username": "sanand0",
     "follow_request_sent": false,
     "has_extended_profile": false,
     "profile_use_background_image": true,
     "default_profile_image": false,
     "suspended": false,
-    "id": "sanand0",
     "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme14/bg.gif",
     "verified": false,
     "translator_type": "none",
@@ -498,12 +498,12 @@ username and password. (The form should have an [xsrf][xsrf] field).
 LDAP runs on port 389 and and LDAPS runs on port 636. If you have a non-standard
 port, specify it like `port: 100`.
 
-The user object `handler.current_user` looks like this:
+The [user attributes](#user-attributes) in `handler.current_user` look like this:
 
 ```js
 {
-    "user": "uid=employee,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org",
-    "id": "uid=employee,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"
+    "id": "uid=employee,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org",
+    "user": "uid=employee,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"
 },
 ```
 
@@ -567,12 +567,12 @@ This is similar to [direct LDAP login](#direct-ldap-login), but the sequence fol
    `(mail={whatever-username-was-entered})`.
 3. Finally, Gramex checks if the first returned user matches the password.
 
-The user object `handler.current_user` looks like this:
+The [user attributes](#user-attributes) in `handler.current_user` look like this:
 
 ```js
 {
+    "id": "uid=employee,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org",
     "user": "uid=employee,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org",
-    "id": "uid=employee,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"
     "dn": "uid=employee,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org",
     "attributes": {
         "cn": ["Test Employee"],
@@ -725,7 +725,7 @@ default. This means:
 - Delay for 1 second on the second failure
 - Delay for 5 seconds on any failure thereafter.
 
- The user object `handler.current_user` looks like this:
+The [user attributes](#user-attributes) in `handler.current_user` look like this:
 
 ```js
 {
@@ -891,7 +891,7 @@ The user must first trust this server by enabling
 or [on Firefox](https://wiki.shibboleth.net/confluence/display/SHIB2/Single+sign-on+Browser+configuration).
 Then visiting `/integrated` will automatically log the user in.
 
-The user object `handler.current_user` looks like this:
+The [user attributes](#user-attributes) in `handler.current_user` look like this:
 
 ```js
 {
@@ -1107,13 +1107,13 @@ url:
   <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
 </div>
 
-The user object `handler.current_user` looks like this:
+The [user attributes](#user-attributes) in `handler.current_user` look like this:
 
 ```js
 {
+    'id': 's.anand@gramener.com',         // email ID of the user
     'email': 's.anand@gramener.com',
-    'hd': 'gramener.com',
-    'id': 's.anand@gramener.com'
+    'hd': 'gramener.com'
 }
 ```
 
@@ -1221,12 +1221,12 @@ url:
 **Note**: the example above relies on free credits available from Exotel. These
 may have run out.
 
-The user object `handler.current_user` is looks like this:
+The [user attributes](#user-attributes) in `handler.current_user` look like this:
 
 ```js
 {
-    'user': '+919741552552',
-    'id': '+919741552552'
+    'id': '+919741552552',        // Mobile number
+    'user': '+919741552552'
 }
 ```
 
@@ -1260,7 +1260,7 @@ When you write your own login template form, you can use these Python variables:
 This configuration creates a [logout page](logout?next=.):
 
 ```yaml
-auth/logout
+auth/logout:
   pattern: /$YAMLURL/logout   # Map this URL
   handler: LogoutHandler      # to the logout handler
 ```
@@ -1352,33 +1352,63 @@ auth handlers and the `LogoutHandler`.
 
 ## User attributes
 
-All handlers store the information retrieved about the user in
-`handler.session['user']`, typically as a dictionary. All handlers have access
-to this information via `handler.current_user` by default.
+All handlers store the information retrieved about the user in `handler.current_user` as a
+dictionary. This is also available, by default, as `handler.session['user']`.
+
+The contents of `handler.current_user` varies across auth handlers. But you are guaranteed that
+`handler.current_user['id']` is a unique user ID for that handler.
+
+## Multiple logins
 
 Typically, users log into only one AuthHandler, like DBAuth or GoogleAuth.
-Sometimes you want to log into both -- for example, to access the Google APIs.
-For this, you can specify a `user_key: something`. This stores the user object
-in `handler.session['something']` instead of `handler.session['user']`. This
-applies to all Auth handlers including [LogoutHandler](#logouthandler). For
-example:
+
+Sometimes you want to log into multiple login providers -- for example, to access the Google APIs.
+For this, you can specify a `user_key: something`. This stores the user object in
+`handler.session['something']` instead of `handler.session['user']`. For example:
 
 ```yaml
 url:
-  googleauth:
-    pattern: /google
+  multi-google:
+    pattern: /multi-google
     handler: GoogleAuth
     kwargs:
-      user_key: google_user    # Store user info in session.google_user not session.user
+      user_key: google_user     # Store in handler.session['google_user']
       # ...
 
-  twitterauth:
-    pattern: /twitter
-    handler: TwitterAuth
+  multi-simple:
+    pattern: /multi-simple
+    handler: SimpleAuth
     kwargs:
-      user_key: twitter_user   # Store user info in session.twitter_user
+      user_key: simple_user     # Store in handler.session['simple_user']
       # ...
 ```
+
+You can access the [Google](#google-auth) user info using `handler.session['google_user']` and the
+[SimpleAuth](#simple-auth) user info using `handler.session['simple_user']`.
+
+**YOU CANNOT USE THIS FOR [AUTHORIZATION](#authorization)**. You're just linking the account -- not
+logging in with the account. Permissions are based on `handler.session['user']` only. This is only
+to link and capture *additional information* about the user.
+
+To remove this link, write Python code anywhere (e.g. [FunctionHandler](../functionhandler/)) to
+`del handler.session['google_user']` or `del handler.session['simple_user']`. For example:
+
+```yaml
+url:
+  multi-unlink:
+    pattern: /multi-unlink
+    handler: FunctionHandler
+    kwargs:
+      function: '{key: handler.session.pop(key, None) for key in ["google_user", "simple_user"]}'
+      redirect:
+        url: /multi
+```
+
+<div class="example">
+  <a class="example-demo" href="multi">Multiple login example</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
+</div>
+
 
 ## Logging logins
 
