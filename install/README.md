@@ -89,7 +89,7 @@ gramex setup --all      # Set up UI components and built-in apps
 
 Run `gramex --help` to verify that Gramex is installed.
 
-### Alternate installations
+You can also install specific versions or tags of Gramex:
 
 ```bash
 # Install a specific version of Gramex
@@ -98,15 +98,16 @@ pip install --verbose gramex==1.47.0
 # Install a specific branch or tag from the Gramex source code
 pip install --verbose https://github.com/gramener/gramex/archive/dev.zip
 pip install --verbose https://github.com/gramener/gramex/archive/v1.47.0.zip
+```
 
-# Install a local version for Gramex development
+If you're developing on Gramex, clone it and install a local version:
+
+```bash
 git clone https://github.com/gramener/gramex.git
 pip install --verbose -e gramex
 ```
 
 [anaconda]: https://repo.anaconda.com/archive/
-[xcode]: https://developer.apple.com/xcode/download/
-[gramex]: https://github.com/gramener/gramex/archive/master.zip
 [conda-proxy]: https://conda.io/docs/user-guide/configuration/use-winxp-with-proxy.html
 [nodejs]: https://nodejs.org/en/
 
@@ -168,7 +169,7 @@ That requires an Internet-enabled machine or Docker.
 - If certain python packages don't compile well. Download specific stable versions in offline folder.
 `pip download psycopg2==2.7.7`
 
-### Offline Docker Install
+## Offline Docker Install
 
 [Install Docker](https://docs.docker.com/engine/install/) on a system **with an Internet connection** and the **same platform** (Windows/Linux) as the target system. Then run:
 

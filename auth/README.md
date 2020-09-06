@@ -1643,15 +1643,10 @@ You can fetch this in gramex as `gramex.service.app.settings['cookie_secret']`.
 
 # Authorization
 
+By default, all handlers are publicly accessible to all.
+
 To restrict pages to specific users, use the `kwargs.auth` configuration. This
 works on all Gramex handlers (that derive from `BaseHandler`).
-
-If you don't specify `auth:` in the `kwargs:` section, the `auth:` defined in
-`app.settings` will be used. If that's not defined, then the handler is publicly
-accessible to all.
-
-`auth: true` just requires that you must log in. In this example, you can access
-[must-login](must-login) only if you are logged in.
 
 ```yaml
 url:
@@ -1663,8 +1658,22 @@ url:
       auth: true
 ```
 
-Note: The `auth:` section is ignored by `AuthHandler`s. Otherwise, no one will
-be able to log into the application.
+`auth: true` just requires that you must log in. In this example, you can access
+this sample page "[must-login](must-login)" only if you are logged in.
+
+If you don't specify `auth:` in the `kwargs:` section, the `auth:` defined in `app.auth` of
+`gramex.yaml` will be used. For example:
+
+```yaml
+app:
+  auth: true        # All pages require login -- including CSS/JS/images on login page!
+```
+
+Use this with care. The CSS/JS/images on your login page won't appear unless set `auth: false` on
+these URLs.
+
+Note: Don't add `auth:` to an `AuthHandler`. (That's asking users to log into a login page!)
+But if you do, it'll be ignored anyway.
 
 You can restrict who can log in using [roles](#roles) or any other condition.
 
