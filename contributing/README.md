@@ -46,6 +46,13 @@ The tests are in 2 folders:
 
 Run `make test-setup` for the first time. Then you can run `nosetests`.
 
+You must [install Gramex Enterprise](../install/#install-gramex-enterprise) to run tests.
+
+```bash
+pip install gramexenterprise    # Install Gramex Enterprise
+gramex license accept           # Accept the Gramex license
+```
+
 The tests take long. To test a subset, use `nosetests tests.<module>:<ClassName>.<method>`. For example:
 
 ```bash
