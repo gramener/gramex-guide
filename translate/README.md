@@ -18,7 +18,7 @@ url:
         # Get key from https://cloud.google.com/translate/docs/quickstart
         key: ...
         # See list of languages: https://cloud.google.com/translate/docs/languages
-        source: en    # Convert from English. Leave it blank to auto-detect
+        source: en    # Convert from English
         target: nl    # Convert to Dutch
         # Cache results in this FormHandler structure
         cache:
@@ -68,19 +68,16 @@ It accepts the following URL query parameters:
 - `?q=` is the string (or list of strings) to be translated.
     - [translate?q=Apple](translate?q=Apple) returns "appel" in Dutch. (We specified Dutch "nl" as the default language in the YAML configuration above.)
     - [translate?q=Apple&q=Orange](translate?q=Apple&q=Orange) translates both Apple and Orange to "appel" and "Oranje"
-- `?target=` is the optional target [language](https://cloud.google.com/translate/docs/languages) to translate to.
+- `?target=` is the target [language](https://cloud.google.com/translate/docs/languages) to translate to.
     - [translate?q=Apple&target=de](translate?q=Apple&target=de) returns "Apfel" in German
-- `?source=` is the optional source [language](https://cloud.google.com/translate/docs/languages) to translate to.
-    - [translate?q=Apfel&source=de&target=en](translate?q=Apfel&source=de&target=en) returns     "Apple" from German to English
-    - Ignore it, or set it to an empty string, to auto-detect language.
-      [translate?q=monde&source=&target=en](translate?q=monde&source=&target=en) auto-detects
-      "monde" as French, and converts it to "world" in English
+- `?source=` is the source [language](https://cloud.google.com/translate/docs/languages) to translate to.
+    - [translate?q=Apfel&source=de&target=en](translate?q=Apfel&source=de&target=en) returns "Apple" from German to English
 
 The response is a JSON list. Each entry is an object with the following keys:
 
 - `q`: original string to translate (e.g. Apple)
 - `t`: translated string (e.g. appel)
-- `source`: source language (e.g. en -- which may have been auto-detected)
+- `source`: source language (e.g. en)
 - `target`: target language (e.g. nl)
 
 Example:
