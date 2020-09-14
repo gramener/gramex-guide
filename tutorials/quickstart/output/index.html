@@ -44,7 +44,7 @@
         }
       }
     }
-    var view = new vega.View(vega.parse(vl.compile(spec).spec))
+    var view = new vega.View(vega.parse(vegaLite.compile(spec).spec))
         .renderer('svg')
         .initialize('#chart')
         .hover()
@@ -98,7 +98,7 @@
       spec.title.text = title
       spec.encoding.x.field = xfield
       spec.encoding.color.field = xfield
-      var view = new vega.View(vega.parse(vl.compile(spec).spec))
+      var view = new vega.View(vega.parse(vegaLite.compile(spec).spec))
         .renderer('svg')
         .initialize(chartid)
         .hover()

@@ -279,7 +279,7 @@ var spec = {
     }
   }
 }
-var view = new vega.View(vega.parse(vl.compile(spec).spec))
+var view = new vega.View(vega.parse(vegaLite.compile(spec).spec))
     .renderer('svg')
     .initialize('#chart')
     .hover()
@@ -313,7 +313,7 @@ the div to draw the chart, the x-axis column name and the title of the chart.
 function render_charts(chartid, xfield, title) {
   spec.title.text = title
   spec.encoding.x.field = xfield
-  var view = new vega.View(vega.parse(vl.compile(spec).spec))
+  var view = new vega.View(vega.parse(vegaLite.compile(spec).spec))
     .renderer('svg')
     .initialize(chartid)
     .hover()
