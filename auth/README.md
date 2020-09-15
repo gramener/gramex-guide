@@ -273,7 +273,7 @@ To get the application key and secret:
 - Copy the "Client secret" and "Client ID" to the application settings
 
 <div class="example">
-  <a class="example-demo" href="gmail">Google Auth example</a>
+  <a class="example-demo" href="gmail/">Google Auth example</a>
   <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gmail/">Source</a>
 </div>
 

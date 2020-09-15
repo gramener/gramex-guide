@@ -436,7 +436,7 @@ Here is a minimal HTTP reverse proxy configuration:
         listen 80;                              # 80 is the default HTTP port
         server_name example.com;                # http://example.com/
 
-        # Ensures that Gramex gets the real host, IP and protocol of the request
+        # Ensures that Gramex gets the real host, IP, protocol and URI of the request
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Scheme $scheme;
