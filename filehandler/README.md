@@ -400,25 +400,11 @@ url:
 
 [xsrf]: http://www.tornadoweb.org/en/stable/guide/security.html#cross-site-request-forgery-protection
 
-**When using AJAX**, no XSRF token is required (for modern browsers that send an
-`X-Requested-With: XMLHttpRequest` header for AJAX.)
+**When using AJAX**, no XSRF token is required. Add an `X-Requested-With: XMLHttpRequest` header to bypass the check.
+- If you use XMLHttpRequest, modern browsers automatically send an `X-Requested-With: XMLHttpRequest` header for AJAX
+- If not (e.g. if you're [using fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)), add an `X-Requested-With: XMLHttpRequest` header
 
-**When submitting from a server**, you need to retrieve an XSRF token first --
-for example, by requesting it from a URL like `/xsrf` below:
-
-```yaml
-url:
-  xsrf:
-    pattern: /xsrf
-    handler: FunctionHandler
-    kwargs:
-      function: handler.xsrf_token.decode('utf-8')  # Return the XSRF token
-```
-
-Then you can send the XSRF token:
-
-1. As the `_xsrf` argument of the method (either in the URL or the body)
-2. As the `X-Xsrftoken` or `X-Csrftoken` HTTP header
+**When submitting from a server**, add an `X-Requested-With: XMLHttpRequest` header to bypass the check.
 
 You can disable XSRF for a specific handler like this:
 
