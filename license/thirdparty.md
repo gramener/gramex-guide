@@ -19,7 +19,7 @@ Gramex uses open source third party libraries that use one of these licenses:
 - [node.js](https://github.com/nodejs/node/blob/master/LICENSE): [MIT license][MIT]
 
 ## Python libraries
-<!-- Keep this in sync with setup.py -->
+<!-- Keep this in sync with gramex/release.json -->
 
 - [argh](https://pypi.python.org/pypi/argh/): [LGPL license][LGPL]
 - [boto3](https://pypi.org/project/boto3/): [Apache license][Apache]

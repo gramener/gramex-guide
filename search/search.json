@@ -1108,6 +1108,14 @@
       "What next": -1
     }
   },
+  "1.63.2": {
+    "": {
+      "Gramex 1.63.2 release notes": -1
+    },
+    "details": {
+      "Details": -1
+    }
+  },
   "about": {
     "": {}
   },
@@ -1339,6 +1347,9 @@
     },
     "loop-through-each-session-store-there-may-be-multiple-stores": {
       "Loop through each session store -- there may be multiple stores": -1
+    },
+    "multiple-logins": {
+      "Multiple logins": -1
     },
     "oauth2": {
       "OAuth2": -1
@@ -2462,18 +2473,14 @@
     "": {
       "Install Gramex": -1
     },
-    "alternate-installations": {
-      "Alternate installations": -1
-    },
+    "alternate-installations": {},
     "conda-install": {
       "Conda install": -1
     },
     "docker-install": {
       "Docker install": -1
     },
-    "install-a-local-version-for-gramex-development": {
-      "Install a local version for Gramex development": -1
-    },
+    "install-a-local-version-for-gramex-development": {},
     "install-a-specific-branch-or-tag-from-the-gramex-source-code": {
       "Install a specific branch or tag from the Gramex source code": -1
     },
