@@ -72,14 +72,17 @@ docker pull gramener/gramex
 
 ## Pip install
 
-1. Install [Anaconda3-2020.02][anaconda]. (Gramex does not yet work with Python 3.8. So avoid later versions). Here are downloads for:
-   - [Windows-x86_64](https://repo.anaconda.com/archive/Anaconda3-2020.02-Windows-x86_64.exe)
-   - [Windows-x86](https://repo.anaconda.com/archive/Anaconda2-2019.10-Windows-x86.exe)
-   - [MacOSX-x86_64](https://repo.anaconda.com/archive/Anaconda2-2019.10-MacOSX-x86_64.pkg)
-   - [Linux-x86_64](https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-x86_64.sh)
-   - [Linux-ppc64le](https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-ppc64le.sh)
-2. Install [node.js][nodejs] 10 or later
-3. Run the following commands on the terminal
+Install [Anaconda3-2020.02][anaconda]. (Gramex does not yet work with Python 3.8. So avoid later versions). Here are downloads for:
+
+ - [Windows-x86_64](https://repo.anaconda.com/archive/Anaconda3-2020.02-Windows-x86_64.exe)
+ - [Windows-x86](https://repo.anaconda.com/archive/Anaconda2-2019.10-Windows-x86.exe)
+ - [MacOSX-x86_64](https://repo.anaconda.com/archive/Anaconda2-2019.10-MacOSX-x86_64.pkg)
+ - [Linux-x86_64](https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-x86_64.sh)
+ - [Linux-ppc64le](https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-ppc64le.sh)
+
+Then install [node.js][nodejs] 10 or later
+
+Now run the following commands on the terminal
 
 ```bash
 pip install gramex      # Install latest version of Gramex
@@ -149,25 +152,30 @@ If Gramex does not run:
 
 On a system **with an Internet connection** and the **same platform** (Windows/Linux) as the target system:
 
-1. Create a folder called `offline`
-2. Download [Anaconda][anaconda] into `offline`
-3. In the `offline` folder, run `pip download gramex` or `pip download gramexenterprise` if you need enterprise features.
+1. [Install Gramex using conda](#conda-install) into a folder called `offline`
+2. Copy the `offline` folder into the target system
+
+3. Create a folder called `offline`
+4. Download [Anaconda][anaconda] into `offline`
+5. Download [node.js][nodejs] into `offline`
+6. Download [yarn](https://yarnpkg.com/latest.tar.gz) into offline as `yarn-vx.x.x.tar.gz`
+7. Run `pip download gramex` from `offline`
+8. Run `pip download gramexenterprise` from `offline` for Gramex Enterprise
 
 If you are behind a HTTP proxy, use `pip download --proxy=http://{proxy-host}:{port} ...`.
 
 Copy the `offline` folder to the target machine (which need not have an Internet connection). Then:
 
-1. Install the [Anaconda][anaconda] executable. When prompted, say "Install for all users", not "Just me"
-2. Open the Command Prompt or terminal **as administrator**. From the `offline` folder, run
-- For open-source gramex version `pip install --verbose --no-index --find-links . gramex-XYZ.tar.gz`
-- Or, for gramex enterprise `pip install --verbose --no-index --find-links . gramexenterprise-XYZ.tar.gz`
+1. Install Anaconda. When prompted, say "Install for all users", not "Just me"
+2. Install node.js.
+3. Open the Command Prompt or terminal **as administrator** and go to the `offline` folder. Then run:
 
-**Note**:
+```bash
+pip install --no-index --find-links . gramex-*.tar.gz
+pip install --no-index --find-links . gramexenterprise-*.tar.gz   # For Gramex Enterprise
+npm install -g yarn-*.tar.gz
+```
 
-- This does not set up dependencies for [CaptureHandler](../capturehandler/) such as node.js, Chrome / PhantomJS.
-That requires an Internet-enabled machine or Docker.
-- If certain python packages don't compile well. Download specific stable versions in offline folder.
-`pip download psycopg2==2.7.7`
 
 ## Offline Docker Install
 
