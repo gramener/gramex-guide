@@ -22,7 +22,7 @@ Now, to upload a file into `/drive`, use this form. **Note**: use [FileHandler t
   <!-- POST files into /drive -->
   <form action="drive" method="POST" enctype="multipart/form-data">
     <!-- There must be a file input named "file". Multiple inputs are allowed -->
-    <input name="file" type="file multiple">
+    <input name="file" type="file" multiple>
     <button type="submit">Submit</button>
     <!-- To avoid XSRF, add an _xsrf key. This REQUIRES FileHandler templates -->
     <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
