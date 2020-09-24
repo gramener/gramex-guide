@@ -179,7 +179,7 @@ Note that all of our css and js links are relative to a `ui/` directory - but we
 have no such directory in our project folder. This is because Gramex bundles a
 lot of common css and js files ([bootstrap](https://getbootstrap.com),
 [lodash](https://lodash.com), [g1](https://www.npmjs.com/package/g1)) as part of
-a feature called [UI Components](../uicomponents).
+a feature called [UI Components](../../uicomponents).
 To use these in our dashboard, we add the following lines to our
 <kbd>gramex.yaml</kbd>:
 
@@ -245,7 +245,7 @@ The table is interactive. Try playing around with it. Here's a few things you co
 
 Let's add a simple barchart to display data grouped by Segment. Formhandler automatically does the grouping for us simply by changing the URL. Adding a `?_by` query to any FormHandler URL, like [data?_by=Segment](../data?_by=Segment), changes the output: each of our numeric columns now has the sum of all rows having a particular Segment value.
 
-FormHandler lets us do a lot of data querying, filtering and grouping just by editing the URL. See [FormHandler Filters](../formhandler/#formhandler-filters) for  list of all possible values.
+FormHandler lets us do a lot of data querying, filtering and grouping just by editing the URL. See [FormHandler Filters](../../formhandler/#formhandler-filters) for  list of all possible values.
 
 To actually draw the chart, we'll use a library called
 [Vega-lite](https://vega.github.io/vega-lite/). Vega-lite is a really simple to
@@ -339,13 +339,13 @@ To see more of what Gramex's functionality and features, including how to build 
 
 * the rest of our [tutorials](../),
 * our [demos](https://gramener.com/demo), and,
-* our detailed [documentation](/).
+* our detailed [documentation](../../).
 
 
 ## Troubleshooting
 
 - Gramex doesn't start:
-    - [Inotify watch limit reached](https://unix.stackexchange.com/questions/s just13751/kernel-inotify-watch-limit-reached)
+    - [Inotify watch limit reached](https://unix.stackexchange.com/questions/13751/kernel-inotify-watch-limit-reached)
     - Port is busy
         - Gramex runs on port 9988 by default, you can run `gramex --listen.port=<port number>` to run on an arbritary port.
 - Don't see any text at localhost:9988, instead just a list of files in the directory
