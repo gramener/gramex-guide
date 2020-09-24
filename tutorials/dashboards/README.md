@@ -45,8 +45,8 @@ application and created these files:
 ## Step 1: Working with [FormHandler](../../formhandler/)
 
 The `FormHandler` component is Gramex's primary data model.
-Think of FormHandler as 'SQL over HTTP'. If [data](../../quickstart/data)
-is our typical data endpoint, then [data?Segment=Consumer](../../quickstart/data?Segment=Consumer)
+Think of FormHandler as 'SQL over HTTP'. If [data](../data)
+is our typical data endpoint, then [data?Segment=Consumer](../data?Segment=Consumer)
 returns only those rows which have "Consumer" in the "Segment" column.
 Check out the list of possible operations in the
 [formhandler documentation](../../formhandler/#formhandler-filters).
