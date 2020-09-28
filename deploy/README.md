@@ -65,29 +65,37 @@ you are in. (Change this using `--cwd`)
 
 Here are additional install options:
 
-    gramex service install
-        --cwd  "C:/path/to/application/"    # Run Gramex in this directory
-        --user "DOMAIN\USER"                # Optional user to run as
-        --password "user-password"          # Required if user is specified
-        --startup manual|auto|disabled      # Default is manual
+```bash
+gramex service install
+    --cwd  "C:/path/to/application/"    # Run Gramex in this directory
+    --user "DOMAIN\USER"                # Optional user to run as
+    --password "user-password"          # Required if user is specified
+    --startup manual|auto|disabled      # Default is manual
+```
 
 The user domain and name are stored as environment variables `USERDOMAIN` and
 `USERNAME`. Run `echo %USERDOMAIN% %USERNAME%` on the Command Prompt to see them.
 
 You can update these parameters any time via:
 
-    gramex service update --...             # Same parameters as install
+```bash
+gramex service update --...             # Same parameters as install
+```
 
 To uninstall the service, run:
 
-    gramex service remove
+```bash
+gramex service remove
+```
 
 To start / stop the application, go to Control Panel > Administrative Tools >
 View Local Services and update your service. You can also do this from the
 command prompt **as administrator**:
 
-    gramex service start
-    gramex service stop
+```bash
+gramex service start
+gramex service stop
+```
 
 Once started, the application is live at the port specified in your
 `gramex.yaml`. The default port is 9988, so visit <http://localhost:9988/>. If no
@@ -170,6 +178,75 @@ to set one up based on which is available in your system.
 To run a scheduled task on Linux, use
 [crontab](https://www.geeksforgeeks.org/crontab-in-linux-with-examples/)
 
+
+## Secrets
+
+Passwords, access tokens, and other sensitive information must be protected. There are 3 ways of doing this.
+
+### gramex.yaml secrets
+
+If your repository and server are fully secured (i.e. only authorized people can access them) add secrets to `gramex.yaml`. For example:
+
+```yaml
+url:
+  login/google:
+    pattern: /$YAMLURL/login/
+    handler: GoogleAuth
+    kwargs:
+      key: YOURKEY
+      secret: YOURSECRET
+```
+
+### .secrets.yaml
+
+If you can edit files on the server (directly, or via CI), add an *uncommitted* `.secrets.yaml` file with your secrets, like this:
+
+```yaml
+PASSWORD: your-secret-password
+GOOGLE_AUTH_SECRET: your-secret-key
+TWITTER_SECRET: your-secret-key
+# ... etc
+```
+
+These variables are available in `gramex.yaml` as `$PASSWORD`, `$GOOGLE_AUTH_SECRET`, `$TWITTER_SECRET`, etc. For example:
+
+```yaml
+url:
+  login/google:
+    pattern: /$YAMLURL/login/
+    handler: GoogleAuth
+    kwargs:
+      key: add-your-key-directly    # This is not a secret
+      secret: $GOOGLE_AUTH_SECRET   # This comes from .secrets.yaml
+```
+
+### .secrets.yaml URLs
+
+If you can't edit files on the server, you can pick up *encrypted* secrets from a public URL in 3 steps.
+
+1. Encrypt your secrets using this **[secret encryption tool](secrets)**
+2. Store the encrypted secret anywhere publicly (e.g. at https://pastebin.com/)
+3. Add the URL and the encryption secret, in `.secrets.yaml`:
+
+```yaml
+SECRET_URL: https://pastebin.com/raw/h75e4mWx
+SECRET_KEY: SECRETKEY     # Replace with your secret key
+```
+
+When Gramex loads, it loads `SECRET_URL` (ignoring comments beginning with `#`) and decrypts it using your `SECRET_KEY`.
+
+This lets you securely modify the secrets without accessing the server.
+
+### Deploying secrets
+
+When deploying via Gitlab CI, add your secrets as [environment variables](https://docs.gitlab.com/ee/ci/variables/) under Settings > CI / CD > Variables. Then add this line to your `.gitlab-ci.yml` deployment script:
+
+```yaml
+script:
+  # List environment variables to export
+  - 'secrets KEY1 KEY2 ... > .secrets.yaml'
+  # Continue with your deployment script
+```
 
 ## Security
 
