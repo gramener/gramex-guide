@@ -81,6 +81,27 @@ import:
         as: user.id_1
 ```
 
+## Multiple logviewer instances
+
+When running multiple instances of the same app, each instance will start
+log viewer. Avoid this by specifing `LOGVIEWER_SCHEDULER_PORT: <one-port>`. For example:
+
+```yaml
+logviewer:
+    path: $GRAMEXAPPS/logviewer/gramex.yaml
+    YAMLURL: $YAMLURL/log/
+    LOGVIEWER_SCHEDULER_PORT: '9001'    # Run LogViewer only if the app is run on port 9001, not otherwise
+```
+
+Now, you can run the app on multiple ports. Only port 9001 will host the log viewer:
+
+```bash
+gramex --listen.port=9001     # Log viewer works here
+gramex --listen.port=9002     # ... not here
+gramex --listen.port=9003     # ... nor here
+```
+
+
 ## logviewer.db
 
 Gramex logs all HTTP requests to `logs/requests.csv` under `$GRAMEXDATA`.
