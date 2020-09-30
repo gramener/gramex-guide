@@ -263,6 +263,39 @@ The [Capture](capture) class has convenience methods called `.pdf()`, `.png()`,
 `.jpg()` that accept the same parameters as the
 [handler](#screenshot-service).
 
+## Client-side capture
+
+CaptureHandler reloads a page to take a screenshot. This can be slow. To avoid this, you can:
+
+- Cache page results for longer
+- OR: use client-side capturing using [html2canvas](https://github.com/niklasvh/html2canvas) and downloading via [FileSaver.js](https://www.npmjs.com/package/file-saver)
+
+Add the libraries from the [UI component library](../uicomponents/):
+
+```html
+<script src="ui/html2canvas/dist/html2canvas.min.js"></script>
+<script src="ui/file-saver/dist/FileSaver.min.js"></script>
+```
+
+Trigger the download as follows:
+
+```js
+html2canvas(document.querySelector('.chart'))     // Pick the element to download
+  .then(canvas => {
+    canvas.toBlob(blob => {
+      saveAs(blob, 'chart.png')                   // Pick the filename you want to save as
+    })
+  })
+```
+
+**WARNING**: This requires inline styles. Styles from classes (e.g. Bootstrap's `border`) are not
+applied. Add styles inline, via `style="..."`.
+
+<div class="example">
+  <a class="example-demo" href="html2canvas.html">Run example</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/capturehandler/html2canvas.html">Source</a>
+</div>
+
 
 [capturehandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.CaptureHandler
 [capture]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.Capture

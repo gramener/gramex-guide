@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client-side screenshots</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="container">
+
+  <nav class="py-4">
+    <a href=".#client-side-capture">&laquo; Back to CaptureHandler</a>
+  </nav>
+
+  <section>
+    <h1>Client-side screenshots</h1>
+    <p><a href="https://github.com/niklasvh/html2canvas">html2canvas</a> lets you take screenshots of parts of a page using a JavaScript library.</p>
+    <p>Here is a sample <code>.chart</code> that contains HTML and SVG:</p>
+    <div class="chart mb-3">
+      <h3 class="chart-title">Sample chart title</h3>
+      <svg width="400" height="100">
+        <circle cx="50" cy="50" r="50" fill="red"></circle>
+        <circle cx="150" cy="50" r="40" fill="blue"></circle>
+        <circle cx="250" cy="50" r="30" fill="green"></circle>
+        <circle cx="350" cy="50" r="40" fill="black"></circle>
+      </svg>
+    </div>
+    <p>Click this button below.</p>
+    <p><button class="screenshot btn btn-primary">Download screenshot</button></p>
+    <p><a href="https://github.com/gramener/gramex-guide/blob/tree/capturehandler/html2canvas.html">View source</a></p>
+  </section>
+  <script src="../ui/jquery/dist/jquery.min.js"></script>
+  <script src="../ui/html2canvas/dist/html2canvas.min.js"></script>
+  <script src="../ui/file-saver/dist/FileSaver.min.js"></script>
+  <script>
+    $('.screenshot').on('click', function () {
+      html2canvas(document.querySelector('.chart'))     // Pick the element to download
+        .then(canvas => {
+          canvas.toBlob(blob => {
+            saveAs(blob, 'chart.png')                   // Pick the filename you want to save as
+          })
+        })
+    })
+  </script>
+
+</body>
+</html>
