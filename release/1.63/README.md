@@ -86,7 +86,7 @@ We promised three features in this release that are delayed. These will get push
 - Extend [**PPTXHandler**](../../pptxhandler/) with custom charts
 - Add a 1-year **roadmap** for Gramex
 
-In addition, the October 2020 release (1.63) will:
+In addition, the October 2020 release (1.64) will:
 
 - Add ElasticSearch connectivity for [Log Viewer](../../logviewer/), which will let you log any events and query them
 

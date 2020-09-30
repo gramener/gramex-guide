@@ -181,7 +181,7 @@ To run a scheduled task on Linux, use
 
 ## Secrets
 
-Passwords, access tokens, and other sensitive information must be protected. There are 3 ways of doing this.
+**v1.64**. Passwords, access tokens, and other sensitive information must be protected. There are 3 ways of doing this.
 
 ### gramex.yaml secrets
 
@@ -239,7 +239,7 @@ This lets you securely modify the secrets without accessing the server.
 
 ### Deploying secrets
 
-When deploying via Gitlab CI, add your secrets as [environment variables](https://docs.gitlab.com/ee/ci/variables/) under Settings > CI / CD > Variables. Then add this line to your `.gitlab-ci.yml` deployment script:
+**v1.64**.When deploying via Gitlab CI, add your secrets as [environment variables](https://docs.gitlab.com/ee/ci/variables/) under Settings > CI / CD > Variables. Then add this line to your `.gitlab-ci.yml` deployment script:
 
 ```yaml
 script:
