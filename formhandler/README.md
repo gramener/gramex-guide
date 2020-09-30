@@ -103,9 +103,10 @@ With additional libraries, FormHandler can connect to [more databases](https://d
 - [DB2](https://pypi.org/project/ibm-db-sa/)
   - Install: `pip install ibm-db-sa`
   - Use: `db2+ibm_db://$USER:$PASS@server:50000/database`
-- [ElasticSearch](https://pypi.org/project/elasticsearch-dbapi/)
+- [ElasticSearch](https://pypi.org/project/elasticsearch-dbapi/) - read-only
   - Install: `pip install elasticsearch-dbapi`
   - Use: `url: 'elasticsearch+http://server:9200'`
+  - Note: To avoid logging results on console, use `logging.getLogger('elasticsearch').setLevel(logging.INFO)` in [prepare](#formhandler-prepare)
 - [Google BigQuery](https://pypi.org/project/pybigquery/)
   - Install: `pip install pybigquery`
   - Use: `{url: bigquery://project, credentials_path: $YAMLPATH/.keyfile.json}`
