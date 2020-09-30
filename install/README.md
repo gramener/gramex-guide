@@ -176,6 +176,17 @@ pip install --no-index --find-links . gramexenterprise-*.tar.gz   # For Gramex E
 npm install -g yarn-*.tar.gz
 ```
 
+Here is a script that generates the offline installation tarball for Gramex on Linux:
+
+```bash
+wget https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.3-Linux-x86_64.sh -O /tmp/miniconda.sh
+bash /tmp/miniconda.sh -b -p /tmp/gramex-offline
+/tmp/gramex-offline/bin/conda create -n gramex python=3.7 -y
+/tmp/gramex-offline/bin/conda install -y 'pip>=20.2'
+/tmp/gramex-offline/bin/conda install -y -c conda-forge -c gramener gramex
+tar -jvcf /tmp/gramex-offline.tar.bz2 /tmp/gramex-offline/
+```
+
 
 ## Offline Docker Install
 
