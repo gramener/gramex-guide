@@ -20,6 +20,7 @@ prefix: Guide
     - [Dashboards](tutorials/dashboards/)
     - [Charts](tutorials/charts/)
     - [Dropdown & Search](tutorials/g1-dropdown)
+    - [Create a ML classification application](https://github.com/gramexrecipes/gramex-ml-workshop/)
 - [Gramex is a web server](server/)
 - [Configurations control Gramex](config/)
 - [Testing Gramex apps](test/)
