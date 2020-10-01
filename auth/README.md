@@ -1702,17 +1702,17 @@ url:
 `auth: true` just requires that you must log in. In this example, you can access
 this sample page "[must-login](must-login)" only if you are logged in.
 
-**v1.64**: If you don't specify `auth:` in the `kwargs:` section, the `auth:` defined in `app.auth`
-of `gramex.yaml` will be used. (Use this with care. The CSS/JS/images on your login page won't
-appear unless set `auth: false` on these URLs.) For example:
+**v1.64**: To protect an entire app, i.e. **add auth on all pages**, use:
 
 ```yaml
 app:
-  auth: true        # All pages require login -- including CSS/JS/images on login page!
+  auth: true    # All pages require login -- including CSS/images on login page!
 ```
 
-Note: Don't add `auth:` to an `AuthHandler`. (That's asking users to log into a login page!)
-But if you do, it'll be ignored anyway.
+**Use with caution**. This will be used as the default auth on *every* handler.
+The CSS/JS/images on your login page won't appear unless you set `auth: false` on those URLs.
+
+Note: Any `auth:` on an `AuthHandler` is ignored. (That's asking users to log into a login page!)
 
 You can restrict who can log in using [roles](#roles) or any other condition.
 

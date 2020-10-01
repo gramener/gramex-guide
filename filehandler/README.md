@@ -401,6 +401,7 @@ url:
 [xsrf]: http://www.tornadoweb.org/en/stable/guide/security.html#cross-site-request-forgery-protection
 
 **When using AJAX**, no XSRF token is required. Add an `X-Requested-With: XMLHttpRequest` header to bypass the check.
+
 - If you use XMLHttpRequest, modern browsers automatically send an `X-Requested-With: XMLHttpRequest` header for AJAX
 - If not (e.g. if you're [using fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)), add an `X-Requested-With: XMLHttpRequest` header
 

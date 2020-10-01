@@ -1116,6 +1116,56 @@
       "Details": -1
     }
   },
+  "1.64": {
+    "": {
+      "Gramex 1.64 release notes": -1
+    },
+    "client-side-screen-capture": {
+      "Client-side screen capture": -1
+    },
+    "connect-to-more-databases": {
+      "Connect to more databases": -1
+    },
+    "deploy-secrets-securely": {
+      "Deploy secrets securely": -1
+    },
+    "etc": {
+      "... etc": -1
+    },
+    "gramex-ide-is-in-beta": {
+      "Gramex IDE is in beta": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "log-into-multiple-apps-simultaneously": {
+      "Log into multiple apps simultaneously": -1
+    },
+    "multiple-logins-for-the-same-app": {
+      "Multiple logins for the same app": -1
+    },
+    "offline-installation": {
+      "Offline installation": -1
+    },
+    "other-changes": {
+      "Other changes": -1
+    },
+    "protect-the-entire-app": {
+      "Protect the entire app": -1
+    },
+    "run-multiple-apps-on-a-server": {
+      "Run multiple apps on a server": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "tutorial-on-building-an-ml-classifier": {
+      "Tutorial on building an ML classifier": -1
+    },
+    "what-next": {
+      "What next": -1
+    }
+  },
   "about": {
     "": {}
   },
@@ -1464,6 +1514,9 @@
     },
     "chrome": {
       "Chrome": -1
+    },
+    "client-side-capture": {
+      "Client-side capture": -1
     },
     "phantomjs": {
       "PhantomJS": -1
@@ -1852,6 +1905,9 @@
     "cors-post-with-auth": {
       "CORS POST with auth": -1
     },
+    "deploying-secrets": {
+      "Deploying secrets": -1
+    },
     "deployment-checklist": {
       "Deployment checklist": -1
     },
@@ -1861,8 +1917,14 @@
     "duplicate-key": {
       "Duplicate key": -1
     },
+    "etc": {
+      "... etc": -1
+    },
     "goaccess-output": {
       "GoAccess Output": -1
+    },
+    "gramexyaml-secrets": {
+      "gramex.yaml secrets": -1
     },
     "handler-name-conflict": {
       "Handler name conflict": -1
@@ -1917,6 +1979,15 @@
     },
     "required-modules": {
       "Required modules": -1
+    },
+    "secrets": {
+      "Secrets": -1
+    },
+    "secretsyaml": {
+      ".secrets.yaml": -1
+    },
+    "secretsyaml-urls": {
+      ".secrets.yaml URLs": -1
     },
     "security": {
       "Security": -1
@@ -2358,6 +2429,9 @@
     },
     "regression-plots": {
       "Regression plots": -1
+    },
+    "supported-databases": {
+      "Supported Databases": -1
     }
   },
   "functionhandler": {
@@ -2487,8 +2561,14 @@
     "install-a-specific-version-of-gramex": {
       "Install a specific version of Gramex": -1
     },
+    "install-gramex": {
+      "Install Gramex": -1
+    },
     "install-gramex-enterprise": {
       "Install Gramex Enterprise": -1
+    },
+    "install-miniconda": {
+      "Install Miniconda": -1
     },
     "installation": {},
     "offline-docker-install": {
@@ -2510,6 +2590,9 @@
     "uninstall-gramex": {},
     "vscode-extension": {
       "VSCode Extension": -1
+    },
+    "zip-it": {
+      "Zip it": -1
     }
   },
   "jsonhandler": {
@@ -2606,6 +2689,9 @@
     },
     "logviewerdb": {
       "logviewer.db": -1
+    },
+    "multiple-logviewer-instances": {
+      "Multiple logviewer instances": -1
     },
     "session-calculations": {
       "Session Calculations": -1

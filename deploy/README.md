@@ -225,7 +225,7 @@ url:
 If you can't edit files on the server, you can pick up *encrypted* secrets from a public URL in 3 steps.
 
 1. Encrypt your secrets using this **[secret encryption tool](secrets)**
-2. Store the encrypted secret anywhere publicly (e.g. at https://pastebin.com/)
+2. Store the encrypted secret anywhere publicly (e.g. at [PasteBin](https://pastebin.com/) or [Github](https://gist.github.com/))
 3. Add the URL and the encryption secret, in `.secrets.yaml`:
 
 ```yaml
@@ -429,10 +429,12 @@ url:
 [Predefined variables](../config/#predefined-variables) are useful in deployment.
 For example, say you have the following directory structure:
 
-    /app              # Gramex is run from here. It is the current directory
-      /component      # Inside a sub-directory, we have a component
-        /gramex.yaml  # ... along with its configuration
-        /index.html   # ... and a home page
+```yaml
+/app              # Gramex is run from here. It is the current directory
+  /component      # Inside a sub-directory, we have a component
+    /gramex.yaml  # ... along with its configuration
+    /index.html   # ... and a home page
+```
 
 Inside `/app/component/gramex.yaml`, here's what the variables mean:
 
@@ -465,7 +467,11 @@ Create and use this directory for your data storage needs.
 
 ## HTTPS Server
 
-To set up Gramex as a HTTPS server, you need a certificate file and a key file,
+The best way to set up Gramex as an HTTP server is to run it behind a
+[Proxy Server](#proxy-servers) like nginx or Apache.
+Use [certbot](https://certbot.eff.org/) to generate a HTTPS certificate.
+
+To set up Gramex *directly* as a HTTPS server, you need a certificate file and a key file,
 both in PEM format. Use the following settings in `gramex.yaml`:
 
 ```yaml
@@ -480,7 +486,7 @@ app:
 You can then connect to `https://your-gramex-server/`.
 
 To generate a free HTTPS certificate for a domain, visit
-[letsencrypt.org/](https://letsencrypt.org/)
+[certbot](https://certbot.eff.org/) or [letsencrypt.org/](https://letsencrypt.org/).
 
 To generate a self-signed HTTPS certificate for testing, run:
 
@@ -509,26 +515,30 @@ applications.
 
 Here is a minimal HTTP reverse proxy configuration:
 
-    server {
-        listen 80;                              # 80 is the default HTTP port
-        server_name example.com;                # http://example.com/
+```nginx
+server {
+    listen 80;                              # 80 is the default HTTP port
+    server_name example.com;                # http://example.com/
 
-        # Ensures that Gramex gets the real host, IP, protocol and URI of the request
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Scheme $scheme;
-        proxy_set_header X-Request-URI $request_uri;
+    # Ensures that Gramex gets the real host, IP, protocol and URI of the request
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Scheme $scheme;
+    proxy_set_header X-Request-URI $request_uri;
 
-        location /project/ {                    # example.com/project/* maps to
-            proxy_pass http://127.0.0.1:9988/;  # 127.0.0.1:9988/
-            proxy_redirect ~^/ /project/;       # Redirects are sent back to /project/
-        }
+    location /project/ {                    # example.com/project/* maps to
+        proxy_pass http://127.0.0.1:9988/;  # 127.0.0.1:9988/
+        proxy_redirect ~^/ /project/;       # Redirects are sent back to /project/
     }
+}
+```
 
 The use of the trailing slash makes a big difference in nginx.
 
+```nginx
     location /project/ { proxy_pass http://127.0.0.1:9988/; }   # Trailing slash
     location /project/ { proxy_pass http://127.0.0.1:9988; }    # No trailing slash
+```
 
 The first maps `example.com/project/*` to `http://127.0.0.1:9988/*`.
 The second maps it to `http://127.0.0.1:9988/project/*`.
@@ -536,14 +546,17 @@ The second maps it to `http://127.0.0.1:9988/project/*`.
 If you have one Gramex running multiple applications under `/app1`, `/app2`,
 etc, your config file will be like:
 
+```nginx
     location /app1/ { proxy_pass http://127.0.0.1:8001; }
     location /app2/ { proxy_pass http://127.0.0.1:8001; }
     location /app3/ { proxy_pass http://127.0.0.1:8001; }
+```
 
 But if your have multiple Gramex instances at port 8001, 8002, etc, each running
 an app under their `/`, your config file will be like:
 
-    location /app1/ {
+```nginx
+   location /app1/ {
         proxy_pass http://127.0.0.1:8001/;
         proxy_redirect ~^/ /app1/;
     }
@@ -555,30 +568,35 @@ an app under their `/`, your config file will be like:
         proxy_pass http://127.0.0.1:8003/;
         proxy_redirect ~^/ /app3/;
     }
+```
 
 To let nginx cache responses, use:
 
-    # Ensure /var/cache/nginx/ is owned by nginx:nginx with 700 permissions
-    proxy_cache_path /var/cache/nginx/your-project-name
-                     levels=1:2
-                     keys_zone=your-project-name:100m
-                     inactive=10d
-                     max_size=2g;
-    proxy_cache your-project-name;
-    proxy_cache_key "$host$request_uri";
-    proxy_cache_use_stale error timeout updating http_502 http_503 http_504;
+```nginx
+        # Ensure /var/cache/nginx/ is owned by nginx:nginx with 700 permissions
+        proxy_cache_path /var/cache/nginx/your-project-name
+                         levels=1:2
+                         keys_zone=your-project-name:100m
+                         inactive=10d
+                         max_size=2g;
+        proxy_cache your-project-name;
+        proxy_cache_key "$host$request_uri";
+        proxy_cache_use_stale error timeout updating http_502 http_503 http_504;
+```
 
 To delete specific entries from the nginx cache, use
 [nginx-cache-purge](https://github.com/perusio/nginx-cache-purge).
 
 To allow websockets, add this configuration:
 
-    # Allow nginx configuration upgrade
-    proxy_http_version 1.1;
-    proxy_set_header Upgrade    $http_upgrade;
-    proxy_set_header Connection $connection_upgrade;
-    proxy_set_header Host       $host;
-    proxy_set_header X-Scheme   $scheme;
+```nginx
+        # Allow nginx configuration upgrade
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade    $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        proxy_set_header Host       $host;
+        proxy_set_header X-Scheme   $scheme;
+```
 
 Additional notes:
 
@@ -596,14 +614,14 @@ Additional notes:
 
 First, enable thee relevant proxy modules. On Linux, run:
 
-```
+```bash
 # Required modules
 sudo a2enmod proxy proxy_http rewrite headers
 ```
 
 On Windows, ensure that the Apache `httpd.conf` has the following lines:
 
-```
+```apache
 LoadModule proxy_module          modules/mod_proxy.so
 LoadModule proxy_http_module     modules/mod_proxy_http.so
 LoadModule rewrite_module        modules/mod_rewrite.so
@@ -612,7 +630,7 @@ LoadModule headers_module        modules/mod_headers.so
 
 Here is a minimal HTTP reverse proxy configuration:
 
-```
+```apache
 # Make sure you have a "Listen 80" in your configuration.
 <VirtualHost *:80>
     ServerName example.com
@@ -629,7 +647,7 @@ Here is a minimal HTTP reverse proxy configuration:
 If you have one Gramex on port 8001 running multiple applications under `/app1`,
 `/app2`, etc, your config file will be like:
 
-```
+```apache
 ProxyPass        /app1/ http://127.0.0.1:8001/app1/
 ProxyPassReverse /app1/ http://127.0.0.1:8001/app1/
 
@@ -640,7 +658,7 @@ ProxyPassReverse /app2/ http://127.0.0.1:8001/app2/
 But if your have multiple Gramex instances at port 8001, 8002, etc, each running
 an app under their `/`, your config file will be like:
 
-```
+```apache
 ProxyPass        /app1/ http://127.0.0.1:8001/
 ProxyPassReverse /app1/ http://127.0.0.1:8001/
 
@@ -655,7 +673,7 @@ on multiple servers. You could configure Apache server to serve requests from mu
 
 Here is a minimal configuration to use the Apache server for proxy load balancing:
 
-```
+```apache
 LoadModule proxy_module                modules/mod_proxy.so
 LoadModule headers_module              modules/mod_headers.so
 LoadModule proxy_http_module           modules/mod_proxy_http.so

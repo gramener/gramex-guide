@@ -152,41 +152,22 @@ If Gramex does not run:
 
 On a system **with an Internet connection** and the **same platform** (Windows/Linux) as the target system:
 
-1. [Install Gramex using conda](#conda-install) into a folder called `offline`
-2. Copy the `offline` folder into the target system
-
-3. Create a folder called `offline`
-4. Download [Anaconda][anaconda] into `offline`
-5. Download [node.js][nodejs] into `offline`
-6. Download [yarn](https://yarnpkg.com/latest.tar.gz) into offline as `yarn-vx.x.x.tar.gz`
-7. Run `pip download gramex` from `offline`
-8. Run `pip download gramexenterprise` from `offline` for Gramex Enterprise
-
-If you are behind a HTTP proxy, use `pip download --proxy=http://{proxy-host}:{port} ...`.
-
-Copy the `offline` folder to the target machine (which need not have an Internet connection). Then:
-
-1. Install Anaconda. When prompted, say "Install for all users", not "Just me"
-2. Install node.js.
-3. Open the Command Prompt or terminal **as administrator** and go to the `offline` folder. Then run:
-
-```bash
-pip install --no-index --find-links . gramex-*.tar.gz
-pip install --no-index --find-links . gramexenterprise-*.tar.gz   # For Gramex Enterprise
-npm install -g yarn-*.tar.gz
-```
+1. [Install Gramex using conda](#conda-install) into a folder called `gramex-offline`
+2. Copy the `gramex-offline` folder into the target system (which need not have an Internet connection)
 
 Here is a script that generates the offline installation tarball for Gramex on Linux:
 
 ```bash
-wget https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.3-Linux-x86_64.sh -O /tmp/miniconda.sh
-bash /tmp/miniconda.sh -b -p /tmp/gramex-offline
-/tmp/gramex-offline/bin/conda create -n gramex python=3.7 -y
-/tmp/gramex-offline/bin/conda install -y 'pip>=20.2'
-/tmp/gramex-offline/bin/conda install -y -c conda-forge -c gramener gramex
-tar -jvcf /tmp/gramex-offline.tar.bz2 /tmp/gramex-offline/
+# Install Miniconda
+wget https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.3-Linux-x86_64.sh -O miniconda.sh
+bash miniconda.sh -b -p gramex-offline
+# Install Gramex
+gramex-offline/bin/conda create -n gramex python=3.7 -y
+gramex-offline/bin/conda install -y 'pip>=20.2'
+gramex-offline/bin/conda install -y -c conda-forge -c gramener gramex
+# Zip it
+tar -jvcf gramex-offline.tar.bz2 gramex-offline/
 ```
-
 
 ## Offline Docker Install
 

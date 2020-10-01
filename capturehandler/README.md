@@ -283,7 +283,7 @@ Trigger the download as follows:
 html2canvas(document.querySelector('.chart'))     // Pick the element to download
   .then(canvas => {
     canvas.toBlob(blob => {
-      saveAs(blob, 'chart.png')                   // Pick the filename you want to save as
+      saveAs(blob, 'chart.png')                   // Pick your filename
     })
   })
 ```
