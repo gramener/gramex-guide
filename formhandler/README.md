@@ -94,6 +94,10 @@ With additional libraries, FormHandler can connect to [more databases](https://d
 - [Amazon Redshift](https://pypi.org/project/sqlalchemy-redshift/)
   - Install: `pip install sqlalchemy-redshift`
   - Use: `url: 'redshift+psycopg2://username@host.amazonaws.com:5439/database'`
+- [Amazon S3](https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html#reading-remote-files)
+  - Install: `pip install s3fs`
+  - Setup: [Add your credentials](https://s3fs.readthedocs.io/en/latest/#credentials)
+  - Use: `url: 's3://your-bucket/your-file.csv'`
 - [Apache Hive](https://github.com/dropbox/PyHive#sqlalchemy)
   - Install: `pip install "pyhive[hive]"`
   - Use: `url: 'hive://server:10000/default`
