@@ -80,6 +80,11 @@ $(function () {
   anchors.options.placement = 'left'
   anchors.add()
 
+  // Explicitly scroll selected element into view
+  var node = document.querySelector(location.hash)
+  if (node)
+    node.scrollIntoView()
+
   // a.slide links to a PPTX file. Convert that into an iframe that displays the PPTX
   $('a.slide').each(function () {
     var $frame = $('<div class="slide"><iframe></iframe></div>').insertAfter(this)
