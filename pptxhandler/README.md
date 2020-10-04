@@ -14,11 +14,12 @@ PPTXHandler makes it easy for users to:
 
 Here are examples of what PPTXHandler can create. Click to see details.
 
-[![Bar chart race](copy-slide/output.gif){: height=180}](copy-slide/)
-[![Rate of entrepreneurship](entrepreneurship/output.svg){: height=180}](entrepreneurship/)
-[![Causes of death](death/output.gif){: height=180}](death/)
-[![App store sales](appstore.png){: height=180}](https://gramener.com/appstore/appstore.pptx)
-[![FMCG revenue breakup](fmcg.png){: height=180}](https://gramener.com/fmcg/)
+[![Bar chart race](copy-slide/output.gif){: height=150}](copy-slide/)
+[![Rate of entrepreneurship](entrepreneurship/output.svg){: height=150}](entrepreneurship/)
+[![Causes of death](death/output.gif){: height=150}](death/)
+[![Certificates](certificate/output.png){: height=150}](certificate/)
+[![App store sales](appstore.png){: height=150}](https://gramener.com/appstore/appstore.pptx)
+[![FMCG revenue breakup](fmcg.png){: height=150}](https://gramener.com/fmcg/)
 
 ## About
 
@@ -541,6 +542,11 @@ content, or add new content (like charts). Here are some common commands:
 <div class="example">
   <a class="example-demo" href="text/">Text example</a>
   <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/text/">Source</a>
+</div>
+
+<div class="example">
+  <a class="example-demo" href="text/">Create certificates</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/certificate/">Source</a>
 </div>
 
 ## Text format
