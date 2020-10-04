@@ -614,15 +614,15 @@ This is the minimal configuration that lets you log in from an Excel file:
 ```yaml
 url:
   auth/db:
-    pattern: /db                          # Map this URL
-    handler: DBAuth                       # to the DBAuth handler
+    pattern: /db                      # Map this URL
+    handler: DBAuth                   # to the DBAuth handler
     kwargs:
-      url: $YAMLPATH/auth.xlsx          # Pick up list of users from this XLSX (or CSV) file
+      url: $YAMLPATH/auth.xlsx        # Pick up list of users from this XLSX (or CSV) file
       user:
         column: user                  # The user column in users table has the user ID
       password:
         column: password              # The users.password column has the password
-      redirect:                         # After logging in, redirect the user to:
+      redirect:                       # After logging in, redirect the user to:
         query: next                   #      the ?next= URL
         header: Referer               # else the Referer: header (i.e. page before login)
         url: /$YAMLURL/               # else the home page of current directory
@@ -630,11 +630,13 @@ url:
 
 Now create an `auth.xlsx` with the first sheet like this:
 
-    user      password
-    -----     --------
-    alpha     alpha
-    beta      beta
-    ...       ...
+```text
+user      password
+-----     --------
+alpha     alpha
+beta      beta
+...       ...
+```
 
 With this, you can log into `/db` as `alpha` and `alpha`, etc. It displays a
 [minimal HTML template][auth-template] that asks for an ID and password, and
@@ -741,19 +743,21 @@ The [user attributes](#user-attributes) in `handler.current_user` look like this
 `DBAuth` has a forgot password feature. The minimal configuration required is
 below:
 
-    url:
-      auth/db:
-        pattern: /db
-        handler: DBAuth
-        kwargs:
-            url: sqlite:///$YAMLPATH/auth.db
-            table: users
-            user:
-                column: user
-            password:
-                column: password
-            forgot:
-                email_from: gramex-guide-gmail    # Name of the email service to use for sending emails
+```yaml
+url:
+  auth/db:
+    pattern: /db
+    handler: DBAuth
+    kwargs:
+        url: sqlite:///$YAMLPATH/auth.db
+        table: users
+        user:
+            column: user
+        password:
+            column: password
+        forgot:
+            email_from: gramex-guide-gmail    # Name of the email service to use for sending emails
+```
 
 Just add a `forgot:` section with an `email_from:` parameter that points to the
 same of an [email service](../email/).
