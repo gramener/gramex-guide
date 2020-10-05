@@ -921,6 +921,39 @@ They may also use these variables where available:
 - `clone`: info on the currently [cloned shape](#clone-shapes), e.g. `clone.key`, `clone.val`
 - `cell`: info on the currently processed cell in a [table](#table), e.g. `cell.val`
 
+## Length units
+
+Any command that sets a length, e.g. `width: 5`, uses "inches" by default. You can change the unit
+to "cm" using `width: 5 cm`. Or, you can change the default unit from "inches" to "cm" by passing
+`unit: inches` to the [PPTXHandler configuration](#usage).
+
+[Valid length units][length-units] are:
+
+- `inches`: inches. Use `in`, `inch`, or `"` as an alias -- e.g. `3.2"` is `3.2 inches`)
+- `cm`: centimeters
+- `mm`: millimeters
+- `pt`: points are 1/72 inches
+- `centipoints`: hundredths of a point, i.e. 1/7200 inch. Use `cp` or `centipoint` as an alias
+- `emu`: English metric units (1/914400 inches)
+
+[length-units]: https://python-pptx.readthedocs.io/en/latest/api/util.html#pptx.util.Length
+
+## Color units
+
+Any command that sets a color, e.g. `fill: f'red'`, accepts colors in one of these formats:
+
+- a named color, like `red`
+- a hex value, like `#f80` or `#ff8800`
+- an RGB value, like `rgb(255, 255, 0)`
+- a tuple or list of integer RGB values, like `(255, 255, 0)` or `[255, 255, 0]`
+- a tuple or list of float RGB values, like `(1.0, 0.5, 0.0)` or `[1.0, 0.5, 0.0]`
+- a [theme color][theme-colors], like `ACCENT_1`, `ACCENT_2`, `BACKGROUND_1`, `DARK_1`, `LIGHT_2`
+- a [theme color][theme-colors] with a brightness modifier, like `ACCENT_1+40`, which is 40%
+  brighter than Accent 1, or `ACCENT_2-20` which is 20% darker than Accent 2
+- `none` clears the color, i.e. makes it transparent
+
+[theme-colors]: https://python-pptx.readthedocs.io/en/latest/api/enum/MsoThemeColorIndex.html
+
 ## PPTGen Library
 
 You can access the [pptgen][pptgen] library to change presentations programmatically.
@@ -971,39 +1004,23 @@ target = pptgen(
 target.save('slide1.pptx')  # Save the target
 ```
 
-## Length units
+## PPTX to images
 
-Any command that sets a length, e.g. `width: 5`, uses "inches" by default. You can change the unit
-to "cm" using `width: 5 cm`. Or, you can change the default unit from "inches" to "cm" by passing
-`unit: inches` to the [PPTXHandler configuration](#usage).
+To convert presentations to images, install [LibreOffice](https://www.libreoffice.org/) and
+[ImageMagick](https://imagemagick.org/). On Linux, the commands are:
 
-[Valid length units][length-units] are:
+```bash
+apt-get install default-jre
+apt-get install libreoffice-core --no-install-recommends
+```
 
-- `inches`: inches. Use `in`, `inch`, or `"` as an alias -- e.g. `3.2"` is `3.2 inches`)
-- `cm`: centimeters
-- `mm`: millimeters
-- `pt`: points are 1/72 inches
-- `centipoints`: hundredths of a point, i.e. 1/7200 inch. Use `cp` or `centipoint` as an alias
-- `emu`: English metric units (1/914400 inches)
+This command converts `source.pptx` into `source.pdf` using LibreOffice, and then into
+`img-01.png`, `img-02.png`, etc (one image per slide) using ImageMagick.
 
-[length-units]: https://python-pptx.readthedocs.io/en/latest/api/util.html#pptx.util.Length
-
-## Color units
-
-Any command that sets a color, e.g. `fill: f'red'`, accepts colors in one of these formats:
-
-- a named color, like `red`
-- a hex value, like `#f80` or `#ff8800`
-- an RGB value, like `rgb(255, 255, 0)`
-- a tuple or list of integer RGB values, like `(255, 255, 0)` or `[255, 255, 0]`
-- a tuple or list of float RGB values, like `(1.0, 0.5, 0.0)` or `[1.0, 0.5, 0.0]`
-- a [theme color][theme-colors], like `ACCENT_1`, `ACCENT_2`, `BACKGROUND_1`, `DARK_1`, `LIGHT_2`
-- a [theme color][theme-colors] with a brightness modifier, like `ACCENT_1+40`, which is 40%
-  brighter than Accent 1, or `ACCENT_2-20` which is 20% darker than Accent 2
-- `none` clears the color, i.e. makes it transparent
-
-[theme-colors]: https://python-pptx.readthedocs.io/en/latest/api/enum/MsoThemeColorIndex.html
-
+```bash
+soffice --headless --convert-to pdf source.pptx     # Convert to PDF first for multi-slide export
+convert source.pdf -resize 800x600 'img-%03d.png'   # Convert into img-01.png, img-02.png, etc
+```
 
 ## Support
 
