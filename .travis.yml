@@ -36,5 +36,5 @@ install:
 script:
   - eclint check '**/*.html' '**/*.js' '**/*.css' '**/*.yaml' '**/*.md'
   - eslint .
-  - htmllint
+  - find . -name '*.html' | grep -v node_modules | grep -v newsletter/ | xargs htmllint
   - flake8

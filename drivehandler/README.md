@@ -22,7 +22,7 @@ Now, to upload a file into `/drive`, use this form. **Note**: use [FileHandler t
   <!-- POST files into /drive -->
   <form action="drive" method="POST" enctype="multipart/form-data">
     <!-- There must be a file input named "file". Multiple inputs are allowed -->
-    <input name="file" type="file multiple">
+    <input name="file" type="file" multiple>
     <button type="submit">Submit</button>
     <!-- To avoid XSRF, add an _xsrf key. This REQUIRES FileHandler templates -->
     <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
@@ -33,7 +33,7 @@ This saves the uploaded files in the `path:` you specified.
 
 <div class="example">
   <a class="example-demo" href="form">Try the uploader example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/master/drivehandler/form.html">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/drivehandler/form.html">Source</a>
 </div>
 
 ## File Manager
@@ -42,7 +42,7 @@ This saves the uploaded files in the `path:` you specified.
 
 <div class="example">
   <a class="example-demo" href="filemanager/">Try the File Manager</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/master/drivehandler/gramex.yaml">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/drivehandler/gramex.yaml">Source</a>
 </div>
 
 
@@ -160,7 +160,7 @@ url:
       tags: [category, rating, description]   # Add 3 tags
 ```
 
-You can add an `<input name="description">` in your form to allow users to upload a description. [See an example](https://github.com/gramexrecipes/gramex-guide/blob/master/drivehandler/form.html).
+You can add an `<input name="description">` in your form to allow users to upload a description. [See an example](https://github.com/gramener/gramex-guide/blob/master/drivehandler/form.html).
 
 You can use [FormHandler filters](../formhandler/#formhandler-filters) to filter by tags. For example:
 

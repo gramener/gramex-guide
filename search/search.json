@@ -1053,6 +1053,119 @@
       "Statistics": -1
     }
   },
+  "1.62": {
+    "": {
+      "Gramex 1.62 release notes": -1
+    },
+    "create-presentations-from-the-command-line": {
+      "Create presentations from the command line": -1
+    },
+    "gramex-charts-preview": {
+      "Gramex Charts preview": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "other-features": {
+      "Other features": -1
+    },
+    "powerpoint-tables-and-charts": {
+      "PowerPoint tables and charts": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "what-next": {
+      "What next": -1
+    }
+  },
+  "1.63": {
+    "": {
+      "Gramex 1.63 release notes": -1
+    },
+    "conda-install": {
+      "Conda install": -1
+    },
+    "docker-install": {
+      "Docker install": -1
+    },
+    "embedding-other-apps": {
+      "Embedding other apps": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "new-gramex-guide": {
+      "New Gramex Guide": -1
+    },
+    "other-features": {
+      "Other features": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "what-next": {
+      "What next": -1
+    }
+  },
+  "1.63.2": {
+    "": {
+      "Gramex 1.63.2 release notes": -1
+    },
+    "details": {
+      "Details": -1
+    }
+  },
+  "1.64": {
+    "": {
+      "Gramex 1.64 release notes": -1
+    },
+    "client-side-screen-capture": {
+      "Client-side screen capture": -1
+    },
+    "connect-to-more-databases": {
+      "Connect to more databases": -1
+    },
+    "deploy-secrets-securely": {
+      "Deploy secrets securely": -1
+    },
+    "etc": {
+      "... etc": -1
+    },
+    "gramex-ide-is-in-beta": {
+      "Gramex IDE is in beta": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "log-into-multiple-apps-simultaneously": {
+      "Log into multiple apps simultaneously": -1
+    },
+    "multiple-logins-for-the-same-app": {
+      "Multiple logins for the same app": -1
+    },
+    "offline-installation": {
+      "Offline installation": -1
+    },
+    "other-changes": {
+      "Other changes": -1
+    },
+    "protect-the-entire-app": {
+      "Protect the entire app": -1
+    },
+    "run-multiple-apps-on-a-server": {
+      "Run multiple apps on a server": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "tutorial-on-building-an-ml-classifier": {
+      "Tutorial on building an ML classifier": -1
+    },
+    "what-next": {
+      "What next": -1
+    }
+  },
   "about": {
     "": {}
   },
@@ -1285,6 +1398,9 @@
     "loop-through-each-session-store-there-may-be-multiple-stores": {
       "Loop through each session store -- there may be multiple stores": -1
     },
+    "multiple-logins": {
+      "Multiple logins": -1
+    },
     "oauth2": {
       "OAuth2": -1
     },
@@ -1390,9 +1506,7 @@
     "subprocess-streaming": {
       "Subprocess streaming": -1
     },
-    "using-cache-stores": {
-      "Using cache stores": -1
-    }
+    "using-cache-stores": {}
   },
   "capturehandler": {
     "": {
@@ -1400,6 +1514,9 @@
     },
     "chrome": {
       "Chrome": -1
+    },
+    "client-side-capture": {
+      "Client-side capture": -1
     },
     "phantomjs": {
       "PhantomJS": -1
@@ -1415,6 +1532,18 @@
     "": {
       "Charts": -1
     },
+    "chart-example": {
+      "Chart example": -1
+    },
+    "create-the-data": {
+      "Create the data": -1
+    },
+    "create-the-rules": {
+      "Create the rules": -1
+    },
+    "create-the-source-template": {
+      "Create the source template": -1
+    },
     "d3": {
       "D3": -1
     },
@@ -1423,6 +1552,9 @@
     },
     "gramex-charts": {
       "Gramex Charts": -1
+    },
+    "see-the-result": {
+      "See the result": -1
     },
     "vega": {
       "Vega": -1
@@ -1594,12 +1726,8 @@
     "if-this-fails-add-p-password": {
       "If this fails, add '-p PASSWORD'": -1
     },
-    "push-docs-and-coverage-tests": {
-      "Push docs and coverage tests": -1
-    },
-    "push-to-pypi": {
-      "Push to pypi": -1
-    },
+    "push-docs-and-coverage-tests": {},
+    "push-to-pypi": {},
     "release-gramex-community-edition": {
       "Release Gramex Community Edition": -1
     },
@@ -1616,6 +1744,9 @@
     "update-gramex": {},
     "update-gramex-community-edition": {
       "Update Gramex Community Edition": -1
+    },
+    "yarn-upgrade-cwd-gramexappsadmin": {
+      "yarn upgrade --cwd gramex/apps/admin/": -1
     }
   },
   "copy-slide": {
@@ -1692,6 +1823,9 @@
     "datahandler-usage": {}
   },
   "death": {
+    "automated-insights": {
+      "Automated insights": -1
+    },
     "create-the-data": {
       "Create the data": -1
     },
@@ -1771,6 +1905,9 @@
     "cors-post-with-auth": {
       "CORS POST with auth": -1
     },
+    "deploying-secrets": {
+      "Deploying secrets": -1
+    },
     "deployment-checklist": {
       "Deployment checklist": -1
     },
@@ -1780,8 +1917,14 @@
     "duplicate-key": {
       "Duplicate key": -1
     },
+    "etc": {
+      "... etc": -1
+    },
     "goaccess-output": {
       "GoAccess Output": -1
+    },
+    "gramexyaml-secrets": {
+      "gramex.yaml secrets": -1
     },
     "handler-name-conflict": {
       "Handler name conflict": -1
@@ -1836,6 +1979,15 @@
     },
     "required-modules": {
       "Required modules": -1
+    },
+    "secrets": {
+      "Secrets": -1
+    },
+    "secretsyaml": {
+      ".secrets.yaml": -1
+    },
+    "secretsyaml-urls": {
+      ".secrets.yaml URLs": -1
     },
     "security": {
       "Security": -1
@@ -2277,6 +2429,9 @@
     },
     "regression-plots": {
       "Regression plots": -1
+    },
+    "supported-databases": {
+      "Supported Databases": -1
     }
   },
   "functionhandler": {
@@ -2392,50 +2547,52 @@
     "": {
       "Install Gramex": -1
     },
-    "alternate-installations": {
-      "Alternate installations": -1
+    "alternate-installations": {},
+    "conda-install": {
+      "Conda install": -1
     },
     "docker-install": {
       "Docker install": -1
     },
-    "install-a-local-version-for-gramex-development": {
-      "Install a local version for Gramex development": -1
-    },
+    "install-a-local-version-for-gramex-development": {},
     "install-a-specific-branch-or-tag-from-the-gramex-source-code": {
       "Install a specific branch or tag from the Gramex source code": -1
     },
     "install-a-specific-version-of-gramex": {
       "Install a specific version of Gramex": -1
     },
-    "installation": {
-      "Installation": -1
+    "install-gramex": {
+      "Install Gramex": -1
     },
+    "install-gramex-enterprise": {
+      "Install Gramex Enterprise": -1
+    },
+    "install-miniconda": {
+      "Install Miniconda": -1
+    },
+    "installation": {},
     "offline-docker-install": {
       "Offline Docker Install": -1
     },
     "offline-install": {
       "Offline install": -1
     },
-    "other-useful-commands": {
-      "Other useful commands": -1
+    "other-useful-commands": {},
+    "pip-install": {
+      "Pip install": -1
     },
-    "run-bash-inside-the-container": {
-      "Run bash inside the container": -1
-    },
-    "run-gramex-on-port-9988": {
-      "Run Gramex on port 9988": -1
-    },
-    "to-re-connect-to-the-instance": {
-      "To re-connect to the instance:": -1
-    },
+    "run-bash-inside-the-container": {},
+    "run-gramex-on-port-9988": {},
+    "to-re-connect-to-the-instance": {},
     "troubleshooting": {
       "Troubleshooting": -1
     },
-    "uninstall-gramex": {
-      "Uninstall Gramex": -1
-    },
+    "uninstall-gramex": {},
     "vscode-extension": {
       "VSCode Extension": -1
+    },
+    "zip-it": {
+      "Zip it": -1
     }
   },
   "jsonhandler": {
@@ -2533,6 +2690,9 @@
     "logviewerdb": {
       "logviewer.db": -1
     },
+    "multiple-logviewer-instances": {
+      "Multiple logviewer instances": -1
+    },
     "session-calculations": {
       "Session Calculations": -1
     },
@@ -2570,6 +2730,11 @@
     },
     "result-should-be-setosa": {
       "result should be ['setosa']": -1
+    }
+  },
+  "newsletter": {
+    "": {
+      "Gramex Newsletters": -1
     }
   },
   "node": {
@@ -2699,18 +2864,21 @@
     "bar-chart-race": {
       "Bar chart race": -1
     },
+    "bestselling-pharmaceutical-drugs": {
+      "Bestselling Pharmaceutical Drugs": -1
+    },
     "bullet": {},
     "calendarmap": {},
     "causes-of-death": {
       "Causes of death": -1
     },
-    "chart": {},
+    "chart": {
+      "Chart": -1
+    },
     "clone-shapes": {
       "Clone shapes": -1
     },
-    "color-scales": {
-      "Color scales": -1
-    },
+    "color-scales": {},
     "color-units": {
       "Color units": -1
     },
@@ -3043,9 +3211,22 @@
     }
   },
   "table": {
-    "table-example": {
-      "Table example": -1
-    }
+    "bestselling-pharmaceutical-drugs": {
+      "Bestselling Pharmaceutical Drugs": -1
+    },
+    "create-the-data": {
+      "Create the data": -1
+    },
+    "create-the-rules": {
+      "Create the rules": -1
+    },
+    "create-the-source-template": {
+      "Create the source template": -1
+    },
+    "see-the-result": {
+      "See the result": -1
+    },
+    "table-example": {}
   },
   "test": {
     "": {

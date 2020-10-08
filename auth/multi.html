@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiple Login page</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="container">
+
+  <nav class="py-4">
+    <a href=".">&laquo; Back to Auth</a>
+  </nav>
+
+  <section>
+    <h1>Multiple logins</h1>
+
+    {% import json %}
+    <div class="row">
+      <div class="col">
+        {% if 'google_user' in handler.session %}
+          <h2>You are linked to Google.</h2>
+          <p>User ID <code>{{ handler.session['google_user']['id'] }}</code></p>
+          <pre class="sm2">{{ json.dumps(handler.session['google_user'], indent=2) }}</pre>
+        {% else %}
+          <h2>You are not linked to GoogleAuth.</h2>
+          <a href="multi-google" class="btn btn-primary text-left">Link Google account</a>
+        {% end %}
+      </div>
+      <div class="col">
+        {% if 'simple_user' in handler.session %}
+          <h2>You are linked to SimpleAuth.</h2>
+          <p>User ID <code>{{ handler.session['simple_user']['id'] }}</code></p>
+          <pre class="sm2">{{ json.dumps(handler.session['simple_user'], indent=2) }}</pre>
+        {% else %}
+          <h2>You are not linked to SimpleAuth.</h2>
+          <a href="multi-simple" class="btn btn-primary text-left">Link SimpleAuth account</a>
+        {% end %}
+      </div>
+    </div>
+    {% if 'google_user' in handler.session or 'simple_user' in handler.session %}
+      <div class="text-center py-4">
+        <a href="multi-unlink" class="btn btn-danger">Unlink all accounts</a>
+      </div>
+    {% end %}
+
+  </section>
+
+</body>
+</html>

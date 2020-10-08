@@ -55,7 +55,7 @@
     ]
   }
   function draw_chart() {
-    var view = new vega.View(vega.parse(vl.compile(spec).spec))
+    var view = new vega.View(vega.parse(vegaLite.compile(spec).spec))
       .renderer('svg')
       .initialize('#chart')
       .hover()
@@ -131,7 +131,7 @@
     ]
   }
   function draw_chart() {
-    var view = new vega.View(vega.parse(vl.compile(spec).spec))
+    var view = new vega.View(vega.parse(vegaLite.compile(spec).spec))
       .renderer('svg')
       .initialize('#chart')
       .hover()

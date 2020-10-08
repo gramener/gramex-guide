@@ -52,7 +52,7 @@ Any file posted with a name of `file` is uploaded. Here is a sample HTML form:
 
 <div class="example">
   <a class="example-demo" href="form">Try the uploader example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/master/uploadhandler/form.html">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/uploadhandler/form.html">Source</a>
 </div>
 
 After the file is uploaded, users can be redirected via the `redirect:` config

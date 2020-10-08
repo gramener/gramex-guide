@@ -26,6 +26,7 @@ TODO
 !formhandler/input.pptx
 !formhandler/flags.csv
 !pptxhandler/**/*.ppt*
+pptxhandler/**/output.ppt*
 !pptxhandler/**/*.csv
 !pptxhandler/**/*.xls*
 

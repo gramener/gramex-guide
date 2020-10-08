@@ -1,0 +1,14 @@
+url:
+  guide/newsletter:
+    pattern: /$YAMLURL/(\d\d\d\d-\d\d/)
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/newsletter.md
+      transform:
+        "*.md":
+          function: guide.markdown_template(content, handler)
+          encoding: utf-8
+          headers:
+            Content-Type: text/html
+      headers:
+        Cache-Control: public, max-age=300

@@ -1,5 +1,5 @@
 url:
-  pptxhandler/link:
+  pptxhandler/entrepreneurship:
     pattern: /$YAMLURL/output.pptx
     handler: PPTXHandler
     kwargs:

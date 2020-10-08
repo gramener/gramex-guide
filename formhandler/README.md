@@ -64,7 +64,9 @@ Additional parameters like `delimiter:`, `ext:`, etc are passed to
 [gramex.cache.open](../cache/#data-caching), which uses the Pandas ``read_*``
 methods.
 
-`url:` can also be an SQLAlchemy URL. For example:
+## Supported Databases
+
+`url:` can also be any SQLAlchemy URL. For example:
 
 ```yaml
     url: 'mysql+pymysql://$USER:$PASS@server/db'    # Reads from MySQL
@@ -86,6 +88,42 @@ methods.
 Additional parameters like `table:`, `encoding:`, etc are passed to
 [gramex.cache.query](../cache/#query-caching), which uses
 ``sqlalchemy.create_engine``.
+
+With additional libraries, FormHandler can connect to [more databases](https://docs.sqlalchemy.org/en/13/dialects/index.html#external-dialects).
+
+- [Amazon Redshift](https://pypi.org/project/sqlalchemy-redshift/)
+    - Install: `pip install sqlalchemy-redshift`
+    - Use: `url: 'redshift+psycopg2://username@host.amazonaws.com:5439/database'`
+- [Amazon S3](https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html#reading-remote-files)
+    - Install: `pip install s3fs`
+    - Setup: [Add your credentials](https://s3fs.readthedocs.io/en/latest/#credentials)
+    - Use: `url: 's3://your-bucket/your-file.csv'`
+- [Apache Hive](https://github.com/dropbox/PyHive#sqlalchemy)
+    - Install: `pip install "pyhive[hive]"`
+    - Use: `url: 'hive://server:10000/default`
+- [Apache Solr](https://github.com/aadel/sqlalchemy-solr)
+    - Install: `pip install https://github.com/aadel/sqlalchemy-solr/Use/master.zip`
+    - Use: `url: 'solr://$USER:$PASS@server:8983/solr/collection?use_ssl=true'`
+- [DB2](https://pypi.org/project/ibm-db-sa/)
+    - Install: `pip install ibm-db-sa`
+    - Use: `db2+ibm_db://$USER:$PASS@server:50000/database`
+- [ElasticSearch](https://pypi.org/project/elasticsearch-dbapi/) - read-only
+    - Install: `pip install elasticsearch-dbapi`
+    - Use: `url: 'elasticsearch+http://server:9200'`
+    - Note: To avoid logging results on console, use `logging.getLogger('elasticsearch').setLevel(logging.INFO)` in [prepare](#formhandler-prepare)
+- [Google BigQuery](https://pypi.org/project/pybigquery/)
+    - Install: `pip install pybigquery`
+    - Use: `{url: bigquery://project, credentials_path: $YAMLPATH/.keyfile.json}`
+- [Google Sheets](https://github.com/betodealmeida/gsheets-db-api)
+    - Install: `pip install "gsheetsdb[sqlalchemy]"`
+    - Use: `url: 'https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/edit#gid=0'`
+- [SAP Hana](https://github.com/SAP/sqlalchemy-hana)
+    - Install: `pip install sqlalchemy-hana`
+    - Use: `url: 'hana://$USER:$PASS@server:30015'`
+- [Teradata](https://pypi.org/project/teradatasqlalchemy/)
+    - Install: `pip install teradatasqlalchemy`
+    - Use: `url: teradatasql://server/?user=$USER&password=$PASS`
+
 
 ## FormHandler formats
 
@@ -179,7 +217,7 @@ This requires the [UI components library](../uicomponents/) mounted at `ui/`.
 
 <div class="example">
   <a class="example-demo" href="table.html">FormHandler table example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/master/formhandler/table.html">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/formhandler/table.html">Source</a>
 </div>
 
 You can configure the data attributes:
@@ -343,7 +381,7 @@ When you visit [vega-1?_format=barchart](vega-1?_format=barchart) it renders Jav
 <script src="ui/vega/build/vega.min.js"></script>
 ```
 
-This script draws a barchart from [`/vega-1`](https://github.com/gramexrecipes/gramex-guide/blob/master/formhandler/vega.yaml) formhandler data within `<div id="chart1"></div>`. If `data-id` is missing, random ID is created.
+This script draws a barchart from [`/vega-1`](https://github.com/gramener/gramex-guide/blob/master/formhandler/vega.yaml) formhandler data within `<div id="chart1"></div>`. If `data-id` is missing, random ID is created.
 
 To manipulate the `Vega` object, use this:
 

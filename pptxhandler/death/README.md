@@ -4,7 +4,7 @@ Let's see how we can create this visual on the "[Shifting Causes of Death](https
 
 ![Shifting Causes of Death](shifting-causes-of-death.png){.img-fluid}
 
-Thsis shows the top 10 causes of death by age group, across years. Data is from the [CDC Wonder Database](https://wonder.cdc.gov/), and the visualization was created by [Nathan Yau](https://flowingdata.com/).
+This shows the top 10 causes of death by age group, across years. Data is from the [CDC Wonder Database](https://wonder.cdc.gov/), and the visualization was created by [Nathan Yau](https://flowingdata.com/).
 
 ## Create the source template
 
@@ -25,7 +25,7 @@ The [data][data] is available from the [Flowing Data
 website](https://flowingdata.com/projects/2018/mortality-ranks/). To simplify things, we combine
 Male & Female rates, re-rank them, and save this as [mortality.xlsx](mortality.xlsx).
 
-[![Data](mortality.png)](mortality.xlsx)
+[![Data](mortality.png){.img-fluid}](mortality.xlsx)
 
 The relevant columns correspond to the shape names on the template:
 
@@ -46,7 +46,9 @@ url:
     kwargs:
       version: 2
       source: $YAMLPATH/template.pptx
-      data: {url: $YAMLPATH/mortality.xlsx}
+      data:
+        url: $YAMLPATH/mortality.xlsx
+        transform: data[data['rank'] <= 10]
 ```
 
 Now, we'll set up a rule that copies the slide for each year.
@@ -136,6 +138,9 @@ The fill color is set in line with the legend we created on [template.pptx](temp
 Finally, to animate the slides, let's set a transition.
 
 ```yaml
+          # Add this under the "Cause:" shape
+            name: f'!!{clone.val.age} {clone.val.cause}'
+          # Create a rule for slide transitions
           transition:
             type: f'morph'
             duration: 0.3
@@ -147,19 +152,35 @@ The transition takes 0.3 seconds per slide, and waits for 1 second before auto-a
 This almost works magically... but there's one problem. It moves the causes from one age-group
 column to another. We want them to stay within the same column.
 
-![Animation of the wrong transition](wrong-transition.gif)
+![Animation of the wrong transition](wrong-transition.gif){.img-fluid}
 
-We can [use the shape name to match morph shapes][match-shape]. By setting:
-
-```yaml
-          Cause:
-            name: f'!!{clone.val.age} {clone.val.cause}'
-```
-
-... the shape name will be `!!1-4 Accidental injury`, `!!1-4 Assault`, etc. These will be moved only within the same age group, and not across.
+We can [use the shape name to match morph shapes][match-shape]. By setting the `name:`, the shape name will be `!!1-4 Accidental injury`, `!!1-4 Assault`, etc. These will be moved only within the same age group, and not across.
 
 [match-shape]: https://support.microsoft.com/en-us/office/morph-transition-tips-and-tricks-bc7f48ff-f152-4ee8-9081-d3121788024f
 [data]: https://flowingdata.com/projects/2018/mortality-ranks/data/mortality_top10.tsv
+
+### Automated insights
+
+Let's go a step beyond, and add simple automated insights to this. The `rankchange` column has the number of ranks a cause has jumped. We can find which rank jumped up or down the most, and add a simple annotation in the subtitle, like "Metabolic disorders changed -4 ranks for age 5-9".
+
+First, let's find the row that has the maximum change -- positive or negative -- and store it in a variable `maxrow`.
+
+```yaml
+          data:
+            maxrow: copy.val.rankchange.abs().idxmax()
+```
+
+Next, let's change the Subtitle shape.
+
+```yaml
+          Subtitle:
+            text: f'{copy.val.cause[maxrow]} changed {copy.val.rankchange[maxrow]:+0.0f} ranks for age {copy.val.age[maxrow]}' if maxrow == maxrow else None
+```
+
+- `copy.val.cause[maxrow]` shows the cause name, e.g. "Metabolic disorders"
+- `copy.val.rankchange[maxrow]` shows the number of ranks it changed, e.g. -4
+- `copy.val.age[maxrow]` shows the age group of the change, e.g. 5-9
+- `maxrow == maxrow` is a hack to check if there is any row that has the highest change. For the first year (1999), there is no change. So we don't change the text in that case.
 
 [This is the final configuration](gramex.yaml.source){.source}
 
@@ -168,4 +189,4 @@ We can [use the shape name to match morph shapes][match-shape]. By setting:
 
 [This is the output PPTX](output.pptx)
 
-[![Final Slide](output.gif)](output.pptx)
+[![Final Slide](output.gif){.img-fluid}](output.pptx)

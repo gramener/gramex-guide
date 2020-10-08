@@ -94,6 +94,7 @@ The following attributes are available to `BaseHandler` instances:
 Apart from these, there are 4 other variables that may be created based on the
 configuration. These are not yet intended for general use:
 
+- `handler.xrequest_uri`: URL in the HTTP Header `X-Request-URI`. Defaults to `handler.request.uri`
 - `handler.transform`
 - `handler.redirects`
 - `handler.permissions`

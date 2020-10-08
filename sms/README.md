@@ -55,28 +55,34 @@ Here is a sample config for [Exotel](https://exotel.com/product-sms/):
 sms:
   exotel:
     type: exotel
-    sid: ...
-    token: ...
-    priority: high      # can be high or normal. Defaults to high
+    sid: ...            # Account Sid
+    key: ...            # API KEY
+    token: ...          # API TOKEN
+    domain: ...         # Optional. Defaults to api.exotel.com
+    priority: high      # Optional. Can be high or normal. Defaults to high
 ```
 
 To set up Exotel:
 
 1. Create a developer account at <https://developer.exotel.com/>
-1. Visit Settings > Sender ID. Click Change icon. Add a 6 character string.
+2. Visit Settings > [Sender ID](https://my.exotel.com/gramener5/settings/site#senderid-settings).
+   Click Change icon. Add a 6 character string.
    Await approval by the Exotel team.
-1. Visit Settings > SMS Templates. Add a transactional template. For example:
+3. Visit Settings > [SMS Templates](https://my.exotel.com/gramener5/settings/site#sms-settings).
+   Add a transactional template. For example:
    `OTP requested by %s with mobile %s.`. Request approval.
-1. Visit Settings  > API Settings. Use the Exotel SID and Exotel Token in
-   `gramex.yaml`.
+4. Visit Settings  > [API Settings](https://my.exotel.com/apisettings/site#api-credentials). Add
+   the following in `gramex.yaml`.
+      - `sid`: Account Sid
+      - `key`: API KEY
+      - `token`: API TOKEN
 
 Notes:
 
 1. The mobile number can be in any format. `+91 9741 552 552`, `09741552552`, `9741-552-552` are the same.
-1. Use ``%s`` for numbers as well as text, despite the Exotel documentation.
-1. Do not end with a variable, e.g. ``mobile %s` is invalid. But ``mobile
-    %s.`` with a period (.) at the end is valid.
-1. Cost: Rs 0.15 per SMS
+2. Messages that do not conform to an SMS template may show an error message `No SMS SenderId found for Account=[...], From=[...]`
+3. Use `%s` for numbers as well as text, despite the Exotel documentation
+4. Do not end with a variable, e.g. `mobile %s` is invalid. But `mobile %s.` with a period (.) at the end is valid.
 
 See the Exotel documentation at <https://developer.exotel.com/api/#send-sms>.
 

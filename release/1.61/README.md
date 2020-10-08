@@ -5,24 +5,25 @@ prefix: 1.61
 
 [TOC]
 
-Gramex 1.61 was is now available. It brings the ability to create interactive PPTs, a distributed
-cache, and a few minor enhancements and bug fixes.
+Gramex 1.61 brings the ability to create interactive PPTs, a distributed cache, and a few minor
+enhancements and bug fixes.
 
 ## Create interactive presentations
 
-With this release, [PPTXHandler v2](../../pptxhandler/) also supports transitions and links. So you
-can use Gramex to directly create bar chart races, like below, and more.
+With this release, [SlideSense, a.k.a. PPTXHandler v2](../../pptxhandler/) also supports
+transitions and links. So you can use Gramex to directly create bar chart races, like below, and
+more.
 
 ![PPTXHandler bar chart race: animated GIF](../../pptxhandler/copy-slide/output.gif)
 
-Learn more about this feature in the [PPTXHandler docs](../../pptxhandler/), and how to...:
+[Read the documentation](../../pptxhandler/) to learn how to:
 
----- TODO: Show examples
-- Create links from any shape or text into a page
-- Add transitions (especially [morph](https://youtu.be/FeUolRLacCw)) to animate your slides
-- Style text with a HTML-like language (e.g. `<p bold="y" font-size="13"><a link="last">...</a></p>`)
-- Repeat slides or shapes using data to create custom visualizations in PowerPoint
-----
+- [Map data to shape colors and text](../../pptxhandler/entrepreneurship/)
+- [Animate shapes using data](../../pptxhandler/death/)
+- [Create links from any shape or text into a page](../..//pptxhandler/link/)
+- [Add transitions](../../pptxhandler/transition/)
+- [Style text with a HTML-like language](../../pptxhandler/text-format/) (e.g. `<p bold="y" font-size="13"><a link="last">...</a></p>`)
+- [Clone shapes using data to create custom visualizations](../../pptxhandler/clone-shape/)
 
 ## Fast, persistent, distributed cache
 

@@ -55,7 +55,7 @@ Here's the preview of the data and the corresponding chart.
     ]
   }
   function draw_chart() {
-    var view = new vega.View(vega.parse(vl.compile(spec).spec))
+    var view = new vega.View(vega.parse(vegaLite.compile(spec).spec))
       .renderer('svg')
       .initialize('#chart')
       .hover()

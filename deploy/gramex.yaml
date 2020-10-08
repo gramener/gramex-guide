@@ -14,3 +14,9 @@ url:
         handler: FileHandler
         kwargs:
             path: $GRAMEXPATH/gramex.yaml         # to the core Gramex config ile
+    deploy-secrets:
+        pattern: /$YAMLURL/secrets
+        handler: FileHandler
+        kwargs:
+            path: $YAMLPATH/secrets.html
+            template: true

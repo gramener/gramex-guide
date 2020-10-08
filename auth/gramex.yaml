@@ -6,6 +6,35 @@ variables:
     USER_DATABASE_PASSWORDCOLUMN: password
     USER_DATABASE_SALT: abc
 
+    # Credentials for s.anand/gramex-guide
+    # https://console.developers.google.com/apis/credentials/oauthclient/817932882244-gdr59t3mpqh5554d1bgdjuh38g6a7ahh.apps.googleusercontent.com?project=gramex-guide
+    # callback: /auth/google on localhost:9988/, localhost:9999/, learn.gramener.com/guide/
+    GOOGLE_KEY: 817932882244-gdr59t3mpqh5554d1bgdjuh38g6a7ahh.apps.googleusercontent.com
+    GOOGLE_SECRET: lwArXkw21KCqDPuJrel-WeQO
+
+    # Test app (127.0.0.1:9988): https://apps.twitter.com/app/12449610/keys
+    # TWITTER_KEY: XkCVNZD5sfWECxHGAGnlHGQFa
+    # TWITTER_SECRET: yU00bx5dHYMbge9IyO5H1KeC5uFnWndntG7u6CH6O4HDZHQg0p
+    # Production app: https://apps.twitter.com/app/9510381/keys
+    TWITTER_KEY: 5Ab9olPCo8OA8S1R2BY29FAxB
+    TWITTER_SECRET: BgRPCvxaQsYU3QivHvrthwQA1vwDr22UQDLuUK8egqvgUid1md
+
+    # Test app (localhost:9988): https://developers.facebook.com/apps/794214110679951/settings/
+    # FACEBOOK_KEY: '794214110679951'
+    # FACEBOOK_SECRET: 'a026887ed94aef25f2f637bf154349df'
+
+    # Production app: https://developers.facebook.com/apps/163328100435225/settings/
+    FACEBOOK_KEY: '163328100435225'
+    FACEBOOK_SECRET: 'c71c7e17d5a16ce7662ec75858e9631f'
+
+    # https://code.gramener.com/admin/applications/3
+    GITLAB_KEY: 'cc177f42cf432a7e961c317bd9e784b08d2bc27a2028b0487ee53732ea3a4ddf'
+    GITLAB_SECRET: '00186a6c4c8bb77b3f961b158fb5e4b49738b7efdfbe61b8d19285d66149f8b9'
+
+    # https://github.com/settings/connections/applications/a4ffb7fd2c4b05e04457
+    GITHUB_KEY: a4ffb7fd2c4b05e04457
+    GITHUB_SECRET: 198a4ec063bac3dfe01136368184930f8aa93a4a
+
 url:
     auth/logout:
         pattern: /$YAMLURL/logout
@@ -17,7 +46,7 @@ url:
     auth/simple:
         pattern: /$YAMLURL/simple
         handler: SimpleAuth
-        kwargs:
+        kwargs: &simplekwargs
             template: $YAMLPATH/simple.html     # This has the login form
             credentials:
                 alpha: alpha                    # User: alpha has password: alpha
@@ -37,12 +66,9 @@ url:
     auth/google:
         pattern: /$YAMLURL/google
         handler: GoogleAuth
-        kwargs:
-            # Credentials for s.anand/gramex-guide
-            # https://console.developers.google.com/apis/credentials/oauthclient/817932882244-gdr59t3mpqh5554d1bgdjuh38g6a7ahh.apps.googleusercontent.com?project=gramex-guide
-            # callback: /auth/google on localhost:9988/, localhost:9999/, learn.gramener.com/guide/
-            key: 817932882244-gdr59t3mpqh5554d1bgdjuh38g6a7ahh.apps.googleusercontent.com
-            secret: lwArXkw21KCqDPuJrel-WeQO
+        kwargs: &googlekwargs
+            key: $GOOGLE_KEY
+            secret: $GOOGLE_SECRET
             # Scope list: https://developers.google.com/identity/protocols/googlescopes
             scope:
                 - https://www.googleapis.com/auth/contacts.readonly
@@ -70,13 +96,8 @@ url:
         pattern: /$YAMLURL/facebook
         handler: FacebookAuth
         kwargs:
-            # Test app (localhost:9988): https://developers.facebook.com/apps/794214110679951/settings/
-            # key: '794214110679951'
-            # secret: 'a026887ed94aef25f2f637bf154349df'
-
-            # Production app: https://developers.facebook.com/apps/163328100435225/settings/
-            key: '163328100435225'
-            secret: 'c71c7e17d5a16ce7662ec75858e9631f'
+            key: $FACEBOOK_KEY
+            secret: $FACEBOOK_SECRET
             log:
                 fields: [session.id, current_user.name, request.remote_ip, request.headers.User-Agent]
             redirect:
@@ -88,13 +109,8 @@ url:
         pattern: /$YAMLURL/twitter
         handler: TwitterAuth
         kwargs:
-            # Test app (127.0.0.1:9988): https://apps.twitter.com/app/12449610/keys
-            # key: XkCVNZD5sfWECxHGAGnlHGQFa
-            # secret: yU00bx5dHYMbge9IyO5H1KeC5uFnWndntG7u6CH6O4HDZHQg0p
-
-            # Production app: https://apps.twitter.com/app/9510381/keys
-            key: 5Ab9olPCo8OA8S1R2BY29FAxB
-            secret: BgRPCvxaQsYU3QivHvrthwQA1vwDr22UQDLuUK8egqvgUid1md
+            key: $TWITTER_KEY
+            secret: $TWITTER_SECRET
             log:
                 fields: [session.id, current_user.username, request.remote_ip, request.headers.User-Agent]
             redirect:
@@ -329,9 +345,8 @@ url:
         pattern: /$YAMLURL/gitlab
         handler: OAuth2
         kwargs:
-          # https://code.gramener.com/admin/applications/3
-          client_id: 'cc177f42cf432a7e961c317bd9e784b08d2bc27a2028b0487ee53732ea3a4ddf'
-          client_secret: '00186a6c4c8bb77b3f961b158fb5e4b49738b7efdfbe61b8d19285d66149f8b9'
+          client_id: $GITLAB_KEY
+          client_secret: $GITLAB_SECRET
           authorize:
             url: 'https://code.gramener.com/oauth/authorize'
           access_token:
@@ -351,9 +366,8 @@ url:
       pattern: /$YAMLURL/github
       handler: OAuth2
       kwargs:
-        # https://github.com/settings/connections/applications/a4ffb7fd2c4b05e04457
-        client_id: a4ffb7fd2c4b05e04457
-        client_secret: 198a4ec063bac3dfe01136368184930f8aa93a4a
+        client_id: $GITHUB_KEY
+        client_secret: $GITHUB_SECRET
         authorize:
           url: https://github.com/login/oauth/authorize
           scope: [repo, gist, user]
@@ -445,6 +459,40 @@ url:
               query: next
               header: Referer
               url: /$YAMLURL
+
+    auth/multi:
+        pattern: /$YAMLURL/multi
+        handler: FileHandler
+        kwargs:
+            path: $YAMLPATH/multi.html
+            template: true
+            headers:
+              Cache-Control: no-cache
+
+    # Like auth/google, but user info is in handler.session.google_user, not handler.session.user
+    auth/multi-google:
+        pattern: /$YAMLURL/multi-google
+        handler: GoogleAuth
+        kwargs:
+            user_key: google_user
+            <<: *googlekwargs
+
+    # Like auth/simple, but user info is in handler.session.simple_user, not handler.session.user
+    auth/multi-simple:
+        pattern: /$YAMLURL/multi-simple
+        handler: SimpleAuth
+        kwargs:
+            user_key: simple_user
+            <<: *simplekwargs
+
+    auth/multi-unlink:
+        pattern: /$YAMLURL/multi-unlink
+        handler: FunctionHandler
+        kwargs:
+            function: '{key: handler.session.pop(key, None) for key in ["google_user", "simple_user"]}'
+            redirect:
+                url: /$YAMLURL/multi
+
 
 schedule:
     create-user-database:

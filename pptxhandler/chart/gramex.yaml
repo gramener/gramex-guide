@@ -1,0 +1,11 @@
+url:
+  pptxhandler/chart:
+    pattern: /$YAMLURL/output.pptx
+    handler: PPTXHandler
+    kwargs:
+      version: 2
+      source: $YAMLPATH/template.pptx
+      data: {url: $YAMLPATH/social-media-platform.csv}
+      rules:
+        - Column Chart:
+            chart-data: data.set_index('Platform')

@@ -14,11 +14,12 @@ PPTXHandler makes it easy for users to:
 
 Here are examples of what PPTXHandler can create. Click to see details.
 
-[![Bar chart race](copy-slide/output.gif){: height=180}](copy-slide/)
-[![Rate of entrepreneurship](entrepreneurship/output.svg){: height=180}](entrepreneurship/)
-[![Causes of death](death/output.gif){: height=180}](death/)
-[![App store sales](appstore.png){: height=180}](https://gramener.com/appstore/appstore.pptx)
-[![FMCG revenue breakup](fmcg.png){: height=180}](https://gramener.com/fmcg/)
+[![Bar chart race](copy-slide/output.gif){: height=150}](copy-slide/)
+[![Rate of entrepreneurship](entrepreneurship/output.svg){: height=150}](entrepreneurship/)
+[![Causes of death](death/output.gif){: height=150}](death/)
+[![Certificates](certificate/output.png){: height=150}](certificate/)
+[![App store sales](appstore.png){: height=150}](https://gramener.com/appstore/appstore.pptx)
+[![FMCG revenue breakup](fmcg.png){: height=150}](https://gramener.com/fmcg/)
 
 ## About
 
@@ -68,8 +69,9 @@ cart: 142
 
 <div class="example">
   <a class="example-demo" href="sales-funnel/">Run example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/sales-funnel/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/sales-funnel/">Source</a>
 </div>
+
 
 ## Tutorials
 
@@ -92,6 +94,15 @@ Re-create a portion of the [Kauffman Indicators of Rate of New Entrepreneurship]
 Re-create the [Shifting Causes of Death](https://flowingdata.com/2018/10/02/shifting-death/) visualization in PowerPoint.
 
 [![Shifting causes of death](death/output.gif){: width=320}](death/)
+
+### Bestselling Pharmaceutical Drugs
+
+Visualize the [Bestselling Pharmaceutical Drugs of 2017-18][pharma-drugs] data in PowerPoint.
+
+[![Bestselling Pharmaceutical Drugs](table/output.jpg){: width=320}](table/)
+
+[pharma-drugs]: https://en.wikipedia.org/wiki/List_of_largest_selling_pharmaceutical_products#Best_selling_pharmaceuticals_of_2017/18
+
 
 
 ## Usage
@@ -119,6 +130,8 @@ Less used keys are:
 Run `slidesense` to run `PPTXHandler` from the command line. It renders any `gramex.yaml` in the
 current folder, creating an `output.pptx` (or the file specified by `target:` in `gramex.yaml`).
 It also opens the target PPTX in PowerPoint, if possible.
+
+![SlideSense command line usage](slidesense-command-line.gif){.img-fluid}
 
 You can specify the path to your `gramex.yaml`, and also which PPTXHandler to run as the
 command-line arguments. For example:
@@ -189,7 +202,7 @@ A rule can pick one or more shape names, and apply one or more [commands](#comma
 
 ## Shapes
 
-A `rule:` is a dictionary of shape names.
+Each rule in `rules:` is a dictionary of shape names.
 
 All shapes in PowerPoint have names. To see them in PowerPoint, select
 Home tab > Drawing group > Arrange drop-down > Selection pane. Or press <kbd>Alt + F10</kbd>.
@@ -207,11 +220,11 @@ anything. For example:
 ```yaml
 rules:
   - 'TextBox ?':      # Select TextBox 1, TextBox 2, ... but not TextBox 10, ...
-      color: red      #     ... and set font color to red
+      color: f'red'  #     ... and set font color to red
   - 'Text *':         # Select ALL shapes starting with Text (case-sensitive)
-      color: red
+      color: f'red'
   - '*box*':          # Select ALL shapes with "box" anywhere in the text (case-sensitive)
-      color: red
+      color: f'red'
 ```
 
 You can also change the shape name with the `name` command, e.g. `name: New TextBox`. This is
@@ -221,8 +234,8 @@ beginning with `!!`. For example:
 ```yaml
 rules:
   - Bar:
-      name: !!Bar         # Renames the shape "Bar" to "!!Bar"
-      text: New text
+      name: f'!!Bar'    # Renames the shape "Bar" to "!!Bar"
+      text: f'New text'
 ```
 
 This ensures that the morph will match the shape even if it's text changes.
@@ -245,7 +258,7 @@ rules:
 
 <div class="example">
   <a class="example-demo" href="groups/">Groups example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/groups/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/groups/">Source</a>
 </div>
 
 ## Slide filters
@@ -256,9 +269,9 @@ By default, rules are applied to all slides. You can restrict changes to specifi
     - e.g. `slide-number: 1` picks only the 1st slide
     - e.g. `slide-number: [2, 4]` picks the 2nd and 4th slide (not the 3rd)
 - `slide-title`: apply rule to specific slide titles
-    - e.g. `slide-title: Business Update` picks all slides with the *exact* title "Business Update" (case-insensitive)
-    - e.g. `slide-title: *Update*` picks all slides with "Update" anywhere in the title (case-insensitive)
-    - e.g. `slide-title: Day ?` picks Day 1, Day 2, ... but not Day 10, ...
+    - e.g. `slide-title: f'Business Update'` picks all slides with the *exact* title "Business Update" (case-insensitive)
+    - e.g. `slide-title: f'*Update*'` picks all slides with "Update" anywhere in the title (case-insensitive)
+    - e.g. `slide-title: f'Day ?'` picks Day 1, Day 2, ... but not Day 10, ...
     - Use `?` to match a single char, and `*` to match anything
 
 For example:
@@ -269,9 +282,9 @@ target: output.pptx       # required path to save output as
 rules:
   - slide-number: [2, 4]            # Pick the 2nd and 4th slide (not the 3rd)
     Title: {text: f'X'}
-  - slide-title: 'Business Update'  # Pick the slide titled "Business Update" (case-insensitive)
+  - slide-title: f'Business Update' # Pick the slide titled "Business Update" (case-insensitive)
     Title: {text: f'X'}
-  - slide-title: 'Day ?'            # Picks the slide titled "Day 1" or "Day 2", etc, not "Day 10"
+  - slide-title: f'Day ?'           # Picks the slide titled "Day 1" or "Day 2", etc, not "Day 10"
     Title: {text: f'X'}
 ```
 
@@ -299,7 +312,8 @@ rules:
 ```
 
 You can specify transitions by name (with space-separated options). The transition names and their
-options are below, e.g. `transition: airplane left`, `transition: fly-through in bounce`. These are similar to PowerPoint's UI.
+options are below, e.g. `transition: f'airplane left'`, `transition: f'fly-through in bounce'`.
+These are similar to PowerPoint's UI.
 
 - `none`: (removes all transitions)
 - `airplane`: left|right
@@ -376,13 +390,13 @@ options are below, e.g. `transition: airplane left`, `transition: fly-through in
 
 You can also specify transitions as a dict with 3 keys:
 
-- `type`: transition name, followed by options, e.g. `type: morph`
+- `type`: transition name, followed by options, e.g. `type: f'morph'`
 - `duration`: length of the transition in seconds (default: `0.3` seconds), e.g. `duration: 3`
 - `advance`: auto-advance timeto the next slide, in seconds  (default: `f'none'`), e.g. `advance: 3`
 
 <div class="example">
   <a class="example-demo" href="transition/">Transition example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/transition/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/transition/">Source</a>
 </div>
 
 ## Copy slides
@@ -399,10 +413,10 @@ You can repeat a slide, changing the layouts or content based on data. This is u
 
 ```yaml
 rules:
-  slide-number: 1
-  copy-slide: [A, B, C]
-  Title 1:
-    text: f'Copy {copy.key} {copy.val}'
+  - slide-number: 1
+    copy-slide: [A, B, C]
+    Title 1:
+      text: f'Copy {copy.key} {copy.val}'
 ```
 
 This repeats slide 1 three times, with titles "Copy 0: A", "Copy 1: B" and "Copy 2: C".
@@ -426,7 +440,7 @@ For each copied slide, the [data variable `copy`](#data) is set. It has these at
 
 <div class="example">
   <a class="example-demo" href="copy-slide/">Copy slides examples</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/copy-slide/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/copy-slide/">Source</a>
 </div>
 
 
@@ -437,29 +451,30 @@ content, or add new content (like charts). Here are some common commands:
 
 ## Position
 
-- `top`: sets top (Y) position in [length units](#length-units), e.g. `f'3 inches'`
-- `left`: sets left (X) position in [length units](#length-units), e.g. `f'3 inches'`
-- `width`: sets width in [length units](#length-units), e.g. `f'3 inches'`
-- `height`: sets height in [length units](#length-units), e.g. `f'3 inches'`
+- `top`: sets top (Y) position in [length units](#length-units), e.g. `top: f'3 inches'`
+- `left`: sets left (X) position in [length units](#length-units), e.g. `left: f'3 inches'`
+- `width`: sets width in [length units](#length-units), e.g. `width: f'3 inches'`
+- `height`: sets height in [length units](#length-units), e.g. `height: f'3 inches'`
 
 <div class="example">
   <a class="example-demo" href="position/">Position examples</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/position/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/position/">Source</a>
 </div>
 
-- `add-top`: moves top (Y) position +/- in `[length units](#length-units)`, e.g. `f'-3 inches'`
-- `add-left`: moves left (X) position +/- in `[length units](#length-units)`, e.g. `f'+3 inches'`
-- `add-width`: adds width +/- in `[length units](#length-units)`, e.g. `f'-3 inch'`
-- `add-height`: adds width +/- in `[length units](#length-units)`, e.g. `f'+3 inches'`
+- `add-top`: moves top (Y) position +/- in `[length units](#length-units)`, e.g. `add-top: f'-3 inches'`
+- `add-left`: moves left (X) position +/- in `[length units](#length-units)`, e.g. `add-left: f'+3 inches'`
+- `add-width`: adds width +/- in `[length units](#length-units)`, e.g. `f'add-width: -3 inch'`
+- `add-height`: adds width +/- in `[length units](#length-units)`, e.g. `f'add-height: +3 inches'`
 
 <div class="example">
   <a class="example-demo" href="add-position/">Add position examples</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/add-position/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/add-position/">Source</a>
 </div>
 
-- `rotation`: sets the rotation in angles, e.g. `30`
-- `add-rotation`: adds the rotation in angles, e.g. `-30`
-- `zoom`: increases/decreases width & height around the center, e.g. `1.2` increases the size to 120%, `0.6` shrinks it to 60% around the center
+- `rotation`: sets the rotation in angles, e.g. `rotation: 30`
+- `add-rotation`: adds the rotation in angles, e.g. `rotation: -30`
+- `zoom`: increases/decreases width & height around the center,
+  e.g. `zoom: 1.2` increases the size to 120%, `zoom: 0.6` shrinks it to 60% around the center
 - `adjustment1`: sets 1st shape adjustment
 - `adjustment2`: sets 2nd shape adjustment
 - `adjustment3`: sets 3rd shape adjustment
@@ -475,7 +490,7 @@ content, or add new content (like charts). Here are some common commands:
 
 <div class="example">
   <a class="example-demo" href="groups/">Style example (from Groups example)</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/groups/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/groups/">Source</a>
 </div>
 
 
@@ -487,14 +502,14 @@ content, or add new content (like charts). Here are some common commands:
 
 <div class="example">
   <a class="example-demo" href="clone-shape/">Image example (from Clone shape example)</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/clone-shape/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/clone-shape/">Source</a>
 </div>
 
 ## Link
 
 - `link`: on click, shape opens another slide, file or URL, e.g. `link: 4`, `link: f'https://gramener.com/'`
 - `hover`: on hover, shape opens another slide, file or URL, e.g. `link: 4`, `link: f'https://gramener.com/'`
-- `tooltip`: adds a text tooltip, e.g. `f'Title text'`. Does not work with `hover:` nor `link: back`
+- `tooltip`: adds a text tooltip, e.g. `f'Title text'`. Does not work with `hover: f'back'` nor `link: f'back'`
 
 `link` and `hover` can be specified as a:
 
@@ -507,13 +522,13 @@ content, or add new content (like charts). Here are some common commands:
 
 <div class="example">
   <a class="example-demo" href="link/">Link example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/link/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/link/">Source</a>
 </div>
 
 ## Text
 
 - `text`: sets the shape's [text and format](#text-format), e.g. `text: f'<p><a italic="y">New</a> <a bold="y">text</a></p>'`
-- `replace`: updates the shape's [text and format](#text-format), e.g. `replace: {old: new, (rabbit|fox): <a color="red">animal</a>}`.
+- `replace`: updates the shape's [text and format](#text-format), e.g. `replace: {old: f'new', (rabbit|fox): f'<a color="red">animal</a>'}`.
     - Replace only works within a run, i.e. for words that have the same formatting. For example, in
       "some<u>where</u>", "where" is underlined. You cannot replace "somewhere". But you can replace
       "some" and "where" independently.
@@ -526,7 +541,12 @@ content, or add new content (like charts). Here are some common commands:
 
 <div class="example">
   <a class="example-demo" href="text/">Text example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/text/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/text/">Source</a>
+</div>
+
+<div class="example">
+  <a class="example-demo" href="text/">Create certificates</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/certificate/">Source</a>
 </div>
 
 ## Text format
@@ -566,7 +586,7 @@ the para has no visible effect, since the bold run overrides it.
 
 <div class="example">
   <a class="example-demo" href="text-format/">Text format example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/text-format/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/text-format/">Source</a>
 </div>
 
 ## Table
@@ -642,8 +662,45 @@ For each cell, the [data variable `cell`](#data) is set. It has these attributes
 - `cell.cell`: currently rendered [PPTX cell object](https://python-pptx.readthedocs.io/en/latest/api/table.html#cell-objects), e.g. `cell.cell.text`
 
 <div class="example">
-  <a class="example-demo" href="text-format/">Table example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/table/">Table</a>
+  <a class="example-demo" href="table/">Table example</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/table/">Source</a>
+</div>
+
+
+## Chart
+
+To update a chart's data, use the `chart-data:` command. Example:
+
+```yaml
+data:
+  products: {url: $YAMLPATH/products.csv}
+rules:
+  - Chart 1:
+      chart-data: products.set_index('Name')
+```
+
+The dataset must be formatted with data for each series in a column. For a 1-series column chart like this:
+
+![Column chart with 1 series](chart/column-chart-1-series.png)
+
+... the data needs to look like this:
+
+![Column chart with 1 series data](chart/column-chart-1-series-data.png)
+
+The 1st column must be the index of the DataFrame, and the 2nd must be a column, like this:
+
+```python
+data = pd.DataFrame({
+  'Categories': ['A', 'B', 'C', 'D'],
+  'Series 1': [3, 4, 2, 1]
+}).set_index('Categories')
+```
+
+Note: The first column name "Categories" is not used. It's just a placeholder for the index name.
+
+<div class="example">
+  <a class="example-demo" href="chart/">Chart example</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/chart/">Source</a>
 </div>
 
 
@@ -653,9 +710,9 @@ Use `clone-shape:` to clone a shape for as many times specified. For example:
 
 ```yaml
 rules:
-  Rectangle 1:
-    clone-shape: [A, B, C]
-    text: f'Clone {clone.key} {clone.val}'
+  - Rectangle 1:
+      clone-shape: [A, B, C]
+      text: f'Clone {clone.key} {clone.val}'
 ```
 
 This repeats the shape three times, with text "Clone 0: A", "Clone 1: B" and "Clone 2: C".
@@ -679,7 +736,7 @@ For each cloned shape, the [data variable `clone`](#data) is set. It has these a
 
 <div class="example">
   <a class="example-demo" href="clone-shape/">Clone shape example</a>
-  <a class="example-src" href="https://github.com/gramexrecipes/gramex-guide/blob/tree/pptxhandler/clone-shape/">Source</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/clone-shape/">Source</a>
 </div>
 
 
@@ -864,14 +921,38 @@ They may also use these variables where available:
 - `clone`: info on the currently [cloned shape](#clone-shapes), e.g. `clone.key`, `clone.val`
 - `cell`: info on the currently processed cell in a [table](#table), e.g. `cell.val`
 
-## Color scales
+## Length units
 
-To convert numbers into continuous colors, you can
+Any command that sets a length, e.g. `width: 5`, uses "inches" by default. You can change the unit
+to "cm" using `width: 5 cm`. Or, you can change the default unit from "inches" to "cm" by passing
+`unit: inches` to the [PPTXHandler configuration](#usage).
 
-```yaml
-fill: color(norm)
+[Valid length units][length-units] are:
 
-```
+- `inches`: inches. Use `in`, `inch`, or `"` as an alias -- e.g. `3.2"` is `3.2 inches`)
+- `cm`: centimeters
+- `mm`: millimeters
+- `pt`: points are 1/72 inches
+- `centipoints`: hundredths of a point, i.e. 1/7200 inch. Use `cp` or `centipoint` as an alias
+- `emu`: English metric units (1/914400 inches)
+
+[length-units]: https://python-pptx.readthedocs.io/en/latest/api/util.html#pptx.util.Length
+
+## Color units
+
+Any command that sets a color, e.g. `fill: f'red'`, accepts colors in one of these formats:
+
+- a named color, like `red`
+- a hex value, like `#f80` or `#ff8800`
+- an RGB value, like `rgb(255, 255, 0)`
+- a tuple or list of integer RGB values, like `(255, 255, 0)` or `[255, 255, 0]`
+- a tuple or list of float RGB values, like `(1.0, 0.5, 0.0)` or `[1.0, 0.5, 0.0]`
+- a [theme color][theme-colors], like `ACCENT_1`, `ACCENT_2`, `BACKGROUND_1`, `DARK_1`, `LIGHT_2`
+- a [theme color][theme-colors] with a brightness modifier, like `ACCENT_1+40`, which is 40%
+  brighter than Accent 1, or `ACCENT_2-20` which is 20% darker than Accent 2
+- `none` clears the color, i.e. makes it transparent
+
+[theme-colors]: https://python-pptx.readthedocs.io/en/latest/api/enum/MsoThemeColorIndex.html
 
 ## PPTGen Library
 
@@ -923,39 +1004,23 @@ target = pptgen(
 target.save('slide1.pptx')  # Save the target
 ```
 
-## Length units
+## PPTX to images
 
-Any command that sets a length, e.g. `width: 5`, uses "inches" by default. You can change the unit
-to "cm" using `width: 5 cm`. Or, you can change the default unit from "inches" to "cm" by passing
-`unit: inches` to the [PPTXHandler configuration](#usage).
+To convert presentations to images, install [LibreOffice](https://www.libreoffice.org/) and
+[ImageMagick](https://imagemagick.org/). On Linux, the commands are:
 
-[Valid length units][length-units] are:
+```bash
+apt-get install default-jre
+apt-get install libreoffice-core --no-install-recommends
+```
 
-- `inches`: inches. Use `in`, `inch`, or `"` as an alias -- e.g. `3.2"` is `3.2 inches`)
-- `cm`: centimeters
-- `mm`: millimeters
-- `pt`: points are 1/72 inches
-- `centipoints`: hundredths of a point, i.e. 1/7200 inch. Use `cp` or `centipoint` as an alias
-- `emu`: English metric units (1/914400 inches)
+This command converts `source.pptx` into `source.pdf` using LibreOffice, and then into
+`img-01.png`, `img-02.png`, etc (one image per slide) using ImageMagick.
 
-[length-units]: https://python-pptx.readthedocs.io/en/latest/api/util.html#pptx.util.Length
-
-## Color units
-
-Any command that sets a color, e.g. `fill: f'red'`, accepts colors in one of these formats:
-
-- a named color, like `red`
-- a hex value, like `#f80` or `#ff8800`
-- an RGB value, like `rgb(255, 255, 0)`
-- a tuple or list of integer RGB values, like `(255, 255, 0)` or `[255, 255, 0]`
-- a tuple or list of float RGB values, like `(1.0, 0.5, 0.0)` or `[1.0, 0.5, 0.0]`
-- a [theme color][theme-colors], like `ACCENT_1`, `ACCENT_2`, `BACKGROUND_1`, `DARK_1`, `LIGHT_2`
-- a [theme color][theme-colors] with a brightness modifier, like `ACCENT_1+40`, which is 40%
-  brighter than Accent 1, or `ACCENT_2-20` which is 20% darker than Accent 2
-- `none` clears the color, i.e. makes it transparent
-
-[theme-colors]: https://python-pptx.readthedocs.io/en/latest/api/enum/MsoThemeColorIndex.html
-
+```bash
+soffice --headless --convert-to pdf source.pptx     # Convert to PDF first for multi-slide export
+convert source.pdf -resize 800x600 'img-%03d.png'   # Convert into img-01.png, img-02.png, etc
+```
 
 ## Support
 

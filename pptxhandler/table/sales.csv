@@ -1,6 +1,11 @@
-month,Sales,Margin,Growth %
-Feb-20,590, 0.17 , -0.01667 
-Mar-20,620, 0.14 , 0.05085 
-Apr-20,610, 0.10 , -0.01613 
-May-20,640, 0.18 , 0.04918 
-Jun-20,650, 0.12 , 0.01563 
+Name,Indication,FY2018,FY2017
+Humira,Rheumatoid arthritis,19936,18427
+Eliquis,Anticoagulant,9872,7395
+Revlimid,Multiple myeloma,9685,8187
+Opdivo,Ocology,7570,5763
+Keytruda,Oncology,7171,3809
+Enbrel,Rheumatoid arthritis,7126,7885
+Herceptin,Breast cancer,6981,7013
+Avastin,Colon cancer,6847,6686
+Rituxan,Non-Hodgkin's lymphoma,6750,7298
+Xarelto,Anticoagulant,6589,6234

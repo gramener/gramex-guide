@@ -37,3 +37,7 @@ url:
             type: f'morph'
             duration: 0.3
             advance: 1
+          data:
+            maxrow: copy.val.rankchange.abs().idxmax()
+          Subtitle:
+            text: f'{copy.val.cause[maxrow]} changed {copy.val.rankchange[maxrow]:+0.0f} ranks for age {copy.val.age[maxrow]}' if maxrow == maxrow else None

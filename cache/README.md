@@ -5,7 +5,7 @@ prefix: Cache
 
 [TOC]
 
-# Browser caching
+## Browser caching
 
 The `Cache-Control:` header supersedes previous caching headers (e.g. Expires).
 Modern browsers support Cache-Control. This is all we need.
@@ -47,7 +47,7 @@ Ctrl-F5 on the browser. Below is a useful reference for `cache-control` checks (
 
 ![HTTP Cache Control](http-cache-decision-tree.png "HTTP Cache Control")
 
-# Server caching
+## Server caching
 
 The `url:` handlers accept a `cache:` key that defines caching behaviour. For
 example, this configuration at [random](random) generates random letters every
@@ -73,7 +73,7 @@ random-cached:
     cache: true
 ```
 
-## Cache keys
+### Cache keys
 
 The response from any handler is cached against a cache key. By default, this is
 the URL. But you can change this using the `cache.key` argument.
@@ -142,7 +142,7 @@ attribute instead of `id` -- e.g. `user.email` for Google, `user.screen_name`
 for Twitter, etc.
 
 
-## Cache expiry
+### Cache expiry
 
 You can specify a expiry duration. For example [cache-expiry](cache-expiry)
 caches the response for 5 seconds.
@@ -161,7 +161,7 @@ cache-expiry:
 By default, the cache expires either after 10 years, or when the cache store
 runs out of space.
 
-## Cache status
+### Cache status
 
 By default, only requests that return a HTTP 200 or HTTP 304 status code are cached. You can cache other status codes via the `status:` configuration.
 
@@ -174,7 +174,7 @@ url:
         status: [200, 404, 500]         # Cache all of these HTTP responses
 ```
 
-## Cache stores
+### Cache stores
 
 Gramex provides an in-memory cache, but you can define your own cache in the
 root `cache:` section as follows:
@@ -238,8 +238,6 @@ Tornado templates) are not pickle-able. These caches do not cache such objects, 
 a log error. Use `memory` cache if you need to cache pickle-able objects.
 
 
-### Using cache stores
-
 Your functions can access these caches from `cache` object in `gramex.service`.
 For example, the default in-memory Gramex cache is at
 `gramex.service.cache['memory']`. The disk cache above is at
@@ -257,7 +255,7 @@ del cache['key']  # clears the key
 cache.set('key', 'value', expire=30)    # key expires in 30 seconds
 ```
 
-## Mixing Python versions
+### Mixing Python versions
 
 The cache implementation in Python 2 is different from Python 3 because:
 
@@ -271,7 +269,7 @@ the same cache. (Gramex instances running the same Python version can share the
 cache.)
 
 
-## Cache static files
+### Cache static files
 
 You can cache static files with both server and client side caching. For example,
 to cache the `bower_components` and `assets` directories, use this configuration:
@@ -291,7 +289,7 @@ To force a refresh, append `?v=xx` where `xx` is a new number. (The use of `?v=`
 is arbitrary. You can use any query parameter instead of `v`.)
 
 
-# Data caching
+## Data caching
 
 `gramex.cache.open` opens files and caches them unless they are changed. You can
 use this to load any type of file. For example:
@@ -392,7 +390,7 @@ data = gramex.cache.open('template.txt', mode='rb', encoding=None, errors=None)
 [hashlib]: https://docs.python.org/3/library/hashlib.html
 
 
-# Query caching
+## Query caching
 
 `gramex.cache.query` returns SQL queries as DataFrames and caches the results.
 The next time it is called, the query re-runs only if required.
@@ -429,7 +427,7 @@ data = gramex.cache.query(query, engine, state=lambda: os.stat('.updated').st_mt
 [read_sql]: https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_sql.html
 
 
-# Module caching
+## Module caching
 
 The Python `import` statement loads a module only once. If it has been loaded, it
 does not reload it.
@@ -469,7 +467,7 @@ In both these cases, whenever `my_utils.py` is updated, the latest version will
 be used to render the FunctionHandler or template.
 
 
-# Subprocess streaming
+## Subprocess streaming
 
 You can run an OS command asynchronously using `gramex.cache.Subprocess`. Use
 this instead of [subprocess.Popen][popen] because the latter will block Gramex
