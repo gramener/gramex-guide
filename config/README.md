@@ -521,7 +521,7 @@ imported file's `$YAMLURL` as follows:
 import:
     app1:
         path: dir/app.yaml          # YAMLURL is /dir/ by default
-        YAMLURL: /app1/             # YAMLURL is not set to /app1/ instead
+        YAMLURL: /app1/             # YAMLURL is set to /app1/ instead
         # Here are some other options
         # YAMLURL: $YAMLURL         # pattern is $YAMLURL, as if dir/app.yaml were copy-pasted here
         # YAMLURL: /app/dir/        # pattern is /app/dir/

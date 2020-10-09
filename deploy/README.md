@@ -199,7 +199,7 @@ url:
 
 ### .secrets.yaml
 
-If you can edit files on the server (directly, or via CI), add an *uncommitted* `.secrets.yaml` file with your secrets, like this:
+If you can edit files on the server (directly, or via CI), add a `.secrets.yaml` file with your secrets, like this:
 
 ```yaml
 PASSWORD: your-secret-password
@@ -219,6 +219,8 @@ url:
       key: add-your-key-directly    # This is not a secret
       secret: $GOOGLE_AUTH_SECRET   # This comes from .secrets.yaml
 ```
+
+**NOTE**: Don't commit the `.secrets.yaml` file. Everyone who can access the repo can see the secret.
 
 ### .secrets.yaml URLs
 
@@ -511,6 +513,30 @@ Gramex is often deployed behind a reverse proxy. This allows a web server (like
 nginx, Apache, IIS, Tomcat) to pass requests to different ports running different
 applications.
 
+Here's a checklist
+
+1. **Pass original HTTP headers** to Gramex that capture the actual request the Proxy Server received.
+   Gramex can redirect URLs appropriately based on this.
+    - `Host`: Actual host the request was sent to (else proxy servers send localhost or an internal IP)
+    - `X-Real-IP`: Remote address of the request (else proxy servers send their own IP)
+    - `X-Scheme`: Protocol (HTTP/HTTPS) the request was made with (else proxy servers stay with HTTP)
+    - `X-Request-URI`: Original request URL (else proxyservers send `http://localhost:port/...`)
+2. **Enable websocket proxying** via
+   [proxy_pass](http://nginx.org/en/docs/http/websocket.html) on nginx, and
+   [mod_proxy_wstunnel](https://httpd.apache.org/docs/2.4/mod/mod_proxy_wstunnel.html) on Apache
+3. **Increase proxy timeout** via
+  [proxy_read_timeout](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_read_timeout) on nginx, and
+  [ProxyTimeout](https://httpd.apache.org/docs/2.4/mod/mod_proxy.html#proxytimeout) on Apache.
+4. **Increase upload file size** via
+  [client_max_body_size](http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size) on nginx, and
+  [LimitRequestBody](https://httpd.apache.org/docs/2.4/mod/core.html#limitrequestbody) on Apache.
+5. **Set up proxy caching** via
+   [proxy_cache](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache) on nginx, and
+   [mod_cache](https://httpd.apache.org/docs/2.4/mod/mod_cache.html) on Apache.
+6. **Enable HTTPS** via
+   [certbot on nginx](https://certbot.eff.org/lets-encrypt/ubuntubionic-nginx), and
+   [certbot on Apache](https://certbot.eff.org/lets-encrypt/ubuntubionic-apache).
+
 ### nginx reverse proxy
 
 Here is a minimal HTTP reverse proxy configuration:
@@ -520,11 +546,22 @@ server {
     listen 80;                              # 80 is the default HTTP port
     server_name example.com;                # http://example.com/
 
-    # Ensures that Gramex gets the real host, IP, protocol and URI of the request
+    # Pass original HTTP headers
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Scheme $scheme;
     proxy_set_header X-Request-URI $request_uri;
+
+    # Enable websocket proxying
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade    $http_upgrade;
+    proxy_set_header Connection $connection_upgrade;
+
+    # Increase proxy timeout
+    proxy_read_timeout 300s;
+
+    # Increase upload file size
+    client_max_body_size 100m;
 
     location /project/ {                    # example.com/project/* maps to
         proxy_pass http://127.0.0.1:9988/;  # 127.0.0.1:9988/
@@ -587,28 +624,6 @@ To let nginx cache responses, use:
 To delete specific entries from the nginx cache, use
 [nginx-cache-purge](https://github.com/perusio/nginx-cache-purge).
 
-To allow websockets, add this configuration:
-
-```nginx
-        # Allow nginx configuration upgrade
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade    $http_upgrade;
-        proxy_set_header Connection $connection_upgrade;
-        proxy_set_header Host       $host;
-        proxy_set_header X-Scheme   $scheme;
-```
-
-Additional notes:
-
-- nginx allows files up to 1MB to be uploaded. You can increase that via
-  [client_max_body_size](http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size):
-- If your response takes more than 60 seconds, use
-  [proxy_read_timeout](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_read_timeout)
-  to increase the timeout. (But speed up your application!)
-- To pass the Gramex server version in the Server: HTTP header, use
-  "[proxy_pass_header](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass_header) Server;"
-- To enable HTTPS, read the Gramener wiki section on [SSL](https://learn.gramener.com/wiki/ssl.html)
-
 
 ### Apache reverse proxy
 
@@ -616,7 +631,7 @@ First, enable thee relevant proxy modules. On Linux, run:
 
 ```bash
 # Required modules
-sudo a2enmod proxy proxy_http rewrite headers
+sudo a2enmod proxy proxy_http proxy_wstunnel rewrite headers
 ```
 
 On Windows, ensure that the Apache `httpd.conf` has the following lines:
@@ -624,6 +639,7 @@ On Windows, ensure that the Apache `httpd.conf` has the following lines:
 ```apache
 LoadModule proxy_module          modules/mod_proxy.so
 LoadModule proxy_http_module     modules/mod_proxy_http.so
+LoadModule proxy_wstunnel        modules/mod_proxy_wstunnel.so
 LoadModule rewrite_module        modules/mod_rewrite.so
 LoadModule headers_module        modules/mod_headers.so
 ```
@@ -636,11 +652,24 @@ Here is a minimal HTTP reverse proxy configuration:
     ServerName example.com
     ProxyPass        /project/ http://127.0.0.1:9988/
     ProxyPassReverse /project/ http://127.0.0.1:9988/
-    # Let Gramex know what the original URL was so that it can redirect properly (see rebase_uri)
+
+    # Pass original HTTP headers
     ProxyPreserveHost On
     RequestHeader set X-Real-IP "%{REMOTE_ADDR}s"
     RequestHeader set X-Scheme "%{REQUEST_SCHEME}s"
     RequestHeader set X-Request-URI %{REQUEST_URI}s
+
+    # Enable websocket proxying
+    RewriteEngine on
+    RewriteCond %{HTTP:Upgrade} websocket [NC]
+    RewriteCond %{HTTP:Connection} upgrade [NC]
+    RewriteRule ^/project/(.*) "ws://127.0.0.1:9988/$1" [P,L]
+
+    # Increase proxy timeout
+    ProxyTimeout 300
+
+    # Increase upload file size
+    LimitRequestBody 102400000
 </VirtualHost>
 ```
 
@@ -700,11 +729,8 @@ Listen 80
 
     ProxyPass "/" "balancer://balancer-name/"
     ProxyPassReverse "/" "balancer://balancer-name/"
-    # Let Gramex know what the original URL was so that it can redirect properly (see rebase_uri)
-    ProxyPreserveHost On
-    RequestHeader set X-Real-IP "%{REMOTE_ADDR}s"
-    RequestHeader set X-Scheme "%{REQUEST_SCHEME}s"
-    RequestHeader set X-Request-URI %{REQUEST_URI}s
+
+    # ... add other Apache proxy configurations
 </VirtualHost>
 ```
 
