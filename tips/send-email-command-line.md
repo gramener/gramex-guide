@@ -17,7 +17,7 @@ Here's a code snippet that you can run to test sending emails (just change the `
     mailer.mail(
         to='person@example.com',
         subject='Subject',
-        html='<strong>This is bold text</strong> and <em>this is in italics</em>.'
+        html='<strong>This is bold text</strong> and <em>this is in italics</em>.',
         body='This plain text is shown if the client cannot render HTML',
         attachments=['1.pdf', '2.txt']
     )
