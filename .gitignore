@@ -22,6 +22,11 @@ TODO
 *.xls*
 *.ppt*
 
+# Don't commit ZIP files
+*.7z
+*.zip
+
+
 # ... but there are exceptions
 !formhandler/input.pptx
 !formhandler/flags.csv
@@ -29,10 +34,7 @@ TODO
 pptxhandler/**/output.ppt*
 !pptxhandler/**/*.csv
 !pptxhandler/**/*.xls*
-
-# Don't commit ZIP files
-*.7z
-*.zip
+!pptxhandler/**/*.zip
 
 # Documents
 *.doc*

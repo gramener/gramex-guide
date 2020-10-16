@@ -184,9 +184,12 @@ Next, let's change the Subtitle shape.
 
 [This is the final configuration](gramex.yaml.source){.source}
 
-
 ## See the result
 
 [This is the output PPTX](output.pptx)
 
 [![Final Slide](output.gif){.img-fluid}](output.pptx)
+
+## Try it yourself
+
+[Download this pack](shifting-causes-of-death.zip)
