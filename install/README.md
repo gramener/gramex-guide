@@ -57,7 +57,11 @@ docker pull gramener/gramex
 docker run -it --name gramex -p 9988:9988 gramener/gramex /bin/bash
 ```
 
-Run `gramex --help` to verify that Gramex is installed.
+Inside the container, run `gramex --help` to verify that Gramex is installed.
+
+- `--name gramex` names the instance `gramex`. Re-start via `docker start -ia gramex`. Remove via `docker rm gramex`
+- `-p 9988:9988` maps host port 9988 (outside) to container port 9988 (inside)
+- Add `-v /app:/mnt/app` to the host directory `/app` to the container directory `/mnt/app`
 
 <asciinema-player src="gramex-docker.json" cols="100" rows="20" idle-time-limit="0.5" autoplay="1" font-size="medium" loop="1"></asciinema-player>
 
@@ -151,12 +155,8 @@ If Gramex does not run:
 
 ## Offline install
 
-On a system **with an Internet connection** and the **same platform** (Windows/Linux) as the target system:
-
-1. [Install Gramex using conda](#conda-install) into a folder called `gramex-offline`
-2. Copy the `gramex-offline` folder into the target system (which need not have an Internet connection)
-
-Here is a script that generates the offline installation tarball for Gramex on Linux:
+[Install Gramex using conda](#conda-install) on a system **with an Internet connection** and the
+**same platform** (Windows/Linux) as the target system. Then run these commands (for Linux):
 
 ```bash
 # Install Miniconda
@@ -170,31 +170,42 @@ gramex-offline/bin/conda init bash
 conda create -y --name gramex python=3.7            # Create a new environment
 conda activate gramex                               # Activate it
 conda install -y -c conda-forge -c gramener gramex  # Install Gramex
-
-# Zip it
-tar -jvcf gramex-offline.tar.bz2 gramex-offline/
 ```
+
+Then copy the `gramex-offline` folder into the target system (which need not have an Internet
+connection). Also copy your app. Then run `gramex-offline/bin/gramex` from your app folder.
+
 
 ## Offline Docker Install
 
-[Install Docker](https://docs.docker.com/engine/install/) on a system **with an Internet connection** and the **same platform** (Windows/Linux) as the target system. Then run:
+[Install Docker](https://docs.docker.com/engine/install/) on a system **with an Internet connection**.
+Then run these commands.
 
 ```bash
+# Replace "app" anywhere in this script with any app name of your choice.
 docker pull gramener/gramex
-docker save gramener/gramex > gramex-latest.tar
+docker run -it --name app gramener/gramex /bin/bash
+
+  # Inside the container, copy your app and make any changes required.
+  # For example, this clones the Gramex Guide into /app
+  git clone https://github.com/gramener/gramex-guide/ /app
+  exit
+
+# Save the container as a new image
+docker commit app gramener/app
+docker save gramener/app > app.tar
 ```
 
 Then:
 
-1. Copy files to the target machine.
-2. [Install Docker](https://docs.docker.com/engine/install/) on the target machine.
-3. Copy `gramex-latest.tar` to the target machine. Zip and split it if required.
+1. [Install Docker](https://docs.docker.com/engine/install/) on the target machine.
+2. Copy `app.tar` to the target machine. Zip and split it if required.
 
 On the target machine, run:
 
 ```bash
-docker load < gramex-latest.tar
-docker run -it --name gramex -p 9988:9988 gramener/gramex /bin/bash
+docker load < app.tar
+docker run -it --name app -p 9988:9988 -w /app gramener/app gramex
 ```
 
 
