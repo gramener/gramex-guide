@@ -18,51 +18,65 @@ url:
       url: $YAMLPATH/flags.csv
 ```
 
-You can read from multiple file formats as well as databases. The URL may be a
-[gramex.cache.open](../cache/#data-caching) path. For example:
+## Supported Files
+
+You can read from multiple file formats. The URL may be any file path or URL.
+
+For example, you can read from Excel files in a variety of ways:
 
 ```yaml
-    url: /path/to/file.csv      # Reads the CSV file
-
-    url: /path/to/file.xlsx     # Reads first sheet from file.xlsx
-
-    url: /path/to/file.csv      # Any additional parameters are passed to
-    delimiter: '|'              # gramex.cache.open, which uses pd.read_csv
-
-    ext: xlsx                   # Passes ext=xlsx to gramex.cache.open
-    url: /path/to/filename      # which treats this file as an Excel file
+    url: /path/to/file.xlsx     # Reads the first sheet from file.xlsx
 
     url: /path/to/file.xlsx     # Reads the sheet named sales
     sheet_name: sales
 
-    url: /path/to/file.hdf      # Reads the dataframe at key named 'sales'
-    key: sales
+    url: /path/to/file.xlsx     # Reads cells A1:C20 from the sales sheet
+    sheet_name: sales
+    range: A1:C20               # v1.65 onwards
 
-    url: /path/to/file.parquet  # Reads the parquet file
+    url: /path/to/file.xlsx     # Reads cells A1:C20 from the defined name "MonthlySales"
+    sheet_name: sales
+    name: MonthlySales          # v1.65 onwards
 
-    url: /path/to/file.feather  # Reads the feather file
+    url: /path/to/file.xlsx     # Reads cells A1:C20 from the worksheet table "WeeklySale"
+    sheet_name: sales
+    table: MonthlySales         # v1.65 onwards
 ```
 
-You can read from a HTTP or HTTPS URL.
+Other data formats supported are:
+
+- `url: /path/to/file.csv`: CSV file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)
+- `url: /path/to/file.hdf`: HDF5 file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_hdf.html)
+- `url: /path/to/file.html`: HTML table. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_html.html))
+- `url: /path/to/file.sas`: SAS file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_sas.html))
+- `url: /path/to/file.spss`: SPSS file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_spss.html))
+- `url: /path/to/file.stata`: Stata file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_stata.html))
+- `url: /path/to/file.parquet`: Parquet file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html))
+- `url: /path/to/file.feather`: Feather file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_feather.html))
+
+The type is automatically detected from the extension. Override it using `callback:`. For example:
+
+```yaml
+    url: /path/to/file.txt      # This is a CSV with .txt extension
+    callback: csv               # Force reading it as a CSV file
+```
+
+You can read from a HTTP or HTTPS URL. Use `ext:` to specify the extension of the file.
 
 ```yaml
     # This URL is read once and cached forever
     url: https://learn.gramener.com/guide/formhandler/flags.csv
-    ext: csv          # Explicitly specify the extension for HTTP(S) urls
+    ext: csv          # Explicitly specify the extension for URL
 ```
 
-This is cached permanently unless the URL is changed. You change the URL using
+This is cached permanently unless the URL is changed or the server is restarted. You change the URL using
 [FormHandler parameters](#formhandler-parameters) like below:
 
 ```yaml
-    # This URL is refreshed every time the FormHandler gets a new ?v=...
+    # URL is reloaded when you change ?v=... (or server is restarted)
     url: https://learn.gramener.com/guide/formhandler/flags.csv?version={v}
     ext: csv          # Explicitly specify the extension for HTTP(S) urls
 ```
-
-Additional parameters like `delimiter:`, `ext:`, etc are passed to
-[gramex.cache.open](../cache/#data-caching), which uses the Pandas ``read_*``
-methods.
 
 ## Supported Databases
 
