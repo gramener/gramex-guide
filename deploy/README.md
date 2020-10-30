@@ -92,7 +92,7 @@ SECRETS_URL: https://pastebin.com/raw/h75e4mWx
 SECRETS_KEY: SECRETKEY     # Replace with your secret key
 ```
 
-When Gramex loads, it loads `SECRETS_URL` (ignoring comments beginning with `#`) and decrypts it using your `SECRETS_KEY`.
+When Gramex loads, it loads `SECRETS_URL` (ignoring comments beginning with `#`) and decrypts it using your `SECRETS_KEY`. The above URL has 2 secrets: `REMOTE_SECRET1` and `REMOTE_SECRET2`, which you can use as variables.
 
 This lets you securely modify the secrets without accessing the server.
 

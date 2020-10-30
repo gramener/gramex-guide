@@ -162,10 +162,15 @@ Here is a script that generates the offline installation tarball for Gramex on L
 # Install Miniconda
 wget https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.3-Linux-x86_64.sh -O miniconda.sh
 bash miniconda.sh -b -p gramex-offline
-# Install Gramex
-gramex-offline/bin/conda create -n gramex python=3.7 -y
-gramex-offline/bin/conda install -y 'pip>=20.2'
-gramex-offline/bin/conda install -y -c conda-forge -c gramener gramex
+gramex-offline/bin/conda init bash
+
+# Now RESTART the shell to activate Conda.
+
+# Then install Gramex
+conda create -y --name gramex python=3.7            # Create a new environment
+conda activate gramex                               # Activate it
+conda install -y -c conda-forge -c gramener gramex  # Install Gramex
+
 # Zip it
 tar -jvcf gramex-offline.tar.bz2 gramex-offline/
 ```
