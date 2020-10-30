@@ -53,6 +53,7 @@ Once Docker is running, to run [gramex](https://hub.docker.com/r/gramener/gramex
 type this in your Command Prompt / Terminal / shell:
 
 ```bash
+docker pull gramener/gramex
 docker run -it --name gramex -p 9988:9988 gramener/gramex /bin/bash
 ```
 
