@@ -88,11 +88,11 @@ If you can't edit files on the server, you can pick up *encrypted* secrets from 
 3. Add the URL and the encryption secret, in `.secrets.yaml`:
 
 ```yaml
-SECRET_URL: https://pastebin.com/raw/h75e4mWx
-SECRET_KEY: SECRETKEY     # Replace with your secret key
+SECRETS_URL: https://pastebin.com/raw/h75e4mWx
+SECRETS_KEY: SECRETKEY     # Replace with your secret key
 ```
 
-When Gramex loads, it loads `SECRET_URL` (ignoring comments beginning with `#`) and decrypts it using your `SECRET_KEY`.
+When Gramex loads, it loads `SECRETS_URL` (ignoring comments beginning with `#`) and decrypts it using your `SECRETS_KEY`.
 
 This lets you securely modify the secrets without accessing the server.
 
