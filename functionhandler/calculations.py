@@ -1,17 +1,21 @@
 import time
 import json
 import tornado
+from gramex.transforms import handler
+from math import factorial
+from numpy import prod
+from typing import List
 
 
 def total(*items):
-    '''Calculate total of all items and render as JSON: value and string'''
-    return json.dumps(sum(float(item) for item in items))
+    '''Calculate total of all items'''
+    return sum(float(item) for item in items)
 
 
 def add(handler):
-    '''Add all values of ?x= and display the result as a string'''
+    '''Add all values of ?x='''
     args = handler.argparse(x={'nargs': '*', 'type': float})
-    return json.dumps(sum(args.x))
+    return sum(args.x)
 
 
 def slow(handler):
@@ -40,3 +44,14 @@ def fetch(handler):
     # Yield the futures one by one
     for future in futures:
         yield future
+
+
+@handler
+def combinations(n:int, k:int) -> int:
+    '''combinations(10, 4) -> no. of ways to pick 4 objects from 10 ignoring order'''
+    return factorial(n) / factorial(k) / factorial(n - k)
+
+
+@handler
+def multiply(v: List[int]):
+    return prod(v)

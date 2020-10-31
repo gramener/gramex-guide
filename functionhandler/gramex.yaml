@@ -35,6 +35,22 @@ url:
         pattern: /$YAMLURL/path/(.*?)/(.*?)
         handler: FunctionHandler
         kwargs:
-            function: json.dumps(handler.path_args)
+            function: handler.path_args
             headers:
                 Content-Type: application/json      # Display as JSON
+
+    combinations:
+        pattern: /$YAMLURL/combinations
+        handler: FunctionHandler
+        kwargs:
+            function: calculations.combinations
+            headers:
+                Content-Type: application/json
+
+    multiply:
+        pattern: /$YAMLURL/multiply
+        handler: FunctionHandler
+        kwargs:
+            function: calculations.multiply
+            headers:
+                Content-Type: application/json

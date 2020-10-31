@@ -6,13 +6,13 @@ prefix: FunctionHandler
 [TOC]
 
 The [FunctionHandler][functionhandler] runs a function and displays the output.
-For example, this configuration maps the URL [total](total) to a
-FunctionHandler:
+
+For example, this configuration maps the URL [total](total) to a FunctionHandler:
 
 ```yaml
 url:
     total:
-        pattern: total                              # The "total" URL
+        pattern: /total                             # The "total" URL
         handler: FunctionHandler                    # runs a function
         kwargs:
             function: calculations.total(100, 200)  # total() from calculations.py
@@ -26,15 +26,17 @@ result `300` as `application/json`. [calculations.py](calculations.py) defines
 
 ```python
 def total(*items):
-    return json.dumps(sum(float(item) for item in items))
+    return sum(float(item) for item in items)
 ```
 
-You can see all configurations used in this page in [gramex.yaml](gramex.yaml.source):
+Strings are rendered as-is. Other types (int, float, bool, date, DataFrame) are converted to JSON.
 
-<iframe class="w-100" frameborder="0" src="gramex.yaml.source"></iframe>
+<div class="example">
+  <a class="example-demo" href="total">See <code>total</code></a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py">Source</a>
+</div>
 
-After the function executes, users can be redirected via the `redirect:` config
-documented the [redirection configuration](../config/#redirection).
+To see all configurations used in this page, see [gramex.yaml](gramex.yaml.source):
 
 ## Function methods
 
@@ -46,7 +48,7 @@ To change this, add a `methods:` key. For example:
 ```yaml
 url:
     total:
-        pattern: total
+        pattern: /total
         handler: FunctionHandler
         kwargs:
             function: calculations.total(100, 200)
@@ -73,7 +75,7 @@ To set this up, [gramex.yaml](gramex.yaml.source) used the following configurati
 ```yaml
 url:
     add:
-        pattern: add                                # The "add" URL
+        pattern: /add                               # The "add" URL
         handler: FunctionHandler                    # runs a function
         kwargs:
             function: calculations.add              # add() from calculations.py
@@ -84,6 +86,82 @@ url:
 [calculations.add(handler)](calculations.py) is called with the Tornado
 [RequestHandler][requesthandler]. It accesses the URL query parameters to add up
 all `x` arguments.
+
+```python
+def add(handler):
+    args = handler.argparse(x={'nargs': '*', 'type': float})
+    return sum(args.x)
+```
+
+<div class="example">
+  <a class="example-demo" href="add?x=10&x=20&x=30">Try <code>add?x=10&x=20&x=30</code></a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py">Source</a>
+</div>
+
+
+## Function arguments from URL
+
+`gramex.transforms.handler` maps a function's arguments *directly* from the URL as a REST API.
+
+For example, to pass `combinations?n=10&k=4` as a function call `combinations(n=10, k=4)`, add this
+to `calculations.py`:
+
+```python
+from gramex.transforms import handler
+from math import factorial
+
+@handler
+def combinations(n:int, k:int) -> float:
+    '''combinations(10, 4): ways to pick 4 objects from 10 ignoring order'''
+    return factorial(n) / factorial(k) / factorial(n - k)
+```
+
+Expose it via this `gramex.yaml` configuration:
+
+```yaml
+url:
+    combinations:
+        pattern: /combinations
+        handler: FunctionHandler
+        kwargs:
+            function: calculations.combinations
+            headers:
+                Content-Type: application/json
+```
+
+Now, [`combinations?n=10&k=4`](combinations?n=10&k=4) returns 210, the number of ways to pick 4
+items from 10 ignoring order)
+
+<div class="example">
+  <a class="example-demo" href="combinations?n=10&k=4">Try <code>combinations?n=10&k=4</code></a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py">Source</a>
+</div>
+
+
+`gramex.transforms.handler` calculates exposes all function arguments into a REST API. If you
+provide a type hint (e.g. `n: int`), it converts the argument to the correct type.
+
+Apart from `int`, `float`, `str` and `bool`, you can specify **lists** of a specific type as well.
+For example:
+
+```python
+from numpy import prod
+from typing import List
+
+@handler
+def multiply(v: List[int]):
+    return prod(v)
+```
+
+... will get `v` as a list of int. In [`multiply?v=10&v=20&v=30`](multiply?v=10&v=20&v=30), `v` is
+passed as a list `v = [10, 20, 30]` to return 10 x 20 x 30 = 6,000.
+
+<div class="example">
+  <a class="example-demo" href="multiply?v=10&v=20&v=30">Try <code>multiply?v=10&v=20&v=30</code></a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py">Source</a>
+</div>
+
+<!-- TODO: See this tutorial --->
 
 ## URL path arguments
 
@@ -127,7 +205,7 @@ url:
         pattern: /path/(.*?)/(.*?)
         handler: FunctionHandler
         kwargs:
-            function: json.dumps(handler.path_args)
+            function: handler.path_args
 ```
 Sample output:
 
@@ -136,37 +214,16 @@ Sample output:
 
 `path_args` is available to [all handlers](../handler/#basehandler-attributes).
 
-## Function headers
-
-To send the output as a download (e.g. as a PDF), use:
-
-```yaml
-url:
-    ...
-        kwargs:
-            headers:
-                Content-Type: application/pdf       # MIME type of download
-                Content-Disposition: attachment; filename=download.pdf
-```
-
-You can also specify this in your function:
-
-```python
-def method(handler):
-    handler.set_header('Content-Type', 'application/pdf')
-    handler.set_header('Content-Disposition', 'attachment; filename=download.pdf')
-    return open('download.pdf', 'rb').read()
-```
-
-
 ## Parse URL arguments
 
 All URL query parameters are stored in ``handler.args`` as a dict with Unicode
 keys and list values. For example:
 
-    ?x=1        => {'x': ['1']}
-    ?x=1&x=2    => {'x': ['1', '2']}
-    ?x=1&y=2    => {'x': ['1'], 'y': ['2']}
+```
+?x=1        => {'x': ['1']}
+?x=1&x=2    => {'x': ['1', '2']}
+?x=1&y=2    => {'x': ['1'], 'y': ['2']}
+```
 
 It is better to use ``handler.args`` than Tornado's ``.get_arguments()`` because
 Tornado does not support Unicode keys well.
@@ -241,6 +298,35 @@ args = handler.argparse(
 )
 ```
 
+## Function headers
+
+To send the output as a download (e.g. as a PDF), use:
+
+```yaml
+url:
+    ...
+        kwargs:
+            headers:
+                Content-Type: application/pdf       # MIME type of download
+                Content-Disposition: attachment; filename=download.pdf
+```
+
+You can also specify this in your function:
+
+```python
+def method(handler):
+    handler.set_header('Content-Type', 'application/pdf')
+    handler.set_header('Content-Disposition', 'attachment; filename=download.pdf')
+    return open('download.pdf', 'rb').read()
+```
+
+See [Common MIME types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types).
+
+## Function redirection
+
+After the function executes, users can be redirected via the `redirect:` config
+documented the [redirection configuration](../config/#redirection).
+
 ## Streaming output
 
 If you perform slow calculations and want to flush interim calculations out to
@@ -259,6 +345,11 @@ When a function yields a string value, it will be displayed immediately. The
 function can also yield a Future, which will be displayed as soon as it is
 resolved. (Yielded Futures will be rendered in the same order as they are
 yielded.)
+
+<div class="example">
+  <a class="example-demo" href="slow?x=1&x=2&x=3">Try <code>slow?x=1&x=2&x=3</code></a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py">Source</a>
+</div>
 
 ## Asynchronous functions
 
@@ -293,7 +384,10 @@ def urls(handler):
         yield future
 ```
 
-See the output at [fetch?x=0&x=1&x=2](fetch?x=0&x=1&x=2).
+<div class="example">
+  <a class="example-demo" href="fetch?x=0&x=1&x=2">Try <code>fetch?x=0&x=1&x=2</code></a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py">Source</a>
+</div>
 
 The simplest way to call *any blocking function* asynchronously is to use a
 [ThreadPoolExecutor][ThreadPoolExecutor]. For example, using this code in a
