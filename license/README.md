@@ -3,9 +3,9 @@ title: Gramex license
 prefix: License
 ...
 
-## Gramex Open Source is free for use
+## Gramex Community is free for use
 
-Gramex is licensed under the [MIT License][1]
+The Gramex Community Edition is licensed under the [MIT License][1]
 
 Copyright (c) 2019, Gramener
 
@@ -29,14 +29,14 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Gramex Enterprise is free for non-commercial use
 
-Gramex Enterprise is offered under a non-commercial license for:
+The Gramex Enterprise Edition is offered under a non-commercial license for:
 
 - Educational & research institutions
 - Students
 - Individuals using for personal use, testing and demonstration
 
-Gramex is not free for commercial use.
-To discuss commercial use of Gramex, reach out to <contact@gramener.com>.
+Gramex Enterprise Edition is not free for commercial use.
+To discuss commercial use of Gramex Enterprise, reach out to <contact@gramener.com>.
 
 
 ## Third party libraries

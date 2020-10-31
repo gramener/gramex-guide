@@ -1,0 +1,17 @@
+gramexlog:
+  gramexguide:
+    keys: [datetime, user.id, headers.User-Agent]
+
+url:
+  logging/log:
+    pattern: /$YAMLURL/log
+    handler: FunctionHandler
+    kwargs:
+      function: gramex.log(handler, 'gramexguide', event='handler')
+
+  logging/logview:
+    pattern: /$YAMLURL/view
+    handler: FormHandler
+    kwargs:
+      url: elasticsearch+http://localhost:9200
+      table: gramexguide
