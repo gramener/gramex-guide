@@ -118,14 +118,7 @@ make test
 Set up apps and & upgrade npm packages.
 
 ```bash
-# yarn upgrade --cwd gramex/apps/admin/
-yarn upgrade --cwd gramex/apps/admin2/
-yarn upgrade --cwd gramex/apps/capture/
-yarn upgrade --cwd gramex/apps/configeditor/
-yarn upgrade --cwd gramex/apps/filemanager/
-yarn upgrade --cwd gramex/apps/logviewer/
-yarn upgrade --cwd gramex/apps/pynode/
-yarn upgrade --cwd gramex/apps/ui/
+find gramex/apps/ -maxdepth 2 -name package.json -print0 | xargs -0 -L1 yarn upgrade
 ```
 
 Update the following and commit to `master` branch:
@@ -182,7 +175,7 @@ make push-docs push-coverage  # Push docs and coverage tests
 Update the following and commit to `master` branch:
 
 - `setup.py` -- update the version number to the Gramex version number
-- TODO: document CHANGELOG, etc.
+- `README.md` -- update the CHANGELOG
 
 Commit and push the `master` branch to the server. **Ensure pipeline passes.**:
 

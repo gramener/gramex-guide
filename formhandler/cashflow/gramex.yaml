@@ -1,0 +1,70 @@
+url:
+  formhandler/cashflow/data:
+    pattern: /$YAMLURL/data
+    handler: FormHandler
+    kwargs:
+      url: $YAMLPATH/cashflow.xlsx
+      table: OtherOperationalData
+
+  formhandler/cashflow/chart1:
+    pattern: /$YAMLURL/chart1
+    handler: FormHandler
+    kwargs:
+      url: $YAMLPATH/cashflow.xlsx
+      name: CashChart
+
+  formhandler/cashflow/chart:
+    pattern: /$YAMLURL/chart
+    handler: FormHandler
+    kwargs:
+      url: $YAMLPATH/cashflow.xlsx
+      name: CashChart
+      function: "data.T.reset_index().rename(columns={'index': 'date', 0: 'cash'})"
+      formats:
+        barchart:                       # Define a format called barchart
+          format: seaborn               # This uses seaborn as the format
+          chart: barplot                # Chart can be any standard seaborn chart
+          x: date                       # Use 'date' column for the bars
+          y: cash                       # Use 'cash' column for height of the bars
+          color: '{color}'              # Bar chart color is a light blue
+          width: '{width}'              # Width in pixels. Default: 640
+          height: '{height}'            # Height in pixels. Default: 480
+          dpi: '{dpi}'                  # Zoom (dots per inch)
+          ext: png                      # Use a matplot backend (svg, pdf, png)
+          headers:
+            Content-Type: image/png     # Set the corresponding MIME type
+      default:
+        color: '#2A9DF4'
+        width: 800
+        height: 600
+        dpi: 96
+
+  formhandler/cashflow/operational:
+    pattern: /$YAMLURL/operational
+    handler: FormHandler
+    kwargs:
+      url: $YAMLPATH/cashflow.xlsx
+      table: OtherOperationalData
+      function: |
+        (data                                   # Take the data
+        .drop(columns=['Beginning', 'Total'])   # Remove these columns
+        .melt(                                  # "Unpivot" the table
+          id_vars=['OTHER OPERATING DATA'],     # using OTHER OPERATING DATA
+          var_name='Month'))                    # ... and Month
+      formats:
+        linechart:                      # Define a format called linechart
+          format: seaborn               # This uses seaborn as the format
+          chart: lineplot               # Pick the lineplot chart type
+          x: Month                      # Use 'Month' column for the X-axis
+          y: value                      # Use 'value' column for the Y-axis
+          hue: OTHER OPERATING DATA     # Color by the OTHER OPERATING DATA col
+          width: '{width}'              # Width in pixels. Default: 640
+          height: '{height}'            # Height in pixels. Default: 480
+          dpi: '{dpi}'                  # Zoom (dots per inch)
+          ext: png                      # Use a matplot backend (svg, pdf, png)
+          headers:
+            Content-Type: image/png     # Set the corresponding MIME type
+      default:
+        width: 800
+        height: 600
+        dpi: 96

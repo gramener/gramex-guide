@@ -18,6 +18,12 @@ url:
       url: $YAMLPATH/flags.csv
 ```
 
+<div class="example">
+  <a class="example-demo" href="cashflow">Try it with the FormHandler tutorial</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/formhandler/table.html">Source</a>
+</div>
+
+
 ## Supported Files
 
 You can read from multiple file formats. The URL may be any file path or URL.

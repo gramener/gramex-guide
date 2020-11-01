@@ -29,14 +29,26 @@ def total(*items):
     return sum(float(item) for item in items)
 ```
 
-Strings are rendered as-is. Other types (int, float, bool, date, DataFrame) are converted to JSON.
-
 <div class="example">
   <a class="example-demo" href="total">See <code>total</code></a>
   <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py">Source</a>
 </div>
 
 To see all configurations used in this page, see [gramex.yaml](gramex.yaml.source):
+
+## Function output
+
+The output of the function is rendered as a string.
+
+String and byte outputs are rendered as-is. Other types (int, float, bool, datetime, DataFrame) are converted to JSON as follows:
+
+- `None`: this returns an empty string (as before), but without a warning
+- `bool`, `np.bool`: rendered as JSON, e.g. `true`, `false` (note the lowercase)
+- `int`, `float`, `np.integer`, `np.float`: rendered as JSON, e.g. `3`, `1.5`
+- `datetime.datetime` and `np.datetime`: rendered as ISO date, e.g. `1997-07-16T19:20:30+01:00`
+- `list`, `tuple`, `np.ndarray`: rendered as JSON arrays, e.g. `[1, "abc", true]`
+- `dict`: rendered as JSON, e.g. `{"x": 1, "y": "abc"}`. Keys *must* be strings
+- `pd.DataFrame`: rendered as JSON via `.to_json(orient="records", date_format="iso")`
 
 ## Function methods
 

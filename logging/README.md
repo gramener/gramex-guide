@@ -33,7 +33,8 @@ server's index `gramexguide`.
 
 ## Logging handler
 
-You can use `gramex.log` as a [FunctionHandler](../functionhandler/) endpoint directly.
+You can also use `gramex.log` as a [FunctionHandler](../functionhandler/) endpoint directly. For
+example:
 
 ```yaml
 url:

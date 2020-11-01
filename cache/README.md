@@ -373,7 +373,15 @@ For example, to read using [pickle.load][pickle-load], use:
 
 ```python
 loader = gramex.cache.opener(pickle.load)
-data = gramex.cache.open('template.pickle', loader)
+data = gramex.cache.open('data.pickle', loader)
+```
+
+To register your function permanently against an extension, add it to `gramex.cache.open_callback`.
+For example, to load `.pickle` files, you can use:
+
+```python
+gramex.cache.open_callback['pickle'] = gramex.cache.opener(pickle.load)
+data = gramex.cache.open('data.pickle')
 ```
 
 If your function accepts a string instead of a handle, add the `read=True`
