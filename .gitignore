@@ -30,6 +30,7 @@ TODO
 # ... but there are exceptions
 !formhandler/input.pptx
 !formhandler/flags.csv
+!formhandler/cashflow/cashflow.xlsx
 !pptxhandler/**/*.ppt*
 pptxhandler/**/output.ppt*
 !pptxhandler/**/*.csv
