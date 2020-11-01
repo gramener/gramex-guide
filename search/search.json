@@ -1166,6 +1166,44 @@
       "What next": -1
     }
   },
+  "1.65": {
+    "": {
+      "Gramex 1.65 release notes": -1
+    },
+    "credits": {
+      "Credits": -1
+    },
+    "excel-ranges-supported": {
+      "Excel ranges supported": -1
+    },
+    "flexible-logging": {
+      "Flexible logging": -1
+    },
+    "functions-as-rest-apis": {
+      "Functions as REST APIs": -1
+    },
+    "functions-converted-to-json": {
+      "Functions converted to JSON": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "old-code-no-longer-required-in-gramex-165": {
+      "Old code -- no longer required in Gramex 1.65+": -1
+    },
+    "old-code-no-longer-required-in-gramex-165_1": {
+      "Old code -- no longer required in Gramex 1.65+": -1
+    },
+    "other-improvements": {
+      "Other improvements": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "what-next": {
+      "What next": -1
+    }
+  },
   "about": {
     "": {}
   },
@@ -1528,6 +1566,46 @@
       "Screenshot service": -1
     }
   },
+  "cashflow": {
+    "cash-flow": {
+      "Cash flow": -1
+    },
+    "create-another-chart": {
+      "Create another chart": -1
+    },
+    "create-the-chart": {
+      "Create the chart": -1
+    },
+    "customize-the-chart": {
+      "Customize the chart": -1
+    },
+    "expose-excel-data": {
+      "Expose Excel data": -1
+    },
+    "prepare-the-data": {
+      "Prepare the data": -1
+    },
+    "see-the-result": {
+      "See the result": -1
+    }
+  },
+  "certificate": {
+    "certificates": {
+      "Certificates": -1
+    },
+    "create-the-data": {
+      "Create the data": -1
+    },
+    "create-the-rules": {
+      "Create the rules": -1
+    },
+    "create-the-source-template": {
+      "Create the source template": -1
+    },
+    "see-the-result": {
+      "See the result": -1
+    }
+  },
   "chart": {
     "": {
       "Charts": -1
@@ -1745,9 +1823,7 @@
     "update-gramex-community-edition": {
       "Update Gramex Community Edition": -1
     },
-    "yarn-upgrade-cwd-gramexappsadmin": {
-      "yarn upgrade --cwd gramex/apps/admin/": -1
-    }
+    "yarn-upgrade-cwd-gramexappsadmin": {}
   },
   "copy-slide": {
     "copy-slide-example": {
@@ -1840,6 +1916,9 @@
     },
     "shifting-causes-of-death": {
       "Shifting Causes of Death": -1
+    },
+    "try-it-yourself": {
+      "Try it yourself": -1
     }
   },
   "debug": {
@@ -1885,7 +1964,7 @@
       "404 Not Found": -1
     },
     "apache-load-balancing": {
-      "Apache Load Balancing": -1
+      "Apache load balancing": -1
     },
     "apache-reverse-proxy": {
       "Apache reverse proxy": -1
@@ -2432,6 +2511,9 @@
     },
     "supported-databases": {
       "Supported Databases": -1
+    },
+    "supported-files": {
+      "Supported Files": -1
     }
   },
   "functionhandler": {
@@ -2444,11 +2526,20 @@
     "function-arguments": {
       "Function arguments": -1
     },
+    "function-arguments-from-url": {
+      "Function arguments from URL": -1
+    },
     "function-headers": {
       "Function headers": -1
     },
     "function-methods": {
       "Function methods": -1
+    },
+    "function-output": {
+      "Function output": -1
+    },
+    "function-redirection": {
+      "Function redirection": -1
     },
     "parse-url-arguments": {
       "Parse URL arguments": -1
@@ -2561,9 +2652,7 @@
     "install-a-specific-version-of-gramex": {
       "Install a specific version of Gramex": -1
     },
-    "install-gramex": {
-      "Install Gramex": -1
-    },
+    "install-gramex": {},
     "install-gramex-enterprise": {
       "Install Gramex Enterprise": -1
     },
@@ -2571,6 +2660,9 @@
       "Install Miniconda": -1
     },
     "installation": {},
+    "now-restart-the-shell-to-activate-conda": {
+      "Now RESTART the shell to activate Conda.": -1
+    },
     "offline-docker-install": {
       "Offline Docker Install": -1
     },
@@ -2581,8 +2673,17 @@
     "pip-install": {
       "Pip install": -1
     },
+    "replace-app-anywhere-in-this-script-with-any-app-name-of-your-choice": {
+      "Replace \"app\" anywhere in this script with any app name of your choice.": -1
+    },
     "run-bash-inside-the-container": {},
     "run-gramex-on-port-9988": {},
+    "save-the-container-as-a-new-image": {
+      "Save the container as a new image": -1
+    },
+    "then-install-gramex": {
+      "Then install Gramex": -1
+    },
     "to-re-connect-to-the-instance": {},
     "troubleshooting": {
       "Troubleshooting": -1
@@ -2591,9 +2692,7 @@
     "vscode-extension": {
       "VSCode Extension": -1
     },
-    "zip-it": {
-      "Zip it": -1
-    }
+    "zip-it": {}
   },
   "jsonhandler": {
     "": {
@@ -2654,12 +2753,13 @@
     "": {
       "Gramex license": -1
     },
+    "gramex-community-is-free-for-use": {
+      "Gramex Community is free for use": -1
+    },
     "gramex-enterprise-is-free-for-non-commercial-use": {
       "Gramex Enterprise is free for non-commercial use": -1
     },
-    "gramex-open-source-is-free-for-use": {
-      "Gramex Open Source is free for use": -1
-    },
+    "gramex-open-source-is-free-for-use": {},
     "third-party-libraries": {
       "Third party libraries": -1
     }
@@ -2672,6 +2772,20 @@
   "linkcheck": {
     "": {
       "Guide self test": -1
+    }
+  },
+  "logging": {
+    "": {
+      "Log user and system events": -1
+    },
+    "logging-handler": {
+      "Logging handler": -1
+    },
+    "multiple-logs": {
+      "Multiple logs": -1
+    },
+    "viewing-logs": {
+      "Viewing logs": -1
     }
   },
   "logviewer": {
@@ -2928,6 +3042,9 @@
     "pptgen-configuration": {},
     "pptgen-library": {
       "PPTGen Library": -1
+    },
+    "pptx-to-images": {
+      "PPTX to images": -1
     },
     "pptx-url-arguments": {},
     "rate-of-entrepreneurship": {
