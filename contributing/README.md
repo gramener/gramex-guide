@@ -158,17 +158,41 @@ git remote add gitlab git@code.gramener.com:cto/gramex.git        # For Gramex
 git remote add gitlab git@code.gramener.com:cto/gramex-guide.git  # For Guide
 ```
 
-Gramener.com administrators: re-start Gramex after deployment.
-
-Deploy on [gramener.com](https://gramener.com/gramex-update/),
-then [pypi](https://pypi.python.org/pypi/gramex),
-then [docker](https://hub.docker.com/r/gramener/gramex/).
+Then run these deployment steps:
 
 ```bash
+# Deploy docs and code coverage on https://gramener.com/gramex-update/
+make push-docs                # Deploy pydoc
+make push-coverage            # Deploy coverage tests
+
+# Deploy on pypi: https://pypi.python.org/pypi/gramex
 make push-pypi                # Log in as gramener
+
+# Deploy on conda: https://anaconda.org/gramener/gramex
+# Run this on Windows AND Linux
+make conda                    # Follow instructions to upload. Log in as gramener
+anaconda upload /opt/conda/conda-bld/linux-64/gramex-*.tar.bz2
+
+# Deploy on docker: https://hub.docker.com/r/gramener/gramex/
 make push-docker              # Log in as sanand0 / pratapvardhan
-make push-docs push-coverage  # Push docs and coverage tests
 ```
+
+Note: to run `make conda` on Linux, create a new Docker instance via
+`docker run -it continuumio/miniconda3 /bin/bash` and run:
+
+```bash
+apt-get update                                    # Update packages
+apt-get install -y make gcc                       # make and gcc are the sole dependencies
+git clone https://github.com/gramener/gramex/     # Clone Gramex
+cd gramex
+conda install -y conda-build anaconda             # Required for build
+pip install -e .                                  # Test gramex, and get orderedattrdict
+make conda                                        # Create conda
+anaconda upload /opt/conda/conda-bld/linux-64/gramex-*.tar.bz2    # Log in as gramener
+```
+
+
+Gramener.com administrators: re-start Gramex after deployment.
 
 ## Release Gramex Enterprise Edition
 
