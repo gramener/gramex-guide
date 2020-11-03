@@ -1,5 +1,4 @@
 import time
-import json
 import tornado
 from gramex.transforms import handler
 from math import factorial
@@ -47,7 +46,7 @@ def fetch(handler):
 
 
 @handler
-def combinations(n:int, k:int) -> int:
+def combinations(n: int, k: int) -> int:
     '''combinations(10, 4) -> no. of ways to pick 4 objects from 10 ignoring order'''
     return factorial(n) / factorial(k) / factorial(n - k)
 
