@@ -8,10 +8,50 @@ over a REST API. (From **v1.46**.)
 
 [TOC]
 
+# Classifier
+
+Classifiers categories input data into different classes. This is used for success/failure
+prediction in many scenarios. Here's an example that classifies [iris.csv](iris.csv):
+
+```python
+import pandas as pd
+from gramex.ml import Classifier
+
+# Read the data into a Pandas DataFrame
+data = pd.read_csv('iris.csv, encoding='utf-8')
+
+# Construct the model. The model only accepts a path where it should be saved
+model = Classifier(
+    model_class='sklearn.svm.SVC',        # Any sklearn model works
+    model_kwargs={'kernel': 'sigmoid'},   # Optional model parameters
+    url=filepath,
+    # Input column names in data
+    input=['sepal_length', 'sepal_width', 'petal_length', 'petal_width'],
+    output='species'
+)
+# Train the model
+model.train(data)                         # DataFrame with input & output columns
+model.save('iris.pkl')
+```
+
+This saves the model as `model.pkl`. You can use this in Python to make predictions:
+
+```python
+import gramex.ml
+
+model = gramex.ml.load('iris.pkl')
+result = model.predict([{
+  'sepal_length': 5.7,
+  'sepal_width': 4.4,
+  'petal_length': 1.5,
+  'petal_width': 0.4,
+}])
+# result should be ['setosa']
+```
+
 # Expose Endpoints
 
-Gramex allows for users to create models over an API interface.
-To do so, add a modelhandler endpoint to the gramex app
+Such ML models can be exposed as a REST API.
 
 ```yaml
 url:
@@ -19,11 +59,104 @@ url:
     pattern: /$YAMLURL/model/(.*?)/(.*?)
     handler: ModelHandler
     kwargs:
-      path: $YAMLPATH  # The local directory to store model files/training data etc.
+      path: $YAMLPATH     # Folder with model files
 ```
 
-Post this, users can create models by sending the appropriate requests to
-the endpoint `/model/name/`,
+This folder may contain multiple models. In our example, it would have `iris.pkl`. The endpoint for
+this model is [`model/iris/`](model/iris/), which shows basic model information.
+
+<div class="example">
+  <a class="example-demo" href="model/iris/">See Iris model info</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/modelhandler/gramex.yaml">Source</a>
+</div>
+
+To classify using the model, visit
+[`model/iris/?sepal_width=1&sepal_length=2&petal_width=3&petal_length=4`](/model/iris/?sepal_width=1&sepal_length=2&petal_width=3&petal_length=4).
+This returns a JSON list with the inputs and the result:
+
+```json
+[
+  {
+    "sepal_length": "2",
+    "sepal_width": "1",
+    "petal_length": "4",
+    "petal_width": "3",
+    "result": "versicolor"
+  }
+]
+```
+
+<form action="model/iris/" class="w-auto">
+  <div class="form-group row">
+    <label class="col-sm-6 col-form-label">Sepal Width</label>
+    <div class="col-sm-6">
+      <input name="sepal_width" type="number" step="0.1" value="4.4" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-6 col-form-label">Sepal Length</label>
+    <div class="col-sm-6">
+      <input name="sepal_length" type="number" step="0.1" value="5.7" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-6 col-form-label">Petal Width</label>
+    <div class="col-sm-6">
+      <input name="petal_width" type="number" step="0.1" value="0.4" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-6 col-form-label">Petal Length</label>
+    <div class="col-sm-6">
+      <input name="petal_length" type="number" step="0.1" value="1.5" class="form-control">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Try it out</button>
+</form>
+
+
+You can classify as many inputs as required by repeating the parameters. For example:
+
+```
+model/iris/?sepal_width=1.2&sepal_length=2.4&petal_width=3.2&petal_length=4.2
+           &sepal_width=4.4&sepal_length=5.7&petal_width=0.4&petal_length=1.5
+           &sepal_width=7.2&sepal_length=3.6&petal_width=6.1&petal_length=2.5
+```
+
+returns:
+
+```json
+[
+  {
+    "sepal_length": "2.4",
+    "sepal_width": "1.2",
+    "petal_length": "4.2",
+    "petal_width": "3.2",
+    "result": "versicolor"
+  },
+  {
+    "sepal_length": "5.7",
+    "sepal_width": "4.4",
+    "petal_length": "1.5",
+    "petal_width": "0.4",
+    "result": "setosa"
+  },
+  {
+    "sepal_length": "3.6",
+    "sepal_width": "7.2",
+    "petal_length": "2.5",
+    "petal_width": "6.1",
+    "result": "virginica"
+  }
+]
+```
+
+<div class="example">
+  <a class="example-demo" href="model/iris/?sepal_width=1.2&sepal_length=2.4&petal_width=3.2&petal_length=4.2&sepal_width=4.4&sepal_length=5.7&petal_width=0.4&petal_length=1.5&sepal_width=7.2&sepal_length=3.6&petal_width=6.1&petal_length=2.5">Try classifying multiple values</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/modelhandler/gramex.yaml">Source</a>
+</div>
+
+Notes:
 
 - To create a model send a PUT/POST request to `/model/<name>/` with the following
 URL Query Parameters or JSON Body Arguments
@@ -81,69 +214,48 @@ will return a prediction as a json object. (Answer should be setosa)
 
 This form applies the URL query parameters directly. Try it.
 
-<form action="./model/iris/">
-  <p><label><input name="sepal_width" type="number" step="0.1" value="4.4"> Sepal Width</label></p>
-  <p><label><input name="sepal_length" type="number" step="0.1" value="5.7"> Sepal Length</label></p>
-  <p><label><input name="petal_width" type="number" step="0.1" value="0.4"> Petal Width</label></p>
-  <p><label><input name="petal_length" type="number" step="0.1" value="1.5"> Petal Length</label></p>
-  <button type="submit">Classify</button>
-</form>
-
 ## API Reference
 
-| Method | Endpoint | Input Format | Response/Action | Parameters | Header |
-|--------|--------------------|----------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|---------------------|
-| GET | `/model/<name>/` | - | JSON, model kwargs |  |  |
-| GET | `/model/<name>/data` | URL Query Parameter ?_format=json | Formhandler Format, training data |  |  |
-| POST | `/model/<name>`| JSON Body {   "col1":"val1",   "col2":["val1",...] } URL Query Parameter ?model_class=...&input=...&input=... | Train a model (Model-Retrain in headers) else Get Prediction | model_class, input, output, url, labels, model_kwargs <column, value pairs> | Model-Retrain: true |
-| POST | `/model/<name>/data` | JSON Body {   "col1":"val1",   "col2":["val1",...] } URL Query Parameter ?id=...&col1=... | Inserts rows into training data |  <column, value pairs> |  |
-| PUT | `/model/<name>/` | JSON Body {   "col1":"val1",    "col2":["val1",...] } URL Query Parameter ?model_class=...&input=...&input=... | Train a model | model_class, input, output, url, labels, model_kwargs <column, value pairs> | Model-Retrain: true |
-| PUT | `/model/<name>/data` | JSON Body {   "col1":"val1",   "col2":["val1",...] } URL Query Parameter ?id=...&col1=... | Filters rows by columns in id and updates with rest of args | id, <column, value pairs> |  |
-| DELETE | `/model/<name>` |  | Delete a model |  |  |
-| DELETE | `/model/<name>/data` | JSON Body {   "id": } URL Query Parameter ?id=...&col1=... | Delete rows based on id, id needs to be a primary or composite key and in the case of files, a string/object type column   |  |  |
-
-# Classifier
-
-To train a machine learning model in python, run:
-
-```python
-import pandas as pd
-from gramex.ml import Classifier
-
-# Read the data into a Pandas DataFrame
-data = pd.read_csv('data.csv')
-# Construct the model
-model = Classifier(
-  model_class='sklearn.svm.SVC',        # Any sklearn model works
-  model_kwargs={'kernel': 'sigmoid'},   # Optional model parameters
-  input=['var1', 'var2', 'var3'],       # Input column names in data
-  output='output_column'                # Output column name in data
-)
-model.train(data)                       # data is any pandas dataframe
-model.save('model.pkl')                 # Once the model is trained, save it
-```
-
-and to make predictions in python, 
-
-```python
-import gramex.ml
-
-model = gramex.ml.load('iris.pkl')
-result = model.predict([{
-  'sepal_length': 5.7,
-  'sepal_width': 4.4,
-  'petal_length': 1.5,
-  'petal_width': 0.4,
-}])
-# result should be ['setosa']
-```
+- `GET /model/<name>/` shows the model info ([example](model/iris/))
+    - Input: None
+    - Output: model info, e.g. `{"model_class": "sklearn.svm.SVC", ...}`
+- `GET /model/<name>/data` returns model data ([example](model/iris/data))
+    - Input: None
+    - Output: model training data, e.g. `[{"sepal_length":5.1,...},...]`
+- `POST /model/<name>` trains a model or gets a prediction
+    - Header: `Model-Retrain: true` retrains the model
+    - Input:
+        - URL query parameters: `?model_class=...&input=...&input=...`
+        - JSON body `{"col1":["val1",...],"col2":["val1",...]`}
+    - Output: model_class, input, output, url, labels, model_kwargs <column, value pairs>
+- `POST /model/<name>/data` inserts rows into training data
+    - Input:
+        - URL query parameters: `?id=...&col1=...&col2=...`
+        - JSON body `{"col1":["val1",...],"col2":["val1",...]`}
+    - Output: column, value pairs
+- `PUT /model/<name>` train a model
+    - Header: `Model-Retrain: true` retrains the model
+    - Input:
+        - URL query parameters: `?model_class=...&input=...&input=...`
+        - JSON body `{"col1":["val1",...],"col2":["val1",...]`}
+    - Output: model_class, input, output, url, labels, model_kwargs <column, value pairs>
+- `PUT /model/<name>/data` filters rows by columns in id and updates with rest of args
+    - Input:
+        - URL query parameters: `?id=...&col1=...&col2=...`
+        - JSON body `{"col1":["val1",...],"col2":["val1",...]`}
+    - Output: id, (column, value) pairs
+- `DELETE /model/<name>` deletes a model
+- `DELETE /model/<name>/data` deletes rows based on id, id needs to be a primary or composite key and in the case of files, a string/object type column
+    - Input:
+        - URL query parameters: `?id=...&col1=...&col2=...`
+        - JSON Body `{"id": ...}`
 
 # GroupMeans
 
 `gramex.ml` provides access to the `groupmeans()` function that allows you to see
 the most significant influencers of various metrics in your data. (**1.42**)
 
-groupmeans accepts the following parameters- 
+groupmeans accepts the following parameters-
 
 - `data` : pandas.DataFrame
 - `groups` : non-empty iterable containing category column names in data

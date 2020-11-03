@@ -631,12 +631,10 @@ parameters directly.
 
 FormHandler has 4 ways of transforming the request / data using Python functions.
 
-| Transform                                   | When does it run?               | What does it do?   | What can it accept?                                              |
-|---------------------------------------------|---------------------------------|--------------------|------------------------------------------------------------------|
-| [prepare](#formhandler-prepare)             | Before loading data             | Replaces arguments | `args`: [handlers.args](../modelhandler/#basehandler-attributes) |
-| [queryfunction](#formhandler-queryfunction) | Before loading data             | Replaces DB query  | `args`: [handlers.args](../modelhandler/#basehandler-attributes) |
-| [function](#formhandler-functions)          | After loading, before filtering | Replaces data      | `data`: DataFrame of loaded data<br>`handler`: handler           |
-| [modify](#formhandler-modify)               | After filtering                 | Replaces result    | `data`: DataFrame of *filtered* data<br>`handler`: handler       |
+1. [prepare](#formhandler-prepare) runs **before loading data** and can **replace `handler.args`**
+2. [queryfunction](#formhandler-queryfunction) runs **before loading data**, and can **create dynamic database queries**
+3. [function](#formhandler-functions) runs **after loading data** but **before filtering**, and can **modify data**
+4. [modify](#formhandler-modify) runs **after filtering data**, and can **modify filtered data**
 
 Click on the links to learn how to use them.
 

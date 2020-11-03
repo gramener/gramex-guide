@@ -18,9 +18,9 @@ TODO
 *.log*
 
 # Don't commit data files
-*.csv
 *.xls*
 *.ppt*
+*.pkl
 
 # Don't commit ZIP files
 *.7z
@@ -29,11 +29,9 @@ TODO
 
 # ... but there are exceptions
 !formhandler/input.pptx
-!formhandler/flags.csv
 !formhandler/cashflow/cashflow.xlsx
 !pptxhandler/**/*.ppt*
 pptxhandler/**/output.ppt*
-!pptxhandler/**/*.csv
 !pptxhandler/**/*.xls*
 !pptxhandler/**/*.zip
 
