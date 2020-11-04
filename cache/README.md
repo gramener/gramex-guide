@@ -181,23 +181,23 @@ root `cache:` section as follows:
 
 ```yaml
 cache:
-    small-in-memory-cache:  # Define a name for the cache
-        type: memory        # This is an in-memory cache
-        size: 100000        # Just allow 100K of data in the cache
+    small-in-memory-cache:      # Define a name for the cache
+        type: memory            # This is an in-memory cache
+        size: 100000            # Just allow 100K of data in the cache
 
-    big-disk-cache:         # Define a name for the cache
-        type: disk          # This is an on-disk cache
+    big-disk-cache:             # Define a name for the cache
+        type: disk              # This is an on-disk cache
         path: $YAMLPATH/.cache  # Location of the disk cache directory
-        size: 1000000000    # Allow ~1GB of data in the cache
+        size: 1000000000        # Allow ~1GB of data in the cache
 
-    distributed-cache:      # Define a name for the cache
-        type: redis         # This is a redis cache
-        path: localhost:6379:0 # Connection string for Redis instance
-        size: 1000000000   # Allow ~1GB of data in the cache
+    distributed-cache:          # Define a name for the cache
+        type: redis             # This is a redis cache
+        path: localhost:6379:0  # Connection string for Redis instance
+        size: 1000000000        # Allow ~1GB of data in the cache
 ```
 
-By default, Gramex provides a cache called `memory` that has a 500 MB in-memory
-cache based on [cachetools](http://pythonhosted.org/cachetools/). When the size
+**Memory caches are the default**. Gramex has a 500 MB in-memory cache called `memory`
+based on [cachetools](http://pythonhosted.org/cachetools/). When the size
 limit is reached, the least recently used items are discarded. This cache is
 used by [gramex.cache.open](#data-caching). To change its size, use:
 
@@ -208,19 +208,19 @@ cache:
         size: 5000000       # Just allow 5MB of data in the cache instead of 500 MB (default)
 ```
 
-Disk caches are based on the [diskcache](http://www.grantjenks.com/docs/diskcache/) library. When
+**Disk caches** are based on the [diskcache](http://www.grantjenks.com/docs/diskcache/) library. When
 the size limit is reached, the oldest items are discarded. But disk caches are MUCH slower than
 memory caches, and defeat the purpose of data caching. Use this if your app is computation or query
 intensive, and you need to share the cache across different instances on the same server.
 
-Redis cache allows multiple gramex instances to cache objects in a Redis server. This allows the
+**Redis cache** allows multiple gramex instances to cache objects in a Redis server. This allows the
 same cache to be used across different servers.
 
 Redis cache requires [Redis 5.0 or later](https://redis.io/) to be running. When the size limit is
 reached, the oldest items are discarded. (Note: the size limit is set for the Redis instance, not
 for a specific DB. So avoid using the same Redis instance for other apps.)
 
-To use a different cache by default, specify a `default: true` against the cache. The **last**
+**To use a different cache by default**, specify a `default: true` against the cache. The **last**
 cache with `default: true` is used as the default cache.
 
 ```yaml
