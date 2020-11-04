@@ -1,6 +1,10 @@
 ---
 title: FunctionHandler runs Python code
 prefix: FunctionHandler
+icon: functionhandler.png
+desc: FunctionHandler runs a function and displays the output
+by: TeamGramener
+type: microservice
 ---
 
 [TOC]

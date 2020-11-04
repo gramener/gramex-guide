@@ -1,6 +1,10 @@
 ---
 title: CaptureHandler takes screenshots
 prefix: CaptureHandler
+icon: capturehandler.png
+desc: CaptureHandler takes screenshots of pages using Chrome
+by: TeamGramener
+type: microservice
 ...
 
 [CaptureHandler][capturehandler] takes screenshots of pages using either

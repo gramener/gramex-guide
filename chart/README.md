@@ -1,6 +1,10 @@
 ---
 title: Charts
 prefix: Charts
+icon: chart.png
+desc: Add Gramex Charts to your project
+by: TeamGramener
+type: app
 ...
 
 You can use any charting library with Gramex. We recommend the following.

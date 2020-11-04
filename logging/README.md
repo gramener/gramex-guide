@@ -1,6 +1,10 @@
 ---
 title: Log user and system events
 prefix: Logging
+icon: logging.png
+desc: Allow apps and users to log events flexibly into an ElasticSearch database
+by: TeamGramener
+type: library
 ---
 
 [TOC]

@@ -1,6 +1,10 @@
 ---
 title: Admin page
 prefix: Admin
+icon: admin.png
+desc: Add an admin page to your project
+by: TeamGramener
+type: app
 ...
 
 [TOC]

@@ -1,6 +1,10 @@
 ---
 title: Smart alerts
 prefix: Alerts
+icon: alerts.png
+desc: Alerts service sends reports via email based on conditions
+by: TeamGramener
+type: library
 ---
 
 [TOC]

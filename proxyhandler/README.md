@@ -1,6 +1,10 @@
 ---
 title: ProxyHandler proxies APIs
 prefix: ProxyHandler
+icon: proxyhandler.png
+desc: ProxyHandler passes requests to another URL and returns its response
+by: TeamGramener
+type: microservice
 ...
 
 [TOC]

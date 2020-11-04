@@ -1,6 +1,10 @@
 ---
 title: Log viewer
 prefix: Log viewer
+icon: logviewer.png
+desc: Add logviewer to your project for visualizing the logging data
+by: TeamGramener
+type: app
 ...
 
 [TOC]

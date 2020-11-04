@@ -10,6 +10,7 @@ var root = path.join(__dirname, '..')
 
 var index = []
 var docs = []
+var metadatalist = []
 glob('*/*.md', { cwd: root }, function (err, files) {
   files.forEach(function (file) {
     var text = fs.readFileSync(path.join(root, file), 'utf8')
@@ -17,18 +18,30 @@ glob('*/*.md', { cwd: root }, function (err, files) {
     var tokens = marked.lexer(content.body)
     var title = content.attributes.title
     var prefix = content.attributes.prefix || title
+    var metadata = {
+      type: content.attributes.type || 'other',
+      prefix: prefix,
+      title: title,
+      desc: content.attributes.desc || 'desc',
+      icon: content.attributes.icon || 'iconpath',
+      views: content.attributes.views || 0,
+      by: content.attributes.by || 'TeamGramener'
+    }
     var body = []
     tokens.forEach(function (token) {
       if (token.type == 'heading') {
         add_doc(title, prefix, body, file)
+        add_meta(metadata, file)
         title = token.text
         body = []
       } else if (token.text) {
         body.push(token.text)
       }
     })
-    if (title)
+    if (title) {
       add_doc(title, prefix, body, file)
+      add_meta(metadata, file)
+    }
   })
   var idx = lunr(function () {
     this.field('title')
@@ -43,6 +56,8 @@ glob('*/*.md', { cwd: root }, function (err, files) {
     'docs': docs,
     'index': idx.toJSON()
   }))
+
+  fs.writeFileSync(path.join(__dirname, 'meta.json'), JSON.stringify(metadatalist))
 })
 
 function url(file, title) {
@@ -53,4 +68,17 @@ function url(file, title) {
 function add_doc(title, prefix, body, file) {
   index.push({ title: title, body: body.join(' '), id: docs.length })
   docs.push({ title: title, prefix: prefix, link: url(file, title) })
+}
+
+function add_meta(metadata, file) {
+  var link = 'https://learn.gramener.com/guide/'
+  var entry = { title: metadata.title, link: link + url(file, metadata.title) }
+  var match = metadatalist.find(row => row.prefix == metadata.prefix)
+  if (match)
+    match.info.push(entry)
+  else {
+    metadata.info = [entry]
+    metadata.link = link + url(file, '')
+    metadatalist.push(metadata)
+  }
 }

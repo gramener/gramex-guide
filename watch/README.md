@@ -1,6 +1,10 @@
 ---
 title: Watch files
 prefix: Watch
+icon: watch.png
+desc: Watch files to trigger events when files are modified
+by: TeamGramener
+type: library
 ...
 
 [TOC]

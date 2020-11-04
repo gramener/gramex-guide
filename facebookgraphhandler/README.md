@@ -1,6 +1,10 @@
 ---
 title: FacebookGraphHandler
 prefix: FacebookGraphHandler
+icon: facebookgraphhandler.png
+desc: FacebookGraphHandler offers a proxy for Facebook Graph API
+by: TeamGramener
+type: microservice
 ...
 
 [TOC]

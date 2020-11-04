@@ -1,6 +1,10 @@
 ---
 title: DriveHandler uploads files
 prefix: DriveHandler
+icon: drivehandler.png
+desc: DriveHandler lets you upload files and manage them
+by: TeamGramener
+type: microservice
 ...
 
 [TOC]

@@ -1,6 +1,10 @@
 ---
 title: WebSocketHandler
 prefix: WebSocketHandler
+icon: websockethandler.png
+desc: WebSocketHandler is used for persistent connections and server-side push
+by: TeamGramener
+type: microservice
 ...
 
 [TOC]

@@ -1,6 +1,10 @@
 ---
 title: LanguageTool App for Gramex
 prefix: LanguageTool
+icon: languagetool.png
+desc: Add ability to proofread more than 20 languages
+by: TeamGramener
+type: app
 ...
 
 [TOC]

@@ -1,6 +1,10 @@
 ---
 title: ProcessHandler runs programs
 prefix: ProcessHandler
+icon: processhandler.png
+desc: ProcessHandler runs processes and streams their outputs/errors
+by: TeamGramener
+type: microservice
 ...
 
 [TOC]

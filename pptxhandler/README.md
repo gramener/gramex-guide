@@ -1,6 +1,10 @@
 ---
 title: PPTXHandler generates PPTX
 prefix: PPTXHandler
+icon: pptxhandler.png
+desc: PPTXHandler enables users to automate PowerPoint slides from data
+by: TeamGramener
+type: microservice
 ...
 
 PowerPoint presentations are the most common way businesses communicate data. Many, in fact,

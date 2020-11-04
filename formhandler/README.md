@@ -1,6 +1,10 @@
 ---
 title: FormHandler connects to data
 prefix: FormHandler
+icon: fromhandler.png
+desc: FormHandler lets you read & write data from files and databases
+by: TeamGramener
+type: microservice
 ...
 
 [TOC]

@@ -1,6 +1,10 @@
 ---
 title: JSONHandler writes JSON data
 prefix: JSONHandler
+icon: jsonhandler.png
+desc: JSONHandler offers a persistent key-value store with an API
+by: TeamGramener
+type: microservice
 ...
 
 [JSONHandler][jsonhandler] offers a persistent key-value store with an API inspired by

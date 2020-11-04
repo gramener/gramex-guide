@@ -1,6 +1,10 @@
 ---
 title: TwitterRESTHandler
 prefix: TwitterRESTHandler
+icon: twitterresthandler.png
+desc: TwitterRESTHandler offers a proxy for the Twitter REST API
+by: TeamGramener
+type: microservice
 ...
 
 [TOC]

@@ -1,6 +1,10 @@
 ---
 title: Send email
 prefix: Email
+icon: email.png
+desc: Create a service that can send email via SMTP
+by: TeamGramener
+type: library
 ...
 
 [TOC]

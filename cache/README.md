@@ -1,6 +1,10 @@
 ---
 title: Caching requests
 prefix: Cache
+icon: cache.png
+desc: Helps add Caching support to your project
+by: TeamGramener
+type: library
 ...
 
 [TOC]

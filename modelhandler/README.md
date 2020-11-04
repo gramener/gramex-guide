@@ -1,6 +1,10 @@
 ---
 title: ModelHandler provides ML APIs
 prefix: ModelHandler
+icon: modelhandler.png
+desc: ModelHandler exposed machine learning models as APIs
+by: TeamGramener
+type: microservice
 ...
 
 ModelHandler exposes machine learning models as APIs that applications can use

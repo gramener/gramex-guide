@@ -1,6 +1,10 @@
 ---
 title: FilterHandler
 prefix: FilterHandler
+icon: filterhandler.png
+desc: FilterHandler lets you filter columns from files and databases
+by: TeamGramener
+type: microservice
 ...
 
 [TOC]

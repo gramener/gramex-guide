@@ -1,6 +1,10 @@
 ---
 title: FileHandler renders files
 prefix: FileHandler
+icon: filehandler.png
+desc: FileHandler renders files
+by: TeamGramener
+type: microservice
 ...
 
 [TOC]

@@ -1,6 +1,10 @@
 ---
 title: Schedule tasks
 prefix: Scheduler
+icon: scheduler.png
+desc: Run tasks at startup or at scheduled times
+by: TeamGramener
+type: library
 ...
 
 [TOC]

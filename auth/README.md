@@ -1,6 +1,10 @@
 ---
 title: Auth handlers log in users
 prefix: Auth
+icon: auth.png
+desc: Auth Handlers enable your application to support different authentication methods
+by: TeamGramener
+type: microservice
 ---
 
 Your session data is:
