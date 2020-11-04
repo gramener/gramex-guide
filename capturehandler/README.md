@@ -160,14 +160,14 @@ It accepts the following arguments:
       default margin is `1cm,1cm,1cm,1cm`.
       <br>**Example** [?margins=2cm,,2cm,](capture?margins=2cm,,2cm,) sets top and bottom margin to 2cm
 - For images (PNG/JPG):
-    - `?width=`: image output width. Default: 1200
+    - `?width=`: optional viewport width in pixels. Default: 1200
       <br>**Example**: [?width=600](capture?width=600&ext=png)
-    - `?height=`: image output height. Default: auto (full page)
+    - `?height=`: optional viewport height in pixels. Default: auto (full page)
       <br>**Example**: [?height=600](capture?height=600&ext=png)
-    - `?scale=`: zooms the screen by a factor. Default: 1.
+    - `?scale=`: zooms the screen by a factor. scale=2 returns an image twice as large and sharp as scale=1. Default: 1.
       <br>**Example**: [?scale=0.2](capture?scale=0.2&ext=png) compared with
       [?scale=1](capture?scale=1&ext=png)
-    - `?selector=`: Restrict screenshot to (optional) CSS selector in URL
+    - `?selector=`: Restrict screenshot to (optional) CSS selector in URL. Captures the entire element, even if it exceeds the viewport
       <br>**Example**: [?selector=.content](capture?selector=.content&ext=png) excludes the sidebar.
     - `?emulate=`: emulate full page on a device. Ignores `?width=`, `?height=` and `?scale=`. (Only in `engine: chrome` from **v1.56.0**)
       <br>**Example**: [?emulate=iPhone 6](capture?emulate=iPhone 6&ext=png).
@@ -248,20 +248,19 @@ restarts `capture.js` only if required.
 You can take screenshots from any Python program, using Gramex as a library.
 
 ```python
-import logging                              # Optional: Enable logging...
-logging.basicConfig(level=logging.INFO)     # ... to see messages from Capture
 from gramex.handlers import Capture         # Import the capture library
-capture = Capture(engine='chrome')          # This runs chromecapture.js at port 9900
-url = 'https://gramener.com/demo/'          # Page to take a screenshot of
-with open('screenshot.pdf', 'wb') as f:
+capture = Capture(engine='chrome')          # Run chromecapture.js at port 9900
+
+url = 'https://gramener.com/'               # Page to take a screenshot of
+with open('screenshot.pdf', 'wb') as f:     # Save screenshot as PDF
     f.write(capture.pdf(url, orientation='landscape'))
-with open('screenshot.png', 'wb') as f:
+with open('screenshot.png', 'wb') as f:     # Save screenshot as PNG
     f.write(capture.png(url, width=1200, height=600, scale=0.8))
 ```
 
 The [Capture](capture) class has convenience methods called `.pdf()`, `.png()`,
-`.jpg()` that accept the same parameters as the
-[handler](#screenshot-service).
+`.jpg()` that accept the same parameters as the [handler](#screenshot-service).
+
 
 ## Client-side capture
 
