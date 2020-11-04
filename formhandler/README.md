@@ -629,12 +629,16 @@ parameters directly.
 
 ## FormHandler transforms
 
-FormHandler has 4 ways of transforming the request / data using Python functions.
+FormHandler has 4 ways of transforming the request / data using Python expressions.
 
-1. [prepare](#formhandler-prepare) runs **before loading data** and can **replace `handler.args`**
-2. [queryfunction](#formhandler-queryfunction) runs **before loading data**, and can **create dynamic database queries**
-3. [function](#formhandler-functions) runs **after loading data** but **before filtering**, and can **modify data**
-4. [modify](#formhandler-modify) runs **after filtering data**, and can **modify filtered data**
+1. [prepare](#formhandler-prepare) runs **before loading data** and can **replace `handler.args`**.
+   Allows variables `args` as [handler.args](../handlers/#basehandler-attributes) and [`handler`](../handlers/)
+2. [queryfunction](#formhandler-queryfunction) runs **before loading data**, and can **create dynamic database queries**.
+   Allows variables `args` as [handler.args](../handlers/#basehandler-attributes) and [`handler`](../handlers/)
+3. [function](#formhandler-functions) runs **after loading data** but **before filtering**, and can **modify data**.
+   Allows variables `data` as pre-filtered data and [`handler`](../handlers/)
+4. [modify](#formhandler-modify) runs **after filtering data**, and can **modify filtered data**.
+   Allows variables `data` as final data and [`handler`](../handlers/)
 
 Click on the links to learn how to use them.
 
