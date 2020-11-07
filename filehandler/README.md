@@ -419,7 +419,6 @@ url:
     pattern: ...              # When this page is visited,
     handler: ...              # no matter what the handler is,
     kwargs:
-      ...
       xsrf_cookies: false   # Disable XSRF cookies
 ```
 

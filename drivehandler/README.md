@@ -74,7 +74,8 @@ import:
     path: $GRAMEXAPPS/filemanager/gramex.yaml
     YAMLURL: $YAMLURL/filemanager/
     FILEMANAGER_KWARGS:
-      drives: ['drive1', 'drive2']              # Show only these drives in the File Manager page
+      # Show these drives as tabs. These are YAML keys under the url: section
+      drives: ['drive1', 'drive2']
       title: "MyAwesomeFileManager"             # Title of the File Manager page
       logo: $YAMLPATH/data/assets/gramener.png  # Logo for the File Manager page
       theme: '?font-family-base=roboto'         # UI component theme query?
@@ -100,10 +101,13 @@ Once you import the File Manager, the File Manager component can be embedded in 
 
 ```js
 var options = {
-  pageSize: 10,
-  columns: [
-    { name: "file" },
-    { name: "size" }
+  pageSize: 10,           // Show 10 files at most
+  columns: [              // Choose the columns, order of display and title
+    { name: "file", title: 'File name' },
+    { name: "size" },
+    { name: 'date' },
+    { name: 'mime', title: 'Type' },
+    { name: 'delete' },
   ]
 }
 ```
