@@ -31,7 +31,7 @@ glob('*/*.md', { cwd: root }, function (err, files) {
     tokens.forEach(function (token) {
       if (token.type == 'heading') {
         add_doc(title, prefix, body, file)
-        add_meta(metadata, file)
+        add_meta(title, metadata, file)
         title = token.text
         body = []
       } else if (token.text) {
@@ -40,7 +40,7 @@ glob('*/*.md', { cwd: root }, function (err, files) {
     })
     if (title) {
       add_doc(title, prefix, body, file)
-      add_meta(metadata, file)
+      add_meta(title, metadata, file)
     }
   })
   var idx = lunr(function () {
@@ -70,9 +70,9 @@ function add_doc(title, prefix, body, file) {
   docs.push({ title: title, prefix: prefix, link: url(file, title) })
 }
 
-function add_meta(metadata, file) {
+function add_meta(title, metadata, file) {
   var link = 'https://learn.gramener.com/guide/'
-  var entry = { title: metadata.title, link: link + url(file, metadata.title) }
+  var entry = { title: title, link: link + url(file, title) }
   var match = metadatalist.find(row => row.prefix == metadata.prefix)
   if (match)
     match.info.push(entry)
