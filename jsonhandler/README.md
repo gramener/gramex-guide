@@ -10,19 +10,21 @@ type: microservice
 [JSONHandler][jsonhandler] offers a persistent key-value store with an API inspired by
 [Firebase](https://www.firebase.com/docs/rest/api/). For example:
 
-    url:
-        jsonhandler-data:
-            pattern: /$YAMLURL/data/(.*)
-            handler: JSONHandler
-            kwargs:
-                # Optional location where JSON data is persisted.
-                # (If path is not specified, the JSON data is not persisted.
-                #  When Gramex restarts, the data is lost.)
-                path: $GRAMEXDATA/jsonhandler.json
+```yaml
+url:
+    jsonhandler-data:
+        pattern: /$YAMLURL/data/(.*)
+        handler: JSONHandler
+        kwargs:
+            # Optional location where JSON data is persisted.
+            # (If path is not specified, the JSON data is not persisted.
+            #  When Gramex restarts, the data is lost.)
+            path: $GRAMEXDATA/jsonhandler.json
 
-                # Optional initial dataset to be used -- used only if path is
-                # not specified. (Defaults to null.)
-                data: {x: 1}
+            # Optional initial dataset to be used -- used only if path is
+            # not specified. (Defaults to null.)
+            data: {x: 1}
+```
 
 The examples below use [jQuery.ajax][jquery-ajax] and the [cookie.js][cookie.js]
 libraries.
