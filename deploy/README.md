@@ -1129,3 +1129,246 @@ Ensure that no keys duplicated across `gramex.yaml` files and restart gramex.
 - `cannot set up log`:  The `log:` section has an error. It may not be a dict,
   or refer to a file / folder that cannot be accessed, etc.
 - `Gramex 1.xx.x is available`: A newer version of Gramex is available. Upgrade
+
+## Good security practices
+
+A curated list of security practices for real-life application deployments is presented here.
+
+### Session timeout
+
+Applications may need to timeout user sessions periodically. We can configure this as below:
+
+```yaml
+# gramex.yaml
+application/login:
+  pattern: /$YAMLURL/login
+  handler: DBAuth
+  kwargs:
+    session_expiry: 0.0207           # session expires after 30 mins
+    session_inactive: 0.0207         # session expires after 30 mins of inactivity
+```
+
+### Disable directory listing
+
+Directory listing isn't a recommended practice as it reveals exact file names. One can disable directory listing at a root level as below:
+
+```yaml
+# gramex.yaml
+handlers:
+  FileHandler:
+    ignore:                             # accepts a list of files to be ignored
+      - '*.yaml'                        # YAML defines routes, user credentials
+      - '*.git*'                        # git files
+      - '*.json'
+      - '*Dockerfile'
+      - '*nohup.out'                    # logs
+      - '*.git/*'
+      - '*ui/*'
+```
+
+### Protect all pages with authentication
+
+Templates are routinely used to render or refresh views on the interface. It's important to disable access without the correct authentication credentials and access controls.
+
+```yaml
+# gramex.yaml
+url:
+  templates-home:
+    pattern: /$YAMLURL/templates/(.*)
+    handler: FileHandler
+    priority: 100
+    kwargs:
+      path: $YAMLPATH/templates/
+      auth:
+        login_url: /$YAMLURL/login
+      headers: $FILEHANDLER
+```
+
+This is also true for any other files (static assets, data files, queries, remote function calls etc.).
+
+### Custom error messages
+
+Error messages can be customized based on their type. To do that, define a route then write a `Python` function that accepts error status code and handler as arguments.
+
+```yaml
+# gramex.yaml
+BaseHandler:
+  error:
+    500: &ERROR
+      function: app_script.error_fn(status_code, kwargs, handler)
+      header:
+        Cache-Control: no-cache
+        Content-Type: text/html
+    400: *ERROR
+    401: *ERROR
+    403: *ERROR
+    404: *ERROR
+```
+
+```py
+"""
+This is `app_script.py`.
+"""
+import os
+import gramex.cache
+
+
+def error_fn(status, kwargs, handler):
+    """Load the error pages as required.
+    Args:
+      kwargs (dict): keyword arguments
+      status (int): status code
+      handler (request object): gramex handler object
+    Returns:
+      (template): dynamic error page
+    """
+
+    error_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), 'errorpage.html')
+    tmpl = gramex.cache.open(error_path, 'template')
+    handler.set_status(status)
+    return tmpl.generate(kwargs=kwargs, status=status, handler=handler)
+```
+
+### Captcha implementation
+
+Captchas are used during the sign-in process. One can implement it as below:
+
+Define a route in `YAML` to retrieve the captcha.
+
+```yaml
+# In Yaml file:
+application-login-captcha:
+  pattern: /$YAMLURL/get_captcha
+  handler: FunctionHandler
+  kwargs:
+    function: app_script.get_captcha_img
+```
+
+Map `get_captcha_img()` function in `app_script.py` file. This `Python` program uses `captcha` utility via `pip` (`pip install captcha`).
+
+```py
+from glob import glob
+import base64
+import string
+from captcha.image import ImageCaptcha
+
+
+def get_captcha_img(handler):
+    """Generate captcha.
+    Args:
+      handler (request object): gramex handler object
+    Returns:
+      (dict): digits as image
+    """
+
+    glob('captcha_fonts/*.ttf')
+    fonts = []
+
+    # fonts to render the digits
+    for font in glob('*/*.ttf'):
+        fonts.append(os.path.join(currdir,  font))
+    image = ImageCaptcha(fonts=fonts)
+    characters = string.digits
+
+    cook_sec = ""
+    # set up random length
+    cook_sec_length = random.randint(6, 6)
+    for _ in range(cook_sec_length):
+        _char = random.choice(characters)
+        cook_sec = cook_sec + _char
+
+    # replace digits 7 with 0 and 1 with 2 as end users find it difficult to distinguish between them
+    cook_sec = cook_sec.replace('7', '0').replace('1', '2')
+    data = base64.b64encode(image.generate(cook_sec).read()).decode("utf-8")
+    data = data + generate_secret_key()
+    return {
+        'img_data': 'data:image/jpeg;base64,{}'.format(data),
+        'str': cook_sec
+    }
+```
+
+Make the call to the route in a `JavaScript` file.
+
+```js
+function get_captcha() {
+  ajax_call("get_captcha").done(function (data) {
+    $("#captcha_img").attr("src", data.img_data.slice(0, -16))
+    let captcha_val = data.str.toLowerCase()
+    $('body')
+      .on('keyup', '#captcha', function () {
+        if ($(this).val().toLowerCase() == captcha_val) {
+          $('.captcha_msg').addClass('d-none')
+          $("#signin").removeAttr("disabled")
+        }
+        else {
+          if ($(this).val().length >= 6) {
+            ajax_call("cap").done(function (data) {
+              $("#captcha_img").attr("src", data.img_data.slice(0, -16))
+              captcha_val = data.str.toLowerCase()
+            })
+            $('.captcha_msg').removeClass('d-none')
+          }
+          $("#signin").attr("disabled", true)
+        }
+      })
+  })
+}
+
+// fetch captcha on page load or on captcha reload request
+$(window).on('load', function () {
+  get_captcha()
+})
+$('body').on('click', '#captcha-reload', function () {
+  get_captcha()
+})
+```
+
+Ensure relevant `HTML` containers (`.captcha_msg`, `#captcha_img`) are defined.
+
+```html
+<div class="form-group h4 lh-2">
+  <p class="text-danger sm3 my-2 captcha_msg position-absolute mt-n2 d-none">please retry captcha
+  </p>
+  <input autocomplete="off" type="text"
+  class="form-control border py-3 px-2 rounded-0 border-top-0 border-left-0 border-right-0"
+  name="captcha" id="captcha" placeholder="Captcha" autofocus required>
+</div>
+<div class="row">
+  <div class="col-5">
+    <img id="captcha_img" height="45" class="w-100" src="#" alt="captcha-img">
+  </div>
+  <div class="col-2 p-0">
+    <img src="img/refresh.png" height="45" class="w-90 btn" id="captcha-reload" src="#"
+    alt="reload-icon">
+  </div>
+</div>
+```
+
+### Banner grabbing
+
+Server details can be known while observing requests in browser developer tools or other security tools. This could reveal the vulnerable versions of underlying software.
+
+If you're serving a `Gramex` application via `nginx` you can set `server_tokens off;` in the respective `nginx.conf` file.
+
+To know more read the [reference](https://blog.livebyt.es/turn-off-your-server-tokens/).
+
+### Secure cookie
+
+To disable cookie submissions on an unencrypted HTTP connection one can configure `secure` flag to `true`.
+
+```yaml
+settings:
+  serve_traceback: False
+  xsrf_cookie_kwargs:
+    httponly: true
+    secure: true
+```
+
+Read more on [PortSwigger](https://portswigger.net/kb/issues/00500200_tls-cookie-without-secure-flag-set).
+
+### Controlling XSS attacks
+
+XSS (cross-site scripting) attacks can be tackled by defining `X-XSS-Protection: `; mode=block` header which stops rendering the page upon detection of an attack.
+
+Read [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection) for more details.
