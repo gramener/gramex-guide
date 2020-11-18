@@ -1144,8 +1144,8 @@ application/login:
   pattern: /$YAMLURL/login
   handler: DBAuth
   kwargs:
-    session_expiry: 0.0207           # session expires after 30 mins
-    session_inactive: 0.0207         # session expires after 30 mins of inactivity
+    session_expiry: 0.0207           # value in days. session expires after 30 mins
+    session_inactive: 0.0207         # value in days. session expires after 30 mins of inactivity
 ```
 
 ### Disable directory listing
@@ -1156,14 +1156,13 @@ Directory listing isn't a recommended practice as it reveals exact file names. O
 # gramex.yaml
 handlers:
   FileHandler:
-    ignore:                             # accepts a list of files to be ignored
-      - '*.yaml'                        # YAML defines routes, user credentials
-      - '*.git*'                        # git files
+    ignore:                         # accepts a list of files to be ignored
+      - '*.yaml'                    # YAML defines routes, user credentials
+      - '*.git*'                    # git files
       - '*.json'
-      - '*Dockerfile'
-      - '*nohup.out'                    # logs
       - '*.git/*'
       - '*ui/*'
+    allow: '.file'                  # allows special file
 ```
 
 ### Protect all pages with authentication
@@ -1176,19 +1175,18 @@ url:
   templates-home:
     pattern: /$YAMLURL/templates/(.*)
     handler: FileHandler
-    priority: 100
+    priority: 100                     # takes a higher priority than the rest
     kwargs:
       path: $YAMLPATH/templates/
       auth:
         login_url: /$YAMLURL/login
-      headers: $FILEHANDLER
 ```
 
 This is also true for any other files (static assets, data files, queries, remote function calls etc.).
 
 ### Custom error messages
 
-Error messages can be customized based on their type. To do that, define a route then write a `Python` function that accepts error status code and handler as arguments.
+Error messages can be customized based on their type. To do that, define a route then write a Python function that accepts error status code and handler as arguments.
 
 ```yaml
 # gramex.yaml
