@@ -1,0 +1,11 @@
+url:
+  mlhandler/model:
+    pattern: /$YAMLURL/mlhandler
+    handler: MLHandler
+    kwargs:
+      path: $YAMLPATH/model.pkl
+  mlhandler/titanic:
+    pattern: /$YAMLURL/titanic
+    handler: FormHandler
+    kwargs:
+      url: $YAMLPATH/titanic.csv

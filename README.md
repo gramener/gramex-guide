@@ -44,6 +44,7 @@ First, [install Gramex](install/). Then learn from these tutorials:
 - [DriveHandler uploads files](drivehandler/)
 - [CaptureHandler takes screenshots](capturehandler/)
 - [ModelHandler exposes ML models](modelhandler/)
+- [MLHandler exposes ML models](mlhandler/)
 - [PPTXHandler generates PPTX](pptxhandler/)
 - [FilterHandler filters columns](filterhandler/)
 - [JSONHandler writes JSON data](jsonhandler/)
