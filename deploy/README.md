@@ -1190,17 +1190,18 @@ Error messages can be customized based on their type. To do that, define a route
 
 ```yaml
 # gramex.yaml
-BaseHandler:
-  error:
-    500: &ERROR
-      function: app_script.error_fn(status_code, kwargs, handler)
-      header:
-        Cache-Control: no-cache
-        Content-Type: text/html
-    400: *ERROR
-    401: *ERROR
-    403: *ERROR
-    404: *ERROR
+handlers:
+  BaseHandler:
+    error:
+      500: &ERROR
+        function: app_script.error_fn(status_code, kwargs, handler)
+        header:
+          Cache-Control: no-cache
+          Content-Type: text/html
+      400: *ERROR
+      401: *ERROR
+      403: *ERROR
+      404: *ERROR
 ```
 
 ```py
@@ -1226,6 +1227,25 @@ def error_fn(status, kwargs, handler):
     tmpl = gramex.cache.open(error_path, 'template')
     handler.set_status(status)
     return tmpl.generate(kwargs=kwargs, status=status, handler=handler)
+```
+
+```html
+<!-- errorpage.html -- main content -->
+<body class="pt-3 overflow-hidden">
+{% set base = '.' %}
+{% set message_dict = {'400': 'URL argument missing', '401': 'User not logged in', '403': 'user does not have access', '404': 'File not found', '500': 'Internal server error'} %}
+  <!-- TODO: Filter bars -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 h-full text-middle">
+        <p class = "msg_txt">please <a href="login">click here</a> to re-login</p>
+        <div class="text-center px-4">
+          <img src="img/error{{  status }}.png" alt="error" class="h-85vh">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
 ```
 
 ### Captcha implementation
