@@ -51,6 +51,7 @@ url:
                         Content-Type: text/html
             headers: &HEADERS
                 Cache-Control: public, max-age=300
+                Access-Control-Allow-Origin: '*'        # Allow CORS from any domain
     guide-markdown-g1:
         pattern: /$YAMLURL/g1/([a-z0-0]+)
         handler: FileHandler
