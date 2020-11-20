@@ -132,16 +132,29 @@ The `kwargs:` section of `url:` accepts a `headers:` key that sets custom HTTP
 headers. For example:
 
 ```yaml
-pattern: /custom-header
-handler: ...
 kwargs:
-    ...
     headers:
-        Content-Type: text/plain          # Display as plain text
-        Access-Control-Allow-Origin: '*'  # Allow CORS (all servers can access via AJAX)
+        Content-Type: text/plain            # Display as plain text
+        Access-Control-Allow-Origin: '*'    # Allow CORS (all servers can access via AJAX)
+        X-XSS-Protection: 1; mode=block     # Disable XSS scripting on old browsers
+        # Disable unsafe inline/eval, only allow loading images, fonts, scripts, etc. over https:
+        Content-Security-Policy: 'default-src https:'
 ```
 
-... adds the Content-Type and CORS settings to the response headers.
+... adds the Content-Type, CORS and other security settings to the response headers.
+
+To set headers on **all** pages, use `handlers.BaseHandler.headers`. For example:
+
+```yaml
+handlers:
+    BaseHandler:
+        headers:
+            # https://www.veracode.com/blog/2014/03/guidelines-for-setting-security-headers
+            X-XSS-Protection: 1; mode=block     # Enable XSS protection
+            X-Content-Type-Options: nosniff     # Browsers should not perform MIME-type sniffing
+            X-Frame-Options: SAMEORIGIN         # Don't place in an iframe from external site
+            Server: false                       # Don't reveal the server
+```
 
 
 ## Logging

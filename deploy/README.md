@@ -293,6 +293,7 @@ Here is a minimal HTTP reverse proxy configuration:
 server {
     listen 80;                              # 80 is the default HTTP port
     server_name example.com;                # http://example.com/
+    server_tokens off;                      # Hide server name
 
     # Pass original HTTP headers
     proxy_set_header Host $host;
@@ -625,18 +626,28 @@ url:
 
 ## Security
 
-To check for application vulnerabilities, run the [OWASP Zed Attack Proxy][zap].
-It detects common vulnerabilities in web applications like cross-site scripting,
-insecure cookies, etc.
+When deploying your application, go through this checklist and apply all that is relevant.
 
-Some common security options are pre-configured in `$GRAMEXPATH/deploy.yaml`. To
-enable these options, add this line to your `gramex.yaml`:
+- [ ] Use [deploy.yaml](#deployyaml) to add common security settings
+- [ ] Use [relative URL Mapping](#relative-url-mapping). Ensure that:
+  - all URLs in `gramex.yaml` begin with `http(s)://` or `/$YAMLURL/`
+  - all paths in `gramex.yaml` begin with `$YAMLPATH/`
+- [ ] [Ignore file types](../filehandler/#ignore-files) that should not served to users, e.g. Excel files
+- [ ] [Disable directory listing](../filehandler/#directory-listing) to avoid listing all files in a directory
+- [ ] Use [authentication](../auth/#authentication) to ensure that only logged-in and authorized users can access any page
+- [ ] Set up [session expiry](../auth/#session-expiry) or [inactive expiry](../auth/#inactive-expiry) to log out users after some time
+- [ ] Use [Recaptcha](../auth/#recaptcha) to protect login pages from automated login attacks
+- [ ] Set up [Custom HTTP Headers](../config/#custom-http-headers) for [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy)
+- [ ] Set up custom [error Handlers](../config/#error-handlers) to render errors in your own template, for e.g. if a page is missing or the user is not logged in
 
-```yaml
-import: $GRAMEXPATH/deploy.yaml
-```
+Gramex already has these security practices enabled. Don't disable these unless required:
 
-This:
+- [ ] [Session cookies](../auth/#session-security) are `secure` and `httponly`.
+  [See docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Restrict_access_to_cookies)
+
+### deploy.yaml
+
+The most common security options are pre-configured in `$GRAMEXPATH/deploy.yaml`. Specifically, it:
 
 - **Disallows all files**, including code, config and data files like:
     - Code formats: `.py`, `.pyc`, `.php`, `.sh`, `.rb`, `.ipynb`, `.bat`, `.cmd`, `.bat`
@@ -654,51 +665,20 @@ This:
 - enables protection against running apps within an iframe. [Read more](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options).
 - blocks server information. [Read more](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Server).
 
-See [deploy.yaml][deploy-yaml] to understand the configurations.
-
-[zap]: https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project
-[deploy-yaml]: https://github.com/gramener/gramex/blob/master/gramex/deploy.yaml
-
-### Deployment variables
-
-[Predefined variables](../config/#predefined-variables) are useful in deployment.
-For example, say you have the following directory structure:
+To enable these options, add this line to your `gramex.yaml`:
 
 ```yaml
-/app              # Gramex is run from here. It is the current directory
-  /component      # Inside a sub-directory, we have a component
-    /gramex.yaml  # ... along with its configuration
-    /index.html   # ... and a home page
+import: $GRAMEXPATH/deploy.yaml
 ```
 
-Inside `/app/component/gramex.yaml`, here's what the variables mean:
+See [deploy.yaml](https://github.com/gramener/gramex/blob/master/gramex/deploy.yaml) to understand the configurations.
 
-```yaml
-url:
-    relative-url:
-        # This pattern: translates to /app/component/index.html
-        # Note: leading slash (/) before $YAMLURL is REQUIRED
-        pattern: /$YAMLURL/index.html
-        handler: FileHandler
-        kwargs:
-            path: $YAMLPATH/        # This translates to /app/component/
-```
+### Testing
 
-If you want to refer to a file in the Gramex source directory, use
-`$GRAMEXPATH`. For example, this maps [config](config) to Gramex's root
-`gramex.yaml`.
+To check for application vulnerabilities, run tools such as:
 
-```yaml
-url:
-    gramex-config-file:
-        pattern: /$YAMLURL/config           # Map config under current URL
-        handler: FileHandler
-        kwargs:
-            path: $GRAMEXPATH/gramex.yaml   # to the core Gramex config file
-```
-
-Typically, applications store data in `$GRAMEXDATA/data/<appname>/`.
-Create and use this directory for your data storage needs.
+- [OWASP Zed Attack Proxy](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project).
+- [Burp Suite](https://portswigger.net/burp/communitydownload)
 
 ## HTTPS Server
 
@@ -1129,264 +1109,3 @@ Ensure that no keys duplicated across `gramex.yaml` files and restart gramex.
 - `cannot set up log`:  The `log:` section has an error. It may not be a dict,
   or refer to a file / folder that cannot be accessed, etc.
 - `Gramex 1.xx.x is available`: A newer version of Gramex is available. Upgrade
-
-## Good security practices
-
-A curated list of security practices for real-life application deployments is presented here.
-
-### Session timeout
-
-Applications may need to timeout user sessions periodically. We can configure this as below:
-
-```yaml
-# gramex.yaml
-application/login:
-  pattern: /$YAMLURL/login
-  handler: DBAuth
-  kwargs:
-    session_expiry: 0.0207           # value in days. session expires after 30 mins
-    session_inactive: 0.0207         # value in days. session expires after 30 mins of inactivity
-```
-
-### Disable directory listing
-
-Directory listing isn't a recommended practice as it reveals exact file names. One can disable directory listing at a root level as below:
-
-```yaml
-# gramex.yaml
-handlers:
-  FileHandler:
-    ignore:                         # accepts a list of files to be ignored
-      - '*.yaml'                    # YAML defines routes, user credentials
-      - '*.git*'                    # git files
-      - '*.json'
-      - '*.git/*'
-      - '*ui/*'
-    allow: '.file'                  # allows special file
-```
-
-### Protect all pages with authentication
-
-Templates are routinely used to render or refresh views on the interface. It's important to disable access without the correct authentication credentials and access controls.
-
-```yaml
-# gramex.yaml
-url:
-  templates-home:
-    pattern: /$YAMLURL/templates/(.*)
-    handler: FileHandler
-    priority: 100                     # takes a higher priority than the rest
-    kwargs:
-      path: $YAMLPATH/templates/
-      auth:
-        login_url: /$YAMLURL/login
-```
-
-This is also true for any other files (static assets, data files, queries, remote function calls etc.).
-
-### Custom error messages
-
-Error messages can be customized based on their type. To do that, define a route then write a Python function that accepts error status code and handler as arguments.
-
-```yaml
-# gramex.yaml
-handlers:
-  BaseHandler:
-    error:
-      500: &ERROR
-        function: app_script.error_fn(status_code, kwargs, handler)
-        header:
-          Cache-Control: no-cache
-          Content-Type: text/html
-      400: *ERROR
-      401: *ERROR
-      403: *ERROR
-      404: *ERROR
-```
-
-```py
-"""
-This is `app_script.py`.
-"""
-import os
-import gramex.cache
-
-
-def error_fn(status, kwargs, handler):
-    """Load the error pages as required.
-    Args:
-      kwargs (dict): keyword arguments
-      status (int): status code
-      handler (request object): gramex handler object
-    Returns:
-      (template): dynamic error page
-    """
-
-    error_path = os.path.join(
-        os.path.dirname(os.path.abspath(__file__)), 'errorpage.html')
-    tmpl = gramex.cache.open(error_path, 'template')
-    handler.set_status(status)
-    return tmpl.generate(kwargs=kwargs, status=status, handler=handler)
-```
-
-```html
-<!-- errorpage.html -- main content -->
-<body class="pt-3 overflow-hidden">
-{% set base = '.' %}
-{% set message_dict = {'400': 'URL argument missing', '401': 'User not logged in', '403': 'user does not have access', '404': 'File not found', '500': 'Internal server error'} %}
-  <!-- TODO: Filter bars -->
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12 h-full text-middle">
-        <p class = "msg_txt">please <a href="login">click here</a> to re-login</p>
-        <div class="text-center px-4">
-          <img src="img/error{{  status }}.png" alt="error" class="h-85vh">
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-```
-
-### Captcha implementation
-
-Captchas are used during the sign-in process. One can implement it as below:
-
-Define a route in `YAML` to retrieve the captcha.
-
-```yaml
-# In Yaml file:
-application-login-captcha:
-  pattern: /$YAMLURL/get_captcha
-  handler: FunctionHandler
-  kwargs:
-    function: app_script.get_captcha_img
-```
-
-Map `get_captcha_img()` function in `app_script.py` file. This `Python` program uses `captcha` utility via `pip` (`pip install captcha`).
-
-```py
-from glob import glob
-import base64
-import string
-from captcha.image import ImageCaptcha
-
-
-def get_captcha_img(handler):
-    """Generate captcha.
-    Args:
-      handler (request object): gramex handler object
-    Returns:
-      (dict): digits as image
-    """
-
-    glob('captcha_fonts/*.ttf')
-    fonts = []
-
-    # fonts to render the digits
-    for font in glob('*/*.ttf'):
-        fonts.append(os.path.join(currdir,  font))
-    image = ImageCaptcha(fonts=fonts)
-    characters = string.digits
-
-    cook_sec = ""
-    # set up random length
-    cook_sec_length = random.randint(6, 6)
-    for _ in range(cook_sec_length):
-        _char = random.choice(characters)
-        cook_sec = cook_sec + _char
-
-    # replace digits 7 with 0 and 1 with 2 as end users find it difficult to distinguish between them
-    cook_sec = cook_sec.replace('7', '0').replace('1', '2')
-    data = base64.b64encode(image.generate(cook_sec).read()).decode("utf-8")
-    data = data + generate_secret_key()
-    return {
-        'img_data': 'data:image/jpeg;base64,{}'.format(data),
-        'str': cook_sec
-    }
-```
-
-Make the call to the route in a `JavaScript` file.
-
-```js
-function get_captcha() {
-  ajax_call("get_captcha").done(function (data) {
-    $("#captcha_img").attr("src", data.img_data.slice(0, -16))
-    let captcha_val = data.str.toLowerCase()
-    $('body')
-      .on('keyup', '#captcha', function () {
-        if ($(this).val().toLowerCase() == captcha_val) {
-          $('.captcha_msg').addClass('d-none')
-          $("#signin").removeAttr("disabled")
-        }
-        else {
-          if ($(this).val().length >= 6) {
-            ajax_call("cap").done(function (data) {
-              $("#captcha_img").attr("src", data.img_data.slice(0, -16))
-              captcha_val = data.str.toLowerCase()
-            })
-            $('.captcha_msg').removeClass('d-none')
-          }
-          $("#signin").attr("disabled", true)
-        }
-      })
-  })
-}
-
-// fetch captcha on page load or on captcha reload request
-$(window).on('load', function () {
-  get_captcha()
-})
-$('body').on('click', '#captcha-reload', function () {
-  get_captcha()
-})
-```
-
-Ensure relevant `HTML` containers (`.captcha_msg`, `#captcha_img`) are defined.
-
-```html
-<div class="form-group h4 lh-2">
-  <p class="text-danger sm3 my-2 captcha_msg position-absolute mt-n2 d-none">please retry captcha
-  </p>
-  <input autocomplete="off" type="text"
-  class="form-control border py-3 px-2 rounded-0 border-top-0 border-left-0 border-right-0"
-  name="captcha" id="captcha" placeholder="Captcha" autofocus required>
-</div>
-<div class="row">
-  <div class="col-5">
-    <img id="captcha_img" height="45" class="w-100" src="#" alt="captcha-img">
-  </div>
-  <div class="col-2 p-0">
-    <img src="img/refresh.png" height="45" class="w-90 btn" id="captcha-reload" src="#"
-    alt="reload-icon">
-  </div>
-</div>
-```
-
-### Banner grabbing
-
-Server details can be known while observing requests in browser developer tools or other security tools. This could reveal the vulnerable versions of underlying software.
-
-If you're serving a `Gramex` application via `nginx` you can set `server_tokens off;` in the respective `nginx.conf` file.
-
-To know more read the [reference](https://blog.livebyt.es/turn-off-your-server-tokens/).
-
-### Secure cookie
-
-To disable cookie submissions on an unencrypted HTTP connection one can configure `secure` flag to `true`.
-
-```yaml
-settings:
-  serve_traceback: False
-  xsrf_cookie_kwargs:
-    httponly: true
-    secure: true
-```
-
-Read more on [PortSwigger](https://portswigger.net/kb/issues/00500200_tls-cookie-without-secure-flag-set).
-
-### Controlling XSS attacks
-
-XSS (cross-site scripting) attacks can be tackled by defining `X-XSS-Protection: `; mode=block` header which stops rendering the page upon detection of an attack.
-
-Read [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection) for more details.
