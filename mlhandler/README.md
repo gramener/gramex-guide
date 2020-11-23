@@ -10,6 +10,19 @@ type: microservice
 MLHandler exposes machine learning models as APIs that applications can use
 over a REST API. (From **v1.66**.)
 
+<div class="postman-run-button"
+data-postman-action="collection/import"
+data-postman-var-1="99cd761eaee7b9102ad7"></div>
+<script type="text/javascript">
+  (function (p,o,s,t,m,a,n) {
+    !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
+    !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
+      (n = o.createElement("script")),
+      (n.id = s+t), (n.async = 1), (n.src = m), n
+    ));
+  }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
+</script>
+
 [TOC]
 
 # Exposing Scikit-Learn Models
@@ -48,6 +61,7 @@ GET /model?Sex=1&Age=22&SibSp=1&Parch=0&Fare=7.25&pclass_1=0&pclass_2=0&pclass_3
   <a class="example-demo" href="try/single">Try it out.</a>
   <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/mlhandler/gramex.yaml">Source</a>
 </div>
+
 
 Note that the URL parameters in the GET query are expected to be fields in the
 training dataset.
