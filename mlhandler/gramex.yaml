@@ -1,11 +1,18 @@
 url:
   mlhandler/model:
-    pattern: /$YAMLURL/mlhandler
+    pattern: /$YAMLURL/model
     handler: MLHandler
     kwargs:
       path: $YAMLPATH/model.pkl
+      xsrf_cookies: false
   mlhandler/titanic:
     pattern: /$YAMLURL/titanic
     handler: FormHandler
     kwargs:
       url: $YAMLPATH/titanic.csv
+  mlhandler/single:
+    pattern: /$YAMLURL/try/(.*)
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/try.html
+      template: true

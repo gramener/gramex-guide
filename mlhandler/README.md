@@ -40,9 +40,14 @@ GET request, as follows:
 # See whether a 22 year old male, traveling with a sibling in the third class,
 # having embarked in Southampton is likely to have survived.
 
-GET /mlhandler?Sex=1&Age=22&SibSp=1&Parch=0&Fare=7.25&pclass_1=0&pclass_2=0&pclass_3=0&Embarked_C=0&Embarked_Q=0&Embarked_S=1
+GET /model?Sex=1&Age=22&SibSp=1&Parch=0&Fare=7.25&pclass_1=0&pclass_2=0&pclass_3=0&Embarked_C=0&Embarked_Q=0&Embarked_S=1
 # output: [0] - passenger did not survive
 ```
+
+<div class="example">
+  <a class="example-demo" href="try/single">Try it out.</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/mlhandler/gramex.yaml">Source</a>
+</div>
 
 Note that the URL parameters in the GET query are expected to be fields in the
 training dataset.
@@ -58,7 +63,10 @@ run the following example:
 POST -d @titanic_predict.json /mlhandler
 # Output: [0, 1, 0, 0, 1, ...] # whether each passenger is likely to have survived
 ```
-
+<div class="example">
+  <a class="example-demo" href="try/bulkpredict">Try it out.</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/mlhandler/gramex.yaml">Source</a>
+</div>
 
 # Retraining the model
 An existing model can be retrained by POSTing data and specifying a target
@@ -75,6 +83,10 @@ follows:
 POST -d @titanic.json /mlhandler?_retrain=1&target_col=Survived
 # Output: {'score': 0.80}  - the model has 80% accuracy on the training data.
 ```
+<div class="example">
+  <a class="example-demo" href="try/retrain">Try it out.</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/mlhandler/gramex.yaml">Source</a>
+</div>
 
 # See model parameters
 
@@ -102,6 +114,10 @@ GET /mlhandler?_model
  'verbose': 0,
  'warm_start': False}
 ```
+<div class="example">
+  <a class="example-demo" href="model?_model">Try it out.</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/mlhandler/gramex.yaml">Source</a>
+</div>
 
 # Change the model and modify its parameters
 
@@ -139,3 +155,5 @@ a delete request as follows:
 ```bash
 DELETE /mlhandler
 ```
+
+ToDo: Add details of incremental data posts, and how to delete it.
