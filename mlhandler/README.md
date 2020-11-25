@@ -57,10 +57,105 @@ GET /model?Sex=1&Age=22&SibSp=1&Parch=0&Fare=7.25&pclass_1=0&pclass_2=0&pclass_3
 # output: [0] - passenger did not survive
 ```
 
-<div class="example">
+<!--
   <a class="example-demo" href="try/single">Try it out.</a>
   <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/mlhandler/gramex.yaml">Source</a>
-</div>
+  -->
+  <form id="mlhandler-single">
+	  <div class="row">
+		  <div class="col">
+			  <label for="Sex">Sex:</label>
+			  <input id="Sex" name="Sex" value="1" />
+		  </div>
+		  <div class="col">
+			  <label for="Age">Age:</label>
+			  <input id="Age" name="Age" value="22" />
+		  </div>
+	  </div>
+	  <div class="row">
+		  <div class="col">
+			  <label for="SibSp">SibSp:</label>
+			  <input id="SibSp" name="SibSp" value="1"/>
+		  </div>
+		  <div class="col">
+			  <label for="Parch">Parch:</label>
+			  <input id="Parch" name="Parch" value="0"/>
+		  </div>
+	  </div>
+	  <div class="row">
+		  <div class="col">
+			  <label for="Fare">Fare:</label>
+			  <input id="Fare" name="Fare" value="7.25"/>
+		  </div>
+		  <div class="col">
+			  <label for="pclass_1">pclass_1:</label>
+			  <input id="pclass_1" name="pclass_1" value="0"/>
+		  </div>
+	  </div>
+	  <div class="row">
+		  <div class="col">
+			  <label for="pclass_2">pclass_2:</label>
+			  <input id="pclass_2" name="pclass_2" value="0"/>
+		  </div>
+		  <div class="col">
+			  <label for="pclass_3">pclass_3:</label>
+			  <input id="pclass_3" name="pclass_3" value="1"/>
+		  </div>
+	  </div>
+	  <div class="row">
+		  <div class="col">
+			  <label for="Embarked_C">Embarked_C:</label>
+			  <input id="Embarked_C" name="Embarked_C" value="0"/>
+		  </div>
+		  <div class="col">
+			  <label for="Embarked_Q">Embarked_Q:</label>
+			  <input id="Embarked_Q" name="Embarked_Q" value="0"/>
+		  </div>
+	  </div>
+	  <div class="row">
+		  <div class="col">
+			  <label for="Embarked_S">Embarked_S:</label>
+			  <input id="Embarked_S" name="Embarked_S" value="1"/>
+		  </div>
+		  <div class="col">
+			  <button type="submit" class="btn
+			  btn-primary">Predict</button>
+		  </div>
+	  </div>
+  </form>
+  <div class="divider">Embed in your app.</div>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="python-tab" data-toggle="tab" role="tab" aria-controls="pycode" href="#pycode" aria-selected="true">Python</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="ajax-tab" data-toggle="tab" role="tab" aria-controls="ajaxcode" href="#ajaxcode" aria-selected="false">Ajax</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="curl-tab" data-toggle="tab" role="tab" aria-controls="curlcode" href="#curlcode" aria-selected="false">Curl</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="pycode" role="tabpanel" aria-labelledby="python-tab">
+      <pre><code>
+      >>> import requests
+      >>> requests.get('mlhandler?Sex=1&Age=22&SibSp=1&Parch=0&Fare=7.25&pclass_1=0&pclass_2=0&pclass_3=0&Embarked_C=0&Embarked_Q=0&Embarked_S=1')
+      </code></pre>
+    </div>
+    <div class="tab-pane fade" id="ajaxcode" role="tabpanel" aria-labelledby="ajax-tab">
+      <pre><code>
+      $.ajax({
+      	url: 'mlhandler?Sex=1&Age=22&SibSp=1&Parch=0&Fare=7.25&pclass_1=0&pclass_2=0&pclass_3=0&Embarked_C=0&Embarked_Q=0&Embarked_S=1',
+	method: 'GET'
+      })
+      </code></pre>
+    </div>
+    <div class="tab-pane fade" id="curlcode" role="tabpanel" aria-labelledby="curl-tab">
+      <pre><code>
+      curl -X GET mlhandler?Sex=1&Age=22&SibSp=1&Parch=0&Fare=7.25&pclass_1=0&pclass_2=0&pclass_3=0&Embarked_C=0&Embarked_Q=0&Embarked_S=1
+      </code></pre>
+    </div>
+  </div>
 
 
 Note that the URL parameters in the GET query are expected to be fields in the
@@ -78,8 +173,10 @@ POST -d @titanic_predict.json /mlhandler
 # Output: [0, 1, 0, 0, 1, ...] # whether each passenger is likely to have survived
 ```
 <div class="example">
+<!--
   <a class="example-demo" href="try/bulkpredict">Try it out.</a>
   <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/mlhandler/gramex.yaml">Source</a>
+  -->
 </div>
 
 # Retraining the model

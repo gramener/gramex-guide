@@ -103,3 +103,16 @@ $(function () {
       })
   })
 })
+
+
+// MLHandler
+$('#mlhandler-single').on('submit', function(e) {
+  e.preventDefault();
+  let url = g1.url.parse('model')
+  $(this).serializeArray().forEach(function(item, index) {
+    let obj = {}
+    obj[item.name] = item.value
+    url.update(obj)
+  })
+  window.open(url.toString(), target="_blank")
+})
