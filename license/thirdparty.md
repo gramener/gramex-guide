@@ -49,6 +49,7 @@ Gramex uses open source third party libraries that use one of these licenses:
 - [pymysql](https://pypi.python.org/pypi/pymysql/): [MIT license][MIT]
 - [pytest](https://pypi.org/project/pytest/): [MIT license][MIT]
 - [python-pptx](https://github.com/scanny/python-pptx/blob/master/LICENSE/): [MIT license][MIT]
+- [python-slugify](https://pypi.python.org/pypi/python-slugify/): [MIT license][MIT]
 - [pyyaml](https://pypi.python.org/pypi/pyyaml/): [MIT license][MIT]
 - [redis](https://pypi.org/project/redis/): [MIT license][MIT]
 - [seaborn](https://pypi.org/project/seaborn/): [BSD license][BSD]

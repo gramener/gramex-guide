@@ -42,7 +42,7 @@ url:
 ## Directory listing
 
 `index: true` lists all files in the directory if the `default_filename` is
-missing. To customise the directory listing, specify `index_template: filename`.
+missing. To customize the directory listing, specify `index_template: filename`.
 This file will be shown as HTML, with `$path` replaced by the directory's
 absolute path, and `$body` replaced by a list of all files in that directory.
 
@@ -65,6 +65,16 @@ Here is a trivial `template.html`:
 ```html
 <h1>$path</h1>
 $body
+```
+
+`index: false` disables directory listing. To disable it for the **default** FileHandler, use:
+
+```yaml
+url:
+  default:                    # This is a special name for the default Gramex FileHandler
+    handler: FileHandler
+    kwargs:
+      index: false            # Disable directory listing here
 ```
 
 
@@ -200,26 +210,36 @@ handlers:
 ```
 
 The `gramex.yaml` file and all files beginning with `.` will be hidden by
-default. You can change the above setting in your `gramex.yaml` file.
+default. You can change the above setting in your `gramex.yaml` file. For example:
 
-You can customise this further via the `allow:` and `ignore:` configurations in
-the handler. For example:
+```yaml
+handlers:
+  FileHandler:
+    ignore:
+      - '.*'          # Protect dot-files - they are usually meant to be hidden
+      - '*.git*'      # Protect .gitignore, .gitattributes, etc - they list filenames
+      - '*.git/*'     # Protect all files under the .git/ repo - they have code history
+      - '*.yaml'      # Protect YAML files - they list all URLs
+```
+
+You can customize this further for each handler via the `allow:` and `ignore:` configurations.
+For example:
 
 ```yaml
 url:
-  unsafe-handler:
-    pattern: "/(.*)"
+  my-app-files:
+    pattern: /$YAMLURL/(.*)
     handler: FileHandler
     kwargs:
       path: .
       ignore:
-        - '*.yaml'          # Ignore all YAML files
+        - '*.xls*'          # Ignore all Excel files
       allow:
-        - public.yaml       # But allow public.yaml to be shown
+        - public.xlsx       # But allow public.xlsx
 ```
 
-Now `public.yaml` is accessible. But `gramex.yaml` will raise a HTTP 403 error.
-The log reports `Disallow: "gramex.yaml". It matches "*.yaml"`.
+Now `public.xlsx` is accessible. But `something-else.xlsx` will raise a HTTP 403 error.
+The log reports `Disallow: "something-else.xlsx". It matches "*.xls*"`.
 
 If you import [deploy.yaml](../deploy/#security), FileHandler blocks all files
 except specific white-listed exceptions.

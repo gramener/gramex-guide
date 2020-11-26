@@ -31,6 +31,18 @@ def store_value(handler):
 The first time a user visits the [session](session) page, it generates the
 `randkey`. The next time this is preserved.
 
+**v1.64**: If you deploy multiple Gramex applications, the `sid` cookie used in one can conflict
+with the others. To avoid this, change the cookie name to something unique for each app, using
+`app.session.cookie`:
+
+```yaml
+app:
+  session:
+    cookie: my-app-sid        # Instead of 'sid', use 'my-app-sid' as the cookie name for this app
+```
+
+## Session security
+
 The session cookie is:
 
 - [HttpOnly](https://www.owasp.org/index.php/HttpOnly): You cannot access the
@@ -51,14 +63,12 @@ app:
     domain: .example.org    # All subdomains in .example.org can access session
 ```
 
-You can store any variable against a session. These are stored in the
-secure cookie for a duration that's controlled by the `app.session.expiry`
-configuration in `gramex.yaml`. Here is the default configuration:
+The cookie is stored for `app.session.expiry` days. Here is the default configuration:
 
 ```yaml
 app:
   session:
-    expiry: 31                      # Session cookies expiry in days
+    expiry: 31              # Sessions expire after 31 days by default
 ```
 
 You can override session expiry duration with a `session_expiry: <days>` kwarg
@@ -71,19 +81,8 @@ or in you `gramex.yaml`:
 ```yaml
 app:
   settings:
-    cookie_secret: ...
+    cookie_secret: your-cookie-secret
 ```
-
-**v1.64**: If you deploy multiple Gramex applications, the `sid` cookie used in one can conflict
-with the others. To avoid this, change the cookie name to something unique for each app, using
-`app.session.cookie`:
-
-```yaml
-app:
-  session:
-    cookie: my-app-sid        # Instead of 'sid', use 'my-app-sid' as the cookie name for this app
-```
-
 
 ## Session data
 
@@ -1424,20 +1423,17 @@ See [user logging](../config/#user-logging).
 
 ## Session expiry
 
-Gramex sessions expire in 31 days by default. This is configured under
-`app.session.expiry`.
-
-All auth handlers accept a `session_expiry: <days>` kwarg that changes the expiry
-date when the user logs in with that handler. For example:
+Gramex sessions expire in 31 days by default. To modify this, add `session_expiry: <days>` to the
+auth handler. For example:
 
 ```yaml
 url:
   auth/expiry:
     pattern: /$YAMLURL/expiry
-    handler: SimpleAuth
+    handler: SimpleAuth               # session_expiry works on DBAuth, GoogleAuth, etc too
     kwargs:
       session_expiry: 0.0003          # Session expires in 26 seconds
-      credentials: {alpha: alpha}
+      # ...
 ```
 
 <div class="example">
@@ -1448,7 +1444,7 @@ url:
 This can be used to configure sessions that have a long expiry (e.g. for mobile
 applications) or short expiry (e.g. for secure data applications.)
 
-To allow users to choose how long to stay logged in, use:
+You can allow users to choose how long they want to stay logged in. For example:
 
 ```yaml
 url:
@@ -1457,12 +1453,12 @@ url:
     handler: SimpleAuth
     kwargs:
       session_expiry:
-        default: 4      # the default session expiry is set to 4 days
-        key: remember   # When ?remember= is submitted on login
-        values:         # if ?remember=...
-          day: 1          # ...day, it expires in 1 day
-          week: 7         # ...week, it expires in 7 days
-          month: 31       # ...month, it expires in 31 days
+        default: 4      # The default session expiry is set to 4 days
+        key: remember   # When user logs in, check the value of ?remember=
+        values:         # Set session expiry based on the value of ?remember=
+          day: 1          # If ?remember=day, session expires in 1 day
+          week: 7         # If ?remember=week, session expires in 7 days
+          month: 31       # If ?remember=month, session expires in 31 days
 ```
 
 <div class="example">
@@ -1475,9 +1471,9 @@ url:
 Gramex sessions expire if the user is inactive, i.e. has not accessed Gramex, for
 a number of days.
 
-By default, this is not enabled. You can add `session_inactive: <days>` to
-any Auth handler. When the user logs in with that handler, their session will
-expire unless they visit again within `<days>` days. For example:
+By default, this is not enabled. Enable it via `session_inactive: <days>` on any auth handler.
+When the user logs in, their session will expire unless they visit again within `<days>` days.
+For example:
 
 ```yaml
 url:
@@ -1485,13 +1481,13 @@ url:
     pattern: /$YAMLURL/expiry
     handler: SimpleAuth
     kwargs:
-      session_inactive: 0.0003         # Must visit every 26 seconds
-      credentials: {alpha: alpha}
+      session_inactive: 0.01        # Must visit every 0.01 days, i.e. 864 seconds, or 14.4 min
+      # ...
   other/pages:
-    ...
-    kwargs:                              # Ensure that other authenticated pages
-      headers:                         # also expire every 26 seconds
-        Cache-Control: private, max-age=26
+    # NOTE: You must ensure that other authenticated pages are not cached beyond that duration
+    kwargs:
+      headers:
+        Cache-Control: private, max-age=864   # 864 seconds = 0.01 days
 ```
 
 <div class="example">
@@ -1534,6 +1530,7 @@ def function(args, handler):
 
 The changes to the arguments will be saved in `handler.args`, which all auth
 handlers use. (NOTE: These changes need not affect `handler.get_argument()`.)
+
 
 ## Recaptcha
 
@@ -1579,7 +1576,6 @@ Try this example, and observe the reCAPTCHA logo at the bottom-right of the scre
   <a class="example-demo" href="recaptcha">Recaptcha example</a>
   <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
 </div>
-
 
 ## Lookup attributes
 

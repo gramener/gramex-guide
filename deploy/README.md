@@ -293,6 +293,7 @@ Here is a minimal HTTP reverse proxy configuration:
 server {
     listen 80;                              # 80 is the default HTTP port
     server_name example.com;                # http://example.com/
+    server_tokens off;                      # Hide server name
 
     # Pass original HTTP headers
     proxy_set_header Host $host;
@@ -625,18 +626,28 @@ url:
 
 ## Security
 
-To check for application vulnerabilities, run the [OWASP Zed Attack Proxy][zap].
-It detects common vulnerabilities in web applications like cross-site scripting,
-insecure cookies, etc.
+When deploying your application, go through this checklist and apply all that is relevant.
 
-Some common security options are pre-configured in `$GRAMEXPATH/deploy.yaml`. To
-enable these options, add this line to your `gramex.yaml`:
+- [ ] Use [deploy.yaml](#deployyaml) to add common security settings
+- [ ] Use [relative URL Mapping](#relative-url-mapping). Ensure that:
+  - all URLs in `gramex.yaml` begin with `http(s)://` or `/$YAMLURL/`
+  - all paths in `gramex.yaml` begin with `$YAMLPATH/`
+- [ ] [Ignore file types](../filehandler/#ignore-files) that should not served to users, e.g. Excel files
+- [ ] [Disable directory listing](../filehandler/#directory-listing) to avoid listing all files in a directory
+- [ ] Use [authentication](../auth/#authentication) to ensure that only logged-in and authorized users can access any page
+- [ ] Set up [session expiry](../auth/#session-expiry) or [inactive expiry](../auth/#inactive-expiry) to log out users after some time
+- [ ] Use [Recaptcha](../auth/#recaptcha) to protect login pages from automated login attacks
+- [ ] Set up [Custom HTTP Headers](../config/#custom-http-headers) for [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy)
+- [ ] Set up custom [error Handlers](../config/#error-handlers) to render errors in your own template, for e.g. if a page is missing or the user is not logged in
 
-```yaml
-import: $GRAMEXPATH/deploy.yaml
-```
+Gramex already has these security practices enabled. Don't disable these unless required:
 
-This:
+- [ ] [Session cookies](../auth/#session-security) are `secure` and `httponly`.
+  [See docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Restrict_access_to_cookies)
+
+### deploy.yaml
+
+The most common security options are pre-configured in `$GRAMEXPATH/deploy.yaml`. Specifically, it:
 
 - **Disallows all files**, including code, config and data files like:
     - Code formats: `.py`, `.pyc`, `.php`, `.sh`, `.rb`, `.ipynb`, `.bat`, `.cmd`, `.bat`
@@ -654,51 +665,20 @@ This:
 - enables protection against running apps within an iframe. [Read more](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options).
 - blocks server information. [Read more](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Server).
 
-See [deploy.yaml][deploy-yaml] to understand the configurations.
-
-[zap]: https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project
-[deploy-yaml]: https://github.com/gramener/gramex/blob/master/gramex/deploy.yaml
-
-### Deployment variables
-
-[Predefined variables](../config/#predefined-variables) are useful in deployment.
-For example, say you have the following directory structure:
+To enable these options, add this line to your `gramex.yaml`:
 
 ```yaml
-/app              # Gramex is run from here. It is the current directory
-  /component      # Inside a sub-directory, we have a component
-    /gramex.yaml  # ... along with its configuration
-    /index.html   # ... and a home page
+import: $GRAMEXPATH/deploy.yaml
 ```
 
-Inside `/app/component/gramex.yaml`, here's what the variables mean:
+See [deploy.yaml](https://github.com/gramener/gramex/blob/master/gramex/deploy.yaml) to understand the configurations.
 
-```yaml
-url:
-    relative-url:
-        # This pattern: translates to /app/component/index.html
-        # Note: leading slash (/) before $YAMLURL is REQUIRED
-        pattern: /$YAMLURL/index.html
-        handler: FileHandler
-        kwargs:
-            path: $YAMLPATH/        # This translates to /app/component/
-```
+### Testing
 
-If you want to refer to a file in the Gramex source directory, use
-`$GRAMEXPATH`. For example, this maps [config](config) to Gramex's root
-`gramex.yaml`.
+To check for application vulnerabilities, run tools such as:
 
-```yaml
-url:
-    gramex-config-file:
-        pattern: /$YAMLURL/config           # Map config under current URL
-        handler: FileHandler
-        kwargs:
-            path: $GRAMEXPATH/gramex.yaml   # to the core Gramex config file
-```
-
-Typically, applications store data in `$GRAMEXDATA/data/<appname>/`.
-Create and use this directory for your data storage needs.
+- [OWASP Zed Attack Proxy](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project).
+- [Burp Suite](https://portswigger.net/burp/communitydownload)
 
 ## HTTPS Server
 
