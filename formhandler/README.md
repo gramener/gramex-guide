@@ -824,6 +824,14 @@ has changed.
 
 The `table:` parameter also supports query substitutions like `query:`.
 
+`state:` parameter can be used to pass a function which checks if the data has changed. For example:
+
+```yaml
+      state: utils.cache_func(args, handler)
+      query: 'SELECT city, SUM(sales) FROM source GROUP BY city'
+```
+... will run `query:` only if the result of `utils.cache_func(args, handler)` changes.
+
 **WARNING**:
 
 1. `query` loads the full result into memory. So keep the result small.
