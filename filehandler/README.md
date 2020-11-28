@@ -289,8 +289,15 @@ From **v1.23.1**, to serve different files with different MIME types, use file p
 
 ## Templates
 
-The `template` configuration renders files as [Tornado templates][template]. To
-serve a file as a Tornado template, use the following configuration:
+FileHandler uses [Tornado templates][template] to generate content from data.
+For example, this `page.html` renders 10 images:
+
+```html
+{% for id in range(1, 10) %}
+  <img src="https://picsum.photos/id/{{ id }}/40">
+{% end %}
+```
+To templatize this `page.html`, add `template: true` to `gramex.yaml`:
 
 ```yaml
 url:
@@ -302,7 +309,7 @@ url:
       template: true                # rendered as a Tornado template
 ```
 
-You can apply templates to specific file patterns. For example:
+To templatize specific file patterns, e.g. `template*.html`, add `template: template*.html`:
 
 ```yaml
 url:
@@ -310,20 +317,11 @@ url:
     pattern: /templates/(.*)
     handler: FileHandler
     kwargs:
-      path: templates/          # Render files from this path
-      # Specify ONE of the following
-      template: '*.html'        # Only HTML files are rendered as templates
-      template: 'template.*'    # Only template.* files are rendered as templates
-      template: '*'             # Same as template: true
-```
-
-Template files can contain any template feature. Here's a sample `page.html`.
-
-```html
-<p>argument x is {{ handler.get_argument('x', None) }}</p>
-<ul>
-    {% for item in [1, 2, 3] %}<li>{{ item }}</li>{% end %}
-</ul>
+      path: templates/            # Render files from this path
+      # Specify ONE of these examples
+      template: template*.html    # Templatize template.* HTML files
+      template: '*.xml, *.svg'    # Templatize XML and SVG files
+      template: '*'               # Same as template: true
 ```
 
 <div class="example">
@@ -333,9 +331,14 @@ Template files can contain any template feature. Here's a sample `page.html`.
 
 ### Template syntax
 
-Templates can use all variables in the [template syntax][template-syntax], like:
+Templates can use all variables in the [template syntax][template-syntax]. This includes:
 
 - `handler`: the current request handler object
+  -
+  - all [Tornado handler attributes](../handlers/#tornado-handler-attributes), like
+    `handler.request.uri`, `handler.current_user`, etc.
+  - ... and [BaseHandler attributes](../handlers/#basehandler-attributes), like
+    `handler.args` - a dict of lists containing the URL query parameters
 - `request`: alias for `handler.request`
 - `current_user`: alias for `handler.current_user`
 
@@ -395,6 +398,45 @@ You can also include other files using `{{ gramex.cache.open(...) }}`. For examp
 The second open statement converts README.md into HTML. See
 [data caching](../caching/#data-caching) for more formats.
 
+
+## SASS
+
+FileHandler can compile [SCSS files](http://sass-lang.com/). The default FileHandler compiles any
+`.scss` or `.sass` file is compiled into CSS. For example, this `color.scss` file:
+
+```scss
+$color: red !default;
+body { background-color: lighten($color, 40%); }
+```
+
+... [is rendered as](color.scss):
+
+```css
+body{background-color:#fcc}
+```
+
+<div class="example">
+  <a class="example-demo" href="color.scss">See color.scss</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/filehandler/color.scss">Source</a>
+</div>
+
+To enable this in your FileHandler, add:
+
+```yaml
+kwargs:
+    ...
+    sass: '*.scss, *.sass'      # Compile SCSS and SASS files into CSS
+```
+
+URL query parameters are automatically passed as variables to the SASS file. For example,
+`color.scss?color=green` sets `$color: green`.
+
+<div class="example">
+  <a class="example-demo" href="color.scss?color=green">See color.scss?color=blue</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/filehandler/color.scss">Source</a>
+</div>
+
+You can use this to allow users to customize your theme.
 
 ## XSRF
 
@@ -529,8 +571,8 @@ into HTML:
 ```yaml
     # ... contd ...
       transform:
-        "*.md":                                 # Any file matching .md
-          function: markdown.markdown(content)  #   Convert .md to html
+        "*.md, *.markdown":                     # Any file matching .md or .markdown
+          function: markdown.markdown(content)  #   Convert it to html
           kwargs:                               #   Pass these arguments to markdown.markdown
             output_format: html5                #     Output in HTML5
           headers:                              #   Use these HTTP headers:
@@ -568,11 +610,8 @@ Using this, the following file [page.yaml](page.yaml) is rendered as HTML:
 
 Transforms take the following keys:
 
-- **function**: The function to call as `function(*args, **kwargs)` using the
-  `args` and `kwargs` below. You can use `=content` for the content and
-  `=handler` for the handler in both `args` and `kwargs`.
-- **args**: Positional parameters to pass. Defaults to the file contents.
-- **kwargs**: Keyword parameters to pass.
+- **function**: The expression to call. You can use the variables `content` for the file contents
+  and `handler` for the handler. Example: `function: mymodule.transform(content, handler)`
 - **encoding**: If blank, the file is treated as binary. The transform
   `function` MUST accept the content as binary. If you specify an encoding, the
   file is loaded with that encoding.
@@ -581,47 +620,17 @@ Transforms take the following keys:
 Any function can be used as a transform. Gramex provides the following (commonly
 used) transforms:
 
-1. **template**. Use `template: true` to render a template. See
-   [Templates](#templates). But if you need to pass additional arguments to the
-   template, use `function: template`. Any `kwargs` passed will be sent as
-   variables to the template. For example:
+1. **template**. See [Templates](#templates). But if you need to pass additional arguments to the
+   template, use `function: template(content, handler, **kwargs)`. The `kwargs` are sent as
+   variables to the template. For example, this adds `title` and `path` as template variables:
 
 ```yaml
     transform:
         "template.*.html":
-            function: template            # Convert as a Tornado template
-            args: =content                # Using the contents of the file (default)
-            kwargs:                       # Pass it the following parameters
-                handler: =handler         # The handler variable is the RequestHandler
-                title: Hello world        # The title variable is "Hello world"
-                path: $YAMLPATH           # path is the current YAML file path
-                home: $HOME               # home is the YAML variable HOME (blank if not defined)
-                series: [a, b, c]         # series is a list of values
+            function: template(content, handler, title='Hello', path=r'$YAMLPATH')
 ```
 
-You can also write this as:
-
-```yaml
-    transform:
-        "template.*.html":
-            function: |
-                template(content, handler=handler, title="Hello world", path="$YAMLPATH",
-                            home="$HOME", series=["a", "b", "c"])
-```
-
-With this structure, the following template will render fine:
-
-```yaml
-<h1>{{ title }}</h1>
-<p>argument x is {{ handler.get_argument('x', None) }}</p>
-<p>path is: {{ path }}.</p>
-<p>home is: {{ home }}.</p>
-<ul>
-    {% for item in [series] %}<li>{{ item }}</li>{% end %}
-</ul>
-```
-
-2. **badgerfish**. Use `function: badgerfish(content)` to convert YAML files into
+2. **badgerfish**. Use `function: badgerfish(content, handler)` to convert YAML files into
    HTML. For example, this YAML file is converted into a HTML as you would
    logically expect:
 
@@ -634,4 +643,12 @@ With this structure, the following template will render fine:
         p:
             - First paragraph
             - Second paragraph
+```
+
+3. **sass**. Use `function: sass` to convert SASS/SCSS files into CSS. For example:
+
+```yaml
+    transform:
+        "*.scss, *.sass":
+            function: sass
 ```

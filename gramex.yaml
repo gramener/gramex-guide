@@ -95,10 +95,11 @@ url:
 
     # Static files are cached on the browser
     guide-static:
-        pattern: /$YAMLURL/(.*.css|.*.js)
+        pattern: /$YAMLURL/(.*\.s?css|.*\.js)
         handler: FileHandler
         kwargs:
             path: $YAMLPATH/*
+            sass: '*.scss'
             headers:
                 Cache-Control: public, max-age=300
 

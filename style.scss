@@ -1,7 +1,16 @@
-@import "https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap";
-@import "ui/bootstraptheme.css?font-family-base=Work Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol&headings-font-family=$font-family-base&dark=%233f327d&primary=%235AA0E8&warning=%23ed7d31&success=%2374E5A2&light=%23eeeeee&font-size-base=1.25rem";
-@import "ui/@fortawesome/fontawesome-free/css/all.min.css";
-@import "monokai.css?v=2";
+$font-family-base: Work Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+$headings-font-family: $font-family-base;
+$dark: #3f327d;
+$primary: #5AA0E8;
+$warning: #ed7d31;
+$success: #74E5A2;
+$light: #eeeeee;
+$font-size-base: 1.25rem;
+
+@import "gramexui";
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap");
+@import url("ui/@fortawesome/fontawesome-free/css/all.min.css");
+@import url("monokai.css?v=2");
 
 :root {
   --navbar-height: 4rem;
@@ -136,42 +145,47 @@ table tbody td { border-bottom: 1px solid #eee; }
   border-width: 1px 0;
   display: flex;
   align-items: center;
+
+  &:before {
+    content: url(example.png);
+    margin-right: 1rem;
+    line-height: 0;
+  }
+
+  a {
+    border: none;
+    color: var(--black);
+
+    &.example-src {
+      display: block;
+      margin-left: auto;
+      background-color: var(--success);
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border-radius: 0.25rem;
+
+      &:hover {
+        text-decoration: none;
+        background-color: var(--dark);
+        color: var(--white);
+      }
+      &:after {
+        content: "\f35d";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
+        margin-left: 0.5rem;
+      }
+    }
+  }
 }
-.example a {
-  border: none;
-  color: var(--black);
-}
-.example:before {
-  content: url(example.png);
-  margin-right: 1rem;
-  line-height: 0;
-}
-a.example-src {
-  display: block;
-  margin-left: auto;
-  background-color: var(--success);
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  border-radius: 0.25rem;
-}
-a.example-src:hover {
-  text-decoration: none;
-  background-color: var(--dark);
-  color: var(--white);
-}
-a.example-src:after {
-  content: "\f35d";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;
-  margin-left: 0.5rem;
-}
+
 
 .slide iframe {
   width: 640px;

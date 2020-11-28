@@ -3,6 +3,11 @@
 
 <p>Templates run Python code: 1 + 2 = {{ 1 + 2 }}</p>
 
+<p>Here are 10 images.</p>
+{% for id in range(1, 10) %}
+  <img src="https://picsum.photos/id/{{ id }}/40">
+{% end %}
+
 <p>Templates include files relative to the current template path.</p>
 <pre style="background-color:#eee;padding:0.5rem">{% include page.yaml %}</pre>
 
