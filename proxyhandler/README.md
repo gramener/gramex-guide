@@ -50,7 +50,7 @@ ProxyHandler configuration accepts these kwargs:
   regular expression like `/(group|item)/(.*)` can be used in the url as `{0}`,
   `{1}`, etc. The first item `(group|item)` becomes `{0}`. The second is `{1}`.
 - `request_headers`: dict of HTTP headers to be passed to the url.
-    - A value of `true` forwards this header from the request as-is. For example:
+    - A value of `true` forwards this header from the request as-is. For ":
         - `User-Agent: true` passes the User-Agent header as-is
         - `Cookie: true` passes the HTTP cookie header as-is
     - Any value is string-formatted with `handler` as a variable. For example:
@@ -99,10 +99,8 @@ lists the permissions you need. Here is the
 
 ### Google Services
 
-<div class="example">
-  <a class="example-demo" href="../auth/google">Log into Google</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/">Source</a>
-</div>
+::: example href=../auth/google source=https://github.com/gramener/gramex-guide/blob/master/auth/
+    Log into Google
 
 Once logged in, you can:
 
@@ -268,10 +266,8 @@ url:
 
 To access the Facebook APIs, set up a [Facebook Auth handler](../auth/#facebook-auth).
 
-<div class="example">
-  <a class="example-demo" href="../auth/facebook">Log into Facebook</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/">Source</a>
-</div>
+::: example href=../auth/facebook source=https://github.com/gramener/gramex-guide/blob/master/auth/
+    Log into Facebook
 
 Once logged in, you can:
 

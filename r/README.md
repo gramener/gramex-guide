@@ -231,10 +231,8 @@ Use below configuration to renders all `*.Rmd` files as HTML:
             Cache-Control: max-age=3600
 ```
 
-<div class="example">
-  <a class="example-demo" href="RMarkdown-story.Rmd" target="_blank">RMarkdown example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/r/RMarkdown-story.Rmd">Source</a>
-</div>
+::: example href=RMarkdown-story.Rmd source=https://github.com/gramener/gramex-guide/blob/master/r/RMarkdown-story.Rmd
+    RMarkdown example
 
 <iframe class="w-100" src="RMarkdown-story.Rmd" style="height: 600px !important"></iframe>
 

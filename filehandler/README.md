@@ -324,10 +324,8 @@ url:
       template: '*'               # Same as template: true
 ```
 
-<div class="example">
-  <a class="example-demo" href="template">Template example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/filehandler/template.html">Source</a>
-</div>
+::: example href=template source=https://github.com/gramener/gramex-guide/blob/master/filehandler/template.html
+    Template example
 
 ### Template syntax
 
@@ -415,10 +413,8 @@ body { background-color: lighten($color, 40%); }
 body{background-color:#fcc}
 ```
 
-<div class="example">
-  <a class="example-demo" href="color.scss">See color.scss</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/filehandler/color.scss">Source</a>
-</div>
+::: example href=color.scss source=https://github.com/gramener/gramex-guide/blob/master/filehandler/color.scss
+    See color.scss
 
 To enable this in your FileHandler, add:
 
@@ -431,10 +427,8 @@ kwargs:
 URL query parameters are automatically passed as variables to the SASS file. For example,
 `color.scss?color=green` sets `$color: green`.
 
-<div class="example">
-  <a class="example-demo" href="color.scss?color=green">See color.scss?color=blue</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/filehandler/color.scss">Source</a>
-</div>
+::: example href=color.scss?color=blue source=https://github.com/gramener/gramex-guide/blob/master/filehandler/color.scss
+    See `color.scss?color=blue`
 
 You can use this to allow users to customize your theme.
 

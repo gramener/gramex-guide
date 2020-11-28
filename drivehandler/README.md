@@ -35,20 +35,15 @@ Now, to upload a file into `/drive`, use this form. **Note**: use [FileHandler t
 
 This saves the uploaded files in the `path:` you specified.
 
-<div class="example">
-  <a class="example-demo" href="form">Try the uploader example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/drivehandler/form.html">Source</a>
-</div>
+::: example href=form source=https://github.com/gramener/gramex-guide/blob/master/drivehandler/form.html
+    Try the uploader example
 
 ## File Manager
 
 **v1.60**. File Manager is an app designed to work with DriveHandler and simplifies its usage.
 
-<div class="example">
-  <a class="example-demo" href="filemanager/">Try the File Manager</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/drivehandler/gramex.yaml">Source</a>
-</div>
-
+::: example href=filemanager/ source=https://github.com/gramener/gramex-guide/blob/master/drivehandler/gramex.aml
+    Try the File Manager
 
 FileManager can be imported in a Gramex app as follows:
 

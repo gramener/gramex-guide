@@ -58,11 +58,8 @@ When a user visit `/log?x=1&y=2`, it logs into `gramexguide` an object with thes
 - `"user.id": ...` from the `gramexguide` index configuration
 - `"header.User-Agent": ...` from the `gramexguide` index configuration
 
-<div class="example">
-  <a class="example-demo" href="log">Log an event (result should be null)</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/logging/gramex.yaml">Source</a>
-</div>
-
+::: example href=log source=https://github.com/gramener/gramex-guide/blob/master/logging/gramex.yaml
+    Log an event (result should be null)
 
 ## Viewing logs
 
@@ -75,10 +72,8 @@ To access an index in ElasticSearch, use [FormHandler](../formhandler/) after ru
       table: gramexguide
 ```
 
-<div class="example">
-  <a class="example-demo" href="view?_format=html&_sort=-datetime">View ElasticSearch log</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/logging/gramex.yaml">Source</a>
-</div>
+::: example href="view?_format=html&amp;_sort=-datetime" source=https://github.com/gramener/gramex-guide/blob/master/logging/gramex.yaml
+    View ElasticSearch log
 
 Apart from FormHandler, you can also use:
 

@@ -69,10 +69,8 @@ url:
 This folder may contain multiple models. In our example, it would have `iris.pkl`. The endpoint for
 this model is [`model/iris/`](model/iris/), which shows basic model information.
 
-<div class="example">
-  <a class="example-demo" href="model/iris/">See Iris model info</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/modelhandler/gramex.yaml">Source</a>
-</div>
+::: example href=model/iris/ source=https://github.com/gramener/gramex-guide/blob/master/modelhandler/gramex.yaml
+    See the Iris model info
 
 To classify using the model, visit
 [`model/iris/?sepal_width=1&sepal_length=2&petal_width=3&petal_length=4`](/model/iris/?sepal_width=1&sepal_length=2&petal_width=3&petal_length=4).
@@ -121,7 +119,7 @@ This returns a JSON list with the inputs and the result:
 
 You can classify as many inputs as required by repeating the parameters. For example:
 
-```
+```text
 model/iris/?sepal_width=1.2&sepal_length=2.4&petal_width=3.2&petal_length=4.2
            &sepal_width=4.4&sepal_length=5.7&petal_width=0.4&petal_length=1.5
            &sepal_width=7.2&sepal_length=3.6&petal_width=6.1&petal_length=2.5
@@ -155,10 +153,8 @@ returns:
 ]
 ```
 
-<div class="example">
-  <a class="example-demo" href="model/iris/?sepal_width=1.2&sepal_length=2.4&petal_width=3.2&petal_length=4.2&sepal_width=4.4&sepal_length=5.7&petal_width=0.4&petal_length=1.5&sepal_width=7.2&sepal_length=3.6&petal_width=6.1&petal_length=2.5">Try classifying multiple values</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/modelhandler/gramex.yaml">Source</a>
-</div>
+::: example href="model/iris/?sepal_width=1.2&amp;sepal_length=2.4&amp;petal_width=3.2&amp;petal_length=4.2&amp;sepal_width=4.4&amp;sepal_length=5.7&amp;petal_width=0.4&amp;petal_length=1.5&amp;sepal_width=7.2&amp;sepal_length=3.6&amp;petal_width=6.1&amp;petal_length=2.5" source="https://github.com/gramener/gramex-guide/blob/master/modelhandler/gramex.yaml"
+    Try classifying multiple values
 
 Notes:
 

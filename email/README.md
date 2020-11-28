@@ -105,10 +105,8 @@ with `_`. Here are some commonly used ones:
 
 See the source in the example below to understand how to use it.
 
-<div class="example">
-  <a class="example-demo" href="mail">Try a sample email</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/email/emailapp.py">Source</a>
-</div>
+::: example href=mail source=https://github.com/gramener/gramex-guide/blob/master/email/emailapp.py
+    Try a sample email
 
 ## HTML email
 

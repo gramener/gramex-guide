@@ -38,16 +38,12 @@ It can be used to quickly identify the most significant factors onto a metric al
 
 ## Exploratory analysis
 
-<div class="example">
-  <a class="example-demo" href="form.html">Explore the data yourself</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/groupmeans/">Source</a>
-</div>
+::: example href=form.html source=https://github.com/gramener/gramex-guide/blob/master/groupmeans/
+    Explore the data yourself
 
 <!-- TODO: Allow users to pick from a pre-defined set of segments: Boys/Girls. Below Poverty, Siblings -->
 
 ## Upload your data
 
-<div class="example">
-  <a class="example-demo" href="custom-explore">Upload your own csv and explore</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/groupmeans/">Source</a>
-</div>
+::: example href=custom-explore source=https://github.com/gramener/gramex-guide/blob/master/groupmeans/
+    Upload your own csv and explore

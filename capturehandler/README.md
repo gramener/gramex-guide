@@ -294,11 +294,8 @@ html2canvas(document.querySelector('.chart'))     // Pick the element to downloa
 **WARNING**: This requires inline styles. Styles from classes (e.g. Bootstrap's `border`) are not
 applied. Add styles inline, via `style="..."`.
 
-<div class="example">
-  <a class="example-demo" href="html2canvas.html">Run example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/capturehandler/html2canvas.html">Source</a>
-</div>
-
+::: example href=html2canvas.html source=https://github.com/gramener/gramex-guide/blob/tree/capturehandler/html2canvas.html
+    Client-side capture example
 
 [capturehandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.CaptureHandler
 [capture]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.Capture

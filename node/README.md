@@ -27,10 +27,8 @@ This returns the result:
 {"error":null,"result":5}
 ```
 
-<div class="example">
-  <a class="example-demo" href="total">Run total in JS</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/node/nodeapp.py">Source</a>
-</div>
+::: example href=total source=https://github.com/gramener/gramex-guide/blob/master/node/nodeapp.py
+    Run the Total example
 
 ## JavaScript conversion
 
@@ -88,7 +86,5 @@ This returns
 <h1 class="heading" style="background-color: red;">Heading</h1>
 ```
 
-<div class="example">
-  <a class="example-demo" href="inline_styles">Run inline_styles</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/node/nodeapp.py">Source</a>
-</div>
+::: example href=inline_styles source=https://github.com/gramener/gramex-guide/blob/master/node/nodeapp.py
+    Run inline_styles

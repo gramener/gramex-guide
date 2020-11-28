@@ -9,16 +9,28 @@ import markdown
 import re
 import time
 import yaml
+from customblocks import CustomBlocksExtension
+
+
+def example_block(ctx, href: str, source: str):
+    return f'''
+<div class="example">
+  <a class="example-demo" href="{href}">{ctx.content}</a>
+  <a class="example-src" href="{source}">Source</a>
+</div>
+'''.strip()
+
 
 md = markdown.Markdown(extensions=[
-    'markdown.extensions.extra',
-    'markdown.extensions.meta',
-    'markdown.extensions.codehilite',
-    'markdown.extensions.smarty',
-    'markdown.extensions.sane_lists',
-    'markdown.extensions.fenced_code',
-    'markdown.extensions.toc',
-], output_format='html5')
+    'extra',
+    'meta',
+    'codehilite',
+    'smarty',
+    'mdx_truly_sane_lists',
+    'fenced_code',
+    'toc',
+    CustomBlocksExtension(generators={'example': example_block}),
+], soutput_format='html5')
 # Create a cache for guide markdown content
 md_cache = cachetools.LRUCache(maxsize=5000000, getsizeof=len)
 

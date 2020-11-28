@@ -23,10 +23,8 @@ import:
 
 This configuration mounts the app at [log/](log/):
 
-<div class="example">
-  <a class="example-demo" href="log/">Log Viewer</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/logviewer/gramex.yaml">Source</a>
-</div>
+::: example href=log/ source=https://github.com/gramener/gramex-guide/blob/master/logviewer/gramex.yaml
+    Try Log Viewer
 
 ## Logviewer usage
 

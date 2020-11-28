@@ -275,10 +275,8 @@ To get the application key and secret:
 - Set the Authorized redirect URIs to point to your auth handler. (You can ignore Authorized Javascript origins)
 - Copy the "Client secret" and "Client ID" to the application settings
 
-<div class="example">
-  <a class="example-demo" href="gmail/">Google Auth example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gmail/">Source</a>
-</div>
+::: example href=gmail/ source=https://github.com/gramener/gramex-guide/blob/master/auth/gmail/
+    Google Auth example
 
 You can get access to Google APIs by specifying a scope. For example, this [accesses your contacts and mails](googleapi.html):
 
@@ -647,10 +645,8 @@ matches it with the `auth.xlsx` database.
 
 **Note** - Do not name user column as `_user_id` as it's an internal variable.
 
-<div class="example">
-  <a class="example-demo" href="dbsimple">DBAuth example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
-</div>
+::: example href=dbsimple source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    DBAuth example
 
 [auth-template]: http://github.com/gramener/gramex/blob/master/gramex/handlers/auth.template.html
 
@@ -688,10 +684,8 @@ url:
       # hash: true                  # Client side encryption
 ```
 
-<div class="example">
-  <a class="example-demo" href="db">DBAuth example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
-</div>
+::: example href=db source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    DBAuth example
 
 You should create a [HTML login form](db) that requests a username and password
 (with an [xsrf][xsrf] field). See [login templates](#login-templates) to learn
@@ -717,7 +711,7 @@ the database, it is transformed via the `function:` provided. This function has
 access to 2 pre-defined variables:
 
 1. `handler`: the Handler object
-1. `content`: the user-provided password
+2. `content`: the user-provided password
 
 For an example of how to create users in a database, see `create_user_database`
 from [authutil.py](authutil.py).
@@ -810,10 +804,8 @@ kwargs:
         Visit this link to reset the password: {reset_url}
 ```
 
-<div class="example">
-  <a class="example-demo" href="db">Forgot password example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
-</div>
+::: example href=db source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    Forgot password example
 
 [forgot-template]: http://github.com/gramener/gramex/blob/master/gramex/handlers/forgot.template.html
 [send-as]: https://support.google.com/mail/answer/22370?hl=en
@@ -843,10 +835,8 @@ url:
       signup: true            # Enable signup
 ```
 
-<div class="example">
-  <a class="example-demo" href="db?signup">Sign-up example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
-</div>
+::: example href=db?signup source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    Sign-up example
 
 You can pass additional configurations to sign-up. For example:
 
@@ -1000,10 +990,8 @@ url:
           Authorization: 'Bearer {access_token}'
 ```
 
-<div class="example">
-  <a class="example-demo" href="gitlab">Gitlab OAuth2 example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
-</div>
+::: example href=gitlab source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    Gitlab OAuth2 example
 
 It accepts the following configuration:
 
@@ -1026,15 +1014,11 @@ It accepts the following configuration:
     - `user_id`: Attribute in the returned user object that holds the user ID. This is used to identify the user uniquely. default: `id`
 - `user_key`: optional key in session to store user information. default: `user`
 
-<div class="example">
-  <a class="example-demo" href="github">Github OAuth2 example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
-</div>
+::: example href=github source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    Gitlab OAuth2 example
 
-<div class="example">
-  <a class="example-demo" href="googleoauth2">Google OAuth2 example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
-</div>
+::: example href=googleoauth2 source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    Google OAuth2 example
 
 ### Azure Active Directory
 
@@ -1109,10 +1093,8 @@ url:
           arg: password         # ?password= contains the OTP
 ```
 
-<div class="example">
-  <a class="example-demo" href="email">Email auth example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
-</div>
+::: example href=email source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    Email auth example
 
 The [user attributes](#user-attributes) in `handler.current_user` look like this:
 
@@ -1220,10 +1202,8 @@ url:
           arg: password         # ?password= contains the OTP
 ```
 
-<div class="example">
-  <a class="example-demo" href="sms">SMS auth example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
-</div>
+::: example href=sms source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    SMS auth example
 
 **Note**: the example above relies on free credits available from Exotel. These
 may have run out.
@@ -1324,11 +1304,8 @@ $('form').on('submit', function(e) {
 `.done()` method will get the contents of the redirected page as a HTML string.
 To redirect on success, change `window.location` in `.done()`.
 
-<div class="example">
-  <a class="example-demo" href="ajax.html">AJAX auth example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
-</div>
-
+::: example href=ajax.html source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    AJAX auth example
 
 ## Login actions
 
@@ -1411,10 +1388,8 @@ url:
         url: /multi
 ```
 
-<div class="example">
-  <a class="example-demo" href="multi">Multiple login example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
-</div>
+::: example href=multi source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    Multiple login example
 
 
 ## Logging logins
@@ -1436,10 +1411,8 @@ url:
       # ...
 ```
 
-<div class="example">
-  <a class="example-demo" href="expiry">Session expiry example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
-</div>
+::: example href=expiry source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    Session expiry example
 
 This can be used to configure sessions that have a long expiry (e.g. for mobile
 applications) or short expiry (e.g. for secure data applications.)
@@ -1461,10 +1434,8 @@ url:
           month: 31       # If ?remember=month, session expires in 31 days
 ```
 
-<div class="example">
-  <a class="example-demo" href="customexpiry">Remember me example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
-</div>
+::: example href=customexpiry source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    Remember me example
 
 ## Inactive expiry
 
@@ -1490,10 +1461,8 @@ url:
         Cache-Control: private, max-age=864   # 864 seconds = 0.01 days
 ```
 
-<div class="example">
-  <a class="example-demo" href="inactive">Inactive expiry example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
-</div>
+::: example href=inactive source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    Inactive expiry example
 
 
 ## Change inputs
@@ -1572,10 +1541,8 @@ If you use your own login `template:`, add this code at the bottom of the page:
 
 Try this example, and observe the reCAPTCHA logo at the bottom-right of the screen:
 
-<div class="example">
-  <a class="example-demo" href="recaptcha">Recaptcha example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
-</div>
+::: example href=recaptcha source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    Recaptcha example
 
 ## Lookup attributes
 
@@ -1648,11 +1615,8 @@ just like for [FormHandler](../formhandler/).
         table: lookup
 ```
 
-<div class="example">
-  <a class="example-demo" href="lookup-attributes">Lookup attributes example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml">Source</a>
-</div>
-
+::: example href=lookup-attributes source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    Lookup attributes example
 
 # Automated logins
 
@@ -1665,10 +1629,9 @@ one-time password string linked to the *current user*. When you send a request
 with a `X-Gramex-OTP: <otp>` header or a `?gramex-otp=<otp>` query parameter,
 that session is automatically linked to the same user.
 
-<div class="example">
-  <a class="example-demo" href="otp">OTP example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/auth/otp.html">Source</a>
-</div>
+::: example href=opt source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    OTP example
+
 
 ## Encrypted user
 

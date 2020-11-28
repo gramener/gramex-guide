@@ -33,10 +33,8 @@ def total(*items):
     return sum(float(item) for item in items)
 ```
 
-<div class="example">
-  <a class="example-demo" href="total">See <code>total</code></a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py">Source</a>
-</div>
+::: example href=total source=https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py
+    See `total`
 
 To see all configurations used in this page, see [gramex.yaml](gramex.yaml.source):
 
@@ -109,11 +107,8 @@ def add(handler):
     return sum(args.x)
 ```
 
-<div class="example">
-  <a class="example-demo" href="add?x=10&x=20&x=30">Try <code>add?x=10&x=20&x=30</code></a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py">Source</a>
-</div>
-
+::: example href="add?x=10&amp;x=20&amp;x=30" source=https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py
+    Try `add?x=10&amp;x=20&amp;x=30`
 
 ## Function arguments from URL
 
@@ -148,11 +143,8 @@ url:
 Now, [`combinations?n=10&k=4`](combinations?n=10&k=4) returns 210, the number of ways to pick 4
 items from 10 ignoring order)
 
-<div class="example">
-  <a class="example-demo" href="combinations?n=10&k=4">Try <code>combinations?n=10&k=4</code></a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py">Source</a>
-</div>
-
+::: example href="combinations?n=10&amp;k=4" source=https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py
+    Try `combinations?n=10&amp;k=4`
 
 `gramex.transforms.handler` calculates exposes all function arguments into a REST API. If you
 provide a type hint (e.g. `n: int`), it converts the argument to the correct type.
@@ -172,12 +164,8 @@ def multiply(v: List[int]):
 ... will get `v` as a list of int. In [`multiply?v=10&v=20&v=30`](multiply?v=10&v=20&v=30), `v` is
 passed as a list `v = [10, 20, 30]` to return 10 x 20 x 30 = 6,000.
 
-<div class="example">
-  <a class="example-demo" href="multiply?v=10&v=20&v=30">Try <code>multiply?v=10&v=20&v=30</code></a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py">Source</a>
-</div>
-
-<!-- TODO: See this tutorial --->
+::: example href="multiply?v=10&amp;v=20&amp;v=30" source=https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py
+    Try `multiply?v=10&amp;v=20&amp;v=30`
 
 ## URL path arguments
 
@@ -362,10 +350,8 @@ function can also yield a Future, which will be displayed as soon as it is
 resolved. (Yielded Futures will be rendered in the same order as they are
 yielded.)
 
-<div class="example">
-  <a class="example-demo" href="slow?x=1&x=2&x=3">Try <code>slow?x=1&x=2&x=3</code></a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py">Source</a>
-</div>
+::: example href="slow?x=1&amp;x=2&amp;x=3" source=https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py
+    Trye `slow?x=1&amp;x=2&amp;x=3`
 
 ## Asynchronous functions
 
@@ -400,10 +386,8 @@ def urls(handler):
         yield future
 ```
 
-<div class="example">
-  <a class="example-demo" href="fetch?x=0&x=1&x=2">Try <code>fetch?x=0&x=1&x=2</code></a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py">Source</a>
-</div>
+::: example href="fetch?x=0&amp;x=1&amp;x=2" source=https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py
+    See `fetch?x=0&amp;x=1&amp;x=2`
 
 The simplest way to call *any blocking function* asynchronously is to use a
 [ThreadPoolExecutor][ThreadPoolExecutor]. For example, using this code in a

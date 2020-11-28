@@ -72,6 +72,7 @@ Gramex uses open source third party libraries that use one of these licenses:
 - [bootstrap-select-dropdown](https://www.npmjs.com/package/bootstrap-select-dropdown): [ISC license][ISC]
 - [bootstrap-select](https://www.npmjs.com/package/bootstrap-select): [MIT license][MIT]
 - [bootstrap](https://www.npmjs.com/package/bootstrap): [MIT license][MIT]
+- [bootswatch](https://github.com/thomaspark/bootswatch/): [MIT license][MIT]
 - [clipboard](https://www.npmjs.com/package/clipboard): [MIT license][MIT]
 - [cookie](https://www.npmjs.com/package/cookie): [MIT license][MIT]
 - [d3-scale-chromatic](https://www.npmjs.com/package/d3-scale-chromatic): [BSD license][BSD]
@@ -112,6 +113,11 @@ Gramex uses open source third party libraries that use one of these licenses:
 - [vue](https://www.npmjs.com/package/vue): [MIT license][MIT]
 - [which](https://www.npmjs.com/package/which): [ISC license][ISC]
 - [ws](https://www.npmjs.com/package/ws): [MIT license][MIT]
+
+## UI libraries
+
+- [Bootstrap themes guide](https://github.com/ThemesGuide/bootstrap-themes): [MIT license][MIT]
+
 
 [MIT]: https://opensource.org/licenses/MIT
 [BSD]: https://opensource.org/licenses/BSD-3-Clause

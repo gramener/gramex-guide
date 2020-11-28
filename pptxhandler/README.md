@@ -71,11 +71,8 @@ cart: 142
 
 [![Output PPTX](sales-funnel/output.png)](sales-funnel/output.pptx)
 
-<div class="example">
-  <a class="example-demo" href="sales-funnel/">Run example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/sales-funnel/">Source</a>
-</div>
-
+::: example href=sales-funnel/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/sales-funnel/
+    Run the Sales Funnel example
 
 ## Tutorials
 
@@ -260,10 +257,8 @@ rules:
         image: f'$YAMLPATH/sample.png'  #   Replace the image with sample.png
 ```
 
-<div class="example">
-  <a class="example-demo" href="groups/">Groups example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/groups/">Source</a>
-</div>
+::: example href=groups/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/groups/
+    Run the Groups example
 
 ## Slide filters
 
@@ -398,10 +393,8 @@ You can also specify transitions as a dict with 3 keys:
 - `duration`: length of the transition in seconds (default: `0.3` seconds), e.g. `duration: 3`
 - `advance`: auto-advance timeto the next slide, in seconds  (default: `f'none'`), e.g. `advance: 3`
 
-<div class="example">
-  <a class="example-demo" href="transition/">Transition example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/transition/">Source</a>
-</div>
+::: example href=transition/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/transition/
+    Run the Transition example
 
 ## Copy slides
 
@@ -442,11 +435,8 @@ For each copied slide, the [data variable `copy`](#data) is set. It has these at
 - `copy.val`: Value corresponding to `copy.key`
 - `copy.slides`: Currently copied [PPTX slides list](https://python-pptx.readthedocs.io/en/latest/api/slides.html#slides-objects), e.g. `copy.slides[0].shapes`
 
-<div class="example">
-  <a class="example-demo" href="copy-slide/">Copy slides examples</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/copy-slide/">Source</a>
-</div>
-
+::: example href=copy-slide/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/copy-slide/
+    Run the Copy Slides example
 
 # Commands
 
@@ -460,20 +450,16 @@ content, or add new content (like charts). Here are some common commands:
 - `width`: sets width in [length units](#length-units), e.g. `width: f'3 inches'`
 - `height`: sets height in [length units](#length-units), e.g. `height: f'3 inches'`
 
-<div class="example">
-  <a class="example-demo" href="position/">Position examples</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/position/">Source</a>
-</div>
+::: example href=position/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/position/
+    Run the Position example
 
 - `add-top`: moves top (Y) position +/- in `[length units](#length-units)`, e.g. `add-top: f'-3 inches'`
 - `add-left`: moves left (X) position +/- in `[length units](#length-units)`, e.g. `add-left: f'+3 inches'`
 - `add-width`: adds width +/- in `[length units](#length-units)`, e.g. `f'add-width: -3 inch'`
 - `add-height`: adds width +/- in `[length units](#length-units)`, e.g. `f'add-height: +3 inches'`
 
-<div class="example">
-  <a class="example-demo" href="add-position/">Add position examples</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/add-position/">Source</a>
-</div>
+::: example href=add-position/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/add-position/
+    Run the Add Position example
 
 - `rotation`: sets the rotation in angles, e.g. `rotation: 30`
 - `add-rotation`: adds the rotation in angles, e.g. `rotation: -30`
@@ -492,11 +478,8 @@ content, or add new content (like charts). Here are some common commands:
 - `stroke-opacity`: sets line transparency on solid color strokes.  0 is transparent, 1 is opaque, e.g. `stroke-opacity: 0.5` is half transparent
 - `stroke-width`: sets width of the line in [length units](#length-units), e.g. `stroke-width: f'0.5 pt'`
 
-<div class="example">
-  <a class="example-demo" href="groups/">Style example (from Groups example)</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/groups/">Source</a>
-</div>
-
+::: example href=groups/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/groups/
+    Run the Groups example to understand styles
 
 ## Image
 
@@ -504,10 +487,8 @@ content, or add new content (like charts). Here are some common commands:
 - `image-width`: sets width in [length units](#length-units), e.g. `image-width: 3 inches`. Retains aspect ratio and position (top and left). May change the height
 - `image-height`: sets height in [length units](#length-units), e.g. `image-height: 3 inches`. Retains aspect ratio and position (top and left). May change the width
 
-<div class="example">
-  <a class="example-demo" href="clone-shape/">Image example (from Clone shape example)</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/clone-shape/">Source</a>
-</div>
+::: example href=clone-shape/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/clone-shape/
+    Run the Clone Shape example to understand images
 
 ## Link
 
@@ -524,10 +505,8 @@ content, or add new content (like charts). Here are some common commands:
 - URL, e.g. `link: f'https://gramener.com/'`
 - `noaction`. This removes any prior link or hover on the shape
 
-<div class="example">
-  <a class="example-demo" href="link/">Link example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/link/">Source</a>
-</div>
+::: example href=link/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/link/
+    Run the Link example
 
 ## Text
 
@@ -543,15 +522,11 @@ content, or add new content (like charts). Here are some common commands:
 - `italic`: makes the text italicized or normal. It can be true/yes/y/1 or false/no/n/0/"", e.g. `italic: true`
 - `underline`: underlines the text or makes it normal. It can be true/yes/y/1 or false/no/n/0/"", e.g. `underline: true`
 
-<div class="example">
-  <a class="example-demo" href="text/">Text example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/text/">Source</a>
-</div>
+::: example href=text/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/text/
+    Run the Text example
+::: example href=certificate/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/certificate/
+    Run the Certificate example
 
-<div class="example">
-  <a class="example-demo" href="text/">Create certificates</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/certificate/">Source</a>
-</div>
 
 ## Text format
 
@@ -588,10 +563,8 @@ Note: Don't use run attributes (like `bold=`, `color=`) on paragraphs. They work
 are over-ridden by run attributes. E.g. If your source PPTX had a bold run, setting `bold: n` on
 the para has no visible effect, since the bold run overrides it.
 
-<div class="example">
-  <a class="example-demo" href="text-format/">Text format example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/text-format/">Source</a>
-</div>
+::: example href=text-format/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/text-format/
+    Run the Text Format example
 
 ## Table
 
@@ -665,10 +638,8 @@ For each cell, the [data variable `cell`](#data) is set. It has these attributes
 - `cell.pos.column`: column number
 - `cell.cell`: currently rendered [PPTX cell object](https://python-pptx.readthedocs.io/en/latest/api/table.html#cell-objects), e.g. `cell.cell.text`
 
-<div class="example">
-  <a class="example-demo" href="table/">Table example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/table/">Source</a>
-</div>
+::: example href=table/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/table/
+    Run the Table example
 
 
 ## Chart
@@ -702,10 +673,8 @@ data = pd.DataFrame({
 
 Note: The first column name "Categories" is not used. It's just a placeholder for the index name.
 
-<div class="example">
-  <a class="example-demo" href="chart/">Chart example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/chart/">Source</a>
-</div>
+::: example href=chart/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/chart/
+    Run the Chart example
 
 
 ## Clone shapes
@@ -738,11 +707,8 @@ For each cloned shape, the [data variable `clone`](#data) is set. It has these a
 - `clone.parent`: If a group was cloned, and a shape inside the group was cloned too, `clone.parent` returns the `clone` object of the parent group
 - `clone.shape`: Currently cloned [PPTX shape](https://python-pptx.readthedocs.io/en/latest/api/shapes.html#shape-objects-autoshapes), e.g. `clone.shape.width`
 
-<div class="example">
-  <a class="example-demo" href="clone-shape/">Clone shape example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/clone-shape/">Source</a>
-</div>
-
+::: example href=clone-shape/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/clone-shape/
+    Run the Clone Shape example
 
 ## Debug
 

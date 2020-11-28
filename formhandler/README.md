@@ -22,11 +22,8 @@ url:
       url: $YAMLPATH/flags.csv
 ```
 
-<div class="example">
-  <a class="example-demo" href="cashflow">Try it with the FormHandler tutorial</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/formhandler/table.html">Source</a>
-</div>
-
+::: example href=cashflow source=https://github.com/gramener/gramex-guide/blob/master/formhandler/cashflow/
+    Try it with the FormHandler tutorial
 
 ## Supported Files
 
@@ -239,10 +236,8 @@ table component. To use it, add the following code:
 
 This requires the [UI components library](../uicomponents/) mounted at `ui/`.
 
-<div class="example">
-  <a class="example-demo" href="table.html">FormHandler table example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/formhandler/table.html">Source</a>
-</div>
+::: example href=table.html source=https://github.com/gramener/gramex-guide/blob/master/formhandler/table.html
+    FormHandler table example
 
 You can configure the data attributes:
 
@@ -465,10 +460,8 @@ Using the above endpoint, below url draws `bar` chart with `y=c4` and `x=Contine
 <script src="vega-lite-1?_format=barchart&CHART_TYPE=bar&COL_METRIC=c4"></script>
 ```
 
-<div class="example">
-  <a class="example-demo" href="vega-examples">FormHandler Vega Chart examples</a>
-  <a class="example-src" href="vega.yaml">Source</a>
-</div>
+::: example href=vega-examples source=https://github.com/gramener/gramex-guide/blob/master/formhandler/vega.yaml
+    FormHandler Vega Chart examples
 
 Similarly, [Vega-Lite](https://vega.github.io/vega-lite/) charts are also supported. Use `format: vega-lite` instead of `format: vega`. To include it on your page, just add `<script src="...?_format=barchart"></script>` where you want to include the chart, like below:
 
@@ -479,10 +472,8 @@ Similarly, [Vega-Lite](https://vega.github.io/vega-lite/) charts are also suppor
 <script src="ui/vega-lite/build/vega-lite.min.js"></script>
 ```
 
-<div class="example">
-  <a class="example-demo" href="vega-lite-examples">FormHandler Vega-Lite Chart examples</a>
-  <a class="example-src" href="vega-lite.yaml">Source</a>
-</div>
+::: example href=vega-lite-examples source=https://github.com/gramener/gramex-guide/blob/master/formhandler/vega-lite.yaml
+    FormHandler Vega Lite Chart examples
 
 Similarly, Use `format: vegam` for [Vegam](https://www.npmjs.com/package/vegam) charts.
 
@@ -494,10 +485,8 @@ Similarly, Use `format: vegam` for [Vegam](https://www.npmjs.com/package/vegam) 
 <script src="https://cdn.jsdelivr.net/npm/vegam@0.0.2/dist/vegam.min.js"></script>
 ```
 
-<div class="example">
-  <a class="example-demo" href="vegam-examples">FormHandler Vegam Chart examples</a>
-  <a class="example-src" href="vegam.yaml">Source</a>
-</div>
+::: example href=vegam-examples source=https://github.com/gramener/gramex-guide/blob/master/formhandler/vegam.yaml
+    FormHandler Vegam Chart examples
 
 ## FormHandler downloads
 
