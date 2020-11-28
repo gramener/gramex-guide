@@ -431,13 +431,14 @@ By default, the URL must redirect to the same server (for security reasons). So
 `?next=https://some-other-domain.com/` will ignore the `next=` parameter.
 However, you can specify `external: true` to override this:
 
-    ::yaml
-        kwargs:
-          ...
-          redirect:                     # Under the redirect section,
-              external: true            # add an external: true
-              query: next               # The ?next= can now be an external URL
-              url: http://example.com/  # So can the pre-defined URL
+```yaml
+    kwargs:
+        ...
+        redirect:                     # Under the redirect section,
+            external: true            # add an external: true
+            query: next               # The ?next= can now be an external URL
+            url: http://example.com/  # So can the pre-defined URL
+```
 
 You can test this at
 [../auth/ldap2?next=https://gramener.com/](../auth/ldap2?next=https://gramener.com/).

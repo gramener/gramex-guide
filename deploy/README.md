@@ -628,21 +628,21 @@ url:
 
 When deploying your application, go through this checklist and apply all that is relevant.
 
-- [ ] Use [deploy.yaml](#deployyaml) to add common security settings
-- [ ] Use [relative URL Mapping](#relative-url-mapping). Ensure that:
+- Use [deploy.yaml](#deployyaml) to add common security settings
+- Use [relative URL Mapping](#relative-url-mapping). Ensure that:
   - all URLs in `gramex.yaml` begin with `http(s)://` or `/$YAMLURL/`
   - all paths in `gramex.yaml` begin with `$YAMLPATH/`
-- [ ] [Ignore file types](../filehandler/#ignore-files) that should not served to users, e.g. Excel files
-- [ ] [Disable directory listing](../filehandler/#directory-listing) to avoid listing all files in a directory
-- [ ] Use [authentication](../auth/#authentication) to ensure that only logged-in and authorized users can access any page
-- [ ] Set up [session expiry](../auth/#session-expiry) or [inactive expiry](../auth/#inactive-expiry) to log out users after some time
-- [ ] Use [Recaptcha](../auth/#recaptcha) to protect login pages from automated login attacks
-- [ ] Set up [Custom HTTP Headers](../config/#custom-http-headers) for [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy)
-- [ ] Set up custom [error Handlers](../config/#error-handlers) to render errors in your own template, for e.g. if a page is missing or the user is not logged in
+- [Ignore file types](../filehandler/#ignore-files) that should not served to users, e.g. Excel files
+- [Disable directory listing](../filehandler/#directory-listing) to avoid listing all files in a directory
+- Use [authentication](../auth/#authentication) to ensure that only logged-in and authorized users can access any page
+- Set up [session expiry](../auth/#session-expiry) or [inactive expiry](../auth/#inactive-expiry) to log out users after some time
+- Use [Recaptcha](../auth/#recaptcha) to protect login pages from automated login attacks
+- Set up [Custom HTTP Headers](../config/#custom-http-headers) for [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy)
+- Set up custom [error Handlers](../config/#error-handlers) to render errors in your own template, for e.g. if a page is missing or the user is not logged in
 
 Gramex already has these security practices enabled. Don't disable these unless required:
 
-- [ ] [Session cookies](../auth/#session-security) are `secure` and `httponly`.
+- [Session cookies](../auth/#session-security) are `secure` and `httponly`.
   [See docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Restrict_access_to_cookies)
 
 ### deploy.yaml
