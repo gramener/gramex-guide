@@ -114,5 +114,66 @@ $('#mlhandler-single').on('submit', function(e) {
     obj[item.name] = item.value
     url.update(obj)
   })
-  window.open(url.toString(), target="_blank")
+  $.getJSON(url.toString()).done((e) => {$('#single-result').html(e)})
+})
+
+$('#bulkform').submit(function(e) {
+  e.preventDefault()
+  let fd = new FormData($(this)[0])
+  $.ajax({
+    url: 'model',
+    data: fd,
+    type: 'POST',
+    processData: false,
+    contentType: false,
+    success: function(r) {
+      $('#bulkresult').addClass('bg-success')
+      $('#bulkresult').html(r)
+    }
+  })
+})
+
+$('#retrain').submit(function(e) {
+  e.preventDefault()
+  let fd = new FormData($(this)[0])
+  let target_col = fd.get('_target_col')
+  fd.delete('_target_col')
+  $.ajax({
+    url: 'model?_retrain=1&_target_col=' + encodeURIComponent(target_col),
+    data: fd,
+    type: 'POST',
+    processData: false,
+    contentType: false,
+    success: function(r) {
+      $('#retrainresult').addClass('bg-success')
+      $('#retrainresult').html(r)
+    }
+  })
+})
+
+$('#modelparams').click(function() {
+  $.get('model?_model').done(function(e) {
+    $('#paramresult').addClass('bg-success')
+    $('#paramresult').html(e)
+  })
+})
+
+$('#changemodel').submit(function(e) {
+  e.preventDefault()
+  let fd = new FormData($(this)[0])
+  let target_col = encodeURIComponent(fd.get('_target_col'))
+  fd.delete('_target_col')
+  let mclass = encodeURIComponent(fd.get('class'))
+  fd.delete('class')
+  $.ajax({
+    url: `model?_retrain=1&_target_col=${target_col}&class=${mclass}`,
+    data: fd,
+    type: 'PUT',
+    processData: false,
+    contentType: false,
+    success: function(r) {
+      $('#changeModelResult').addClass('bg-success')
+      $('#changeModelResult').html(r)
+    }
+  })
 })
