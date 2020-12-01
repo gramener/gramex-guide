@@ -158,12 +158,11 @@ git remote add gitlab git@code.gramener.com:cto/gramex.git        # For Gramex
 git remote add gitlab git@code.gramener.com:cto/gramex-guide.git  # For Guide
 ```
 
-Then run these deployment steps:
+Then run these deployment steps on the Gramex repo:
 
 ```bash
-# Deploy docs and code coverage on https://gramener.com/gramex-update/
+# Deploy docs on https://learn.gramener.com/gramex/
 make push-docs                # Deploy pydoc
-make push-coverage            # Deploy coverage tests
 
 # Deploy on pypi: https://pypi.python.org/pypi/gramex
 make push-pypi                # Log in as gramener
