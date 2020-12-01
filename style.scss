@@ -5,7 +5,7 @@ $primary: #5AA0E8;
 $warning: #ed7d31;
 $success: #74E5A2;
 $light: #eeeeee;
-$font-size-base: 1.25rem;
+$font-size-base: 1.1rem;
 
 @import "gramexui";
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap");
@@ -125,6 +125,7 @@ table tbody td { border-bottom: 1px solid #eee; }
 
 /* Style PRE elements They take up full width */
 .codehilite pre {
+  font-size: 1rem;
   padding: 0.5rem 1rem;
   margin: 0 -1rem 1rem -1rem;
   color: #fff;

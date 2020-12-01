@@ -22,7 +22,7 @@ url:
       url: $YAMLPATH/flags.csv
 ```
 
-::: example href=cashflow source=https://github.com/gramener/gramex-guide/blob/master/formhandler/cashflow/
+::: example href=cashflow source="https://github.com/gramener/gramex-guide/blob/master/formhandler/cashflow/"
     Try it with the FormHandler tutorial
 
 ## Supported Files
@@ -236,7 +236,7 @@ table component. To use it, add the following code:
 
 This requires the [UI components library](../uicomponents/) mounted at `ui/`.
 
-::: example href=table.html source=https://github.com/gramener/gramex-guide/blob/master/formhandler/table.html
+::: example href=table.html source="https://github.com/gramener/gramex-guide/blob/master/formhandler/table.html"
     FormHandler table example
 
 You can configure the data attributes:
@@ -460,7 +460,7 @@ Using the above endpoint, below url draws `bar` chart with `y=c4` and `x=Contine
 <script src="vega-lite-1?_format=barchart&CHART_TYPE=bar&COL_METRIC=c4"></script>
 ```
 
-::: example href=vega-examples source=https://github.com/gramener/gramex-guide/blob/master/formhandler/vega.yaml
+::: example href=vega-examples source="https://github.com/gramener/gramex-guide/blob/master/formhandler/vega.yaml"
     FormHandler Vega Chart examples
 
 Similarly, [Vega-Lite](https://vega.github.io/vega-lite/) charts are also supported. Use `format: vega-lite` instead of `format: vega`. To include it on your page, just add `<script src="...?_format=barchart"></script>` where you want to include the chart, like below:
@@ -472,7 +472,7 @@ Similarly, [Vega-Lite](https://vega.github.io/vega-lite/) charts are also suppor
 <script src="ui/vega-lite/build/vega-lite.min.js"></script>
 ```
 
-::: example href=vega-lite-examples source=https://github.com/gramener/gramex-guide/blob/master/formhandler/vega-lite.yaml
+::: example href=vega-lite-examples source="https://github.com/gramener/gramex-guide/blob/master/formhandler/vega-lite.yaml"
     FormHandler Vega Lite Chart examples
 
 Similarly, Use `format: vegam` for [Vegam](https://www.npmjs.com/package/vegam) charts.
@@ -485,7 +485,7 @@ Similarly, Use `format: vegam` for [Vegam](https://www.npmjs.com/package/vegam) 
 <script src="https://cdn.jsdelivr.net/npm/vegam@0.0.2/dist/vegam.min.js"></script>
 ```
 
-::: example href=vegam-examples source=https://github.com/gramener/gramex-guide/blob/master/formhandler/vegam.yaml
+::: example href=vegam-examples source="https://github.com/gramener/gramex-guide/blob/master/formhandler/vegam.yaml"
     FormHandler Vegam Chart examples
 
 ## FormHandler downloads
@@ -813,13 +813,29 @@ has changed.
 
 The `table:` parameter also supports query substitutions like `query:`.
 
-`state:` parameter can be used to pass a function which checks if the data has changed. For example:
+`state:` parameter can be used to pass a function which checks if the data has changed. This is
+evaluated every time the FormHandler is accessed. If the returned value changes, the query is run.
+Else, the previously cached query value is returned.
+
+For example:
 
 ```yaml
+    kwargs:
+      query: ...    # Some long-running query
+      # Use any ONE such state: in your gramex.yaml
+      # 1. Re-run query once per day
+      state: datetime.date.today()      # Run once per day
+      # OR: 2. Re-run when the number of records in `table` changes
+      state: "gramex.data.filter(
+                'sqlite:///my.db',
+                query='SELECT COUNT(*) FROM table')"
+      # OR: 3. Re-run when the latest `date` in `table` changes
+      state: "gramex.data.filter(
+                'sqlite:///my.db',
+                query='SELECT MAX(date) FROM table')"
+      # OR: 4. Re-run when any utils.cache_func()'s result changes
       state: utils.cache_func(args, handler)
-      query: 'SELECT city, SUM(sales) FROM source GROUP BY city'
 ```
-... will run `query:` only if the result of `utils.cache_func(args, handler)` changes.
 
 **WARNING**:
 
@@ -1125,9 +1141,11 @@ template using the following variables:
 From **v1.23**, FormHandler allows users to add, edit or delete data using the
 POST, PUT and GET HTTP operators. For example:
 
+```text
     POST ?id=10&x=1&y=2         # Inserts a new record {id: 10, x: 1, y: 2}
     PUT ?id=10&x=3              # Update x to 3 in the record with id=10
     DELETE ?id=10               # Delete the record with id=10
+```
 
 This requires primary keys to be defined in the FormHandler as follows:
 
@@ -1170,8 +1188,10 @@ This writes back to an Oracle Database:
 
 To add or delete multiple values, repeat the keys. For example:
 
-    POST ?id=10&x=1&y=2 & id=11&x=3&y=4   # Inserts {id:10, x:1, y:2} & {id:11, x:3, y:4}
-    DELETE ?id=10 & id=11                 # Delete id=10 & id=11
+```text
+POST ?id=10&x=1&y=2 & id=11&x=3&y=4   # Inserts {id:10, x:1, y:2} & {id:11, x:3, y:4}
+DELETE ?id=10 & id=11                 # Delete id=10 & id=11
+```
 
 Note: PUT currently works with single values. In the future, it may update
 multiple rows based on multiple ID selections.
@@ -1193,14 +1213,18 @@ If you are using [multiple datasets](#formhandler-multiple-datasets), add an
 In the URL query, prefix by the relevant dataset name. For example this updates
 only the `continents:` dataset:
 
-    POST ?continents:country=India&continents:population=123123232
-    PUT ?continents:country=India&continents:population=123123232
-    DELETE ?continents:country=India
+```text
+POST ?continents:country=India&continents:population=123123232
+PUT ?continents:country=India&continents:population=123123232
+DELETE ?continents:country=India
+```
 
 All operators set a a `Count-<datasetname>` HTTP header that indicates the number
 of rows matched by the query:
 
-    Count-Data: <n>     # Number of rows matched for data: dataset
+```text
+Count-Data: <n>     # Number of rows matched for data: dataset
+```
 
 If [redirect:](../config/#redirection) is specified, the browser is redirected to
 that URL (only for POST, PUT or DELETE, not GET requests). If no redirect is
@@ -1233,11 +1257,79 @@ We need to specify a primary key. This YAML config specifies `ID` as the primary
 When the HTML `form` is submitted, field names map to column names in the data.
 For example, `ID`, `Name` and `Text` are columns in the flags table.
 
-You can insert multiple rows. The number of rows inserted is returned in the
+`POST` returns a JSON object like this:
+
+```json
+{
+  "data": {
+    "filters": [],
+    "ignored": [],
+    "inserted": [
+      {
+        "id": 1
+      }
+    ]
+  }
+}
+```
+
+The keys of the `data` object returned by `POST` are:
+
+- `filters`: Applied filters as `[(col, op, val), ...]`. For `POST`, this will always be `[]`
+- `ignored`: Ignored columns as `[(col, vals), (col, vals), ...]`. Defaults to `[]`
+- `inserted`: **v1.66** List of inserted records, with the primary keys populated in each record.
+  Note: This works only if **one record is inserted** in the current release. Future releases will
+  support fetching IDs for multiple inserts.
+
+When you insert multiple rows, the number of rows inserted is returned in the
 `Count-<dataset>` header.
+
+If the table does not exist, Gramex automatically creates the table. It guesses the column types
+based on the values in the first POST. To specify column types explicitly, use
+[`columns:`](#formhandler-columns).
 
 The form can also be submitted via AJAX. See [FormHandler PUT](#formhandler-put)
 for an AJAX example.
+
+### FormHandler columns
+
+A [POST request](#formhandler-post) automatically creates a table (if required) when inserting a
+row. But the table structure may not be what you intended.
+
+For example, if the *first* user POSTs:
+
+- `?password=123`, the password column becomes an integer, not string
+- `?age=`, the age column becomes a string, not an integer
+
+Use [`Columns:`](../../formhandler/#formhandler-columns) to define column type when creating
+tables. For example:
+
+```yaml
+    handler: FormHandler
+    kwargs:
+      url: 'postgresql://$USER:$PASS@server/db'       # Pick any database
+      table: profile              # Pick any table name to create
+      id: id                      # The "id" column is primary key
+      # Define your table's columns
+      columns:
+        user: TEXT                # Use any SQL type allowed by DB
+        password: VARCHAR(40)     # including customizations
+        age:
+          type: INTEGER           # You can also specify as a dict
+          nullable: true          # Allows NULL values for this field
+          default: 0              # that default to zero
+        id:
+          type: INTEGER           # Define an integer ID column
+          primary_key: true       # as a primary key
+          autoincrement: true     # that auto-increments
+```
+
+If the `profile` table already has any of these columns, it is left unaltered. Else, the missing
+columns are *added*. No columns are removed.
+
+This uses [gramex.data.alter()](https://learn.gramener.com/gramex/gramex.html#gramex.data.alter)
+behind the scenes to add columns.
+
 
 ### FormHandler PUT
 

@@ -1204,6 +1204,56 @@
       "What next": -1
     }
   },
+  "1.66": {
+    "": {
+      "Gramex 1.66 release notes": -1
+    },
+    "auto-compile-sass-files": {
+      "Auto-compile SASS files": -1
+    },
+    "auto-create-table-schema": {
+      "Auto-create table schema": -1
+    },
+    "bootstrap-themes": {
+      "Bootstrap themes": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "cache-database-queries": {
+      "Cache database queries": -1
+    },
+    "credits": {
+      "Credits": -1
+    },
+    "fetch-inserted-rows": {
+      "Fetch inserted rows": -1
+    },
+    "git-lfs-support": {
+      "Git LFS support": -1
+    },
+    "gramex-ui-components-in-sass": {
+      "Gramex UI components in SASS": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "other-improvements": {
+      "Other improvements": -1
+    },
+    "restrict-http-methods-on-any-handler": {
+      "Restrict HTTP methods on any handler": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "transform-multiple-file-types": {
+      "Transform multiple file types": -1
+    },
+    "what-next": {
+      "What next": -1
+    }
+  },
   "about": {
     "": {}
   },
@@ -1465,6 +1515,9 @@
     },
     "session-expiry": {
       "Session expiry": -1
+    },
+    "session-security": {
+      "Session security": -1
     },
     "sessions": {
       "Sessions": -1
@@ -1730,6 +1783,9 @@
     "handler-logging": {
       "Handler logging": -1
     },
+    "http-methods": {
+      "HTTP Methods": -1
+    },
     "if-gramex-is-installed-in-a-certain-location-eg-c": {
       "If Gramex is installed in a certain location, e.g. C:": -1
     },
@@ -1801,6 +1857,18 @@
     "": {
       "Contributing to Gramex": -1
     },
+    "deploy-docs-and-code-coverage-on-httpsgramenercomgramex-update": {
+      "Deploy docs and code coverage on https://gramener.com/gramex-update/": -1
+    },
+    "deploy-on-conda-httpsanacondaorggramenergramex": {
+      "Deploy on conda: https://anaconda.org/gramener/gramex": -1
+    },
+    "deploy-on-docker-httpshubdockercomrgramenergramex": {
+      "Deploy on docker: https://hub.docker.com/r/gramener/gramex/": -1
+    },
+    "deploy-on-pypi-httpspypipythonorgpypigramex": {
+      "Deploy on pypi: https://pypi.python.org/pypi/gramex": -1
+    },
     "if-this-fails-add-p-password": {
       "If this fails, add '-p PASSWORD'": -1
     },
@@ -1813,6 +1881,9 @@
       "Release Gramex Enterprise Edition": -1
     },
     "releasing-gramex": {},
+    "run-this-on-windows-and-linux": {
+      "Run this on Windows AND Linux": -1
+    },
     "set-up-gramex": {
       "Set up Gramex": -1
     },
@@ -1990,8 +2061,9 @@
     "deployment-checklist": {
       "Deployment checklist": -1
     },
-    "deployment-variables": {
-      "Deployment variables": -1
+    "deployment-variables": {},
+    "deployyaml": {
+      "deploy.yaml": -1
     },
     "duplicate-key": {
       "Duplicate key": -1
@@ -2073,6 +2145,9 @@
     },
     "shared-deployment": {
       "Shared deployment": -1
+    },
+    "testing": {
+      "Testing": -1
     },
     "using-relative-urls": {
       "Using relative URLs": -1
@@ -2367,6 +2442,9 @@
     "redirecting-files": {
       "Redirecting files": -1
     },
+    "sass": {
+      "SASS": -1
+    },
     "sub-templates": {
       "Sub-templates": -1
     },
@@ -2412,6 +2490,9 @@
     },
     "formhandler-charts": {
       "FormHandler charts": -1
+    },
+    "formhandler-columns": {
+      "FormHandler columns": -1
     },
     "formhandler-defaults": {
       "FormHandler defaults": -1
@@ -2627,12 +2708,8 @@
     "": {
       "Gramex init": -1
     },
-    "gramex-init-tracker": {
-      "Gramex init tracker": -1
-    },
-    "gramex-init-usage": {
-      "Gramex init usage": -1
-    }
+    "gramex-init-tracker": {},
+    "gramex-init-usage": {}
   },
   "install": {
     "": {
@@ -2824,8 +2901,9 @@
     "classifier": {
       "Classifier": -1
     },
-    "construct-the-model": {
-      "Construct the model": -1
+    "construct-the-model": {},
+    "construct-the-model-the-model-only-accepts-a-path-where-it-should-be-saved": {
+      "Construct the model. The model only accepts a path where it should be saved": -1
     },
     "example-usage": {
       "Example Usage": -1
@@ -2844,6 +2922,9 @@
     },
     "result-should-be-setosa": {
       "result should be ['setosa']": -1
+    },
+    "train-the-model": {
+      "Train the model": -1
     }
   },
   "newsletter": {
@@ -3509,6 +3590,17 @@
     },
     "twitter-transforms": {
       "Twitter transforms": -1
+    }
+  },
+  "uiapp": {
+    "": {
+      "UI Components": -1
+    },
+    "import": {
+      "Import": -1
+    },
+    "styles": {
+      "Styles": -1
     }
   },
   "uploadhandler": {

@@ -117,9 +117,9 @@ Now, you can add this configuration to your `url:` section:
 
 ```yaml
 url:                # Do not include this line if you already have it
-    hello:                        # a name you want to give to the handler
-        pattern: /hello           # URL pattern
-        handler: hello.Hello      # class that implements the handler
+  hello:                        # a name you want to give to the handler
+    pattern: /hello           # URL pattern
+    handler: hello.Hello      # class that implements the handler
 ```
 
 This renders "hello world" at the URL [/hello](hello).
@@ -132,8 +132,8 @@ The `kwargs:` section of `url:` accepts a `headers:` key that sets custom HTTP
 headers. For example:
 
 ```yaml
-kwargs:
-    headers:
+    kwargs:
+      headers:
         Content-Type: text/plain            # Display as plain text
         Access-Control-Allow-Origin: '*'    # Allow CORS (all servers can access via AJAX)
         X-XSS-Protection: 1; mode=block     # Disable XSS scripting on old browsers
@@ -147,14 +147,30 @@ To set headers on **all** pages, use `handlers.BaseHandler.headers`. For example
 
 ```yaml
 handlers:
-    BaseHandler:
-        headers:
-            # https://www.veracode.com/blog/2014/03/guidelines-for-setting-security-headers
-            X-XSS-Protection: 1; mode=block     # Enable XSS protection
-            X-Content-Type-Options: nosniff     # Browsers should not perform MIME-type sniffing
-            X-Frame-Options: SAMEORIGIN         # Don't place in an iframe from external site
-            Server: false                       # Don't reveal the server
+  BaseHandler:
+    headers:
+      # https://www.veracode.com/blog/2014/03/guidelines-for-setting-security-headers
+      X-XSS-Protection: 1; mode=block     # Enable XSS protection
+      X-Content-Type-Options: nosniff     # Browsers should not perform MIME-type sniffing
+      X-Frame-Options: SAMEORIGIN         # Don't place in an iframe from external site
+      Server: false                       # Don't reveal the server
 ```
+
+## HTTP Methods
+
+The `kwargs:` section of `url:` accepts a `methods:` a list of allowed HTTP methods. For example:
+
+```yaml
+    kwargs:
+      # Use any one of these lines
+      methods: GET            # Only allows the GET method
+      methods: GET, POST      # Only allow GET/POST, not PUT, DELETE, etc
+      methods: [GET, POST]    # Same as above
+      methods: GET, POST, PUT, DELETE, OPTIONS, PATCH     # Allow all methods
+```
+
+If the user requests a non-allowed method, or the underlying handler does not support it, Gramex
+raises a `HTTP 405: Method not allowed` response.
 
 
 ## Logging
@@ -281,7 +297,7 @@ log:
 
 For the list of valid keys, see [request logging](#request-logging).
 
---------
+---
 
 Until **v1.22**, the `log:` section of auth handlers  could be configured to
 log events like this:

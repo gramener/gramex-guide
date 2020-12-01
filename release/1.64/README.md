@@ -216,5 +216,5 @@ The Gramex code base has:
 
 - 17,712 lines of Python (82 more than 1.63)
 - 1,709 lines JavaScript (17 more than 1.63)
-- 11087 lines of test code (140 more than 1.63)
+- 11,087 lines of test code (140 more than 1.63)
 - 89% test coverage (same as 1.62)

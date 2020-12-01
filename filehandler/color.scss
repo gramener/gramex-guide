@@ -1,2 +1,7 @@
+/*!
+  The body background color is a lighten()-ed version of $color,
+  which can be set via ?color=
+
+*/
 $color: red !default;
 body { background-color: lighten($color, 40%); }

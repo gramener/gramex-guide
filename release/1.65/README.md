@@ -224,8 +224,8 @@ Since [FormHandler](../../formhandler/) supports ElasticSearch (after running
 The Gramex code base has:
 
 - 18,025 lines of Python (313 more than 1.64)
-- 1,709 lines JavaScript (same as  1.64)
-- 11087 lines of test code (289 more than 1.64)
+- 1,709 lines JavaScript (same as 1.64)
+- 11,087 lines of test code (289 more than 1.64)
 - 89% test coverage (same as 1.64)
 
 ## Credits

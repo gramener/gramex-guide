@@ -324,7 +324,7 @@ url:
       template: '*'               # Same as template: true
 ```
 
-::: example href=template source=https://github.com/gramener/gramex-guide/blob/master/filehandler/template.html
+::: example href=template source="https://github.com/gramener/gramex-guide/blob/master/filehandler/template.html"
     Template example
 
 ### Template syntax
@@ -332,7 +332,6 @@ url:
 Templates can use all variables in the [template syntax][template-syntax]. This includes:
 
 - `handler`: the current request handler object
-  -
   - all [Tornado handler attributes](../handlers/#tornado-handler-attributes), like
     `handler.request.uri`, `handler.current_user`, etc.
   - ... and [BaseHandler attributes](../handlers/#basehandler-attributes), like
@@ -413,7 +412,7 @@ body { background-color: lighten($color, 40%); }
 body{background-color:#fcc}
 ```
 
-::: example href=color.scss source=https://github.com/gramener/gramex-guide/blob/master/filehandler/color.scss
+::: example href=color.scss source="https://github.com/gramener/gramex-guide/blob/master/filehandler/color.scss"
     See color.scss
 
 To enable this in your FileHandler, add:
@@ -427,7 +426,7 @@ kwargs:
 URL query parameters are automatically passed as variables to the SASS file. For example,
 `color.scss?color=green` sets `$color: green`.
 
-::: example href=color.scss?color=blue source=https://github.com/gramener/gramex-guide/blob/master/filehandler/color.scss
+::: example href=color.scss?color=blue source="https://github.com/gramener/gramex-guide/blob/master/filehandler/color.scss"
     See `color.scss?color=blue`
 
 You can use this to allow users to customize your theme.

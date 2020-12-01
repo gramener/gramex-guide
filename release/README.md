@@ -5,6 +5,7 @@ prefix: Release
 
 Gramex now releases feature updates on the 1st of every month, and patch updates as required.
 
+- [v1.66.0: Auto-create table schema, fetch inserted rows, and UI themes](1.66/) <small>1 Dec 2020</small>
 - [v1.65.0: Excel table support, functions as REST APIs, logging via ElasticSearch.](1.65/) <small>1 Nov 2020</small>
 - [v1.64.0: Multiple apps per server, multiple logins per app, and secure and offline deployment](1.64/) <small>1 Oct 2020</small>
 - [v1.63.2: Internal release](1.63.2/) <small>22 Sep 2020</small>

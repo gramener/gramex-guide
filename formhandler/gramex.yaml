@@ -214,6 +214,26 @@ url:
       kwargs:
         url: $YAMLPATH/
 
+    formhandler-schema:
+      pattern: /$YAMLURL/schema
+      handler: FormHandler
+      kwargs:
+        url: sqlite:///$YAMLPATH/database.sqlite3
+        table: profile
+        id: id
+        columns:
+          user: TEXT                # Use any SQL type allowed by DB
+          password: VARCHAR(40)     # including customzations
+          age:
+            type: INTEGER           # You can also specify as a dict
+            nullable: true          # Allows NULL values for this field
+            default: 0              # that default to zero
+          id:
+            type: INTEGER           # Define an integer ID column
+            primary_key: true       # as a primary key
+            autoincrement: true     # that auto-increments
+
+
 schedule:
   data-setup-flags-db:
     function: pandas.read_csv(r'$YAMLPATH/flags.csv').to_sql(

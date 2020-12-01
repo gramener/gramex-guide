@@ -960,7 +960,7 @@ Different instances of Gramex may flush their logs at different times. Do not
 expect log files to be in order. For example, in this [request log](../config/#request-logging),
 the 2nd entry has a timestamp greater than the third:
 
-```
+```text
 1519100063656,220.227.50.9,user1@masked.com,304,1,GET,/images/bookmark.png,
 1519100063680,106.209.240.105,user2@masked.com,304,55,GET,/bookmark_settings?mode=display,
 1519100063678,220.227.50.9,user3@masked.com,304,1,GET,/images/filters-toggler.png,
@@ -1037,7 +1037,7 @@ Here are common errors from the Gramex logs:
 
 For example:
 
-```
+```text
 ERROR 21-May 11:41:45 __init__ Port 8001 is busy. Use --listen.port= for a different port
 ```
 
@@ -1050,7 +1050,7 @@ Or start Gramex on a different port using `gramex --listen.port=<new-port>`
 
 Here is a typical traceback:
 
-```
+```text
 Traceback (most recent call last):
   File "/home/ubuntu/gramex/gramex/handlers/capturehandler.py", line 111, in _start
     self._validate_server(r)
@@ -1068,7 +1068,7 @@ This indicates that the web application running at port 9900 is not ChromeCaptur
 
 Here is an example:
 
-```
+```text
 ERROR 12-May 10:38:24 transforms url:box_data: Cannot load function views.get_box_data
 ```
 
@@ -1086,7 +1086,7 @@ can locate this under the `box_data:` under `url:`. This can happen for 3 reason
 
 Here is an example:
 
-```
+```text
 WARNING 03-Oct 17:17:44 config Duplicate key: url.login/google
 ```
 

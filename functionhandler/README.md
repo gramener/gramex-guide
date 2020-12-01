@@ -33,7 +33,7 @@ def total(*items):
     return sum(float(item) for item in items)
 ```
 
-::: example href=total source=https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py
+::: example href=total source="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py"
     See `total`
 
 To see all configurations used in this page, see [gramex.yaml](gramex.yaml.source):
@@ -107,7 +107,7 @@ def add(handler):
     return sum(args.x)
 ```
 
-::: example href="add?x=10&amp;x=20&amp;x=30" source=https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py
+::: example href="add?x=10&amp;x=20&amp;x=30" source="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py"
     Try `add?x=10&amp;x=20&amp;x=30`
 
 ## Function arguments from URL
@@ -143,7 +143,7 @@ url:
 Now, [`combinations?n=10&k=4`](combinations?n=10&k=4) returns 210, the number of ways to pick 4
 items from 10 ignoring order)
 
-::: example href="combinations?n=10&amp;k=4" source=https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py
+::: example href="combinations?n=10&amp;k=4" source="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py"
     Try `combinations?n=10&amp;k=4`
 
 `gramex.transforms.handler` calculates exposes all function arguments into a REST API. If you
@@ -164,7 +164,7 @@ def multiply(v: List[int]):
 ... will get `v` as a list of int. In [`multiply?v=10&v=20&v=30`](multiply?v=10&v=20&v=30), `v` is
 passed as a list `v = [10, 20, 30]` to return 10 x 20 x 30 = 6,000.
 
-::: example href="multiply?v=10&amp;v=20&amp;v=30" source=https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py
+::: example href="multiply?v=10&amp;v=20&amp;v=30" source="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py"
     Try `multiply?v=10&amp;v=20&amp;v=30`
 
 ## URL path arguments
@@ -223,7 +223,7 @@ Sample output:
 All URL query parameters are stored in ``handler.args`` as a dict with Unicode
 keys and list values. For example:
 
-```
+```text
 ?x=1        => {'x': ['1']}
 ?x=1&x=2    => {'x': ['1', '2']}
 ?x=1&y=2    => {'x': ['1'], 'y': ['2']}
@@ -350,7 +350,7 @@ function can also yield a Future, which will be displayed as soon as it is
 resolved. (Yielded Futures will be rendered in the same order as they are
 yielded.)
 
-::: example href="slow?x=1&amp;x=2&amp;x=3" source=https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py
+::: example href="slow?x=1&amp;x=2&amp;x=3" source="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py"
     Trye `slow?x=1&amp;x=2&amp;x=3`
 
 ## Asynchronous functions
@@ -386,7 +386,7 @@ def urls(handler):
         yield future
 ```
 
-::: example href="fetch?x=0&amp;x=1&amp;x=2" source=https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py
+::: example href="fetch?x=0&amp;x=1&amp;x=2" source="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py"
     See `fetch?x=0&amp;x=1&amp;x=2`
 
 The simplest way to call *any blocking function* asynchronously is to use a
