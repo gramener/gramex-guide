@@ -25,6 +25,9 @@
         <img height="24" src="/{{ GUIDE_ROOT }}/gramex-logo.gif" alt="Gramex" class="mt-n2">
         <span class="h5 text-uppercase d-none d-md-inline">Guide</span>
       </a>
+      <form class="form-inline">
+        <input class="form-control form-control-sm my-2 mr-2 d-none d-sm-block" type="search" id="search" placeholder="Search topics" data-prefix="/{{ GUIDE_ROOT }}/" data-url="/{{ GUIDE_ROOT }}/search/searchindex.json">
+      </form>
       <a href="https://github.com/gramener/gramex/issues/new?labels=question&title={{ title }}" target="_blank"
         class="d-none d-md-block btn btn-success btn-sm font-weight-bold text-decoration-none">Ask a question</a>
     </div>
@@ -125,7 +128,7 @@
       {% raw body %}
 
       <footer class="border-top border-dark my-5">
-        <form class="feedback text-center">
+        <form class="feedback text-center" data-url="/{{ GUIDE_ROOT }}/feedback">
           <input type="hidden" name="page" value="{{ handler.request.path }}">
           <div class="py-3">
             <strong>Is this page helpful?</strong>
@@ -172,9 +175,7 @@
 
   <script src="/{{ GUIDE_ROOT }}/node_modules/clipboard/dist/clipboard.min.js"></script>
   <script src="/{{ GUIDE_ROOT }}/node_modules/anchor-js/anchor.min.js"></script>
-  <script>
-    var feedback_url = "/{{ GUIDE_ROOT }}/feedback"
-  </script>
-  <script src="/{{ GUIDE_ROOT }}/script.js?v=61"></script>
+  <script src="/{{ GUIDE_ROOT }}/node_modules/lunr/lunr.js"></script>
+  <script src="/{{ GUIDE_ROOT }}/script.js?v=62"></script>
 </body>
 </html>

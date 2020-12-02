@@ -1,3 +1,4 @@
+/* globals lunr */
 $(function () {
   // Sidebar menu: Highlight current page
   var url = location.origin + location.pathname
@@ -35,7 +36,7 @@ $(function () {
   }).on('submit', function (e) {
     e.preventDefault()
     $.ajax({
-      url: feedback_url,
+      url: $('.feedback').data('url'),
       method: 'POST',
       data: $('.feedback').serialize()
     })
@@ -81,9 +82,11 @@ $(function () {
   anchors.add()
 
   // Explicitly scroll selected element into view
-  var node = document.querySelector(location.hash)
-  if (node)
-    node.scrollIntoView()
+  if (location.hash) {
+    var node = document.querySelector(location.hash)
+    if (node)
+      node.scrollIntoView()
+  }
 
   // a.slide links to a PPTX file. Convert that into an iframe that displays the PPTX
   $('a.slide').each(function () {
@@ -100,6 +103,35 @@ $(function () {
           .insertAfter($this)
           .find('code')
           .text(source)
+      })
+  })
+
+  $('#search').each(function () {
+    var $search = $(this)
+    var prefix = $search.data('prefix') || ''
+    var $results = $('<div></div>').attr({
+      'id': 'searchresults',
+      'class': 'bg-white p-2 border',
+    }).insertAfter(this).hide()
+    $.ajax($search.data('url'))
+      .done(function (index) {
+        var idx = lunr.Index.load(index.index)
+        var docs = index.docs
+        $search
+          .on('input', function () {
+            var text = $(this).val().replace(/^\s+/, '').replace(/\s+$/, '')
+            if (text) {
+              var results = idx.search(text)
+              if (results.length)
+                $results.html(results.slice(0, 20).map(function (result) {
+                  var d = docs[result.ref]
+                  return '<div class="my-2"><a href="' + prefix + d.link + '">' + d.prefix + ' &raquo; ' + d.title + '</a></div>'
+                })).show()
+            } else {
+              $results.html('').hide()
+            }
+          })
+          .trigger('input')
       })
   })
 })

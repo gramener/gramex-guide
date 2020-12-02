@@ -4,16 +4,6 @@ classes: toc
 prefix: Guide
 ...
 
-<link rel="stylesheet" href="search/search.css?v=1">
-
-<input type="search" id="search" placeholder="Search topics" data-url="search/searchindex.json">
-[Index of topics](search/)
-<script src="node_modules/lunr/lunr.js"></script>
-<script src="search/search.js?v=a"></script>
-
-
-## Table of contents
-
 First, [install Gramex](install/). Then learn from these tutorials:
 
 - [Quickstart](tutorials/quickstart/)
@@ -88,7 +78,7 @@ First, [install Gramex](install/). Then learn from these tutorials:
 - [Link check](linkcheck/) tests if all links on the Gramex Guide are working
 - [Index of topics on the Gramex Guide](search/)
 
-### Deprecated
+## Deprecated
 
 - [DataHandler](datahandler/) - use [FormHandler](formhandler/) instead
 - [QueryHandler](queryhandler/) - use [FormHandler](formhandler/) instead
