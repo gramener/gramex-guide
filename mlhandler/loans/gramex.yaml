@@ -1,0 +1,11 @@
+url:
+  mlhandler/loans/model:
+    pattern: /$YAMLURL/model
+    handler: MLHandler
+    kwargs:
+      data:
+        url: sqlite:////$YAMLPATH/train.xlsx
+        table: data
+      model_class: ...
+      path: ...
+      xsrf_cookies: false

@@ -23,6 +23,12 @@ data-postman-var-1="99cd761eaee7b9102ad7"></div>
   }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
 </script>
 
+<div class="example">
+  <a class="example-demo" href="loans">Try a loan classification example</a>
+  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/mlhandler/loans/">Source</a>
+</div>
+
+
 [TOC]
 
 # Exposing Scikit-Learn Models

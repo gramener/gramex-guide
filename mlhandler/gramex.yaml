@@ -1,3 +1,8 @@
+import:
+  mlhandler-subdirs:
+    path: '*/gramex.yaml'              # Import gramex.yaml from immediate subdirs
+    namespace: [url, schedule, cache, import]
+
 url:
   mlhandler/model:
     pattern: /$YAMLURL/model
