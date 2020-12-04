@@ -3,9 +3,14 @@ deploy-gramener:
   only: [master, release, /^master-.*$/, /^release-.*$/]
   script:
     - 'ssh ubuntu@gramener.com "
-        cd /mnt/gramener/apps/v1/guide;
+        cd /mnt/gramener/apps/guide;
         git checkout -- .;
         git pull;
         export PATH=/mnt/gramener/anaconda3/bin:$PATH;
         gramex setup .;
       "'
+
+# To restart the server, run:
+#   cd /mnt/gramener/apps/guide
+#   pkill -f 9987
+#   nohup gramex --listen.port=9987 &

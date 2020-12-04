@@ -1,0 +1,14 @@
+{#
+::: example href="..." source="..."
+
+  href: link to example
+  target: optional target= attribute. Can be ignored or _blank. Opens href in new window
+  source: optional link to source code. Always opens in new window
+#}
+{% set target_attr = f'target="{target}" rel="noopener"' if target else '' %}
+<div class="example">
+  <a class="example-demo" href="{{ href }}" {% raw target_attr %}>{{ ctx.content }}</a>
+  {% if source %}
+    <a class="example-src" href="{{ source }}" {% raw target_attr %}>Source</a>
+  {% end %}
+</div>

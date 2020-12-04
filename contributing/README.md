@@ -126,6 +126,7 @@ Update the following and commit to `master` branch:
 - In gramex:
     - `gramex/release.json` -- update the version number
     - `gramex/apps.yaml` -- update the version number on the guide
+    - `gramex/apps/ui/package.json` -- update the version number
 - In [gramex-guide][gramex-guide]
     - `release/README.md` -- add release entry
     - `release/1.xx/README.md` -- add guide release notes. Run `make stats` for code size stats. Take coverage stats from Travis

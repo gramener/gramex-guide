@@ -2,7 +2,7 @@
 
 url:
   guide/uicomponents:
-    pattern: /$YAMLURL/
+    pattern: /$YAMLURL/index.html
     handler: FileHandler
     kwargs:
         path: $YAMLPATH/index.html

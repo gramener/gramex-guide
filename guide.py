@@ -12,13 +12,29 @@ import yaml
 from customblocks import CustomBlocksExtension
 
 
-def example_block(ctx, href: str, source: str):
-    return f'''
-<div class="example">
-  <a class="example-demo" href="{href}">{ctx.content}</a>
-  <a class="example-src" href="{source}">Source</a>
-</div>
-'''.strip()
+def markdown_block(tag, **defaults):
+    '''
+    Return a custom markdown block processor. For example:
+
+    ```python
+    markdown.Mardown(CustomBlocksExtension(generators={
+        'example': markdown_block('example', href='', source='', target='_blank')
+    }))
+    ```
+
+    handles any `example` custom block:
+
+    ::: example href="..." source="..." target="..."
+
+    It loads `_template/example.html` and renders with all custom block attributes. Specified
+    attrs (`href`, `source` and target in this example) are always passed, at least as `None`.
+    '''
+    def method(ctx, **kwargs):
+        for key, val in defaults.items():
+            kwargs.setdefault(key, val)
+        return gramex.cache.open(f'_template/{tag}.html', 'template', rel=True).generate(
+            ctx=ctx, **kwargs)
+    return method
 
 
 md = markdown.Markdown(extensions=[
@@ -29,7 +45,9 @@ md = markdown.Markdown(extensions=[
     'mdx_truly_sane_lists',
     'fenced_code',
     'toc',
-    CustomBlocksExtension(generators={'example': example_block}),
+    CustomBlocksExtension(generators={
+        'example': markdown_block('example', href='', source='', target='')
+    }),
 ], soutput_format='html5')
 # Create a cache for guide markdown content
 md_cache = cachetools.LRUCache(maxsize=5000000, getsizeof=len)
@@ -68,7 +86,7 @@ def markdown_template(content, handler):
     # TODO: Document why we need this
     if 'xsrf' in content:
         handler.xsrf_token
-    tmpl = gramex.cache.open('markdown.template.html', 'template', rel=True)
+    tmpl = gramex.cache.open('_template/markdown.html', 'template', rel=True)
     return tmpl.generate(**kwargs).decode('utf-8')
 
 
