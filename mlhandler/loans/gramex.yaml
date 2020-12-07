@@ -6,6 +6,9 @@ url:
       data: $YAMLPATH/train.xlsx
       # Train the model (if it doesn't exist) using these parameters
       model:
+        # See if a model exists here - if it does, ignore following params
+        # else train and save here.
+        path: $YAMLPATH/path/to/pkl
         class: ...
         target_col: TARGET
         include:

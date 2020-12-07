@@ -437,3 +437,21 @@ DELETE /mlhandler
 ```
 
 ToDo: Add details of incremental data posts, and how to delete it.
+
+
+```yaml
+
+url:
+        mlhandler:
+                pattern: /$YAMLURL/ml
+                handler: MLHandler
+                kwargs:
+                        data: $YAMLPATH/train.csv
+                        model:
+                                class: LogisticRegression
+                                exclude: [PassengerId, Ticket, Cabin, Name]
+                                target_col: Survived
+                                pipeline: true
+                                nums: [Age, Fare, SibSp, Parch]
+                                cats: [Pclass, Sex, Embarked]
+```
