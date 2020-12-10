@@ -31,7 +31,6 @@ url:
         handler: ProxyHandler
         kwargs:
             url: https://translation.googleapis.com/language/translate/v2
-            auth: true
             default:
               # https://cloud.google.com/translate/docs/quickstart
               key: $GOOGLE_API_KEY
