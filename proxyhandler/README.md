@@ -10,16 +10,19 @@ type: microservice
 [TOC]
 
 [ProxyHandler][proxyhandler] passes requests to another URL and returns its
-response. Here are some reasons to use it:
+response. You can use it to:
 
-- Github provides a REST API, but this cannot be accessed from the browser.
-  ProxyHandler mirrors the Github API for use from the browser
-- Google, Facebook, etc provide a REST API that require authentication.
-  ProxyHandler lets users logged into Gramex use these APIs from the browser
-  without needing to pass an API key. The API key is part of the application
-- We have an R-Shiny app that is open to all. We want only users of the Gramex
-  application to access it. ProxyHandler proxies the app and allows only
-  authenticated users to access it.
+1. **Proxy APIs**.
+    - Google, Facebook, etc provide a REST API that require authentication.
+      ProxyHandler lets users logged into Gramex use these APIs from the browser
+      without needing to pass an API key. The API key is part of the application
+    - Github provides a REST API, but this cannot be accessed from the browser.
+      ProxyHandler can mirror the Github API for use from the browser
+2. **Proxy sites**.
+    - If you want to restrict an app, e.g. written in R-Shiny app, only to authorized users,
+      ProxyHandler can proxy it and allow only authorized users.
+    - If you want to embed an existing dashboard, say from Tableau or Power BI, in your page, you can
+      use ProxyHandler to proxy the page.
 
 For example:
 
@@ -213,7 +216,7 @@ this JSON content analyzes the entities:
 }
 ```
 
-<button class="post-button" data-href="googlelanguage/v1/documents:analyzeEntities" data-target="#entity-result" data-body='{
+<button class="post-button btn btn-primary" data-href="googlelanguage/v1/documents:analyzeEntities" data-target="#entity-result" data-body='{
     "document": {
         "type": "PLAIN_TEXT",
         "language": "en",
@@ -221,7 +224,7 @@ this JSON content analyzes the entities:
     },
     "encodingType": "UTF8"}'>Analyze the entities</button>
 
-<div class="codehilite"><pre>Click the button above to see the result</pre></div>
+<div class="codehilite"><pre id="entity-result">Click the button above to see the result</pre></div>
 
 
 To analyze the sentiment of text, send a POST request to
@@ -238,7 +241,7 @@ To analyze the sentiment of text, send a POST request to
 }
 ```
 
-<button class="post-button" data-href="googlelanguage/v1/documents:analyzeSentiment" data-target="#sentiment-result" data-body='{
+<button class="post-button btn btn-primary" data-href="googlelanguage/v1/documents:analyzeSentiment" data-target="#sentiment-result" data-body='{
     "document": {
         "type": "PLAIN_TEXT",
         "language": "en",
@@ -246,7 +249,7 @@ To analyze the sentiment of text, send a POST request to
     },
     "encodingType": "UTF8"}'>Analyze the sentiment</button>
 
-<div class="codehilite"><pre>Click the button above to see the result</pre></div>
+<div class="codehilite"><pre id="sentiment-result">Click the button above to see the result</pre></div>
 
 
 ## Facebook ProxyHandler
@@ -277,32 +280,37 @@ Once logged in, you can:
 - [Access your photos](facebook/me/photos)
 
 
-## Reverse ProxyHandler
+## Proxy sites
 
-This configuration mirrors <https://gramener.com/demo/> at [demo/](demo/), but
+This configuration mirrors <https://gramener.com/gramex/> at [gramex/](gramex/), but
 only allows authenticated users.
 
 ```yaml
 url:
     proxyhandler/gramener.com:
-        pattern: /$YAMLURL/(demo|uistatic|node_modules|bowerlib)/(.*)
+        pattern: /$YAMLURL/(gramex/.*|ui/.*|node_modules/.*|style.css|common.js|img-2019|)
         handler: ProxyHandler
         kwargs:
-            url: https://gramener.com/{0}/{1}
+            url: https://gramener.com/{0}
             auth: true
         cache:
             expiry: {duration: 300}
 ```
 
-All requests to the URLs demo, uistatic, node_modules, bowerlib are redirected
+All requests to the URLs gramex/*, ui/*, node_modules/*, etc are redirected
 to `gramener.com/` - but only if the user is logged in. This lets us expose
 internal applications to users who are logged in via Gramex.
 
 Further, it caches the response for 300s (5 min) -- making this an authenticated
 caching reverse proxy.
 
+::: example href=gramex/ source="https://github.com/gramener/gramex-guide/blob/master/proxyhandler/gramex.yaml"
+    Proxied Gramex page
 
-<script src="proxyhandler.js?v=16"></script>
+**NOTE**: the page won't display perfectly unless all URLs are fully mapped.
+
+
+<script src="proxyhandler.js"></script>
 
 [proxyhandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.ProxyHandler
 [xsrf]: ../filehandler/#xsrf

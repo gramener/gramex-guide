@@ -61,10 +61,10 @@ url:
               key: $GOOGLE_API_KEY
 
     proxyhandler/gramener.com:
-        pattern: /$YAMLURL/(demo|uistatic|node_modules|bowerlib)/(.*)
+        pattern: /$YAMLURL/(gramex/.*|ui/.*|node_modules/.*|style.css|common.js|img-2019)
         handler: ProxyHandler
         kwargs:
-            url: https://gramener.com/{0}/{1}
+            url: https://gramener.com/{0}
             auth: true
         cache:
             expiry: {duration: 300}
