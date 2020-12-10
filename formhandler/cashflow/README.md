@@ -12,6 +12,10 @@ generally has a single Excel sheet with multiple sections:
 
 We'll use [FormHandler](../) to expose the data in these sheets as simple charts.
 
+<div class="ratio ratio-16x9">
+  <iframe src="https://www.youtube.com/embed/R07qHe5dUa8" allowfullscreen></iframe>
+</div>
+
 ## Expose Excel data
 
 Download the dataset [cashflow.xlsx](cashflow.xlsx).

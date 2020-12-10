@@ -194,6 +194,28 @@ table tbody td { border-bottom: 1px solid #eee; }
 }
 
 
+// Ratio wrappers future-compatible with Bootstrap 5.0
+// https://getbootstrap.com/docs/5.0/helpers/ratio/#aspect-ratios
+.ratio {
+  position: relative;
+  width: 100%;
+}
+.ratio::before {
+  display: block;
+  padding-top: var(--aspect-ratio);
+  content: "";
+}
+.ratio>* {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.ratio-16x9 {
+  --aspect-ratio: calc(9 / 16 * 100%);
+}
+
 /* Search component */
 #search {
   width: 100%;

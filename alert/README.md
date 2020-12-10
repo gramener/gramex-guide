@@ -9,7 +9,9 @@ type: library
 
 [TOC]
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/RA5bxvsm8a0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<div class="ratio ratio-16x9">
+  <iframe src="https://www.youtube.com/embed/RA5bxvsm8a0" allowfullscreen></iframe>
+</div>
 
 ## Alert setup
 
