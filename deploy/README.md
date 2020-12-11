@@ -284,6 +284,55 @@ See [deploy.yaml][deploy-yaml] to understand the configurations.
 [zap]: https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project
 [deploy-yaml]: https://github.com/gramener/gramex/blob/master/gramex/deploy.yaml
 
+### Testing errors
+
+#### nginx 301 moved permanently
+Security auditing tests might report revealing the server (nginx) as an error when HTTP requests are redirected to HTTPS.
+
+This can be avoided by using the below configuration:
+
+```nginx
+server {
+  listen 80;
+  # below line will serve error.html for 301 and 302 HTTP status codes
+  error_page 301 302 /error.html;
+  location = /error.html{
+    root /var/www/html;
+    internal;
+  }
+  location / {
+    return 301 https://$host$request_uri;
+  }
+  server_name 'servername here';
+}
+```
+
+#### Enable strict transport security
+
+HSTS security header ensures man-in-the-middle attacks are prevented. This can be enabled in nginx as follows:
+
+```nginx
+add_header Strict-Transport-Security max-age=31536000
+```
+
+#### TRACE method reveals server name
+Security audit teams change the method type from GET or POST to TRACE and report the leakage of server name (nginx).
+
+We could configure nginx to send a different server name with below configuration:
+
+```nginx
+  server_tokens off;
+  more_set_headers 'Server: custom_name';
+```
+
+To make this work, install `nginx-extras` on the server. For Ubuntu machines, this can be done as below:
+
+```bash
+sudo apt-get install nginx-extras
+```
+
+Restart nginx to update its configuration.
+
 ## Relative URL mapping
 
 Your app may be running at `http://localhost:9988/` on your system, but will be
