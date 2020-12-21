@@ -25,20 +25,21 @@ glob('*/*.md', { cwd: root }, function (err, files) {
       desc: content.attributes.desc || 'desc',
       icon: content.attributes.icon || 'iconpath',
       views: content.attributes.views || 0,
-      by: content.attributes.by || 'TeamGramener'
+      by: content.attributes.by || 'TeamGramener',
+      deprecated: content.attributes.deprecated || false
     }
     var body = []
-    tokens.forEach(function (token) {
-      if (token.type == 'heading') {
-        add_doc(title, prefix, body, file)
-        add_meta(title, metadata, file)
-        title = token.text
-        body = []
-      } else if (token.text) {
-        body.push(token.text)
-      }
-    })
     if (title) {
+      tokens.forEach(function (token) {
+        if (token.type == 'heading') {
+          add_doc(title, prefix, body, file)
+          add_meta(title, metadata, file)
+          title = token.text
+          body = []
+        } else if (token.text) {
+          body.push(token.text)
+        }
+      })
       add_doc(title, prefix, body, file)
       add_meta(title, metadata, file)
     }

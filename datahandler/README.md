@@ -1,6 +1,7 @@
 ---
 title: DataHandler connects to data
 prefix: DataHandler
+deprecated: True
 ...
 
 From **v1.23** DataHandler is deprecated. Use [FormHandler](../formhandler/).

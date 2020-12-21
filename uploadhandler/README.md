@@ -1,6 +1,7 @@
 ---
 title: UploadHandler uploads files
 prefix: UploadHandler
+deprecated: True
 ...
 
 [TOC]

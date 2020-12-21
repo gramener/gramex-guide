@@ -1,6 +1,7 @@
 ---
 title: QueryHandler runs SQL queries
 prefix: QueryHandler
+deprecated: True
 ...
 
 From **v1.23** QueryHandler is deprecated. Use [FormHandler](../formhandler/).

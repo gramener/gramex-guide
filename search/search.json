@@ -1857,8 +1857,9 @@
     "": {
       "Contributing to Gramex": -1
     },
-    "deploy-docs-and-code-coverage-on-httpsgramenercomgramex-update": {
-      "Deploy docs and code coverage on https://gramener.com/gramex-update/": -1
+    "deploy-docs-and-code-coverage-on-httpsgramenercomgramex-update": {},
+    "deploy-docs-on-httpslearngramenercomgramex": {
+      "Deploy docs on https://learn.gramener.com/gramex/": -1
     },
     "deploy-on-conda-httpsanacondaorggramenergramex": {
       "Deploy on conda: https://anaconda.org/gramener/gramex": -1
@@ -2633,6 +2634,47 @@
       "URL path arguments": -1
     }
   },
+  "g1": {
+    "change-url-state": {
+      "Change URL state": -1
+    },
+    "components": {
+      "Components": -1
+    },
+    "g1": {
+      "g1": -1
+    },
+    "installation": {
+      "Installation": -1
+    },
+    "interactions": {
+      "Interactions": -1
+    },
+    "libraries": {
+      "Libraries": -1
+    },
+    "or": {
+      "... OR ...": -1
+    },
+    "parse-urls": {
+      "Parse URLs": -1
+    },
+    "render-templates": {
+      "Render templates": -1
+    },
+    "single-page-apps": {
+      "Single page apps": -1
+    },
+    "url-based-state": {
+      "URL-based state": -1
+    },
+    "utilities": {
+      "Utilities": -1
+    },
+    "virtual-dom": {
+      "Virtual DOM": -1
+    }
+  },
   "g1-dropdown": {
     "": {
       "Tutorial: Dropdown Menus & Search": -1
@@ -2824,6 +2866,11 @@
     },
     "using-languagetool-with-ajax": {
       "Using LanguageTool with Ajax": -1
+    }
+  },
+  "libraries": {
+    "": {
+      "UI Libraries": -1
     }
   },
   "license": {
@@ -3218,12 +3265,13 @@
     "google-translate": {
       "Google Translate": -1
     },
+    "proxy-sites": {
+      "Proxy sites": -1
+    },
     "proxyhandler-configuration": {
       "ProxyHandler Configuration": -1
     },
-    "reverse-proxyhandler": {
-      "Reverse ProxyHandler": -1
-    }
+    "reverse-proxyhandler": {}
   },
   "queryhandler": {
     "": {
@@ -3593,14 +3641,103 @@
     }
   },
   "uiapp": {
+    "": {},
+    "import": {},
+    "styles": {}
+  },
+  "uicomponents": {
     "": {
       "UI Components": -1
     },
-    "import": {
-      "Import": -1
+    "arrow": {
+      "Arrow": -1
     },
-    "styles": {
-      "Styles": -1
+    "backgrounds": {
+      "Backgrounds": -1
+    },
+    "borders": {
+      "Borders": -1
+    },
+    "color-states": {
+      "Color states": -1
+    },
+    "components": {
+      "Components": -1
+    },
+    "cursor-styles": {
+      "Cursor styles": -1
+    },
+    "custom-themes": {
+      "Custom themes": -1
+    },
+    "deprecated": {
+      "Deprecated": -1
+    },
+    "divider": {
+      "Divider": -1
+    },
+    "effects": {
+      "Effects": -1
+    },
+    "gradient": {
+      "Gradient": -1
+    },
+    "height": {
+      "Height": -1
+    },
+    "install": {
+      "Install": -1
+    },
+    "layouts": {
+      "Layouts": -1
+    },
+    "letter-spacing": {
+      "Letter spacing": -1
+    },
+    "libraries": {
+      "Libraries": -1
+    },
+    "line-height": {
+      "Line height": -1
+    },
+    "overlay": {
+      "Overlay": -1
+    },
+    "position": {
+      "Position": -1
+    },
+    "ripple": {
+      "Ripple": -1
+    },
+    "round-corners": {
+      "Round corners": -1
+    },
+    "shadow": {
+      "Shadow": -1
+    },
+    "tail": {
+      "Tail": -1
+    },
+    "text-alignment": {
+      "Text alignment": -1
+    },
+    "text-opacity": {
+      "Text opacity": -1
+    },
+    "text-sizes": {
+      "Text sizes": -1
+    },
+    "theme-colors": {
+      "Theme colors": -1
+    },
+    "themes": {
+      "Themes": -1
+    },
+    "typography": {
+      "Typography": -1
+    },
+    "z-index": {
+      "Z-Index": -1
     }
   },
   "uploadhandler": {
