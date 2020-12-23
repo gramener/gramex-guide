@@ -1,0 +1,14 @@
+url:
+  demo/iris:
+    pattern: /$YAMLURL/iris
+    handler: MLHandler
+    kwargs:
+      model:
+        path: $YAMLPATH/iris.pkl
+      xsrf_cookies: false
+  demo/titanic-bank:
+    pattern: /$YAMLURL/titanic
+    handler: MLHandler
+    kwargs:
+      template: $YAMLPATH/titanic.html
+      xsrf_cookies: false
