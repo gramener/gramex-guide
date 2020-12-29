@@ -8,7 +8,13 @@ url:
     pattern: /$YAMLURL/model
     handler: MLHandler
     kwargs:
-      path: $YAMLPATH/model.pkl
+      model:
+        path: $YAMLPATH/model.pkl
+        class: LogisticRegression
+        target_col: Survived
+        exclude: [PassengerId, Ticket, Cabin, Name]
+        cats: [Embarked, SibSp, Parch, Pclass, Sex]
+      data: $YAMLPATH/titanic.csv
       xsrf_cookies: false
   mlhandler/titanic:
     pattern: /$YAMLURL/titanic

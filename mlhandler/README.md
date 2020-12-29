@@ -7,31 +7,24 @@ by: TeamGramener
 type: microservice
 ...
 
-MLHandler exposes machine learning models as APIs that applications can use
-over a REST API. (From **v1.66**.)
+MLHandler exposes machine learning models that applications can use
+over a REST API. (From **v1.67**.) It allows users to:
 
-<div class="postman-run-button"
-data-postman-action="collection/import"
-data-postman-var-1="99cd761eaee7b9102ad7"></div>
-<script type="text/javascript">
-  (function (p,o,s,t,m,a,n) {
-    !p[s] && (p[s] = function () { (p[t] || (p[t] = [])).push(arguments); });
-    !o.getElementById(s+t) && o.getElementsByTagName("head")[0].appendChild((
-      (n = o.createElement("script")),
-      (n.id = s+t), (n.async = 1), (n.src = m), n
-    ));
-  }(window, document, "_pm", "PostmanRunObject", "https://run.pstmn.io/button.js"));
-</script>
-
-<div class="example">
-  <a class="example-demo" href="loans">Try a loan classification example</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/mlhandler/loans/">Source</a>
-</div>
-
+1. start with existing scikit-learn models, and evolve them.
+2. create models from scratch, and iterate upon them.
 
 [TOC]
 
-# Exposing Scikit-Learn Models
+  A. Exposing Existing Models
+  B. Creating New Models
+  C. Iterating Over Models
+  D. MLHandler Templates
+  E. API Reference
+  	- Model operations
+  	- Data operations
+
+
+# Exposing Existing Models
 
 Existing [scikit-learn models](https://scikit-learn.org/stable/modules/model_persistence.html) can be exposed with the MLHandler.
 
@@ -47,10 +40,11 @@ url:
     pattern: /$YAMLURL/model
     handler: MLHandler
     kwargs:
-      path: $YAMLPATH/model.pkl
+      model:
+        path: $YAMLPATH/model.pkl
 ```
 
-# Getting predictions
+## Getting predictions
 
 MLHandler allows getting predictions for a single data point through a simple
 GET request, as follows:
@@ -67,62 +61,62 @@ GET /model?Sex=1&Age=22&SibSp=1&Parch=0&Fare=7.25&pclass_1=0&pclass_2=0&pclass_3
   <div class="row">
       <div class="col">
     	  <label for="Sex">Sex:</label>
-    	  <input id="Sex" name="Sex" value="1" />
+    	  <input id="Sex" name="Sex" value="1" class="form-control"/>
       </div>
       <div class="col">
     	  <label for="Age">Age:</label>
-    	  <input id="Age" name="Age" value="22" />
+    	  <input id="Age" name="Age" value="22" class="form-control"/>
       </div>
   </div>
   <div class="row">
       <div class="col">
     	  <label for="SibSp">SibSp:</label>
-    	  <input id="SibSp" name="SibSp" value="1"/>
+    	  <input id="SibSp" name="SibSp" value="1" class="form-control"/>
       </div>
       <div class="col">
     	  <label for="Parch">Parch:</label>
-    	  <input id="Parch" name="Parch" value="0"/>
+    	  <input id="Parch" name="Parch" value="0" class="form-control"/>
       </div>
   </div>
   <div class="row">
       <div class="col">
     	  <label for="Fare">Fare:</label>
-    	  <input id="Fare" name="Fare" value="7.25"/>
+    	  <input id="Fare" name="Fare" value="7.25" class="form-control"/>
       </div>
       <div class="col">
     	  <label for="pclass_1">pclass_1:</label>
-    	  <input id="pclass_1" name="pclass_1" value="0"/>
+    	  <input id="pclass_1" name="pclass_1" value="0" class="form-control"/>
       </div>
   </div>
   <div class="row">
       <div class="col">
     	  <label for="pclass_2">pclass_2:</label>
-    	  <input id="pclass_2" name="pclass_2" value="0"/>
+    	  <input id="pclass_2" name="pclass_2" value="0" class="form-control"/>
       </div>
       <div class="col">
     	  <label for="pclass_3">pclass_3:</label>
-    	  <input id="pclass_3" name="pclass_3" value="1"/>
+    	  <input id="pclass_3" name="pclass_3" value="1" class="form-control"/>
       </div>
   </div>
   <div class="row">
       <div class="col">
     	  <label for="Embarked_C">Embarked_C:</label>
-    	  <input id="Embarked_C" name="Embarked_C" value="0"/>
+    	  <input id="Embarked_C" name="Embarked_C" value="0" class="form-control"/>
       </div>
       <div class="col">
     	  <label for="Embarked_Q">Embarked_Q:</label>
-    	  <input id="Embarked_Q" name="Embarked_Q" value="0"/>
+    	  <input id="Embarked_Q" name="Embarked_Q" value="0" class="form-control"/>
       </div>
   </div>
   <div class="row">
       <div class="col">
     	  <label for="Embarked_S">Embarked_S:</label>
-    	  <input id="Embarked_S" name="Embarked_S" value="1"/>
+    	  <input id="Embarked_S" name="Embarked_S" value="1" class="form-control"/>
       </div>
-      <div class="col">
+  </div>
+  <div class="row">
     	  <button type="submit" class="btn
-    	  btn-primary">Predict</button>
-      </div>
+    	  btn-primary form-control">Predict</button>
   </div>
 </form>
 <div id="single-result" class="bg-success"></div>
@@ -165,7 +159,7 @@ Note that the URL parameters in the GET query are expected to be fields in the
 training dataset.
 
 
-# Getting bulk predictions
+## Getting bulk predictions
 Predictions for a dataset (as against a single data point) can be retrieved by
 POSTing a JSON dataset in the request body. The Titanic dataset is available
 [here](titanic?_c=-Survived&_download=titanic_predict.json&_format=json) _without the target column_, which you can use to
@@ -218,7 +212,7 @@ POST -d @titanic_predict.json /mlhandler
   </div>
 </div>
 
-# Retraining the model
+## Retraining the model
 An existing model can be retrained by POSTing data and specifying a target
 column. To do so, we need to:
 
@@ -233,12 +227,6 @@ follows:
 POST -d @titanic.json /mlhandler?_retrain=1&_target_col=Survived
 # Output: {'score': 0.80}  - the model has 80% accuracy on the training data.
 ```
-<!--
-<div class="example">
-  <a class="example-demo" href="try/retrain">Try it out.</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/mlhandler/gramex.yaml">Source</a>
-</div>
--->
 <form id="retrain" method="POST" enctype="multipart/form-data">
   <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
   <input id="fileupload" type="file" name="file">
@@ -285,7 +273,7 @@ POST -d @titanic.json /mlhandler?_retrain=1&_target_col=Survived
   </div>
 </div>
 
-# See model parameters
+## See model parameters
 
 The parameters of a scikit-learn model can be obtained by specify the [`?_model`](model?_model) parameter,
 as follows:
@@ -378,7 +366,7 @@ GET /mlhandler?_model
 </div>
 -->
 
-# Change the model and modify its parameters
+## Change the model and modify its parameters
 
 An existing model can be replaced with a new one, and all its parameters can be
 modified with a PUT request. The following request replaces the logistic
@@ -428,7 +416,7 @@ PUT /mlhandler?class=RandomForestClassififer&n_estimators=10
 <div id="changeModelResult" class="overflow-auto" style="height: 100px"></div>
 
 
-# Delete a model
+## Delete a model
 To remove the serialized model from the disk and disable further operations, use
 a delete request as follows:
 
