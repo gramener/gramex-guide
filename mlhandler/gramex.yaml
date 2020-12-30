@@ -1,0 +1,29 @@
+import:
+  mlhandler-subdirs:
+    path: '*/gramex.yaml'              # Import gramex.yaml from immediate subdirs
+    namespace: [url, schedule, cache, import]
+
+url:
+  mlhandler/model:
+    pattern: /$YAMLURL/model
+    handler: MLHandler
+    kwargs:
+      model:
+        path: $YAMLPATH/model.pkl
+        class: LogisticRegression
+        target_col: Survived
+        exclude: [PassengerId, Ticket, Cabin, Name]
+        cats: [Embarked, SibSp, Parch, Pclass, Sex]
+      data: $YAMLPATH/titanic.csv
+      xsrf_cookies: false
+  mlhandler/titanic:
+    pattern: /$YAMLURL/titanic
+    handler: FormHandler
+    kwargs:
+      url: $YAMLPATH/titanic.csv
+  mlhandler/single:
+    pattern: /$YAMLURL/try/(.*)
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/try.html
+      template: true

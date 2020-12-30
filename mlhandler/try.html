@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>MLHandler Predictions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../../ui/dropzone/dist/min/dropzone.min.css">
+</head>
+
+<body>
+  <!-- TODO: Filter bars -->
+  <div class="container-fluid py-4">
+    {% if handler.path_args[0] == 'single' %}
+    <p>Change the URL parameters below to get a single prediction from a model trained on the Titanic dataset. </p>
+    <textarea id="single">Sex=1&Age=22&SibSp=1&Parch=0&Fare=7.25&pclass_1=0&pclass_2=0&pclass_3=0&Embarked_C=0&Embarked_Q=0&Embarked_S=1</textarea>
+    <button class="btn btn-primary">Predict</button>
+    {% elif handler.path_args[0] == 'bulkpredict' %}
+    <p>Drop a file below to get predictions for every row.</p>
+    <form id='bulkform' method="POST" enctype="multipart/form-data" action="../model">
+      <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
+      <input id="fileupload" type="file" name="file">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% elif handler.path_args[0] == 'retrain' %}
+    <p>Drop a file below to get predictions for every row.</p>
+    <form id='retrain' method="POST" enctype="multipart/form-data" action="../model?_retrain">
+      <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
+      <input id="fileupload" type="file" name="file">
+      <label for="traincol">Specify a target column:</label>
+      <input type="text" name="traincol" id="traincol" value="Survived">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    {% end %}
+    <div class="divider"></div>
+    <div class="result"></div>
+  </div><!-- .container-fluid -->
+
+  <script src="../../ui/jquery/dist/jquery.min.js"></script>
+  <script src="../../ui/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../ui/g1/dist/g1.min.js"></script>
+</body>
+<script>
+  const url = g1.url.parse(window.location)
+  $('#traincol').change(function(e) {
+    $('#retrain').attr('action', `../model?_retrain=1&target_col=${$(this).val()}`)
+  })
+  $(document).ready(function(e) {
+    $.ajax({
+      url: '../model?_cache=true',
+      method: 'DELETE',
+      success: console.log
+    })
+  })
+  $('.btn-primary').on('click', (e) => {
+    // e.preventDefault()
+    if (url.pathname.match(/single$/)) {
+      $.getJSON('../model?' + $('#single').text()).done((t) => $('.result').html(JSON.stringify(t)))
+    // } else if (url.pathname.match(/bulkpredict$/)) {
+    //   $.ajax({
+    //     url: '../model',
+    //     method: 'POST',
+    //     data: $('#bulkform').serializeArray(),
+    //     success: function(r) {
+    //       $('.result').html(r)
+    //     }
+    //   })
+    // }
+    }
+  })
+  // $('#fileupload').dropzone({
+  //   url: `../model`,
+  //   method: 'POST',
+  //   init: function() {
+  //     this.on('success', function(x, y) {
+  //       $('.result').html(JSON.stringify(y))
+  //     })
+  //   }
+  // })
+</script>
+
+</html>

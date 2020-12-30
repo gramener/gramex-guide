@@ -135,3 +135,57 @@ $(function () {
       })
   })
 })
+
+
+// MLHandler
+$('#mlhandler-single').on('submit', function(e) {
+  e.preventDefault();
+  let url = g1.url.parse('model')
+  $(this).serializeArray().forEach(function(item, index) {
+    let obj = {}
+    obj[item.name] = item.value
+    url.update(obj)
+  })
+  $.getJSON(url.toString()).done((e) => {$('#single-result').html(e)})
+})
+
+$('#bulkform').submit(function(e) {
+  e.preventDefault()
+  let fd = new FormData($(this)[0])
+  $.ajax({
+    url: 'model?_action=predict',
+    data: fd,
+    type: 'POST',
+    processData: false,
+    contentType: false,
+    success: function(r) {
+      $('#bulkresult').addClass('bg-success')
+      $('#bulkresult').html(r)
+    }
+  })
+})
+
+$('#retrain').submit(function(e) {
+  e.preventDefault()
+  let fd = new FormData($(this)[0])
+  let target_col = fd.get('_target_col')
+  fd.delete('_target_col')
+  $.ajax({
+    url: 'model?_action=retrain&target_col=' + encodeURIComponent(target_col),
+    data: fd,
+    type: 'POST',
+    processData: false,
+    contentType: false,
+    success: function(r) {
+      $('#retrainresult').addClass('bg-success')
+      $('#retrainresult').html(r)
+    }
+  })
+})
+
+$('#modelparams').click(function() {
+  $.get('model?_model').done(function(e) {
+    $('#paramresult').addClass('bg-success')
+    $('#paramresult').html(e)
+  })
+})
