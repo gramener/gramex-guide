@@ -522,7 +522,7 @@ E.g:
 ```bash
 curl -X DELETE 'http://localhost:9988/mlhandler?_cache'
 ```
-### How to delete the model?
+## How to delete the model?
 Send a DELETE request to the MLHandler endpoint with the `?_model` parameter.
 E.g:
 ```bash
