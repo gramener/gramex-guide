@@ -10,11 +10,68 @@ type: microservice
 MLHandler exposes machine learning models that applications can use
 over a REST API. (From **v1.67**.) It allows users to:
 
-1. start with existing scikit-learn models, and evolve them
-2. create models from scratch, and iterate upon them.
+1. create models from scratch, and iterate upon them,
+2. start with existing scikit-learn models, and evolve them.
 
 [TOC]
 
+
+# Creating New Models
+
+To train a new model on, say, the [Titanic dataset](titanic?_download=titanic.csv&_format=csv), from scratch, use the following configuration:
+
+```yaml
+mlhandler/tutorial:
+  pattern: /$YAMLURL/ml
+  handler: MLHandler
+  kwargs:
+    data: $YAMLPATH/titanic.csv  # Path to the training dataset
+    model:
+      # The classification or regression algorithm to use
+      class: LogisticRegression
+
+      # Location where the trained model will be saved
+      path: $YAMLPATH/titanic.pkl
+
+      # The column to predict
+      target_col: Survived
+
+      # Columns to ignore during training
+      exclude: [PassengerId, Ticket, Cabin, Name]
+
+      # Columns to be treated as categorical variables
+      cats: [Embarked, SibSb, Parch, Pclass, Sex]
+```
+
+MLHandler will then,
+
+1. instantiate a LogisticRegression model
+2. load the training data as a pandas dataframe
+3. drop the excluded columns
+4. [one-hot encode](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) the categorical columns and normalize any remaining columns -
+   which are implicitly assumed to be numerical.
+5. train the model and save it.
+
+Other kwargs that are supported are:
+
+* `include`: List of columns to include for training. If `include` and `exclude`
+  are both specified, `include` overrides `exclude`.
+* `nums`: List of numerical features. All numerical features are normalized to
+  have zero mean and unit variance, with [StandardScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html).
+* `dropna`: Whether to drop NAs from the training data - true by default. If set
+  to false, sklearn may misbehave.
+* `deduplicate`: Whether to drop duplicates from the training data - true by default. If set
+  to false, training may be slower.
+
+Note that **all kwargs in MLHandler are optional**. Any option can be specified
+at a later time with a PUT or a POST request. For example:
+
+  * If the model class and `data` kwargs are not specified, MLHandler will do no training - which
+    can be explicitly triggered at a later time, after supplying data and the
+    algorithm (more on this below).
+  * If the model path is not defined, the trained model will be saved under
+    `$GRAMEXDATA/apps/mlhandler/`.
+  * Any of the remaining kwargs can be specified before training begins.
 
 
 # Exposing Existing Models
@@ -37,16 +94,18 @@ url:
         path: $YAMLPATH/model.pkl
 ```
 
+# Model operations
+
 ## Getting predictions
 
 MLHandler allows getting predictions for a single data point through a simple
-GET request, as follows:
+curl -X GET request, as follows:
 
 ```bash
 # See whether a 22 year old male, traveling with a sibling in the third class,
 # having embarked in Southampton is likely to have survived.
 
-GET /model?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S
+curl -X GET /model?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S
 # output: [0] - passenger did not survive
 ```
 
@@ -117,7 +176,7 @@ GET /model?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S
     <pre><code>
     $.ajax({
     	url: 'mlhandler?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S',
-      method: 'GET'
+      	method: 'GET'
     })
     </code></pre>
   </div>
@@ -130,7 +189,7 @@ GET /model?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S
 
 
 Note that the URL parameters in the GET query are expected to be fields in the
-training dataset.
+training dataset, and can be passed as Python dictionaries or JS objects.
 
 
 ## Getting bulk predictions
@@ -172,10 +231,10 @@ curl -X POST -d @titanic_predict.json http://localhost:9988/mlhandler?_action=pr
     <pre><code>
     $.ajax({
     	url: 'mlhandler?_action=predict',
-	method: 'POST',
-	data: new FormData(this),
-	processData: false,
-	contentType: false
+        method: 'POST',
+        data: new FormData(this),
+        processData: false,
+        contentType: false
     })
     </code></pre>
   </div>
@@ -186,78 +245,19 @@ curl -X POST -d @titanic_predict.json http://localhost:9988/mlhandler?_action=pr
   </div>
 </div>
 
-# Creating New Models
-
-To train a new model on, say, the [Titanic dataset](titanic?_download=titanic.csv&_format=csv), from scratch, use the following configuration:
-
-```yaml
-mlhandler/tutorial:
-  pattern: /$YAMLURL/ml
-  handler: MLHandler
-  kwargs:
-    data: $YAMLPATH/titanic.csv  # Path to the training dataset
-    model:
-      # The classification or regression algorithm to use
-      class: LogisticRegression
-
-      # Location where the trained model will be saved
-      path: $YAMLPATH/titanic.pkl
-
-      # The target column
-      target_col: Survived
-
-      # Columns to ignore during training
-      exclude: [PassengerId, Ticket, Cabin, Name]
-
-      # Columns to be treated as categorical variables
-      cats: [Embarked, SibSb, Parch, Pclass, Sex]
-```
-
-MLHandler will then,
-
-1. instantiate a LogisticRegression model
-2. load the training data as a pandas dataframe
-3. drop the excluded columns
-4. one-hot encode the categorical columns and normalize any remaining columns -
-   which are implicitly assumed to be numerical
-5. train the model and save it.
-
-Other kwargs that are supported are:
-
-* `include`: List of columns to include for training. If `include` and `exclude`
-           are both specified, the latter is ignored.
-* `nums`: List of numerical features which will be normalized.
-* `dopna`: Whether to drop NAs from the training data - true by default. If set
-         to false, sklearn may misbehave.
-* `deduplicate`: Whether to drop duplicates from the training data - true by default. If set
-         to false, training may be slower.
-
-Note that **all kwargs in MLHandler are optional**. Any option can be specified
-at a later time with a PUT or a POST request. For example:
-
-  * If the model class and `data` kwargs are not specified, MLHandler will do no training - which
-    can be explicitly triggered at a later time, after supplying data and the
-    algorithm (more on this below).
-  * If the model path is not defined, the trained model will be saved under
-    `$GRAMEXDATA/apps/mlhandler/`.
-  * Any of the remaining kwargs can be specified before training begins.
-
-
-# Model operations
-
 ## Retraining the model
 An existing model can be retrained by POSTing data and specifying a target
 column. To do so, we need to:
 
-1. post the training data as JSON records
-2. set the `_action` query parameter to `retrain`
-3. specify the target column under the `target_col` query paramter.
+1. post the training data as JSON records,
+2. set `?_action=retrain` and perform a PUT,
+3. set `?target_col=NEW_TARGET_COL`, if required.
 
 You can use the JSON dataset [here](titanic?_download=titanic.json&_format=json) to train the model as
 follows:
 
 ```bash
-POST -d @titanic.json /mlhandler?_action=retrain&target_col=Survived
+curl -X POST -d @titanic.json /mlhandler?_action=retrain&target_col=Survived
 # Output: {'score': 0.80}  - the model has 80% accuracy on the training data.
 ```
 <form id="retrain" method="POST" enctype="multipart/form-data">
@@ -312,7 +312,7 @@ The parameters of a scikit-learn model can be obtained by specify the [`?_model`
 as follows:
 
 ```bash
-GET /mlhandler?_model
+curl -X GET /mlhandler?_model
 ```
 ```python
 # Output
@@ -400,18 +400,22 @@ modified with a PUT request. The following request replaces the logistic
 regression earlier with a random forest classifier:
 
 ```bash
-PUT /mlhandler?_model&class=RandomForestClassififer
+curl -X PUT '/mlhandler?_model&class=RandomForestClassififer'
 ```
 
 Note that at this stage, the model has simply been replaced, but _not_
 retrained. To train it, we can POST to it with `?_action=retrain` parameter as
-mentoined above.
-
-Similarly, any parameter of the model can be changed. For example, to change the
-default number of estimators used in a random forest classifier (100), use:
+follows:
 
 ```bash
-PUT /mlhandler?_model&n_estimators=10
+curl -X POST '/mlhandler?_action=retrain'
+```
+
+Similarly, any parameter of the model can be changed. For example, to change the
+number of estimators used in a [random forest classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) (which is 100, by default), use:
+
+```bash
+curl -X PUT /mlhandler?_model&n_estimators=10
 ```
 
 In general, the model's class and any of its parameters can be chained together
@@ -419,18 +423,18 @@ in the PUT request. For example, to change the model to an SGDClassifier with a
 log loss, use:
 
 ```bash
-PUT /mlhandler?_model&class=SGDClassifier&loss=log
+curl -X PUT /mlhandler?_model&class=SGDClassifier&loss=log
 ```
 
-Any query parameter except `class` which matches the signature of the
-[SGDClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html) will be coerced into the model.
+Any query parameter except `class` which is also a parameter of the
+[SGDClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html) will be used to create the model.
 
 Similarly, any of the data transformation options (`include`, `exclude`,
 `cats`, `nums`, etc) can be added or changed at any time with a PUT, as follows:
 
 ```bash
 # Ignore PassengerId and Name, consider Embarked as a categorical feature.
-PUT /mlhandler?_model&exclude=PassengerId&exclude=Name&cats=Embarked
+curl -X PUT /mlhandler?_model&exclude=PassengerId&exclude=Name&cats=Embarked
 ```
 
 
@@ -439,12 +443,12 @@ To remove the serialized model from the disk and disable further operations, use
 a delete request as follows:
 
 ```bash
-DELETE /mlhandler?_model
+curl -X DELETE /mlhandler?_model
 ```
 
 # MLHandler Templates
 
-MLHandler supports Tornado templates. You can specify a `template` kwarg as follows:
+MLHandler supports Tornado templates which can be used to create front-end applications which use MLHandler. You can specify a `template` kwarg as follows:
 
 ```yaml
 mlhandler/tutorial:
@@ -459,6 +463,15 @@ have access to the following variables:
 * `{{ handler }}`: The MLHandler instance
 * `{{ handler.model }}`: The sklearn object / estimator / model
 * `{{ data }}`: The training dataset, available as a pandas DataFrame.
+
+`{{ handler.model }}` gives you access to the underlying sklearn object. This can
+be used in many ways to replicate sklearn code. For example,
+
+* Use `{{ handler.model.get_params() }}` to see the parameters of the model.
+* Use `{{ handler.model.__class__.__name__ }}` to see the name of the algorithm
+  being used.
+* Any other attribute or method of an sklearn estimator can be accessed as
+  `{{ handler.model.<attribute> }}`
 
 If left unspecified, MLHandler will render a default template that shows some
 details of your MLHandler application. The default template for the Titanic
@@ -475,10 +488,16 @@ curl -X POST -F "file=@test.csv" 'http://localhost:9988/mlhandler?_action=score'
 Add the `?_download` query parameter to the MLHandler endpoint, and perform a
 GET. E.g to download the Titanic model included in this tutorial, click
 [here](model?_download).
+```bash
+curl -X GET '/mlhandler?_download'
+```
 ## How to download training data?
 Add the `?_cache` query parameter to the MLHandler endpoint, and perform a GET.
 E.g to download the Titanic dataset included in this tutorial, click
 [here](model?_cache).
+```bash
+curl -X GET '/mlhandler?_cache'
+```
 ## How to append to the training data?
 MLHandler supports incremental accumulation of training data. If data is
 specified in the YAML confing, it can be appended to, using `?_action=append`.
@@ -503,3 +522,11 @@ E.g:
 ```bash
 curl -X DELETE 'http://localhost:9988/mlhandler?_cache'
 ```
+### How to delete the model?
+Send a DELETE request to the MLHandler endpoint with the `?_model` parameter.
+E.g:
+```bash
+curl -X DELETE 'http://localhost:9988/mlhandler?_model'
+```
+This will cause MLHandler to return an HTTP 404 on subsequent requests to the same
+endpoint, until an `?_action=train` or `?_action=retrain` is requested.
