@@ -10,18 +10,11 @@ type: microservice
 MLHandler exposes machine learning models that applications can use
 over a REST API. (From **v1.67**.) It allows users to:
 
-1. start with existing scikit-learn models, and evolve them.
+1. start with existing scikit-learn models, and evolve them
 2. create models from scratch, and iterate upon them.
 
 [TOC]
 
-  A. Exposing Existing Models
-  B. Creating New Models
-  C. Iterating Over Models
-  D. MLHandler Templates
-  E. API Reference
-  	- Model operations
-  	- Data operations
 
 
 # Exposing Existing Models
@@ -53,7 +46,7 @@ GET request, as follows:
 # See whether a 22 year old male, traveling with a sibling in the third class,
 # having embarked in Southampton is likely to have survived.
 
-GET /model?Sex=1&Age=22&SibSp=1&Parch=0&Fare=7.25&pclass_1=0&pclass_2=0&pclass_3=0&Embarked_C=0&Embarked_Q=0&Embarked_S=1
+GET /model?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S
 # output: [0] - passenger did not survive
 ```
 
@@ -61,57 +54,38 @@ GET /model?Sex=1&Age=22&SibSp=1&Parch=0&Fare=7.25&pclass_1=0&pclass_2=0&pclass_3
   <div class="row">
       <div class="col">
     	  <label for="Sex">Sex:</label>
-    	  <input id="Sex" name="Sex" value="1" class="form-control"/>
+    	  <input id="Sex" name="Sex" value="male" class="form-control"/>
       </div>
       <div class="col">
     	  <label for="Age">Age:</label>
-    	  <input id="Age" name="Age" value="22" class="form-control"/>
+    	  <input id="Age" name="Age" value="22" class="form-control"
+	  type="number"/>
       </div>
   </div>
   <div class="row">
       <div class="col">
     	  <label for="SibSp">SibSp:</label>
-    	  <input id="SibSp" name="SibSp" value="1" class="form-control"/>
+    	  <input id="SibSp" name="SibSp" value="1" class="form-control" type="number"/>
       </div>
       <div class="col">
     	  <label for="Parch">Parch:</label>
-    	  <input id="Parch" name="Parch" value="0" class="form-control"/>
+    	  <input id="Parch" name="Parch" value="0" class="form-control" type="number"/>
       </div>
   </div>
   <div class="row">
       <div class="col">
     	  <label for="Fare">Fare:</label>
-    	  <input id="Fare" name="Fare" value="7.25" class="form-control"/>
+    	  <input id="Fare" name="Fare" value="7.25" class="form-control" type="number"/>
       </div>
       <div class="col">
-    	  <label for="pclass_1">pclass_1:</label>
-    	  <input id="pclass_1" name="pclass_1" value="0" class="form-control"/>
-      </div>
-  </div>
-  <div class="row">
-      <div class="col">
-    	  <label for="pclass_2">pclass_2:</label>
-    	  <input id="pclass_2" name="pclass_2" value="0" class="form-control"/>
-      </div>
-      <div class="col">
-    	  <label for="pclass_3">pclass_3:</label>
-    	  <input id="pclass_3" name="pclass_3" value="1" class="form-control"/>
+    	  <label for="Pclass">Pclass:</label>
+    	  <input id="Pclass" name="Pclass" value="3" class="form-control" type="number"/>
       </div>
   </div>
   <div class="row">
       <div class="col">
-    	  <label for="Embarked_C">Embarked_C:</label>
-    	  <input id="Embarked_C" name="Embarked_C" value="0" class="form-control"/>
-      </div>
-      <div class="col">
-    	  <label for="Embarked_Q">Embarked_Q:</label>
-    	  <input id="Embarked_Q" name="Embarked_Q" value="0" class="form-control"/>
-      </div>
-  </div>
-  <div class="row">
-      <div class="col">
-    	  <label for="Embarked_S">Embarked_S:</label>
-    	  <input id="Embarked_S" name="Embarked_S" value="1" class="form-control"/>
+    	  <label for="Embarked">Embarked:</label>
+    	  <input id="Embarked" name="Embarked" value="S" class="form-control"/>
       </div>
   </div>
   <div class="row">
@@ -136,20 +110,20 @@ GET /model?Sex=1&Age=22&SibSp=1&Parch=0&Fare=7.25&pclass_1=0&pclass_2=0&pclass_3
   <div class="tab-pane fade show active" id="pycode" role="tabpanel" aria-labelledby="python-tab">
     <pre><code>
     >>> import requests
-    >>> requests.get('mlhandler?Sex=1&Age=22&SibSp=1&Parch=0&Fare=7.25&pclass_1=0&pclass_2=0&pclass_3=0&Embarked_C=0&Embarked_Q=0&Embarked_S=1')
+    >>> requests.get('mlhandler?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S')
     </code></pre>
   </div>
   <div class="tab-pane fade" id="ajaxcode" role="tabpanel" aria-labelledby="ajax-tab">
     <pre><code>
     $.ajax({
-    	url: 'mlhandler?Sex=1&Age=22&SibSp=1&Parch=0&Fare=7.25&pclass_1=0&pclass_2=0&pclass_3=0&Embarked_C=0&Embarked_Q=0&Embarked_S=1',
+    	url: 'mlhandler?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S',
       method: 'GET'
     })
     </code></pre>
   </div>
   <div class="tab-pane fade" id="curlcode" role="tabpanel" aria-labelledby="curl-tab">
     <pre><code>
-    curl -X GET mlhandler?Sex=1&Age=22&SibSp=1&Parch=0&Fare=7.25&pclass_1=0&pclass_2=0&pclass_3=0&Embarked_C=0&Embarked_Q=0&Embarked_S=1
+    curl -X GET mlhandler?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S'
     </code></pre>
   </div>
 </div>
@@ -161,12 +135,12 @@ training dataset.
 
 ## Getting bulk predictions
 Predictions for a dataset (as against a single data point) can be retrieved by
-POSTing a JSON dataset in the request body. The Titanic dataset is available
+`POST`ing a JSON dataset in the request body. The Titanic dataset is available
 [here](titanic?_c=-Survived&_download=titanic_predict.json&_format=json) _without the target column_, which you can use to
 run the following example:
 
 ```bash
-POST -d @titanic_predict.json /mlhandler
+curl -X POST -d @titanic_predict.json http://localhost:9988/mlhandler?_action=predict
 # Output: [0, 1, 0, 0, 1, ...] # whether each passenger is likely to have survived
 ```
 <form id='bulkform' method="POST" enctype="multipart/form-data">
@@ -191,13 +165,13 @@ POST -d @titanic_predict.json /mlhandler
   <div class="tab-pane fade show active" id="pycode-bulk" role="tabpanel" aria-labelledby="python-bulk-tab">
     <pre><code>
     >>> import requests
-    >>> requests.post('mlhandler', files={'file': open('titanic.xlsx', 'rb')})
+    >>> requests.post('mlhandler?_action=predict', files={'file': open('titanic.xlsx', 'rb')})
     </code></pre>
   </div>
   <div class="tab-pane fade" id="ajaxcode-bulk" role="tabpanel" aria-labelledby="ajax-bulk-tab">
     <pre><code>
     $.ajax({
-    	url: 'mlhandler',
+    	url: 'mlhandler?_action=predict',
 	method: 'POST',
 	data: new FormData(this),
 	processData: false,
@@ -207,32 +181,91 @@ POST -d @titanic_predict.json /mlhandler
   </div>
   <div class="tab-pane fade" id="curlcode-bulk" role="tabpanel" aria-labelledby="curl-bulk-tab">
     <pre><code>
-    curl -X POST -d @titanic.xlsx 'mlhandler'
+    curl -X POST -d @titanic.xlsx 'mlhandler?_action=predict'
     </code></pre>
   </div>
 </div>
+
+# Creating New Models
+
+To train a new model on, say, the [Titanic dataset](titanic?_download=titanic.csv&_format=csv), from scratch, use the following configuration:
+
+```yaml
+mlhandler/tutorial:
+  pattern: /$YAMLURL/ml
+  handler: MLHandler
+  kwargs:
+    data: $YAMLPATH/titanic.csv  # Path to the training dataset
+    model:
+      # The classification or regression algorithm to use
+      class: LogisticRegression
+
+      # Location where the trained model will be saved
+      path: $YAMLPATH/titanic.pkl
+
+      # The target column
+      target_col: Survived
+
+      # Columns to ignore during training
+      exclude: [PassengerId, Ticket, Cabin, Name]
+
+      # Columns to be treated as categorical variables
+      cats: [Embarked, SibSb, Parch, Pclass, Sex]
+```
+
+MLHandler will then,
+
+1. instantiate a LogisticRegression model
+2. load the training data as a pandas dataframe
+3. drop the excluded columns
+4. one-hot encode the categorical columns and normalize any remaining columns -
+   which are implicitly assumed to be numerical
+5. train the model and save it.
+
+Other kwargs that are supported are:
+
+* `include`: List of columns to include for training. If `include` and `exclude`
+           are both specified, the latter is ignored.
+* `nums`: List of numerical features which will be normalized.
+* `dopna`: Whether to drop NAs from the training data - true by default. If set
+         to false, sklearn may misbehave.
+* `deduplicate`: Whether to drop duplicates from the training data - true by default. If set
+         to false, training may be slower.
+
+Note that **all kwargs in MLHandler are optional**. Any option can be specified
+at a later time with a PUT or a POST request. For example:
+
+  * If the model class and `data` kwargs are not specified, MLHandler will do no training - which
+    can be explicitly triggered at a later time, after supplying data and the
+    algorithm (more on this below).
+  * If the model path is not defined, the trained model will be saved under
+    `$GRAMEXDATA/apps/mlhandler/`.
+  * Any of the remaining kwargs can be specified before training begins.
+
+
+# Model operations
 
 ## Retraining the model
 An existing model can be retrained by POSTing data and specifying a target
 column. To do so, we need to:
 
 1. post the training data as JSON records
-2. set the `_retrain` query parameter to 1
-3. specify the target column under the `_target_col` query paramter.
+2. set the `_action` query parameter to `retrain`
+3. specify the target column under the `target_col` query paramter.
 
-You can use the JSON dataset [here]('titanic?_download=titanic.json&_format=json') to train the model as
+You can use the JSON dataset [here](titanic?_download=titanic.json&_format=json) to train the model as
 follows:
 
 ```bash
-POST -d @titanic.json /mlhandler?_retrain=1&_target_col=Survived
+POST -d @titanic.json /mlhandler?_action=retrain&target_col=Survived
 # Output: {'score': 0.80}  - the model has 80% accuracy on the training data.
 ```
 <form id="retrain" method="POST" enctype="multipart/form-data">
   <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
-  <input id="fileupload" type="file" name="file">
+  <input id="fileupload" type="file" name="file" class="form-control">
   <label for="targetCol">Select Target Column:</label>
-  <input id="targetCol" value="Survived" name="_target_col">
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <input id="targetCol" value="Survived" name="_target_col" class="form-control">
+  <button type="submit" class="btn btn-primary form-control">Submit</button>
 </form>
 <div id="retrainresult" class="overflow-auto" style="height: 20px"></div>
 <div class="divider">Embed in your app.</div>
@@ -251,14 +284,14 @@ POST -d @titanic.json /mlhandler?_retrain=1&_target_col=Survived
   <div class="tab-pane fade show active" id="pycode-retrain" role="tabpanel" aria-labelledby="python-retrain-tab">
     <pre><code>
     >>> import requests
-    >>> requests.post('mlhandler?_retrain=1&_target_col=Survived',
+    >>> requests.post('mlhandler?_action=retrain&target_col=Survived',
                       files={'file': open('titanic.csv', 'rb')})
     </code></pre>
   </div>
   <div class="tab-pane fade" id="ajaxcode-retrain" role="tabpanel" aria-labelledby="ajax-retrain-tab">
     <pre><code>
     $.ajax({
-    	url: 'mlhandler?_retrain=1&_target_col=Survived',
+    	url: 'mlhandler?_action=retrain&target_col=Survived',
 	method: 'POST',
 	data: new FormData(this),
 	processData: false,
@@ -268,7 +301,7 @@ POST -d @titanic.json /mlhandler?_retrain=1&_target_col=Survived
   </div>
   <div class="tab-pane fade" id="curlcode-retrain" role="tabpanel" aria-labelledby="curl-retrain-tab">
     <pre><code>
-    curl -X POST -d @titanic.csv 'mlhandler?_retrain=1&_target_col=Survived'
+    curl -X POST -d @titanic.csv 'mlhandler?_action=retrain&target_col=Survived'
     </code></pre>
   </div>
 </div>
@@ -359,12 +392,6 @@ GET /mlhandler?_model
   </div>
 </div>
 
-<!--
-<div class="example">
-  <a class="example-demo" href="model?_model">Try it out.</a>
-  <a class="example-src" href="https://github.com/gramener/gramex-guide/blob/master/mlhandler/gramex.yaml">Source</a>
-</div>
--->
 
 ## Change the model and modify its parameters
 
@@ -373,47 +400,38 @@ modified with a PUT request. The following request replaces the logistic
 regression earlier with a random forest classifier:
 
 ```bash
-PUT /mlhandler?class=RandomForestClassififer
+PUT /mlhandler?_model&class=RandomForestClassififer
 ```
 
 Note that at this stage, the model has simply been replaced, but _not_
-retrained. To train it, we can POST data to it with the `_retrain` parameter as
-mentoined above. The `_retrain` flag can also be used while re-assigning the
-model class itself, like:
-
-```bash
-PUT -d @titanic.json /mlhandler?class=GaussianNB&_retrain=1&_target_col=Survived`
-# output: {'score': 0.9}
-```
-This replaced the earlier untrained `RandomForestClassififer` with a Gaussian
-naive Bayes classifier, and trains it on the provided dataset.
+retrained. To train it, we can POST to it with `?_action=retrain` parameter as
+mentoined above.
 
 Similarly, any parameter of the model can be changed. For example, to change the
 default number of estimators used in a random forest classifier (100), use:
 
 ```bash
-PUT /mlhandler?class=RandomForestClassififer&n_estimators=10
+PUT /mlhandler?_model&n_estimators=10
 ```
-<form id="changemodel" method="PUT" enctype="multipart/form-data">
-  <div class="form-group row">
-    <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
-    <input id="fileupload" type="file" name="file">
-  </div>
-  <label for="modelList">Select Model:</label>
-  <select id="modelList" name="modelName">
-    <option>LogisticRegression</option>
-    <option>SGDClassifier</option>
-    <option>DecisionTreeClassifier</option>
-    <option>MLPClassifier</option>
-    <option>GaussianNB</option>
-    <option>RandomForestClassififer</option>
-    <option>SVC</option>
-  </select>
-  <label for="targetCol">Select Target Column:</label>
-  <input id="targetCol" value="Survived" name="_target_col">
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-<div id="changeModelResult" class="overflow-auto" style="height: 100px"></div>
+
+In general, the model's class and any of its parameters can be chained together
+in the PUT request. For example, to change the model to an SGDClassifier with a
+log loss, use:
+
+```bash
+PUT /mlhandler?_model&class=SGDClassifier&loss=log
+```
+
+Any query parameter except `class` which matches the signature of the
+[SGDClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html) will be coerced into the model.
+
+Similarly, any of the data transformation options (`include`, `exclude`,
+`cats`, `nums`, etc) can be added or changed at any time with a PUT, as follows:
+
+```bash
+# Ignore PassengerId and Name, consider Embarked as a categorical feature.
+PUT /mlhandler?_model&exclude=PassengerId&exclude=Name&cats=Embarked
+```
 
 
 ## Delete a model
@@ -421,25 +439,67 @@ To remove the serialized model from the disk and disable further operations, use
 a delete request as follows:
 
 ```bash
-DELETE /mlhandler
+DELETE /mlhandler?_model
 ```
 
-ToDo: Add details of incremental data posts, and how to delete it.
+# MLHandler Templates
 
+MLHandler supports Tornado templates. You can specify a `template` kwarg as follows:
 
 ```yaml
+mlhandler/tutorial:
+  pattern: /$YAMLURL/ml
+  handler: MLHandler
+  template: $YAMLPATH/template.html
+```
 
-url:
-        mlhandler:
-                pattern: /$YAMLURL/ml
-                handler: MLHandler
-                kwargs:
-                        data: $YAMLPATH/train.csv
-                        model:
-                                class: LogisticRegression
-                                exclude: [PassengerId, Ticket, Cabin, Name]
-                                target_col: Survived
-                                pipeline: true
-                                nums: [Age, Fare, SibSp, Parch]
-                                cats: [Pclass, Sex, Embarked]
+The template so specified will be rendered at the `pattern` URL, and it will
+have access to the following variables:
+
+* `{{ handler }}`: The MLHandler instance
+* `{{ handler.model }}`: The sklearn object / estimator / model
+* `{{ data }}`: The training dataset, available as a pandas DataFrame.
+
+If left unspecified, MLHandler will render a default template that shows some
+details of your MLHandler application. The default template for the Titanic
+problem can be seen [here](model).
+
+# FAQs
+## How to get the accuracy score of my model?
+When trying to see the accuracy of a new dataset against an existing model, use `?_action=score`. Specifically, POST the new data to the MLHandler endpoint, with `?_action=score`.
+```bash
+# Check the score of a dataset - test.csv - against an existing model
+curl -X POST -F "file=@test.csv" 'http://localhost:9988/mlhandler?_action=score'
+```
+## How to download a model?
+Add the `?_download` query parameter to the MLHandler endpoint, and perform a
+GET. E.g to download the Titanic model included in this tutorial, click
+[here](model?_download).
+## How to download training data?
+Add the `?_cache` query parameter to the MLHandler endpoint, and perform a GET.
+E.g to download the Titanic dataset included in this tutorial, click
+[here](model?_cache).
+## How to append to the training data?
+MLHandler supports incremental accumulation of training data. If data is
+specified in the YAML confing, it can be appended to, using `?_action=append`.
+Data can be `POST`ed in two ways:
+
+1. By including it as JSON in the request body and setting the `Content-Type`
+   header to `application/json` as follows:
+```bash
+curl -X POST -d @data.json --header "Content-Type: application/json"
+'http://localhost:9988/mlhandler?_action=append'
+```
+2. By POSTing any dataset through a form as a file. (Any `gramex.cache.open`
+   format is supported.)
+```bash
+curl -X POST -F "file=@data.json" 'http://localhost:9988/mlhandler?_action=append'
+```
+Note that when data is being appended, the schema of the appendix has to match
+the schema of the existing dataset.
+## How to delete training data?
+Send a DELETE request to the MLHandler endpoint with the `?_cache` parameter.
+E.g:
+```bash
+curl -X DELETE 'http://localhost:9988/mlhandler?_cache'
 ```
