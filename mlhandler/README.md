@@ -40,7 +40,7 @@ mlhandler/tutorial:
       exclude: [PassengerId, Ticket, Cabin, Name]
 
       # Columns to be treated as categorical variables
-      cats: [Embarked, SibSb, Parch, Pclass, Sex]
+      cats: [Embarked, SibSp, Parch, Pclass, Sex]
 ```
 
 MLHandler will then,
