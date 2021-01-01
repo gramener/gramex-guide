@@ -140,9 +140,9 @@ $(function () {
 // MLHandler
 $('#mlhandler-single').on('submit', function(e) {
   e.preventDefault();
-  let url = g1.url.parse('model')
+  var url = g1.url.parse('model')
   $(this).serializeArray().forEach(function(item, index) {
-    let obj = {}
+    var obj = {}
     obj[item.name] = item.value
     url.update(obj)
   })
@@ -151,7 +151,7 @@ $('#mlhandler-single').on('submit', function(e) {
 
 $('#bulkform').submit(function(e) {
   e.preventDefault()
-  let fd = new FormData($(this)[0])
+  var fd = new FormData($(this)[0])
   $.ajax({
     url: 'model?_action=predict',
     data: fd,
@@ -167,8 +167,8 @@ $('#bulkform').submit(function(e) {
 
 $('#retrain').submit(function(e) {
   e.preventDefault()
-  let fd = new FormData($(this)[0])
-  let target_col = fd.get('_target_col')
+  var fd = new FormData($(this)[0])
+  var target_col = fd.get('_target_col')
   fd.delete('_target_col')
   $.ajax({
     url: 'model?_action=retrain&target_col=' + encodeURIComponent(target_col),

@@ -1254,6 +1254,41 @@
       "What next": -1
     }
   },
+  "1.67": {
+    "": {
+      "Gramex 1.67 release notes": -1
+    },
+    "append-the-data": {
+      "Append the data": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "credits": {
+      "Credits": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "other-improvements": {
+      "Other improvements": -1
+    },
+    "re-train-the-model": {
+      "Re-train the model": -1
+    },
+    "simpler-handler-names": {
+      "Simpler handler names": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "train-ml-models": {
+      "Train ML models": -1
+    },
+    "what-next": {
+      "What next": -1
+    }
+  },
   "about": {
     "": {}
   },
@@ -2066,6 +2101,9 @@
     "deployyaml": {
       "deploy.yaml": -1
     },
+    "direct-https-server": {
+      "Direct HTTPS server": -1
+    },
     "duplicate-key": {
       "Duplicate key": -1
     },
@@ -2111,6 +2149,9 @@
     "nginx-reverse-proxy": {
       "nginx reverse proxy": -1
     },
+    "nginx-security": {
+      "nginx security": -1
+    },
     "nginxconf": {
       "nginx.conf": -1
     },
@@ -2125,6 +2166,9 @@
     },
     "python-file-conflict": {
       "Python file conflict": -1
+    },
+    "redirect-http-to-https": {
+      "Redirect HTTP to HTTPS": -1
     },
     "relative-url-mapping": {
       "Relative URL mapping": -1
@@ -2936,6 +2980,86 @@
     },
     "using-variables": {
       "Using Variables": -1
+    }
+  },
+  "mlhandler": {
+    "": {
+      "MLHandler provides ML APIs": -1
+    },
+    "change-the-model-and-modify-its-parameters": {
+      "Change the model and modify its parameters": -1
+    },
+    "check-the-score-of-a-dataset-testcsv-against-an-existing-model": {
+      "Check the score of a dataset - test.csv - against an existing model": -1
+    },
+    "creating-new-models": {
+      "Creating New Models": -1
+    },
+    "delete-a-model": {
+      "Delete a model": -1
+    },
+    "exposing-existing-models": {
+      "Exposing Existing Models": -1
+    },
+    "faqs": {
+      "FAQs": -1
+    },
+    "getting-bulk-predictions": {
+      "Getting bulk predictions": -1
+    },
+    "getting-predictions": {
+      "Getting predictions": -1
+    },
+    "having-embarked-in-southampton-is-likely-to-have-survived": {
+      "having embarked in Southampton is likely to have survived.": -1
+    },
+    "how-to-append-to-the-training-data": {
+      "How to append to the training data?": -1
+    },
+    "how-to-delete-the-model": {
+      "How to delete the model?": -1
+    },
+    "how-to-delete-training-data": {
+      "How to delete training data?": -1
+    },
+    "how-to-download-a-model": {
+      "How to download a model?": -1
+    },
+    "how-to-download-training-data": {
+      "How to download training data?": -1
+    },
+    "how-to-get-the-accuracy-score-of-my-model": {
+      "How to get the accuracy score of my model?": -1
+    },
+    "ignore-passengerid-and-name-consider-embarked-as-a-categorical-feature": {
+      "Ignore PassengerId and Name, consider Embarked as a categorical feature.": -1
+    },
+    "mlhandler-templates": {
+      "MLHandler Templates": -1
+    },
+    "model-operations": {
+      "Model operations": -1
+    },
+    "output": {
+      "Output": -1
+    },
+    "output-0-1-0-0-1-whether-each-passenger-is-likely-to-have-survived": {
+      "Output: [0, 1, 0, 0, 1, ...] # whether each passenger is likely to have survived": -1
+    },
+    "output-0-passenger-did-not-survive": {
+      "output: [0] - passenger did not survive": -1
+    },
+    "output-score-080-the-model-has-80-accuracy-on-the-training-data": {
+      "Output: {'score': 0.80}  - the model has 80% accuracy on the training data.": -1
+    },
+    "retraining-the-model": {
+      "Retraining the model": -1
+    },
+    "see-model-parameters": {
+      "See model parameters": -1
+    },
+    "see-whether-a-22-year-old-male-traveling-with-a-sibling-in-the-third-class": {
+      "See whether a 22 year old male, traveling with a sibling in the third class,": -1
     }
   },
   "modelhandler": {

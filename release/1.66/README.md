@@ -304,6 +304,9 @@ The Gramex code base has:
 
 ## How to install
 
-See the [Gramex installation and upgrade instructions](../../install/)
+See the [Gramex installation and upgrade instructions](../../install/).
+
+**NOTE**: The 1.66 Conda package has an
+[installation issue](https://github.com/gramener/gramex/issues/353). Use Docker or PyPi.
 
 Note: Gramex 1.66 does not work with Python 3.8. We recommend Python 3.7.

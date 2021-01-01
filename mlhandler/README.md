@@ -193,6 +193,7 @@ training dataset, and can be passed as Python dictionaries or JS objects.
 
 
 ## Getting bulk predictions
+
 Predictions for a dataset (as against a single data point) can be retrieved by
 `POST`ing a JSON dataset in the request body. The Titanic dataset is available
 [here](titanic?_c=-Survived&_download=titanic_predict.json&_format=json) _without the target column_, which you can use to
@@ -202,6 +203,7 @@ run the following example:
 curl -X POST -d @titanic_predict.json http://localhost:9988/mlhandler?_action=predict
 # Output: [0, 1, 0, 0, 1, ...] # whether each passenger is likely to have survived
 ```
+
 <form id='bulkform' method="POST" enctype="multipart/form-data">
   <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
   <input id="fileupload" type="file" name="file">
@@ -246,6 +248,7 @@ curl -X POST -d @titanic_predict.json http://localhost:9988/mlhandler?_action=pr
 </div>
 
 ## Retraining the model
+
 An existing model can be retrained by POSTing data and specifying a target
 column. To do so, we need to:
 
@@ -478,55 +481,73 @@ details of your MLHandler application. The default template for the Titanic
 problem can be seen [here](model).
 
 # FAQs
+
 ## How to get the accuracy score of my model?
+
 When trying to see the accuracy of a new dataset against an existing model, use `?_action=score`. Specifically, POST the new data to the MLHandler endpoint, with `?_action=score`.
 ```bash
 # Check the score of a dataset - test.csv - against an existing model
 curl -X POST -F "file=@test.csv" 'http://localhost:9988/mlhandler?_action=score'
 ```
+
 ## How to download a model?
+
 Add the `?_download` query parameter to the MLHandler endpoint, and perform a
 GET. E.g to download the Titanic model included in this tutorial, click
 [here](model?_download).
 ```bash
 curl -X GET '/mlhandler?_download'
 ```
+
 ## How to download training data?
+
 Add the `?_cache` query parameter to the MLHandler endpoint, and perform a GET.
 E.g to download the Titanic dataset included in this tutorial, click
 [here](model?_cache).
 ```bash
 curl -X GET '/mlhandler?_cache'
 ```
+
 ## How to append to the training data?
+
 MLHandler supports incremental accumulation of training data. If data is
 specified in the YAML confing, it can be appended to, using `?_action=append`.
 Data can be `POST`ed in two ways:
 
 1. By including it as JSON in the request body and setting the `Content-Type`
    header to `application/json` as follows:
+
 ```bash
 curl -X POST -d @data.json --header "Content-Type: application/json"
 'http://localhost:9988/mlhandler?_action=append'
 ```
+
 2. By POSTing any dataset through a form as a file. (Any `gramex.cache.open`
    format is supported.)
+
 ```bash
 curl -X POST -F "file=@data.json" 'http://localhost:9988/mlhandler?_action=append'
 ```
+
 Note that when data is being appended, the schema of the appendix has to match
 the schema of the existing dataset.
+
 ## How to delete training data?
+
 Send a DELETE request to the MLHandler endpoint with the `?_cache` parameter.
 E.g:
+
 ```bash
 curl -X DELETE 'http://localhost:9988/mlhandler?_cache'
 ```
+
 ## How to delete the model?
-Send a DELETE request to the MLHandler endpoint with the `?_model` parameter.
-E.g:
+
+Send a DELETE request to the MLHandler endpoint with the `?_model` parameter. E.g:
+
 ```bash
 curl -X DELETE 'http://localhost:9988/mlhandler?_model'
 ```
+
 This will cause MLHandler to return an HTTP 404 on subsequent requests to the same
 endpoint, until an `?_action=train` or `?_action=retrain` is requested.

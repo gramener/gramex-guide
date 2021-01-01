@@ -19,14 +19,14 @@
     <button class="btn btn-primary">Predict</button>
     {% elif handler.path_args[0] == 'bulkpredict' %}
     <p>Drop a file below to get predictions for every row.</p>
-    <form id='bulkform' method="POST" enctype="multipart/form-data" action="../model">
+    <form id="bulkform" method="POST" enctype="multipart/form-data" action="../model">
       <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
       <input id="fileupload" type="file" name="file">
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     {% elif handler.path_args[0] == 'retrain' %}
     <p>Drop a file below to get predictions for every row.</p>
-    <form id='retrain' method="POST" enctype="multipart/form-data" action="../model?_retrain">
+    <form id="retrain" method="POST" enctype="multipart/form-data" action="../model?_retrain">
       <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
       <input id="fileupload" type="file" name="file">
       <label for="traincol">Specify a target column:</label>
