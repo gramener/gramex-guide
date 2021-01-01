@@ -673,6 +673,26 @@ import: $GRAMEXPATH/deploy.yaml
 
 See [deploy.yaml](https://github.com/gramener/gramex/blob/master/gramex/deploy.yaml) to understand the configurations.
 
+### nginx security
+
+To hide the `Server: nginx/*` header (even if security audit teams change the method type from GET
+to TRACE/OPTIONS), install `nginx-extras` which includes
+[headers-more-nginx](https://github.com/openresty/headers-more-nginx-module). On Ubuntu, run:
+
+```bash
+sudo apt-get install nginx-extras
+```
+
+Then add:
+
+```nginx
+location /project/ {
+  more_set_headers 'Server: custom_name';
+}
+```
+
+Restart nginx.
+
 ### Testing
 
 To check for application vulnerabilities, run tools such as:
@@ -684,9 +704,49 @@ To check for application vulnerabilities, run tools such as:
 
 The best way to set up Gramex as an HTTP server is to run it behind a
 [Proxy Server](#proxy-servers) like nginx or Apache.
-Use [certbot](https://certbot.eff.org/) to generate a HTTPS certificate.
 
-But to set up Gramex *directly* as a HTTPS server (**not recommended for production**), create
+
+```nginx
+server {
+  listen 443 ssl http2;         # Use HTTP and HTTP/2 on port 443 with SSL
+  server_name example.com;      # https://example.com/
+  server_tokens off;            # Hide server version
+
+  # Use https://certbot.eff.org/ to generate these certificates
+  ssl_certificate     /etc/letsencrypt/live/example.com/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+
+  # Disable SSLv3 -- only IE6 needs it, and the POODLE security hole makes it vulnerable
+  # Disable TLSv1 and TLSv1.1. See https://www.packetlabs.net/tls-1-1-no-longer-secure/
+  ssl_protocols TLSv1.2 TLSv1.3;
+  ssl_ciphers EECDH+CHACHA20:EECDH+AES;
+  ssl_prefer_server_ciphers on;
+
+  # Prevent man-in-the-middle attack by telling browsers to only use HTTPS, not HTTP, for 1 year
+  # https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security (HSTS)
+  add_header Strict-Transport-Security "max-age=31536000";
+}
+
+# Redirect HTTP to HTTPS
+
+server {
+  listen      80;             # Redirect port 80 on
+  server_name example.com;    # http://example.com/
+  location / {                # Permanently redirect to the HTTPS page
+    return 301 https://$host$request_uri;
+  }
+  # Serve custom error HTML for 301 and 302 HTTP status codes -- to avoid reporting server name
+  error_page 301 302 /error.html;
+  location = /error.html {
+    root /var/www/html;
+    internal;
+  }
+```
+
+
+### Direct HTTPS server
+
+To set up Gramex *directly* as a HTTPS server (**not recommended for production**), create a
 certificate file and a key file, both in PEM format. Use the following settings in `gramex.yaml`:
 
 ```yaml
