@@ -79,6 +79,34 @@ url:
 
 **NOTE**: Don't commit the `.secrets.yaml` file. Everyone who can access the repo can see the secret.
 
+### .secrets.yaml imports
+
+`.secrets.yaml` can import from other files. For example:
+
+```yaml
+# Imports all variables from another-secret-file.yaml
+SECRETS_IMPORT: another-secret-file.yaml
+
+# You can import from a file pattern. This imports .secrets.yaml from all
+# immediate subdirectories
+SECRETS_IMPORT: '*/.secrets.yaml'
+
+# You can specify a list of imports
+SECRETS_IMPORT:
+  - app1/.secrets.yaml
+  - app2/.secrets.yaml
+
+# ... or a dict of imports. Keys are ignored. Values are used.
+SECRETS_IMPORT:
+  app1: app1/.secrets.yaml
+  app2: app2/.secrets.yaml
+```
+
+This is useful when a Gramex instance runs multiple apps, each having its own `.secrets.yaml` file.
+The main app can use `SECRETS_IMPORT: */.secrets.yaml` to import secrets from all subdirectories.
+
+Any secrets in the main file override the secrets in an imported file.
+
 ### .secrets.yaml URLs
 
 If you can't edit files on the server, you can pick up *encrypted* secrets from a public URL in 3 steps.
