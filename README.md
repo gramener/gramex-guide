@@ -71,8 +71,9 @@ First, [install Gramex](install/). Then learn from these tutorials:
 
 ## Reference
 
-- [Python API reference](https://learn.gramener.com/gramex/gramex.html)
+- [Roadmap](roadmap/)
 - [Release Notes](release/)
+- [Python API reference](https://learn.gramener.com/gramex/gramex.html)
 - [Gramex License](license/). Gramex Community Edition is MIT licensed
 - [Gramex is a web server](server/)
 - [Gramex FAQ](faq/)
