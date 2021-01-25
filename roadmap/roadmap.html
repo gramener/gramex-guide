@@ -1,0 +1,145 @@
+<!-- embed this page as <iframe scrolling="no" style="border:0;width:800px;height:800px;"> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gramex Roadmap</title>
+  <style>
+    /* apply basic normalization across browsers, based on Bootstrap */
+    *, ::after, ::before {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-size: 16px;
+      font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    }
+    table {
+      border-collapse: collapse;
+      width: 800px;
+    }
+    table caption {
+      font-size: 1.5rem;
+      font-variant: small-caps;
+      padding-bottom: 0.25rem;
+      border-bottom: 1px dashed #00000050;
+    }
+    th, td {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.8rem;
+      vertical-align: top;
+    }
+    th {
+      font-weight: normal;
+    }
+    th h1 {
+      font-weight: normal;
+      font-size: 1.5rem;
+      margin: 0;
+    }
+    th[scope="row"] {
+      text-align: right;
+      color: white;
+      padding-left: 0.5rem;
+    }
+    td { color: #000000cc; }
+    td p { margin: 0 0 0.5rem 0; }
+    td a { font-weight: bold; color: #000; }
+    td .cat { font-variant: small-caps; }
+    .connectors th { background-color: #4f81bd; }
+    .processors th { background-color: #c0504d; }
+    .models th { background-color: #9bbb59; }
+    .visuals th { background-color: #8064a2; }
+    .stories th { background-color: #4bacc6; }
+    .devex th { background-color: #f79646; }
+    .connectors td { background-color: #4f81bd30; }
+    .processors td { background-color: #c0504d30; }
+    .models td { background-color: #9bbb5930; }
+    .visuals td { background-color: #8064a230; }
+    .stories td { background-color: #4bacc630; }
+    .devex td { background-color: #f7964630; }
+  </style>
+</head>
+<body>
+  <table>
+    <caption>Major Gramex Roadmap Features</caption>
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">
+          <h1>Q1</h1>
+          <div>Train & deploy your models with ML algorithms in Gramex. Enable user data entry through forms.</div>
+        </th>
+        <th scope="col">
+          <h1>Q2</h1>
+          <div>Do everything in Gramex via the IDE. Build application UI via drag-and-drop.</div>
+        </th>
+        <th scope="col">
+          <h1>Q3</h1>
+          <div>Apply pre-built ML models. Build data visualizations with narratives using drag-and-drop.</div>
+        </th>
+        <th scope="col">
+          <h1>Q4</h1>
+          <div>Build data transfer flows using a UI. Convert designs into working code in 1-click.</div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="connectors">
+        <th scope="row"><h1>Connectors</h1></th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="processors">
+        <th scope="row"><h1>Processors</h1></th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><a class="cat">Data model</a>: <a>DataOps</a> framework to create ETL flows & operations via drag-and-drop.</td>
+      </tr>
+      <tr class="models">
+        <th scope="row"><h1>Models</h1></th>
+        <td><a class="cat">AI/ML API</a>: <a>ML Service</a> lets you train and deploy machine learning models without code</td>
+        <td></td>
+        <td><a class="cat">ML Model</a>: <a>Insight Tree</a> algo & app discovers biggest problem area. <a>Top Cause</a> app & algo finds biggest driver.</td>
+        <td><a class="cat">Charts</a>: Design2Code lets you convert a chart screenshot into a working chart.</td>
+      </tr>
+      <tr class="visuals">
+        <th scope="row"><h1>Visuals</h1></th>
+        <td><a class="cat">UI Components</a>: <a>Forms Builder</a> creates embeddable forms via drag-and-drop</td>
+        <td><a class="cat">UI Components</a>: <a>UI Gallery</a> lets you build a full-page scaffolding using pre-built widgets.</td>
+        <td>
+          <div><a class="cat">Charts</a>: <a>Gramex Charts</a> creates configurable charts via drag-and-drop.</div>
+          <div>D3 & Vega charts fully supported.</div>
+        </td>
+        <td></td>
+      </tr>
+      <tr class="stories">
+        <th scope="row"><h1>Stories</h1></th>
+        <td></td>
+        <td></td>
+        <td><a class="cat">Narratives</a>: Narratives gallery has embeddable customizable rich text narratives that explain analyses.</td>
+        <td></td>
+      </tr>
+      <tr class="devex">
+        <th scope="row"><h1>DevEx</h1></th>
+        <td>
+          <p><a class="cat">IDE</a>: <a>IDE</a> covers all Gramex microservices</p>
+          <p><a class="cat">Logging</a>: <a>Log Viewer</a> includes widgets that can embed user analytics in any page.</p>
+          <p><a class="cat">Access</a>: <a>Admin panel</a> includes embeddable widgets and role management UI.</p>
+        </td>
+        <td>
+          <p><a class="cat">IDE</a>: Feature complete even for novice devs.</p>
+          <p><a class="cat">Docs</a>: <a>App gallery</a> to show you how to re-create 20 startups – in 1 hr each.</p>
+        </td>
+        <td></td>
+        <td><a class="cat">Config</a>: <a>State management</a> framework lets you share pages preserving user filters, selections & interactions</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Feature development will continue in all areas. These are the <strong>major new features</strong>.</p>
+</body>
+</html>
