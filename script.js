@@ -146,7 +146,9 @@ $('#mlhandler-single').on('submit', function(e) {
     obj[item.name] = item.value
     url.update(obj)
   })
-  $.getJSON(url.toString()).done((e) => {$('#single-result').html(e)})
+  $.getJSON(url.toString()).done((e) => {
+    $('#single-result').html(e[0].Survived)
+  })
 })
 
 $('#bulkform').submit(function(e) {
