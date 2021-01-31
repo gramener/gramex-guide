@@ -129,7 +129,8 @@ Update the following and commit to `master` branch:
 - In `gramex/apps.yaml` -- update the version number on the guide
 - In `gramex/apps/ui/package.json` -- update the version number
 - In [gramex-guide][gramex-guide] / `release/README.md` -- add release entry
-- In [gramex-guide][gramex-guide] / `release/1.xx/README.md` -- add guide release notes. Run `make stats` for code size stats. Take coverage stats from Travis
+- In [gramex-guide][gramex-guide] / `release/1.xx/README.md` -- add guide release notes.
+  - Run `make stats` for code size stats. Take coverage stats from Travis
 - In [gramex-guide][gramex-guide] / `python search/search.py` to update search index
 - In [gramex-guide][gramex-guide] / `node search/searchindex.js` to update search index
 

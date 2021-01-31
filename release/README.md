@@ -5,6 +5,7 @@ prefix: Release
 
 Gramex now releases feature updates on the 1st of every month, and patch updates as required.
 
+- [v1.68.0: UI Factory creates embeddable forms.](1.68/) <small>1 Feb 2021</small>
 - [v1.67.0: Train and deploy ML models. Simpler names for micro-services.](1.67/) <small>1 Jan 2021</small>
 - [v1.66.0: Auto-create table schema, fetch inserted rows, and UI themes](1.66/) <small>1 Dec 2020</small>
 - [v1.65.0: Excel table support, functions as REST APIs, logging via ElasticSearch.](1.65/) <small>1 Nov 2020</small>

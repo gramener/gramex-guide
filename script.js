@@ -138,15 +138,17 @@ $(function () {
 
 
 // MLHandler
-$('#mlhandler-single').on('submit', function(e) {
+$('#mlhandler-single').on('submit', function (e) {
   e.preventDefault();
   var url = g1.url.parse('model')
-  $(this).serializeArray().forEach(function(item, index) {
+  $(this).serializeArray().forEach(function (item, index) {
     var obj = {}
     obj[item.name] = item.value
     url.update(obj)
   })
-  $.getJSON(url.toString()).done((e) => {$('#single-result').html(e)})
+  $.getJSON(url.toString()).done(function (e) {
+    $('#single-result').html(e)
+  })
 })
 
 $('#bulkform').submit(function(e) {

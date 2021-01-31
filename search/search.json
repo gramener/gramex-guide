@@ -1289,6 +1289,41 @@
       "What next": -1
     }
   },
+  "1.68": {
+    "": {
+      "Gramex 1.68 release notes": -1
+    },
+    "add-fields": {
+      "Add fields": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "collect-responses": {
+      "Collect responses": -1
+    },
+    "edit-fields": {
+      "Edit fields": -1
+    },
+    "embed-form": {
+      "Embed form": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "import-secrets": {
+      "Import secrets": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "ui-factory-forms": {
+      "UI Factory - Forms": -1
+    },
+    "what-next": {
+      "What next": -1
+    }
+  },
   "about": {
     "": {}
   },
@@ -2122,8 +2157,14 @@
     "https-server": {
       "HTTPS Server": -1
     },
+    "immediate-subdirectories": {
+      "immediate subdirectories": -1
+    },
     "import-conflict": {
       "Import conflict": -1
+    },
+    "imports-all-variables-from-another-secret-fileyaml": {
+      "Imports all variables from another-secret-file.yaml": -1
     },
     "linux-scheduled-tasks": {
       "Linux scheduled tasks": -1
@@ -2155,6 +2196,9 @@
     "nginxconf": {
       "nginx.conf": -1
     },
+    "or-a-dict-of-imports-keys-are-ignored-values-are-used": {
+      "... or a dict of imports. Keys are ignored. Values are used.": -1
+    },
     "other-common-errors": {
       "Other common errors": -1
     },
@@ -2181,6 +2225,9 @@
     },
     "secretsyaml": {
       ".secrets.yaml": -1
+    },
+    "secretsyaml-imports": {
+      ".secrets.yaml imports": -1
     },
     "secretsyaml-urls": {
       ".secrets.yaml URLs": -1
@@ -2211,6 +2258,12 @@
     },
     "works-locally-but-not-on-server": {
       "Works locally but not on server": -1
+    },
+    "you-can-import-from-a-file-pattern-this-imports-secretsyaml-from-all": {
+      "You can import from a file pattern. This imports .secrets.yaml from all": -1
+    },
+    "you-can-specify-a-list-of-imports": {
+      "You can specify a list of imports": -1
     }
   },
   "drivehandler": {
@@ -3505,6 +3558,14 @@
       "Gramex release notes": -1
     }
   },
+  "roadmap": {
+    "": {
+      "Gramex Roadmap": -1
+    },
+    "releases": {
+      "Releases": -1
+    }
+  },
   "sales-funnel": {
     "sales-funnel": {
       "Sales funnel": -1
@@ -3782,6 +3843,9 @@
     "borders": {
       "Borders": -1
     },
+    "carousels": {
+      "Carousels": -1
+    },
     "color-states": {
       "Color states": -1
     },
@@ -3824,6 +3888,9 @@
     "line-height": {
       "Line height": -1
     },
+    "maps": {
+      "Maps": -1
+    },
     "overlay": {
       "Overlay": -1
     },
@@ -3838,6 +3905,9 @@
     },
     "shadow": {
       "Shadow": -1
+    },
+    "tables": {
+      "Tables": -1
     },
     "tail": {
       "Tail": -1
