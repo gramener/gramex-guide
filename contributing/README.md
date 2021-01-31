@@ -108,8 +108,10 @@ If possible:
 
 ## Release Gramex Community Edition
 
-Check [build errors](https://travis-ci.com/gramener/gramex).
-Test the `master` branch locally on Python >= 3.7:
+Run tests:
+
+1. Check [Travis build errors](https://travis-ci.com/gramener/gramex).
+2. Test the `master` branch locally on Python >= 3.7:
 
 ```bash
 make test
@@ -123,22 +125,20 @@ find gramex/apps/ -maxdepth 2 -name package.json -print0 | xargs -0 -L1 yarn upg
 
 Update the following and commit to `master` branch:
 
-- In gramex:
-    - `gramex/release.json` -- update the version number
-    - `gramex/apps.yaml` -- update the version number on the guide
-    - `gramex/apps/ui/package.json` -- update the version number
-- In [gramex-guide][gramex-guide]
-    - `release/README.md` -- add release entry
-    - `release/1.xx/README.md` -- add guide release notes. Run `make stats` for code size stats. Take coverage stats from Travis
-    - `python search/search.py` to update search index
-    - `node search/searchindex.js` to update search index
+- In `gramex/release.json` -- update the version number
+- In `gramex/apps.yaml` -- update the version number on the guide
+- In `gramex/apps/ui/package.json` -- update the version number
+- In [gramex-guide][gramex-guide] / `release/README.md` -- add release entry
+- In [gramex-guide][gramex-guide] / `release/1.xx/README.md` -- add guide release notes. Run `make stats` for code size stats. Take coverage stats from Travis
+- In [gramex-guide][gramex-guide] / `python search/search.py` to update search index
+- In [gramex-guide][gramex-guide] / `node search/searchindex.js` to update search index
 
 Commit and push the `master` branch of both repos to the server.
 **Ensure pipeline passes.**:
 
 ```bash
-git commit -m"DOC: Add v1.x.x release changes"
-git push                    # Push the master branch
+git commit -m"DOC: Add v1.x.x release changes"  # Replace x.x
+git push
 ```
 
 Merge `master` branch with `release` on both repos:
