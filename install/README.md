@@ -42,7 +42,7 @@ Run `gramex --help` to verify that Gramex is installed.
 To upgrade Gramex, run:
 
 ```bash
-conda update gramex
+conda update -c conda-forge -c gramener gramex
 ```
 
 ## Docker install
