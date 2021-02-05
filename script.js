@@ -147,7 +147,7 @@ $('#mlhandler-single').on('submit', function (e) {
     url.update(obj)
   })
   $.getJSON(url.toString()).done(function (e) {
-    $('#single-result').html(e)
+    $('#single-result').html(e[0].Survived)
   })
 })
 
