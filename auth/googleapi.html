@@ -27,7 +27,7 @@
   $('#contacts').hide()
   $.getJSON('session')
     .done(function(data) {
-      if (!data.user || !data.user.email || !data.google_access_token)
+      if (!data.user || !data.user.email || !data.access_token)
         $('#login-info').html('<a href="google?next=googleapi.html">Log in via Google Auth</a>')
       else {
         $('#login-info').html('You are logged in as <a href="google?next=googleapi.html">' + data.user.email + '</a>')

@@ -45,6 +45,8 @@ indicative. Change them based on your needs.
   <br>`Cache-Control: "public, max-age=3600"`
 - **User dashboards**: cache *privately* for an hour.
   <br>`Cache-Control: "private, max-age=3600"`
+- **Real-time pages**: Never cache this page anywhere.
+  <br>`Cache-Control: "no-cache, no-store"`
 
 To [reload ignoring the cache](http://stackoverflow.com/a/385491/100904), press
 Ctrl-F5 on the browser. Below is a useful reference for `cache-control` checks ([Google Dev Docs](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/images/http-cache-decision-tree.png)):

@@ -1013,6 +1013,64 @@ This is more readable than:
 query: SELECT group, SUM(*) FROM table WHERE column > value GROUP BY group ORDER BY group DESC
 ```
 
+## Access configurations programmatically
+
+You can access your entire app's configuration using `gramex.appconfig`. This has the consolidated
+`gramex.yaml` files after [imports](#yaml-imports) and [variable substition](#yaml-variables).
+
+This is useful when one handler (e.g. a [FunctionHandler](../functionhandler/)) needs information
+about the `kwargs` in another handler.
+
+For example, if `gramex.yaml` has:
+
+```yaml
+url:
+    app/home:
+        pattern: /
+        handler: FunctionHandler
+        kwargs:
+            function: mymodule.myfunc()
+            key: value
+```
+
+... then:
+
+```python
+def myfunction():
+    print(gramex.appconfig.url['app/home'].handler)         # prints "FunctionHandler"
+    print(gramex.appconfig.url['app/home'].kwargs.key)      # prints "value"
+```
+
+You can access the handler class for any URL using `gramex.service.url`. In the above example,
+`gramex.service.url['app/home'].handler_class` is the [BaseHandler](../handlers/) subclass that
+will be instantiated for this URL.
+
+This is useful when one handler (e.g. a [FunctionHandler](../functionhandler/)) needs to access a
+static or class method from another handler. A typical example is to access
+[GoogleAuth.exchange_refresh_token()](../authhandler/#offline-access-to-google-data).
+
+For example:
+
+```yaml
+url:
+    app/google:
+        pattern: /google
+        handler: GoogleAuth
+        kwargs:
+            ...
+```
+
+... then:
+
+```python
+@tornado.gen.coroutine
+def refresh(handler):
+    # Get the Google auth handler though which the current user logged in
+    auth_handler = gramex.service.url['app/google'].handler_class
+    # Exchange refresh token for access token
+    yield auth_handler.exchange_refresh_token(handler.current_user)
+```
+
 ## Dynamic configuration
 
 Gramex can re-configure itself dynamically from a YAML file or from a data structure.

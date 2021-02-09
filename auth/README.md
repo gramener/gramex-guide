@@ -250,6 +250,8 @@ The `template:` key is optional, but you should generally associate it with a
 [xsrf][xsrf] field). See [login templates](#login-templates) to learn how to
 create one.
 
+::: example href=simple/ source=https://github.com/gramener/gramex-guide/blob/master/auth/simple/
+    Simple Auth example
 
 
 ## Google auth
@@ -286,30 +288,12 @@ url:
     pattern: /$YAMLURL/google   # Map this URL
     handler: GoogleAuth         # to the GoogleAuth handler
     kwargs:
-      key: YOURKEY            # Set your app key
-      secret: YOURSECRET      # Set your app secret
+      key: YOURKEY              # Set your app key
+      secret: YOURSECRET        # Set your app secret
       # Scope list: https://developers.google.com/identity/protocols/googlescopes
       scope:
         - https://www.googleapis.com/auth/contacts.readonly
         - https://www.googleapis.com/auth/gmail.readonly
-```
-
-The bearer token is available in the session key `google_access_token`. You can
-use this with [ProxyHandler to access Google APIs](../proxyhandler/#google-proxyhandler) .
-
-Programmatically, you can pass this to any Google API with a
-`Authorization: Bearer <google_access_token>` HTTP header, or with a
-`?access_token=<google_access_token>` query parameter. For example, this code
-[fetches Google contacts](googleapi.html):
-
-```python
-@tornado.gen.coroutine
-def contacts(handler):
-    result = yield async_http_client.fetch(
-        'https://www.google.com/m8/feeds/contacts/default/full',
-        headers={'Authorization': 'Bearer ' + handler.session.get('google_access_token', '')},
-    )
-    raise tornado.gen.Return(result)
 ```
 
 The [user attributes](#user-attributes) in `handler.current_user` look like this:
@@ -326,9 +310,89 @@ The [user attributes](#user-attributes) in `handler.current_user` look like this
     "email": "s.anand@gramener.com",
     "link": "https://plus.google.com/105156369599800182273",
     "given_name": "Anand",
-    "verified_email": true
+    "verified_email": true,
+    "access_token": "...",
+    "expires_in": 3599,
+    "scope": "https://www.googleapis.com/auth/userinfo.email openid ...",
+    "token_type": "Bearer",
+    "id_token": "..."
 }
 ```
+
+The bearer token is available in the session key `access_token`. You can
+use this with [ProxyHandler to access Google APIs](../proxyhandler/#google-proxyhandler) .
+
+Programmatically, you can pass this to any Google API with a
+`Authorization: Bearer <access_token>` HTTP header, or with a
+`?access_token=<access_token>` query parameter. For example, this code
+[fetches Google contacts](googleapi.html):
+
+```python
+@tornado.gen.coroutine
+def contacts(handler):
+    result = yield async_http_client.fetch(
+        'https://www.google.com/m8/feeds/contacts/default/full',
+        headers={'Authorization': 'Bearer ' + handler.session.get('access_token', '')},
+    )
+    raise tornado.gen.Return(result)
+```
+
+### Offline access to Google data
+
+To perform offline actions on behalf of the user (e.g. send email, poll Google Drive, etc), you
+need to request offline access by adding `access_type: offline` under `extra_params`.
+
+```yaml
+url:
+  login/google:
+    pattern: /$YAMLURL/google   # Map this URL
+    handler: GoogleAuth         # to the GoogleAuth handler
+    kwargs:
+      key: YOURKEY              # Set your app key
+      secret: YOURSECRET        # Set your app secret
+      # Scope list: https://developers.google.com/identity/protocols/googlescopes
+      scope:
+        - https://www.googleapis.com/auth/contacts.readonly
+        - https://www.googleapis.com/auth/gmail.readonly
+      extra_params:
+        access_type: offline
+```
+
+When the user logs in for the first time, Google sends a refresh token that you can access via
+`handler.current_user.refresh_token`.
+
+If the `access_token` has expired, you will get a HTTP 401 Unauthorized error, with a JSON response like this:
+
+```json
+{
+  "error": {
+    "code": 401,
+    "message": "Request had invalid authentication credentials...",
+    "status": "UNAUTHENTICATED"
+  }
+}
+```
+
+In this case, you can get a new access token using `GoogleAuth.exchange_refresh_token()`:
+
+```python
+@tornado.gen.coroutine
+def get_contacts(handler):
+    # Make an authenticated request
+    url = 'https://www.google.com/m8/feeds/contacts/default/full'
+    headers = {'Authorization': 'Bearer ' + handler.current_user.get('access_token', '')}
+    r = requests.get(url, headers=headers)
+    # If the access token has expired
+    if r.status_code == 401:
+        # Exchange refresh token
+        yield gramex.service.url['login/google'].handler_class.exchange_refresh_token(
+            handler.current_user)
+        # Make the request again
+        headers = {'Authorization': 'Bearer ' + handler.current_user.get('access_token', '')}
+        r = requests.get(url, headers=headers)
+    return r.text
+```
+
 
 ### SSL certificate error
 
