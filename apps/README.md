@@ -61,18 +61,19 @@ Currently, installing an application will delete everything in the target folder
 
 ## Setting up apps
 
-After installing an app, Gramex automatically runs setup scripts from that directory in this order:
+After installing an app, `gramex setup <folder>` sets up the app. (This happens automatically if you use [`gramex install`](#installing-apps).)
+
+`gramex setup <folder>` does the following in each folder:
 
 - If `Makefile` is present, run `make` if make is available
 - If `setup.ps1` is present, run `powershell -File setup.ps1` if PowerShell is available (Windows)
 - If `requirements.txt` is present, run `pip install --upgrade -r requirements.txt` if pip is available
 - If `setup.sh` is present, run `bash setup.sh` if bash is available
 - If `setup.py` is present, run `python setup.py` if Python is available
-- If `package.json` is present, run `npm install` if npm is available
+- If `package.json` is present, run `yarn install` if yarn is available, else `npm install`
 - If `bower.json` is present, run `bower install` if bower is available
 
-You can also set up an app "in-place" by running `gramex setup .` from that
-directory, or by running `gramex setup <target-dir>` from any other directory.
+You can run `gramex setup .` (note the dot) to set up an app in the current folder.
 
 Gramex comes with pre-defined apps located at `$GRAMEXPATH/apps/`. Running
 `gramex setup <appname>` (where `<appname>` is a directory under

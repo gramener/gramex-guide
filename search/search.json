@@ -1562,6 +1562,9 @@
     "oauth2": {
       "OAuth2": -1
     },
+    "offline-access-to-google-data": {
+      "Offline access to Google data": -1
+    },
     "otp": {
       "OTP": -1
     },
@@ -1810,6 +1813,9 @@
   "config": {
     "": {
       "Configurations control Gramex": -1
+    },
+    "access-configurations-programmatically": {
+      "Access configurations programmatically": -1
     },
     "app-configuration": {
       "App configuration": -1
@@ -3843,9 +3849,7 @@
     "borders": {
       "Borders": -1
     },
-    "carousels": {
-      "Carousels": -1
-    },
+    "carousels": {},
     "color-states": {
       "Color states": -1
     },
@@ -3888,9 +3892,7 @@
     "line-height": {
       "Line height": -1
     },
-    "maps": {
-      "Maps": -1
-    },
+    "maps": {},
     "overlay": {
       "Overlay": -1
     },
@@ -3906,9 +3908,7 @@
     "shadow": {
       "Shadow": -1
     },
-    "tables": {
-      "Tables": -1
-    },
+    "tables": {},
     "tail": {
       "Tail": -1
     },

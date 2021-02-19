@@ -406,17 +406,14 @@ user after completing the action. For example, after a
 [UploadHandler](../uploadhandler/) is done. Here is the syntax:
 
 ```yaml
-url:
-    pattern: ...
-    handler: ...
     kwargs:
-        ...
-        # Redirect the browser to this path after execution
-        redirect: /$YAMLURL/path-to-redirect
-        # You can also specify an absolute path, e.g.
-        # redirect: /home
-        # ... or a relative path, e.g.
-        # redirect: ../css/style.css
+      ...
+      # Redirect the browser to this path after execution
+      redirect: /$YAMLURL/path-to-redirect
+        # OR: You can specify an absolute path, e.g.
+        redirect: /home
+        # OR: You can specify a relative path, e.g.
+        redirect: ../css/style.css
 ```
 
 **NOTE**: You can only redirect pages that don't return any content. If the
@@ -433,11 +430,11 @@ specified, the user is redirected to the home page `/`.) For example:
 
 ```yaml
     kwargs:
-        ...
-        redirect:             # Redirect options are applied in order
+      ...
+      redirect:             # Redirect options are applied in order
         query: next         # If ?next= is specified, use it
         header: Referer     # Else use the HTTP header Referer if it exists
-        url: /$YAMLURL/     # Else redirect to the directory where this gramex.yaml is present
+        url: /$YAMLURL/     # Else redirect to directory of this gramex.yaml
 ```
 
 With this configuration, `?next=../config/` will take you to the `../config/`

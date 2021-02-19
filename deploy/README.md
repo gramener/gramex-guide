@@ -1035,13 +1035,13 @@ of these is imported. Prefix the Python files with a unique name, e.g.
 ### Missing dependency
 
 Your app may depend on an external library -- e.g. a Python module, node module
-or R library. Ensure that this is installed on the server. The preferred method
-is to use the [gramex install](../install/) method. Specifically:
+or R library.
 
-- Add Python modules to `requirements.txt`
-- Add Node modules to `package.json`
-- Add R libraries to `setup.sh` -- and ensure that the correct R is used
-- Add any other custom code to `setup.sh`
+The quickest way is to set these up is to run [`gramex setup <folder>`](../apps/#setting-up-apps) method. This automtically installs:
+
+- Python modules in `requirements.txt` via `pip install`
+- Node modules in `package.json` via `yarn install` or `npm install`
+- Any custom code in `setup.sh`, `setup.py`, and `setup.ps1`
 
 ### Log file order
 
