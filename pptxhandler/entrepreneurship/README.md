@@ -9,6 +9,12 @@ entrepreneurial trends in the US. Their [entry in the Information is Beautiful
 awards](https://www.informationisbeautifulawards.com/showcase/4296-kauffman-indicators-of-entrepreneurship)
 shows the percentage of population that starts a new business.
 
+Here's a video explaining each step of this tutorial.
+
+<div class="ratio ratio-16x9">
+  <iframe src="https://www.youtube.com/embed/tHaMc_Rraic" allowfullscreen></iframe>
+</div>
+
 ## Create the source template
 
 Start by creating a [template.pptx](template.pptx) that has all the 50 U.S. states + DC laid out.
