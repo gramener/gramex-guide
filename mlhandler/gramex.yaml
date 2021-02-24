@@ -21,6 +21,11 @@ url:
     handler: FormHandler
     kwargs:
       url: $YAMLPATH/titanic.csv
+  mlhandler/sentiment:
+    pattern: /$YAMLURL/sentiment
+    handler: FormHandler
+    kwargs:
+      url: $YAMLPATH/sentiment.csv
   mlhandler/single:
     pattern: /$YAMLURL/try/(.*)
     handler: FileHandler
