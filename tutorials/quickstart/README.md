@@ -25,10 +25,10 @@ This is what the data looks like:
 Our goal is to display the sales made by the store in concise manner. Thus, the fields relevant
 to sales are:
 
-* Sales - the value in USD of a particular order.
-* Region, State and City - the place where the sale was made.
-* Category, SubCategory - the type of the product that was sold.
-* Segment - the type of customer who bought the product.
+- Sales - the value in USD of a particular order.
+- Region, State and City - the place where the sale was made.
+- Category, SubCategory - the type of the product that was sold.
+- Segment - the type of customer who bought the product.
 
 ### Outcome
 
@@ -46,8 +46,8 @@ Our application should look like:
 
 In order to start this tutorial, we will need to:
 
-* [Install and set up Gramex](../../install)
-* [Download the data](../store-sales.csv) and save it as `store-sales.csv` at a convenient location on your computer.
+- [Install and set up Gramex](../../install)
+- [Download the data](../store-sales.csv) and save it as `store-sales.csv` at a convenient location on your computer.
 
 ## Step 0: Create the Project
 
@@ -68,13 +68,13 @@ For now, let's put some text in `"index.html"`.
 Open a terminal, navigate to the project folder and type the following:
 
 ```bash
-$ echo "Hello Gramex!" > index.html
+echo "Hello Gramex!" > index.html
 ```
 
 and then type the following command to start the Gramex server:
 
 ```bash
-$ gramex
+gramex
 ```
 
 We should start seeing some output now, which is the Gramex server logging its startup sequence. Once we see the following lines, Gramex has fully started, and is ready to accept requests.
@@ -89,12 +89,11 @@ Note that these may not be the _last_ lines you see in the startup logs, since s
 At this time, if you open a browser window at [`http://localhost:9988`](http://localhost:9988),
 you should see the text "Hello Gramex" in `"index.html"`.
 
+![Step 0 output](img/step-0-output.png){: width=500}
+
 [View source](../quickstart/output/1/index.html){: class="source"}
 
 Gramex internally watches files for changes, so we can change anything in `"index.html"`, and refresh the link in the browser without restarting the server.
-
-<img src="https://cloud.gramener.com/f/5684de979acd45d4a14d/?dl=1" width="400"></img>
-
 
 ## Step 1: Expose the data through a REST API
 
@@ -144,7 +143,7 @@ You could also visit
 [http://localhost:9988/data?_limit=10&_format=html](http://localhost:9988/data?_limit=10&_format=html)
 to see the first ten rows as a simple HTML table.
 
-<img src="https://cloud.gramener.com/f/379c20a01b3c416ca3cd/?dl=1" width="500">
+![Step 1 output](img/step-1-output.png){: width=500}
 
 
 ## Step 2: Laying out some scaffolding
@@ -230,16 +229,15 @@ To show the data as a table, insert the following lines in
 
 After saving the file, when we open
 [`http://localhost:9988`](http://localhost:9988),
-we should see a table similar to the one at the top of this page.
+we should see a table similar to the one below.
+
+![Step 3 output](img/step-3-output.gif)
 
 The table is interactive. Try playing around with it. Here's a few things you could try:
 
-* Click the dropdown arrows near the column headers to see column options.
-* Try getting the second, third or the 1365th 'page' of the dataset from the menu at the top of the table.
-* See 20, 50 or more rows at a time in the table from the dropdown menu to the right of the page list.
-
-![Table Interactive gif](https://cloud.gramener.com/f/9eb799fbfc574c049c47/?dl=1)
-
+- Click the dropdown arrows near the column headers to see column options.
+- Try getting the second, third or the 1365th 'page' of the dataset from the menu at the top of the table.
+- See 20, 50 or more rows at a time in the table from the dropdown menu to the right of the page list.
 
 ## Step 4: Adding A Chart
 
@@ -286,16 +284,23 @@ var view = new vega.View(vega.parse(vegaLite.compile(spec).spec))
     .run()
 </script>
 ```
+
+After saving the file, when we open
+[`http://localhost:9988`](http://localhost:9988), we should see a chart and table like below.
+
+![Step 4 output](img/step-4-output.png)
+
 [View source](../quickstart/output/2/index.html){: class="source"}
 
 
 Details of the specification can be found in the vega-lite [docs](https://vega.github.io/vega-lite/docs/), but some things to note:
 
-* the spec consists of a bunch of nested fields, `width`, `height`, `data`, etc
-* the data key is set to the FormHandler URL with grouping by Segment: `{"url": "data?_by=Segment"}`
-* We've set the x and y axis values to `Sales|sum` and `Segment` respectively,
+- the spec consists of a bunch of nested fields, `width`, `height`, `data`, etc
+- the data key is set to the FormHandler URL with grouping by Segment: `{"url": "data?_by=Segment"}`
+- We've set the x and y axis values to `Sales|sum` and `Segment` respectively,
   telling Vega-lite to plot those quantities from the data that FormHandler
   returns.
+
 
 
 ## Step 5: Appearance and Final Touches
@@ -337,22 +342,22 @@ Here are a few more ways in which we can tweak our dashboard:
 If you have followed along with this quickstart, you now have a basic idea of how to build a simple static dashboard with Gramex.
 To see more of what Gramex's functionality and features, including how to build interactive, URL driven dashboards; look at:
 
-* the rest of our [tutorials](../),
-* our [demos](https://gramener.com/demo), and,
-* our detailed [documentation](../../).
+- the rest of our [tutorials](../),
+- our [demos](https://gramener.com/demo), and,
+- our detailed [documentation](../../).
 
 
 ## Troubleshooting
 
 - Gramex doesn't start:
-    - [Inotify watch limit reached](https://unix.stackexchange.com/questions/13751/kernel-inotify-watch-limit-reached)
-    - Port is busy
-        - Gramex runs on port 9988 by default, you can run `gramex --listen.port=<port number>` to run on an arbritary port.
+  - [Inotify watch limit reached](https://unix.stackexchange.com/questions/13751/kernel-inotify-watch-limit-reached)
+  - Port is busy
+    - Gramex runs on port 9988 by default, you can run `gramex --listen.port=<port number>` to run on an arbritary port.
 - Don't see any text at localhost:9988, instead just a list of files in the directory
-    - You may not have a gramex.yaml in your project directory. Create one and restart Gramex.
+  - You may not have a gramex.yaml in your project directory. Create one and restart Gramex.
 - CSS/JS Not available.
-    - You may have forgotten to add UI Components in Step 2, or could be missing NodeJS; ensure NodeJS is installed, run `gramex setup ui` and restart gramex. If it still doesn't work, open an issue on [github](https://github.com/gramener/gramex) or email cto@gramener.com
+  - You may have forgotten to add UI Components in Step 2, or could be missing NodeJS; ensure NodeJS is installed, run `gramex setup ui` and restart gramex. If it still doesn't work, open an issue on [github](https://github.com/gramener/gramex) or email cto@gramener.com
 - vega chart not rendering for some reason
-    - You may have forgotten to include vega and vega lite dependencies in step 2.
+  - You may have forgotten to include vega and vega lite dependencies in step 2.
 
 <script src="../tutorial.js"></script>

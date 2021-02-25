@@ -491,9 +491,9 @@ The alert service takes four kinds of parameters:
       - `data: [...]` -- same as `data: {data: [...]}`
   - `each`: dataset name. Optional. It sends an email for each element of the
     dataset. This adds 2 variables: `index` and `row`. If the dataset is a:
-    -  dict: `index` and `row` are the key and value
-    -  list: `index` and `row` are the index and value
-    -  DataFrame: `index` and `row` are the row index and DataFrame row
+    - dict: `index` and `row` are the key and value
+    - list: `index` and `row` are the index and value
+    - DataFrame: `index` and `row` are the row index and DataFrame row
   - `condition`: an optional Python expression that determines whether to run the
     alert. All `data:` keys are available to the expression. This may return a:
     - False-y value or empty DataFrame: to prevent running the alert. For example,
