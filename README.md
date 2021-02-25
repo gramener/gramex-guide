@@ -33,7 +33,6 @@ First, [install Gramex](install/). Then learn from these tutorials:
 - [Auth handlers log in users](auth/)
 - [DriveHandler uploads files](drivehandler/)
 - [CaptureHandler takes screenshots](capturehandler/)
-- [ModelHandler exposes ML models](modelhandler/)
 - [MLHandler exposes ML models](mlhandler/)
 - [PPTXHandler generates PPTX](pptxhandler/)
 - [FilterHandler filters columns](filterhandler/)
@@ -83,5 +82,6 @@ First, [install Gramex](install/). Then learn from these tutorials:
 ## Deprecated
 
 - [DataHandler](datahandler/) - use [FormHandler](formhandler/) instead
+- [ModelHandler](modelhandler/) - use [MLHandler](mlhandler/) instead
 - [QueryHandler](queryhandler/) - use [FormHandler](formhandler/) instead
 - [UploadHandler](uploadhandler/) - use [DriveHandler](drivehandler/) instead
