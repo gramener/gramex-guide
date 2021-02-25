@@ -586,34 +586,42 @@ curl -X GET \
 	--data-urlencode "text=This movie is so bad, it's good." \
 	--data-urlencode "text=But the soundtrack was terrible." \
 	http://localhost:9988/
+```
 
-# [
-#   {
-#     "label": "POSITIVE",
-#     "score": 0.9997316002845764
-#   },
-#   {
-#     "label": "NEGATIVE",
-#     "score": 0.9974692463874817
-#   }
-# ]
+The output will be:
+```json
+[
+  {
+    "label": "POSITIVE",
+    "score": 0.9997316002845764
+  },
+  {
+    "label": "NEGATIVE",
+    "score": 0.9974692463874817
+  }
+]
 ```
 
 Files containing text to be classified can also be `POST`ed to the endpoint, with `_action=predict`. Any file supported by `gramex.cache.open` will work. (Download a sample [here](sentiment?_c=-label&_download=sentiment.json&_format=json).)
 
 ```bash
 curl -X POST -F "file=@sentiment.json" http://localhost:9988/?_action=predict
-# [
-#   {
-#     "label": "POSITIVE",
-#     "score": 0.9997316002845764
-#   },
-#   {
-#     "label": "NEGATIVE",
-#     "score": 0.9974692463874817
-#   },
-#   etc
-# ]
+```
+
+The output will be:
+
+```json
+[
+  {
+    "label": "POSITIVE",
+    "score": 0.9997316002845764
+  },
+  {
+    "label": "NEGATIVE",
+    "score": 0.9974692463874817
+  },
+  // etc.
+]
 ```
 
 ## Measuring model performance
@@ -623,7 +631,14 @@ with `_action=score` to get the [ROC AUC score](https://scikit-learn.org/stable/
 
 ```bash
 curl -X POST -F "file=@sentiment_score.json" http://localhost:9988/?_action=score
-# {"roc_auc": 0.8}
+```
+
+The output will be something like:
+
+```json
+{
+  "roc_auc": 0.9929
+}
 ```
 
 ## Training the model
@@ -633,7 +648,14 @@ the file.
 
 ```bash
 curl -X POST -F "file=@sentiment_score.json" http://localhost:9988/?_action=train
-# {"roc_auc": 0.8}  (Score of the trained model on the dataset)
+```
+
+The output will show the score of the trained model on the dataset:
+
+```json
+{
+  "roc_auc": 0.8
+}
 ```
 
 Multiple training options for the transformer are supported, including the
@@ -643,11 +665,26 @@ number of epochs, batch size and weight decay. These can all be specified in the
 ```bash
 # Train for three epochs instead of the default 1
 curl -X POST -F "file=@sentiment_score.json" http://localhost:9988/?_action=train&num_train_epochs=3
-# {"roc_auc": 0.98}  (Score of the trained model on the dataset after 3 epochs)
+```
 
+The output is the score of the trained model on the dataset after 3 epochs:
+
+```json
+{
+  "roc_auc": 0.98
+}
+```
+
+```bash
 # Change the batch size to 32 instead of the default 16
 curl -X POST -F "file=@sentiment_score.json" \
 	http://localhost:9988/?_action=train&per_device_train_batch_size=32&num_train_epochs=3
-# {"roc_auc": 0.98}
-# (Score of the trained model on the dataset after 3 epochs and a batch size of 32)
+```
+
+The output is the score of the trained model on the dataset after 3 epochs and a batch size of 32:
+
+```json
+{
+  "roc_auc": 0.99
+}
 ```
