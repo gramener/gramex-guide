@@ -21,26 +21,27 @@ over a REST API. (From **v1.67**.) It allows users to:
 To train a new model on, say, the [Titanic dataset](titanic?_download=titanic.csv&_format=csv), from scratch, use the following configuration:
 
 ```yaml
-mlhandler/tutorial:
-  pattern: /$YAMLURL/ml
-  handler: MLHandler
-  kwargs:
-    data: $YAMLPATH/titanic.csv  # Path to the training dataset
-    model:
-      # The classification or regression algorithm to use
-      class: LogisticRegression
+url:
+  mlhandler/tutorial:
+    pattern: /$YAMLURL/ml
+    handler: MLHandler
+    kwargs:
+      data: $YAMLPATH/titanic.csv  # Path to the training dataset
+      model:
+        # The classification or regression algorithm to use
+        class: LogisticRegression
 
-      # Location where the trained model will be saved
-      path: $YAMLPATH/titanic.pkl
+        # Location where the trained model will be saved
+        path: $YAMLPATH/model.pkl
 
-      # The column to predict
-      target_col: Survived
+        # The column to predict
+        target_col: Survived
 
-      # Columns to ignore during training
-      exclude: [PassengerId, Ticket, Cabin, Name]
+        # Columns to ignore during training
+        exclude: [PassengerId, Ticket, Cabin, Name]
 
-      # Columns to be treated as categorical variables
-      cats: [Embarked, SibSp, Parch, Pclass, Sex]
+        # Columns to be treated as categorical variables
+        cats: [Embarked, SibSp, Parch, Pclass, Sex]
 ```
 
 MLHandler will then,
@@ -169,20 +170,20 @@ curl -X GET /model?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S
   <div class="tab-pane fade show active" id="pycode" role="tabpanel" aria-labelledby="python-tab">
     <pre><code>
     >>> import requests
-    >>> requests.get('mlhandler?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S')
+    >>> requests.get('model?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S')
     </code></pre>
   </div>
   <div class="tab-pane fade" id="ajaxcode" role="tabpanel" aria-labelledby="ajax-tab">
     <pre><code>
     $.ajax({
-    	url: 'mlhandler?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S',
+    	url: 'model?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S',
       	method: 'GET'
     })
     </code></pre>
   </div>
   <div class="tab-pane fade" id="curlcode" role="tabpanel" aria-labelledby="curl-tab">
     <pre><code>
-    curl -X GET mlhandler?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S'
+    curl -X GET model?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S'
     </code></pre>
   </div>
 </div>
@@ -200,7 +201,7 @@ Predictions for a dataset (as against a single data point) can be retrieved by
 run the following example:
 
 ```bash
-curl -X POST -d @titanic_predict.json http://localhost:9988/mlhandler?_action=predict
+curl -X POST -d @titanic_predict.json http://localhost:9988/model?_action=predict
 # Output: [0, 1, 0, 0, 1, ...] # whether each passenger is likely to have survived
 ```
 
@@ -226,13 +227,13 @@ curl -X POST -d @titanic_predict.json http://localhost:9988/mlhandler?_action=pr
   <div class="tab-pane fade show active" id="pycode-bulk" role="tabpanel" aria-labelledby="python-bulk-tab">
     <pre><code>
     >>> import requests
-    >>> requests.post('mlhandler?_action=predict', files={'file': open('titanic.xlsx', 'rb')})
+    >>> requests.post('model?_action=predict', files={'file': open('titanic.xlsx', 'rb')})
     </code></pre>
   </div>
   <div class="tab-pane fade" id="ajaxcode-bulk" role="tabpanel" aria-labelledby="ajax-bulk-tab">
     <pre><code>
     $.ajax({
-    	url: 'mlhandler?_action=predict',
+    	url: 'model?_action=predict',
         method: 'POST',
         data: new FormData(this),
         processData: false,
@@ -242,7 +243,7 @@ curl -X POST -d @titanic_predict.json http://localhost:9988/mlhandler?_action=pr
   </div>
   <div class="tab-pane fade" id="curlcode-bulk" role="tabpanel" aria-labelledby="curl-bulk-tab">
     <pre><code>
-    curl -X POST -d @titanic.xlsx 'mlhandler?_action=predict'
+    curl -X POST -d @titanic.xlsx 'model?_action=predict'
     </code></pre>
   </div>
 </div>
@@ -260,7 +261,7 @@ You can use the JSON dataset [here](titanic?_download=titanic.json&_format=json)
 follows:
 
 ```bash
-curl -X POST -d @titanic.json /mlhandler?_action=retrain&target_col=Survived
+curl -X POST -d @titanic.json /model?_action=retrain&target_col=Survived
 # Output: {'score': 0.80}  - the model has 80% accuracy on the training data.
 ```
 <form id="retrain" method="POST" enctype="multipart/form-data">
@@ -287,14 +288,14 @@ curl -X POST -d @titanic.json /mlhandler?_action=retrain&target_col=Survived
   <div class="tab-pane fade show active" id="pycode-retrain" role="tabpanel" aria-labelledby="python-retrain-tab">
     <pre><code>
     >>> import requests
-    >>> requests.post('mlhandler?_action=retrain&target_col=Survived',
+    >>> requests.post('model?_action=retrain&target_col=Survived',
                       files={'file': open('titanic.csv', 'rb')})
     </code></pre>
   </div>
   <div class="tab-pane fade" id="ajaxcode-retrain" role="tabpanel" aria-labelledby="ajax-retrain-tab">
     <pre><code>
     $.ajax({
-    	url: 'mlhandler?_action=retrain&target_col=Survived',
+    	url: 'model?_action=retrain&target_col=Survived',
 	method: 'POST',
 	data: new FormData(this),
 	processData: false,
@@ -304,7 +305,7 @@ curl -X POST -d @titanic.json /mlhandler?_action=retrain&target_col=Survived
   </div>
   <div class="tab-pane fade" id="curlcode-retrain" role="tabpanel" aria-labelledby="curl-retrain-tab">
     <pre><code>
-    curl -X POST -d @titanic.csv 'mlhandler?_action=retrain&target_col=Survived'
+    curl -X POST -d @titanic.csv 'model?_action=retrain&target_col=Survived'
     </code></pre>
   </div>
 </div>
@@ -359,7 +360,7 @@ curl -X GET /mlhandler?_model
   <div class="tab-pane fade show active" id="pycode-params" role="tabpanel" aria-labelledby="python-params-tab">
     <pre><code>
     >>> import requests
-    >>> requests.get('mlhandler?_model).json()
+    >>> requests.get('model?_model).json()
     {
         "params":
          {
@@ -385,12 +386,12 @@ curl -X GET /mlhandler?_model
   </div>
   <div class="tab-pane fade" id="ajaxcode-params" role="tabpanel" aria-labelledby="ajax-params-tab">
     <pre><code>
-    $.getJSON('mlhandler?_model')
+    $.getJSON('model?_model')
     </code></pre>
   </div>
   <div class="tab-pane fade" id="curlcode-params" role="tabpanel" aria-labelledby="curl-params-tab">
     <pre><code>
-    curl -X GET -d @titanic.csv 'mlhandler?_model'
+    curl -X GET -d @titanic.csv 'model?_model'
     </code></pre>
   </div>
 </div>
@@ -403,7 +404,7 @@ modified with a PUT request. The following request replaces the logistic
 regression earlier with a random forest classifier:
 
 ```bash
-curl -X PUT '/mlhandler?_model&class=RandomForestClassififer'
+curl -X PUT '/model?_model&class=RandomForestClassififer'
 ```
 
 Note that at this stage, the model has simply been replaced, but _not_
@@ -411,14 +412,14 @@ retrained. To train it, we can POST to it with `?_action=retrain` parameter as
 follows:
 
 ```bash
-curl -X POST '/mlhandler?_action=retrain'
+curl -X POST '/model?_action=retrain'
 ```
 
 Similarly, any parameter of the model can be changed. For example, to change the
 number of estimators used in a [random forest classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) (which is 100, by default), use:
 
 ```bash
-curl -X PUT /mlhandler?_model&n_estimators=10
+curl -X PUT /model?_model&n_estimators=10
 ```
 
 In general, the model's class and any of its parameters can be chained together
@@ -426,7 +427,7 @@ in the PUT request. For example, to change the model to an SGDClassifier with a
 log loss, use:
 
 ```bash
-curl -X PUT /mlhandler?_model&class=SGDClassifier&loss=log
+curl -X PUT /model?_model&class=SGDClassifier&loss=log
 ```
 
 Any query parameter except `class` which is also a parameter of the
@@ -437,7 +438,7 @@ Similarly, any of the data transformation options (`include`, `exclude`,
 
 ```bash
 # Ignore PassengerId and Name, consider Embarked as a categorical feature.
-curl -X PUT /mlhandler?_model&exclude=PassengerId&exclude=Name&cats=Embarked
+curl -X PUT /model?_model&exclude=PassengerId&exclude=Name&cats=Embarked
 ```
 
 
@@ -446,7 +447,7 @@ To remove the serialized model from the disk and disable further operations, use
 a delete request as follows:
 
 ```bash
-curl -X DELETE /mlhandler?_model
+curl -X DELETE /model?_model
 ```
 
 # MLHandler Templates
@@ -455,7 +456,7 @@ MLHandler supports Tornado templates which can be used to create front-end appli
 
 ```yaml
 mlhandler/tutorial:
-  pattern: /$YAMLURL/ml
+  pattern: /$YAMLURL/model
   handler: MLHandler
   template: $YAMLPATH/template.html
 ```
@@ -487,7 +488,7 @@ problem can be seen [here](model).
 When trying to see the accuracy of a new dataset against an existing model, use `?_action=score`. Specifically, POST the new data to the MLHandler endpoint, with `?_action=score`.
 ```bash
 # Check the score of a dataset - test.csv - against an existing model
-curl -X POST -F "file=@test.csv" 'http://localhost:9988/mlhandler?_action=score'
+curl -X POST -F "file=@test.csv" 'http://localhost:9988/model?_action=score'
 ```
 
 ## How to download a model?
@@ -496,7 +497,7 @@ Add the `?_download` query parameter to the MLHandler endpoint, and perform a
 GET. E.g to download the Titanic model included in this tutorial, click
 [here](model?_download).
 ```bash
-curl -X GET '/mlhandler?_download'
+curl -X GET '/model?_download'
 ```
 
 ## How to download training data?
@@ -505,7 +506,7 @@ Add the `?_cache` query parameter to the MLHandler endpoint, and perform a GET.
 E.g to download the Titanic dataset included in this tutorial, click
 [here](model?_cache).
 ```bash
-curl -X GET '/mlhandler?_cache'
+curl -X GET '/model?_cache'
 ```
 
 ## How to append to the training data?
@@ -519,14 +520,14 @@ Data can be `POST`ed in two ways:
 
 ```bash
 curl -X POST -d @data.json --header "Content-Type: application/json"
-'http://localhost:9988/mlhandler?_action=append'
+'http://localhost:9988/model?_action=append'
 ```
 
 2. By POSTing any dataset through a form as a file. (Any `gramex.cache.open`
    format is supported.)
 
 ```bash
-curl -X POST -F "file=@data.json" 'http://localhost:9988/mlhandler?_action=append'
+curl -X POST -F "file=@data.json" 'http://localhost:9988/model?_action=append'
 ```
 
 Note that when data is being appended, the schema of the appendix has to match
@@ -538,7 +539,7 @@ Send a DELETE request to the MLHandler endpoint with the `?_cache` parameter.
 E.g:
 
 ```bash
-curl -X DELETE 'http://localhost:9988/mlhandler?_cache'
+curl -X DELETE 'http://localhost:9988/model?_cache'
 ```
 
 ## How to delete the model?
@@ -546,7 +547,7 @@ curl -X DELETE 'http://localhost:9988/mlhandler?_cache'
 Send a DELETE request to the MLHandler endpoint with the `?_model` parameter. E.g:
 
 ```bash
-curl -X DELETE 'http://localhost:9988/mlhandler?_model'
+curl -X DELETE 'http://localhost:9988/model?_model'
 ```
 
 This will cause MLHandler to return an HTTP 404 on subsequent requests to the same
