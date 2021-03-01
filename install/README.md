@@ -11,8 +11,8 @@ There are 4 ways of installing or upgrading the Gramex Community Edition.
 
 1. [**Conda**](#conda-install) (**RECOMMENDED**). Best for beginners and Python developers
 2. [**Docker**](#docker-install). Best to try out new versions, or to deploy apps
-3. [**Pip**](#pip-install). Best for people contributing to Gramex
-4. [**Offline**](#offline-install). Best for machines without an Internet connection
+3. [**Offline**](#offline-install). Best for machines without an Internet connection
+4. [**Pip**](#pip-install). Best for people contributing to Gramex
 
 ## Conda install
 
@@ -37,13 +37,28 @@ Run `gramex --help` to verify that Gramex is installed.
 
 <asciinema-player src="gramex-conda.json" cols="100" rows="20" idle-time-limit="0.5" autoplay="1" font-size="medium" loop="1"></asciinema-player>
 
-**Upgrade Gramex via conda**
+### Upgrade Gramex via conda
 
 To upgrade Gramex, run:
 
 ```bash
 conda update -c conda-forge -c gramener gramex
 ```
+
+### Uninstall Gramex via conda
+
+To remove the entire Gramex environment, run:
+
+```bash
+conda env remove -n gramex
+```
+
+To remove just the Gramex package, run:
+
+```bash
+conda uninstall gramex
+```
+
 
 ## Docker install
 
@@ -66,7 +81,7 @@ Inside the container, run `gramex --help` to verify that Gramex is installed.
 <asciinema-player src="gramex-docker.json" cols="100" rows="20" idle-time-limit="0.5" autoplay="1" font-size="medium" loop="1"></asciinema-player>
 
 
-**Upgrade Gramex via docker**
+### Upgrade Gramex via docker
 
 To upgrade Gramex, run:
 
@@ -74,18 +89,25 @@ To upgrade Gramex, run:
 docker pull gramener/gramex
 ```
 
+### Uninstall Gramex via docker
+
+To remove the Gramex docker image, run:
+
+```bash
+docker rmi gramener/gramex
+```
 
 ## Pip install
 
 Install [Anaconda3-2020.02][anaconda]. (Gramex does not yet work with Python 3.8. So avoid later versions). Here are downloads for:
 
- - [Windows-x86_64](https://repo.anaconda.com/archive/Anaconda3-2020.02-Windows-x86_64.exe)
- - [Windows-x86](https://repo.anaconda.com/archive/Anaconda2-2019.10-Windows-x86.exe)
- - [MacOSX-x86_64](https://repo.anaconda.com/archive/Anaconda2-2019.10-MacOSX-x86_64.pkg)
- - [Linux-x86_64](https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-x86_64.sh)
- - [Linux-ppc64le](https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-ppc64le.sh)
+- [Windows-x86_64](https://repo.anaconda.com/archive/Anaconda3-2020.02-Windows-x86_64.exe)
+- [Windows-x86](https://repo.anaconda.com/archive/Anaconda2-2019.10-Windows-x86.exe)
+- [MacOSX-x86_64](https://repo.anaconda.com/archive/Anaconda2-2019.10-MacOSX-x86_64.pkg)
+- [Linux-x86_64](https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-x86_64.sh)
+- [Linux-ppc64le](https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-ppc64le.sh)
 
-Then install [node.js][nodejs] 10 or later
+Install [node.js][nodejs] 10 or later.
 
 Now run the following commands on the terminal
 
@@ -125,7 +147,7 @@ pip install --verbose -e gramex
 re-installing scandir fails on Windows.
 -->
 
-**Upgrade Gramex via pip**
+### Upgrade Gramex via pip
 
 To upgrade Gramex, run:
 
@@ -133,6 +155,15 @@ To upgrade Gramex, run:
 pip install --upgrade gramex
 gramex setup --all
 ```
+
+### Uninstall Gramex via pip
+
+To remove the Gramex package, run:
+
+```bash
+pip uninstall gramex
+```
+
 
 ## Troubleshooting
 
@@ -176,7 +207,7 @@ Then copy the `gramex-offline` folder into the target system (which need not hav
 connection). Also copy your app. Then run `gramex-offline/bin/gramex` from your app folder.
 
 
-## Offline Docker Install
+## Offline Docker install
 
 [Install Docker](https://docs.docker.com/engine/install/) on a system **with an Internet connection**.
 Then run these commands.
@@ -223,13 +254,22 @@ pip install gramexenterprise    # Install Gramex Enterprise
 gramex license accept           # Accept the Gramex license
 ```
 
-**Upgrade Gramex Enterprise**
+### Upgrade Gramex Enterprise
 
 To upgrade Gramex Enterprise, run:
 
 ```bash
 pip install --upgrade gramexenterprise
 ```
+
+### Uninstall Gramex Enterprise
+
+To remove Gramex Enterprise, run:
+
+```bash
+pip uninstall gramexenterprise
+```
+
 
 ## VSCode Extension
 
