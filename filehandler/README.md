@@ -78,9 +78,9 @@ url:
 ```
 
 
-## Redirecting files
+## File Patterns
 
-You can specify any URL for any file. For example, to map the file
+You can map any URL for any file. For example, to map the file
 `filehandler/data.csv` to the URL `/filehandler/data`, use this configuration:
 
 ```yaml
@@ -120,18 +120,19 @@ For more complex mappings, use a dictionary of regular expression mappings:
 ```yaml
 url:
   mapping:
-    pattern: /$YAMLURL/((foo|bar)/.*)       # /foo/anything and /bar/anything matches
+    pattern: /$YAMLURL/node/((foo|bar)/.*)  # match /node/foo/... and node//bar/...
     handler: FileHandler
     kwargs:
       path:                                 # If path: is a dict, it's treated as a mapping
-        'foo/': $YAMLPATH/foo.html                     # /foo/ -> foo.html
-        'bar/': $YAMLPATH/bar.html                     # /bar/  -> bar.html
-        'foo/(.*)': $YAMLPATH/foo/{0}.html             # /foo/x -> foo/x.html
-        'bar/(?P<file>.*)': $YAMLPATH/bar/{file}.html  # /bar/x  -> bar/x.html
+        'foo/': $YAMLPATH/foo.html                     # /node/foo/ -> foo.html
+        'bar/': $YAMLPATH/bar.html                     # /node/bar/  -> bar.html
+        'foo/(.*)': $YAMLPATH/foo/{0}.html             # /node/foo/x -> foo/x.html
+        'bar/(?P<file>.*)': $YAMLPATH/bar/{file}.html  # /node/bar/x  -> bar/x.html
+        '.*': $YAMLPATH/default.html                   # anything else -> default.html
 ```
 
 The mapping has keys that are regular expressions. They must match the part of
-the URL in brackets. (If there are multiple brackets, match the first one.)
+the URL in brackets. (If there are multiple brackets, it matches the first one.)
 Values are file paths. They are formatted as string templates using the regular
 expression match groups and URL query parameters. So:
 
@@ -158,12 +159,6 @@ url:
         ext: html           # ?ext=html is the default
 ```
 
-
-## Caching
-
-See how to cache [static files](../cache/#static-files)
-
-## File patterns
 
 If you want to map a subset of files to a folder, you can mark them in the
 pattern. For example, this configuration maps `/style.css` and `/script.js` to
@@ -195,6 +190,15 @@ url:
     headers:
       Cache-Control: public, max-age=86400    # Cache publicly for 1 day
 ```
+
+
+## Caching
+
+See how to cache [static files](../cache/#static-files)
+
+## Redirecting files
+
+See [File patterns](#file-patterns)
 
 ## Ignore files
 
