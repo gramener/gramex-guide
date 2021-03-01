@@ -5,7 +5,7 @@ prefix: Install
 
 <link rel="stylesheet" type="text/css" href="../node_modules/asciinema-player/resources/public/css/asciinema-player.css">
 
-[TOC]
+<!-- Don't include a [TOC] here -- it's confusing -->
 
 There are 4 ways of installing or upgrading the Gramex Community Edition.
 
