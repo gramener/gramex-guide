@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "width": 208,
+  "height": 28,
+  "duration": 3.928456,
+  "command": null,
+  "title": null,
+  "env": {
+    "TERM": "cygwin",
+    "SHELL": null
+  },
+  "stdout": [
+    [
+      0.070855,
+      "sh-4.4$ "
+    ],
+    [
+      0.251127,
+      "g"
+    ],
+    [
+      0.157377,
+      "r"
+    ],
+    [
+      0.109405,
+      "a"
+    ],
+    [
+      0.170776,
+      "m"
+    ],
+    [
+      0.109094,
+      "e"
+    ],
+    [
+      0.03126,
+      "x"
+    ],
+    [
+      0.170625,
+      " "
+    ],
+    [
+      0.157131,
+      "-"
+    ],
+    [
+      0.155688,
+      "-"
+    ],
+    [
+      0.23417,
+      "h"
+    ],
+    [
+      0.12462,
+      "e"
+    ],
+    [
+      0.108646,
+      "l"
+    ],
+    [
+      0.07652,
+      "p"
+    ],
+    [
+      0.125533,
+      "\r\n"
+    ],
+    [
+      1.787541,
+      "Gramex 1.68.1 Copyright (c) 2017 by Gramener\r\r\nHelp: https://learn.gramener.com/guide/\r\r\n\r\r\nCommon startup options\r\r\n  --listen.port=9090            Starts Gramex at port 9090\r\r\n  --browser=true                Open the browser after startup\r\r\n  --settings."
+    ],
+    [
+      0.002678,
+      "debug              Start Python debugger on error\r\r\n\r\r\nHelper applications. For usage, run \"gramex <app> --help\"\r\r\n  gramex init                   Add Gramex project scaffolding to current dir\r\r\n  gramex service                Windows service setup\r\r\n  gra"
+    ],
+    [
+      0.002576,
+      "mex mail                   Send email from command line\r\r\n  gramex license                See Gramex license, accept or reject it\r\r\n\r\r\nInstallation commands. For usage, run \"gramex <command> --help\"\r\r\n  gramex install                Install an app\r\r\n  gram"
+    ],
+    [
+      0.002093,
+      "ex update                 Update an app\r\r\n  gramex setup                  Run make, npm install, bower install etc on app\r\r\n  gramex run                    Run an installed app\r\r\n  gramex uninstall              Uninstall an app\r\r\n"
+    ],
+    [
+      0.08033,
+      "sh-4.4$ "
+    ]
+  ]
+}

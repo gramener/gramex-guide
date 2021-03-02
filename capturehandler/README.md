@@ -17,21 +17,15 @@ type: microservice
 
 ## Chrome
 
-**Chrome is the recommended engine from v1.23**. To set it up:
-
-- Install [Node 8.x](https://nodejs.org/en/) -- earlier versions won't work.
-  Ensure that `node` is in your PATH.
-- Uninstall and [re-install Gramex](../install/) (or run `gramex install capture` instead.)
-
-Add this to `gramex.yaml`:
+**Chrome is the recommended engine from v1.23**. Add this to `gramex.yaml`:
 
 ```yaml
 url:
-    capture:
-        pattern: /$YAMLURL/capture
-        handler: CaptureHandler
-        kwargs:
-            engine: chrome
+  capture:
+    pattern: /$YAMLURL/capture
+    handler: CaptureHandler
+    kwargs:
+      engine: chrome
 ```
 
 When Gramex runs, it starts `node chromecapture.js --port 9900` running a
@@ -43,8 +37,8 @@ To change the port, use:
     pattern: /$YAMLURL/capture
     handler: CaptureHandler
     kwargs:
-        engine: chrome
-        port: 9901              # Use a different port
+      engine: chrome
+      port: 9901              # Use a different port
 ```
 
 To use an existing instance of chromecapture.js running on a different port, use:
@@ -53,8 +47,8 @@ To use an existing instance of chromecapture.js running on a different port, use
     pattern: /$YAMLURL/capture
     handler: CaptureHandler
     kwargs:
-        engine: chrome
-        url: http://server:port/capture/    # Use chromecapture.js from this URL
+      engine: chrome
+      url: http://server:port/capture/    # Use chromecapture.js from this URL
 ```
 
 The default viewport size is 1200x768. To set a custom viewport for images or
@@ -67,7 +61,7 @@ By default, requests timeout within 10 seconds. To change this, use `timeout:`.
     pattern: /$YAMLURL/capture
     handler: CaptureHandler
     kwargs:
-        timeout: 20     # Wait for max 20 seconds for server to respond
+      timeout: 20     # Wait for max 20 seconds for server to respond
 ```
 
 The default chromecapture.js is at `$GRAMEXPATH/apps/capture/chromecapture.js`.
@@ -78,9 +72,9 @@ To use your own chromecapture.js, run it using `cmd:` on any port and point
     pattern: /$YAMLURL/capture
     handler: CaptureHandler
     kwargs:
-        engine: chrome
-        cmd: node /path/to/chromecapture.js --port=9902
-        url: http://localhost:9902/
+      engine: chrome
+      cmd: node /path/to/chromecapture.js --port=9902
+      url: http://localhost:9902/
 ```
 
 To use a HTTP proxy, set the `ALL_PROXY` environment variable. If your proxy IP
@@ -89,20 +83,33 @@ is `10.20.30.40` on port `8000`, then set `ALL_PROXY` to `10.20.30.40:8000`. See
 also use the `HTTPS_PROXY` or `HTTP_PROXY` environment variables. These
 supercede `ALL_PROXY`.)
 
+
+**NOTE**: If you're running CaptureHandler with Chrome on a Docker instance (or any other headless
+Linux), you may get an `error while loading shared libraries`. This is because Chrome needs
+[additional dependencies](https://github.com/puppeteer/puppeteer/issues/3443).
+
+On Ubuntu 20.04, you can run this command to fix it:
+
+```bash
+sudo apt-get -y install xvfb libnss3 libatk1.0-0 libatk-bridge2.0-0 libxcomposite1 libcups2 libxrandr2 libpangocairo-1.0-0 libgtk-3-0
+```
+
+For other systems, check this [issue](https://github.com/puppeteer/puppeteer/issues/3443).
+
+
 ## PhantomJS
 
-[PhantomJS](http://phantomjs.org/) is **out-dated** but is the default for
+[PhantomJS](http://phantomjs.org/) is **deprecated** but is the default for
 backward compatibility. To use it, install [PhantomJS](http://phantomjs.org/) and
 it to your PATH. Then add this to `gramex.yaml`:
 
 ```yaml
 url:
-    capture:
-        pattern: /$YAMLURL/capture
-        handler: CaptureHandler
+  capture:
+    engine: phantomjs             # Optional.
+    pattern: /$YAMLURL/capture
+    handler: CaptureHandler
 ```
-
-Note that the `engine: phantomjs` is not required.
 
 ## Screenshot service
 
@@ -141,66 +148,66 @@ It accepts the following arguments:
   - If the delay is more than the `timeout:` in the `kwargs:` section, the page
     will time out.
 - For PDF:
-    - `?format=`: A3, A4, A5, Legal, Letter or Tabloid. Default: A4.
-      <br>**Example**: [?format=Tabloid](capture?format=Tabloid)
-    - `?orientation=`: portrait or landscape. Default: portrait.
-      <br>**Example**: [?orientation=landscape](capture?orientation=landscape)
-    - `media=`: `print` or `screen`. Default: `screen`. (Only in `engine: chrome`)
-      <br>**Example**: [?media=print](capture?media=print)
-    - `header=`: a pipe-separated string that sets the page header.
-      You can use `$pageNumber`, `$totalPages`, `$date`, `$title`, `$url` as variables.
-      <br>**Example**: [?header=Gramener](capture?header=Gramener): Left header "Gramener"
-      <br>**Example**: [?header=|$title|](capture?header=|$title|): Center header with page title
-      <br>**Example**: [?header=|$pageNumber](capture?header=|$pageNumber): Right header with page number
-      <br>**Example**: [?header=©|Gramener|$pageNumber/$totalPages](capture?header=©|Gramener|$pageNumber/$totalPages): Left, middle right headers.
-    - `footer=`: similar to `header`
-    - `headerTemplate=`: HTML template to add a custom header.
-      Template cannot load external sources or run javascript, but can use inline css styles.
-      [See docs](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagepdfoptions).
-      Ensure that enough margin is provided for the header.
-      <br>**Example**: [`?headerTemplate=<div style="border-bottom:1px solid black;display:flex;justify-content:space-between;width:100%"><span class="url"></span><span class="date"></span></div>`](capture?headerTemplate=<div style="border-bottom:1px solid black%3Bdisplay:flex%3Bjustify-content:space-between%3Bwidth:100%25"><span class="url"></span><span class="date"></span></div>)
-    - `footerTemplate=`: similar to `headerTemplate`
-    - `margins=`: comma-separated list of margins specifying top, right, bottom, left margins respectively.
-      default margin is `1cm,1cm,1cm,1cm`.
-      <br>**Example** [?margins=2cm,,2cm,](capture?margins=2cm,,2cm,) sets top and bottom margin to 2cm
+  - `?format=`: A3, A4, A5, Legal, Letter or Tabloid. Default: A4.
+    <br>**Example**: [?format=Tabloid](capture?format=Tabloid)
+  - `?orientation=`: portrait or landscape. Default: portrait.
+    <br>**Example**: [?orientation=landscape](capture?orientation=landscape)
+  - `media=`: `print` or `screen`. Default: `screen`. (Only in `engine: chrome`)
+    <br>**Example**: [?media=print](capture?media=print)
+  - `header=`: a pipe-separated string that sets the page header.
+    You can use `$pageNumber`, `$totalPages`, `$date`, `$title`, `$url` as variables.
+    <br>**Example**: [?header=Gramener](capture?header=Gramener): Left header "Gramener"
+    <br>**Example**: [?header=|$title|](capture?header=|$title|): Center header with page title
+    <br>**Example**: [?header=|$pageNumber](capture?header=|$pageNumber): Right header with page number
+    <br>**Example**: [?header=©|Gramener|$pageNumber/$totalPages](capture?header=©|Gramener|$pageNumber/$totalPages): Left, middle right headers.
+  - `footer=`: similar to `header`
+  - `headerTemplate=`: HTML template to add a custom header.
+    Template cannot load external sources or run javascript, but can use inline css styles.
+    [See docs](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagepdfoptions).
+    Ensure that enough margin is provided for the header.
+    <br>**Example**: [`?headerTemplate=<div style="border-bottom:1px solid black;display:flex;justify-content:space-between;width:100%"><span class="url"></span><span class="date"></span></div>`](capture?headerTemplate=<div style="border-bottom:1px solid black%3Bdisplay:flex%3Bjustify-content:space-between%3Bwidth:100%25"><span class="url"></span><span class="date"></span></div>)
+  - `footerTemplate=`: similar to `headerTemplate`
+  - `margins=`: comma-separated list of margins specifying top, right, bottom, left margins respectively.
+    default margin is `1cm,1cm,1cm,1cm`.
+    <br>**Example** [?margins=2cm,,2cm,](capture?margins=2cm,,2cm,) sets top and bottom margin to 2cm
 - For images (PNG/JPG):
-    - `?width=`: optional viewport width in pixels. Default: 1200
-      <br>**Example**: [?width=600](capture?width=600&ext=png)
-    - `?height=`: optional viewport height in pixels. Default: auto (full page)
-      <br>**Example**: [?height=600](capture?height=600&ext=png)
-    - `?scale=`: zooms the screen by a factor. scale=2 returns an image twice as large and sharp as scale=1. Default: 1.
-      <br>**Example**: [?scale=0.2](capture?scale=0.2&ext=png) compared with
-      [?scale=1](capture?scale=1&ext=png)
-    - `?selector=`: Restrict screenshot to (optional) CSS selector in URL. Captures the entire element, even if it exceeds the viewport
-      <br>**Example**: [?selector=.content](capture?selector=.content&ext=png) excludes the sidebar.
-    - `?emulate=`: emulate full page on a device. Ignores `?width=`, `?height=` and `?scale=`. (Only in `engine: chrome` from **v1.56.0**)
-      <br>**Example**: [?emulate=iPhone 6](capture?emulate=iPhone 6&ext=png).
-      Device names can be [iPhone 8, Nexus 10, Galaxy S5, etc][mobiledevices].
+  - `?width=`: optional viewport width in pixels. Default: 1200
+    <br>**Example**: [?width=600](capture?width=600&ext=png)
+  - `?height=`: optional viewport height in pixels. Default: auto (full page)
+    <br>**Example**: [?height=600](capture?height=600&ext=png)
+  - `?scale=`: zooms the screen by a factor. scale=2 returns an image twice as large and sharp as scale=1. Default: 1.
+    <br>**Example**: [?scale=0.2](capture?scale=0.2&ext=png) compared with
+    [?scale=1](capture?scale=1&ext=png)
+  - `?selector=`: Restrict screenshot to (optional) CSS selector in URL. Captures the entire element, even if it exceeds the viewport
+    <br>**Example**: [?selector=.content](capture?selector=.content&ext=png) excludes the sidebar.
+  - `?emulate=`: emulate full page on a device. Ignores `?width=`, `?height=` and `?scale=`. (Only in `engine: chrome` from **v1.56.0**)
+    <br>**Example**: [?emulate=iPhone 6](capture?emulate=iPhone 6&ext=png).
+    Device names can be [iPhone 8, Nexus 10, Galaxy S5, etc][mobiledevices].
 - For PPTX (Only in `engine: chrome` from **v1.23.1**):
-    - `?layout=`: A3, A4, Letter, 16x9, 16x10, 4x3. Default: `4x3`
-      <br>**Example**: [?layout=16x9](capture?layout=16x9&ext=pptx&width=1200&height=600)
-    - `?dpi=`: optional image resolution (dots per inch). Default: 96
-      <br>**Example**: [?dpi=192](capture?dpi=192&ext=pptx&width=1200&height=900)
-    - `?width=`: optional viewport width in pixels. (Default: 1200px)
-      <br>**Example**: [?width=600&height=400](capture?width=600&height=400&ext=pptx)
-    - `?height=`: optional height to clip output to. Leave it blank for full page height
-      <br>**Example**: [?width=1200&height=900](capture?width=1200&height=900&ext=pptx)
-    - `?selector=`: CSS selector to take a screenshot of
-      <br>**Example**: [?selector=.codehilite](capture?selector=.codehilite&ext=pptx)
-    - `?title=`: optional slide title
-      <br>**Example**: [?title=First+example&selector=.codehilite](capture?title=First+example&selector=.codehilite&ext=pptx)
-    - `?title_size=`: optional title font size in points. Defaults to 18pt
-      <br>**Example**: [?title=First+example&title_size=24&selector=.codehilite](capture?title=First+example&title_size=24&selector=.codehilite&ext=pptx)
-    - `?x=`: optional x-position (left margin) in px. Centers by default
-      <br>**Example**: [?x=10&selector=.codehilite](capture?x=10&selector=.codehilite&ext=pptx)
-    - `?y=`: optional y-position (leftop margin) in px. Centers by default
-      <br>**Example**: [?y=200&selector=.codehilite](capture?y=200&selector=.codehilite&ext=pptx)
-    - For multiple slides, repeat `?selector=`, optionally with `?title=`, `?title_size=`, `?x=`, `?y=`, `?dpi=`.
-      <br>**Example**: [?selector=.toc&title=TOC&selector=.codehilite&title=Example](capture?selector=.toc&title=TOC&selector=.codehilite&title=Example&ext=pptx)
+  - `?layout=`: A3, A4, Letter, 16x9, 16x10, 4x3. Default: `4x3`
+    <br>**Example**: [?layout=16x9](capture?layout=16x9&ext=pptx&width=1200&height=600)
+  - `?dpi=`: optional image resolution (dots per inch). Default: 96
+    <br>**Example**: [?dpi=192](capture?dpi=192&ext=pptx&width=1200&height=900)
+  - `?width=`: optional viewport width in pixels. (Default: 1200px)
+    <br>**Example**: [?width=600&height=400](capture?width=600&height=400&ext=pptx)
+  - `?height=`: optional height to clip output to. Leave it blank for full page height
+    <br>**Example**: [?width=1200&height=900](capture?width=1200&height=900&ext=pptx)
+  - `?selector=`: CSS selector to take a screenshot of
+    <br>**Example**: [?selector=.codehilite](capture?selector=.codehilite&ext=pptx)
+  - `?title=`: optional slide title
+    <br>**Example**: [?title=First+example&selector=.codehilite](capture?title=First+example&selector=.codehilite&ext=pptx)
+  - `?title_size=`: optional title font size in points. Defaults to 18pt
+    <br>**Example**: [?title=First+example&title_size=24&selector=.codehilite](capture?title=First+example&title_size=24&selector=.codehilite&ext=pptx)
+  - `?x=`: optional x-position (left margin) in px. Centers by default
+    <br>**Example**: [?x=10&selector=.codehilite](capture?x=10&selector=.codehilite&ext=pptx)
+  - `?y=`: optional y-position (leftop margin) in px. Centers by default
+    <br>**Example**: [?y=200&selector=.codehilite](capture?y=200&selector=.codehilite&ext=pptx)
+  - For multiple slides, repeat `?selector=`, optionally with `?title=`, `?title_size=`, `?x=`, `?y=`, `?dpi=`.
+    <br>**Example**: [?selector=.toc&title=TOC&selector=.codehilite&title=Example](capture?selector=.toc&title=TOC&selector=.codehilite&title=Example&ext=pptx)
 - `?debug=`: displays request / response log requests on the console.
-    - `?debug=1` logs all responses and HTTP codes. It also logs browser
-      console.log messages on the Gramex console
-    - `?debug=2` additionally logs all requests
+  - `?debug=1` logs all responses and HTTP codes. It also logs browser
+    console.log messages on the Gramex console
+  - `?debug=2` additionally logs all requests
 
 When constructing the `?url=`, `?selector=`, `?title=` or any other parameter,
 ensure that the URL is encoded. So a selector `#item` does not become

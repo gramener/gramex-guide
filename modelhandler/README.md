@@ -22,7 +22,7 @@ import pandas as pd
 from gramex.ml import Classifier
 
 # Read the data into a Pandas DataFrame
-data = pd.read_csv('iris.csv, encoding='utf-8')
+data = pd.read_csv('iris.csv', encoding='utf-8')
 
 # Construct the model. The model only accepts a path where it should be saved
 model = Classifier(

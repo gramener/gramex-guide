@@ -21,26 +21,27 @@ over a REST API. (From **v1.67**.) It allows users to:
 To train a new model on, say, the [Titanic dataset](titanic?_download=titanic.csv&_format=csv), from scratch, use the following configuration:
 
 ```yaml
-mlhandler/tutorial:
-  pattern: /$YAMLURL/ml
-  handler: MLHandler
-  kwargs:
-    data: $YAMLPATH/titanic.csv  # Path to the training dataset
-    model:
-      # The classification or regression algorithm to use
-      class: LogisticRegression
+url:
+  mlhandler/tutorial:
+    pattern: /$YAMLURL/ml
+    handler: MLHandler
+    kwargs:
+      data: $YAMLPATH/titanic.csv  # Path to the training dataset
+      model:
+        # The classification or regression algorithm to use
+        class: LogisticRegression
 
-      # Location where the trained model will be saved
-      path: $YAMLPATH/titanic.pkl
+        # Location where the trained model will be saved
+        path: $YAMLPATH/titanic.pkl
 
-      # The column to predict
-      target_col: Survived
+        # The column to predict
+        target_col: Survived
 
-      # Columns to ignore during training
-      exclude: [PassengerId, Ticket, Cabin, Name]
+        # Columns to ignore during training
+        exclude: [PassengerId, Ticket, Cabin, Name]
 
-      # Columns to be treated as categorical variables
-      cats: [Embarked, SibSp, Parch, Pclass, Sex]
+        # Columns to be treated as categorical variables
+        cats: [Embarked, SibSp, Parch, Pclass, Sex]
 ```
 
 MLHandler will then,
@@ -111,45 +112,43 @@ curl -X GET /model?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S
 
 <form id="mlhandler-single">
   <div class="row">
-      <div class="col">
-    	  <label for="Sex">Sex:</label>
-    	  <input id="Sex" name="Sex" value="male" class="form-control"/>
-      </div>
-      <div class="col">
-    	  <label for="Age">Age:</label>
-    	  <input id="Age" name="Age" value="22" class="form-control"
-	  type="number"/>
-      </div>
+    <div class="col">
+      <label for="Sex">Sex:</label>
+      <input id="Sex" name="Sex" value="male" class="form-control"/>
+    </div>
+    <div class="col">
+      <label for="Age">Age:</label>
+      <input id="Age" name="Age" value="22" class="form-control" type="number"/>
+    </div>
   </div>
   <div class="row">
-      <div class="col">
-    	  <label for="SibSp">SibSp:</label>
-    	  <input id="SibSp" name="SibSp" value="1" class="form-control" type="number"/>
-      </div>
-      <div class="col">
-    	  <label for="Parch">Parch:</label>
-    	  <input id="Parch" name="Parch" value="0" class="form-control" type="number"/>
-      </div>
+    <div class="col">
+      <label for="SibSp">SibSp:</label>
+      <input id="SibSp" name="SibSp" value="1" class="form-control" type="number"/>
+    </div>
+    <div class="col">
+      <label for="Parch">Parch:</label>
+      <input id="Parch" name="Parch" value="0" class="form-control" type="number"/>
+    </div>
   </div>
   <div class="row">
-      <div class="col">
-    	  <label for="Fare">Fare:</label>
-    	  <input id="Fare" name="Fare" value="7.25" class="form-control" type="number"/>
-      </div>
-      <div class="col">
-    	  <label for="Pclass">Pclass:</label>
-    	  <input id="Pclass" name="Pclass" value="3" class="form-control" type="number"/>
-      </div>
+    <div class="col">
+      <label for="Fare">Fare:</label>
+      <input id="Fare" name="Fare" value="7.25" class="form-control" type="number"/>
+    </div>
+    <div class="col">
+      <label for="Pclass">Pclass:</label>
+      <input id="Pclass" name="Pclass" value="3" class="form-control" type="number"/>
+    </div>
   </div>
   <div class="row">
-      <div class="col">
-    	  <label for="Embarked">Embarked:</label>
-    	  <input id="Embarked" name="Embarked" value="S" class="form-control"/>
-      </div>
+    <div class="col">
+      <label for="Embarked">Embarked:</label>
+      <input id="Embarked" name="Embarked" value="S" class="form-control"/>
+    </div>
   </div>
   <div class="row">
-    	  <button type="submit" class="btn
-    	  btn-primary form-control">Predict</button>
+    <button type="submit" class="btn btn-primary form-control">Predict</button>
   </div>
 </form>
 <div id="single-result" class="bg-success"></div>

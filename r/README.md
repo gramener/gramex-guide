@@ -8,7 +8,7 @@ prefix: R
 To run R in Gramex, install [rpy2](https://rpy2.readthedocs.io/) first:
 
 ```bash
-conda install rpy2          # Do not use pip. Gramex assumes you use conda
+conda install -c r rpy2
 ```
 
 This installs a new R to the Anaconda PATH, ignoring the system R.

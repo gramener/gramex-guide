@@ -120,18 +120,23 @@ $(function () {
         $search
           .on('input', function () {
             var text = $(this).val().replace(/^\s+/, '').replace(/\s+$/, '')
-            if (text) {
-              var results = idx.search(text)
-              if (results.length)
-                $results.html(results.slice(0, 20).map(function (result) {
-                  var d = docs[result.ref]
-                  return '<div class="my-2"><a href="' + prefix + d.link + '">' + d.prefix + ' &raquo; ' + d.title + '</a></div>'
-                })).show()
-            } else {
+            var results = []
+            if (text)
+              results = idx.search(text)
+            if (results.length)
+              $results.html(results.slice(0, 20).map(function (result) {
+                var d = docs[result.ref]
+                return '<div class="my-2"><a href="' + prefix + d.link + '">' + d.prefix + ' &raquo; ' + d.title + '</a></div>'
+              })).show()
+            else
               $results.html('').hide()
-            }
           })
           .trigger('input')
+        // Clicking outside the search results clears search results
+        $('body').on('click', function (e) {
+          if (!($results.is(e.target) || $.contains($results, e.target)))
+            $results.html('').hide()
+        })
       })
   })
 })
