@@ -1324,6 +1324,35 @@
       "What next": -1
     }
   },
+  "1.69": {
+    "": {
+      "Gramex 1.69 release notes": -1
+    },
+    "auto-render-template-files": {
+      "Auto-render template files": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "donut-charts-in-pptxhandler": {
+      "Donut Charts in PPTXHandler": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "offline-access-to-google-data": {
+      "Offline access to Google data": -1
+    },
+    "other-improvements": {
+      "Other improvements": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "what-next": {
+      "What next": -1
+    }
+  },
   "about": {
     "": {}
   },
@@ -2526,7 +2555,7 @@
       "File concatenation": -1
     },
     "file-patterns": {
-      "File patterns": -1
+      "File Patterns": -1
     },
     "filehandler-http-methods": {
       "FileHandler HTTP methods": -1
@@ -2860,6 +2889,9 @@
     "": {
       "Install Gramex": -1
     },
+    "add-gramex-to-the-path": {
+      "Add Gramex to the PATH": -1
+    },
     "alternate-installations": {},
     "conda-install": {
       "Conda install": -1
@@ -2886,10 +2918,16 @@
       "Now RESTART the shell to activate Conda.": -1
     },
     "offline-docker-install": {
-      "Offline Docker Install": -1
+      "Offline Docker install": -1
     },
     "offline-install": {
       "Offline install": -1
+    },
+    "offline-linux-install": {
+      "Offline Linux install": -1
+    },
+    "offline-windows-install": {
+      "Offline Windows install": -1
     },
     "other-useful-commands": {},
     "pip-install": {
@@ -2898,7 +2936,13 @@
     "replace-app-anywhere-in-this-script-with-any-app-name-of-your-choice": {
       "Replace \"app\" anywhere in this script with any app name of your choice.": -1
     },
+    "run-a-gramex-app": {
+      "Run a Gramex app": -1
+    },
     "run-bash-inside-the-container": {},
+    "run-gramex": {
+      "Run Gramex": -1
+    },
     "run-gramex-on-port-9988": {},
     "save-the-container-as-a-new-image": {
       "Save the container as a new image": -1
@@ -2911,6 +2955,33 @@
       "Troubleshooting": -1
     },
     "uninstall-gramex": {},
+    "uninstall-gramex-enterprise": {
+      "Uninstall Gramex Enterprise": -1
+    },
+    "uninstall-gramex-via-conda": {
+      "Uninstall Gramex via conda": -1
+    },
+    "uninstall-gramex-via-docker": {
+      "Uninstall Gramex via docker": -1
+    },
+    "uninstall-gramex-via-pip": {
+      "Uninstall Gramex via pip": -1
+    },
+    "upgrade-gramex-enterprise": {
+      "Upgrade Gramex Enterprise": -1
+    },
+    "upgrade-gramex-via-conda": {
+      "Upgrade Gramex via conda": -1
+    },
+    "upgrade-gramex-via-docker": {
+      "Upgrade Gramex via docker": -1
+    },
+    "upgrade-gramex-via-pip": {
+      "Upgrade Gramex via pip": -1
+    },
+    "upgrade-gramex-via-pip_1": {
+      "Upgrade Gramex via pip": -1
+    },
     "vscode-extension": {
       "VSCode Extension": -1
     },
@@ -3840,9 +3911,7 @@
     "": {
       "UI Components": -1
     },
-    "arrow": {
-      "Arrow": -1
-    },
+    "arrow": {},
     "backgrounds": {
       "Backgrounds": -1
     },
@@ -3853,21 +3922,15 @@
     "color-states": {
       "Color states": -1
     },
-    "components": {
-      "Components": -1
-    },
+    "components": {},
     "cursor-styles": {
       "Cursor styles": -1
     },
     "custom-themes": {
       "Custom themes": -1
     },
-    "deprecated": {
-      "Deprecated": -1
-    },
-    "divider": {
-      "Divider": -1
-    },
+    "deprecated": {},
+    "divider": {},
     "effects": {
       "Effects": -1
     },
@@ -3909,9 +3972,7 @@
       "Shadow": -1
     },
     "tables": {},
-    "tail": {
-      "Tail": -1
-    },
+    "tail": {},
     "text-alignment": {
       "Text alignment": -1
     },
@@ -3930,9 +3991,7 @@
     "typography": {
       "Typography": -1
     },
-    "z-index": {
-      "Z-Index": -1
-    }
+    "z-index": {}
   },
   "uploadhandler": {
     "": {

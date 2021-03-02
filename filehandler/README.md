@@ -294,38 +294,25 @@ From **v1.23.1**, to serve different files with different MIME types, use file p
 ## Templates
 
 FileHandler uses [Tornado templates][template] to generate content from data.
-For example, this `page.html` renders 10 images:
+For example, this `page.tmpl.html` renders 10 images:
 
 ```html
 {% for id in range(1, 10) %}
   <img src="https://picsum.photos/id/{{ id }}/40">
 {% end %}
 ```
-To templatize this `page.html`, add `template: true` to `gramex.yaml`:
+
+The defualt, any file that ends with `.tmpl.html` or `.template.html` is rendered as a template.
+You can specify amy file patterns using `template: patterns`. For example:
 
 ```yaml
 url:
   template:
-    pattern: /page                  # The URL /page
-    handler: FileHandler            # displays a file
-    kwargs:
-      path: page.html               # named page.html
-      template: true                # rendered as a Tornado template
-```
-
-To templatize specific file patterns, e.g. `template*.html`, add `template: template*.html`:
-
-```yaml
-url:
-  template:
-    pattern: /templates/(.*)
+    pattern: ...
     handler: FileHandler
     kwargs:
-      path: templates/            # Render files from this path
-      # Specify ONE of these examples
-      template: template*.html    # Templatize template.* HTML files
-      template: '*.xml, *.svg'    # Templatize XML and SVG files
-      template: '*'               # Same as template: true
+      path: ...
+      template: ['template*.html', '*.tmpl.html', '*.svg']
 ```
 
 ::: example href=template source="https://github.com/gramener/gramex-guide/blob/master/filehandler/template.html"

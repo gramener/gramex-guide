@@ -120,7 +120,7 @@ make test
 Set up apps and & upgrade npm packages.
 
 ```bash
-find gramex/apps/ -maxdepth 2 -name package.json -print0 | xargs -0 -L1 yarn upgrade
+find gramex/apps/ -maxdepth 2 -name package.json -print0 | xargs -0 -L1 yarn upgrade --cwd
 ```
 
 Update the following and commit to `master` branch:
@@ -138,7 +138,7 @@ Commit and push the `master` branch of both repos to the server.
 **Ensure pipeline passes.**:
 
 ```bash
-git commit -m"DOC: Add v1.x.x release changes"  # Replace x.x
+git commit . -m"DOC: Add v1.x.x release changes"    # Replace x.x
 git push
 ```
 
@@ -147,7 +147,7 @@ Merge `master` branch with `release` on both repos:
 ```bash
 git checkout release
 git merge master
-git tag -a v1.x.x -m"One-line summary of features"
+git tag -a v1.x.x -m"One-line summary of features"  # Replace x.x
 git push --follow-tags
 git push gitlab release      # To deploy into Gramener servers. See one-time setup below
 git checkout master          # Switch back to master
