@@ -314,7 +314,7 @@ More chart types can be created. See the [Seaborn API](https://seaborn.pydata.or
 [![swarmplot][swarmplot]][swarmplot]
 [![boxplot][boxplot]][boxplot]
 [![violinplot][violinplot]][violinplot]
-[![lvplot][lvplot]][lvplot]
+[![boxenplot][boxenplot]][boxenplot]
 [![pointplot][pointplot]][pointplot]
 
 ### Regression plots
@@ -344,7 +344,7 @@ More examples to be added.
 [swarmplot]: categorical?chart=swarmplot&xcol=Continent&ycol=c1&width=350&height=200
 [boxplot]: categorical?chart=boxplot&xcol=Continent&ycol=c1&width=350&height=200
 [violinplot]: categorical?chart=violinplot&xcol=Continent&ycol=c1&width=350&height=200
-[lvplot]: categorical?chart=lvplot&xcol=Continent&ycol=c1&width=350&height=200
+[boxenplot]: categorical?chart=boxenplot&xcol=Continent&ycol=c1&width=350&height=200
 [pointplot]: categorical?chart=pointplot&xcol=Continent&ycol=c1&width=350&height=200
 [regplot]: categorical?chart=regplot&xcol=c2&ycol=c1&width=350&height=200
 [residplot]: categorical?chart=residplot&xcol=c2&ycol=c1&width=350&height=200
@@ -760,7 +760,7 @@ url:
 ```
 
 `modify:` can be any expression/function that uses `data` -- count of records edited and `handler` --
-`handler.args` contains [data submitted]((#formhandler-edits)) by the user.
+`handler.args` contains [data submitted](#formhandler-edits) by the user.
 
 
 ## FormHandler query
