@@ -72,7 +72,7 @@ Add the formhandler table to the page as follows:
 
 Any interaction with the table changes the URL hash. By storing the state of
 interactions in the URL, we can capture a particular view of the data, just by capturing the URL.
-g1 provides a way to listen to URL changes via [urlchange](https://code.gramener.com/cto/g1/blob/master/docs/urlchange.md).
+g1 provides a way to listen to URL changes via [urlchange](https://learn.gramener.com/guide/g1/urlchange).
 
 ```html
 <script>
