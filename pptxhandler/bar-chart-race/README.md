@@ -1,6 +1,6 @@
-# Copy slide example
+# Bar Chart Race
 
-Let's see how we can create a [bar chart race](https://blog.gramener.com/bar-chart-race-in-powerpoint/) in PowerPoint.
+Let's see how we can create a [bar chart race](https://blog.gramener.com/bar-chart-race-in-powerpoint/) in PowerPoint, using the `copy-slide:` command.
 
 [![Bar chart race output](output.gif){.img-fluid}](output.pptx)
 
@@ -9,6 +9,12 @@ second row shows how many of these are converted into leads. The third row shows
 added an item to the shopping cart.
 
 We will create 3 slides -- one for each month, containing this data.
+
+Here's a video explaining each step of this tutorial.
+
+<div class="ratio ratio-16x9">
+  <iframe src="https://www.youtube.com/embed/-Qh7o1aWb2c" allowfullscreen></iframe>
+</div>
 
 ## Create the source template
 

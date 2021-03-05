@@ -18,12 +18,47 @@ PPTXHandler makes it easy for users to:
 
 Here are examples of what PPTXHandler can create. Click to see details.
 
-[![Bar chart race](copy-slide/output.gif){: height=150}](copy-slide/)
+[![Bar chart race](bar-chart-race/output.gif){: height=150}](bar-chart-race/)
 [![Rate of entrepreneurship](entrepreneurship/output.svg){: height=150}](entrepreneurship/)
 [![Causes of death](death/output.gif){: height=150}](death/)
 [![Certificates](certificate/output.png){: height=150}](certificate/)
 [![App store sales](appstore.png){: height=150}](https://gramener.com/appstore/appstore.pptx)
 [![FMCG revenue breakup](fmcg.png){: height=150}](https://gramener.com/fmcg/)
+
+Learn using the SlideSense/PPTXHandler Tutorial videos.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MjUZ6EOOdgo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Tutorials
+
+Another way to learn is to pick an example you want to create, and follow the step-by-step tutorials.
+
+### Bar chart race
+
+Create a [bar chart race in PowerPoint](bar-chart-race/) from data.
+
+[![Bar chart race](bar-chart-race/output.gif){: height=180}](bar-chart-race/)
+
+### Rate of Entrepreneurship
+
+Re-create a portion of the [Kauffman Indicators of Rate of New Entrepreneurship](entrepreneurship) in PowerPoint.
+
+[![Rate of entrepreneurship](entrepreneurship/output.svg){: width=320}](entrepreneurship/)
+
+### Causes of death
+
+Re-create the [Shifting Causes of Death](https://flowingdata.com/2018/10/02/shifting-death/) visualization in PowerPoint.
+
+[![Shifting causes of death](death/output.gif){: width=320}](death/)
+
+### Bestselling Pharmaceutical Drugs
+
+Visualize the [Bestselling Pharmaceutical Drugs of 2017-18][pharma-drugs] data in PowerPoint.
+
+[![Bestselling Pharmaceutical Drugs](table/output.jpg){: width=320}](table/)
+
+[pharma-drugs]: https://en.wikipedia.org/wiki/List_of_largest_selling_pharmaceutical_products#Best_selling_pharmaceuticals_of_2017/18
+
 
 ## About
 
@@ -73,37 +108,6 @@ cart: 142
 
 ::: example href=sales-funnel/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/sales-funnel/
     Run the Sales Funnel example
-
-## Tutorials
-
-Here are some tutorials:
-
-### Bar chart race
-
-Create a [bar chart race in PowerPoint](https://blog.gramener.com/bar-chart-race-in-powerpoint/) from data.
-
-[![Bar chart race](copy-slide/output.gif){: height=180}](copy-slide/)
-
-### Rate of Entrepreneurship
-
-Re-create a portion of the [Kauffman Indicators of Rate of New Entrepreneurship](https://indicators.kauffman.org/indicator/rate-of-new-entrepreneurs) in PowerPoint.
-
-[![Rate of entrepreneurship](entrepreneurship/output.svg){: width=320}](entrepreneurship/)
-
-### Causes of death
-
-Re-create the [Shifting Causes of Death](https://flowingdata.com/2018/10/02/shifting-death/) visualization in PowerPoint.
-
-[![Shifting causes of death](death/output.gif){: width=320}](death/)
-
-### Bestselling Pharmaceutical Drugs
-
-Visualize the [Bestselling Pharmaceutical Drugs of 2017-18][pharma-drugs] data in PowerPoint.
-
-[![Bestselling Pharmaceutical Drugs](table/output.jpg){: width=320}](table/)
-
-[pharma-drugs]: https://en.wikipedia.org/wiki/List_of_largest_selling_pharmaceutical_products#Best_selling_pharmaceuticals_of_2017/18
-
 
 
 ## Usage
@@ -435,8 +439,8 @@ For each copied slide, the [data variable `copy`](#data) is set. It has these at
 - `copy.val`: Value corresponding to `copy.key`
 - `copy.slides`: Currently copied [PPTX slides list](https://python-pptx.readthedocs.io/en/latest/api/slides.html#slides-objects), e.g. `copy.slides[0].shapes`
 
-::: example href=copy-slide/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/copy-slide/
-    Run the Copy Slides example
+::: example href=bar-chart-race/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/bar-chart-race/
+    Run the Bar Chart Race (copy-slide) example
 
 # Commands
 
