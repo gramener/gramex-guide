@@ -27,7 +27,9 @@ Here are examples of what PPTXHandler can create. Click to see details.
 
 Learn using the SlideSense/PPTXHandler Tutorial videos.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/MjUZ6EOOdgo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="ratio ratio-16x9">
+  <iframe src="https://www.youtube.com/embed/MjUZ6EOOdgo" allowfullscreen></iframe>
+</div>
 
 ## Tutorials
 
