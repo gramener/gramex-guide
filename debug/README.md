@@ -105,9 +105,10 @@ There are many ways to start the debugger:
 You can use [WinPDB](http://winpdb.org/docs/) -- a cross-platform GUI for
 pdb -- on Gramex using:
 
-    :::shell
-    conda install -c jacob-barhak -c anaconda winpdb
-    winpdb.bat /path/to/gramex/__main__.py
+```shell
+conda install -c jacob-barhak -c anaconda winpdb
+winpdb.bat /path/to/gramex/__main__.py
+```
 
 (On Linux / Mac, use `winpdb` instead of `winpdb.bat`.)
 
@@ -119,16 +120,18 @@ Here are some useful things you can do on the debugger:
 
 Useful commands you can use on the debugger:
 
-    c                 # Continue running the program
-    pp value          # Pretty-print value
-    !<python-code>    # Run the Python code in the current context
-    b function        # Set a breakpoint at a function
-    b file:line       # Set a breakpoint at file, on line
-    clear function    # Clear breakpoint at a function
-    s or step         # Step into the current line's function
-    n or next         # Next line (without entering the current function)
-    l or list         # List the code
-    h or help         # Help -- list available commands
+```shell
+c                 # Continue running the program
+pp value          # Pretty-print value
+!<python-code>    # Run the Python code in the current context
+b function        # Set a breakpoint at a function
+b file:line       # Set a breakpoint at file, on line
+clear function    # Clear breakpoint at a function
+s or step         # Step into the current line's function
+n or next         # Next line (without entering the current function)
+l or list         # List the code
+h or help         # Help -- list available commands
+```
 
 
 ## Print statements
