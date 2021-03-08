@@ -4,7 +4,14 @@ classes: toc
 prefix: Guide
 ...
 
-First, [install Gramex](install/). Then learn from these tutorials:
+You can start Gramex using the [Gramex IDE](https://gramex.gramener.com/).
+
+<a class="btn btn-large btn-primary" href="https://gramex.gramener.com/">
+  Try the Gramex IDE
+  <br><small>(Log in with any Google account)</small>
+</a>
+
+Then learn from these tutorials:
 
 - [Quickstart](tutorials/quickstart/)
 - [Dashboards](tutorials/dashboards/)

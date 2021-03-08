@@ -7,7 +7,15 @@ prefix: Install
 
 <!-- Don't include a [TOC] here -- it's confusing -->
 
-There are 4 ways of installing or upgrading the Gramex Community Edition.
+You can try Gramex without installing using the [Gramex IDE](https://gramex.gramener.com/).
+
+<a class="btn btn-large btn-primary" href="https://gramex.gramener.com/">
+  Try the Gramex IDE
+  <br><small>(Log in with any Google account)</small>
+</a>
+
+
+There are 4 ways to install the Gramex Community Edition on your system.
 
 1. [**Conda**](#conda-install) (**RECOMMENDED**). Best for beginners and Python developers
 2. [**Docker**](#docker-install). Best to try out new versions, or to deploy apps
