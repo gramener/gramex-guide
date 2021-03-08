@@ -25,10 +25,10 @@ Here are examples of what PPTXHandler can create. Click to see details.
 [![App store sales](appstore.png){: height=150}](https://gramener.com/appstore/appstore.pptx)
 [![FMCG revenue breakup](fmcg.png){: height=150}](https://gramener.com/fmcg/)
 
-Learn using the SlideSense/PPTXHandler Tutorial videos.
+Learn using the [SlideSense/PPTXHandler Tutorial videos](https://www.youtube.com/playlist?list=PLrn2FHBzHtaOoMWOW8biS2gsY0jjnwuRG).
 
 <div class="ratio ratio-16x9">
-  <iframe src="https://www.youtube.com/embed/MjUZ6EOOdgo" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/videoseries?list=PLrn2FHBzHtaOoMWOW8biS2gsY0jjnwuRG" allowfullscreen></iframe>
 </div>
 
 ## Tutorials

@@ -1,4 +1,6 @@
-# Bestselling Pharmaceutical Drugs
+---
+title: Bestselling Pharmaceutical Drugs
+...
 
 Let's see how we can visualize the [Best selling pharmaceuticals of 2017/18][data] using PPTXHandler.
 
@@ -8,6 +10,11 @@ We're aiming for a result like this:
 
 ![Best selling pharmaceuticals of 2017/18](output.jpg){.img-fluid}
 
+Here's a video explaining each step of this tutorial.
+
+<div class="ratio ratio-16x9">
+  <iframe src="https://www.youtube.com/embed/Kwsftx9UV7o" allowfullscreen></iframe>
+</div>
 
 ## Create the source template
 

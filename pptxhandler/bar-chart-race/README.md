@@ -1,4 +1,6 @@
-# Bar Chart Race
+---
+title: Bar Chart Race
+...
 
 Let's see how we can create a [bar chart race](https://blog.gramener.com/bar-chart-race-in-powerpoint/) in PowerPoint, using the `copy-slide:` command.
 
