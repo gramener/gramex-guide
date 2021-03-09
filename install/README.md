@@ -42,7 +42,7 @@ conda install -y -c conda-forge -c gramener gramex  # Install Gramex
 
 This is what your screen might look like when installing:
 
-<asciinema-player src="gramex-conda.json" cols="100" rows="20" idle-time-limit="0.5" autoplay="1" font-size="" loop="1"></asciinema-player>
+<asciinema-player src="gramex-conda.json" cols="100" rows="20" idle-time-limit="0.5" font-size="" loop="1"></asciinema-player>
 
 Now you can [Run your first app](#run-a-gramex-app).
 
@@ -88,7 +88,7 @@ Inside the container, run `gramex --help` to verify that Gramex is installed.
 - `gramener/gramex:latest` runs the latest Gramex instance (pulling it if required)
 - `/bin/bash` runs bash (a shell) that you can run commands in
 
-<asciinema-player src="gramex-docker.json" cols="100" rows="20" idle-time-limit="0.5" autoplay="1" font-size="medium" loop="1"></asciinema-player>
+<asciinema-player src="gramex-docker.json" cols="100" rows="20" idle-time-limit="0.5" font-size="medium" loop="1"></asciinema-player>
 
 Now you can [Run your first app](#run-a-gramex-app). You can also:
 
@@ -342,14 +342,38 @@ pip uninstall gramexenterprise
 
 Open a terminal where you can run Gramex.
 
-- [Conda](#conda-install) or [Pip](#pip-install): Use your Anaconda Prompt / Command Prompt / shell.
-- [Docker](#docker-install): run `docker run -it -p 9988:9988 gramener/gramex:latest /bin/bash`
+If you installed via [Conda](#conda-install) or [Pip](#pip-install):
 
-Run `gramex --help` to verify that Gramex is installed properly. You should see this.
+1. Open your Anaconda Prompt / Command Prompt / shell.
+2. Run `conda activate gramex` to activate the Gramex environment
 
-<asciinema-player src="gramex-help.json" cols="100" rows="22" idle-time-limit="0.5" autoplay="1" font-size=""></asciinema-player>
+If you inslled via [Docker](#docker-install):
+
+1. Run `docker run -it -p 9988:9988 gramener/gramex:latest /bin/bash`
+
+In this terminal, run `gramex --help` to verify that Gramex is installed properly. You should see this.
+
+<asciinema-player src="gramex-help.json" cols="100" rows="22" idle-time-limit="0.5" font-size=""></asciinema-player>
 
 If you see an error, see the [Troubleshooting](#troubleshooting) section.
+
+To start a Gramex project, create a new folder and run `gramex init` from that folder by typing this in your terminal.
+
+```bash
+mkdir project
+cd project
+gramex init
+```
+
+You should see an output like this:
+
+<asciinema-player src="../init/gramex-init.rec" cols="100" rows="20" idle-time-limit="0.5" font-size=""></asciinema-player>
+
+Run `gramex`. This will start Gramex and show an output like this:
+
+<asciinema-player src="../init/gramex-run.rec" cols="100" rows="20" idle-time-limit="0.5" font-size=""></asciinema-player>
+
+Open <http://localhost:9988/> in your browser, and you should see the sample app.
 
 Now you're ready to move to the [quickstart tutorial](../tutorials/quickstart/)
 

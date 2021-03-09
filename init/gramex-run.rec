@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "width": 101,
+  "height": 15,
+  "duration": 12.03363,
+  "command": null,
+  "title": null,
+  "env": {
+    "TERM": "cygwin",
+    "SHELL": null
+  },
+  "stdout": [
+    [
+      0.076628,
+      "sh-4.4$ "
+    ],
+    [
+      0.342381,
+      "g"
+    ],
+    [
+      0.186052,
+      "r"
+    ],
+    [
+      0.078065,
+      "a"
+    ],
+    [
+      0.217144,
+      "m"
+    ],
+    [
+      0.078353,
+      "e"
+    ],
+    [
+      0.046953,
+      "x"
+    ],
+    [
+      0.232331,
+      "\r\n"
+    ],
+    [
+      1.621651,
+      "INFO    09-Mar 20:23:00 __init__ PORT Gramex 1.69.0 | D:\\temp\\app | Python 3.7.3 (default, Apr 24 2019, 15:29:51) [MSC v.1915 64 bit (AMD64)]\r\r\nDEBUG   09-Mar 20:23:00 config PORT Loading config: d:\\site\\gramener.com\\viz\\async-gramex\\gramex\\gramex.yaml\r\r\n"
+    ],
+    [
+      0.030819,
+      "DEBUG   09-Mar 20:23:00 config PORT Loading config: D:\\temp\\app\\gramex.yaml\r\r\n"
+    ],
+    [
+      0.016906,
+      "DEBUG   09-Mar 20:23:00 config PORT Loading config: d:\\site\\gramener.com\\viz\\async-gramex\\gramex\\apps\\ui\\gramex.yaml\r\r\nDEBUG   09-Mar 20:23:00 config PORT Loading config: d:\\site\\gramener.com\\viz\\async-gramex\\gramex\\apps\\admin2\\gramex.yaml\r\r\n"
+    ],
+    [
+      0.015109,
+      "DEBUG   09-Mar 20:23:00 config PORT Loading config: d:\\site\\gramener.com\\viz\\async-gramex\\gramex\\apps\\ui\\gramex.yaml\r\r\n"
+    ],
+    [
+      0.016439,
+      "DEBUG   09-Mar 20:23:00 __init__ PORT Loading service: version\r\r\nDEBUG   09-Mar 20:23:00 __init__ PORT Loading service: mime\r\r\n"
+    ],
+    [
+      0.206726,
+      "DEBUG   09-Mar 20:23:00 __init__ PORT Loading service: threadpool\r\r\nDEBUG   09-Mar 20:23:00 __init__ PORT Loading service: cache\r\r\nDEBUG   09-Mar 20:23:00 __init__ PORT Loading service: handlers\r\r\nDEBUG   09-Mar 20:23:00 __init__ PORT Loading service: log\r"
+    ],
+    [
+      0.00094,
+      "\r\nDEBUG   09-Mar 20:23:00 __init__ PORT Loading service: eventlog\r\r\n"
+    ],
+    [
+      0.014313,
+      "DEBUG   09-Mar 20:23:00 __init__ PORT Loading service: app\r\r\nDEBUG   09-Mar 20:23:00 __init__ PORT Loading service: schedule\r\r\n"
+    ],
+    [
+      0.001119,
+      "INFO    09-Mar 20:23:00 __init__ PORT Initialising schedule:gramex_update\r\r\n"
+    ],
+    [
+      0.000824,
+      "DEBUG   09-Mar 20:23:00 scheduler PORT Scheduling gramex_update after 13019s\r\r\n"
+    ],
+    [
+      0.000793,
+      "DEBUG   09-Mar 20:23:00 __init__ PORT Loading service: url\r\r\n"
+    ],
+    [
+      0.012845,
+      "DEBUG   09-Mar 20:23:00 __init__ PORT url: apps/ui/theme-J6bsV (FileHandler) \r\r\nDEBUG   09-Mar 20:23:00 __init__ PORT Gramex update ran recently. Deferring check.\r\r\n"
+    ],
+    [
+      0.04652,
+      "DEBUG   09-Mar 20:23:00 config PORT Loading config: d:\\site\\gramener.com\\viz\\async-gramex\\gramex\\apps.yaml\r\r\nDEBUG   09-Mar 20:23:00 config PORT Loading config: C:\\Users\\anand\\AppData\\Local\\Gramex Data\\apps\\apps.yaml\r\r\n"
+    ],
+    [
+      1.019578,
+      "DEBUG   09-Mar 20:23:01 __init__ PORT url: apps/ui/bootstrap4-rfKiM (FunctionHandler) \r\r\nDEBUG   09-Mar 20:23:01 __init__ PORT url: apps/ui/theme-1ABsu (FileHandler) \r\r\nDEBUG   09-Mar 20:23:01 __init__ PORT url: apps/ui/static-YB62u (FileHandler) \r\r\nDEBUG "
+    ],
+    [
+      0.001941,
+      "  09-Mar 20:23:01 __init__ PORT url: app-login (SimpleAuth) \r\r\nDEBUG   09-Mar 20:23:01 __init__ PORT url: app-logout (LogoutHandler) \r\r\nDEBUG   09-Mar 20:23:01 __init__ PORT url: apps/ui/bootstrap4-BFytO (FunctionHandler) \r\r\nDEBUG   09-Mar 20:23:01 __init_"
+    ],
+    [
+      0.001471,
+      "_ PORT url: apps/admin2/users-dRpvb (gramexadmin.AdminFormHandler) \r\r\nWARNING 09-Mar 20:23:01 gramexadmin PORT apps/admin2/users-dRpvb: Missing authhandler\r\r\nDEBUG   09-Mar 20:23:01 __init__ PORT url: app/admin2/schedule-HObS9 (FunctionHandler) \r\r\nDEBUG   "
+    ],
+    [
+      0.001044,
+      "09-Mar 20:23:01 __init__ PORT url: app/admin2/alert-ICZ0v (FunctionHandler) \r\r\nDEBUG   09-Mar 20:23:01 __init__ PORT url: apps/admin2/webshell-Dj6mH (WebSocketHandler) \r\r\nDEBUG   09-Mar 20:23:01 __init__ PORT url: apps/admin2/info-7lBmo (FunctionHandler) \r"
+    ],
+    [
+      0.00078,
+      "\r\nDEBUG   09-Mar 20:23:01 __init__ PORT url: apps/ui/static-Tgq4D (FileHandler) \r\r\n"
+    ],
+    [
+      0.000543,
+      "DEBUG   09-Mar 20:23:01 __init__ PORT url: apps/admin2/webshell-static-dx9xZ (FileHandler) \r\r\n"
+    ],
+    [
+      0.010548,
+      "DEBUG   09-Mar 20:23:01 __init__ PORT url: apps/admin2/home-E9IbI (FileHandler) \r\r\nDEBUG   09-Mar 20:23:01 __init__ PORT url: apps/admin2/home-static-SQrSO (FileHandler) \r\r\nDEBUG   09-Mar 20:23:01 __init__ PORT url: app-home (FileHandler) \r\r\nDEBUG   09-Mar"
+    ],
+    [
+      0.001956,
+      " 20:23:01 __init__ PORT url: favicon (FileHandler) -90\r\r\nDEBUG   09-Mar 20:23:01 __init__ PORT url: default (FileHandler) -100\r\r\nDEBUG   09-Mar 20:23:01 __init__ PORT Loading service: test\r\r\n"
+    ],
+    [
+      0.013807,
+      "DEBUG   09-Mar 20:23:01 __init__ PORT Running callback: app\r\r\nINFO    09-Mar 20:23:01 __init__ PORT Listening on port 9988\r\r\nINFO    09-Mar 20:23:01 __init__ 9988 <Ctrl-B> opens the browser. <Ctrl-D> starts the debugger.\r\r\n"
+    ],
+    [
+      0.603259,
+      "\u0002"
+    ],
+    [
+      7.134883,
+      "\r\nsh-4.4$ "
+    ]
+  ]
+}

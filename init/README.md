@@ -3,10 +3,10 @@ title: Gramex init
 prefix: Init
 ...
 
-To start a Gramex project, run `gramex init` on your terminal.
+To start a Gramex project, run `gramex init` on your terminal. You should see an output like this:
 
 <link rel="stylesheet" type="text/css" href="../node_modules/asciinema-player/resources/public/css/asciinema-player.css">
-<asciinema-player src="gramex-init.rec" cols="100" rows="20" idle-time-limit="0.5"></asciinema-player>
+<asciinema-player src="gramex-init.rec" cols="100" rows="20" idle-time-limit="0.5" font-size=""></asciinema-player>
 
 It generates a simple boilerplate:
 
@@ -27,5 +27,13 @@ It generates a simple boilerplate:
 
 Note: `gramex init` is **optional**. You can create a Gramex project from scratch by just creating
 an empty `gramex.yaml`.
+
+Run `gramex`. This will start Gramex and show an output like this:
+
+<asciinema-player src="gramex-run.rec" cols="100" rows="20" idle-time-limit="0.5" font-size=""></asciinema-player>
+
+Open <http://localhost:9988/> in your browser, and you should see the sample app.
+
+
 
 <script src="../node_modules/asciinema-player/resources/public/js/asciinema-player.js"></script>
