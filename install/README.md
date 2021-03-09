@@ -24,12 +24,12 @@ There are 4 ways to install or upgrading the Gramex Community Edition on your sy
 
 ## Conda install
 
-Install [Anaconda3-2020.02][anaconda]. (Gramex does not yet work with Python 3.8. So avoid later versions). Here are downloads for:
+Install [Anaconda3-2019.07][anaconda]. (Gramex does not yet work with Python 3.8. So avoid later versions). Here are downloads for:
 
-- [Windows 64-bit](https://repo.anaconda.com/archive/Anaconda3-2020.02-Windows-x86_64.exe)
-- [Windows 32-bit](https://repo.anaconda.com/archive/Anaconda2-2019.10-Windows-x86.exe)
-- [MacOSX](https://repo.anaconda.com/archive/Anaconda2-2019.10-MacOSX-x86_64.pkg)
-- [Linux 64-bit](https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-x86_64.sh)
+- [Windows 64-bit](https://repo.anaconda.com/archive/Anaconda3-2019.07-Windows-x86_64.exe)
+- [Windows 32-bit](https://repo.anaconda.com/archive/Anaconda3-2019.07-Windows-x86.exe)
+- [MacOSX](https://repo.anaconda.com/archive/Anaconda3-2019.07-MacOSX-x86_64.pkg)
+- [Linux 64-bit](https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh)
 
 To install [gramex](https://anaconda.org/gramener/gramex),
 type this in your Anaconda Prompt / Command Prompt / shell:
