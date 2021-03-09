@@ -110,40 +110,90 @@ Additional parameters like `table:`, `encoding:`, etc are passed to
 [gramex.cache.query](../cache/#query-caching), which uses
 ``sqlalchemy.create_engine``.
 
-With additional libraries, FormHandler can connect to [more databases](https://docs.sqlalchemy.org/en/13/dialects/index.html#external-dialects).
+With additional libraries, FormHandler can connect to
+[more](https://docs.sqlalchemy.org/en/13/dialects/index.html#external-dialects)
+[databases](https://superset.apache.org/docs/databases/installing-database-drivers).
 
 - [Amazon Redshift](https://pypi.org/project/sqlalchemy-redshift/)
-    - Install: `pip install sqlalchemy-redshift`
-    - Use: `url: 'redshift+psycopg2://username@host.amazonaws.com:5439/database'`
+  - Install: `pip install sqlalchemy-redshift`
+  - Use: `url: 'redshift+psycopg2://$USER@host.amazonaws.com:5439/database'`
 - [Amazon S3](https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html#reading-remote-files)
-    - Install: `pip install s3fs`
-    - Setup: [Add your credentials](https://s3fs.readthedocs.io/en/latest/#credentials)
-    - Use: `url: 's3://your-bucket/your-file.csv'`
+  - Install: `pip install s3fs`
+  - Setup: [Add your credentials](https://s3fs.readthedocs.io/en/latest/#credentials)
+  - Use: `url: 's3://$BUCKET/your-file.csv'`
+- [Apache Drill](https://github.com/JohnOmernik/sqlalchemy-drill)
+  - Install: `pip install sqlalchemy-drill`
+  - Use: `url: 'drill+sadrill://$USER:$PASS@$HOST:$PORT/dfs?use_ssl=True'`
+- [Apache Druid](https://pypi.org/project/pydruid/)
+  - Install: `pip install pydruid`
+  - Use: `url: 'druid://$USER:$PASS@$HOST:$PORT/druid/v2/sql'`
 - [Apache Hive](https://github.com/dropbox/PyHive#sqlalchemy)
-    - Install: `pip install "pyhive[hive]"`
-    - Use: `url: 'hive://server:10000/default`
+  - Install: `pip install "pyhive[hive]"`
+  - Use: `url: 'hive://server:10000/default`
+- [Apache Impala](https://pypi.org/project/impala/)
+  - Install: `pip install impaala`
+  - Use: `url: 'impala://$HOST:$PORT/$DATABASE'`
+- [Apache Kylin](https://pypi.org/project/kylinpy/)
+  - Install: `pip install kylinpy`
+  - Use: `url: 'kylin://$USER:$PASS@$HOST:$PORT/$PROJECT?$PARAM=$VALUE'`
+- [Apache Pinot](https://pypi.org/project/pinotdb/)
+  - Install: `pip install pinotdb`
+  - Use: `url: 'pinot://$BROKER:5436/query?server=http://$CONTROLLER:5983/'`
 - [Apache Solr](https://github.com/aadel/sqlalchemy-solr)
-    - Install: `pip install https://github.com/aadel/sqlalchemy-solr/Use/master.zip`
-    - Use: `url: 'solr://$USER:$PASS@server:8983/solr/collection?use_ssl=true'`
+  - Install: `pip install https://github.com/aadel/sqlalchemy-solr/Use/master.zip`
+  - Use: `url: 'solr://$USER:$PASS@server:8983/solr/collection?use_ssl=true'`
+- [Apache Spart SQL](https://pypi.org/project/pyhive/)
+  - Install: `pip install pyhive`
+  - Use: `url: 'hive://hive@$HOST:$PORT/$DATABASE'`
+- [Azure MS SQL](https://pypi.org/projects/pymssql/)
+  - Install: `pip install pymssql`
+  - Use: `url: 'mssql+pymssql://$USER@$HOST:$PASS@presetSQL.database.windows.net:1433/TestSchema'`
+- [ClickHouse](https://pypi.org/projects/sqlalchemy-clickhouse/)
+  - Install: `pip install sqlalchemy-clickhouse`
+  - Use: `url: 'clickhouse://$USER:$PASS@$HOST:$PORT/$DATABASE'`
+- [CockroachDB](https://pypi.org/projects/cockroachdb/)
+  - Install: `pip install cockroachdb`
+  - Use: `url: 'cockroachdb://root@$HOST:$PORT/$DATABASE?sslmode=disable'`
 - [DB2](https://pypi.org/project/ibm-db-sa/)
-    - Install: `pip install ibm-db-sa`
-    - Use: `db2+ibm_db://$USER:$PASS@server:50000/database`
+  - Install: `pip install ibm-db-sa`
+  - Use: `db2+ibm_db://$USER:$PASS@server:50000/database`
+- [Dremio](https://pypi.org/projects/sqlalchemy_dremio/)
+  - Install: `pip install sqlalchemy_dremio`
+  - Use: `url: 'dremio://$USER:$PASS@$HOST:31010/'`
 - [ElasticSearch](https://pypi.org/project/elasticsearch-dbapi/) - read-only
-    - Install: `pip install elasticsearch-dbapi`
-    - Use: `url: 'elasticsearch+http://server:9200'`
-    - Note: To avoid logging results on console, use `logging.getLogger('elasticsearch').setLevel(logging.INFO)` in [prepare](#formhandler-prepare)
+  - Install: `pip install elasticsearch-dbapi`
+  - Use: `url: 'elasticsearch+http://server:9200'`
+  - Note: To avoid logging results on console, use `logging.getLogger('elasticsearch').setLevel(logging.INFO)` in [prepare](#formhandler-prepare)
+- [Exasol](https://pypi.org/projects/sqlalchemy-exasol/)
+  - Install: `pip install sqlalchemy-exasol`
+  - Use: `url: 'exa+pyodbc://$USER:$PASS@$HOST:$PORT/my_schema?CONNECTIONLCALL=en_US.UTF-8&driver=EXAODBC'`
 - [Google BigQuery](https://pypi.org/project/pybigquery/)
-    - Install: `pip install pybigquery`
-    - Use: `{url: bigquery://project, credentials_path: $YAMLPATH/.keyfile.json}`
+  - Install: `pip install pybigquery`
+  - Use: `{url: bigquery://project, credentials_path: $YAMLPATH/.keyfile.json}`
 - [Google Sheets](https://github.com/betodealmeida/gsheets-db-api)
-    - Install: `pip install "gsheetsdb[sqlalchemy]"`
-    - Use: `url: 'https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/edit#gid=0'`
+  - Install: `pip install "gsheetsdb[sqlalchemy]"`
+  - Use: `url: 'https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/edit#gid=0'`
+- [Presto](https://pypi.org/projects/pyhive/)
+  - Install: `pip install pyhive`
+  - Use: `url: 'presto://'`
 - [SAP Hana](https://github.com/SAP/sqlalchemy-hana)
-    - Install: `pip install sqlalchemy-hana`
-    - Use: `url: 'hana://$USER:$PASS@server:30015'`
+  - Install: `pip install sqlalchemy-hana`
+  - Use: `url: 'hana://$USER:$PASS@server:30015'`
+- [Snowflake](https://pypi.org/projects/snowflake-sqlalchemy/)
+  - Install: `pip install snowflake-sqlalchemy`
+  - Use: `url: 'snowflake://$USER:$PASS@$ACCOUNT.$REGION/$DATABASE?role=$ROLE&warehouse=$WAREHOUSE'`
 - [Teradata](https://pypi.org/project/teradatasqlalchemy/)
-    - Install: `pip install teradatasqlalchemy`
-    - Use: `url: teradatasql://server/?user=$USER&password=$PASS`
+  - Install: `pip install teradatasqlalchemy`
+  - Use: `url: teradatasql://server/?user=$USER&password=$PASS`
+- [Teradata](https://pypi.org/project/sqlalchemy-teradata/)
+  - Install: `pip install sqlalchemy-teradata`
+  - Use: `url: teradata://$USER:$PASS@HOST'`
+- [Trino](https://pypi.org/projects/sqlalchemy-trino/)
+  - Install: `pip install sqlalchemy-trino`
+  - Use: `url: 'trino://$USER:$PASS@$HOST:$PORT/$CATALOG'`
+- [Vertica](https://pypi.org/projects/sqlalchemy-vertica-python/)
+  - Install: `pip install sqlalchemy-vertica-python`
+  - Use: `url: 'vertica+vertica_python://$USER:$PASS@$HOST/$DATABASE'`
 
 
 ## FormHandler formats

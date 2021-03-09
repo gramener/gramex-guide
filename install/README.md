@@ -15,7 +15,7 @@ You can try Gramex without installing using the [Gramex IDE](https://gramex.gram
 </a>
 
 
-There are 4 ways to install the Gramex Community Edition on your system.
+There are 4 ways to install or upgrading the Gramex Community Edition on your system.
 
 1. [**Conda**](#conda-install) (**RECOMMENDED**). Best for beginners and Python developers
 2. [**Docker**](#docker-install). Best to try out new versions, or to deploy apps
