@@ -597,11 +597,11 @@ You can specify custom aggregations using `?_c=col|aggregation`. For example:
 
 - [?_by=Continent&_c=Name|count](flags?_by=Continent&_c=Name|count&_format=html): group by Continent, count names of countries
 - [?_by=Continent&_c=Name|count&_c=c1|min&_c=c1|avg&_c=c1|max](flags?_by=Continent&_c=Name|count&_c=c1|min&_c=c1|avg&_c=c1|max&_format=html)
-    - `_by=Continent`: group by "Continent"
-    - `_c=Name|count`: count values in "Name"
-    - `_c=c1|min`: min value of "c1" in each continent
-    - `_c=c1|avg`: mean value of "c1" in each continent
-    - `_c=c1|max`: max value of "c1" in each continent
+  - `_by=Continent`: group by "Continent"
+  - `_c=Name|count`: count values in "Name"
+  - `_c=c1|min`: min value of "c1" in each continent
+  - `_c=c1|avg`: mean value of "c1" in each continent
+  - `_c=c1|max`: max value of "c1" in each continent
 
 You can also aggregate on entire column using empty `?by=`. For example:
 
