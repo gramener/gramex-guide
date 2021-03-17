@@ -28,8 +28,48 @@
       <form class="form-inline">
         <input class="form-control form-control-sm shadow-none my-2 mr-2 d-none d-sm-block" type="search" id="search" placeholder="Search topics" size="30" data-prefix="/{{ GUIDE_ROOT }}/" data-url="/{{ GUIDE_ROOT }}/search/searchindex.json" autocomplete="off">
       </form>
-      <a href="https://github.com/gramener/gramex/issues/new?labels=question&title={{ title }}" target="_blank"
-        class="d-none d-md-block btn btn-success btn-sm font-weight-bold text-decoration-none">Ask a question</a>
+      <div class="nav-item dropdown">
+        <a class="dropdown-toggle btn btn-success btn-sm d-none d-md-block font-weight-bold" href="#" id="help-dropdown"
+          role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Help</a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="help-dropdown">
+          <a class="dropdown-item d-flex" href="https://stackoverflow.com/questions/tagged/gramex">
+            <i class="fab fa-fw fa-2x fa-stack-overflow mr-3 mt-2"></i>
+            <div>
+              <div>Browse Gramex questions</div>
+              <div class="small">See what others have asked, or answer them.</div>
+            </div>
+          </a>
+          <a class="dropdown-item d-flex" href="https://stackoverflow.com/questions/ask?tags=gramex">
+            <i class="fab fa-fw fa-2x fa-stack-overflow mr-3 mt-2"></i>
+            <div>
+              <div>Ask a Gramex question</div>
+              <div class="small">We'll respond in 24 hrs.</div>
+            </div>
+          </a>
+          <a class="dropdown-item d-flex" href="https://github.com/gramener/gramex/issues/new?labels=bug&title={{ title }}+issue">
+            <i class="fab fa-fw fa-2x fa-github mr-3 mt-2"></i>
+            <div>
+              <div>Report a bug</div>
+              <div class="small">We'll respond in 24 hrs.</div>
+            </div>
+          </a>
+          <a class="dropdown-item d-flex" href="https://github.com/gramener/gramex/issues/new?labels=bug&title={{ title }}+feature+request">
+            <i class="fab fa-fw fa-2x fa-github mr-3 mt-2"></i>
+            <div>
+              <div>Request features on Github</div>
+              <div class="small">We'll evaluate it and add to our roadmap.</div>
+            </div>
+          </a>
+          <a class="dropdown-item d-flex" href="mailto:cto@gramener.com">
+            <i class="fas fa-fw fa-2x fa-at mr-3 mt-2"></i>
+            <div>
+              <div>Email us for support</div>
+              <div class="small">We're available cto@gramener.com.</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
     </div>
   </nav>
 
