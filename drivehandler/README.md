@@ -17,7 +17,7 @@ url:
     pattern: /$YAMLURL/drive
     handler: DriveHandler
     kwargs:
-      path: $GRAMEXDATA/apps/guide/drive/    # ... save files here
+      path: $GRAMEXDATA/apps/guide/drive-data/  # ... save files here
 ```
 
 Now, to upload a file into `/drive`, use this form. **Note**: use [FileHandler templates](../filehandler/#templates) for the [XSRF token](../filehandler/#xsrf).
@@ -159,8 +159,8 @@ url:
     pattern: /$YAMLURL/drive
     handler: DriveHandler
     kwargs:
-      path: $GRAMEXDATA/apps/guide/drive/     # ... save files here
-      tags: [category, rating, description]   # Add 3 tags
+      path: $GRAMEXDATA/apps/guide/drive-data/  # ... save files here
+      tags: [category, rating, description]     # Add 3 tags
 ```
 
 You can add an `<input name="description">` in your form to allow users to upload a description. [See an example](https://github.com/gramener/gramex-guide/blob/master/drivehandler/form.html).
@@ -179,8 +179,8 @@ url:
     pattern: /$YAMLURL/drive
     handler: DriveHandler
     kwargs:
-      path: $GRAMEXDATA/apps/guide/drive/     # ... save files here
-      user_fields: [id, role, hd]             # Capture user.id, user.role, user.hd
+      path: $GRAMEXDATA/apps/guide/drive-data/  # ... save files here
+      user_fields: [id, role, hd]               # Capture user.id, user.role, user.hd
 ```
 
 When a user uploads a file, their `id`, `role`, and `hd` attributes will be captured as `user_id`, `user_role` and `user_hd` fields. This allows you to track who uploaded files.
@@ -247,8 +247,8 @@ url:
     pattern: /$YAMLURL/drive
     handler: DriveHandler
     kwargs:
-      path: $GRAMEXDATA/apps/guide/drive/     # ... save files here
-      user_fields: [id, role, hd]             # Capture user.id, user.role, user.hd
+      path: $GRAMEXDATA/apps/guide/drive-data/  # ... save files here
+      user_fields: [id, role, hd]               # Capture user.id, user.role, user.hd
       prepare: mymodule.prepare(args, handler)
 ```
 
@@ -275,7 +275,7 @@ url:
     pattern: /$YAMLURL/data/(.*)
     handler: FormHandler
     kwargs:
-      url: $GRAMEXDATA/apps/guide/drive/{_0}
+      url: $GRAMEXDATA/apps/guide/drive-data/{_0}
 ```
 
 If you uploaded any CSV/XLSX into the [DriveHandler] above, see them at [data/your-file.csv](data/your-file.csv?_format=html&_limit=10). (Replace `your-file.csv` with your file.)
