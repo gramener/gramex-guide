@@ -108,7 +108,7 @@ cart: 142
 
 [![Output PPTX](sales-funnel/output.png)](sales-funnel/output.pptx)
 
-::: example href=sales-funnel/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/sales-funnel/
+::: example href=sales-funnel/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/sales-funnel/
     Run the Sales Funnel example
 
 
@@ -263,7 +263,7 @@ rules:
         image: f'$YAMLPATH/sample.png'  #   Replace the image with sample.png
 ```
 
-::: example href=groups/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/groups/
+::: example href=groups/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/groups/
     Run the Groups example
 
 ## Slide filters
@@ -399,7 +399,7 @@ You can also specify transitions as a dict with 3 keys:
 - `duration`: length of the transition in seconds (default: `0.3` seconds), e.g. `duration: 3`
 - `advance`: auto-advance timeto the next slide, in seconds  (default: `f'none'`), e.g. `advance: 3`
 
-::: example href=transition/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/transition/
+::: example href=transition/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/transition/
     Run the Transition example
 
 ## Copy slides
@@ -441,7 +441,7 @@ For each copied slide, the [data variable `copy`](#data) is set. It has these at
 - `copy.val`: Value corresponding to `copy.key`
 - `copy.slides`: Currently copied [PPTX slides list](https://python-pptx.readthedocs.io/en/latest/api/slides.html#slides-objects), e.g. `copy.slides[0].shapes`
 
-::: example href=bar-chart-race/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/bar-chart-race/
+::: example href=bar-chart-race/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/bar-chart-race/
     Run the Bar Chart Race (copy-slide) example
 
 # Commands
@@ -456,7 +456,7 @@ content, or add new content (like charts). Here are some common commands:
 - `width`: sets width in [length units](#length-units), e.g. `width: f'3 inches'`
 - `height`: sets height in [length units](#length-units), e.g. `height: f'3 inches'`
 
-::: example href=position/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/position/
+::: example href=position/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/position/
     Run the Position example
 
 - `add-top`: moves top (Y) position +/- in `[length units](#length-units)`, e.g. `add-top: f'-3 inches'`
@@ -464,7 +464,7 @@ content, or add new content (like charts). Here are some common commands:
 - `add-width`: adds width +/- in `[length units](#length-units)`, e.g. `f'add-width: -3 inch'`
 - `add-height`: adds width +/- in `[length units](#length-units)`, e.g. `f'add-height: +3 inches'`
 
-::: example href=add-position/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/add-position/
+::: example href=add-position/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/add-position/
     Run the Add Position example
 
 - `rotation`: sets the rotation in angles, e.g. `rotation: 30`
@@ -484,7 +484,7 @@ content, or add new content (like charts). Here are some common commands:
 - `stroke-opacity`: sets line transparency on solid color strokes.  0 is transparent, 1 is opaque, e.g. `stroke-opacity: 0.5` is half transparent
 - `stroke-width`: sets width of the line in [length units](#length-units), e.g. `stroke-width: f'0.5 pt'`
 
-::: example href=groups/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/groups/
+::: example href=groups/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/groups/
     Run the Groups example to understand styles
 
 ## Image
@@ -493,7 +493,7 @@ content, or add new content (like charts). Here are some common commands:
 - `image-width`: sets width in [length units](#length-units), e.g. `image-width: 3 inches`. Retains aspect ratio and position (top and left). May change the height
 - `image-height`: sets height in [length units](#length-units), e.g. `image-height: 3 inches`. Retains aspect ratio and position (top and left). May change the width
 
-::: example href=clone-shape/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/clone-shape/
+::: example href=clone-shape/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/clone-shape/
     Run the Clone Shape example to understand images
 
 ## Link
@@ -511,7 +511,7 @@ content, or add new content (like charts). Here are some common commands:
 - URL, e.g. `link: f'https://gramener.com/'`
 - `noaction`. This removes any prior link or hover on the shape
 
-::: example href=link/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/link/
+::: example href=link/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/link/
     Run the Link example
 
 ## Text
@@ -528,9 +528,9 @@ content, or add new content (like charts). Here are some common commands:
 - `italic`: makes the text italicized or normal. It can be true/yes/y/1 or false/no/n/0/"", e.g. `italic: true`
 - `underline`: underlines the text or makes it normal. It can be true/yes/y/1 or false/no/n/0/"", e.g. `underline: true`
 
-::: example href=text/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/text/
+::: example href=text/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/text/
     Run the Text example
-::: example href=certificate/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/certificate/
+::: example href=certificate/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/certificate/
     Run the Certificate example
 
 
@@ -569,7 +569,7 @@ Note: Don't use run attributes (like `bold=`, `color=`) on paragraphs. They work
 are over-ridden by run attributes. E.g. If your source PPTX had a bold run, setting `bold: n` on
 the para has no visible effect, since the bold run overrides it.
 
-::: example href=text-format/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/text-format/
+::: example href=text-format/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/text-format/
     Run the Text Format example
 
 ## Table
@@ -644,7 +644,7 @@ For each cell, the [data variable `cell`](#data) is set. It has these attributes
 - `cell.pos.column`: column number
 - `cell.cell`: currently rendered [PPTX cell object](https://python-pptx.readthedocs.io/en/latest/api/table.html#cell-objects), e.g. `cell.cell.text`
 
-::: example href=table/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/table/
+::: example href=table/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/table/
     Run the Table example
 
 
@@ -679,7 +679,7 @@ data = pd.DataFrame({
 
 Note: The first column name "Categories" is not used. It's just a placeholder for the index name.
 
-::: example href=chart/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/chart/
+::: example href=chart/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/chart/
     Run the Chart example
 
 
@@ -713,7 +713,7 @@ For each cloned shape, the [data variable `clone`](#data) is set. It has these a
 - `clone.parent`: If a group was cloned, and a shape inside the group was cloned too, `clone.parent` returns the `clone` object of the parent group
 - `clone.shape`: Currently cloned [PPTX shape](https://python-pptx.readthedocs.io/en/latest/api/shapes.html#shape-objects-autoshapes), e.g. `clone.shape.width`
 
-::: example href=clone-shape/ source=https://github.com/gramener/gramex-guide/blob/tree/pptxhandler/clone-shape/
+::: example href=clone-shape/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/clone-shape/
     Run the Clone Shape example
 
 ## Debug
