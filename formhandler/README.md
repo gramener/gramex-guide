@@ -145,26 +145,26 @@ With additional libraries, FormHandler can connect to
 - [Apache Spart SQL](https://pypi.org/project/pyhive/)
   - Install: `pip install pyhive`
   - Use: `url: 'hive://hive@$HOST:$PORT/$DATABASE'`
-- [Azure MS SQL](https://pypi.org/projects/pymssql/)
+- [Azure MS SQL](https://pypi.org/project/pymssql/)
   - Install: `pip install pymssql`
   - Use: `url: 'mssql+pymssql://$USER@$HOST:$PASS@presetSQL.database.windows.net:1433/TestSchema'`
-- [ClickHouse](https://pypi.org/projects/sqlalchemy-clickhouse/)
+- [ClickHouse](https://pypi.org/project/sqlalchemy-clickhouse/)
   - Install: `pip install sqlalchemy-clickhouse`
   - Use: `url: 'clickhouse://$USER:$PASS@$HOST:$PORT/$DATABASE'`
-- [CockroachDB](https://pypi.org/projects/cockroachdb/)
+- [CockroachDB](https://pypi.org/project/cockroachdb/)
   - Install: `pip install cockroachdb`
   - Use: `url: 'cockroachdb://root@$HOST:$PORT/$DATABASE?sslmode=disable'`
 - [DB2](https://pypi.org/project/ibm-db-sa/)
   - Install: `pip install ibm-db-sa`
   - Use: `db2+ibm_db://$USER:$PASS@server:50000/database`
-- [Dremio](https://pypi.org/projects/sqlalchemy_dremio/)
+- [Dremio](https://pypi.org/project/sqlalchemy_dremio/)
   - Install: `pip install sqlalchemy_dremio`
   - Use: `url: 'dremio://$USER:$PASS@$HOST:31010/'`
 - [ElasticSearch](https://pypi.org/project/elasticsearch-dbapi/) - read-only
   - Install: `pip install elasticsearch-dbapi`
   - Use: `url: 'elasticsearch+http://server:9200'`
   - Note: To avoid logging results on console, use `logging.getLogger('elasticsearch').setLevel(logging.INFO)` in [prepare](#formhandler-prepare)
-- [Exasol](https://pypi.org/projects/sqlalchemy-exasol/)
+- [Exasol](https://pypi.org/project/sqlalchemy-exasol/)
   - Install: `pip install sqlalchemy-exasol`
   - Use: `url: 'exa+pyodbc://$USER:$PASS@$HOST:$PORT/my_schema?CONNECTIONLCALL=en_US.UTF-8&driver=EXAODBC'`
 - [Google BigQuery](https://pypi.org/project/pybigquery/)
@@ -173,13 +173,13 @@ With additional libraries, FormHandler can connect to
 - [Google Sheets](https://github.com/betodealmeida/gsheets-db-api)
   - Install: `pip install "gsheetsdb[sqlalchemy]"`
   - Use: `url: 'https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/edit#gid=0'`
-- [Presto](https://pypi.org/projects/pyhive/)
+- [Presto](https://pypi.org/project/pyhive/)
   - Install: `pip install pyhive`
   - Use: `url: 'presto://'`
 - [SAP Hana](https://github.com/SAP/sqlalchemy-hana)
   - Install: `pip install sqlalchemy-hana`
   - Use: `url: 'hana://$USER:$PASS@server:30015'`
-- [Snowflake](https://pypi.org/projects/snowflake-sqlalchemy/)
+- [Snowflake](https://pypi.org/project/snowflake-sqlalchemy/)
   - Install: `pip install snowflake-sqlalchemy`
   - Use: `url: 'snowflake://$USER:$PASS@$ACCOUNT.$REGION/$DATABASE?role=$ROLE&warehouse=$WAREHOUSE'`
 - [Teradata](https://pypi.org/project/teradatasqlalchemy/)
@@ -188,10 +188,10 @@ With additional libraries, FormHandler can connect to
 - [Teradata](https://pypi.org/project/sqlalchemy-teradata/)
   - Install: `pip install sqlalchemy-teradata`
   - Use: `url: teradata://$USER:$PASS@HOST'`
-- [Trino](https://pypi.org/projects/sqlalchemy-trino/)
+- [Trino](https://pypi.org/project/sqlalchemy-trino/)
   - Install: `pip install sqlalchemy-trino`
   - Use: `url: 'trino://$USER:$PASS@$HOST:$PORT/$CATALOG'`
-- [Vertica](https://pypi.org/projects/sqlalchemy-vertica-python/)
+- [Vertica](https://pypi.org/project/sqlalchemy-vertica-python/)
   - Install: `pip install sqlalchemy-vertica-python`
   - Use: `url: 'vertica+vertica_python://$USER:$PASS@$HOST/$DATABASE'`
 
