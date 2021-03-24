@@ -42,7 +42,7 @@ This saves the uploaded files in the `path:` you specified.
 
 **v1.60**. File Manager is an app designed to work with DriveHandler and simplifies its usage.
 
-::: example href=filemanager/ source=https://github.com/gramener/gramex-guide/blob/master/drivehandler/gramex.aml
+::: example href=filemanager/ source=https://github.com/gramener/gramex-guide/blob/master/drivehandler/gramex.yaml
     Try the File Manager
 
 FileManager can be imported in a Gramex app as follows:
