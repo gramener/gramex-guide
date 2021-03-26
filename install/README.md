@@ -132,8 +132,10 @@ Install [Python 3.7](https://www.python.org/downloads/). (Gramex does not yet wo
 - [MacOSX](https://www.python.org/ftp/python/3.7.9/python-3.7.9-macosx10.9.pkg)
 - [Linux source](https://www.python.org/ftp/python/3.7.9/Python-3.7.9.tar.xz)
 
-Install [node.js][nodejs] 10 or later from the [node.js download page][nodejs].
+Install [node.js][nodejs] from the [node.js download page][nodejs].
 This installs `node` and `npm`. Ensure that you can run `npm`.
+
+**Note**: The version of node.js must be between 10 and 14.
 
 Now run the following commands on the terminal
 
