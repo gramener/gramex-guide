@@ -349,7 +349,7 @@ $('#barchart-svg').load('chart?_format=barchart-svg')
 
 <div id="barchart-svg"></div>
 <script>
-$('#barchart-svg').load('chart?_format=barchart-svg')
+$('#barchart-svg').load('chart?_format=barchart-svg').css('zoom', 0.5)
 </script>
 
 The format options are formatted using the URL arguments via `{arg}`
@@ -371,8 +371,7 @@ Image dimensions can be controlled via URL arguments. For example:
       height: 200       # The height of barplot is fixed
 ```
 
-[![c2 by Continent 200px wide][barplot-200]][barplot-200]
-[![c2 by Continent 300px wide][barplot-300]][barplot-300]
+[![c2 by Continent 400 wide][barplot-400]][barplot-400]
 
 More chart types can be created. See the [Seaborn API](https://seaborn.pydata.org/api.html) for examples.
 
@@ -406,22 +405,21 @@ More examples to be added.
 
 [barchart]: chart?_format=barchart
 [barplot-Continent-c3]: chart?_format=barchart-custom&xcol=Continent&ycol=c3
-[barplot-200]: chart?_format=barchart-custom-size&xcol=Continent&ycol=c2&width=200
-[barplot-300]: chart?_format=barchart-custom-size&xcol=Continent&ycol=c2&width=300
-[barplot]: categorical?chart=barplot&xcol=Continent&ycol=c1&width=350&height=200
-[stripplot]: categorical?chart=stripplot&xcol=Continent&ycol=c1&width=350&height=200
-[swarmplot]: categorical?chart=swarmplot&xcol=Continent&ycol=c1&width=350&height=200
-[boxplot]: categorical?chart=boxplot&xcol=Continent&ycol=c1&width=350&height=200
-[violinplot]: categorical?chart=violinplot&xcol=Continent&ycol=c1&width=350&height=200
-[boxenplot]: categorical?chart=boxenplot&xcol=Continent&ycol=c1&width=350&height=200
-[pointplot]: categorical?chart=pointplot&xcol=Continent&ycol=c1&width=350&height=200
-[regplot]: categorical?chart=regplot&xcol=c2&ycol=c1&width=350&height=200
-[residplot]: categorical?chart=residplot&xcol=c2&ycol=c1&width=350&height=200
-[jointplot]: categorical?chart=jointplot&xcol=c1&ycol=c3&width=350&height=200
-[factorplot]: categorical?_format=facet&chart=factorplot&xcol=c2&ycol=c5&hue=Stripes&width=350&height=200
-[lmplot]: categorical?_format=facet&chart=lmplot&xcol=c1&ycol=c3&hue=Stripes&width=350&height=200
-[heatmap]: numerical?_format=matrix&chart=heatmap&width=350&height=200
-[clustermap]: numerical?_format=matrix&chart=clustermap&width=350&height=200
+[barplot-400]: chart?_format=barchart-custom-size&xcol=Continent&ycol=c2&width=400
+[barplot]: categorical?chart=barplot&xcol=Continent&ycol=c1&width=500&height=260
+[stripplot]: categorical?chart=stripplot&xcol=Continent&ycol=c1&width=500&height=260
+[swarmplot]: categorical?chart=swarmplot&xcol=Continent&ycol=c1&width=500&height=260
+[boxplot]: categorical?chart=boxplot&xcol=Continent&ycol=c1&width=500&height=260
+[violinplot]: categorical?chart=violinplot&xcol=Continent&ycol=c1&width=500&height=260
+[boxenplot]: categorical?chart=boxenplot&xcol=Continent&ycol=c1&width=500&height=260
+[pointplot]: categorical?chart=pointplot&xcol=Continent&ycol=c1&width=500&height=300
+[regplot]: categorical?chart=regplot&xcol=c2&ycol=c1&width=500&height=260
+[residplot]: categorical?chart=residplot&xcol=c2&ycol=c1&width=500&height=260
+[jointplot]: categorical?chart=jointplot&xcol=c1&ycol=c3&width=500&height=260
+[factorplot]: categorical?_format=facet&chart=factorplot&xcol=c2&ycol=c5&hue=Stripes&width=500&height=260
+[lmplot]: categorical?_format=facet&chart=lmplot&xcol=c1&ycol=c3&hue=Stripes&width=500&height=260
+[heatmap]: numerical?_format=matrix&chart=heatmap&width=500&height=260
+[clustermap]: numerical?_format=matrix&chart=clustermap&width=500&height=260
 
 ## FormHandler Vega charts
 
