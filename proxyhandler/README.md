@@ -13,16 +13,16 @@ type: microservice
 response. You can use it to:
 
 1. **Proxy APIs**.
-    - Google, Facebook, etc provide a REST API that require authentication.
-      ProxyHandler lets users logged into Gramex use these APIs from the browser
-      without needing to pass an API key. The API key is part of the application
-    - Github provides a REST API, but this cannot be accessed from the browser.
-      ProxyHandler can mirror the Github API for use from the browser
+  - Google, Facebook, etc provide a REST API that require authentication.
+    ProxyHandler lets users logged into Gramex use these APIs from the browser
+    without needing to pass an API key. The API key is part of the application
+  - Github provides a REST API, but this cannot be accessed from the browser.
+    ProxyHandler can mirror the Github API for use from the browser
 2. **Proxy sites**.
-    - If you want to restrict an app, e.g. written in R-Shiny app, only to authorized users,
-      ProxyHandler can proxy it and allow only authorized users.
-    - If you want to embed an existing dashboard, say from Tableau or Power BI, in your page, you can
-      use ProxyHandler to proxy the page.
+  - If you want to restrict an app, e.g. written in R-Shiny app, only to authorized users,
+    ProxyHandler can proxy it and allow only authorized users.
+  - If you want to embed an existing dashboard, say from Tableau or Power BI, in your page, you can
+    use ProxyHandler to proxy the page.
 
 For example:
 
@@ -53,13 +53,13 @@ ProxyHandler configuration accepts these kwargs:
   regular expression like `/(group|item)/(.*)` can be used in the url as `{0}`,
   `{1}`, etc. The first item `(group|item)` becomes `{0}`. The second is `{1}`.
 - `request_headers`: dict of HTTP headers to be passed to the url.
-    - A value of `true` forwards this header from the request as-is. For ":
-        - `User-Agent: true` passes the User-Agent header as-is
-        - `Cookie: true` passes the HTTP cookie header as-is
-    - Any value is string-formatted with `handler` as a variable. For example:
-      `Authorization: 'Bearer {handler.session[google_access_token]}'` will
-      use the `google_access_token` key from the session.
-    - `"*": true` all HTTP headers from the request as-is
+  - A value of `true` forwards this header from the request as-is. For ":
+    - `User-Agent: true` passes the User-Agent header as-is
+    - `Cookie: true` passes the HTTP cookie header as-is
+  - Any value is string-formatted with `handler` as a variable. For example:
+    `Authorization: 'Bearer {handler.session[google_access_token]}'` will
+    use the `google_access_token` key from the session.
+  - `"*": true` all HTTP headers from the request as-is
 - `default`: dict of default URL query parameters. For example, `alt: json` will
   add a `?alt=json` to all requests by default. Over-ride this by requesting
   `?alt=something-else` explicitly.
@@ -108,31 +108,31 @@ lists the permissions you need. Here is the
 Once logged in, you can:
 
 - Access the [GMail API](https://developers.google.com/gmail/api/v1/reference/)
-    - [Profile](https://developers.google.com/gmail/api/v1/reference/users/getProfile):
-      [google/gmail/v1/users/me/profile](google/gmail/v1/users/me/profile)
-    - [Messages list](https://developers.google.com/gmail/api/v1/reference/users/messages/list):
-      [google/gmail/v1/users/me/messages](google/gmail/v1/users/me/messages)
-    - [Filters list](https://developers.google.com/gmail/api/v1/reference/users/settings/filters/list)
-      [google/gmail/v1/users/me/settings/filters](google/gmail/v1/users/me/settings/filters)
+  - [Profile](https://developers.google.com/gmail/api/v1/reference/users/getProfile):
+    [google/gmail/v1/users/me/profile](google/gmail/v1/users/me/profile)
+  - [Messages list](https://developers.google.com/gmail/api/v1/reference/users/messages/list):
+    [google/gmail/v1/users/me/messages](google/gmail/v1/users/me/messages)
+  - [Filters list](https://developers.google.com/gmail/api/v1/reference/users/settings/filters/list)
+    [google/gmail/v1/users/me/settings/filters](google/gmail/v1/users/me/settings/filters)
 - Access the [Calendar API](https://developers.google.com/google-apps/calendar/v3/reference/)
-    - [Calendar list](https://developers.google.com/google-apps/calendar/v3/reference/calendarList/list):
-      [google/calendar/v3/users/me/calendarList](google/calendar/v3/users/me/calendarList)
-    - [Primary calendar event list](https://developers.google.com/google-apps/calendar/v3/reference/events/list):
-      [google/calendar/v3/calendars/primary/events](google/calendar/v3/calendars/primary/events?maxResults=10)
-    - [Calendar settings](https://developers.google.com/google-apps/calendar/v3/reference/settings/list):
-      [google/calendar/v3/users/me/settings](google/calendar/v3/users/me/settings)
+  - [Calendar list](https://developers.google.com/google-apps/calendar/v3/reference/calendarList/list):
+    [google/calendar/v3/users/me/calendarList](google/calendar/v3/users/me/calendarList)
+  - [Primary calendar event list](https://developers.google.com/google-apps/calendar/v3/reference/events/list):
+    [google/calendar/v3/calendars/primary/events](google/calendar/v3/calendars/primary/events?maxResults=10)
+  - [Calendar settings](https://developers.google.com/google-apps/calendar/v3/reference/settings/list):
+    [google/calendar/v3/users/me/settings](google/calendar/v3/users/me/settings)
 - Access the [Drive API](https://developers.google.com/drive/v3/reference/)
-    - [Drive info](https://developers.google.com/drive/v3/reference/about/get)
-      [google/drive/v3/about](google/drive/v3/about?fields=*)
-    - [List files](https://developers.google.com/drive/v3/reference/files/list):
-      [google/drive/v3/files](google/drive/v3/files)
-    - [List teamdrives](https://developers.google.com/drive/v3/reference/teamdrives/list):
-      [google/drive/v3/files](google/drive/v3/teamdrives)
+  - [Drive info](https://developers.google.com/drive/v3/reference/about/get)
+    [google/drive/v3/about](google/drive/v3/about?fields=*)
+  - [List files](https://developers.google.com/drive/v3/reference/files/list):
+    [google/drive/v3/files](google/drive/v3/files)
+  - [List teamdrives](https://developers.google.com/drive/v3/reference/teamdrives/list):
+    [google/drive/v3/files](google/drive/v3/teamdrives)
 - Access the [Contacts API](https://developers.google.com/google-apps/contacts/v3/)
   using `https://www.google.com/m8/feeds/contacts/` as the endpoint
-    - [Contacts updated since 2018](googlecontacts/default/full?updated-min=2018-01-01T00:00:00)
+  - [Contacts updated since 2018](googlecontacts/default/full?updated-min=2018-01-01T00:00:00)
 - Access the [Natural Language API](https://cloud.google.com/natural-language/docs/)
-    - [v1 API discovery](googlelanguage/$discovery/rest?version=v1)
+  - [v1 API discovery](googlelanguage/$discovery/rest?version=v1)
 
 
 ### Google Translate
