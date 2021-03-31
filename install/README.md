@@ -244,31 +244,66 @@ gramex
 
 ### Offline Windows install
 
-On the Internet-enabled system, install
-[Miniconda 32-bit](https://repo.anaconda.com/miniconda/Miniconda3-py37_4.9.2-Windows-x86.exe) or
-[Miniconda 64-bit](https://repo.anaconda.com/miniconda/Miniconda3-py37_4.9.2-Windows-x86_64.exe).
+Start with a _clean_ Windows machine - one that does not contain any Anaconda, Python or Gramex artifacts. This machine, referred to as the **build machine**, should have internet access. The offline machine on which Gramex should ultimately be installed, is referred to as the **target machine**.
 
-Install it at the SAME PATH as the target machine (e.g. `D:\gramex-offline`.)
+On the **build machine**, follow these steps:
 
-On the Command Prompt / Terminal / shell, install Gramex:
+* **Step 1**: Pick a location to install Anaconda. This must be the same as the intended
+	  path for Anaconda on the target machine. E.g. if Anaconda is installed at
+	  `D:\offline\` on the **build machine**, it can _only_ be
+	  installed at `D:\offline\` on the **target machine**. The rest of these
+	  instructions assume that the installation location is `D:\offline\` - please
+	  replace this with whichever installation path is applicable in your case.
 
-```bash
-conda create -y --name gramex python=3.7            # Create a new environment
-conda activate gramex                               # Activate it
-conda install -y -c conda-forge -c gramener gramex  # Install Gramex
+* **Step 2**: When downloading the installer for Anaconda (or Miniconda) on the **build machine**, there are
+	   two options:
+  - Option 1 (**Recommended**): Download a version of Anaconda which has Python 3.7 in the _base_
+    environment. (Download [here](https://repo.anaconda.com/miniconda/Miniconda3-py37_4.9.2-Windows-x86_64.exe))
+  - Option 2: Download any version of Anaconda, install it at `D:\offline`, and create an environment that
+    has Python 3.7, as follows:
+
+```cmd
+conda create -n gramex python=3.7 -y
+conda activate gramex
 ```
 
-Then:
+* **Step 3**: Install Gramex as follows:
 
-- Copy the `gramex-offline` into the target system (without an Internet connection) into the
-  **SAME** location as it was installed in the source system (e.g. `D:\gramex-offline`.)
-- Copy your app to the target system.
-- To run the app on the target system, open the Command Prompt in your **app folder** and run:
-
-```bash
-D:\gramex-offline\envs\gramex\bin\gramex
+```cmd
+conda install -c conda-forge -c gramener gramex -y
 ```
 
+Then, on the **target machine**, follow these steps:
+
+* **Step 1**: Copy the contents `D:\offline` from the build machine to `D:\offline` on the
+   target machine.
+   
+* **Step 2**: Initialize the Conda shell by running:
+
+```cmd
+D:\offline\Scripts\conda.exe init cmd.exe
+```
+
+Exit and restart the shell.
+
+* **Step 3**: Activate the base environment:
+
+```cmd
+conda activate base
+```
+
+   If Gramex was installed in the base environment (i.e. if you followed the
+   recommended option in step 2 on the build machine), then we are done - Gramex
+   is installed and ready to use. However, if Gramex was not installed in the
+   base environment, proceed to the next step.
+
+* **Step 4**: Activate the environment which contains Gramex:
+
+```cmd
+conda activate gramex   
+```
+
+Gramex is now ready to use.
 
 ### Offline Docker install
 
