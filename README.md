@@ -66,6 +66,7 @@ Then learn from these tutorials:
 - [Admin page](admin/)
 - [Charts](chart/)
 - [UI components](uicomponents/)
+- [UIFactory](uifactory/)
 - [g1: UI library](g1/)
 - [Mapviewer](mapviewer/)
 - [View logs](logviewer/)
