@@ -125,12 +125,13 @@ url:
             format: sns
             chart: barplot
             ext: svg
+            dpi: 48
             width: 400
             height: 300
             x: Continent
             y: c1
             headers:
-              Content-Type: image/svg
+              Content-Type: image/svg+xml
           barchart-custom:
             format: sns
             chart: barplot

@@ -110,40 +110,90 @@ Additional parameters like `table:`, `encoding:`, etc are passed to
 [gramex.cache.query](../cache/#query-caching), which uses
 ``sqlalchemy.create_engine``.
 
-With additional libraries, FormHandler can connect to [more databases](https://docs.sqlalchemy.org/en/13/dialects/index.html#external-dialects).
+With additional libraries, FormHandler can connect to
+[more](https://docs.sqlalchemy.org/en/13/dialects/index.html#external-dialects)
+[databases](https://superset.apache.org/docs/databases/installing-database-drivers).
 
 - [Amazon Redshift](https://pypi.org/project/sqlalchemy-redshift/)
-    - Install: `pip install sqlalchemy-redshift`
-    - Use: `url: 'redshift+psycopg2://username@host.amazonaws.com:5439/database'`
+  - Install: `pip install sqlalchemy-redshift`
+  - Use: `url: 'redshift+psycopg2://$USER@host.amazonaws.com:5439/database'`
 - [Amazon S3](https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html#reading-remote-files)
-    - Install: `pip install s3fs`
-    - Setup: [Add your credentials](https://s3fs.readthedocs.io/en/latest/#credentials)
-    - Use: `url: 's3://your-bucket/your-file.csv'`
+  - Install: `pip install s3fs`
+  - Setup: [Add your credentials](https://s3fs.readthedocs.io/en/latest/#credentials)
+  - Use: `url: 's3://$BUCKET/your-file.csv'`
+- [Apache Drill](https://github.com/JohnOmernik/sqlalchemy-drill)
+  - Install: `pip install sqlalchemy-drill`
+  - Use: `url: 'drill+sadrill://$USER:$PASS@$HOST:$PORT/dfs?use_ssl=True'`
+- [Apache Druid](https://pypi.org/project/pydruid/)
+  - Install: `pip install pydruid`
+  - Use: `url: 'druid://$USER:$PASS@$HOST:$PORT/druid/v2/sql'`
 - [Apache Hive](https://github.com/dropbox/PyHive#sqlalchemy)
-    - Install: `pip install "pyhive[hive]"`
-    - Use: `url: 'hive://server:10000/default`
+  - Install: `pip install "pyhive[hive]"`
+  - Use: `url: 'hive://server:10000/default`
+- [Apache Impala](https://pypi.org/project/impala/)
+  - Install: `pip install impaala`
+  - Use: `url: 'impala://$HOST:$PORT/$DATABASE'`
+- [Apache Kylin](https://pypi.org/project/kylinpy/)
+  - Install: `pip install kylinpy`
+  - Use: `url: 'kylin://$USER:$PASS@$HOST:$PORT/$PROJECT?$PARAM=$VALUE'`
+- [Apache Pinot](https://pypi.org/project/pinotdb/)
+  - Install: `pip install pinotdb`
+  - Use: `url: 'pinot://$BROKER:5436/query?server=http://$CONTROLLER:5983/'`
 - [Apache Solr](https://github.com/aadel/sqlalchemy-solr)
-    - Install: `pip install https://github.com/aadel/sqlalchemy-solr/Use/master.zip`
-    - Use: `url: 'solr://$USER:$PASS@server:8983/solr/collection?use_ssl=true'`
+  - Install: `pip install https://github.com/aadel/sqlalchemy-solr/Use/master.zip`
+  - Use: `url: 'solr://$USER:$PASS@server:8983/solr/collection?use_ssl=true'`
+- [Apache Spart SQL](https://pypi.org/project/pyhive/)
+  - Install: `pip install pyhive`
+  - Use: `url: 'hive://hive@$HOST:$PORT/$DATABASE'`
+- [Azure MS SQL](https://pypi.org/project/pymssql/)
+  - Install: `pip install pymssql`
+  - Use: `url: 'mssql+pymssql://$USER@$HOST:$PASS@presetSQL.database.windows.net:1433/TestSchema'`
+- [ClickHouse](https://pypi.org/project/sqlalchemy-clickhouse/)
+  - Install: `pip install sqlalchemy-clickhouse`
+  - Use: `url: 'clickhouse://$USER:$PASS@$HOST:$PORT/$DATABASE'`
+- [CockroachDB](https://pypi.org/project/cockroachdb/)
+  - Install: `pip install cockroachdb`
+  - Use: `url: 'cockroachdb://root@$HOST:$PORT/$DATABASE?sslmode=disable'`
 - [DB2](https://pypi.org/project/ibm-db-sa/)
-    - Install: `pip install ibm-db-sa`
-    - Use: `db2+ibm_db://$USER:$PASS@server:50000/database`
+  - Install: `pip install ibm-db-sa`
+  - Use: `db2+ibm_db://$USER:$PASS@server:50000/database`
+- [Dremio](https://pypi.org/project/sqlalchemy_dremio/)
+  - Install: `pip install sqlalchemy_dremio`
+  - Use: `url: 'dremio://$USER:$PASS@$HOST:31010/'`
 - [ElasticSearch](https://pypi.org/project/elasticsearch-dbapi/) - read-only
-    - Install: `pip install elasticsearch-dbapi`
-    - Use: `url: 'elasticsearch+http://server:9200'`
-    - Note: To avoid logging results on console, use `logging.getLogger('elasticsearch').setLevel(logging.INFO)` in [prepare](#formhandler-prepare)
+  - Install: `pip install elasticsearch-dbapi`
+  - Use: `url: 'elasticsearch+http://server:9200'`
+  - Note: To avoid logging results on console, use `logging.getLogger('elasticsearch').setLevel(logging.INFO)` in [prepare](#formhandler-prepare)
+- [Exasol](https://pypi.org/project/sqlalchemy-exasol/)
+  - Install: `pip install sqlalchemy-exasol`
+  - Use: `url: 'exa+pyodbc://$USER:$PASS@$HOST:$PORT/my_schema?CONNECTIONLCALL=en_US.UTF-8&driver=EXAODBC'`
 - [Google BigQuery](https://pypi.org/project/pybigquery/)
-    - Install: `pip install pybigquery`
-    - Use: `{url: bigquery://project, credentials_path: $YAMLPATH/.keyfile.json}`
+  - Install: `pip install pybigquery`
+  - Use: `{url: bigquery://project, credentials_path: $YAMLPATH/.keyfile.json}`
 - [Google Sheets](https://github.com/betodealmeida/gsheets-db-api)
-    - Install: `pip install "gsheetsdb[sqlalchemy]"`
-    - Use: `url: 'https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/edit#gid=0'`
+  - Install: `pip install "gsheetsdb[sqlalchemy]"`
+  - Use: `url: 'https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/edit#gid=0'`
+- [Presto](https://pypi.org/project/pyhive/)
+  - Install: `pip install pyhive`
+  - Use: `url: 'presto://'`
 - [SAP Hana](https://github.com/SAP/sqlalchemy-hana)
-    - Install: `pip install sqlalchemy-hana`
-    - Use: `url: 'hana://$USER:$PASS@server:30015'`
+  - Install: `pip install sqlalchemy-hana`
+  - Use: `url: 'hana://$USER:$PASS@server:30015'`
+- [Snowflake](https://pypi.org/project/snowflake-sqlalchemy/)
+  - Install: `pip install snowflake-sqlalchemy`
+  - Use: `url: 'snowflake://$USER:$PASS@$ACCOUNT.$REGION/$DATABASE?role=$ROLE&warehouse=$WAREHOUSE'`
 - [Teradata](https://pypi.org/project/teradatasqlalchemy/)
-    - Install: `pip install teradatasqlalchemy`
-    - Use: `url: teradatasql://server/?user=$USER&password=$PASS`
+  - Install: `pip install teradatasqlalchemy`
+  - Use: `url: teradatasql://server/?user=$USER&password=$PASS`
+- [Teradata](https://pypi.org/project/sqlalchemy-teradata/)
+  - Install: `pip install sqlalchemy-teradata`
+  - Use: `url: teradata://$USER:$PASS@HOST'`
+- [Trino](https://pypi.org/project/sqlalchemy-trino/)
+  - Install: `pip install sqlalchemy-trino`
+  - Use: `url: 'trino://$USER:$PASS@$HOST:$PORT/$CATALOG'`
+- [Vertica](https://pypi.org/project/sqlalchemy-vertica-python/)
+  - Install: `pip install sqlalchemy-vertica-python`
+  - Use: `url: 'vertica+vertica_python://$USER:$PASS@$HOST/$DATABASE'`
 
 
 ## FormHandler formats
@@ -299,7 +349,7 @@ $('#barchart-svg').load('chart?_format=barchart-svg')
 
 <div id="barchart-svg"></div>
 <script>
-$('#barchart-svg').load('chart?_format=barchart-svg')
+$('#barchart-svg').load('chart?_format=barchart-svg').css('zoom', 0.5)
 </script>
 
 The format options are formatted using the URL arguments via `{arg}`
@@ -321,8 +371,7 @@ Image dimensions can be controlled via URL arguments. For example:
       height: 200       # The height of barplot is fixed
 ```
 
-[![c2 by Continent 200px wide][barplot-200]][barplot-200]
-[![c2 by Continent 300px wide][barplot-300]][barplot-300]
+[![c2 by Continent 400 wide][barplot-400]][barplot-400]
 
 More chart types can be created. See the [Seaborn API](https://seaborn.pydata.org/api.html) for examples.
 
@@ -356,22 +405,21 @@ More examples to be added.
 
 [barchart]: chart?_format=barchart
 [barplot-Continent-c3]: chart?_format=barchart-custom&xcol=Continent&ycol=c3
-[barplot-200]: chart?_format=barchart-custom-size&xcol=Continent&ycol=c2&width=200
-[barplot-300]: chart?_format=barchart-custom-size&xcol=Continent&ycol=c2&width=300
-[barplot]: categorical?chart=barplot&xcol=Continent&ycol=c1&width=350&height=200
-[stripplot]: categorical?chart=stripplot&xcol=Continent&ycol=c1&width=350&height=200
-[swarmplot]: categorical?chart=swarmplot&xcol=Continent&ycol=c1&width=350&height=200
-[boxplot]: categorical?chart=boxplot&xcol=Continent&ycol=c1&width=350&height=200
-[violinplot]: categorical?chart=violinplot&xcol=Continent&ycol=c1&width=350&height=200
-[boxenplot]: categorical?chart=boxenplot&xcol=Continent&ycol=c1&width=350&height=200
-[pointplot]: categorical?chart=pointplot&xcol=Continent&ycol=c1&width=350&height=200
-[regplot]: categorical?chart=regplot&xcol=c2&ycol=c1&width=350&height=200
-[residplot]: categorical?chart=residplot&xcol=c2&ycol=c1&width=350&height=200
-[jointplot]: categorical?chart=jointplot&xcol=c1&ycol=c3&width=350&height=200
-[factorplot]: categorical?_format=facet&chart=factorplot&xcol=c2&ycol=c5&hue=Stripes&width=350&height=200
-[lmplot]: categorical?_format=facet&chart=lmplot&xcol=c1&ycol=c3&hue=Stripes&width=350&height=200
-[heatmap]: numerical?_format=matrix&chart=heatmap&width=350&height=200
-[clustermap]: numerical?_format=matrix&chart=clustermap&width=350&height=200
+[barplot-400]: chart?_format=barchart-custom-size&xcol=Continent&ycol=c2&width=400
+[barplot]: categorical?chart=barplot&xcol=Continent&ycol=c1&width=500&height=260
+[stripplot]: categorical?chart=stripplot&xcol=Continent&ycol=c1&width=500&height=260
+[swarmplot]: categorical?chart=swarmplot&xcol=Continent&ycol=c1&width=500&height=260
+[boxplot]: categorical?chart=boxplot&xcol=Continent&ycol=c1&width=500&height=260
+[violinplot]: categorical?chart=violinplot&xcol=Continent&ycol=c1&width=500&height=260
+[boxenplot]: categorical?chart=boxenplot&xcol=Continent&ycol=c1&width=500&height=260
+[pointplot]: categorical?chart=pointplot&xcol=Continent&ycol=c1&width=500&height=300
+[regplot]: categorical?chart=regplot&xcol=c2&ycol=c1&width=500&height=260
+[residplot]: categorical?chart=residplot&xcol=c2&ycol=c1&width=500&height=260
+[jointplot]: categorical?chart=jointplot&xcol=c1&ycol=c3&width=500&height=260
+[factorplot]: categorical?_format=facet&chart=factorplot&xcol=c2&ycol=c5&hue=Stripes&width=500&height=260
+[lmplot]: categorical?_format=facet&chart=lmplot&xcol=c1&ycol=c3&hue=Stripes&width=500&height=260
+[heatmap]: numerical?_format=matrix&chart=heatmap&width=500&height=260
+[clustermap]: numerical?_format=matrix&chart=clustermap&width=500&height=260
 
 ## FormHandler Vega charts
 
@@ -547,11 +595,11 @@ You can specify custom aggregations using `?_c=col|aggregation`. For example:
 
 - [?_by=Continent&_c=Name|count](flags?_by=Continent&_c=Name|count&_format=html): group by Continent, count names of countries
 - [?_by=Continent&_c=Name|count&_c=c1|min&_c=c1|avg&_c=c1|max](flags?_by=Continent&_c=Name|count&_c=c1|min&_c=c1|avg&_c=c1|max&_format=html)
-    - `_by=Continent`: group by "Continent"
-    - `_c=Name|count`: count values in "Name"
-    - `_c=c1|min`: min value of "c1" in each continent
-    - `_c=c1|avg`: mean value of "c1" in each continent
-    - `_c=c1|max`: max value of "c1" in each continent
+  - `_by=Continent`: group by "Continent"
+  - `_c=Name|count`: count values in "Name"
+  - `_c=c1|min`: min value of "c1" in each continent
+  - `_c=c1|avg`: mean value of "c1" in each continent
+  - `_c=c1|max`: max value of "c1" in each continent
 
 You can also aggregate on entire column using empty `?by=`. For example:
 

@@ -183,7 +183,7 @@ TODO: show a full-blown example of this.
 - [$.translate](translate) translates text to other languages using [Gramex translate](https://learn.gramener.com/guide/translate/)
 - [g1.sanddance](sanddance) moves DOM elements smoothly based on data
 - [g1.mapviewer](mapviewer) renders leaflet maps and simplifies adding layers from data.
-    - Note: Mapviewer is not included in [g1.min.js](dist/g1.min.js). Include [mapviewer.min.js](dist/mapviewer.min.js)
+    - Note: Mapviewer is not included in [g1.min.js](../ui/g1/dist/g1.min.js). Include [mapviewer.min.js](../ui/g1/dist/mapviewer.min.js)
 
 ## Utilities
 
@@ -199,23 +199,23 @@ TODO: show a full-blown example of this.
 
 ## Libraries
 
-You can import either [g1.min.js](dist/g1.min.js) -- which has all of these functions --
+You can import either [g1.min.js](../ui/g1/dist/g1.min.js) -- which has all of these functions --
 or one of the individual libraries below:
 
-- [ajax.min.js](dist/ajax.min.js)
-- [datafilter.min.js](dist/datafilter.min.js)
-- [event.min.js](dist/event.min.js)
-- [formhandler.min.js](dist/formhandler.min.js)
-- [highlight.min.js](dist/highlight.min.js)
-- [leaflet.min.js](dist/leaflet.min.js)
-- [sanddance.min.js](dist/sanddance.min.js)
-- [search.min.js](dist/search.min.js)
-- [template.min.js](dist/template.min.js)
-- [translate.min.js](dist/translate.min.js)
-- [types.min.js](dist/types.min.js)
-- [urlchange.min.js](dist/urlchange.min.js)
-- [urlfilter.min.js](dist/urlfilter.min.js)
+- [ajax.min.js](../ui/g1/dist/ajax.min.js)
+- [datafilter.min.js](../ui/g1/dist/datafilter.min.js)
+- [event.min.js](../ui/g1/dist/event.min.js)
+- [formhandler.min.js](../ui/g1/dist/formhandler.min.js)
+- [highlight.min.js](../ui/g1/dist/highlight.min.js)
+- [leaflet.min.js](../ui/g1/dist/leaflet.min.js)
+- [sanddance.min.js](../ui/g1/dist/sanddance.min.js)
+- [search.min.js](../ui/g1/dist/search.min.js)
+- [template.min.js](../ui/g1/dist/template.min.js)
+- [translate.min.js](../ui/g1/dist/translate.min.js)
+- [types.min.js](../ui/g1/dist/types.min.js)
+- [urlchange.min.js](../ui/g1/dist/urlchange.min.js)
+- [urlfilter.min.js](../ui/g1/dist/urlfilter.min.js)
 
-[mapviewer.min.js](dist/mapviewer.min.js) is not part of [g1.min.js](dist/g1.min.js).
+[mapviewer.min.js](../ui/g1/dist/mapviewer.min.js) is not part of [g1.min.js](../ui/g1/dist/g1.min.js).
 
-For debugging, use [dist/g1.js](dist/g1.js) -- an un-minified version.
+For debugging, use [dist/g1.js](../ui/g1/dist/g1.js) -- an un-minified version.

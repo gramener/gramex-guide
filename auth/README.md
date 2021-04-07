@@ -264,8 +264,12 @@ url:
     pattern: /$YAMLURL/google   # Map this URL
     handler: GoogleAuth         # to the GoogleAuth handler
     kwargs:
-      key: YOURKEY            # Set your app key
-      secret: YOURSECRET      # Set your app secret
+      key: YOURKEY              # Set your app key
+      secret: YOURSECRET        # Set your app secret
+      # Any Google OAuth2 parmeters are passed under extra_params. See:
+      # https://developers.google.com/identity/protocols/oauth2/web-server#creatingclient
+      extra_params:
+        prompt: select_account  # Prompt to pick account every time
 ```
 
 To get the application key and secret:
@@ -290,6 +294,10 @@ url:
     kwargs:
       key: YOURKEY              # Set your app key
       secret: YOURSECRET        # Set your app secret
+      # Any Google OAuth2 parmeters are passed under extra_params. See:
+      # https://developers.google.com/identity/protocols/oauth2/web-server#creatingclient
+      extra_params:
+        prompt: select_account  # Prompt to pick account every time
       # Scope list: https://developers.google.com/identity/protocols/googlescopes
       scope:
         - https://www.googleapis.com/auth/contacts.readonly
@@ -350,12 +358,15 @@ url:
     kwargs:
       key: YOURKEY              # Set your app key
       secret: YOURSECRET        # Set your app secret
+      # Any Google OAuth2 parmeters are passed under extra_params. See:
+      # https://developers.google.com/identity/protocols/oauth2/web-server#creatingclient
+      extra_params:
+        prompt: select_account  # Prompt to pick account every time
+        access_type: offline    # Get a token that works offline
       # Scope list: https://developers.google.com/identity/protocols/googlescopes
       scope:
         - https://www.googleapis.com/auth/contacts.readonly
         - https://www.googleapis.com/auth/gmail.readonly
-      extra_params:
-        access_type: offline
 ```
 
 When the user logs in for the first time, Google sends a refresh token that you can access via
@@ -1063,8 +1074,8 @@ It accepts the following configuration:
 - `client_secret`: Create an app with the OAuth2 provider to get this ID
 - `authorize`: Authorization endpoint configuration:
     - `url`: Authorization endpoint URL
-    - `scope`: an optional a list of string scopes that determine what you can access
-    - `extra_params`: an optional dict of URL query params passed
+    - `scope`: an optional a list of scopes that determine what you can access
+    - `extra_params`: an optional dict of OAuth2 parameters
 - `access_token`: Access token endpoint configuration
     - `url`: Access token endpoint URL
     - `session_key`: optional key in session to store access token information. default: `access_token`

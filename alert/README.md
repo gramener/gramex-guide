@@ -338,7 +338,7 @@ alert:
     data: $YAMLPATH/birthday.csv
     condition: data[data['birthday'] == datetime.datetime.today().strftime('%d-%b-%Y')]
     each: data          # Loop through each row, i.e. person whose birthday is today
-    to: {{ row['email'] }}                      # Use the "email" column for the person's email ID
+    to: '{{ row['email'] }}'                    # Use the "email" column for the person's email ID
     subject: Happy birthday {{ row['name'] }}   # Use the "name" column for the person's name
     days: '*'           # Schedule birthday mail every day
     hours: 6            # at 6:00am local time
@@ -358,7 +358,7 @@ alert:
         query: 'SELECT * FROM sales'
     condition: sales[sales['target'] < sales['value']]
     each: sales
-    to: {{ row['email'] }}
+    to: '{{ row['email'] }}'
     cc: salesmanager@example.org
     subject: Sales target deficit of {{ row['target'] - row['value'] }}
 ```

@@ -8,7 +8,7 @@ url:
     pattern: /$YAMLURL/drive
     handler: DriveHandler
     kwargs:
-        path: $GRAMEXDATA/apps/guide/drive/
+        path: $GRAMEXDATA/apps/guide/drive-data/
         tags: [desc]
         user_fields: [id]
 
@@ -23,4 +23,4 @@ url:
     pattern: /$YAMLURL/data/(.*)
     handler: FormHandler
     kwargs:
-      url: $GRAMEXDATA/apps/guide/drive/{_0}
+      url: $GRAMEXDATA/apps/guide/drive-data/{_0}

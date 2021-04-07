@@ -122,9 +122,9 @@ text content.
 Writing HTML for email is **quite different** than for browsers. Here are some
 guides to read:
 
-- [ActiveCampaign: HTML Email Design Guide](http://www.activecampaign.com/email-design-guide/)
 - [MailChimp: Email design reference](https://templates.mailchimp.com/getting-started/html-email-basics/)
 - [CampaignMonitor: Coding your emails](https://www.campaignmonitor.com/dev-resources/guides/coding/)
+- [ActiveCampaign: HTML Email Design Guide](https://help.activecampaign.com/hc/en-us/articles/115001398790-HTML-email-design-guide)
 
 ## Email attachments
 

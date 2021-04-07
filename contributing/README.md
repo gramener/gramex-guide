@@ -169,10 +169,19 @@ make push-docs                # Deploy pydoc
 # Deploy on pypi: https://pypi.python.org/pypi/gramex
 make push-pypi                # Log in as gramener
 
-# Deploy on conda: https://anaconda.org/gramener/gramex
-# Run this on Windows AND Linux
-make conda                    # Follow instructions to upload. Log in as gramener
-anaconda upload /opt/conda/conda-bld/linux-64/gramex-*.tar.bz2
+# Deploy on conda (Windows): https://anaconda.org/gramener/gramex
+# Run this from any temporary directory on a Windows system.
+# Ensure that you have Git LFS on your system.
+git clone https://github.com/gramener/gramex.git -b release
+cd gramex
+pip install -e .
+
+# Follow instructions to upload. Log in as gramener
+# Replace the path to the Gramex tarball below. It will by under anaconda/conda-bld
+make conda
+anaconda upload D:/path/to/conda-bld/win-64/gramex-1.<version>.tar.bz2
+
+# Now you can delete this Gramex folder and restore your Gramex via pip install gramex
 
 # Deploy on docker: https://hub.docker.com/r/gramener/gramex/
 make push-docker              # Log in as sanand0 / pratapvardhan
@@ -184,9 +193,9 @@ Note: to run `make conda` on Linux, create a new Docker instance via
 ```bash
 apt-get update                                    # Update packages
 apt-get install -y make gcc                       # make and gcc are the sole dependencies
-git clone https://github.com/gramener/gramex/     # Clone Gramex
-cd gramex
 conda install -y conda-build anaconda             # Required for build
+git clone https://github.com/gramener/gramex/ -b release    # Clone Gramex release branch
+cd gramex                                         # Change into gramex dir
 pip install -e .                                  # Test gramex, and get orderedattrdict
 make conda                                        # Create conda
 anaconda upload /opt/conda/conda-bld/linux-64/gramex-*.tar.bz2    # Log in as gramener

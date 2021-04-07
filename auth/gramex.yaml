@@ -78,6 +78,7 @@ url:
                 - https://www.googleapis.com/auth/spreadsheets.readonly
                 - https://www.googleapis.com/auth/cloud-translation
             extra_params:
+                prompt: select_account
                 access_type: offline
             log:
                 fields: [session.id, current_user.email, request.remote_ip, request.headers.User-Agent]

@@ -7,7 +7,15 @@ prefix: Install
 
 <!-- Don't include a [TOC] here -- it's confusing -->
 
-There are 4 ways of installing or upgrading the Gramex Community Edition.
+You can try Gramex without installing using the [Gramex IDE](https://gramex.gramener.com/).
+
+<a class="btn btn-large btn-primary" href="https://gramex.gramener.com/">
+  Try the Gramex IDE
+  <br><small>(Log in with any Google account)</small>
+</a>
+
+
+There are 4 ways to install or upgrading the Gramex Community Edition on your system.
 
 1. [**Conda**](#conda-install) (**RECOMMENDED**). Best for beginners and Python developers
 2. [**Docker**](#docker-install). Best to try out new versions, or to deploy apps
@@ -16,12 +24,12 @@ There are 4 ways of installing or upgrading the Gramex Community Edition.
 
 ## Conda install
 
-Install [Anaconda3-2020.02][anaconda]. (Gramex does not yet work with Python 3.8. So avoid later versions). Here are downloads for:
+Install [Anaconda3-2019.07][anaconda]. (Gramex does not yet work with Python 3.8. So avoid later versions). Here are downloads for:
 
-- [Windows 64-bit](https://repo.anaconda.com/archive/Anaconda3-2020.02-Windows-x86_64.exe)
-- [Windows 32-bit](https://repo.anaconda.com/archive/Anaconda2-2019.10-Windows-x86.exe)
-- [MacOSX](https://repo.anaconda.com/archive/Anaconda2-2019.10-MacOSX-x86_64.pkg)
-- [Linux 64-bit](https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-x86_64.sh)
+- [Windows 64-bit](https://repo.anaconda.com/archive/Anaconda3-2019.07-Windows-x86_64.exe)
+- [Windows 32-bit](https://repo.anaconda.com/archive/Anaconda3-2019.07-Windows-x86.exe)
+- [MacOSX](https://repo.anaconda.com/archive/Anaconda3-2019.07-MacOSX-x86_64.pkg)
+- [Linux 64-bit](https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh)
 
 To install [gramex](https://anaconda.org/gramener/gramex),
 type this in your Anaconda Prompt / Command Prompt / shell:
@@ -34,7 +42,7 @@ conda install -y -c conda-forge -c gramener gramex  # Install Gramex
 
 This is what your screen might look like when installing:
 
-<asciinema-player src="gramex-conda.json" cols="100" rows="20" idle-time-limit="0.5" autoplay="1" font-size="" loop="1"></asciinema-player>
+<asciinema-player src="gramex-conda.json" cols="100" rows="20" idle-time-limit="0.5" font-size="" loop="1"></asciinema-player>
 
 Now you can [Run your first app](#run-a-gramex-app).
 
@@ -80,7 +88,7 @@ Inside the container, run `gramex --help` to verify that Gramex is installed.
 - `gramener/gramex:latest` runs the latest Gramex instance (pulling it if required)
 - `/bin/bash` runs bash (a shell) that you can run commands in
 
-<asciinema-player src="gramex-docker.json" cols="100" rows="20" idle-time-limit="0.5" autoplay="1" font-size="medium" loop="1"></asciinema-player>
+<asciinema-player src="gramex-docker.json" cols="100" rows="20" idle-time-limit="0.5" font-size="medium" loop="1"></asciinema-player>
 
 Now you can [Run your first app](#run-a-gramex-app). You can also:
 
@@ -236,31 +244,66 @@ gramex
 
 ### Offline Windows install
 
-On the Internet-enabled system, install
-[Miniconda 32-bit](https://repo.anaconda.com/miniconda/Miniconda3-py37_4.9.2-Windows-x86.exe) or
-[Miniconda 64-bit](https://repo.anaconda.com/miniconda/Miniconda3-py37_4.9.2-Windows-x86_64.exe).
+Start with a _clean_ Windows machine - one that does not contain any Anaconda, Python or Gramex artifacts. This machine, referred to as the **build machine**, should have internet access. The offline machine on which Gramex should ultimately be installed, is referred to as the **target machine**.
 
-Install it at the SAME PATH as the target machine (e.g. `D:\gramex-offline`.)
+On the **build machine**, follow these steps:
 
-On the Command Prompt / Terminal / shell, install Gramex:
+* **Step 1**: Pick a location to install Anaconda. This must be the same as the intended
+	  path for Anaconda on the target machine. E.g. if Anaconda is installed at
+	  `D:\offline\` on the **build machine**, it can _only_ be
+	  installed at `D:\offline\` on the **target machine**. The rest of these
+	  instructions assume that the installation location is `D:\offline\` - please
+	  replace this with whichever installation path is applicable in your case.
 
-```bash
-conda create -y --name gramex python=3.7            # Create a new environment
-conda activate gramex                               # Activate it
-conda install -y -c conda-forge -c gramener gramex  # Install Gramex
+* **Step 2**: When downloading the installer for Anaconda (or Miniconda) on the **build machine**, there are
+	   two options:
+  - Option 1 (**Recommended**): Download a version of Anaconda which has Python 3.7 in the _base_
+    environment. (Download [here](https://repo.anaconda.com/miniconda/Miniconda3-py37_4.9.2-Windows-x86_64.exe))
+  - Option 2: Download any version of Anaconda, install it at `D:\offline`, and create an environment that
+    has Python 3.7, as follows:
+
+```cmd
+conda create -n gramex python=3.7 -y
+conda activate gramex
 ```
 
-Then:
+* **Step 3**: Install Gramex as follows:
 
-- Copy the `gramex-offline` into the target system (without an Internet connection) into the
-  **SAME** location as it was installed in the source system (e.g. `D:\gramex-offline`.)
-- Copy your app to the target system.
-- To run the app on the target system, open the Command Prompt in your **app folder** and run:
-
-```bash
-D:\gramex-offline\envs\gramex\bin\gramex
+```cmd
+conda install -c conda-forge -c gramener gramex -y
 ```
 
+Then, on the **target machine**, follow these steps:
+
+* **Step 1**: Copy the contents `D:\offline` from the build machine to `D:\offline` on the
+   target machine.
+   
+* **Step 2**: Initialize the Conda shell by running:
+
+```cmd
+D:\offline\Scripts\conda.exe init cmd.exe
+```
+
+Exit and restart the shell.
+
+* **Step 3**: Activate the base environment:
+
+```cmd
+conda activate base
+```
+
+   If Gramex was installed in the base environment (i.e. if you followed the
+   recommended option in step 2 on the build machine), then we are done - Gramex
+   is installed and ready to use. However, if Gramex was not installed in the
+   base environment, proceed to the next step.
+
+* **Step 4**: Activate the environment which contains Gramex:
+
+```cmd
+conda activate gramex   
+```
+
+Gramex is now ready to use.
 
 ### Offline Docker install
 
@@ -334,14 +377,38 @@ pip uninstall gramexenterprise
 
 Open a terminal where you can run Gramex.
 
-- [Conda](#conda-install) or [Pip](#pip-install): Use your Anaconda Prompt / Command Prompt / shell.
-- [Docker](#docker-install): run `docker run -it -p 9988:9988 gramener/gramex:latest /bin/bash`
+If you installed via [Conda](#conda-install) or [Pip](#pip-install):
 
-Run `gramex --help` to verify that Gramex is installed properly. You should see this.
+1. Open your Anaconda Prompt / Command Prompt / shell.
+2. Run `conda activate gramex` to activate the Gramex environment
 
-<asciinema-player src="gramex-help.json" cols="100" rows="22" idle-time-limit="0.5" autoplay="1" font-size=""></asciinema-player>
+If you inslled via [Docker](#docker-install):
+
+1. Run `docker run -it -p 9988:9988 gramener/gramex:latest /bin/bash`
+
+In this terminal, run `gramex --help` to verify that Gramex is installed properly. You should see this.
+
+<asciinema-player src="gramex-help.json" cols="100" rows="22" idle-time-limit="0.5" font-size=""></asciinema-player>
 
 If you see an error, see the [Troubleshooting](#troubleshooting) section.
+
+To start a Gramex project, create a new folder and run `gramex init` from that folder by typing this in your terminal.
+
+```bash
+mkdir project
+cd project
+gramex init
+```
+
+You should see an output like this:
+
+<asciinema-player src="../init/gramex-init.rec" cols="100" rows="20" idle-time-limit="0.5" font-size=""></asciinema-player>
+
+Run `gramex`. This will start Gramex and show an output like this:
+
+<asciinema-player src="../init/gramex-run.rec" cols="100" rows="20" idle-time-limit="0.5" font-size=""></asciinema-player>
+
+Open <http://localhost:9988/> in your browser, and you should see the sample app.
 
 Now you're ready to move to the [quickstart tutorial](../tutorials/quickstart/)
 
