@@ -2,6 +2,8 @@ import:
   admin/admin:
     path: $GRAMEXAPPS/admin2/gramex.yaml    # Note the "admin2" instead of "admin"
     YAMLURL: /$YAMLURL/admin/               # URL to show the admin page at
+    ADMIN_KWARGS:
+      components: [users, schedule, alert, shell, info, config, logs]
 
   admin/admin-kwargs:
     path: $GRAMEXAPPS/admin2/gramex.yaml

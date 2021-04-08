@@ -49,14 +49,14 @@ The `ADMIN_KWARGS` section accepts the following parameters:
 - `title`: Title displayed on the navbar. Defaults to "Admin"
 - `theme`: The [UI theme](../uicomponents/) for the page. For example,
   `?font-family-base=Roboto` makes the font Roboto.
-- `components`: List of components to display. The admin page has pre-defined
-  components (documented below). By default, all components are displayed. The list of components are:
-    - `user`: [User management component](#admin-user-management)
-    - `schedule`: [Schedule component](#admin-schedule)
-    - `shell`: [Python web shell component](#admin-shell)
-    - `info`: [Gramex & server info component](#admin-info)
-    - `config`: [Gramex configuration component](#admin-config)
-    - `logs`: [Log viewer component](#admin-logs)
+- `components`: List of admin components. Choose from:
+  - `user`: [User management component](#admin-user-management)
+  - `schedule`: [Schedule component](#admin-schedule)
+  - `alert`: [Alert component](#admin-alert)
+  - `shell`: [Python web shell component](#admin-shell)
+  - `info`: [Gramex & server info component](#admin-info)
+  - `config`: [Gramex configuration component](#admin-config)
+  - `logs`: [Log viewer component](#admin-logs)
 
 The `ADMIN_AUTH` section is the same as specifying the `auth:`
 [authorization](../auth/#authorization) on all admin pages. For example:
@@ -157,7 +157,7 @@ The admin schedule component can be embdded in any page:
 ::: example href=schedule.html source=https://github.com/gramener/gramex-guide/blob/master/admin/schedule.html
     Schedule component example
 
-## Admin: Alerts
+## Admin: Alert
 
 The alert component lets you see all [alerts](../alert/) defined under the
 `alert:` section, and preview or run them.
@@ -297,7 +297,7 @@ import:
 
 Use `ADMIN_*` variables to configure your app.
 
-- `ADMIN_LOOKUP`: See [lookup attributes]../auth/#lookup-attributes):
+- `ADMIN_LOOKUP`: See [lookup attributes](../auth/#lookup-attributes)
   - `url`: the DB or file that has user data
   - `id`: column that has the user ID
 - `ADMIN_KWARGS`:

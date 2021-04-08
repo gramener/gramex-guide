@@ -294,10 +294,10 @@ Here's a checklist
 
 1. **Pass original HTTP headers** to Gramex that capture the actual request the Proxy Server received.
    Gramex can redirect URLs appropriately based on this.
-    - `Host`: Actual host the request was sent to (else proxy servers send localhost or an internal IP)
-    - `X-Real-IP`: Remote address of the request (else proxy servers send their own IP)
-    - `X-Scheme`: Protocol (HTTP/HTTPS) the request was made with (else proxy servers stay with HTTP)
-    - `X-Request-URI`: Original request URL (else proxyservers send `http://localhost:port/...`)
+  - `Host`: Actual host the request was sent to (else proxy servers send localhost or an internal IP)
+  - `X-Real-IP`: Remote address of the request (else proxy servers send their own IP)
+  - `X-Scheme`: Protocol (HTTP/HTTPS) the request was made with (else proxy servers stay with HTTP)
+  - `X-Request-URI`: Original request URL (else proxyservers send `http://localhost:port/...`)
 2. **Enable websocket proxying** via
    [proxy_pass](http://nginx.org/en/docs/http/websocket.html) on nginx, and
    [mod_proxy_wstunnel](https://httpd.apache.org/docs/2.4/mod/mod_proxy_wstunnel.html) on Apache
