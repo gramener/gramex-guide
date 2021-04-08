@@ -1,0 +1,6 @@
+url:
+    uifactory-docs:
+      pattern: /$YAMLURL/docs/(.*)
+      handler: FileHandler
+      kwargs:
+        path: $YAMLPATH/../node_modules/uifactory/docs/

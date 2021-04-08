@@ -8,6 +8,7 @@ import hashlib
 import markdown
 import re
 import time
+import tornado.template
 import yaml
 from customblocks import CustomBlocksExtension
 
@@ -61,6 +62,9 @@ def markdown_template(content, handler):
             'content': md.convert(content),
             'meta': md.Meta
         }
+        if md.Meta.get('template', False):
+            t = tornado.template.Template(content)
+            md_cache[hash]['content'] = md.convert(t.generate(**md.Meta).decode('utf-8'))
     content = md_cache[hash]
     # GUIDE_ROOT has the absolute root URL path of the Gramex guide.
     # Default to $YAMLURL when running locally, e.g. https://127.0.0.1/guide/

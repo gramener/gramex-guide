@@ -6,8 +6,10 @@
     "anchor-js": "4.2",
     "asciinema-player": "2.6",
     "clipboard": "1",
+    "lodash": "4",
     "lunr": "2",
     "prismjs": "1",
+    "uifactory": "0",
     "vue": "2"
   },
   "devDependencies": {
