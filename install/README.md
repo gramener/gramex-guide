@@ -139,6 +139,7 @@ Now run the following commands on the terminal
 
 ```bash
 pip install gramex      # Install latest version of Gramex
+# Install node.js 10 or later
 gramex setup --all      # Set up UI components and built-in apps
 ```
 
@@ -277,7 +278,7 @@ Then, on the **target machine**, follow these steps:
 
 * **Step 1**: Copy the contents `D:\offline` from the build machine to `D:\offline` on the
    target machine.
-   
+
 * **Step 2**: Initialize the Conda shell by running:
 
 ```cmd
@@ -300,7 +301,7 @@ conda activate base
 * **Step 4**: Activate the environment which contains Gramex:
 
 ```cmd
-conda activate gramex   
+conda activate gramex
 ```
 
 Gramex is now ready to use.
