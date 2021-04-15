@@ -1,3 +1,8 @@
+schedule:
+  make_circles:
+    function: mlhandler.init
+    startup: true
+
 import:
   mlhandler-subdirs:
     path: '*/gramex.yaml'              # Import gramex.yaml from immediate subdirs
@@ -14,16 +19,49 @@ url:
         target_col: Survived
         exclude: [PassengerId, Ticket, Cabin, Name]
         cats: [Embarked, SibSp, Parch, Pclass, Sex]
-      data: $YAMLPATH/titanic.csv
+      data:
+        url: $YAMLPATH/titanic.csv
       xsrf_cookies: false
   mlhandler/titanic:
     pattern: /$YAMLURL/titanic
     handler: FormHandler
     kwargs:
       url: $YAMLPATH/titanic.csv
+  mlhandler/circles:
+    pattern: /$YAMLURL/circles
+    handler: FormHandler
+    kwargs:
+      url: $YAMLPATH/circles.csv
   mlhandler/single:
     pattern: /$YAMLURL/try/(.*)
     handler: FileHandler
     kwargs:
       path: $YAMLPATH/try.html
       template: true
+
+  mlhandler/basiccircles:
+    pattern: /$YAMLURL/circlebasic
+    handler: MLHandler
+    kwargs:
+      data:
+        url: $YAMLPATH/circles.csv
+      xsrf_cookies: false
+      model:
+        class: LogisticRegression
+        target_col: y
+        path: $YAMLPATH/basic.pkl
+      config_dir: $YAMLPATH/circlebasic
+
+  mlhandler/transformedcircles:
+    pattern: /$YAMLURL/circlexform
+    handler: MLHandler
+    kwargs:
+      xsrf_cookies: false
+      data:
+        url: $YAMLPATH/circles.csv
+        transform: mlhandler.transform
+      model:
+        class: LogisticRegression
+        target_col: y
+        path: $YAMLPATH/transformed.pkl
+      config_dir: $YAMLPATH/circlexform
