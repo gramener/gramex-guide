@@ -26,7 +26,8 @@ url:
     pattern: /$YAMLURL/ml
     handler: MLHandler
     kwargs:
-      data: $YAMLPATH/titanic.csv  # Path to the training dataset
+      data:
+      	url: $YAMLPATH/titanic.csv  # Path to the training dataset
       model:
         # The classification or regression algorithm to use
         class: LogisticRegression
@@ -478,6 +479,88 @@ be used in many ways to replicate sklearn code. For example,
 If left unspecified, MLHandler will render a default template that shows some
 details of your MLHandler application. The default template for the Titanic
 problem can be seen [here](model).
+
+# Feature Engineering in MLHandler
+
+MLHandler supports feature engineering by allowing users to specify data transformations. Transformations can be enabled
+by adding a `transform:` value to the data parameter in the MLHandler config, as follows:
+
+```yaml
+mlhandler/transform:
+  pattern: /$YAMLURL/transform
+  handler: MLHandler
+  kwargs:
+    data:
+      url: $YAMLPATH/train_data.csv
+      transform: mymodule.transform_func  # Dotted path to the Python function
+      					  # used to transform the data.
+```
+
+Note that the function used to transform the data must accept a dataframe as the
+first argument, and should return only the transformed dataframe.
+
+
+## Example: Classify overlapping patterns with logistic regression
+
+Consider the following dataset, containing two classes that are not linearly
+separable.
+
+![](circles.png)
+
+[Here is a file](circles.csv) containing this dataset. Suppose, we create an
+MLHandler endpoint using a logistic regression to classify this dataset, as
+follows:
+
+```yaml
+  mlhandler/basiccircles:
+    pattern: /$YAMLURL/circlebasic
+    handler: MLHandler
+    kwargs:
+      xsrf_cookies: false
+      data:
+        url: $YAMLPATH/circles.csv
+      model:
+        class: LogisticRegression
+        target_col: y
+```
+
+Clearly, logistic regression cannot achieve an accuracy of more than 50% on this
+dataset, since it is only capable of drawing a straight discriminating line
+through the plot.
+
+But we can transform this data in such a way that the classes become linearly
+separable. This can be done by writing a transform function as follows:
+
+```python
+def transform(df, *args, **kwargs):
+    df[['X1', 'X2']] = np.exp(-df[['X1', 'X2']].values ** 2)
+    return df
+```
+
+The dataset transformed thus looks like follows:
+
+![](circles-transformed.png)
+
+This transformed dataset is now manageable with logistic regression. To add the
+transformation to the MLHandler configuration, use the `transform:` key under
+the `data:` kwarg, as follows:
+
+```yaml
+  mlhandler/basiccircles:
+    pattern: /$YAMLURL/circlebasic
+    handler: MLHandler
+    kwargs:
+      xsrf_cookies: false
+      data:
+        url: $YAMLPATH/circles.csv
+	transform: mymodule.transform  # The function used to transform the data
+      model:
+        class: LogisticRegression
+        target_col: y
+```
+
+This will result in the handler transforming the training data, and any incoming
+dataset for prediction, retraining or scoring.
 
 # FAQs
 

@@ -127,3 +127,8 @@ docs/_build
 
 # For Linux FUSE file system
 .fuse_hidden*
+mlhandler/circles*
+mlhandler/config.json
+mlhandler/data.h5
+mlhandler/circlebasic/*
+mlhandler/circlexform/*
