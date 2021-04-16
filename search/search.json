@@ -1369,9 +1369,10 @@
     "admin-access-control": {
       "Admin access control": -1
     },
-    "admin-alerts": {
-      "Admin: Alerts": -1
+    "admin-alert": {
+      "Admin: Alert": -1
     },
+    "admin-alerts": {},
     "admin-config": {
       "Admin: Config": -1
     },
@@ -1645,6 +1646,23 @@
     },
     "user-attributes": {
       "User attributes": -1
+    }
+  },
+  "bar-chart-race": {
+    "": {
+      "Bar Chart Race": -1
+    },
+    "create-the-data": {
+      "Create the data": -1
+    },
+    "create-the-rules": {
+      "Create the rules": -1
+    },
+    "create-the-source-template": {
+      "Create the source template": -1
+    },
+    "see-the-result": {
+      "See the result": -1
     }
   },
   "cache": {
@@ -1966,8 +1984,9 @@
     "deploy-docs-on-httpslearngramenercomgramex": {
       "Deploy docs on https://learn.gramener.com/gramex/": -1
     },
-    "deploy-on-conda-httpsanacondaorggramenergramex": {
-      "Deploy on conda: https://anaconda.org/gramener/gramex": -1
+    "deploy-on-conda-httpsanacondaorggramenergramex": {},
+    "deploy-on-conda-windows-httpsanacondaorggramenergramex": {
+      "Deploy on conda (Windows): https://anaconda.org/gramener/gramex": -1
     },
     "deploy-on-docker-httpshubdockercomrgramenergramex": {
       "Deploy on docker: https://hub.docker.com/r/gramener/gramex/": -1
@@ -1975,8 +1994,17 @@
     "deploy-on-pypi-httpspypipythonorgpypigramex": {
       "Deploy on pypi: https://pypi.python.org/pypi/gramex": -1
     },
+    "ensure-that-you-have-git-lfs-on-your-system": {
+      "Ensure that you have Git LFS on your system.": -1
+    },
+    "follow-instructions-to-upload-log-in-as-gramener": {
+      "Follow instructions to upload. Log in as gramener": -1
+    },
     "if-this-fails-add-p-password": {
       "If this fails, add '-p PASSWORD'": -1
+    },
+    "now-you-can-delete-this-gramex-folder-and-restore-your-gramex-via-pip-install-gramex": {
+      "Now you can delete this Gramex folder and restore your Gramex via pip install gramex": -1
     },
     "push-docs-and-coverage-tests": {},
     "push-to-pypi": {},
@@ -1987,9 +2015,13 @@
       "Release Gramex Enterprise Edition": -1
     },
     "releasing-gramex": {},
-    "run-this-on-windows-and-linux": {
-      "Run this on Windows AND Linux": -1
+    "replace-the-path-to-the-gramex-tarball-below-it-will-by-under-anacondaconda-bld": {
+      "Replace the path to the Gramex tarball below. It will by under anaconda/conda-bld": -1
     },
+    "run-this-from-any-temporary-directory-on-a-windows-system": {
+      "Run this from any temporary directory on a Windows system.": -1
+    },
+    "run-this-on-windows-and-linux": {},
     "set-up-gramex": {
       "Set up Gramex": -1
     },
@@ -2003,21 +2035,11 @@
     "yarn-upgrade-cwd-gramexappsadmin": {}
   },
   "copy-slide": {
-    "copy-slide-example": {
-      "Copy slide example": -1
-    },
-    "create-the-data": {
-      "Create the data": -1
-    },
-    "create-the-rules": {
-      "Create the rules": -1
-    },
-    "create-the-source-template": {
-      "Create the source template": -1
-    },
-    "see-the-result": {
-      "See the result": -1
-    }
+    "copy-slide-example": {},
+    "create-the-data": {},
+    "create-the-rules": {},
+    "create-the-source-template": {},
+    "see-the-result": {}
   },
   "dashboard": {
     "": {
@@ -2366,6 +2388,9 @@
     }
   },
   "entrepreneurship": {
+    "": {
+      "Rate of New Entrepreneurs": -1
+    },
     "create-the-data": {
       "Create the data": -1
     },
@@ -2375,9 +2400,7 @@
     "create-the-source-template": {
       "Create the source template": -1
     },
-    "rate-of-new-entrepreneurs": {
-      "Rate of New Entrepreneurs": -1
-    },
+    "rate-of-new-entrepreneurs": {},
     "see-the-result": {
       "See the result": -1
     }
@@ -2913,6 +2936,9 @@
     "install-miniconda": {
       "Install Miniconda": -1
     },
+    "install-nodejs-10-or-later": {
+      "Install node.js 10 or later": -1
+    },
     "installation": {},
     "now-restart-the-shell-to-activate-conda": {
       "Now RESTART the shell to activate Conda.": -1
@@ -3128,11 +3154,17 @@
     "delete-a-model": {
       "Delete a model": -1
     },
+    "example-classify-overlapping-patterns-with-logistic-regression": {
+      "Example: Classify overlapping patterns with logistic regression": -1
+    },
     "exposing-existing-models": {
       "Exposing Existing Models": -1
     },
     "faqs": {
       "FAQs": -1
+    },
+    "feature-engineering-in-mlhandler": {
+      "Feature Engineering in MLHandler": -1
     },
     "getting-bulk-predictions": {
       "Getting bulk predictions": -1
@@ -3564,9 +3596,7 @@
     "next-steps": {
       "Next steps": -1
     },
-    "outcome": {
-      "Outcome": -1
-    },
+    "outcome": {},
     "readmemd": {},
     "requirements": {
       "Requirements": -1
@@ -3579,12 +3609,14 @@
     "step-1-expose-the-data-through-a-rest-api": {
       "Step 1: Expose the data through a REST API": -1
     },
-    "step-2-laying-out-some-scaffolding": {
-      "Step 2: Laying out some scaffolding": -1
+    "step-2-lay-out-some-scaffolding": {
+      "Step 2: Lay out some scaffolding": -1
     },
-    "step-3-filling-in-the-data": {
-      "Step 3: Filling in the Data": -1
+    "step-2-laying-out-some-scaffolding": {},
+    "step-3-fill-in-the-data": {
+      "Step 3: Fill in the Data": -1
     },
+    "step-3-filling-in-the-data": {},
     "step-4-adding-a-chart": {
       "Step 4: Adding A Chart": -1
     },
@@ -3719,9 +3751,10 @@
     }
   },
   "table": {
-    "bestselling-pharmaceutical-drugs": {
+    "": {
       "Bestselling Pharmaceutical Drugs": -1
     },
+    "bestselling-pharmaceutical-drugs": {},
     "create-the-data": {
       "Create the data": -1
     },
@@ -3992,6 +4025,11 @@
       "Typography": -1
     },
     "z-index": {}
+  },
+  "uifactory": {
+    "": {
+      "UIFactory creates UI components": -1
+    }
   },
   "uploadhandler": {
     "": {

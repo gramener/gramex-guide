@@ -5,6 +5,8 @@ prefix: Release
 
 Gramex now releases feature updates on the 1st of every month, and patch updates as required.
 
+- v1.69.1: Patch release <small>16 Apr 2021</small>
+- On 1 Apr 2021, [UIFactory](https://www.npmjs.com/package/uifactory) was released on npm
 - [v1.69.0: Server template extensions, PPTX Donut charts.](1.69/) <small>2 Mar 2021</small>
 - [v1.68.0: UI Factory creates embeddable forms.](1.68/) <small>1 Feb 2021</small>
 - [v1.67.0: Train and deploy ML models. Simpler names for micro-services.](1.67/) <small>1 Jan 2021</small>
