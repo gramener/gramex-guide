@@ -435,7 +435,7 @@ If Gramex does not run:
 
 ## VSCode Extension
 
-Install [`Gramex Snippets` extension](https://marketplace.visualstudio.com/items?itemName=gramener.gramexsnippets) for VSCode IDE for Gramex related code snippets. Visit [VSCode Extension](../extension/) page for more details.
+Install [`Gramex Snippets` extension](https://marketplace.visualstudio.com/items?itemName=gramener.gramexsnippets) for VSCode IDE for Gramex related code snippets.
 
 
 <script src="../node_modules/asciinema-player/resources/public/js/asciinema-player.js"></script>
