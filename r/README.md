@@ -8,7 +8,7 @@ prefix: R
 To run R in Gramex, install [rpy2](https://rpy2.readthedocs.io/) first:
 
 ```bash
-conda install -c r rpy2
+conda install -c conda-forge rpy2
 ```
 
 This installs a new R to the Anaconda PATH, ignoring the system R.
@@ -177,7 +177,7 @@ def plot(handler):
 
 [See the plot](plot.png).
 
-Note: Requires `conda install -c r r-ggplot2` to be installed
+Note: Requires `conda install -c conda-forge r-ggplot2` to be installed
 
 ## R async
 
@@ -211,7 +211,7 @@ Gramex renders RMarkdown files as HTML outputs using
 [`FileHandler`](../filehandler/#transforming-content)
 transform [`rmarkdown`](http://github.com/gramener/gramex/blob/master/gramex/transforms/rmarkdown.py).
 
-**Note**: This requires `conda install -c r r-rmarkdown` to install RMarkdown.
+**Note**: This requires `conda install -c conda-forge r-rmarkdown` to install RMarkdown.
 
 Also saves the HTML file to the directory where `.Rmd` files are located.
 
