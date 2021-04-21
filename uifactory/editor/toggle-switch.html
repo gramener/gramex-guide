@@ -1,0 +1,89 @@
+<template component="toggle-switch" value:boolean="false" name="" label="">
+  <style>
+    toggle-switch {
+      --height: 20px;
+      --width: calc(var(--height) * 1.75);
+      --border-radius: var(--height);
+      --padding: calc(var(--height) * 0.15);
+      /* --transition-duration: 0.3s; */
+      --background-true: rgb(127, 206, 0);
+      --background-false: grey;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: sans-serif;
+    }
+    toggle-switch input[type=checkbox] {
+      height: 0;
+      width: 0;
+      visibility: hidden;
+      appearance: none;
+    }
+
+    toggle-switch label > span {
+      cursor: pointer;
+      text-indent: -9999px;
+      width: var(--width);
+      height: var(--height);
+      background: var(--background-false);
+      display: block;
+      border-radius: var(--border-radius);
+      position: relative;
+    }
+
+    toggle-switch label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    toggle-switch label > span {
+      margin-left: calc(2 * var(--padding));
+    }
+
+    toggle-switch label > span:after {
+      content: "";
+      position: absolute;
+      top: var(--padding);
+      left: var(--padding);
+      width: calc((var(--width) * 0.6) - (2 * var(--padding)));
+      height: calc(var(--height) - (2 * var(--padding)));
+      background: #fff;
+      border-radius: calc(var(--border-radius) - (2 * var(--padding)));
+      /* transition: var(--transition-duration); */
+    }
+
+    toggle-switch input:checked + label > span {
+      background: var(--background-true);
+    }
+
+    toggle-switch input:checked + label > span:after {
+      left: calc(100% - var(--padding));
+      transform: translateX(-100%);
+    }
+
+    /* toggle-switch label:active:after {
+      width: calc(var(--height) + 2 * var(--padding));
+    } */
+  </style>
+  <% var id = name.length > 0 ? name : Date.now() %>
+  <% if(value) { %>
+    <input type="checkbox" id="<%- id %>" checked /> 
+  <% } else { %>
+    <input type="checkbox" id="<%- id %>" /> 
+  <% } %>
+  <label for="<%- id %>"><%= label %><span>Toggle</span></label>
+  <script>
+    document.body.addEventListener('render', function(e) {
+      if(!e.target.matches('toggle-switch')) return
+      const cb = e.target.querySelector('input')
+      cb.addEventListener('change', function(evt) {
+        evt.stopPropagation()
+        e.target.value = evt.target.checked
+        console.log(e.target.value, evt.target.checked);
+        e.target.dispatchEvent(new Event('change'))
+      })
+    })
+  </script>
+</template>
