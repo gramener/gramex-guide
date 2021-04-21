@@ -32,7 +32,7 @@ gramex install <appname> /path/to/app.zip
 You can specify a URL instead of a local path. For example:
 
 ```shell
-gramex install <appname> http://github.com/<user>/<repo>/repository/archive.zip
+gramex install <appname> https://github.com/<user>/<repo>/repository/archive.zip
 ```
 
 ... will install the app (if it's publicly accessible). To run it, use `gramex run <appname>`.
@@ -161,13 +161,13 @@ gramex install <appname> https://github.com/<user>/<repo>/archive/master.zip
 On code.gramener.com, you can use:
 
 ```shell
-gramex install <appname> http://code.gramener.com/<user>/<repo>/repository/archive.zip?ref=master
+gramex install <appname> https://code.gramener.com/<user>/<repo>/repository/archive.zip?ref=master
 ```
 
-If it's a private repository, you ca also install it with your [private access token](http://code.gramener.com/profile/account):
+If it's a private repository, you ca also install it with your [private access token](https://code.gramener.com/profile/account):
 
 ```shell
-gramex install <appname> http://code.gramener.com/<user>/<repo>/repository/archive.zip?ref=master&access_token=<access_token>
+gramex install <appname> https://code.gramener.com/<user>/<repo>/repository/archive.zip?ref=master&access_token=<access_token>
 ```
 
 You can also use `git` to install the app. For example:
@@ -179,7 +179,7 @@ gramex install <appname> --cmd="git clone git@code.gramener.com/<user>/<repo>.gi
 If you prefer HTTP access, use this. It will prompt the user for a username and password:
 
 ```shell
-gramex install <appname> --cmd="git clone http://code.gramener.com/<user>/<repo>.git"
+gramex install <appname> --cmd="git clone https://code.gramener.com/<user>/<repo>.git"
 ```
 
 To add a pre-defined app as part of Gramex:
