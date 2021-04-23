@@ -4,3 +4,10 @@ url:
       handler: FileHandler
       kwargs:
         path: $YAMLPATH/../node_modules/uifactory/docs/
+
+    uifactory-editor:
+      pattern: /$YAMLURL/editor/(.*)
+      handler: FileHandler
+      kwargs:
+        path: $YAMLPATH/editor/
+        default_filename: index.html

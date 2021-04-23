@@ -9,7 +9,7 @@
     "lodash": "4",
     "lunr": "2",
     "prismjs": "1",
-    "uifactory": "0",
+    "uifactory": "0.0.6",
     "vue": "2"
   },
   "devDependencies": {
