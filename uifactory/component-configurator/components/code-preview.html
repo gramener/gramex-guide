@@ -1,0 +1,59 @@
+<template component="code-preview" language="html" code="">
+  <style>
+    code-preview {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    code-preview button.copy-code {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: white;
+      border: 1px solid;
+      opacity: 0.2;
+      border-radius: 0.25rem;
+    }
+
+    code-preview button.copy-code:hover {
+      background: #fafafa;
+      opacity: 1;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs2015.min.css">
+  <script src="//unpkg.com/@highlightjs/cdn-assets@10.7.2/highlight.min.js"></script>
+  <pre><code class="language-<%- language %>">
+    <%- code %>
+  </code></pre>
+  <button class="copy-code">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+  </button>
+  <script>
+    document.body.addEventListener('render', function(e) {
+      if(!e.target.matches('code-preview')) return
+      hljs.highlightElement(e.target.querySelector('pre > code'));
+      e.target.querySelector('button.copy-code').addEventListener('click', function(evt) {
+        const range = document.createRange();
+        range.selectNode(e.target.querySelector('pre > code'));
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        try {
+          const successful = document.execCommand('copy');
+          if(successful) {
+            evt.target.setAttribute('disabled', 'true')
+            const content = evt.target.innerHTML
+            evt.target.innerHTML = 'Copied'
+            window.setTimeout(function restoreHTML() {
+              evt.target.removeAttribute('disabled')
+              evt.target.innerHTML = content
+            }, 500);
+          }
+        } catch(e) {
+          console.error('Unable to copy', err);
+        }
+        document.getSelection().removeAllRanges();
+      })
+    })
+  </script>
+</template>

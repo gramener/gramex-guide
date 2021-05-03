@@ -1,0 +1,392 @@
+<template component="bs5-multi-slider"
+  min:number="2"
+  max:number="8"
+  min-value:number="2"
+  max-value:number="8"
+  step:number="1"
+  labels:boolean="false">
+  <style>
+    bs5-multi-slider {
+      --form-range-track-width:          100%;
+      --form-range-track-height:         .5rem;
+      --form-range-track-cursor:         pointer;
+      --form-range-track-bg:             var(--gray-300, #efefef);
+      --form-range-track-border-radius:  1rem;
+      --form-range-track-box-shadow:     var(--box-shadow-inset, inset 0 1px 2px rgba(0, 0, 0, .075));
+
+      --form-range-thumb-width:                   1rem;
+      --form-range-thumb-height:                  var(--form-range-thumb-width);
+      --form-range-thumb-bg:                      var(--component-active-bg, #0074d9);
+      --form-range-thumb-border:                  0;
+      --form-range-thumb-border-radius:           1rem;
+      --form-range-thumb-box-shadow:              0 .1rem .25rem rgba(0, 0, 0, .1);
+      --form-range-thumb-focus-box-shadow:        0 0 0 1px var(--body-bg, #fff), var(--input-focus-box-shadow, 0 0 0 .25rem #0074d940);
+      --form-range-thumb-focus-box-shadow-width:  var(--input-focus-width);
+      --form-range-thumb-active-bg:               hsl(208, 100%, 73%);
+      --form-range-thumb-disabled-bg:             var(--gray-500);
+      --form-range-thumb-transition:              background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+    bs5-multi-slider {
+      position: relative;
+      display: block;
+      margin: var(--form-range-thumb-height) 0;
+    }
+
+    bs5-multi-slider > input[type="range"] {
+      position: absolute;
+      /* pointer-events: none; */
+      box-sizing: border-box;
+      /* outline: none; */
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    bs5-multi-slider > .range-color {
+      position: absolute;
+      background-color: var(--form-range-track-fill-bg, #92afde);
+      border-radius: var(--form-range-track-border-radius);
+      width: var(--form-range-track-width);
+      display: block;
+      height: var(--form-range-track-height);
+      z-index: 10;
+      pointer-events: none;
+      margin-left: calc(100% * (var(--form-range-min-value) - var(--form-range-min)) / (var(--form-range-max) - var(--form-range-min)));
+      width: calc(100% * (var(--form-range-max-value) - var(--form-range-min-value))/(var(--form-range-max) - var(--form-range-min)));
+    }
+
+    bs5-multi-slider input[type=range] {
+      -webkit-appearance: none;
+      width: var(--form-range-track-width);
+    }
+    bs5-multi-slider input[type=range]:focus {
+      outline: none;
+      box-shadow: var(--form-range-thumb-focus-box-shadow);
+    }
+    bs5-multi-slider input[type=range]::-webkit-slider-runnable-track {
+      width: var(--form-range-track-width);
+      height: var(--form-range-track-height);
+      cursor: var(--form-range-track-cursor);
+      box-shadow: var(--form-range-track-box-shadow);
+      background: var(--form-range-track-bg);
+      border-radius: var(--form-range-track-border-radius);
+      /* border: 0px solid #000101; */
+    }
+    bs5-multi-slider input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      box-shadow: var(--form-range-thumb-box-shadow);
+      border: var(--form-range-thumb-border);
+      height: var(--form-range-thumb-height);
+      width: var(--form-range-thumb-width);
+      border-radius: var(--form-range-thumb-border-radius);
+      background: var(--form-range-thumb-bg);
+      cursor: pointer;
+      margin-top: calc(0.5 * (var(--form-range-track-height) - var(--form-range-thumb-height)));
+      pointer-events: all;
+      z-index: 50;
+      position: relative;
+    }
+    bs5-multi-slider input[type=range]:focus::-webkit-slider-runnable-track {
+      background: var(--form-range-track-bg);
+    }
+    bs5-multi-slider input[type=range]::-moz-range-track {
+      width: var(--form-range-track-width);
+      height: var(--form-range-track-height);
+      cursor: var(--form-range-track-cursor);
+      animate: 0.2s;
+      box-shadow: var(--form-range-track-box-shadow);
+      background: var(--form-range-track-bg);
+      border-radius: var(--form-range-track-border-radius);
+      /* border: 0px solid #000101; */
+    }
+    bs5-multi-slider input[type=range]::-moz-range-thumb {
+      box-shadow: var(--form-range-thumb-box-shadow);
+      border: var(--form-range-thumb-border);
+      height: var(--form-range-thumb-height);
+      width: var(--form-range-thumb-width);
+      border-radius: var(--form-range-thumb-border-radius);
+      background: var(--form-range-thumb-bg);
+      cursor: pointer;
+      pointer-events: all;
+      z-index: 50;
+      position: relative;
+    }
+
+    bs5-multi-slider input[type="range"]:last-of-type::-webkit-slider-runnable-track {
+      background: transparent;
+      box-shadow: none;
+    }
+    bs5-multi-slider input[type="range"]:last-of-type {
+      background: none;
+    }
+  </style>
+  <script type="application/json">
+    {
+      "properties": [
+        {
+          "name": "min",
+          "type": "number",
+          "value": 2
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "value": 10
+        },
+        {
+          "name": "min-value",
+          "type": "number",
+          "value": 2
+        },
+        {
+          "name": "max-value",
+          "type": "number",
+          "value": 8
+        },
+        {
+          "name": "step",
+          "type": "number",
+          "value": 1
+        },
+        {
+          "name": "labels",
+          "type": "boolean",
+          "value": true
+        }
+      ]
+    }
+  </script>
+
+  <input class="bs5-multi-slider-lower" type="range" step="<%- step %>" min="<%- min %>" max="<%- max %>" value="<%- minValue %>"
+    oninput="lowerPointer(event)" onchange="updatePointer(event)">
+  <span class="range-color"></span>
+  <input class="bs5-multi-slider-upper" type="range" step="<%- step %>" min="<%- min %>" max="<%- max %>" value="<%- maxValue %>"
+    oninput="upperPointer(event)" onchange="updatePointer(event)">
+  <br />
+  <% if(labels) { %>
+  <div class="d-flex justify-content-between">
+    <span class="bs5-multi-slider-min-value"><%= minValue %></span><span class="bs5-multi-slider-max-value"><%= maxValue %></span>
+  </div>
+  <% } %>
+  <script>
+    document.body.addEventListener('render', function(e) {
+      if(!e.target.matches('bs5-multi-slider')) return
+      e.target.style.setProperty('--form-range-min-value', e.target.minValue)
+      e.target.style.setProperty('--form-range-max-value', e.target.maxValue)
+      e.target.style.setProperty('--form-range-min', e.target.min)
+      e.target.style.setProperty('--form-range-max', e.target.max)
+    })
+    function upperPointer(e) {
+      var lowerSlider = e.target.parentElement.querySelector('.bs5-multi-slider-lower');
+      var upperSlider = e.target;
+
+      var lowerVal = parseInt(lowerSlider.value);
+      var upperVal = parseInt(upperSlider.value);
+
+      if (upperVal < lowerVal + 1) {
+        lowerSlider.value = upperVal - 1;
+        if (lowerVal == lowerSlider.min) {
+          upperSlider.value = 1;
+        }
+      }
+
+      updateRangeColor(e, lowerSlider.value, upperSlider.value)
+    };
+
+    function lowerPointer(e) {
+      var upperSlider = e.target.parentElement.querySelector('.bs5-multi-slider-upper');
+      var lowerSlider = e.target;
+      var lowerVal = parseInt(lowerSlider.value);
+      var upperVal = parseInt(upperSlider.value);
+
+      if (lowerVal > upperVal - 1) {
+        upperSlider.value = lowerVal + 1;
+
+        if (upperVal == upperSlider.max) {
+          lowerSlider.value = parseInt(upperSlider.max) - 1;
+        }
+
+      }
+      updateRangeColor(e, lowerSlider.value, upperSlider.value)
+    };
+
+    function updatePointer(e) {
+      var upperSlider = e.target.parentElement.querySelector('.bs5-multi-slider-upper');
+      var lowerSlider = e.target.parentElement.querySelector('.bs5-multi-slider-lower');
+
+      var slider = e.target.closest('bs5-multi-slider');
+      slider.minValue = lowerSlider.value;
+      slider.maxValue = upperSlider.value;
+    }
+
+    function updateRangeColor(e, minValue, maxValue) {
+      if(e.target.parentElement.labels) {
+        e.target.parentElement.querySelector('.bs5-multi-slider-min-value').textContent = minValue
+        e.target.parentElement.querySelector('.bs5-multi-slider-max-value').textContent = maxValue
+      }
+      e.target.parentElement.style.setProperty('--form-range-min-value', minValue)
+      e.target.parentElement.style.setProperty('--form-range-max-value', maxValue)
+    }
+  </script>
+
+</template>
+<template component="bs5-rating" max:number="5" value:number="0" select-selector=".select" unselect-selector=".unselect">
+  <style>
+    bs5-rating {
+      display: flex;
+    }
+    bs5-rating > button {
+      height: 2rem;
+      width: 2rem;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+    }
+    bs5-rating > button * {
+      pointer-events: none;
+    }
+  </style>
+  <% for(var i = 0; i < +value; i++) { %>
+    <button class="selected"
+            data-value="<%- i %>">
+            <% if(this.querySelector(selectSelector)) { %>
+              <%= this.querySelector(selectSelector).outerHTML %>
+            <% } else { %>
+              ★
+            <% } %>
+    </button>
+  <% } %>
+  <% for(var j = 0; j < +max - +value; j++) { %>
+    <button class=""
+            data-value="<%- +value + j %>">
+            <% if(this.querySelector(unselectSelector)) { %>
+              <%= this.querySelector(unselectSelector).outerHTML %>
+            <% } else { %>
+              ☆
+            <% } %>
+    </button>
+  <% } %>
+  <script>
+    document.body.addEventListener('click', function(e) {
+      if(!e.target.matches('bs5-rating > button')) return;
+      e.target.closest('bs5-rating').value = parseInt(e.target.dataset.value) + 1
+    });
+  </script>
+</template>
+<template component="bs5-slider">
+  <style>
+    bs5-slider input[type="range"] {
+      --form-range-track-width:          100%;
+      --form-range-track-height:         .5rem;
+      --form-range-track-cursor:         pointer;
+      --form-range-track-bg:             var(--gray-300, #efefef);
+      --form-range-track-border-radius:  1rem;
+      --form-range-track-box-shadow:     var(--box-shadow-inset, inset 0 1px 2px rgba(0, 0, 0, .075));
+
+      --form-range-thumb-width:                   1rem;
+      --form-range-thumb-height:                  var(--form-range-thumb-width);
+      --form-range-thumb-bg:                      var(--component-active-bg, #0074d9);
+      --form-range-thumb-border:                  0;
+      --form-range-thumb-border-radius:           1rem;
+      --form-range-thumb-box-shadow:              0 .1rem .25rem rgba(0, 0, 0, .1);
+      --form-range-thumb-focus-box-shadow:        0 0 0 1px var(--body-bg, #fff), var(--input-focus-box-shadow, 0 0 0 .25rem #0074d940);
+      --form-range-thumb-focus-box-shadow-width:  var(--input-focus-width);
+      --form-range-thumb-active-bg:               hsl(208, 100%, 73%);
+      --form-range-thumb-disabled-bg:             var(--gray-500);
+      --form-range-thumb-transition:              background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+    input[type=range] {
+      -webkit-appearance: none;
+      margin: 10px 0;
+      width: var(--form-range-track-width);
+    }
+    input[type=range]:focus {
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: var(--form-range-track-width);
+      height: var(--form-range-track-height);
+      cursor: var(--form-range-track-cursor);
+      box-shadow: var(--form-range-track-box-shadow);
+      background: var(--form-range-track-bg);
+      border-radius: var(--form-range-track-border-radius);
+      /* border: 0px solid #000101; */
+    }
+    input[type=range]::-webkit-slider-thumb {
+      box-shadow: var(--form-range-thumb-box-shadow);
+      border: var(--form-range-thumb-border);
+      height: var(--form-range-thumb-height);
+      width: var(--form-range-thumb-width);
+      border-radius: var(--form-range-thumb-border-radius);
+      background: var(--form-range-thumb-bg);
+      cursor: pointer;
+      -webkit-appearance: none;
+      margin-top: calc(0.5 * (var(--form-range-track-height) - var(--form-range-thumb-height)));
+    }
+    input[type=range]:focus::-webkit-slider-runnable-track {
+      background: var(--form-range-track-bg);
+    }
+    input[type=range]::-moz-range-track {
+      width: var(--form-range-track-width);
+      height: var(--form-range-track-height);
+      cursor: var(--form-range-track-cursor);
+      animate: 0.2s;
+      box-shadow: var(--form-range-track-box-shadow);
+      background: var(--form-range-track-bg);
+      border-radius: var(--form-range-track-border-radius);
+      /* border: 0px solid #000101; */
+    }
+    input[type=range]::-moz-range-thumb {
+      box-shadow: var(--form-range-thumb-box-shadow);
+      border: var(--form-range-thumb-border);
+      height: var(--form-range-thumb-height);
+      width: var(--form-range-thumb-width);
+      border-radius: var(--form-range-thumb-border-radius);
+      background: var(--form-range-thumb-bg);
+      cursor: pointer;
+    }
+
+  </style>
+  <input type="range" name="" id="">
+</template>
+<template component="bs5-tree" tree:object='{"a":{"b":[1,2,3]},"c":[4,5]}'>
+  <style>
+    bs5-tree details,
+    bs5-tree details ul {
+      margin-left: 1rem;
+    }
+    bs5-tree summary {
+      list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-caret-right' viewBox='0 0 16 16'><path d='M6 12.796V3.204L11.481 8 6 12.796zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753z'/></svg>");
+    }
+    bs5-tree summary:focus {
+      list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-caret-right-fill' viewBox='0 0 16 16'><path d='m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z'/></svg>");
+    }
+    bs5-tree details[open] > summary {
+      list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-caret-down' viewBox='0 0 16 16'><path d='M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z'/></svg>");
+    }
+    bs5-tree details[open] > summary:focus {
+      list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-caret-down-fill' viewBox='0 0 16 16'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>");
+    }
+  </style>
+    <% Object.keys(tree).forEach(key => { %>
+      <% var escaped_key = _.escape(key) %>
+      <details>
+        <summary>
+          <%= key %>
+        </summary>
+        <% if(Array.isArray(tree[key])) { %>
+          <ul>
+            <% tree[key].forEach(li => { %>
+              <li><%= li %></li>
+            <% }) %>
+          </ul>
+        <% } else { %>
+          <bs5-tree tree="<%- JSON.stringify(tree[key]) %>"></bs5-tree>
+        <% } %>
+      </details>
+    <% }) %>
+</template>

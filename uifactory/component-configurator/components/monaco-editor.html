@@ -1,0 +1,78 @@
+<template component="monaco-editor">
+  <style>
+    monaco-editor {
+      display: block;
+      height: 100%;
+    }
+    monaco-editor .monaco-editor.rename-box,
+    monaco-editor .monaco-hover {
+      top: 0;
+    }
+  </style>
+  <script type="application/json">
+    {
+      "properties": [
+        {
+          "name": "language",
+          "value": "javascript"
+        },
+        {
+          "name": "theme",
+          "value": "vs-dark"
+        }
+      ]
+    }
+  </script>
+  <% if(!('editor' in this)) { %>
+    <h1>hello</h1>
+  <% } %>
+  <%= this.innerHTML %>
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.23.0/min/vs/loader.js"></script>
+  <script>
+    document.body.addEventListener('render', function(e) {
+      if(!e.target.matches('monaco-editor')) return
+      require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs' }});
+      require(
+        ["vs/editor/editor.main"],
+        function () {
+          if('editor' in e.target) return
+          var code = ''
+          if(e.target.querySelector('template')) {
+            code = _.unescape(e.target.querySelector('template').innerHTML)
+          }
+          e.target.innerHTML = ''
+          e.target.editor =
+          monaco.editor.create(
+            e.target, {
+              value: code,
+              language: e.target.language || 'html',
+              theme: e.target.theme || 'vs-dark',
+              automaticLayout: true,
+              minimap: {
+                enabled: false
+              }
+            }
+          );
+          e.target.dispatchEvent(new CustomEvent('editor-loaded', {
+            bubbles: true
+          }))
+      });
+      if(!window.MonacoEnvironment) {
+        window.MonacoEnvironment = { getWorkerUrl: () => proxy };
+        let proxy = URL.createObjectURL(
+          new Blob(
+            [
+              "self.MonacoEnvironment = { " +
+                  "baseUrl: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min'" +
+              "};" +
+              "importScripts('https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.20.0/min/vs/base/worker/workerMain.min.js');"
+            ],
+            {
+              type: 'text/javascript'
+            }
+          )
+        );
+      }
+    })
+  </script>
+</template>

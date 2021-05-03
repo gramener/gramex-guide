@@ -72,7 +72,6 @@
     })
     document.querySelector('toggle-switch[name="live-edit"]').addEventListener('change', function(e) {
       document.querySelector('html-editor').update({liveEdit: e.currentTarget.value }, {attr: false, render: false})
-      console.log(e.currentTarget.value);
       document.querySelector('#update').disabled = e.currentTarget.value
     })
     document.querySelector('#update').addEventListener('click', function(e) {

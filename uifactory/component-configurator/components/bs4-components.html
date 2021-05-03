@@ -1,0 +1,332 @@
+<template dependencies>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</template>
+<template component="bs4-button" type="submit" label="I'm a button!" size="medium" color="primary" outline="false" gradient="false" transparent="false" link="false" shape="none" border="false" border-size="1" border-color="primary" border-rounded="false" border-radius-position="top" icon-library="" icon-type="" icon-position="">
+  <style>
+    @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css');
+
+    .aspect-ratio-1 {
+      aspect-ratio: 1;
+      width: var(--size, 60px);
+      height: var(--size, 60px);
+    }
+  </style>
+  <% var klass = {} %>
+  <!-- size: ['', 'small', 'large'] -->
+  <% klass.sizeClass = size === 'small' ? 'btn-sm' : size === 'large' ? 'btn-lg' : '' %>
+  <!-- color: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark', 'white'] -->
+  <!-- outline: [true, false] -->
+  <% klass.styleClass = outline === 'true' ? 'btn-outline-' + color : 'btn-' + color %>
+
+  <!-- gradient: [true, false] -->
+  <% klass.gradientClass = gradient === 'true' ? 'bg-gradient' : '' %>
+
+  <!-- transparent: [true, false] -->
+  <% klass.transparentClass = transparent === 'true' ? 'bg-transparent' : '' %>
+
+  <!-- link: [true, false] -->
+  <% klass.linkClass = link === 'true' ? 'btn-link' : '' %>
+
+  <!-- shape: ['', 'pill', 'circle'] -->
+  <% klass.shapeClass = shape === 'pill' ? 'rounded-pill' : shape === 'circle' ? 'rounded-pill aspect-ratio-1 d-flex align-items-center justify-content-center' : '' %>
+
+  <!-- border: [true, false] -->
+  <% klass.borderClass = border === 'true' ? 'border' : '' %>
+  <!-- borderSize: [1, 2, 3, 4, 5] -->
+  <% klass.borderSize = border === 'true' && borderSize ? borderSize : 0 %>
+  <!-- borderSize: [1, 2, 3, 4, 5] -->
+  <% klass.borderSizeClass = border === 'true' && borderSize ? 'border-' + borderSize : '' %>
+  <!-- border-Color: ['primary','secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark', 'white'] -->
+  <% klass.borderColorClass = border === 'true' && borderColor ? 'border-' + borderColor : '' %>
+  <!-- borderRounded: [true, false] -->
+  <% klass.borderRoundedClass = borderRounded === 'true' ? 'rounded' : '' %>
+  <!-- borderRadiusPosition: ['top', 'end', 'bottom', 'start'] -->
+  <% klass.borderRadiusPositionClass = borderRounded === 'true' && borderRadiusPosition ? 'rounded-' + borderRadiusPosition : '' %>
+
+  <% var iconClass = {} %>
+  <% iconClass.library = obj['iconLibrary'] ? obj['iconLibrary'] : 'bi' %>
+  <% iconClass.type = obj['iconType'] ? iconClass.library + '-' + obj['iconType'] : 'd-none' %>
+  <!-- iconPosition: ['start', 'end'] -->
+  <% iconClass.position = obj['iconPosition'] ? 'float-' + obj['iconPosition']  : '' %>
+
+  <button type="<%= type %>" class="btn <%= Object.values(klass).join(' ') %>">
+    <i class="<%- Object.values(iconClass).join(' ') %>"></i>
+    <%= label %>
+  </button>
+</template>
+<template component="bs4-checkbox" label="Checkbox" name="checkbox" options:array="['One', 'Two']" value:array="['One']" help="Checkbox help">
+  <label data-type="text" for="<%= name %>"><%= label %></label>
+  <% options.map(item => item.trim()).forEach(function (option, ind) { %>
+  <% let values = value.map(item => item.trim()) %>
+  <% let local_id = Date.now() + Math.round(Math.random() * 1e6) %>
+  <div class="form-check p-0">
+    <input type="checkbox" class="px-2" name="<%= name %>" id="<%= ind + '-' + local_id %>"
+      value='<%= encodeURI(option) %>' <%= values.indexOf(option) > -1 ? "checked" : "" %>>
+    <label data-type="checkbox" class="px-2" for="<%= ind + '-' + local_id %>">
+      <%= option %>
+    </label>
+    <% if (typeof help != 'undefined' && ind === options.map(item => item.trim()).length - 1) { %>
+    <small id="text-input-help" class="form-text text-muted"><%= help %></small>
+    <% } %>
+  </div>
+  <% }) %>
+</template>
+<template component="bs4-email" label="Email" name="email" placeholder="jane@example.com" help="email help" value="" pattern=".+@gramener.com">
+  <label data-type="email" for="<%= name %>"><%= label %></label>
+  <input type="email" class="form-control" name="<%= name %>" id="<%= name %>" aria-describedby="email-<%= name %>" placeholder="<%= placeholder %>" pattern="<%= pattern || '.*' %>" value="<%= value %>">
+  <% if (typeof help != 'undefined') { %>
+  <small id="email-help" class="form-text text-muted"><%= help %></small>
+  <% } %>
+</template>
+<template component="bs4-hidden" label="Text label - Hidden field" name="hidden" value="">
+  <label data-type="html" for="hidden-input"><%= label %></label>
+  <input type="hidden" id="<%= name %>" name="<%= name %>" value="<%= value %>">
+</template>
+<template component="bs4-html" value="<h1>HTML</h1>">
+  <%= value %>
+  <% if (typeof help != 'undefined') { %>
+  <small id="text-input-help" class="form-text text-muted"><%= help %></small>
+  <% } %>
+</template>
+<template component="bs4-multiselect" label="Multi-select" name="multiselect" options:array="['One', 'Two']" value="" help="multiselect help" actions-box="false" select-all-text="Select All" deselect-all-text="Deselect All" header="" live-search="false" live-search-placeholder="" live-search-style="contains" size="auto" style="btn-light" title="">
+  <style>
+    @import url('https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.18/dist/css/bootstrap-select.min.css');
+
+    /* selectpicker styles */
+    bs4-multiselect {
+      display: inline-block;
+    }
+
+    bs4-multiselect span.text:before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      background-color: #E6E6E6;
+      position: absolute;
+      left: 17px;
+      top: 8px;
+    }
+
+    bs4-multiselect .bs-ok-default:after {
+      border-style: none !important;
+    }
+
+    bs4-multiselect .show-tick .dropdown-menu .selected span.check-mark {
+      background-color: #25B8FF;
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      left: 17px;
+      z-index: 10;
+      top: 8px !important;
+    }
+
+    bs4-multiselect .dropdown-item.active,
+    bs4-multiselect .dropdown-item:active {
+      background-color: transparent !important;
+    }
+
+    /* It is generated dynamically, we are not allowing add default-classes in html. */
+    bs4-multiselect .dropdown-menu {
+      border: 1px solid rgba(151, 151, 151, 0.42);
+      border-radius: 8px;
+      padding-right: 3px;
+      padding-left: 3px;
+      background-color: #FFFFFF;
+      box-shadow: 0 12px 14px 0 rgba(0, 0, 0, 0.04);
+      left: auto !important;
+      right: 0;
+      min-width: 108px;
+    }
+
+    bs4-multiselect .bs-actionsbox,
+    .bs-donebutton,
+    .bs-searchbox {
+      padding: 0px;
+    }
+
+    /* select title header */
+    bs4-multiselect .popover-header {
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(151, 151, 151, 0.27);
+      margin-bottom: 8px;
+    }
+
+    bs4-multiselect .popover-header button,
+    bs4-multiselect ul .apply-button-group {
+      display: none;
+    }
+
+    bs4-multiselect .dropdown-menu.inner {
+      max-height: 150px;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.18/js/bootstrap-select.min.js"></script>
+  <script type="text/html">
+    <label class="d-block" data-type="select" for="select-element"><%= label %></label>
+    <select class="selectpicker" multiple name="<%= name %>" id="<%= name %>">
+      <% if (typeof options !== undefined) { %>
+        <%= options.map(item => item.trim()).map((opt) => {
+          var selected = opt === value ? "selected" : "";
+          return '<option class="text-dark pb-1 pl-5"' + selected + ' value="' + encodeURI(opt) + '">' + opt + '</option>'
+        }).join('') %>
+      <% } %>
+      <% [...this.children].forEach(child => { %>
+        <% if (child.tagName === 'OPTION' ) { %>
+          <%= child.outerHTML %>
+        <% } %>
+      <% }) %>
+    </select>
+    <% if (typeof help != 'undefined') { %>
+    <small id="text-input-help" class="form-text text-muted"><%= help %></small>
+    <% } %>
+  </script>
+  <script>
+    $.fn.selectpicker.Constructor.BootstrapVersion = '4';
+    document.body.addEventListener('render', function (e) {
+      // select element -> element should be e.target
+      // button -> select attributes -- element should be this
+      if (!e.target.matches('bs4-multiselect')) return
+      const opts = Object.assign({}, e.target.__model)
+      const attrs = {}
+      const dataset = {}
+      const bsSelectAttributes = ["title", "multiple", "value", "actionsBox", "deselectAllText", "header",
+        "liveSearch", "liveSearchPlaceholder", "liveSearchStyle", "selectAllText", "size", "style", "title"
+      ];
+      const dataAttr = ["actionsBox", "deselectAllText", "header", "liveSearch", "liveSearchPlaceholder",
+        "liveSearchStyle", "selectAllText", "size", "style", "title"
+      ];
+      const select = e.target.querySelector('select')
+      Object.keys(opts).forEach(key => {
+        if (!bsSelectAttributes.includes(key)) {
+          delete opts[key]
+        } else {
+          if (dataAttr.includes(key)) {
+            select.dataset[key] = opts[key]
+          } else {
+            attrs[key] = opts[key]
+          }
+        }
+      })
+      $(select).attr(opts);
+      $(select).selectpicker();
+    })
+  </script>
+</template>
+<template component="bs4-number" label="Number" placeholder="Enter a number" name="number" value:number="3" help="Number helper" min:number="1" max:number="10" step:number="1">
+  <style>
+    bs4-number {
+      display: block;
+    }
+  </style>
+  <label data-type="number" for="<%= name %>"><%= label %></label>
+  <input type="number" class="form-control" name="<%= name %>" id="<%= name %>" aria-describedby="<%= name %>-help" placeholder="<%= placeholder %>" min="<%= min %>" max="<%= max %>" step="<%= step %>" value="<%= value %>">
+  <% if (typeof help !== 'undefined' && help.length > 0) { %>
+  <small id="number-help" class="form-text text-muted"><%= help %></small>
+  <% } %>
+</template>
+<template component="bs4-password" label="Password" name="password" placeholder="Password placeholder" minlength="8" maxlength="30" size="15">
+  <label data-type="password" for="<%= name %>"><%= label %></label>
+  <input type="password" class="form-control" name="<%= name %>" id="<%= name %>" placeholder="<%= placeholder %>">
+</template>
+<template component="bs4-radio" label="Radio button" name="radio" options:array="['Radio one', 'Radio two']" value="Radio one" help="">
+  <script type="text/html">
+    <label data-type="text" for="<%= name %>"><%= label %></label>
+    <% options.map(item => item.trim()).forEach(function (option, ind) { %>
+    <% let local_id = Date.now() + Math.round(Math.random() * 1e6) %>
+    <div class="form-check py-2 px-0">
+      <input type="radio" class="px-2" name="<%= name %>" id="<%= ind + '-' + local_id %>" value='<%= option %>'
+        <%= value === option ? "checked" : "" %>>
+      <label data-type="radio" class="px-2" for="<%= ind + '-' + local_id %>">
+        <%= option %>
+      </label>
+      <% if (typeof help != 'undefined' && ind === options.map(item => item.trim()).length - 1) { %>
+      <small id="text-input-help" class="form-text text-muted"><%= help %></small>
+      <% } %>
+    </div>
+    <% }) %>
+  </script>
+</template>
+<template component="bs4-range" label="Range" name="range" value="" help="range-help" min="1" max="10" step="1">
+  <style>
+    bs4-range {
+      display: block;
+    }
+  </style>
+  <label data-type="range" for="<%= name %>"><%= label %></label>
+  <input type="range" class="form-control-range" id="<%= name %>" min="<%= min %>" max="<%= max %>" step="<%= step %>" value="<%= value %>">
+  <% if (typeof help != 'undefined') { %>
+  <small id="range-help" class="form-text text-muted"><%= help %></small>
+  <% } %>
+</template>
+<template component="bs4-select" label="Select" name="select" options:array="['One', 'Two']" value="" title="This is a select field" help="simple select help">
+  <script type="text/html">
+    <label class="d-block" data-type="select" for="<%= name %>"><%= label %></label>
+    <select class="custom-select" name="<%= name %>" id="<%= name %>">
+      <%= options.map(item => item.trim()).map((opt) => {
+        var selected = opt === value ? "selected" : ""
+        return '<option ' + selected + ' value="' + encodeURI(opt) + '">' + opt + '</option>'
+      }).join('') %>
+      <% [...this.children].forEach(child => { %>
+        <% if (child.tagName === 'OPTION' ) { %>
+          <%= child.outerHTML %>
+        <% } %>
+      <% }) %>
+    </select>
+    <% if (typeof help !== 'undefined' && help.length > 0) { %>
+      <small id="text-input-help" class="d-block text-muted"><%= help %></small>
+    <% } %>
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script>
+    document.body.addEventListener('render', function (e) {
+      if (!e.target.matches('bs4-select')) return
+      const opts = Object.assign({}, e.target.__model)
+      const bsSelectAttributes = ["title", "value"]
+      const select = this.querySelector('select')
+      Object.keys(opts).forEach(key => {
+        if (!bsSelectAttributes.includes(key)) {
+          delete opts[key]
+        }
+      })
+      $(e.target.querySelector('select')).attr(opts);
+    })
+  </script>
+</template>
+<template component="bs4-text" label="Text, is it?" name="text" value="" placeholder="Placeholder.." help="Description, if any">
+  <style>
+    bs4-text {
+      display: block;
+    }
+  </style>
+  <script type="text/html">
+    <label data-type="text" for="<%= name %>"><%= label %></label>
+    <% let id = typeof this.id !== undefined || this.id.length > 0 ? this.id : Date.now() %>
+    <input type="text" class="form-control" name="<%= name %>" id="bs4-<%= id %>" aria-describedby="text-<%= name %>"
+      placeholder="<%= typeof placeholder !== undefined && placeholder.length > 0 ? placeholder : '' %>"
+      value="<%= value.length > 0 ? replace_double(decodeURIComponent(value)) : '' %>">
+    <% if (typeof help !== 'undefined' && help.length > 0) { %>
+    <small id="text-input-help" class="form-text text-muted"><%= help %></small>
+    <% } %>
+  </script>
+</template>
+<template component="bs4-textarea" label="Textarea" name="textarea" placeholder="Placeholder" help="Textarea help" value="" rows="3">
+  <style>
+    bs4-textarea {
+      display: block;
+    }
+  </style>
+  <label data-type="textarea" for="<%= name %>"><%= label %></label>
+  <textarea class="form-control" name="<%= name %>" id="<%= name %>" rows="<%= rows %>" placeholder="<%= placeholder %>"><%= value %></textarea>
+  <% if (typeof help != 'undefined') { %>
+  <small id="text-input-help" class="form-text text-muted"><%= help %></small>
+  <% } %>
+</template>
+
