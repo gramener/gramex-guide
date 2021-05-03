@@ -122,6 +122,7 @@
       const componentName = iframe.dataset.component
       const component = iframe.contentWindow.document.querySelector(componentName)
       const properties = Object.assign({}, component.data)
+      const defaultProperties = iframe.contentWindow.uifactory.components[componentName].properties
       delete properties.$target
       const originalNode = component.__originalNode.cloneNode(true)
       if(prop !== undefined) {
@@ -131,7 +132,7 @@
       Object.keys(properties).forEach(key => {
         // originalNode.setAttribute(kebabize(key), properties[key])
         const kebabKey = kebabize(key)
-        const p = component.ui.config.properties.find(p => p.name === kebabKey)
+        const p = defaultProperties.find(p => p.name === kebabKey)
         if('value' in p && properties[key] != p.value) {
           originalNode.setAttribute(kebabKey, properties[key])
         }
@@ -171,7 +172,7 @@
       doc.close()
       document.querySelector('monaco-editor').editor.getModel().setValue(componentSource.outerHTML)
       iframe.onload = function(e) {
-        document.querySelector('component-properties').properties = doc.body.firstElementChild.ui.config.properties;
+        document.querySelector('component-properties').properties = e.target.contentWindow.uifactory.components[doc.body.firstElementChild.tagName.toLowerCase()].properties;
         updateCodePreview()
       }
     })
