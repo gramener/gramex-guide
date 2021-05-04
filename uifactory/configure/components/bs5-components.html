@@ -2,8 +2,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </template>
 <template component="bs5-multi-slider"
-  min:number="2"
-  max:number="8"
+  min:number="0"
+  max:number="10"
   min-value:number="2"
   max-value:number="8"
   step:number="1"
@@ -124,42 +124,6 @@
       background: none;
     }
   </style>
-  <script type="application/json">
-    {
-      "properties": [
-        {
-          "name": "min",
-          "type": "number",
-          "value": 2
-        },
-        {
-          "name": "max",
-          "type": "number",
-          "value": 10
-        },
-        {
-          "name": "min-value",
-          "type": "number",
-          "value": 2
-        },
-        {
-          "name": "max-value",
-          "type": "number",
-          "value": 8
-        },
-        {
-          "name": "step",
-          "type": "number",
-          "value": 1
-        },
-        {
-          "name": "labels",
-          "type": "boolean",
-          "value": true
-        }
-      ]
-    }
-  </script>
 
   <input class="bs5-multi-slider-lower" type="range" step="<%- step %>" min="<%- min %>" max="<%- max %>" value="<%- minValue %>"
     oninput="lowerPointer(event)" onchange="updatePointer(event)">
@@ -279,7 +243,12 @@
     });
   </script>
 </template>
-<template component="bs5-slider">
+<template component="bs5-slider"
+  min:number="2"
+  max:number="8"
+  value:number="6"
+  step:number="1"
+>
   <style>
     bs5-slider input[type="range"] {
       --form-range-track-width:          100%;
@@ -354,7 +323,7 @@
     }
 
   </style>
-  <input type="range" name="" id="">
+  <input type="range" step="<%- step %>" min="<%- min %>" max="<%- max %>" value="<%- value %>" name="" id="">
 </template>
 <template component="bs5-tree" tree:object='{"a":{"b":[1,2,3]},"c":[4,5]}'>
   <style>
