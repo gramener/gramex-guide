@@ -11,3 +11,17 @@ url:
       kwargs:
         path: $YAMLPATH/editor/
         default_filename: index.html
+
+    uifactory-component:
+      pattern: /$YAMLURL/component/(.*)
+      handler: FileHandler
+      kwargs:
+        path: $GRAMEXDATA/apps/guide/uifactorycomponents/
+        default_filename: index.html
+
+    uifactory-upload:
+      pattern: /$YAMLURL/upload
+      handler: UploadHandler
+      kwargs:
+        path: $GRAMEXDATA/apps/guide/uifactorycomponents/
+        methods: get
