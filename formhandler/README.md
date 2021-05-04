@@ -54,18 +54,18 @@ Other data formats supported are:
 
 - `url: /path/to/file.csv`: CSV file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html)
 - `url: /path/to/file.hdf`: HDF5 file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_hdf.html)
-- `url: /path/to/file.html`: HTML table. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_html.html))
-- `url: /path/to/file.sas`: SAS file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_sas.html))
-- `url: /path/to/file.spss`: SPSS file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_spss.html))
-- `url: /path/to/file.stata`: Stata file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_stata.html))
-- `url: /path/to/file.parquet`: Parquet file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html))
-- `url: /path/to/file.feather`: Feather file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_feather.html))
+- `url: /path/to/file.html`: HTML table. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_html.html)
+- `url: /path/to/file.sas`: SAS file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_sas.html)
+- `url: /path/to/file.spss`: SPSS file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_spss.html)
+- `url: /path/to/file.stata`: Stata file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_stata.html)
+- `url: /path/to/file.parquet`: Parquet file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html)
+- `url: /path/to/file.feather`: Feather file. [See options](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_feather.html)
 
-The type is automatically detected from the extension. Override it using `callback:`. For example:
+The type is automatically detected from the extension. Override it using `ext:`. For example:
 
 ```yaml
     url: /path/to/file.txt      # This is a CSV with .txt extension
-    callback: csv               # Force reading it as a CSV file
+    ext: csv                    # Force reading it as a CSV file
 ```
 
 You can read from a HTTP or HTTPS URL. Use `ext:` to specify the extension of the file.
