@@ -14,7 +14,6 @@ You can try Gramex without installing using the [Gramex IDE](https://gramex.gram
   <br><small>(Log in with any Google account)</small>
 </a>
 
-
 There are 4 ways to install or upgrading the Gramex Community Edition on your system.
 
 1. [**Conda**](#conda-install) (**RECOMMENDED**). Best for beginners and Python developers
@@ -105,7 +104,6 @@ docker run -it --name gramexapp -p 9988:9988 -v /app:/mnt/app -w /mnt/app gramen
 - `-v /app:/mnt/app` maps the directory `/app` on the host to `/mnt/app` inside the container
 - `-w /mnt/app` sets the working directory to `/mnt/app`
 - `gramex` runs Gramex from the working directory
-
 
 ### Upgrade Gramex via docker
 

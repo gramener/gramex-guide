@@ -317,6 +317,7 @@ as follows:
 ```bash
 curl -X GET /mlhandler?_model
 ```
+
 ```python
 # Output
 {
@@ -341,6 +342,7 @@ curl -X GET /mlhandler?_model
     "model": "LogisticRegression"
 }
 ```
+
 <button class="btn btn-primary" id="modelparams">See Model Parameters</button>
 <div id="paramresult" class="overflow-auto" style="height: 100px"></div>
 <ul class="nav nav-tabs" id="paramsTab" role="tablist">
@@ -395,7 +397,6 @@ curl -X GET /mlhandler?_model
   </div>
 </div>
 
-
 ## Change the model and modify its parameters
 
 An existing model can be replaced with a new one, and all its parameters can be
@@ -440,8 +441,8 @@ Similarly, any of the data transformation options (`include`, `exclude`,
 curl -X PUT /mlhandler?_model&exclude=PassengerId&exclude=Name&cats=Embarked
 ```
 
-
 ## Delete a model
+
 To remove the serialized model from the disk and disable further operations, use
 a delete request as follows:
 
@@ -482,8 +483,9 @@ problem can be seen [here](model).
 
 # Feature Engineering in MLHandler
 
-MLHandler supports feature engineering by allowing users to specify data transformations. Transformations can be enabled
-by adding a `transform:` value to the data parameter in the MLHandler config, as follows:
+MLHandler supports feature engineering by allowing users to specify data transformations.
+Transformations can be enabled by adding a `transform:` value to the data parameter in the
+MLHandler config, as follows:
 
 ```yaml
 mlhandler/transform:
@@ -492,13 +494,13 @@ mlhandler/transform:
   kwargs:
     data:
       url: $YAMLPATH/train_data.csv
-      transform: mymodule.transform_func  # Dotted path to the Python function
-      					  # used to transform the data.
+      # transform: is a dotted path to the function that transforms data. It runs:
+      #     data = mymodule.transform_func(data) or data
+      transform: mymodule.transform_func
 ```
 
 Note that the function used to transform the data must accept a dataframe as the
 first argument, and should return only the transformed dataframe.
-
 
 ## Example: Classify overlapping patterns with logistic regression
 
@@ -553,7 +555,7 @@ the `data:` kwarg, as follows:
       xsrf_cookies: false
       data:
         url: $YAMLPATH/circles.csv
-	transform: mymodule.transform  # The function used to transform the data
+        transform: mymodule.transform   # The function used to transform the data
       model:
         class: LogisticRegression
         target_col: y
