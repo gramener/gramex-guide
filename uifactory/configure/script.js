@@ -1,9 +1,9 @@
 const collections = {}
-async function render() {
-  const collectionPaths = [
-    './components/bs4-components.html',
-    './components/bs5-components.html'
-  ]
+async function setup() {
+  const collectionPaths =  await fetch('/upload')
+      .then(res => res.json())
+      .then(components => Array.from(new Set(Object.values(components).map(comp => `/component/${comp.filename}`))).filter(filename => filename.endsWith('.html')))
+      .catch(console.log)
   for(const collectionPath of collectionPaths) {
     const name = collectionPath.split('/').pop().split('.').shift()
     const text = await fetch(collectionPath).then(res => res.text())
@@ -15,7 +15,7 @@ async function render() {
   }
   document.querySelector('bs5-tree').setAttribute('tree', JSON.stringify(collections))
 }
-render()
+setup()
 const camelize = s => s.replace(/-./g, x => x.toUpperCase()[1])
 const kebabize = str => {
   return str.split('').map((letter, idx) => {
