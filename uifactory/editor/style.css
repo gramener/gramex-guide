@@ -17,13 +17,17 @@ nav > h1 {
   margin: 0.5rem;
 }
 
-nav > h1  > input { 
+nav > h1  > input {
   font-size: 1rem;
   border: 1px solid transparent;
   cursor: pointer;
   outline: none;
   padding: 0.5rem;
   border-radius: 1rem;
+}
+
+input:invalid {
+  border: 1px solid red;
 }
 
 nav > h1  > input:focus {
@@ -65,4 +69,25 @@ nav > span > button:active {
 
 html-editor {
   height: 100%;
+}
+
+path {
+  transition: opacity 300ms ease-in;
+}
+
+path.hidden {
+  opacity: 0;
+}
+
+.arrow.animated {
+  animation: upload 330ms ease-in-out infinite;
+}
+
+@keyframes upload {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(-100%);
+  }
 }
