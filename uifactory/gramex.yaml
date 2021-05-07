@@ -25,3 +25,4 @@ url:
       kwargs:
         path: $GRAMEXDATA/apps/guide/uifactorycomponents/
         methods: get
+        if_exists: overwrite
