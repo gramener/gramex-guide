@@ -71,6 +71,7 @@
       .then(components => {
         document.querySelector('#components').innerHTML =
           Array.from(new Set(Object.values(components).map(comp => comp.filename)))
+          .filter(filename => filename.endsWith('.html'))
           .map(comp => `<option value="${comp}"/>`)
           .join('')
       })
