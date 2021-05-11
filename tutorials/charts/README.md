@@ -127,7 +127,7 @@ function, similar to the `draw_charts` function from the previous tutorial.
 
 FormHandler can be used to [transform a dataset](../../formhandler#formhandler-transforms)
 in a variety of ways. In this example, we will use FormHandler's
-[`modify`](../../formhandler/formhandler-modify) function to perform the cross-tabulation.
+[`modify`](../../formhandler#formhandler-modify) function to perform the cross-tabulation.
 
 Add the following to <kbd>gramex.yaml</kbd> to create a HTTP resource which cross-tabulates the data.
 
