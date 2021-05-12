@@ -608,17 +608,17 @@ used) transforms:
    template, use `function: template(content, handler, **kwargs)`. The `kwargs` are sent as
    variables to the template. For example, this adds `title` and `path` as template variables:
 
-```yaml
+   ```yaml
     transform:
         "template.*.html":
             function: template(content, handler, title='Hello', path=r'$YAMLPATH')
-```
+   ```
 
 2. **badgerfish**. Use `function: badgerfish(content, handler)` to convert YAML files into
    HTML. For example, this YAML file is converted into a HTML as you would
    logically expect:
 
-```yaml
+   ```yaml
     html:
         head:
         title: Sample file
@@ -627,12 +627,12 @@ used) transforms:
         p:
             - First paragraph
             - Second paragraph
-```
+   ```
 
 3. **sass**. Use `function: sass` to convert SASS/SCSS files into CSS. For example:
 
-```yaml
+   ```yaml
     transform:
         "*.scss, *.sass":
             function: sass
-```
+   ```

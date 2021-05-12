@@ -183,7 +183,7 @@ TODO: show a full-blown example of this.
 - [$.translate](translate) translates text to other languages using [Gramex translate](https://learn.gramener.com/guide/translate/)
 - [g1.sanddance](sanddance) moves DOM elements smoothly based on data
 - [g1.mapviewer](mapviewer) renders leaflet maps and simplifies adding layers from data.
-    - Note: Mapviewer is not included in [g1.min.js](../ui/g1/dist/g1.min.js). Include [mapviewer.min.js](../ui/g1/dist/mapviewer.min.js)
+  - Note: Mapviewer is not included in [g1.min.js](../ui/g1/dist/g1.min.js). Include [mapviewer.min.js](../ui/g1/dist/mapviewer.min.js)
 
 ## Utilities
 

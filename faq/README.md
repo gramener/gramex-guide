@@ -9,48 +9,16 @@ prefix: FAQ
 
 ### What databases does Gramex support?
 
-Gramex can read data from all relational and most on-relational databases, including:
-
-- Relational databases
-    - Amazon Redshift
-    - Firebird
-    - IBM DB2
-    - Microsoft SQL Server
-    - MonetDB
-    - MySQL
-    - Oracle
-    - PostgreSQL
-    - SQLite
-    - Sybase
-    - Teradata
-- Non-relational databases
-    - Amazon DynamoDB
-    - Azure CosmosDB
-    - Cassandra
-    - CouchDB
-    - ElasticSearch
-    - Google BigQuery
-    - Hadoop HDFS
-    - HBase
-    - MongoDB
-    - Redis
-    - Spark
+Gramex can read data from all relational and most on-relational databases.
+[See the full list](../formhandler/#supported-databases).
 
 In addition, Gramex can read from all databases that support an ODBC interface
 and are compliant with SQLAlchemy standard.
 
 ### What input file formats does Gramex support?
 
-Gramex can read from the following file formats:
-
-- CSV
-- Excel (XLS, XLSX)
-- HDF5
-- HTML
-- JSON
-- Msgpack
-- SAS
-- Stata
+Gramex can read from most standard data file formats.
+[See the full list](../formhandler/#supported-files).
 
 Gramex can also read from any file format that has a Python reader library.
 
@@ -58,21 +26,9 @@ Gramex can also read from any file format that has a Python reader library.
 
 Gramex can render data and visuals into the following formats:
 
-- Data formats
-    - CSV
-    - Excel (XLS, XLSX)
-    - JSON
-    - XML
-- Visual formats
-    - HTML
-    - PPTX
-    - PDF
-    - Images (PNG, JPG, GIF)
-- Container formats
-    - Web pages
-    - AJAX
-    - IFRAME
-    - Mobile UIView / WebView
+- Data formats: CSV, Excel (XLS, XLSX), JSON, XML
+- Visual formats: HTML, PPTX, PDF, Images (PNG, JPG, GIF)
+- Container formats: Web pages, AJAX, IFRAME, Mobile UIView / WebView
 
 ### What applications does Gramex integrate with out-of-box?
 
@@ -175,22 +131,22 @@ be fed into:
 - **Cores**: For deployment, it’s best to plan to run Gramex application on a
   single separate Gramex instance. This ensures that the data, authorisations
   and processing capacity is kept independent.
-    - **Multiple apps on one instance:** In some cases, where the same set of
-      users require a new application that runs off the same data, the new
-      application can also run on the same instance. For example, if the Finance
-      team already has a receivables dashboard, and want to add a receivables
-      forecaster or a receivables fraud identifier visualization, these can be
-      run on the same Gramex instance.
-    - **Multiple instances for an app:** If an application has a large number of
-      concurrent users or needs to do a lot of computation, it may need to run
-      on multiple instances. As a rule of thumb, you would need at least 1
-      additional instance for every 200 concurrent users, and 25 concurrent
-      users is a typical figure achieved in real-life deployments. The nature of
-      computation varies from application to application, and it is best to
-      speak to someone from Gramener about sizing an application.
-    - A rule of thumb of 1 instance (= 1 core) per app is reasonable. But it is
-      important to have at least 1 core to spare on each server – i.e. don’t run
-      Gramex on every core.
+  - **Multiple apps on one instance:** In some cases, where the same set of
+    users require a new application that runs off the same data, the new
+    application can also run on the same instance. For example, if the Finance
+    team already has a receivables dashboard, and want to add a receivables
+    forecaster or a receivables fraud identifier visualization, these can be
+    run on the same Gramex instance.
+  - **Multiple instances for an app:** If an application has a large number of
+    concurrent users or needs to do a lot of computation, it may need to run
+    on multiple instances. As a rule of thumb, you would need at least 1
+    additional instance for every 200 concurrent users, and 25 concurrent
+    users is a typical figure achieved in real-life deployments. The nature of
+    computation varies from application to application, and it is best to
+    speak to someone from Gramener about sizing an application.
+  - A rule of thumb of 1 instance (= 1 core) per app is reasonable. But it is
+    important to have at least 1 core to spare on each server – i.e. don’t run
+    Gramex on every core.
 - **RAM**: The volume of data that needs to be processed need not fit in RAM.
   Gramex has the ability to use a streaming process to create aggregates of
   large volumes of data, reducing the volume of RAM required. However, the
@@ -468,22 +424,22 @@ specialized algorithms suited for this purpose. A typical application
 environment would have the following setup:
 
 - Network security
-    - Bulk data transfer is encrypted via SSH (RSA or ECDSA).
-    - End-user data transfer is encrypted via HTTPS, which overlays SSL/TLS on
-      top of HTTP.
+  - Bulk data transfer is encrypted via SSH (RSA or ECDSA).
+  - End-user data transfer is encrypted via HTTPS, which overlays SSL/TLS on
+    top of HTTP.
 - Password security
-    - Passwords are salted and encrypted using a one-way hashing algorithms
-      (e.g. SHA-256)
-    - One-way encryption of any data is enabled via SHA-256 by default
-    - Reversible encryption is optionally supported via the RSA algorithm
+  - Passwords are salted and encrypted using a one-way hashing algorithms
+    (e.g. SHA-256)
+  - One-way encryption of any data is enabled via SHA-256 by default
+  - Reversible encryption is optionally supported via the RSA algorithm
 - Storage security
-    - Gramex applications do not to persist computations. These happen
-      in-memory. Local caches and results are also in-memory unless explicitly
-      designed otherwise.
+  - Gramex applications do not to persist computations. These happen
+    in-memory. Local caches and results are also in-memory unless explicitly
+    designed otherwise.
 - LAN security
-    - Gramex does not automatically extract data from sources via file or port
-      scanning. Data must be pushed to the application, or explicit permissions
-      must be granted.
+  - Gramex does not automatically extract data from sources via file or port
+    scanning. Data must be pushed to the application, or explicit permissions
+    must be granted.
 
 ### What is Gramex’s logging mechanism? What information is captured? Who can access the logs?
 
@@ -496,9 +452,9 @@ Gramex logs the following information on any access:
 - Resource accessed
 - Status of the response (e.g. success, failure, etc)
 - Trace of error event, if applicable E.g.
-    - Data access errors
-    - Application configuration errors
-    - Missing resource errors
+  - Data access errors
+  - Application configuration errors
+  - Missing resource errors
 - Duration of response
 
 This information is accessible to administrators of the system Gramex is
@@ -508,7 +464,7 @@ Logs are rotated at a configurable interval, e.g. hourly, daily, weekly etc. The
 duration of log retention is configurable and only limited by system disk space.
 These can be backed up / archived using a standard file backup mechanism.
 
-### Does Gramex log any confidential and sensitive personal information like government issued IDs, passwords etc.
+### Does Gramex log any confidential and sensitive personal information like government issued IDs, passwords etc
 
 The fields mentioned in above question are logged, no additional information is
 logged. If any of the logged fields are deemed sensitive, they can be configured
@@ -597,10 +553,10 @@ relevant security issues are resolved.
 
 Gramex uses open source components that are licensed under one of these licenses:
 
-* [Python Software Foundation license](https://opensource.org/licenses/Python-2.0)
-* [MIT license](https://opensource.org/licenses/MIT)
-* [BSD license](https://opensource.org/licenses/BSD-3-Clause)
-* [LGPL license](https://opensource.org/licenses/LGPL-3.0)
-* [Apache software license](https://opensource.org/licenses/Apache-2.0)
+- [Python Software Foundation license](https://opensource.org/licenses/Python-2.0)
+- [MIT license](https://opensource.org/licenses/MIT)
+- [BSD license](https://opensource.org/licenses/BSD-3-Clause)
+- [LGPL license](https://opensource.org/licenses/LGPL-3.0)
+- [Apache software license](https://opensource.org/licenses/Apache-2.0)
 
 The [full list of libraries is here](../license/thirdparty.md).

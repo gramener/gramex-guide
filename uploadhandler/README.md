@@ -82,13 +82,14 @@ filename passed by the browser.
 You can change the path where the file is saved using `<input name="save">`. See
 the example below:
 
-    :::html
-    <form action="upload" method="POST" enctype="multipart/form-data">
-      <input name="file" type="file">
-      <button type="submit">Submit</button>
-      <input type="hidden" name="save" value="folder/data.csv">
-      <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
-    </form>
+```html
+<form action="upload" method="POST" enctype="multipart/form-data">
+  <input name="file" type="file">
+  <button type="submit">Submit</button>
+  <input type="hidden" name="save" value="folder/data.csv">
+  <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
+</form>
+```
 
 This saves the file under `folder/data.csv`, which is under the `path:` section
 specified by `gramex.yaml`. `folder/` is created if required.
@@ -165,7 +166,7 @@ key. Here is a sample AJAX request:
 ```js
 $.ajax('upload', {
   method: 'POST',
-  data: {'delete': file}  // Use the 'file' attribute in uploader.info()
+  data: {'delete': 'path/to/file.xlsx'}   // Must match 'file' in uploader.info()
 })
 ```
 
