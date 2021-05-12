@@ -131,8 +131,8 @@ Update the following and commit to `master` branch:
 - In [gramex-guide][gramex-guide] / `release/README.md` -- add release entry
 - In [gramex-guide][gramex-guide] / `release/1.xx/README.md` -- add guide release notes.
   - Run `make stats` for code size stats. Take coverage stats from Travis
-- In [gramex-guide][gramex-guide] / `python search/search.py` to update search index
-- In [gramex-guide][gramex-guide] / `node search/searchindex.js` to update search index
+- In [gramex-guide][gramex-guide] run `python search/search.py` to update search index
+- In [gramex-guide][gramex-guide] run `node search/searchindex.js` to update search index
 
 Commit and push the `master` branch of both repos to the server.
 **Ensure pipeline passes.**:

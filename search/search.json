@@ -1398,6 +1398,23 @@
       "Admin: User management": -1
     }
   },
+  "albus-dumbledore-screen-time": {
+    "": {
+      "Albus Dumbledore's Screen Time": -1
+    },
+    "create-the-data": {
+      "Create the data": -1
+    },
+    "create-the-rules": {
+      "Create the rules": -1
+    },
+    "create-the-source-template": {
+      "Create the source template": -1
+    },
+    "see-the-result": {
+      "See the result": -1
+    }
+  },
   "alert": {
     "": {
       "Smart alerts": -1
@@ -2050,18 +2067,12 @@
     "": {
       "Tutorial: Building Interactive Dashboards with Gramex": -1
     },
-    "charts-not-rendering-automatically": {
-      "Charts not rendering automatically": -1
-    },
-    "exercises": {
-      "Exercises": -1
-    },
+    "charts-not-rendering-automatically": {},
+    "exercises": {},
     "introduction": {
       "Introduction": -1
     },
-    "next-steps-faq": {
-      "Next Steps / FAQ": -1
-    },
+    "next-steps-faq": {},
     "outcome": {
       "Outcome": -1
     },
@@ -2077,9 +2088,7 @@
     "step-3-redrawing-charts-on-url-changes": {
       "Step 3: Redrawing Charts on URL Changes": -1
     },
-    "troubleshooting": {
-      "Troubleshooting": -1
-    }
+    "troubleshooting": {}
   },
   "datahandler": {
     "": {
@@ -2438,7 +2447,7 @@
       "Does Gramex have a Policy that prohibits sharing of individual accounts and passwords?": -1
     },
     "does-gramex-log-any-confidential-and-sensitive-personal-information-like-government-issued-ids-passwords-etc": {
-      "Does Gramex log any confidential and sensitive personal information like government issued IDs, passwords etc.": -1
+      "Does Gramex log any confidential and sensitive personal information like government issued IDs, passwords etc": -1
     },
     "does-gramex-support-automatic-login-function-remember-me-function-to-store-credentials": {
       "Does Gramex support automatic login function (remember me function to store credentials)?": -1
