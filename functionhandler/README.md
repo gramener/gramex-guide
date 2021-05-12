@@ -211,12 +211,13 @@ url:
         kwargs:
             function: handler.path_args
 ```
+
 Sample output:
 
 - [path/city/Tokyo](path/city/Tokyo) shows `["city", "Tokyo"]`
 - [path/age/30](path/age/30) shows `["age", "30"]`
 
-`path_args` is available to [all handlers](../handler/#basehandler-attributes).
+`path_args` is available to [all handlers](../handlers/#basehandler-attributes).
 
 ## Parse URL arguments
 
