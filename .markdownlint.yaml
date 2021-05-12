@@ -1,0 +1,5 @@
+MD012: false    # no-multiple-blanks -- sections headers use multiple blanks
+MD013: false    # no-line-length -- long lines are fine
+MD033: false    # no-inline-html -- inline HTML is used for examples
+MD034: false    # no-bare-urls
+MD041: false    # no-first-line-heading -- YAML frontmatter is used
