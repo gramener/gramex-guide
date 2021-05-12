@@ -170,14 +170,4 @@ Try comparing the order quantities and the sales in the state of Florida across 
 Corporate and the Consumer segments place a nearly equal number of orders in Florida, the Corporate
 segment has only about two thirds the total sales of the Consumer segment.
 
-## Exercises
-
-
-## Troubleshooting
-
-### Charts not rendering automatically
-
-
-## Next Steps / FAQ
-
 <script src="../tutorial.js"></script>
