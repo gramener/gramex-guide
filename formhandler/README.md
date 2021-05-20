@@ -230,8 +230,7 @@ formhandler-flags:
 
 ### Date parsing
 
-If a file has dates stored as text, use the `parse_dates:` setting to convert it
-to a datetime.
+If a file has dates stored as text, use `parse_dates: [date_column]` to convert `date_column` to a datetime.
 
 For example:
 
@@ -241,9 +240,11 @@ formhandler-...:
   handler: FormHandler
   kwargs:
     url: $YAMLPATH/data.csv
-    parse_dates: start_date                 # convert start_date from string to datetime
+    parse_dates: [start_date]               # convert start_date from string to datetime
     parse_dates: [start_date, end_date]     # convert both columns from string to datetime
 ```
+
+[This explains how it infers datetime formats](https://pandas.pydata.org/docs/user_guide/io.html#inferring-datetime-format).
 
 By default, datetimes are rendered in JSON as
 [`epoch`](https://en.wikipedia.org/wiki/Unix_time) times, i.e. time in
