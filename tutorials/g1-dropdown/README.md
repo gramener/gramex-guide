@@ -279,14 +279,4 @@ The dashboard should look like this:
 
 [View Source](../g1-dropdown/output/4/index.html){: class="source"}
 
-## Exercises
-
-
-## Troubleshooting
-
-### Charts not rendering automatically
-
-
-## Next Steps / FAQ
-
 <script src="../tutorial.js"></script>
