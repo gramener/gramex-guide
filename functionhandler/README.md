@@ -175,10 +175,10 @@ You can specify wildcards in the URL pattern. For example:
 ```yaml
 url:
     lookup:
-    pattern: /name/([a-z]+)/age/([0-9]+)        # e.g. /name/john/age/21
-    handler: FunctionHandler                    # Runs a function
-    kwargs:
-        function: calculations.name_age         # Run this function
+        pattern: /name/([a-z]+)/age/([0-9]+)        # e.g. /name/john/age/21
+        handler: FunctionHandler                    # Runs a function
+        kwargs:
+            function: calculations.name_age         # Run this function
 ```
 
 When you access `/name/john/age/21`, `john` and `21` can be accessed
@@ -188,6 +188,7 @@ via `handler.path_args` as follows:
 def name_age(handler):
     name = handler.path_args[0]
     age = handler.path_args[1]
+    return name + ' is ' + age + ' years old'
 ```
 
 You can pass any options you want to functions. For example, to call
