@@ -8,7 +8,7 @@ prefix: fddcharts
 In the [previous tutorial](../dashboards/), we saw how filtering a table can
 redraw charts. The charts themselves were not interactive. In this
 tutorial, we close the loop by making the charts trigger changes in the
-FormHandler table. 
+FormHandler table.
 
 ## Introduction
 
@@ -118,7 +118,7 @@ placeholder for the chart in your page as follows:
 ```html
 <div id="chart"></div>
 ```
-     
+
 We will be rendering the chart through a javascript
 function, similar to the `draw_charts` function from the previous tutorial.
 
@@ -214,7 +214,7 @@ chart. Add the following function to <kbd>index.html</kbd> to compile the chart 
   }
   draw_chart()
 ```
-     
+
 At this point, you should be able to see the chart. Again, as in the previous tutorial,
 the next step is to redraw the chart on URL changes.
 
@@ -298,14 +298,4 @@ interaction between the chart and the page. Whenever you click on a cell in the 
 pair of filters should show up near the top right corner of the table, and conversely whenever
 you apply a filter to the table, it should reflect in the chart.
 
-
-## Exercises
-
-
-## Troubleshooting
-
-### Charts not rendering automatically
-
-
-## Next Steps / FAQ
 <script src="../tutorial.js"></script>
