@@ -190,7 +190,7 @@ def name_age(handler):
 ```
 
 You can pass any options you want to functions. For example, to call
-`calculations.method(handler, 10, h=handler, val=0)`, you can use:
+`random.randrange(start=0, stop=100)`, you can use:
 
 ```yaml
 url:
@@ -198,7 +198,7 @@ url:
     pattern: /method          # The URL /method
     handler: FunctionHandler  # Runs a function
     kwargs:
-        function: calculations.method(handler, 10, h=handler, val=0)
+        function: random.randrange(start=0, stop=100)
 ```
 
 You can also pass these directly in the `function:`
