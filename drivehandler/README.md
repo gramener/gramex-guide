@@ -20,7 +20,7 @@ url:
       path: $GRAMEXDATA/apps/guide/drive-data/  # ... save files here
 ```
 
-Now, to upload a file into `/drive`, use this form. **Note**: use [FileHandler templates](../filehandler/#templates) for the [XSRF token](../filehandler/#xsrf).
+Now, to upload a file into `/drive`, create this `form.html`.
 
 ```html
   <!-- POST files into /drive -->
@@ -33,7 +33,18 @@ Now, to upload a file into `/drive`, use this form. **Note**: use [FileHandler t
   </form>
 ```
 
-This saves the uploaded files in the `path:` you specified.
+In your `gramex.yaml`, enable [FileHandler templates](../filehandler/#templates) for the [XSRF token](../filehandler/#xsrf) by adding this under the `url:`
+
+```yaml
+  drivehandler-form:
+    pattern: /$YAMLURL/form
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/form.html
+      template: true
+```
+
+Visit `/form` and upload a file. This saves the uploaded files in the `path:` you specified.
 
 ::: example href=form source=https://github.com/gramener/gramex-guide/blob/master/drivehandler/form.html
     Try the uploader example
