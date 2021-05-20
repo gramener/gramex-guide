@@ -51,7 +51,7 @@ Our application should look like:
 3. Create a text file `gramex.yaml` in it. Leave it blank for now.
 4. Create a text file `index.html` in it. Just enter "Hello Gramex" in it.
 
-Open a terminal, change to the `superstore` folder and [start Gramex](../install/#run-a-gramex-app):
+Open a terminal, change to the `superstore` folder and [start Gramex](../../install/#run-a-gramex-app):
 
 ```bash
 conda activate gramex
@@ -78,7 +78,7 @@ You'll see "Hello Gramex".
 ## Step 1: Expose the data through a REST API
 
 Let's create a URL that sends data to the dashboard. We'll use a Gramex microservice called
-[`FormHandler`](../formhandler).
+[`FormHandler`](../../formhandler).
 
 Add this to the (currently empty) `gramex.yaml`:
 

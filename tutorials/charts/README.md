@@ -226,8 +226,8 @@ the next step is to redraw the chart on URL changes.
 In the previous tutorial, we had managed to obtain the hash changes in the URL and use
 these as queries on the original dataset. In this case,
 remember that we are using two _different_ endpoints for the table and the chart - i.e.
-[`/data`](http://localhost:9988/data) for the table and
-[`/store-sales-ctab`](http://localhost:9988/store-sales-ctab) for the chart. Thus, to
+[`/data`](../data) for the table and
+[`/store-sales-ctab`](../store-sales-ctab) for the chart. Thus, to
 render the chart successfully on URL changes, we must be able to grab filters from the
 table and apply them to the cross-tab endpoints. This, too, involves setting the
 `data.url` attribute of the chart specification on each change in the URL.

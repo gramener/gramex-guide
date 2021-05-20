@@ -111,21 +111,21 @@ configuration. These are not yet intended for general use:
 These attributes are available to all Gramex handlers via Tornado:
 
 - `handler.request` (HTTPRequest): raw details of the HTTP request, such as:
-    - `handler.request.method`: HTTP request method, e.g. "GET" or "POST"
-    - `handler.request.uri`: The requested uri.
-    - `handler.request.path`: The path portion of `uri`
-    - `handler.request.query`: The query portion of `uri`
-    - `handler.request.version`: HTTP version specified in request, e.g. "HTTP/1.1"
-    - `handler.request.headers`: dict-like HTTP request headers
-    - `handler.request.body`: Request body, if present, as a byte string.
-    - `handler.request.remote_ip`: Client's IP address as a string. Uses `X-Real-Ip` or `X-Forwarded-For` header
-    - `handler.request.protocol`: The protocol used, either "http" or "https"
-    - `handler.request.host`: The requested hostname, usually taken from the ``Host`` header.
-    - `handler.request.files`: dict-like file names mapped to `HTTPFile` class which has
-        - `.filename`: uploaded file name
-        - `.body`: file content as byte string
-        - `.content_type`: file MIME type
-    - `handler.request.cookies`: dict-like HTTP request cookies
+  - `handler.request.method`: HTTP request method, e.g. "GET" or "POST"
+  - `handler.request.uri`: The requested uri.
+  - `handler.request.path`: The path portion of `uri`
+  - `handler.request.query`: The query portion of `uri`
+  - `handler.request.version`: HTTP version specified in request, e.g. "HTTP/1.1"
+  - `handler.request.headers`: dict-like HTTP request headers
+  - `handler.request.body`: Request body, if present, as a byte string.
+  - `handler.request.remote_ip`: Client's IP address as a string. Uses `X-Real-Ip` or `X-Forwarded-For` header
+  - `handler.request.protocol`: The protocol used, either "http" or "https"
+  - `handler.request.host`: The requested hostname, usually taken from the ``Host`` header.
+  - `handler.request.files`: dict-like file names mapped to `HTTPFile` class which has
+    - `.filename`: uploaded file name
+    - `.body`: file content as byte string
+    - `.content_type`: file MIME type
+  - `handler.request.cookies`: dict-like HTTP request cookies
 - `handler.path_args` (tuple): the URL pattern position matches. For example,
   `url: /get/(\w+)/(\d+)` matches `/get/user/123`
   with `path_args` as `('user', '123')`.
