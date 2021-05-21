@@ -3,6 +3,18 @@ title: Building Machine Learning Apps Rapidly
 prefix: workshop
 ...
 
+<!--
+
+TODO
+
+- [ ] Commit all images under this folder via Git LFS
+- [ ] Replace Dropbox links with Guide links
+- [ ] Ensure images have a {: .img-fluid} to fit width
+- [ ] Convert unordered lists to ordered lists -- so we can refer to "Step 3"
+- [ ] Anand: Once deployed, erase the Dropbox Paper and point to the guide
+-->
+
+
 * Guide link: [https://bit.ly/mlworkshopguide](https://bit.ly/mlworkshopguide)
 * Opening survey link: [https://bit.ly/mlworkshopintro](https://bit.ly/mlworkshopintro)
 * Dataset link: [https://www.dropbox.com/s/9p0510n3bpdn09w/admission.csv?dl=0](https://www.dropbox.com/s/9p0510n3bpdn09w/admission.csv?dl=0)
@@ -25,11 +37,18 @@ This workshop aims to teach you how
 
 In this workshop, we’ll predict whether or not a student will get admitted into a college in the US. Specifically, we’re going to
 
-- [Explore the data as tables](#explore-the-data)
-- [Build an ML model to predict who’ll get admitted](#build-a-model-to-predict-wholl-get-admitted)
+- [Objective](#objective)
+- [Overview](#overview)
+- [Explore the data](#explore-the-data)
+- [Build a model to predict who'll get admitted](#build-a-model-to-predict-wholl-get-admitted)
+  - [IDE Tutorial](#ide-tutorial)
 - [Build an app that predicts admission](#build-an-app-that-predicts-admission)
 - [Publish your project on GitHub](#publish-your-project-on-github)
-- [Summarize learnings](#summarize-learnings)
+- [Summarize Learnings](#summarize-learnings)
+- [Learning more](#learning-more)
+  - [Try next steps:](#try-next-steps)
+  - [What if you need help?](#what-if-you-need-help)
+  - [Share feedback](#share-feedback)
 
 
 ## Explore the data
@@ -111,7 +130,7 @@ We’ll use Gramex for this. You can either
   /predict?GREScore=324&TOEFLScore=107&UniversityRating=4&SOP=4&LOR=4.5&CGPA=8.87&Research=1
   ```
 
-Now let’s explore a student — Darius Michael. He has an excellent GRE score — 340. In fact, that’s the highest score. But Darius did not get admitted. What could he have done differently? Let’s explore. 
+Now let’s explore a student — Darius Michael. He has an excellent GRE score — 340. In fact, that’s the highest score. But Darius did not get admitted. What could he have done differently? Let’s explore.
 
 `/predict?GREScore=340&TOEFLScore=114&UniversityRating=5&SOP=4&LOR=4&CGPA=9.6&Research=1`
 
@@ -320,4 +339,3 @@ If you like Gramex, visit [https://github.com/gramener/gramex/](https://github.c
 and click on `☆ Star` to stay updated with Gramex.
 
 ![](https://paper-attachments.dropbox.com/s_892A7A54CD6216A08E7D697EBC99FE6874AEA48848176A48827BC0502AD1032C_1619346569342_image.png)
-

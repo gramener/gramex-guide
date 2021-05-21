@@ -307,14 +307,35 @@ args = handler.argparse(
 
 ## Function headers
 
-To send the output as a download (e.g. as a PDF), use:
+If you have a `download.pdf` in your folder and display it using a function, the output will be rendered as text, by default. For example:
 
 ```yaml
 url:
-    ...
+    download-pdf:
+        pattern: /download-pdf
+        handler: FunctionHandler
         kwargs:
+            function: gramex.cache.open('download.pdf', 'bin')
+```
+
+... will show output like:
+
+```
+%PDF-1.7 %���� 9 0 obj << /Type /Page...
+```
+
+To render this as a PDF, add this header:
+
+```yaml
             headers:
                 Content-Type: application/pdf       # MIME type of download
+```
+
+This displays the file as a PDF in the browser.
+
+Further, to download it (instead of rendering it in the browser), add this header:
+
+```yaml
                 Content-Disposition: attachment; filename=download.pdf
 ```
 
