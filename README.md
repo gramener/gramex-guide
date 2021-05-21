@@ -20,6 +20,10 @@ Then learn from these tutorials:
 - [Create a ML classification application](https://github.com/gramexrecipes/gramex-ml-workshop/)
 - [Try out some exercises](exercises/)
 
+## Workshops
+
+- [Building Machine Learning Apps Rapidly](workshop/building-ml-apps-rapidly/)
+
 ## Usage
 
 - [Install Gramex](install/)
