@@ -49,7 +49,7 @@ This should eliminate the need to write custom queries for most simple scenarios
 
 ## UploadHandler
 
-[UploadHandler](../../uploadhandler/) now allows developer to specify store types. 
+[UploadHandler](../../uploadhandler/) now allows developer to specify store types.
 You define the `store` `type:` to store uploaded files metadata.
 Earlier, only HDF5 store is allowed. But this has stability issues.
 From `1.38` onwards `type:sqlite` is defaulted.
@@ -71,8 +71,8 @@ inputs & sliders (not just links)
 - g1 [$.formhandler()](https://code.gramener.com/cto/g1#formhandler) accepts
 JavaScript data objects (instead of just a URL) as source
 
-### Quickstart 
-[quickstart tutorial](../../quickstart/) is now updated with FDD: Formhandler Driven Dashboard
+### Quickstart
+[quickstart tutorial](../../tutorials/quickstart/) is now updated with FDD: Formhandler Driven Dashboard
 approach, through a more generalized version of creating a dashboard/app in Gramex.
 
 ## Bug fixes

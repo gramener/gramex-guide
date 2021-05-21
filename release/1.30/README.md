@@ -167,7 +167,7 @@ is that the app runs locally, but not on the server. And it's simple to fix.
 
 - [FileHandler](../../filehandler/) now lets you scroll index pages
 - [ProxyHandler](../../proxyhandler/) fixes incorrect Content-Length headers
-- [Command-line alerts](../../alerts/#alert-command-line) do not throw an import error
+- [Command-line alerts](../../alert/#alert-command-line) do not throw an import error
 - Malformed `gramex.yaml` files are treated as empty files, and no longer stop the re-configuration
 - URL handler key names are converted to string (not unicode) for Python 2.7 compatibility
 - Sometimes, HDF5 session files do not start, and session `.change` was not initiated. Fixed

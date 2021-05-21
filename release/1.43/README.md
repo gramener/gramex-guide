@@ -8,7 +8,7 @@ prefix: 1.43
 
 ## FormHandler Edits Modify
 
-[FormHandler Edit](.././formhandler/#formhandler-edits) methods now supports `modify:` method.  For PUT, POST, etc, methods now you can run an action AFTER the edit action.
+[FormHandler Edit](../../formhandler/#formhandler-edits) methods now supports `modify:` method.  For PUT, POST, etc, methods now you can run an action AFTER the edit action.
 
 Below configuration has two `modify:` -- which are called after edit operation.
 

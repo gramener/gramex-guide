@@ -53,7 +53,7 @@ returns a JSON list with the translations.
 ]
 ```
 
-The translations are [stored in a table](../../translate/translate/cache?_format=table)
+The translations are [stored in a table](../../translate/cache?_format=html)
 that you can edit using FormHandlers.
 
 ## Better gramex init

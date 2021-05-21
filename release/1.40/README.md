@@ -161,7 +161,7 @@ client-side (browser) before submitting the credentials. [@sundeep.mallu](https:
 
 ## Smart Alerts
 
-[Smart Alerts](../../alerts/) now has a video tutorial.
+[Smart Alerts](../../alert/) now has a video tutorial.
 
 Following examples are updated:
 

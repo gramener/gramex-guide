@@ -33,12 +33,12 @@ A blank `tests/gramextest.yaml` is now included in [gramex init](../../init/).
 
 ## g1 features fuzzy search
 
-[g1.fuzzysearch](../../g1/docs/fuzzysearch.md) lets you match strings
+[g1.fuzzysearch](../../g1/fuzzysearch) lets you match strings
 approximately. This makes search-as-you-type much easier.
 
-[g1 is upgraded to 0.16.1](../../g1/CHANGELOG.md).
-This improves [$.template](../../g1/docs/template.md) and
-the `link:` attribute in [FormHandler](../../g1/docs/formhandler.md) columns.
+g1 is upgraded to `0.16.1`.
+This improves [$.template](../../g1/template) and
+the `link:` attribute in [FormHandler](../../g1/formhandler) columns.
 
 [Vega is upgraded to 5.0](https://github.com/vega/vega/releases/tag/v5.0.0).
 

@@ -43,7 +43,7 @@ url:
 
 ## Smart alerts send personalized dashboards as attachments
 
-[Smart alerts](../../alerts/) sent attachments capturing dashboards as seen by
+[Smart alerts](../../alert/) sent attachments capturing dashboards as seen by
 any single logged-in user. But now, the same alert can send dashboards as viewed
 by different users.
 
@@ -122,7 +122,7 @@ not if `template.html` is modified.)
 
 ## Alerts can be synchronized across time-zones
 
-[Schedulers](../../scheduler/) and [alerts](../alerts/) support a `utc: true`.
+[Schedulers](../../scheduler/) and [alerts](../alert/) support a `utc: true`.
 This interprets the schedule in
 [UTC time zone](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)
 instead of the local time.

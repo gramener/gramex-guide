@@ -110,7 +110,7 @@ negative margins like `.m-n3`, etc.
 - [gramex.cache.open](../../cache/#data-caching) for `.md` files nows uses the
   `toc` extension instead of the deprecated `headerid` extension. This is mostly
   backward-compatible
-- [CaptureHandler](../../capture/) raises HTTP 400 (not 200) if the URL is missing
+- [CaptureHandler](../../capturehandler/) raises HTTP 400 (not 200) if the URL is missing
 - [ProxyHandler](../../proxyhandler/) redirects `Location:` headers with relative urls correctly
 - [FileHandler templates](../../filehandler/#templates) support variables like
   `request`, `current_user`, etc. in line with [Tornado](http://www.tornadoweb.org/en/stable/guide/templates.html#template-syntax)

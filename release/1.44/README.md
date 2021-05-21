@@ -36,7 +36,7 @@ This information is exposed under [admin-page/info](../../admin/admin-kwargs/inf
 ## Groupmeans
 
 `gramex.ml.groupmeans` analytical model helps you identify the most significant influencer of each metric.
-By coupling with [`FormHandler`](../../formahanhdler/)'s filter, provides you a powerful API to build exploratory interfaces.
+By coupling with [`FormHandler`](../../formhandler/)'s filter, provides you a powerful API to build exploratory interfaces.
 
 For example, Groupmeans with `FormHandler` can be exposed as
 

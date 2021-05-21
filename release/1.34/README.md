@@ -7,9 +7,9 @@ prefix: 1.34
 
 ## Server Traceback
 
-Developers can now see [detailed traceback](../../functionhandler/addpath/10/text) on the browser.
+Developers can now see detailed traceback on the browser, like this:
 
-[![Server Traceback](servertraceback.png)](../../functionhandler/addpath/10/text)
+![Server Traceback](servertraceback.png)
 
 **NOTE**: Traceback is only for development.
 Disable it in `gramex.yaml` with `app.settings.serve_traceback: false`

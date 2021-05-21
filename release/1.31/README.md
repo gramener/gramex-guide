@@ -53,11 +53,11 @@ directories, converting FormHandler into a simple file explorer.
 
 ## Alert preview
 
-[Alerts now support previews](../../alert/preview/). You can see what alert
+[Alerts now support previews](../../alert/#alert-preview). You can see what alert
 emails look like before sending them out. We plan to improve this app into a
 full-fledged mailing and scheduling application.
 
-[![Alert preview](alert-preview.png)](../../alert/preview/)
+[![Alert preview](alert-preview.png)](../../alert/#alert-preview)
 
 **Note:** Until Gramex 1.30, emails without a schedule were sent on startup.
 Now, emails are sent only if they have an explicit schedule, or are triggered

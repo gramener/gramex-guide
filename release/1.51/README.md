@@ -72,8 +72,8 @@ DOC: upgrade g1 from 0.13 to 0.14 [S Anand]
 The [g1 interactive library](../../g1/) documentation shows examples in-place.
 You can see the effect of the code directly. Some examples:
 
-- [g1 urlfilter](../../g1/docs/urlfilter.md)
-- [g1 template](../../g1/docs/template.md)
+- [g1 urlfilter](../../g1/urlfilter)
+- [g1 template](../../g1/template)
 
 The guide now uses the Gramex [UI component library](../../uicomponents/). We also
 have new documentation on:

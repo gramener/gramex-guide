@@ -7,7 +7,7 @@ prefix: 1.33
 
 ## Quickstart tutorial
 
-Gramex now has a [quickstart tutorial](../../quickstart/) that explains how to
+Gramex now has a [quickstart tutorial](../../tutorials/quickstart/) that explains how to
 create a Gramex application, step-by-step.
 
 ## Sanddance
