@@ -19,6 +19,7 @@ Then learn from these tutorials:
 - [Dropdown & Search](tutorials/g1-dropdown)
 - [Create a ML classification application](https://github.com/gramexrecipes/gramex-ml-workshop/)
 - [Try out some exercises](exercises/)
+- [Building Machine Learning Apps Rapidly](workshop/)
 
 ## Usage
 
