@@ -7,9 +7,9 @@ prefix: workshop
 
 TODO
 
-- [ ] Commit all images under this folder via Git LFS
-- [ ] Replace Dropbox links with Guide links
-- [ ] Ensure images have a {: .img-fluid} to fit width
+- [x] Commit all images under this folder via Git LFS
+- [x] Replace Dropbox links with Guide links
+- [x] Ensure images have a {: .img-fluid} to fit width
 - [ ] Convert unordered lists to ordered lists -- so we can refer to "Step 3"
 - [ ] Anand: Once deployed, erase the Dropbox Paper and point to the guide
 -->
@@ -54,7 +54,7 @@ In this workshop, we’ll predict whether or not a student will get admitted int
 ## Explore the data
 The dataset [admission.csv](https://www.dropbox.com/s/9p0510n3bpdn09w/admission.csv?dl=0) looks like this:
 
-![](https://paper-attachments.dropbox.com/s_426CF8CB2BD59D7303C39FB7F691A7D4921942F61C49F5B11CD4C1D3718CC93F_1617244813193_image.png)
+![](table.png){.img-fluid}
 
 
 Each row is a student. We have data for 500 students. For every student, we know their
@@ -81,40 +81,41 @@ We’ll use Gramex for this. You can either
 1. Visit [https://gramex.gramener.com/](https://gramex.gramener.com/)
 2. Click on the “Create new project” button
 
-  ![](https://paper-attachments.dropbox.com/s_426CF8CB2BD59D7303C39FB7F691A7D4921942F61C49F5B11CD4C1D3718CC93F_1617245361358_image.png)
+  ![](create-new-project.png){.img-fluid}
 
 
 3. Under “Create a Blank Project”, type “admission” as your project name and click “Create Project”
 
-  ![](https://paper-attachments.dropbox.com/s_426CF8CB2BD59D7303C39FB7F691A7D4921942F61C49F5B11CD4C1D3718CC93F_1617245498248_image.png)
+  ![](new-project-dialog.png){.img-fluid}
 
 4. The “admission” project is created. Click on it to open the IDE.
 
-  ![](https://paper-attachments.dropbox.com/s_426CF8CB2BD59D7303C39FB7F691A7D4921942F61C49F5B11CD4C1D3718CC93F_1617245529209_image.png)
+  ![](project-name.png){.img-fluid}
 
 5. Add an [MLHandler](/mlhandler) component
 
-  ![](https://paper-attachments.dropbox.com/s_892A7A54CD6216A08E7D697EBC99FE6874AEA48848176A48827BC0502AD1032C_1617246133642_image.png)
+  ![](mlhandler-card.png){.img-fluid}
 
 6. Enter “predict” under the Pattern: as the MLHandler end point URL.
     Download the dataset `admission.csv` and upload it using the Upload icon.
     Click on Preview to see the dataset.
 
-  ![](https://paper-attachments.dropbox.com/s_892A7A54CD6216A08E7D697EBC99FE6874AEA48848176A48827BC0502AD1032C_1620982867363_image.png)
+  ![](mlhandler-form.png){.img-fluid}
 
   Next,
 
-  * In Columns to Exclude, select “Name”
-  * In Categorical Columns, select “Research”
-  * In Numerical Columns, select everything except “Name”, “Research” and “Admitted”
-  * In Pick a Target Column, select “Admitted”
-  * In Pick a Model, select “Logistic Regression” (default)
-  * Press Submit
+  1. In Columns to Exclude, select “Name”
+  2. In Categorical Columns, select “Research”
+  3. In Numerical Columns, select everything except “Name”, “Research” and “Admitted”
+  4. In Pick a Target Column, select “Admitted”
+  5. In Pick a Model, select “Logistic Regression” (default)
+  6. Press Submit
 
-  ![](https://paper-attachments.dropbox.com/s_892A7A54CD6216A08E7D697EBC99FE6874AEA48848176A48827BC0502AD1032C_1617246614108_proxy.gif)
+  ![](mlhandler-form.gif){.img-fluid}
 
 7. After a few seconds, click on the “/predict” link. This opens the trained model page
-![](https://paper-attachments.dropbox.com/s_892A7A54CD6216A08E7D697EBC99FE6874AEA48848176A48827BC0502AD1032C_1617246704109_image.png)
+
+  ![](mlhandler-endpoint-card.png){.img-fluid}
 
 8. The URL will look something like this: https://9286.gramex.gramener.co/predict. From now on, we’ll refer to it as `/predict`. You need to type out the https://… part by yourself.
 9. Let’s predict the admissions of a few people. Add these query parameters to your URL and see if the “Admitted” field is correct.
@@ -146,121 +147,119 @@ Which of these worked? Which of these didn’t?
 
 Let’s now build a web app that uses this data like an API.
 
-- Click on the code editor on the left — the second icon. This shows a list of all files created for the app. Select `index.html`
+1. Click on the code editor on the left — the second icon. This shows a list of all files created for the app. Select `index.html`
 
-  ![](https://paper-attachments.dropbox.com/s_892A7A54CD6216A08E7D697EBC99FE6874AEA48848176A48827BC0502AD1032C_1617250430996_proxy.gif)
+  ![](vscode-nav.gif){.img-fluid}
 
-- Delete all lines from `index.html`
-- Copy paste the following file into `index.html`
+2. Delete all lines from `index.html`
+3. Copy paste the following file into `index.html`
 
-```html
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>admission</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.scss">
-  <style>
-    #result { font-weight: normal; }
-  </style>
-</head>
-<body>
-  {% set base = '.' %}
-  {% include template-navbar.html %}
-  <div class="container py-4">
-    <div class="row">
-      <div class="col-sm-6">
-        <form class="admission">
-          <div class="form-group row">
-            <label for="GREScore" class="col-md-4">GRE Score</label>
-            <input type="number" class="form-control col-md-8" name="GREScore" min="280" max="340">
-          </div>
-          <div class="form-group row">
-            <label for="TOEFLScore" class="col-md-4">TOEFL Score</label>
-            <input type="number" class="form-control col-md-8" name="TOEFLScore" min="90" max="120">
-          </div>
-          <div class="form-group row">
-            <label for="UniversityRating" class="col-md-4">University Rating</label>
-            <input type="number" class="form-control col-md-8" name="UniversityRating" min="1" max="5">
-          </div>
-          <div class="form-group row">
-            <label for="SOP" class="col-md-4">SOP</label>
-            <input type="number" class="form-control col-md-8" name="SOP" step="0.5" min="1" max="5">
-          </div>
-          <div class="form-group row">
-            <label for="LOR" class="col-md-4">LOR</label>
-            <input type="number" class="form-control col-md-8" name="LOR" step="0.5" min="1" max="5">
-          </div>
-          <div class="form-group row">
-            <label for="CGPA" class="col-md-4">CGPA</label>
-            <input type="number" class="form-control col-md-8" name="CGPA" step="0.01" min="6" max="10">
-          </div>
-          <div class="form-group row">
-            <label for="Research" class="col-md-4">Research</label>
-            <select class="form-control col-md-8" name="Research">
-              <option value="0">0: No</option>
-              <option value="1">1: Yes</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
-      <div class="col-sm-6 text-center text-middle">
-        <h1 id="result"></h1>
-      </div>
-    </div>
-  </div><!-- .container-fluid -->
-  <script src="ui/jquery/dist/jquery.min.js"></script>
-  <script src="ui/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="ui/lodash/lodash.min.js"></script>
-  <script src="ui/g1/dist/g1.min.js"></script>
-  <script>
-    $('.admission').on('submit', function (e) {
-      e.preventDefault()
-      $.getJSON('predict?' + $(this).serialize())
-        .then(function (results) {
-          console.log('Results', results)
-          $('#result').html(
-            results[0].Admitted ? 'You will <strong class="text-success">be admitted</strong>' : 'You will <strong class="text-danger">not be admitted</strong>'
-          )
-        })
-        .fail(function (xhr) {
-          console.error(xhr)
-          $('#result').html('<strong class="text-danger">Error</strong>. Please enter values correctly')
-        })
-    })
-    $('.admission :input').on('change', function () {
-      $('#result').html('')
-    })
-  </script>
-</body>
-</html>
-```
+        <!doctype html>
+        <html lang="en">
+        <head>
+          <meta charset="utf-8">
+          <meta http-equiv="x-ua-compatible" content="ie=edge">
+          <title>admission</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="style.scss">
+          <style>
+            #result { font-weight: normal; }
+          </style>
+        </head>
+        <body>
+          {% set base = '.' %}
+          {% include template-navbar.html %}
+          <div class="container py-4">
+            <div class="row">
+              <div class="col-sm-6">
+                <form class="admission">
+                  <div class="form-group row">
+                    <label for="GREScore" class="col-md-4">GRE Score</label>
+                    <input type="number" class="form-control col-md-8" name="GREScore" min="280" max="340">
+                  </div>
+                  <div class="form-group row">
+                    <label for="TOEFLScore" class="col-md-4">TOEFL Score</label>
+                    <input type="number" class="form-control col-md-8" name="TOEFLScore" min="90" max="120">
+                  </div>
+                  <div class="form-group row">
+                    <label for="UniversityRating" class="col-md-4">University Rating</label>
+                    <input type="number" class="form-control col-md-8" name="UniversityRating" min="1" max="5">
+                  </div>
+                  <div class="form-group row">
+                    <label for="SOP" class="col-md-4">SOP</label>
+                    <input type="number" class="form-control col-md-8" name="SOP" step="0.5" min="1" max="5">
+                  </div>
+                  <div class="form-group row">
+                    <label for="LOR" class="col-md-4">LOR</label>
+                    <input type="number" class="form-control col-md-8" name="LOR" step="0.5" min="1" max="5">
+                  </div>
+                  <div class="form-group row">
+                    <label for="CGPA" class="col-md-4">CGPA</label>
+                    <input type="number" class="form-control col-md-8" name="CGPA" step="0.01" min="6" max="10">
+                  </div>
+                  <div class="form-group row">
+                    <label for="Research" class="col-md-4">Research</label>
+                    <select class="form-control col-md-8" name="Research">
+                      <option value="0">0: No</option>
+                      <option value="1">1: Yes</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
+              <div class="col-sm-6 text-center text-middle">
+                <h1 id="result"></h1>
+              </div>
+            </div>
+          </div><!-- .container-fluid -->
+          <script src="ui/jquery/dist/jquery.min.js"></script>
+          <script src="ui/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+          <script src="ui/lodash/lodash.min.js"></script>
+          <script src="ui/g1/dist/g1.min.js"></script>
+          <script>
+            $('.admission').on('submit', function (e) {
+              e.preventDefault()
+              $.getJSON('predict?' + $(this).serialize())
+                .then(function (results) {
+                  console.log('Results', results)
+                  $('#result').html(
+                    results[0].Admitted ? 'You will <strong class="text-success">be admitted</strong>' : 'You will <strong class="text-danger">not be admitted</strong>'
+                  )
+                })
+                .fail(function (xhr) {
+                  console.error(xhr)
+                  $('#result').html('<strong class="text-danger">Error</strong>. Please enter values correctly')
+                })
+            })
+            $('.admission :input').on('change', function () {
+              $('#result').html('')
+            })
+          </script>
+        </body>
+        </html>
 
-- Visit your app by going to the home page and clicking on “Launch app” against the “admissions” app
+4. Visit your app by going to the home page and clicking on “Launch app” against the “admissions” app
 
-![](https://paper-attachments.dropbox.com/s_892A7A54CD6216A08E7D697EBC99FE6874AEA48848176A48827BC0502AD1032C_1617250662843_proxy.gif)
+  ![](launch-app.gif){.img-fluid}
 
-- Now, try out different combinations of marks and see the result.
+5. Now, try out different combinations of marks and see the result.
 
 ## Publish your project on GitHub
 
 Now, let’s save your app as repository on Github. You (or anyone) can run it with the Gramex IDE.
 
 
-- If you don’t have a Github account, sign up at https://github.com/join
-- If you have a Github account, log in at https://github.com/login
-- Create a new repository at https://github.com/new. Call it “admission”. Click “Create repository”
+1. If you don’t have a Github account, sign up at https://github.com/join
+2. If you have a Github account, log in at https://github.com/login
+3. Create a new repository at https://github.com/new. Call it “admission”. Click “Create repository”
 
-![](https://paper-attachments.dropbox.com/s_892A7A54CD6216A08E7D697EBC99FE6874AEA48848176A48827BC0502AD1032C_1619345042620_image.png)
+  ![](new-github-repo.png){.img-fluid}
 
-- Once the repository  is created, copy the HTTPS link on the next page. It will look like `https://github.com/<your-id>/admission.git`
+4. Once the repository  is created, copy the HTTPS link on the next page. It will look like `https://github.com/<your-id>/admission.git`
 
-![](https://paper-attachments.dropbox.com/s_892A7A54CD6216A08E7D697EBC99FE6874AEA48848176A48827BC0502AD1032C_1619345116120_image.png)
+  ![](new-repo-setup.png){.img-fluid}
 
-- Click on the code editor on the left — the second icon. Press `Ctrl+\`` (Ctrl-Backtick) to open the Terminal. Then type these commands:
+5. Click on the code editor on the left — the second icon. Press `Ctrl+\`` (Ctrl-Backtick) to open the Terminal. Then type these commands:
 
 ```bash
 git config --global user.email "you@example.com"
@@ -273,12 +272,11 @@ git remote add origin https://github.com/<your-id>/admission.git
 git push -u origin master
 ```
 
-![](https://paper.dropbox.com/ep/redirect/image?url=https%3A%2F%2Fpaper-attachments.dropbox.com%2Fs_892A7A54CD6216A08E7D697EBC99FE6874AEA48848176A48827BC0502AD1032C_1619346371852_proxy.gif&hmac=w6isVTPOsGiCsWSZJyA5wqZ7cdBrgcyHl8z4C5u0gJ8%3D)
+  ![](git-config-terminal.gif){.img-fluid}
 
+While typing `git push -u origin master`, Github will prompt you to authorize the code serve. Select “Authorize cdr” when this appears.
 
-- While typing `git push -u origin master`, Github will prompt you to authorize the code serve. Select “Authorize cdr” when this appears.
-
-![](https://paper-attachments.dropbox.com/s_892A7A54CD6216A08E7D697EBC99FE6874AEA48848176A48827BC0502AD1032C_1619346419846_image.png)
+  ![](authorize-code-server.png){.img-fluid}
 
 
 Now, this project is is available on your Github repository. To clone it, anyone can:
@@ -287,13 +285,13 @@ Now, this project is is available on your Github repository. To clone it, anyone
 1. Visit https://gramex.gramener.com/
 2. Click on the “Create new project” button
 
-![](https://paper-attachments.dropbox.com/s_426CF8CB2BD59D7303C39FB7F691A7D4921942F61C49F5B11CD4C1D3718CC93F_1617245361358_image.png)
+  ![](create-new-project.png){.img-fluid}
 
 3. Type your repository link under “Clone a Repository”. It will be like `https://github.com/<your-id>/admission.git`.
 4. Type any new project name.
 5. Then click “Clone”
 
-![](https://paper-attachments.dropbox.com/s_892A7A54CD6216A08E7D697EBC99FE6874AEA48848176A48827BC0502AD1032C_1619346692625_image.png)
+  ![](clone-repo-dialog.png){.img-fluid}
 
 
 ## Summarize Learnings
@@ -338,4 +336,4 @@ Could you please fill this 1-minute survey:
 If you like Gramex, visit [https://github.com/gramener/gramex/](https://github.com/gramener/gramex/)
 and click on `☆ Star` to stay updated with Gramex.
 
-![](https://paper-attachments.dropbox.com/s_892A7A54CD6216A08E7D697EBC99FE6874AEA48848176A48827BC0502AD1032C_1619346569342_image.png)
+![](github-star-fork.png){.img-fluid}
