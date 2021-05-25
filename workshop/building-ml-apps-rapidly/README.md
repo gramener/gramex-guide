@@ -3,19 +3,8 @@ title: Building Machine Learning Apps Rapidly
 prefix: workshop
 ...
 
-<!--
 
-TODO
-
-- [x] Commit all images under this folder via Git LFS
-- [x] Replace Dropbox links with Guide links
-- [x] Ensure images have a {: .img-fluid} to fit width
-- [ ] Convert unordered lists to ordered lists -- so we can refer to "Step 3"
-- [ ] Anand: Once deployed, erase the Dropbox Paper and point to the guide
--->
-
-
-* Guide link: [https://bit.ly/mlworkshopguide](https://bit.ly/mlworkshopguide)
+* Guide link: [https://bit.ly/mlappworkshop](https://bit.ly/mlappworkshop)
 * Opening survey link: [https://bit.ly/mlworkshopintro](https://bit.ly/mlworkshopintro)
 * Dataset link: [https://www.dropbox.com/s/9p0510n3bpdn09w/admission.csv?dl=0](https://www.dropbox.com/s/9p0510n3bpdn09w/admission.csv?dl=0)
 * IDE link: [https://gramex.gramener.com](https://gramex.gramener.com)
