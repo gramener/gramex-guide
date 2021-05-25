@@ -4,21 +4,23 @@ prefix: workshop
 ...
 
 
-* Guide link: [https://bit.ly/mlappworkshop](https://bit.ly/mlappworkshop)
-* Opening survey link: [https://bit.ly/mlworkshopintro](https://bit.ly/mlworkshopintro)
-* Dataset link: [https://www.dropbox.com/s/9p0510n3bpdn09w/admission.csv?dl=0](https://www.dropbox.com/s/9p0510n3bpdn09w/admission.csv?dl=0)
-* IDE link: [https://gramex.gramener.com](https://gramex.gramener.com)
-* Final survey link: [https://bit.ly/mlworkshopresponse](https://bit.ly/mlworkshopresponse)
-* Output for certificate link: [http://bit.ly/GramexOP](http://bit.ly/GramexOP)
+- Guide link: [https://bit.ly/mlappworkshop](https://bit.ly/mlappworkshop)
+- Opening survey link: [https://bit.ly/mlworkshopintro](https://bit.ly/mlworkshopintro)
+- Dataset link: [https://www.dropbox.com/s/9p0510n3bpdn09w/admission.csv?dl=0](https://www.dropbox.com/s/9p0510n3bpdn09w/admission.csv?dl=0)
+- IDE link: [https://gramex.gramener.com](https://gramex.gramener.com)
+- Final survey link: [https://bit.ly/mlworkshopresponse](https://bit.ly/mlworkshopresponse)
+- Output for certificate link: [http://bit.ly/GramexOP](http://bit.ly/GramexOP)
 
 ### A Quick Survey
+
 Before we start, could you please fill in this 15-second survey? [https://bit.ly/mlworkshopintro](https://bit.ly/mlworkshopintro)
 
 
 ## Objective
-This workshop aims to teach you how
 
-- a practical example of how a modern ML App is built
+This workshop aims to teach you how:
+
+- modern ML Apps are built, with a practical example
 - low-code approaches make this fast and flexible
 - micro-services make it easier to extend applications
 
@@ -35,15 +37,16 @@ In this workshop, we’ll predict whether or not a student will get admitted int
 - [Publish your project on GitHub](#publish-your-project-on-github)
 - [Summarize Learnings](#summarize-learnings)
 - [Learning more](#learning-more)
-  - [Try next steps:](#try-next-steps)
+  - [Try next steps](#try-next-steps)
   - [What if you need help?](#what-if-you-need-help)
   - [Share feedback](#share-feedback)
 
 
 ## Explore the data
+
 The dataset [admission.csv](https://www.dropbox.com/s/9p0510n3bpdn09w/admission.csv?dl=0) looks like this:
 
-![](table.png){.img-fluid}
+![Screenshot](table.png){.img-fluid}
 
 
 Each row is a student. We have data for 500 students. For every student, we know their
@@ -70,55 +73,45 @@ We’ll use Gramex for this. You can either
 1. Visit [https://gramex.gramener.com/](https://gramex.gramener.com/)
 2. Click on the “Create new project” button
 
-  ![](create-new-project.png){.img-fluid}
-
+   ![Screenshot](create-new-project.png){.img-fluid}
 
 3. Under “Create a Blank Project”, type “admission” as your project name and click “Create Project”
 
-  ![](new-project-dialog.png){.img-fluid}
+   ![Screenshot](new-project-dialog.png){.img-fluid}
 
 4. The “admission” project is created. Click on it to open the IDE.
 
-  ![](project-name.png){.img-fluid}
+   ![Screenshot](project-name.png){.img-fluid}
 
 5. Add an [MLHandler](/mlhandler) component
 
-  ![](mlhandler-card.png){.img-fluid}
+   ![Screenshot](mlhandler-card.png){.img-fluid}
 
 6. Enter “predict” under the Pattern: as the MLHandler end point URL.
-    Download the dataset `admission.csv` and upload it using the Upload icon.
-    Click on Preview to see the dataset.
+   Download the dataset `admission.csv` and upload it using the Upload icon.
+   Click on Preview to see the dataset.
 
-  ![](mlhandler-form.png){.img-fluid}
+![Screenshot](mlhandler-form.png){.img-fluid}
 
   Next,
 
-  1. In Columns to Exclude, select “Name”
-  2. In Categorical Columns, select “Research”
-  3. In Numerical Columns, select everything except “Name”, “Research” and “Admitted”
-  4. In Pick a Target Column, select “Admitted”
-  5. In Pick a Model, select “Logistic Regression” (default)
-  6. Press Submit
+1. In Columns to Exclude, select “Name”
+2. In Categorical Columns, select “Research”
+3. In Numerical Columns, select everything except “Name”, “Research” and “Admitted”
+4. In Pick a Target Column, select “Admitted”
+5. In Pick a Model, select “Logistic Regression” (default)
+6. Press Submit
 
-  ![](mlhandler-form.gif){.img-fluid}
+   ![Screenshot](mlhandler-form.gif){.img-fluid}
 
 7. After a few seconds, click on the “/predict” link. This opens the trained model page
 
-  ![](mlhandler-endpoint-card.png){.img-fluid}
+   ![Screenshot](mlhandler-endpoint-card.png){.img-fluid}
 
 8. The URL will look something like this: https://9286.gramex.gramener.co/predict. From now on, we’ll refer to it as `/predict`. You need to type out the https://… part by yourself.
 9. Let’s predict the admissions of a few people. Add these query parameters to your URL and see if the “Admitted” field is correct.
-  - Ethan Koch:
-
-  ```
-  /predict?GREScore=337&TOEFLScore=118&UniversityRating=4&SOP=4.5&LOR=4.5&CGPA=9.65&Research=1
-  ```
-
-  - Diana Strong:
-
-  ```
-  /predict?GREScore=324&TOEFLScore=107&UniversityRating=4&SOP=4&LOR=4.5&CGPA=8.87&Research=1
-  ```
+   - Ethan Koch: `/predict?GREScore=337&TOEFLScore=118&UniversityRating=4&SOP=4.5&LOR=4.5&CGPA=9.65&Research=1`
+   - Diana Strong: `/predict?GREScore=324&TOEFLScore=107&UniversityRating=4&SOP=4&LOR=4.5&CGPA=8.87&Research=1`
 
 Now let’s explore a student — Darius Michael. He has an excellent GRE score — 340. In fact, that’s the highest score. But Darius did not get admitted. What could he have done differently? Let’s explore.
 
@@ -138,100 +131,102 @@ Let’s now build a web app that uses this data like an API.
 
 1. Click on the code editor on the left — the second icon. This shows a list of all files created for the app. Select `index.html`
 
-  ![](vscode-nav.gif){.img-fluid}
+   ![Screenshot](vscode-nav.gif){.img-fluid}
 
 2. Delete all lines from `index.html`
 3. Copy paste the following file into `index.html`
 
-        <!doctype html>
-        <html lang="en">
-        <head>
-          <meta charset="utf-8">
-          <meta http-equiv="x-ua-compatible" content="ie=edge">
-          <title>admission</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1">
-          <link rel="stylesheet" href="style.scss">
-          <style>
-            #result { font-weight: normal; }
-          </style>
-        </head>
-        <body>
-          {% set base = '.' %}
-          {% include template-navbar.html %}
-          <div class="container py-4">
-            <div class="row">
-              <div class="col-sm-6">
-                <form class="admission">
-                  <div class="form-group row">
-                    <label for="GREScore" class="col-md-4">GRE Score</label>
-                    <input type="number" class="form-control col-md-8" name="GREScore" min="280" max="340">
-                  </div>
-                  <div class="form-group row">
-                    <label for="TOEFLScore" class="col-md-4">TOEFL Score</label>
-                    <input type="number" class="form-control col-md-8" name="TOEFLScore" min="90" max="120">
-                  </div>
-                  <div class="form-group row">
-                    <label for="UniversityRating" class="col-md-4">University Rating</label>
-                    <input type="number" class="form-control col-md-8" name="UniversityRating" min="1" max="5">
-                  </div>
-                  <div class="form-group row">
-                    <label for="SOP" class="col-md-4">SOP</label>
-                    <input type="number" class="form-control col-md-8" name="SOP" step="0.5" min="1" max="5">
-                  </div>
-                  <div class="form-group row">
-                    <label for="LOR" class="col-md-4">LOR</label>
-                    <input type="number" class="form-control col-md-8" name="LOR" step="0.5" min="1" max="5">
-                  </div>
-                  <div class="form-group row">
-                    <label for="CGPA" class="col-md-4">CGPA</label>
-                    <input type="number" class="form-control col-md-8" name="CGPA" step="0.01" min="6" max="10">
-                  </div>
-                  <div class="form-group row">
-                    <label for="Research" class="col-md-4">Research</label>
-                    <select class="form-control col-md-8" name="Research">
-                      <option value="0">0: No</option>
-                      <option value="1">1: Yes</option>
-                    </select>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-              </div>
-              <div class="col-sm-6 text-center text-middle">
-                <h1 id="result"></h1>
-              </div>
-            </div>
-          </div><!-- .container-fluid -->
-          <script src="ui/jquery/dist/jquery.min.js"></script>
-          <script src="ui/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-          <script src="ui/lodash/lodash.min.js"></script>
-          <script src="ui/g1/dist/g1.min.js"></script>
-          <script>
-            $('.admission').on('submit', function (e) {
-              e.preventDefault()
-              $.getJSON('predict?' + $(this).serialize())
-                .then(function (results) {
-                  console.log('Results', results)
-                  $('#result').html(
-                    results[0].Admitted ? 'You will <strong class="text-success">be admitted</strong>' : 'You will <strong class="text-danger">not be admitted</strong>'
-                  )
-                })
-                .fail(function (xhr) {
-                  console.error(xhr)
-                  $('#result').html('<strong class="text-danger">Error</strong>. Please enter values correctly')
-                })
-            })
-            $('.admission :input').on('change', function () {
-              $('#result').html('')
-            })
-          </script>
-        </body>
-        </html>
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>admission</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.scss">
+  <style>
+    #result { font-weight: normal; }
+  </style>
+</head>
+<body>
+  {% set base = '.' %}
+  {% include template-navbar.html %}
+  <div class="container py-4">
+    <div class="row">
+      <div class="col-sm-6">
+        <form class="admission">
+          <div class="form-group row">
+            <label for="GREScore" class="col-md-4">GRE Score</label>
+            <input type="number" class="form-control col-md-8" name="GREScore" min="280" max="340">
+          </div>
+          <div class="form-group row">
+            <label for="TOEFLScore" class="col-md-4">TOEFL Score</label>
+            <input type="number" class="form-control col-md-8" name="TOEFLScore" min="90" max="120">
+          </div>
+          <div class="form-group row">
+            <label for="UniversityRating" class="col-md-4">University Rating</label>
+            <input type="number" class="form-control col-md-8" name="UniversityRating" min="1" max="5">
+          </div>
+          <div class="form-group row">
+            <label for="SOP" class="col-md-4">SOP</label>
+            <input type="number" class="form-control col-md-8" name="SOP" step="0.5" min="1" max="5">
+          </div>
+          <div class="form-group row">
+            <label for="LOR" class="col-md-4">LOR</label>
+            <input type="number" class="form-control col-md-8" name="LOR" step="0.5" min="1" max="5">
+          </div>
+          <div class="form-group row">
+            <label for="CGPA" class="col-md-4">CGPA</label>
+            <input type="number" class="form-control col-md-8" name="CGPA" step="0.01" min="6" max="10">
+          </div>
+          <div class="form-group row">
+            <label for="Research" class="col-md-4">Research</label>
+            <select class="form-control col-md-8" name="Research">
+              <option value="0">0: No</option>
+              <option value="1">1: Yes</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="col-sm-6 text-center text-middle">
+        <h1 id="result"></h1>
+      </div>
+    </div>
+  </div><!-- .container-fluid -->
+  <script src="ui/jquery/dist/jquery.min.js"></script>
+  <script src="ui/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="ui/lodash/lodash.min.js"></script>
+  <script src="ui/g1/dist/g1.min.js"></script>
+  <script>
+    $('.admission').on('submit', function (e) {
+      e.preventDefault()
+      $.getJSON('predict?' + $(this).serialize())
+        .then(function (results) {
+          console.log('Results', results)
+          $('#result').html(
+            results[0].Admitted ? 'You will <strong class="text-success">be admitted</strong>' : 'You will <strong class="text-danger">not be admitted</strong>'
+          )
+        })
+        .fail(function (xhr) {
+          console.error(xhr)
+          $('#result').html('<strong class="text-danger">Error</strong>. Please enter values correctly')
+        })
+    })
+    $('.admission :input').on('change', function () {
+      $('#result').html('')
+    })
+  </script>
+</body>
+</html>
+```
 
-4. Visit your app by going to the home page and clicking on “Launch app” against the “admissions” app
+Visit your app by going to the home page and clicking on “Launch app” against the “admissions” app
 
-  ![](launch-app.gif){.img-fluid}
+![Screenshot](launch-app.gif){.img-fluid}
 
-5. Now, try out different combinations of marks and see the result.
+Now, try out different combinations of marks and see the result.
 
 ## Publish your project on GitHub
 
@@ -242,30 +237,30 @@ Now, let’s save your app as repository on Github. You (or anyone) can run it w
 2. If you have a Github account, log in at https://github.com/login
 3. Create a new repository at https://github.com/new. Call it “admission”. Click “Create repository”
 
-  ![](new-github-repo.png){.img-fluid}
+   ![Screenshot](new-github-repo.png){.img-fluid}
 
 4. Once the repository  is created, copy the HTTPS link on the next page. It will look like `https://github.com/<your-id>/admission.git`
 
-  ![](new-repo-setup.png){.img-fluid}
+   ![Screenshot](new-repo-setup.png){.img-fluid}
 
-5. Click on the code editor on the left — the second icon. Press `Ctrl+\`` (Ctrl-Backtick) to open the Terminal. Then type these commands:
+5. Click on the code editor on the left — the second icon. Press `` Ctrl+` `` (Ctrl-Backtick) to open the Terminal.
+   Then copy-paste these commands using `Shift+Ins`.
 
 ```bash
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
+git config --global user.name "<Your Name>"           # Add your name
+git config --global user.email "<you@example.com>"    # Add your email
 git init
-git add .     # Don't forget the . at the end
+git add .                                             # Remember the . at the end
 git commit -m "basic prediction"
-# Replace <your-id> with your user ID here
-git remote add origin https://github.com/<your-id>/admission.git
+git remote add origin https://github.com/<your-id>/admission.git    # Use YOUR Github id here
 git push -u origin master
 ```
 
-  ![](git-config-terminal.gif){.img-fluid}
+![Screenshot](git-config-terminal.gif){.img-fluid}
 
 While typing `git push -u origin master`, Github will prompt you to authorize the code serve. Select “Authorize cdr” when this appears.
 
-  ![](authorize-code-server.png){.img-fluid}
+![Screenshot](authorize-code-server.png){.img-fluid}
 
 
 Now, this project is is available on your Github repository. To clone it, anyone can:
@@ -274,13 +269,13 @@ Now, this project is is available on your Github repository. To clone it, anyone
 1. Visit https://gramex.gramener.com/
 2. Click on the “Create new project” button
 
-  ![](create-new-project.png){.img-fluid}
+   ![Screenshot](create-new-project.png){.img-fluid}
 
 3. Type your repository link under “Clone a Repository”. It will be like `https://github.com/<your-id>/admission.git`.
 4. Type any new project name.
 5. Then click “Clone”
 
-  ![](clone-repo-dialog.png){.img-fluid}
+   ![Screenshot](clone-repo-dialog.png){.img-fluid}
 
 
 ## Summarize Learnings
@@ -292,7 +287,7 @@ Now, this project is is available on your Github repository. To clone it, anyone
 
 ## Learning more
 
-### Try next steps:
+### Try next steps
 
 - Explore the models to see which model has the best accuracy
 - Extend the application to show the list of users. Click on a user to fill the form with their score.
@@ -325,4 +320,4 @@ Could you please fill this 1-minute survey:
 If you like Gramex, visit [https://github.com/gramener/gramex/](https://github.com/gramener/gramex/)
 and click on `☆ Star` to stay updated with Gramex.
 
-![](github-star-fork.png){.img-fluid}
+![Screenshot](github-star-fork.png){.img-fluid}

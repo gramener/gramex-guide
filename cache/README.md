@@ -114,13 +114,13 @@ cache-only-path:
 The key can accept multiple values. The values can either be:
 
 - `request.<attr>`: For example, `request.uri` returns the URI request. Valid attributes are:
-    - `request.uri`: The default mechanism = `request.path` + `request.uri`
-    - `request.path`: Same cache irrespective of query parameters
-    - `request.query`:  Same cache irrespective of URL path
-    - `request.remote_ip`: Different caches for each client IP address
-    - `request.protocol`: Different caches for "http" vs "https"
-    - `request.host`: Different caches when serving on multiple domain names
-    - `request.method`: Different caches for "GET" vs "POST", etc
+  - `request.uri`: The default mechanism = `request.path` + `request.uri`
+  - `request.path`: Same cache irrespective of query parameters
+  - `request.query`:  Same cache irrespective of URL path
+  - `request.remote_ip`: Different caches for each client IP address
+  - `request.protocol`: Different caches for "http" vs "https"
+  - `request.host`: Different caches when serving on multiple domain names
+  - `request.method`: Different caches for "GET" vs "POST", etc
 - `headers.<header>`: This translates to `handler.request.headers[header]`. For
   example, `headers.Content-Type` returns the `Content-Type` header. The match
   is case-insensitive. Multiple values are joined by comma.
