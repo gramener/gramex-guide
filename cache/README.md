@@ -18,6 +18,7 @@ Here is an example of how to use `Cache-Control:`:
 
 ```yaml
 url:
+  cache-example:
     pattern: /$YAMLURL/path       # Pick any pattern
     handler: FileHandler          # and handler
     kwargs:
@@ -203,7 +204,7 @@ cache:
 ```
 
 **Memory caches are the default**. Gramex has a 500 MB in-memory cache called `memory`
-based on [cachetools](http://pythonhosted.org/cachetools/). When the size
+based on [cachetools](https://pypi.org/project/cachetools/). When the size
 limit is reached, the least recently used items are discarded. This cache is
 used by [gramex.cache.open](#data-caching). To change its size, use:
 
