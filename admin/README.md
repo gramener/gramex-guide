@@ -130,7 +130,7 @@ FormHandler table component:
 ::: example href=users.html source=https://github.com/gramener/gramex-guide/blob/master/admin/users.html
     User management component example
 
-You can specify custom actions & formats using FormHandler table. See the [admin page source code](https://github.com/gramener/gramex/blob/dev/gramex/apps/admin2/index.html) for examples of custom actions.
+You can specify custom actions & formats using FormHandler table. See the [admin page source code](https://github.com/gramener/gramex/blob/master/gramex/apps/admin2/index.html) for examples of custom actions.
 
 ## Admin: Schedule
 

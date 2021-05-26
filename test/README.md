@@ -1,7 +1,16 @@
 ---
 title: Automate tests
 prefix: Test
+deprecated: True
 ...
+
+From **v1.70** `gramextest` is deprecated. Gramex will no longer automate URL / UI testing.
+
+Please explore [alternatives](https://github.com/atinfo/awesome-test-automation/blob/master/javascript-test-automation.md#web-ui-test-automation).
+
+---
+
+<div style="margin-top:100vh"></div>
 
 Gramex has a pytest plugin that simplifies automated testing.
 
@@ -515,7 +524,7 @@ urltest:
 ### Selectors
 
 CSS and XPath selectors are both allowed wherever selectors are used in
-[`uitest:`](#ui-test). XPath selectors begin with `xpath `. Otherwise, it's a
+[`uitest:`](#ui-test). XPath selectors begin with `xpath`. Otherwise, it's a
 CSS selector.
 
 - `h1`: CSS to select `<h1>`.
