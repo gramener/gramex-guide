@@ -13,18 +13,61 @@ type: microservice
 
 ```yaml
 url:
-  drivehandler:
-    pattern: /$YAMLURL/drive
+  drivedemo:
+    pattern: /$YAMLURL/drivedemo
     handler: DriveHandler
     kwargs:
       path: $GRAMEXDATA/apps/guide/drive-data/  # ... save files here
+      xsrf_cookies: false     # TODO: Remove this in production.
 ```
 
 Now, to upload a file into `/drive`, create this `form.html`.
 
 ```html
   <!-- POST files into /drive -->
-  <form action="drive" method="POST" enctype="multipart/form-data">
+  <form action="drivedemo" method="POST" enctype="multipart/form-data">
+    <!-- There must be a file input named "file". Multiple inputs are allowed -->
+    <input name="file" type="file" multiple>
+    <button type="submit">Submit</button>
+  </form>
+```
+
+Visit `/form.html` and upload a file. This saves the uploaded files in the `path:` you specified.
+
+::: example href=form.html source=https://github.com/gramener/gramex-guide/blob/master/drivehandler/form.html
+    Try the uploader example
+
+## DriveHandler XSRF
+
+Note: In the example above, we used `xsrf_cookies: false` to disable [XSRF](../filehandler/#xsrf).
+That's fine for a demo. But in production, you'll want to enable it.
+
+If you're using AJAX or `fetch()` to upload files, DriveHandler works with (and without) XSRF disabled.
+
+If you're using forms, here's an example `gramex.yaml`:
+
+```yaml
+url:
+  drivehandler:
+    pattern: /$YAMLURL/drive
+    handler: DriveHandler
+    kwargs:
+      path: $GRAMEXDATA/apps/guide/drive-data/  # ... save files here
+      # NOTE: Do not disable xsrf_cookies
+
+  drivehandler-upload:
+    pattern: /$YAMLURL/upload
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/upload.html
+      template: true                # Required to create the XSRF token.
+```
+
+In `upload.html`, add this HTML:
+
+```html
+  <!-- POST files into /drive -->
+  <form action="drive2" method="POST" enctype="multipart/form-data">
     <!-- There must be a file input named "file". Multiple inputs are allowed -->
     <input name="file" type="file" multiple>
     <button type="submit">Submit</button>
@@ -33,21 +76,11 @@ Now, to upload a file into `/drive`, create this `form.html`.
   </form>
 ```
 
-In your `gramex.yaml`, enable [FileHandler templates](../filehandler/#templates) for the [XSRF token](../filehandler/#xsrf) by adding this under the `url:`
+Visit `/upload` (**not** `upload.html`) and upload a file. This saves the uploaded files in the `path:` you specified.
 
-```yaml
-  drivehandler-form:
-    pattern: /$YAMLURL/form
-    handler: FileHandler
-    kwargs:
-      path: $YAMLPATH/form.html
-      template: true
-```
+::: example href=upload source=https://github.com/gramener/gramex-guide/blob/master/drivehandler/upload.html
+    Try the uploader with XSRF
 
-Visit `/form` and upload a file. This saves the uploaded files in the `path:` you specified.
-
-::: example href=form source=https://github.com/gramener/gramex-guide/blob/master/drivehandler/form.html
-    Try the uploader example
 
 ## File Manager
 

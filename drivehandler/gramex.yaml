@@ -4,6 +4,15 @@ import:
     YAMLURL: $YAMLURL/filemanager/
 
 url:
+  drivehandler/drivedemo:
+    pattern: /$YAMLURL/drivedemo
+    handler: DriveHandler
+    kwargs:
+        path: $GRAMEXDATA/apps/guide/drive-data/
+        tags: [desc]
+        user_fields: [id]
+        xsrf_cookies: false
+
   drivehandler/drive:
     pattern: /$YAMLURL/drive
     handler: DriveHandler
@@ -11,12 +20,13 @@ url:
         path: $GRAMEXDATA/apps/guide/drive-data/
         tags: [desc]
         user_fields: [id]
+        xsrf_cookies: false
 
-  drivehandler/form:
-    pattern: /$YAMLURL/form
+  drivehandler/upload:
+    pattern: /$YAMLURL/upload
     handler: FileHandler
     kwargs:
-      path: $YAMLPATH/form.html
+      path: $YAMLPATH/upload.html
       template: true
 
   drivehandler/data:
