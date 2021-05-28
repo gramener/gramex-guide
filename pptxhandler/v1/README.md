@@ -22,8 +22,6 @@ Here is an example of a simple text substitution:
           headers:
             Content-Disposition: attachment; filename=output.pptx
 
-[Run example](ppt)
-
 Note: all examples use specific slides from [examples-input.pptx](examples-input.pptx)
 
 The rules are based on the [PPTGen API](#pptgen) which is described below.
@@ -812,8 +810,6 @@ Example:
           text-color: '#000000'
           startdate: data.index[0]
 
-[Run example](calendarmap-example)
-
 The following keys can also be specified as an [expression](#expressions) and python functions:
 `data:`, `startdate:`, `lo:`, `hi:`, `weekstart:` and subelements of `style` section.
 
@@ -826,10 +822,10 @@ The following keys can also be specified as an [expression](#expressions) and py
 - `row-order:` optional, same like `column-order` but for rows.
 - `value:` Columns name from data to show for each cell heatgrid.
 - `text:`
-    - `false` is the default. It does not show any text
-    - `true`, shows the `value` column
-    - `{function: data['label']}` shows custom text from the `label` column
-    - `{function: module.method(data, handler)}` can be any function/expression using `data` which is the row, and `handler`
+  - `false` is the default. It does not show any text
+  - `true`, shows the `value` column
+  - `{function: data['label']}` shows custom text from the `label` column
+  - `{function: module.method(data, handler)}` can be any function/expression using `data` which is the row, and `handler`
   `data` (which is the row) and `handler`.
 - `left-margin:` In percentage(0-1) of total width of shape. Left margin from the shape from where heatgrid will start populating.
 - `cell-width:` Width of each cell. Default based on columns width of shape will defined.
@@ -878,8 +874,6 @@ Example:
             margin: 10
             text-align: center
 
-[Run example](heatgrid-example)
-
 The following keys can also be specified as an [expression](#expressions) and python functions:
 `data:`, `row:`, `column:`, `value:` and subelements of `style` section.
 
@@ -910,8 +904,6 @@ Example:
           color:
             function: "lambda g: _color.gradient(g['D'].sum() / g['E'].sum() * 2 - 1, _color.RdYlGn)"
           groups: ['A', 'B', 'C']
-
-[Run example](sankey-example)
 
 The following keys can also be specified as an [expression](#expressions) and python functions:
 `data:`, `size:`, `order:`, `text:`, `color`.

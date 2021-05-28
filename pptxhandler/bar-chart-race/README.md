@@ -38,7 +38,7 @@ Shape names begin with `!!` so that PowerPoint's Morph transition will [match th
 
 The data is in a CSV file: [sales.csv](sales.csv).
 
-[![Data](data.png){.img-fluid}](data.csv)
+[![Data](data.png){.img-fluid}](sales.csv)
 
 It has 4 columns:
 

@@ -180,7 +180,7 @@ Note: This function will remove the layer from the map only. The layer object st
 
 ## g1.mapviewer features examples
 
-This creates a set of markers for each row in [cities.json](test/cities.json).
+This creates a set of markers for each row in [cities.json](../mapviewer/cities.json).
 
 ```html
 <div id="marker-map" style="height:300px">
@@ -200,7 +200,7 @@ This creates a set of markers for each row in [cities.json](test/cities.json).
 </script>
 ```
 
-This creates a set of circle markers for each row in [cities.json](test/cities.json).
+This creates a set of circle markers for each row in [cities.json](../mapviewer/cities.json).
 You can apply styles based on any attribute or function.
 
 ```html

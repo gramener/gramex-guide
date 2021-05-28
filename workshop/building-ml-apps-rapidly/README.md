@@ -28,18 +28,11 @@ This workshop aims to teach you how:
 
 In this workshop, we’ll predict whether or not a student will get admitted into a college in the US. Specifically, we’re going to
 
-- [Objective](#objective)
-- [Overview](#overview)
 - [Explore the data](#explore-the-data)
 - [Build a model to predict who'll get admitted](#build-a-model-to-predict-wholl-get-admitted)
-  - [IDE Tutorial](#ide-tutorial)
 - [Build an app that predicts admission](#build-an-app-that-predicts-admission)
 - [Publish your project on GitHub](#publish-your-project-on-github)
 - [Summarize Learnings](#summarize-learnings)
-- [Learning more](#learning-more)
-  - [Try next steps](#try-next-steps)
-  - [What if you need help?](#what-if-you-need-help)
-  - [Share feedback](#share-feedback)
 
 
 ## Explore the data

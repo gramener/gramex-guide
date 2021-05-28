@@ -27,7 +27,7 @@ It has only 1 chart shape updated from data, called `Column Chart`.
 
 The data is available from the [Piper Sandler](http://www.pipersandler.com/3col.aspx?id=5552). To simplify things, we typed it into a simple structure: [social-media-platform.csv](social-media-platform.csv).
 
-[![Data](data.png){.img-fluid}](mortality.xlsx)
+[![Data](data.png){.img-fluid}](social-media-platform.csv)
 
 The rows form the categories. The columns form the series.
 

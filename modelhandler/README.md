@@ -73,7 +73,7 @@ this model is [`model/iris/`](model/iris/), which shows basic model information.
     See the Iris model info
 
 To classify using the model, visit
-[`model/iris/?sepal_width=1&sepal_length=2&petal_width=3&petal_length=4`](/model/iris/?sepal_width=1&sepal_length=2&petal_width=3&petal_length=4).
+[`model/iris/?sepal_width=1&sepal_length=2&petal_width=3&petal_length=4`](model/iris/?sepal_width=1&sepal_length=2&petal_width=3&petal_length=4).
 This returns a JSON list with the inputs and the result:
 
 ```json
@@ -160,13 +160,13 @@ Notes:
 
 - To create a model send a PUT/POST request to `/model/<name>/` with the following
 URL Query Parameters or JSON Body Arguments
-    - `model_class`: the scikit-learn class of the model you want to train
-    - `url`: any valid formhandler URL, Currently, you can't send a file to the endpoint.
+  - `model_class`: the scikit-learn class of the model you want to train
+  - `url`: any valid formhandler URL, Currently, you can't send a file to the endpoint.
     If using a database, add a query/queryfunction/table as you would for formhandler.
-    - `input`: the columns in the dataset to use as inputs for the model.
-    - `output`: the output column.
-    - `model_kwargs (optional)`: a dictionary with any model parameters
-    - `labels (optional)`: list of possible output values
+  - `input`: the columns in the dataset to use as inputs for the model.
+  - `output`: the output column.
+  - `model_kwargs (optional)`: a dictionary with any model parameters
+  - `labels (optional)`: list of possible output values
 - creating a model, will not train by default - just create the model object and save it to disk.
 - Send a PUT/POST Request with `Model-Retrain: true` in the request headers to train
 the model on the training data.

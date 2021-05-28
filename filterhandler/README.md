@@ -23,7 +23,7 @@ url:
 ```
 
 You can read from multiple file formats as well as databases. Please follow
-[FormHandler](/formhandler/).
+[FormHandler](../formhandler/).
 
 ## Examples
 
@@ -43,6 +43,6 @@ returns all unique values of `Name` without filtering `Name=Andorra` and `Contin
 ## FilterHandler Formats
 
 By default, FilterHandler renders data as JSON. Use `?_format=` to change that.
-To see supported formats please refer [FormHandler Formats](/formhandler/#formhandler-formats)
+To see supported formats please refer [FormHandler Formats](../formhandler/#formhandler-formats)
 
 [filterhandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.FilterHandler

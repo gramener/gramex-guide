@@ -49,9 +49,7 @@ def readme_files(folder):
 def markdown_index(folder):
     result = DefaultAttrDict(set)
     for root, file in readme_files(folder):
-        basename = os.path.basename(root)
-        if basename == '.':
-            continue
+        dirpath = os.path.relpath(root, '.').replace(os.path.sep, '/')
         with io.open(os.path.join(root, file), encoding='utf-8') as handle:
             md = markdown.Markdown(extensions=[
                 'markdown.extensions.toc',
@@ -60,7 +58,7 @@ def markdown_index(folder):
             ])
             md.convert(handle.read())
             for frag, text in md.index:
-                result[basename, frag].add(text)
+                result[dirpath, frag].add(text)
     return result
 
 
