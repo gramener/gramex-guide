@@ -579,6 +579,7 @@ Specific scoring metrics can be specified as well, use ?_metric=__  where the na
 # Check the score of a dataset - test.csv - with a specified metric against an existing model
 curl -X POST -F "file=@test.csv" 'http://localhost:9988/mlhandler?_action=score&_metric=recall'
 ```
+
 ## How to download a model?
 
 Add the `?_download` query parameter to the MLHandler endpoint, and perform a
