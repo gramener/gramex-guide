@@ -18,6 +18,7 @@ Then learn from these tutorials:
 - [Charts](tutorials/charts/)
 - [Dropdown & Search](tutorials/g1-dropdown)
 - [Create a ML classification application](https://github.com/gramexrecipes/gramex-ml-workshop/)
+- [Authenticate Users with a Microsoft Account](tutorials/azure-oauth2)
 - [Try out some exercises](exercises/)
 
 ## Workshops
