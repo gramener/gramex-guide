@@ -106,6 +106,7 @@ endpoint) and put them in `.secrets.yaml` under the names `AZURE_AUTHORIZE_URL`
 and `AZURE_ACCESS_TOKEN_URL` respectively.
 
 Finally, make sure that your `.secrets.yaml` contains these four variables:
+
 * `AZURE_CLIENT_ID`
 * `AZURE_CLIENT_SECRET`
 * `AZURE_AUTHORIZE_URL`
@@ -131,7 +132,7 @@ url:
         scope:
           - https://graph.microsoft.com/User.Read
       access_token:
-        url:$AZURE_ACCESS_TOKEN_URL
+        url: $AZURE_ACCESS_TOKEN_URL
         body:
           grant_type: 'authorization_code'
       user_info:
