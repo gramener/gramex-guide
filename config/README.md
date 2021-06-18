@@ -1044,7 +1044,7 @@ will be instantiated for this URL.
 
 This is useful when one handler (e.g. a [FunctionHandler](../functionhandler/)) needs to access a
 static or class method from another handler. A typical example is to access
-[GoogleAuth.exchange_refresh_token()](../authhandler/#offline-access-to-google-data).
+[GoogleAuth.exchange_refresh_token()](../auth/#offline-access-to-google-data).
 
 For example:
 

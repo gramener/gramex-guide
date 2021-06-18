@@ -66,6 +66,7 @@ attribute.
   })
 </script>
 ```
+
 **Note**: You can use `type: 'topojson'` when loading TopoJSON maps.
 
 
@@ -148,6 +149,7 @@ attribute.
   - `labelOffset`: value to determine distance of label from each legend cell. Default `20`
 
 ## g1.mapviewer methods
+
 `fitToLayer(layerName, options)`
 Zooms map view to fit the layer. Supports same options as [fitBounds options](http://leafletjs.com/reference-1.6.0.html#fitbounds-options)
 
@@ -156,9 +158,10 @@ Shows the layer with `layerName` only between `minZoomLevel` and `maxZoomLevel`.
 
 `addNote(options)`
 Adds a html label on the map. `options` is an object with following properties
-  - `html`: html object node
-  - `style`: Defaults to `bottom-left`. Specify styles for the `html`
-  - `position`: (Optional) Specifies the position of `html` on the map
+
+- `html`: html object node
+- `style`: Defaults to `bottom-left`. Specify styles for the `html`
+- `position`: (Optional) Specifies the position of `html` on the map
 
 
 `removeLayer(layerName)`
@@ -166,6 +169,7 @@ Removes the layer from the map and returns the layer if the layer exists on the 
 Note: This function will remove the layer from the map only. The layer object still exists in memory. Use `addLayer(layerName)` to add the layer back to the map.
 
 `addLayer(layerName, layerConfig)`
+
 - `addLayer(layerName)` if `layerName` layer does not exist on map, adds the layer to the map.
 - `addLayer(layerName, layerConfig)` will creates a new layer with `layerConfig` options and adds it to the map.
 

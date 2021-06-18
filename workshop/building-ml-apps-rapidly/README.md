@@ -6,10 +6,14 @@ prefix: workshop
 
 - Guide link: [https://bit.ly/mlappworkshop](https://bit.ly/mlappworkshop)
 - Opening survey link: [https://bit.ly/mlworkshopintro](https://bit.ly/mlworkshopintro)
+- Project template: [https://github.com/gramener/building-ml-apps-rapidly](https://github.com/gramener/building-ml-apps-rapidly)
 - Dataset link: [https://www.dropbox.com/s/9p0510n3bpdn09w/admission.csv?dl=0](https://www.dropbox.com/s/9p0510n3bpdn09w/admission.csv?dl=0)
 - IDE link: [https://gramex.gramener.com](https://gramex.gramener.com)
 - Final survey link: [https://bit.ly/mlworkshopresponse](https://bit.ly/mlworkshopresponse)
-- Output for certificate link: [http://bit.ly/GramexOP](http://bit.ly/GramexOP)
+
+<!--
+- Output for certificate link (NPTEL): [http://bit.ly/GramexOP](http://bit.ly/GramexOP)
+-->
 
 ### A Quick Survey
 
@@ -56,53 +60,77 @@ Each row is a student. We have data for 500 students. For every student, we know
 
 ## Build a model to predict who'll get admitted
 
-We’ll use Gramex for this. You can either
+We’ll use the Gramex IDE at [https://gramex.gramener.com](https://gramex.gramener.com/) for this.
 
-- [install Gramex](/install), or
-- [try out the online IDE](https://gramex.gramener.com/)
+### GitHub account
+
+But first, you need a GitHub account.
+
+1. If you don’t have a Github account, sign up at https://github.com/join
+2. If you have a Github account, log in at https://github.com/login
 
 ### IDE Tutorial
 
-1. Visit [https://gramex.gramener.com/](https://gramex.gramener.com/)
-2. Click on the “Create new project” button
+1. Visit <https://github.com/gramener/building-ml-apps-rapidly>. Click the Fork icon on the top right.
+
+   ![Screenshot](github-fork.png){.img-fluid}
+
+2. Click on the address bar. Copy the URL of the forked repo. It will look like `https://github.com/<your-github-id>/building-ml-apps-rapidly`
+
+   ![Screenshot](github-copy-url.png){.img-fluid}
+
+3. Visit <https://gramex.gramener.com/>
+4. Click on the "Create new project" button
 
    ![Screenshot](create-new-project.png){.img-fluid}
 
-3. Under “Create a Blank Project”, type “admission” as your project name and click “Create Project”
+5. Under "Clone a Repository", paste the URL you copied.
+   Set the project name to "admission". Then click "Clone".
 
    ![Screenshot](new-project-dialog.png){.img-fluid}
 
-4. The “admission” project is created. Click on it to open the IDE.
+6. You'll now see a message on the top right saying "Please authorize Github". Click on that link.
+
+   ![Screenshot](github-error.png){.img-fluid}
+
+7. You'll see a Github page titled "Authorize Gramex IDE". Click on the green "Authorize jaidevd" at the bottom.
+
+   ![Screenshot](github-auth.png){.img-fluid}
+
+8. You will be redirected back to <https://gramex.gramener.com/>. Now,
+   <br>**REPEAT steps 2 and 3**.
+
+9. The "admission" project is created. Click on it to open the IDE.
 
    ![Screenshot](project-name.png){.img-fluid}
 
-5. Add an [MLHandler](/mlhandler) component
+10. Add an [MLHandler](/mlhandler) component
 
    ![Screenshot](mlhandler-card.png){.img-fluid}
 
-6. Enter “predict” under the Pattern: as the MLHandler end point URL.
+11. Enter "predict" under the Pattern: as the MLHandler end point URL.
    Download the dataset `admission.csv` and upload it using the Upload icon.
    Click on Preview to see the dataset.
 
 ![Screenshot](mlhandler-form.png){.img-fluid}
 
-  Next,
+Next,
 
-1. In Columns to Exclude, select “Name”
-2. In Categorical Columns, select “Research”
-3. In Numerical Columns, select everything except “Name”, “Research” and “Admitted”
-4. In Pick a Target Column, select “Admitted”
-5. In Pick a Model, select “Logistic Regression” (default)
+1. In Columns to Exclude, select "Name"
+2. In Categorical Columns, select "Research"
+3. In Numerical Columns, select everything except "Name", "Research" and "Admitted"
+4. In Pick a Target Column, select "Admitted"
+5. In Pick a Model, select "Logistic Regression" (default)
 6. Press Submit
 
    ![Screenshot](mlhandler-form.gif){.img-fluid}
 
-7. After a few seconds, click on the “/predict” link. This opens the trained model page
+7. After a few seconds, click on the "/predict" link. This opens the trained model page
 
    ![Screenshot](mlhandler-endpoint-card.png){.img-fluid}
 
 8. The URL will look something like this: https://9286.gramex.gramener.co/predict. From now on, we’ll refer to it as `/predict`. You need to type out the https://… part by yourself.
-9. Let’s predict the admissions of a few people. Add these query parameters to your URL and see if the “Admitted” field is correct.
+9. Let’s predict the admissions of a few people. Add these query parameters to your URL and see if the "Admitted" field is correct.
    - Ethan Koch: `/predict?GREScore=337&TOEFLScore=118&UniversityRating=4&SOP=4.5&LOR=4.5&CGPA=9.65&Research=1`
    - Diana Strong: `/predict?GREScore=324&TOEFLScore=107&UniversityRating=4&SOP=4&LOR=4.5&CGPA=8.87&Research=1`
 
@@ -215,7 +243,7 @@ Let’s now build a web app that uses this data like an API.
 </html>
 ```
 
-Visit your app by going to the home page and clicking on “Launch app” against the “admissions” app
+Visit your app by going to the home page and clicking on "Launch app" against the "admissions" app
 
 ![Screenshot](launch-app.gif){.img-fluid}
 
@@ -226,9 +254,7 @@ Now, try out different combinations of marks and see the result.
 Now, let’s save your app as repository on Github. You (or anyone) can run it with the Gramex IDE.
 
 
-1. If you don’t have a Github account, sign up at https://github.com/join
-2. If you have a Github account, log in at https://github.com/login
-3. Create a new repository at https://github.com/new. Call it “admission”. Click “Create repository”
+3. Create a new repository at https://github.com/new. Call it "admission". Click "Create repository"
 
    ![Screenshot](new-github-repo.png){.img-fluid}
 
@@ -251,7 +277,7 @@ git push -u origin master
 
 ![Screenshot](git-config-terminal.gif){.img-fluid}
 
-While typing `git push -u origin master`, Github will prompt you to authorize the code serve. Select “Authorize cdr” when this appears.
+While typing `git push -u origin master`, Github will prompt you to authorize the code serve. Select "Authorize cdr" when this appears.
 
 ![Screenshot](authorize-code-server.png){.img-fluid}
 
@@ -260,13 +286,13 @@ Now, this project is is available on your Github repository. To clone it, anyone
 
 
 1. Visit https://gramex.gramener.com/
-2. Click on the “Create new project” button
+2. Click on the "Create new project" button
 
    ![Screenshot](create-new-project.png){.img-fluid}
 
-3. Type your repository link under “Clone a Repository”. It will be like `https://github.com/<your-id>/admission.git`.
+3. Type your repository link under "Clone a Repository". It will be like `https://github.com/<your-id>/admission.git`.
 4. Type any new project name.
-5. Then click “Clone”
+5. Then click "Clone"
 
    ![Screenshot](clone-repo-dialog.png){.img-fluid}
 

@@ -106,7 +106,6 @@ alert on behalf of a different user.
 ### Email multiple people
 
 The `to:`, `cc:` and `bcc:` fields accept a list or comma-separated email IDs.
-[Preview](preview/?alert=alert-email).
 
 ```yaml
 alert:
@@ -123,11 +122,12 @@ alert:
       accept a list or a comma-separated string of email IDs.
 ```
 
+[Preview `alert-email` in Admin > Alerts](../admin/admin/alert).
+
 ### Send HTML email
 
 `html:` specifies the HTML content to be sent. `body:` can be used along with
 HTML. Email clients choose which content to render based on their capability.
-[Preview](preview/?alert=alert-html).
 
 ```yaml
 alert:
@@ -138,8 +138,10 @@ alert:
     html: <p>This content will be shown in <em>HTML</em> on <strong>supported devices</strong>.
 ```
 
+[Preview `alert-html` in Admin > Alerts](../admin/admin/alert).
+
 `markdown:` can be used to specify the HTML content as Markdown instead of
-`html` (and overrides it). [Preview](preview/?alert=alert-markdown).
+`html` (and overrides it).
 
 ```yaml
 alert:
@@ -152,11 +154,12 @@ alert:
       Markup like *emphasis* and **strong** are supported.
 ```
 
+[Preview `alert-markdown` in Admin > Alerts](../admin/admin/alert).
+
 ### Place body and HTML in a file
 
 `bodyfile:`, `htmlfile:` and `markdownfile:` load content from files instead of
 directly typing into the `body`, `html` or `markdown:` keys.
-[Preview](preview/?alert=alert-content-file).
 
 ```yaml
 alert:
@@ -168,11 +171,14 @@ alert:
     markdownfile: $YAMLPATH/email.md    # Use email.md in current directory
 ```
 
+[Preview `alert-content-file` in Admin > Alerts](../admin/admin/alert)..
+
+
 ### Send inline images
 
 `images:` specifies one or more `<key>: <url>` entries. Each `<key>` can be
 embedded into the email as an image using `<img src="cid:<key>">`. The `<url>`
-can be a file path or a URL. [Preview](preview/?alert=alert-images).
+can be a file path or a URL.
 
 ```yaml
 alert:
@@ -188,11 +194,13 @@ alert:
       img2: https://en.wikipedia.org/static/images/wikimedia-button.png
 ```
 
+[Preview `alert-images` in Admin > Alerts](../admin/admin/alert).
+
+
 ### Send attachments
 
 `attachments:` specifies one or more `<key>: <url>` entries. Each entry is added
 to the email as an attachment. The `<url>` can be a file path or a URL.
-[Preview](preview/?alert=alert-attachments).
 
 ```yaml
 alert:
@@ -204,6 +212,9 @@ alert:
         - $YAMLPATH/doc1.docx
         - https://example.org/sample.pptx
 ```
+
+[Preview `alert-attachments` in Admin > Alerts](../admin/admin/alert).
+
 
 ### Alert templates
 

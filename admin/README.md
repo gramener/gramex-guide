@@ -88,7 +88,7 @@ To enable it:
 1. Ensure that `users` is in `components:` (e.g. `components: [users, ...]`) or
    you don't specify any components.
 2. Add an `authhandler:` that has the name of a [auth handler](../auth/) that is
-   either a [DBAuth](../auth/#dbauth) or has a [lookup section](../authhandler/#lookup-attributes)
+   either a [DBAuth](../auth/#dbauth) or has a [lookup section](../auth/#lookup-attributes)
 
 For example:
 

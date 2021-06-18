@@ -385,25 +385,25 @@ url:
               header: Referer
               url: /$YAMLURL
 
-      auth/googleoauth2:
-        pattern: /$YAMLPATH/googleoauth2
-        handler: OAuth2
-        kwargs:
-          client_id: 817932882244-gdr59t3mpqh5554d1bgdjuh38g6a7ahh.apps.googleusercontent.com
-          client_secret: lwArXkw21KCqDPuJrel-WeQO
-          authorize:
-            url: https://accounts.google.com/o/oauth2/auth
-            scope:
-              - profile
-              - email
-          access_token:
-            url: https://accounts.google.com/o/oauth2/token
-            body:
-              grant_type: authorization_code
-          user_info:
-            url: https://www.googleapis.com/oauth2/v1/userinfo
-            headers:
-              Authorization: 'Bearer {access_token}'
+    auth/googleoauth2:
+      pattern: /$YAMLURL/googleoauth2
+      handler: OAuth2
+      kwargs:
+        client_id: 817932882244-gdr59t3mpqh5554d1bgdjuh38g6a7ahh.apps.googleusercontent.com
+        client_secret: lwArXkw21KCqDPuJrel-WeQO
+        authorize:
+          url: https://accounts.google.com/o/oauth2/auth
+          scope:
+            - profile
+            - email
+        access_token:
+          url: https://accounts.google.com/o/oauth2/token
+          body:
+            grant_type: authorization_code
+        user_info:
+          url: https://www.googleapis.com/oauth2/v1/userinfo
+          headers:
+            Authorization: 'Bearer {access_token}'
 
     auth/lookup-attributes:
         pattern: /$YAMLURL/lookup-attributes

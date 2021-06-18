@@ -9,7 +9,7 @@ type: microservice
 
 [TOC]
 
-**v1.59**. [DriveHandler](drivehandler) lets you upload files and manage them with a [FormHandler](../formhandler/)-like interface. It's better than [UploadHandler](../uploadhandler/). Here's how to create a DriveHandler:
+**v1.59**. [DriveHandler](.) lets you upload files and manage them with a [FormHandler](../formhandler/)-like interface. It's better than [UploadHandler](../uploadhandler/). Here's how to create a DriveHandler:
 
 ```yaml
 url:
@@ -322,7 +322,7 @@ url:
       url: $GRAMEXDATA/apps/guide/drive-data/{_0}
 ```
 
-If you uploaded any CSV/XLSX into the [DriveHandler] above, see them at [data/your-file.csv](data/your-file.csv?_format=html&_limit=10). (Replace `your-file.csv` with your file.)
+If you uploaded any CSV/XLSX into the [DriveHandler] above, see them at `data/your-file.csv`.
 
 
 [drivehandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.DriveHandler

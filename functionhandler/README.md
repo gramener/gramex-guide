@@ -320,7 +320,7 @@ url:
 
 ... will show output like:
 
-```
+```txt
 %PDF-1.7 %���� 9 0 obj << /Type /Page...
 ```
 

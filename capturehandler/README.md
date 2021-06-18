@@ -124,10 +124,10 @@ You can add a link from any page to the `capture` page to take a screenshot.
 
 Try it here:
 
-- [PDF screenshot](capture?ext=pdf)
-- [PNG screenshot](capture?ext=png)
-- [JPEG screenshot](capture?ext=jpg)
-- [PPTX screenshot](capture?ext=pptx)
+- [PDF screenshot](capture?ext=pdf&url=.)
+- [PNG screenshot](capture?ext=png&url=.)
+- [JPEG screenshot](capture?ext=jpg&url=.)
+- [PPTX screenshot](capture?ext=pptx&url=.)
 
 It accepts the following arguments:
 
@@ -135,9 +135,9 @@ It accepts the following arguments:
   you link to a `capture` page, the source page is generally used.
   <br>**Example**: [?url=https://example.org/](capture?url=https://example.org/)
 - `?file=`: screenshot file name. Default: `screenshot`.
-  <br>**Example**: [?file=newfile](capture?file=newfile)
+  <br>**Example**: [?file=newfile](capture?file=newfile&url=.)
 - `?ext=`: format of output. Can be pdf, png, jpg or pptx. Default: `pdf`.
-  <br>**Example**: [?ext=png](capture?ext=png). (`ext=pptx` available only in `engine: chrome` from **v1.23.1**)
+  <br>**Example**: [?ext=png](capture?ext=png&url=.). (`ext=pptx` available only in `engine: chrome` from **v1.23.1**)
 - `?delay=`: wait for before taking a screenshot.
   - If this is a number, waits for this many milliseconds.
     <br>**Example**: [?delay=1000](capture?url=timer.html&delay=1000)
@@ -149,61 +149,61 @@ It accepts the following arguments:
     will time out.
 - For PDF:
   - `?format=`: A3, A4, A5, Legal, Letter or Tabloid. Default: A4.
-    <br>**Example**: [?format=Tabloid](capture?format=Tabloid)
+    <br>**Example**: [?format=Tabloid](capture?format=Tabloid&url=.)
   - `?orientation=`: portrait or landscape. Default: portrait.
-    <br>**Example**: [?orientation=landscape](capture?orientation=landscape)
+    <br>**Example**: [?orientation=landscape](capture?orientation=landscape&url=.)
   - `media=`: `print` or `screen`. Default: `screen`. (Only in `engine: chrome`)
-    <br>**Example**: [?media=print](capture?media=print)
+    <br>**Example**: [?media=print](capture?media=print&url=.)
   - `header=`: a pipe-separated string that sets the page header.
     You can use `$pageNumber`, `$totalPages`, `$date`, `$title`, `$url` as variables.
-    <br>**Example**: [?header=Gramener](capture?header=Gramener): Left header "Gramener"
-    <br>**Example**: [?header=|$title|](capture?header=|$title|): Center header with page title
-    <br>**Example**: [?header=|$pageNumber](capture?header=|$pageNumber): Right header with page number
-    <br>**Example**: [?header=©|Gramener|$pageNumber/$totalPages](capture?header=©|Gramener|$pageNumber/$totalPages): Left, middle right headers.
+    <br>**Example**: [?header=Gramener](capture?header=Gramener&url=.): Left header "Gramener"
+    <br>**Example**: [?header=|$title|](capture?header=|$title|&url=.): Center header with page title
+    <br>**Example**: [?header=|$pageNumber](capture?header=|$pageNumber&url=.): Right header with page number
+    <br>**Example**: [?header=©|Gramener|$pageNumber/$totalPages](capture?header=©|Gramener|$pageNumber/$totalPages&url=.): Left, middle right headers.
   - `footer=`: similar to `header`
   - `headerTemplate=`: HTML template to add a custom header.
     Template cannot load external sources or run javascript, but can use inline css styles.
     [See docs](https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagepdfoptions).
     Ensure that enough margin is provided for the header.
-    <br>**Example**: [`?headerTemplate=<div style="border-bottom:1px solid black;display:flex;justify-content:space-between;width:100%"><span class="url"></span><span class="date"></span></div>`](capture?headerTemplate=<div style="border-bottom:1px solid black%3Bdisplay:flex%3Bjustify-content:space-between%3Bwidth:100%25"><span class="url"></span><span class="date"></span></div>)
+    <br>**Example**: [`?headerTemplate=<div style="border-bottom:1px solid black;display:flex;justify-content:space-between;width:100%"><span class="url"></span><span class="date"></span></div>`](capture?url=.&headerTemplate=<div style="border-bottom:1px solid black%3Bdisplay:flex%3Bjustify-content:space-between%3Bwidth:100%25"><span class="url"></span><span class="date"></span></div>)
   - `footerTemplate=`: similar to `headerTemplate`
   - `margins=`: comma-separated list of margins specifying top, right, bottom, left margins respectively.
     default margin is `1cm,1cm,1cm,1cm`.
-    <br>**Example** [?margins=2cm,,2cm,](capture?margins=2cm,,2cm,) sets top and bottom margin to 2cm
+    <br>**Example** [?margins=2cm,,2cm,](capture?margins=2cm,,2cm,&url=.) sets top and bottom margin to 2cm
 - For images (PNG/JPG):
   - `?width=`: optional viewport width in pixels. Default: 1200
-    <br>**Example**: [?width=600](capture?width=600&ext=png)
+    <br>**Example**: [?width=600](capture?width=600&ext=png&url=.)
   - `?height=`: optional viewport height in pixels. Default: auto (full page)
-    <br>**Example**: [?height=600](capture?height=600&ext=png)
+    <br>**Example**: [?height=600](capture?height=600&ext=png&url=.)
   - `?scale=`: zooms the screen by a factor. scale=2 returns an image twice as large and sharp as scale=1. Default: 1.
-    <br>**Example**: [?scale=0.2](capture?scale=0.2&ext=png) compared with
-    [?scale=1](capture?scale=1&ext=png)
+    <br>**Example**: [?scale=0.2](capture?scale=0.2&ext=png&url=.) compared with
+    [?scale=1](capture?scale=1&ext=png&url=.)
   - `?selector=`: Restrict screenshot to (optional) CSS selector in URL. Captures the entire element, even if it exceeds the viewport
-    <br>**Example**: [?selector=.content](capture?selector=.content&ext=png) excludes the sidebar.
+    <br>**Example**: [?selector=.content](capture?selector=.content&ext=png&url=.) excludes the sidebar.
   - `?emulate=`: emulate full page on a device. Ignores `?width=`, `?height=` and `?scale=`. (Only in `engine: chrome` from **v1.56.0**)
-    <br>**Example**: [?emulate=iPhone 6](capture?emulate=iPhone 6&ext=png).
+    <br>**Example**: [?emulate=iPhone 6](capture?emulate=iPhone 6&ext=png&url=.).
     Device names can be [iPhone 8, Nexus 10, Galaxy S5, etc][mobiledevices].
 - For PPTX (Only in `engine: chrome` from **v1.23.1**):
   - `?layout=`: A3, A4, Letter, 16x9, 16x10, 4x3. Default: `4x3`
-    <br>**Example**: [?layout=16x9](capture?layout=16x9&ext=pptx&width=1200&height=600)
+    <br>**Example**: [?layout=16x9](capture?layout=16x9&ext=pptx&width=1200&height=600&url=.)
   - `?dpi=`: optional image resolution (dots per inch). Default: 96
-    <br>**Example**: [?dpi=192](capture?dpi=192&ext=pptx&width=1200&height=900)
+    <br>**Example**: [?dpi=192](capture?dpi=192&ext=pptx&width=1200&height=900&url=.)
   - `?width=`: optional viewport width in pixels. (Default: 1200px)
-    <br>**Example**: [?width=600&height=400](capture?width=600&height=400&ext=pptx)
+    <br>**Example**: [?width=600&height=400](capture?width=600&height=400&ext=pptx&url=.)
   - `?height=`: optional height to clip output to. Leave it blank for full page height
-    <br>**Example**: [?width=1200&height=900](capture?width=1200&height=900&ext=pptx)
+    <br>**Example**: [?width=1200&height=900](capture?width=1200&height=900&ext=pptx&url=.)
   - `?selector=`: CSS selector to take a screenshot of
-    <br>**Example**: [?selector=.codehilite](capture?selector=.codehilite&ext=pptx)
+    <br>**Example**: [?selector=.codehilite](capture?selector=.codehilite&ext=pptx&url=.)
   - `?title=`: optional slide title
-    <br>**Example**: [?title=First+example&selector=.codehilite](capture?title=First+example&selector=.codehilite&ext=pptx)
+    <br>**Example**: [?title=First+example&selector=.codehilite](capture?title=First+example&selector=.codehilite&ext=pptx&url=.)
   - `?title_size=`: optional title font size in points. Defaults to 18pt
-    <br>**Example**: [?title=First+example&title_size=24&selector=.codehilite](capture?title=First+example&title_size=24&selector=.codehilite&ext=pptx)
+    <br>**Example**: [?title=First+example&title_size=24&selector=.codehilite](capture?title=First+example&title_size=24&selector=.codehilite&ext=pptx&url=.)
   - `?x=`: optional x-position (left margin) in px. Centers by default
-    <br>**Example**: [?x=10&selector=.codehilite](capture?x=10&selector=.codehilite&ext=pptx)
+    <br>**Example**: [?x=10&selector=.codehilite](capture?x=10&selector=.codehilite&ext=pptx&url=.)
   - `?y=`: optional y-position (leftop margin) in px. Centers by default
-    <br>**Example**: [?y=200&selector=.codehilite](capture?y=200&selector=.codehilite&ext=pptx)
+    <br>**Example**: [?y=200&selector=.codehilite](capture?y=200&selector=.codehilite&ext=pptx&url=.)
   - For multiple slides, repeat `?selector=`, optionally with `?title=`, `?title_size=`, `?x=`, `?y=`, `?dpi=`.
-    <br>**Example**: [?selector=.toc&title=TOC&selector=.codehilite&title=Example](capture?selector=.toc&title=TOC&selector=.codehilite&title=Example&ext=pptx)
+    <br>**Example**: [?selector=.toc&title=TOC&selector=.codehilite&title=Example](capture?selector=.toc&title=TOC&selector=.codehilite&title=Example&ext=pptx&url=.)
 - `?debug=`: displays request / response log requests on the console.
   - `?debug=1` logs all responses and HTTP codes. It also logs browser
     console.log messages on the Gramex console
@@ -240,7 +240,7 @@ If the status code is 40x or 50x, the response text has the error message.
 visiting the target page.
 
 To try this, [log in](../auth/simple?next=../capturehandler/) and then
-[take a screenshot](capture?ext=pdf). The screenshot will show the same
+[take a screenshot](capture?ext=pdf&url=.). The screenshot will show the same
 authentication information as you see below.
 
 <iframe class="w-100" frameborder="0" src="../auth/session"></iframe>
@@ -269,7 +269,7 @@ with open('screenshot.png', 'wb') as f:     # Save screenshot as PNG
     f.write(capture.png(url, width=1200, height=600, scale=0.8))
 ```
 
-The [Capture](capture) class has convenience methods called `.pdf()`, `.png()`,
+The [Capture](capture?url=.) class has convenience methods called `.pdf()`, `.png()`,
 `.jpg()` that accept the same parameters as the [handler](#screenshot-service).
 
 

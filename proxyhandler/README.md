@@ -37,7 +37,7 @@ url:
                 User-Agent: true                # also send the user's browser info
 ```
 
-This forwards [github/search/users](github/search/users) to `https://api.github.com/search/users`. For example:
+This forwards [github/search/users](github/search/users?q=mark) to `https://api.github.com/search/users`. For example:
 
 - [github/users/gramener](github/users/gramener) gets the Gramener org profile
 - [github/search/users?q=language:python&sort=followers](github/search/users?q=language:python&sort=followers) shows the top Python developers
@@ -75,7 +75,7 @@ ProxyHandler configuration accepts these kwargs:
 - `connect_timeout`: timeout for initial connection in seconds (default: 20)
 - `request_timeout`: timeout for entire request in seconds (default: 20)
 
-All [standard handler kwargs](../handler/) like `auth:`, `cache:`,
+All [standard handler kwargs](../handlers/) like `auth:`, `cache:`,
 `xsrf_cookies`, `error:`, etc. are also available.
 
 NOTE: As of [v1.62](../release/1.62/), websockets are also supported.

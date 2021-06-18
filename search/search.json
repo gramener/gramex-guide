@@ -2102,9 +2102,7 @@
     "upgrade-gramex-via-pip": {
       "Upgrade Gramex via pip": -1
     },
-    "upgrade-gramex-via-pip_1": {
-      "Upgrade Gramex via pip": -1
-    },
+    "upgrade-gramex-via-pip_1": {},
     "vscode-extension": {
       "VSCode Extension": -1
     },
@@ -5653,6 +5651,9 @@
     },
     "explore-the-data": {
       "Explore the data": -1
+    },
+    "github-account": {
+      "GitHub account": -1
     },
     "ide-tutorial": {
       "IDE Tutorial": -1

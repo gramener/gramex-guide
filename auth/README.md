@@ -250,7 +250,7 @@ The `template:` key is optional, but you should generally associate it with a
 [xsrf][xsrf] field). See [login templates](#login-templates) to learn how to
 create one.
 
-::: example href=simple/ source=https://github.com/gramener/gramex-guide/blob/master/auth/simple/
+::: example href=simple source=https://github.com/gramener/gramex-guide/blob/master/auth/simple.html
     Simple Auth example
 
 
@@ -1704,7 +1704,7 @@ one-time password string linked to the *current user*. When you send a request
 with a `X-Gramex-OTP: <otp>` header or a `?gramex-otp=<otp>` query parameter,
 that session is automatically linked to the same user.
 
-::: example href=opt source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+::: example href=otp source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
     OTP example
 
 

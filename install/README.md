@@ -151,6 +151,7 @@ To upgrade Gramex, run:
 
 ```bash
 pip install --upgrade gramex
+gramex setup --all
 ```
 
 <!--
@@ -180,15 +181,6 @@ pip install --verbose -e gramex
 [anaconda]: https://repo.anaconda.com/archive/
 [conda-proxy]: https://conda.io/docs/user-guide/configuration/use-winxp-with-proxy.html
 [nodejs]: https://nodejs.org/en/download/
-
-### Upgrade Gramex via pip
-
-To upgrade Gramex, run:
-
-```bash
-pip install --upgrade gramex
-gramex setup --all
-```
 
 ### Uninstall Gramex via pip
 
@@ -247,15 +239,14 @@ Start with a _clean_ Windows machine - one that does not contain any Anaconda, P
 
 On the **build machine**, follow these steps:
 
-* **Step 1**: Pick a location to install Anaconda. This must be the same as the intended
-	  path for Anaconda on the target machine. E.g. if Anaconda is installed at
-	  `D:\offline\` on the **build machine**, it can _only_ be
-	  installed at `D:\offline\` on the **target machine**. The rest of these
-	  instructions assume that the installation location is `D:\offline\` - please
-	  replace this with whichever installation path is applicable in your case.
+- **Step 1**: Pick a location to install Anaconda. This must be the same as the intended
+  path for Anaconda on the target machine. E.g. if Anaconda is installed at
+  `D:\offline\` on the **build machine**, it can _only_ be
+  installed at `D:\offline\` on the **target machine**. The rest of these
+  instructions assume that the installation location is `D:\offline\` - please
+  replace this with whichever installation path is applicable in your case.
 
-* **Step 2**: When downloading the installer for Anaconda (or Miniconda) on the **build machine**, there are
-	   two options:
+- **Step 2**: When downloading the installer for Anaconda (or Miniconda) on the **build machine**, there aretwo options:
   - Option 1 (**Recommended**): Download a version of Anaconda which has Python 3.7 in the _base_
     environment. (Download [here](https://repo.anaconda.com/miniconda/Miniconda3-py37_4.9.2-Windows-x86_64.exe))
   - Option 2: Download any version of Anaconda, install it at `D:\offline`, and create an environment that
@@ -266,7 +257,7 @@ conda create -n gramex python=3.7 -y
 conda activate gramex
 ```
 
-* **Step 3**: Install Gramex as follows:
+- **Step 3**: Install Gramex as follows:
 
 ```cmd
 conda install -c conda-forge -c gramener gramex -y
@@ -274,10 +265,10 @@ conda install -c conda-forge -c gramener gramex -y
 
 Then, on the **target machine**, follow these steps:
 
-* **Step 1**: Copy the contents `D:\offline` from the build machine to `D:\offline` on the
+- **Step 1**: Copy the contents `D:\offline` from the build machine to `D:\offline` on the
    target machine.
 
-* **Step 2**: Initialize the Conda shell by running:
+- **Step 2**: Initialize the Conda shell by running:
 
 ```cmd
 D:\offline\Scripts\conda.exe init cmd.exe
@@ -285,18 +276,18 @@ D:\offline\Scripts\conda.exe init cmd.exe
 
 Exit and restart the shell.
 
-* **Step 3**: Activate the base environment:
+- **Step 3**: Activate the base environment:
 
 ```cmd
 conda activate base
 ```
 
-   If Gramex was installed in the base environment (i.e. if you followed the
-   recommended option in step 2 on the build machine), then we are done - Gramex
-   is installed and ready to use. However, if Gramex was not installed in the
-   base environment, proceed to the next step.
+If Gramex was installed in the base environment (i.e. if you followed the
+recommended option in step 2 on the build machine), then we are done - Gramex
+is installed and ready to use. However, if Gramex was not installed in the
+base environment, proceed to the next step.
 
-* **Step 4**: Activate the environment which contains Gramex:
+- **Step 4**: Activate the environment which contains Gramex:
 
 ```cmd
 conda activate gramex
