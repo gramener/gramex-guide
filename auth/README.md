@@ -979,12 +979,9 @@ The [user attributes](#user-attributes) in `handler.current_user` look like this
 **Available in Gramex Enterprise**.
 SAML auth uses a [SAML](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language)
 auth provided to log in. For example ADFS (Active Directory Federation Services)
-is a SAML auth provider. Caveats:
+is a SAML auth provider.
 
-- This needs the [onelogin SAML module](https://github.com/onelogin/python3-saml),
-  which *is **not** installed* as part of Gramex.
-- It only works on Python 3.x.
-- It is **experimental** and not fully tested.
+First, install the [onelogin SAML module](https://github.com/onelogin/python3-saml):
 
 ```bash
 # Replace the below line with the relevant version for your system
@@ -1016,8 +1013,8 @@ auth/saml:
   Here is a sample [advanced_settings.json](saml/advanced_settings.json).
   `contactPerson` and `organization` are optional.
 - `certs/` directory that has the certificates required for encryption.
-    - `metadata.crt`: Certificate to sign the metadata of the SP
-    - `metadata.key`: Key for the above certificate
+  - `metadata.crt`: Certificate to sign the metadata of the SP
+  - `metadata.key`: Key for the above certificate
 
 Once configured, visit the auth handler with `?metadata` added to view the
 service provider metadata. In the above example, this would be
@@ -1073,20 +1070,20 @@ It accepts the following configuration:
 - `client_id`: Create an app with the OAuth2 provider to get this ID
 - `client_secret`: Create an app with the OAuth2 provider to get this ID
 - `authorize`: Authorization endpoint configuration:
-    - `url`: Authorization endpoint URL
-    - `scope`: an optional a list of scopes that determine what you can access
-    - `extra_params`: an optional dict of OAuth2 parameters
+  - `url`: Authorization endpoint URL
+  - `scope`: an optional a list of scopes that determine what you can access
+  - `extra_params`: an optional dict of OAuth2 parameters
 - `access_token`: Access token endpoint configuration
-    - `url`: Access token endpoint URL
-    - `session_key`: optional key in session to store access token information. default: `access_token`
-    - `headers`: optional dict containing HTTP headers to pass to access token URL. By default, sets `User-Agent` to `Gramex/<version>`.
-    - `body`: optional dict containing arguments to pass to access token URL (e.g. `{grant_type: authorization_code}`)
+  - `url`: Access token endpoint URL
+  - `session_key`: optional key in session to store access token information. default: `access_token`
+  - `headers`: optional dict containing HTTP headers to pass to access token URL. By default, sets `User-Agent` to `Gramex/<version>`.
+  - `body`: optional dict containing arguments to pass to access token URL (e.g. `{grant_type: authorization_code}`)
 - `user_info`: Optional user information API endpoint
-    - `url`: API endpoint to fetch URL
-    - `headers`: optional dict containing HTTP headers to pass to user info URL. e.g. `Authorization: 'Bearer {access_token}'`. Default: `{User-Agent: Gramex/<version>}`
-    - `method`: HTTP method to use. default: `GET`
-    - `body`: optional dict containing POST arguments to pass to user info URL
-    - `user_id`: Attribute in the returned user object that holds the user ID. This is used to identify the user uniquely. default: `id`
+  - `url`: API endpoint to fetch URL
+  - `headers`: optional dict containing HTTP headers to pass to user info URL. e.g. `Authorization: 'Bearer {access_token}'`. Default: `{User-Agent: Gramex/<version>}`
+  - `method`: HTTP method to use. default: `GET`
+  - `body`: optional dict containing POST arguments to pass to user info URL
+  - `user_id`: Attribute in the returned user object that holds the user ID. This is used to identify the user uniquely. default: `id`
 - `user_key`: optional key in session to store user information. default: `user`
 
 ::: example href=github source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
@@ -1229,8 +1226,8 @@ When you write your own login template form, you can use these Python variables:
 - `handler`: the handler. `handler.kwargs` has the configuration above
 - `email`: the phone number provided by the user
 - `error`: `None` if there is no error. Else:
-    - `'not-sent'` if the OTP could not be sent. `msg` has the Exception
-    - `'wrong-pw'` if the OTP is wrong. `msg` has a string error
+  - `'not-sent'` if the OTP could not be sent. `msg` has the Exception
+  - `'wrong-pw'` if the OTP is wrong. `msg` has a string error
 - `msg`: sent only if `error` is not `None`. See `error`
 
 [email-auth-template]: https://github.com/gramener/gramex/blob/master/gramex/handlers/auth.email.template.html
@@ -1309,8 +1306,8 @@ When you write your own login template form, you can use these Python variables:
 - `handler`: the handler. `handler.kwargs` has the configuration above
 - `phone`: the phone number provided by the user
 - `error`: `None` if there is no error. Else:
-    - `'not-sent'` if the OTP could not be sent. `msg` has the Exception
-    - `'wrong-pw'` if the OTP is wrong. `msg` has a string error
+  - `'not-sent'` if the OTP could not be sent. `msg` has the Exception
+  - `'wrong-pw'` if the OTP is wrong. `msg` has a string error
 - `msg`: sent only if `error` is not `None`. See `error`
 
 
