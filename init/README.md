@@ -8,7 +8,7 @@ To start a Gramex project, run `gramex init` on your terminal. You should see an
 <link rel="stylesheet" type="text/css" href="../node_modules/asciinema-player/resources/public/css/asciinema-player.css">
 <asciinema-player src="gramex-init.rec" cols="100" rows="20" idle-time-limit="0.5" font-size=""></asciinema-player>
 
-It generates a simple boilerplate:
+It initializes a `git` repository and creates these files:
 
 - `gramex.yaml`: Gramex [configuration](../config/)
 - `index.html`: default home page
@@ -35,5 +35,17 @@ Run `gramex`. This will start Gramex and show an output like this:
 Open <http://localhost:9988/> in your browser, and you should see the sample app.
 
 
+## Minimal init
+
+To install the minimal files required to run Gramex, run `gramex init minimal` on your terminal.
+
+<asciinema-player src="gramex-init-minimal.rec" cols="100" rows="20" idle-time-limit="0.5" font-size=""></asciinema-player>
+
+It initializes a `git` repository and creates these files:
+
+- `gramex.yaml`: Gramex [configuration](../config/)
+- `index.html`: default home page
+
+Run `gramex` to see the output.
 
 <script src="../node_modules/asciinema-player/resources/public/js/asciinema-player.js"></script>

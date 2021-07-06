@@ -1707,6 +1707,9 @@
     "ui-modules": {
       "UI Modules": -1
     },
+    "vue": {
+      "Vue": -1
+    },
     "xsrf": {
       "XSRF": -1
     }
@@ -2003,7 +2006,10 @@
       "Gramex init": -1
     },
     "gramex-init-tracker": {},
-    "gramex-init-usage": {}
+    "gramex-init-usage": {},
+    "minimal-init": {
+      "Minimal init": -1
+    }
   },
   "install": {
     "": {
@@ -4394,6 +4400,38 @@
       "What next": -1
     }
   },
+  "release/1.70": {
+    "": {
+      "Gramex 1.70 release notes": -1
+    },
+    "bootstrap-5-support": {
+      "Bootstrap 5 support": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "credits": {
+      "Credits": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "minimal-scaffolding": {
+      "Minimal scaffolding": -1
+    },
+    "mongodb-support": {
+      "MongoDB support": -1
+    },
+    "other-improvements": {
+      "Other improvements": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "vuejs-support": {
+      "VueJS support": -1
+    }
+  },
   "release/old": {
     "": {
       "Gramex Old Release Notes": -1
@@ -5249,6 +5287,29 @@
   "tutorials": {
     "": {
       "Tutorials": -1
+    }
+  },
+  "tutorials/azure-oauth2": {
+    "": {
+      "Authenticate Users with a Microsoft Account": -1
+    },
+    "getting-the-authorization-and-access-token-urls": {
+      "Getting the Authorization and Access Token URLs": -1
+    },
+    "getting-the-client-id-and-client-secret": {
+      "Getting the Client ID and Client Secret": -1
+    },
+    "prerequisites": {
+      "Prerequisites": -1
+    },
+    "set-up-an-app-registration-on-azure": {
+      "Set up an App Registration on Azure": -1
+    },
+    "setup-the-gramex-oauth2-handler": {
+      "Setup the Gramex OAuth2 Handler": -1
+    },
+    "specifying-the-redirect-uri": {
+      "Specifying the Redirect URI": -1
     }
   },
   "tutorials/charts": {

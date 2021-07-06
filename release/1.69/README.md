@@ -104,10 +104,6 @@ def get_contacts(handler):
 - You can use the variable `gramex.appconfig` in any [function](../../functionhandler/). It shows full
   `gramex.yaml` configuration for the running app.
 
-
-BLD: Use local source for conda; fix miniconda version for Docker (#370) [Jaidev Deshpande]
-
-
 ## Bug fixes
 
 - [MLHandler](../../mlhandler/) templates used to drop the target column.

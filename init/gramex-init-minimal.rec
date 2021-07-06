@@ -1,0 +1,170 @@
+{
+  "version": 1,
+  "width": 208,
+  "height": 39,
+  "duration": 17.797424,
+  "command": null,
+  "title": null,
+  "env": {
+    "TERM": "cygwin",
+    "SHELL": null
+  },
+  "stdout": [
+    [
+      0.044536,
+      "g"
+    ],
+    [
+      0.000844,
+      "r"
+    ],
+    [
+      0.092574,
+      "sh-4.4$ gr"
+    ],
+    [
+      0.619799,
+      "a"
+    ],
+    [
+      0.356197,
+      "m"
+    ],
+    [
+      0.124656,
+      "e"
+    ],
+    [
+      0.077708,
+      "x"
+    ],
+    [
+      0.508665,
+      " "
+    ],
+    [
+      0.188254,
+      "i"
+    ],
+    [
+      0.139061,
+      "n"
+    ],
+    [
+      0.139928,
+      "i"
+    ],
+    [
+      0.326342,
+      "t"
+    ],
+    [
+      0.169138,
+      " "
+    ],
+    [
+      0.311145,
+      "m"
+    ],
+    [
+      0.124224,
+      "i"
+    ],
+    [
+      0.155453,
+      "n"
+    ],
+    [
+      0.077409,
+      "i"
+    ],
+    [
+      0.188188,
+      "m"
+    ],
+    [
+      0.154713,
+      "a"
+    ],
+    [
+      0.139424,
+      "l"
+    ],
+    [
+      0.170679,
+      "\r\n"
+    ],
+    [
+      8.397703,
+      "DEBUG   06-Jul 16:29:56 config PORT Loading config: d:\\site\\gramener.com\\viz\\async-gramex\\gramex\\apps.yaml\r\r\nDEBUG   06-Jul 16:29:56 config PORT Loading config: C:\\Users\\anand\\AppData\\Local\\Gramex Data\\apps\\apps.yaml\r\r\nINFO    06-Jul 16:29:56 install PORT "
+    ],
+    [
+      0.001247,
+      "Initializing Gramex project at D:\\temp\\project\r\r\n"
+    ],
+    [
+      0.156222,
+      "Initialized empty Git repository in /cygdrive/d/temp/project/.git/\r\n"
+    ],
+    [
+      0.613865,
+      "Updated git hooks.\r\nGit LFS initialized.\r\n"
+    ],
+    [
+      0.68986,
+      "Tracking \"assets/**\"\r\n"
+    ],
+    [
+      0.141952,
+      "INFO    06-Jul 16:29:57 install PORT Copy file d:\\site\\gramener.com\\viz\\async-gramex\\gramex\\apps\\init\\minimal\\gramex.template.yaml\r\r\nINFO    06-Jul 16:29:57 install PORT Copy file d:\\site\\gramener.com\\viz\\async-gramex\\gramex\\apps\\init\\minimal\\index.templat"
+    ],
+    [
+      0.001082,
+      "e.html\r\r\n"
+    ],
+    [
+      0.785065,
+      "INFO    06-Jul 16:29:58 install PORT Setting up D:\\temp\\project\r\r\n"
+    ],
+    [
+      0.11,
+      "sh-4.4$ "
+    ],
+    [
+      1.751742,
+      "l"
+    ],
+    [
+      0.139431,
+      "s"
+    ],
+    [
+      0.076787,
+      " "
+    ],
+    [
+      0.062677,
+      "-"
+    ],
+    [
+      0.215714,
+      "l"
+    ],
+    [
+      0.216376,
+      "a"
+    ],
+    [
+      0.279873,
+      "\r\n"
+    ],
+    [
+      0.047258,
+      "total 18\r\ndrwxr-xr-x 1 anand anand   0 Jul  6 16:29 .\r\ndrwxr-xr-x 1 anand anand   0 Jul  6 16:29 ..\r\ndrwxr-xr-x 1 anand anand   0 Jul  6 16:29 .git\r\n-rw-r--r-- 1 anand anand  47 Jul  6 16:29 .gitattributes\r\n-rw-r--r-- 1 anand anand 193 Jul  6 16:29 gramex."
+    ],
+    [
+      0.0008,
+      "yaml\r\n-rw-r--r-- 1 anand anand   0 Jul  6 16:29 gramex-init-minimal\r\n-rw-r--r-- 1 anand anand 731 Jul  6 16:29 index.html\r\nsh-4.4$ "
+    ]
+  ]
+}

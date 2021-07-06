@@ -173,6 +173,12 @@ With additional libraries, FormHandler can connect to
 - [Google Sheets](https://github.com/betodealmeida/gsheets-db-api)
   - Install: `pip install "gsheetsdb[sqlalchemy]"`
   - Use: `url: 'https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/edit#gid=0'`
+- [MongoDB](https://pymongo.readthedocs.io/)
+  - Install: `pip install pymongo`
+  - Use: `url: 'plugin:mongodb://username:password@localhost:27017'`
+  - `kwargs`:
+    - `database`: database to connect to
+    - `collection`: collection to query
 - [Presto](https://pypi.org/project/pyhive/)
   - Install: `pip install pyhive`
   - Use: `url: 'presto://'`
@@ -1176,13 +1182,12 @@ template using the following variables:
 
 - `data`: the DataFrame to render, after filters, sorts, etc. If the handler
   has multiple datasets, `data` is a dict of DataFrames.
-- `meta`: dict holding information about the filtered data. If the handler has
-  multiple datasets, `meta` is a dict of dicts. It has these keys:
-    - `filters`: Applied filters as `[(col, op, val), ...]`
-    - `ignored`: Ignored filters as `[(col, vals), ('_sort', vals), ...]`
-    - `sort`: Sorted columns as `[(col, True), ...]`. The second parameter is `ascending=`
-    - `offset`: Offset as integer. Defaults to 0
-    - `limit`: Limit as integer - `None` if limit is not applied
+- `meta`: dict holding information about the filtered data. If the handler has multiple datasets, `meta` is a dict of dicts. It has these keys:
+  - `filters`: Applied filters as `[(col, op, val), ...]`
+  - `ignored`: Ignored filters as `[(col, vals), ('_sort', vals), ...]`
+  - `sort`: Sorted columns as `[(col, True), ...]`. The second parameter is `ascending=`
+  - `offset`: Offset as integer. Defaults to 0
+  - `limit`: Limit as integer - `None` if limit is not applied
 - `handler`: the FormHandler instance
 
 ## FormHandler edits

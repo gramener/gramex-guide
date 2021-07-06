@@ -33,15 +33,17 @@ You can import them in your `style.scss`. For example:
 
 ```scss
 // Include any one of these lines in your .scss file
-@import "theme/default";
-@import "theme/bootswatch/slate";
-@import "theme/themes-guide/fesca";
+@import "theme/bootstrap5";         // Bootstrap 5 default theme
+@import "theme/default";            // Bootstrap 4 default theme
+@import "theme/bootswatch/slate";   // Bootstrap 4 theme
+@import "theme/themes-guide/fesca"; // Bootstrap 4 theme
 ```
 
 Or you can link to these directly. For example:
 
 ```html
 <!-- Include any one of these links in your .scss file -->
+<link rel="stylesheet" href="ui/theme/bootstrap5.scss">
 <link rel="stylesheet" href="ui/theme/default.scss">
 <link rel="stylesheet" href="ui/theme/bootswatch/slate.scss">
 <link rel="stylesheet" href="ui/theme/themes-guide/fresca.scss">

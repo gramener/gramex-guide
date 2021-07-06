@@ -422,6 +422,53 @@ URL query parameters are automatically passed as variables to the SASS file. For
 
 You can use this to allow users to customize your theme.
 
+
+## Vue
+
+FileHandler can compile [Vue single-file components](https://vuejs.org/v2/guide/single-file-components.html).
+The default FileHandler compiles any `.vue` file into CSS. For example, this `hello-world.vue` file:
+
+```html
+<template>
+  <p>{{ greeting }} World!</p>
+</template>
+
+<script>
+module.exports = {
+  data: function () {
+    return {
+      greeting: 'Hello'
+    }
+  }
+}
+</script>
+
+<style scoped>
+p {
+  font-size: 2em;
+  text-align: center;
+}
+</style>
+```
+
+... [is rendered as](hello-world.vue):
+
+```js
+(function(t){var e={};function n(r){if(e[r]) /* JS contents trimmed */
+```
+
+::: example href=hello-world.vue source="https://github.com/gramener/gramex-guide/blob/master/filehandler/hello-world.vue"
+    See hello-world.vue
+
+To enable this in your FileHandler, add:
+
+```yaml
+kwargs:
+    ...
+    vue: '*.vue'    # Compile .vue files into JS
+```
+
+
 ## XSRF
 
 If you're submitting forms using the POST method, you need to submit an

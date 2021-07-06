@@ -128,6 +128,7 @@ Update the following and commit to `master` branch:
 - In `gramex/release.json` -- update the version number
 - In `gramex/apps.yaml` -- update the version number on the guide
 - In `gramex/apps/ui/package.json` -- update the version number
+- In [gramex-guide][gramex-guide] -- run `yarn upgrade`
 - In [gramex-guide][gramex-guide] / `release/README.md` -- add release entry
 - In [gramex-guide][gramex-guide] / `release/1.xx/README.md` -- add guide release notes.
   - Run `make stats` for code size stats. Take coverage stats from Travis
@@ -237,6 +238,7 @@ python setup.py sdist
 # If this fails, add '-p PASSWORD'
 twine upload -u gramener dist/*
 ```
+
 Re-start gramex on deployed servers.
 
 [gramex-guide]: https://github.com/gramener/gramex-guide/
