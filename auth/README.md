@@ -176,7 +176,7 @@ url:
       redirect:
         query: later                  # ?later= is used for redirection
         header: Referer               # else, the Referer header
-        url: /$YAMLURL/               # else redirect to this page
+        url: ../                      # else redirect to parent page
   app/home:
     pattern: /$YAMLURL/
     handler: ...
@@ -196,7 +196,7 @@ url:
     kwargs:
       credentials: {alpha: alpha}
       redirect:
-        url: /$YAMLURL/               # Always redirect to this page after login
+        url: ../              # Always redirect to this page after login
 ```
 
 Every time the user logs in, the session ID is changed to prevent
@@ -205,7 +205,7 @@ Every time the user logs in, the session ID is changed to prevent
 
 ## Simple auth
 
-This configuration creates a [simple auth page](simple):
+This configuration creates a [simple auth page](simple?next=.):
 
 ```yaml
 url:
@@ -246,7 +246,7 @@ in the `gramex.yaml`:
 ```
 
 The `template:` key is optional, but you should generally associate it with a
-[HTML login form file](simple) that requests a username and password (with an
+[HTML login form file](simple?next=.) that requests a username and password (with an
 [xsrf][xsrf] field). See [login templates](#login-templates) to learn how to
 create one.
 
@@ -256,7 +256,7 @@ create one.
 
 ## Google auth
 
-This configuration creates a [Google login page](google):
+This configuration creates a [Google login page](google?next=.):
 
 ```yaml
 url:
@@ -417,7 +417,7 @@ Google auth and connections to HTTPS sites may fail with a
 ## Facebook auth
 
 **Available in Gramex Enterprise**.
-This configuration creates a [Facebook login page](facebook):
+This configuration creates a [Facebook login page](facebook?next=.):
 
 ```yaml
 url:
@@ -463,7 +463,7 @@ The [user attributes](#user-attributes) in `handler.current_user` look like this
 ## Twitter auth
 
 **Available in Gramex Enterprise**.
-This configuration creates a [Twitter login page](twitter):
+This configuration creates a [Twitter login page](twitter?next=.):
 
 ```yaml
 url:
@@ -549,7 +549,7 @@ ID or an email ID, etc instead of the "uid".
 
 ### Direct LDAP login
 
-This configuration creates a [direct LDAP login page](ldap):
+This configuration creates a [direct LDAP login page](ldap?next=.):
 
 ```yaml
 auth/ldap:
@@ -568,7 +568,7 @@ the user ID and password. Strings inside `{braces}` are replaced by form fields
 -- so if the user enters `admin` in the `user` field, `GRAMENER\{user}` becomes
 `GRAMENER\admin`.
 
-The optional `template:` should be a [HTML login form](ldap) that requests a
+The optional `template:` should be a [HTML login form](ldap?next=.) that requests a
 username and password. (The form should have an [xsrf][xsrf] field).
 
 LDAP runs on port 389 and and LDAPS runs on port 636. If you have a non-standard
@@ -616,7 +616,7 @@ To fetch these, add a `search:` section. Below is a real-life example:
 
 ### Bind LDAP login
 
-This configuration creates a [bind LDAP login page](ldap-bind):
+This configuration creates a [bind LDAP login page](ldap-bind?next=.):
 
 ```yaml
 auth/ldap-bind:
@@ -701,7 +701,7 @@ url:
       redirect:                       # After logging in, redirect the user to:
         query: next                   #      the ?next= URL
         header: Referer               # else the Referer: header (i.e. page before login)
-        url: /$YAMLURL/               # else the home page of current directory
+        url: .                        # else the home page of current directory
 ```
 
 Now create an `auth.xlsx` with the first sheet like this:
@@ -762,7 +762,7 @@ url:
 ::: example href=db source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
     DBAuth example
 
-You should create a [HTML login form](db) that requests a username and password
+You should create a [HTML login form](db?next=.) that requests a username and password
 (with an [xsrf][xsrf] field). See [login templates](#login-templates) to learn
 how to create one.
 
@@ -996,8 +996,8 @@ auth/saml:
   pattern: /$YAMLURL/login
   handler: SAMLAuth
     kwargs:
-      xsrf_cookies: false                   # Disable XSRF. SAML cannot be hacked via XSRF
-      sp_domain: 'app.client.com'           # Public domain name of the gramex application
+      xsrf_cookies: false                   # Disable XSRF. SAML is XSRF-proof
+      sp_domain: 'app.client.com'           # Public domain name of the gramex app
       https: true                           # true if app.client.com is on https
       custom_base_path: $YAMLPATH/saml/     # Path to settings.json and certs/
       lowercase_encoding: True              # True for ADFS driven SAML auth
@@ -1153,7 +1153,7 @@ url:
       redirect:                 # After logging in, redirect the user to:
           query: next           #      the ?next= URL
           header: Referer       # else the Referer: header (i.e. page before login)
-          url: /$YAMLURL/       # else the home page of current directory
+          url: .                # else the home page of current directory
 
       # Optional configuration. The values shown below are the defaults
       minutes_to_expiry: 15     # Minutes after which the OTP will expire
@@ -1196,7 +1196,7 @@ url:
       redirect:               # After logging in, redirect the user to:
         query: next           # the ?next= URL
         header: Referer       # else the Referer: header (i.e. page before login)
-        url: /$YAMLURL/       # else the home page of current directory
+        url: .                # else the home page of current directory
 
   dashboard:
     pattern: ...
@@ -1261,7 +1261,7 @@ url:
       redirect:                 # After logging in, redirect the user to:
           query: next           #      the ?next= URL
           header: Referer       # else the Referer: header (i.e. page before login)
-          url: /$YAMLURL/       # else the home page of current directory
+          url: .                # else the home page of current directory
 
       # Optional configuration. The values shown below are the defaults
       minutes_to_expiry: 15     # Minutes after which the OTP will expire
@@ -1396,7 +1396,7 @@ url:
         - function: sys.stderr.write('Logged in via Google')      # Write to console
 ```
 
-For example, the [ldap login](ldap) page is set with `ensure_single_session`.
+For example, the [ldap login](ldap?next=.) page is set with `ensure_single_session`.
 You can log in on multiple browsers. Every log in will log out other sessions.
 
 You can write your own custom functions. By default, the function will be passed
@@ -1798,7 +1798,7 @@ To manually disable redirection, set `login_url: false`.
 
 `auth:` can check for membership. For example, you can access [en-male](en-male)
 only if your gender is `male` and your locale is `en` or `es`. (To test it,
-[logout](logout?next=.) and [log in via Google](google).)
+[logout](logout?next=.) and [log in via Google](google?next=.).)
 
 ```yaml
     # Add this under the kwargs: of ALL pages you want to restrict access to

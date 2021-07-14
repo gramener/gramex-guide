@@ -54,7 +54,7 @@ url:
             redirect:
                 query: next
                 header: Referer
-                url: /$YAMLURL
+                url: .
 
     auth/ajax:
         pattern: /$YAMLURL/ajax
@@ -85,7 +85,7 @@ url:
             redirect:
                 query: next
                 header: Referer
-                url: /$YAMLURL
+                url: .
 
     auth/contacts:
         pattern: /$YAMLURL/contacts
@@ -106,7 +106,7 @@ url:
             redirect:
                 query: next
                 header: Referer
-                url: /$YAMLURL
+                url: .
 
     auth/twitter:
         pattern: /$YAMLURL/twitter
@@ -119,7 +119,7 @@ url:
             redirect:
                 query: next
                 header: Referer
-                url: /$YAMLURL
+                url: .
 
     auth/ldap:
         pattern: /$YAMLURL/ldap                 # Map this URL
@@ -137,7 +137,7 @@ url:
             redirect:
                 query: next
                 header: Referer
-                url: /$YAMLURL
+                url: .
                 external: true
 
     auth/ldap-bind:
@@ -161,7 +161,7 @@ url:
             redirect:
                 query: next
                 header: Referer
-                url: /$YAMLURL
+                url: .
                 external: true
 
     auth/ldap2:
@@ -176,7 +176,7 @@ url:
             redirect:
                 query: next
                 header: Referer
-                url: /$YAMLURL
+                url: .
                 external: true
 
     auth/dbsimple:
@@ -192,7 +192,7 @@ url:
             redirect:
                 query: next
                 header: Referer
-                url: /$YAMLURL/
+                url: .
 
     auth/db:
         pattern: /$YAMLURL/db
@@ -227,7 +227,7 @@ url:
             redirect:
                 query: next
                 header: Referer
-                url: /$YAMLURL
+                url: .
 
     auth/user:
         pattern: /$YAMLURL/user
@@ -287,7 +287,7 @@ url:
         kwargs:
             path: $YAMLPATH/secret.html
             auth:
-                login_url: /$YAMLURL/simple
+                login_url: ./simple
 
     auth/expiry:
         pattern: /$YAMLURL/expiry
@@ -296,7 +296,7 @@ url:
             session_expiry: 0.0003          # Session expires in 26 seconds
             credentials: {alpha: alpha}
             template: $YAMLPATH/expiry.html # Use this login template for the demo
-            redirect: /$YAMLURL/expiry
+            redirect: .
 
     auth/inactive:
         pattern: /$YAMLURL/inactive
@@ -305,7 +305,7 @@ url:
             session_inactive: 0.00003         # Must visit every 2.6 seconds
             credentials: {alpha: alpha}
             template: $YAMLPATH/inactive.html # Use this login template for the demo
-            redirect: /$YAMLURL/inactive
+            redirect: .
 
     auth/customexpiry:
         pattern: /$YAMLURL/customexpiry
@@ -323,7 +323,7 @@ url:
                   "on": 31        # If ?remember=on, expire after 31 days (checkbox)
             credentials: {alpha: alpha, beta: beta}
             template: $YAMLPATH/customexpiry.html   # Use this login template for the demo
-            redirect: /$YAMLURL/customexpiry
+            redirect: .
 
     auth/otp:
         pattern: /$YAMLURL/otp
@@ -363,7 +363,7 @@ url:
           redirect:
               query: next
               header: Referer
-              url: /$YAMLURL
+              url: .
 
     auth/github:
       pattern: /$YAMLURL/github
@@ -383,7 +383,7 @@ url:
           redirect:
               query: next
               header: Referer
-              url: /$YAMLURL
+              url: .
 
     auth/googleoauth2:
       pattern: /$YAMLURL/googleoauth2
@@ -419,7 +419,7 @@ url:
             redirect:
                 query: next
                 header: Referer
-                url: /$YAMLURL
+                url: .
 
     auth/recaptcha:
         pattern: /$YAMLURL/recaptcha
@@ -438,7 +438,7 @@ url:
             redirect:
                 query: next
                 header: Referer
-                url: /$YAMLURL
+                url: .
 
     auth/sms:
         pattern: /$YAMLURL/sms
@@ -449,7 +449,7 @@ url:
           redirect:
               query: next
               header: Referer
-              url: /$YAMLURL
+              url: .
 
     auth/email:
         pattern: /$YAMLURL/email
@@ -461,7 +461,7 @@ url:
           redirect:
               query: next
               header: Referer
-              url: /$YAMLURL
+              url: .
 
     auth/multi:
         pattern: /$YAMLURL/multi
@@ -494,7 +494,7 @@ url:
         kwargs:
             function: '{key: handler.session.pop(key, None) for key in ["google_user", "simple_user"]}'
             redirect:
-                url: /$YAMLURL/multi
+                url: ./multi
 
 
 schedule:
