@@ -12,28 +12,28 @@ configured in `gramex.yaml` using pre-defined variables.
 ## Deployment checklist
 
 - Set up Gramex.
-    - Get permission to install Gramex from the IT team.
-    - If you have Internet access, use the [default installation](https://learn.gramener.com/guide/install/)
-      Else use the [offline install](https://learn.gramener.com/guide/install/#offline-install).
+  - Get permission to install Gramex from the IT team.
+  - If you have Internet access, use the [default installation](https://learn.gramener.com/guide/install/)
+    Else use the [offline install](https://learn.gramener.com/guide/install/#offline-install).
 - Set up the project.
-    - Use Continuous Integration via [Gitlab CI](https://docs.gitlab.com/ee/ci/),
-      [Travis](https://travis-ci.com/), or [Github Actions](https://github.com/features/actions) to
-      deploy commits
-    - Else, use rsync, SFTP, Windows Remote Desktop, or whatever the IT team recommends
-    - [Use Gramex Secrets to keep passwords and access tokens safe](#secrets)
+  - Use Continuous Integration via [Gitlab CI](https://docs.gitlab.com/ee/ci/),
+    [Travis](https://travis-ci.com/), or [Github Actions](https://github.com/features/actions) to
+    deploy commits
+  - Else, use rsync, SFTP, Windows Remote Desktop, or whatever the IT team recommends
+  - [Use Gramex Secrets to keep passwords and access tokens safe](#secrets)
 - Make the app run automatically on startup as a service
-    - On Windows, [set up Gramex as a Windows Service](#windows-service)
-    - On Linux, [set up Gramex as a Linux service](#linux-service)
+  - On Windows, [set up Gramex as a Windows Service](#windows-service)
+  - On Linux, [set up Gramex as a Linux service](#linux-service)
 - Set up the domain.
-    - Decide the URL as a new domain (e.g. `projectname.com`), subdomain (e.g.
-      `projectname.clientname.com`), or path (e.g. `clientname.com/projectname/`)
-    - For a new domain / subdomain request the client IT team or the Gramener IT team
-    - Point its `A` record to your server IP address, or its `CNAME` record to your server's domain name
-      (e.g. `gramener.com`)
-    - [Set up HTTPS using certbot](https://certbot.eff.org/)
+  - Decide the URL as a new domain (e.g. `projectname.com`), subdomain (e.g.
+    `projectname.clientname.com`), or path (e.g. `clientname.com/projectname/`)
+  - For a new domain / subdomain request the client IT team or the Gramener IT team
+  - Point its `A` record to your server IP address, or its `CNAME` record to your server's domain name
+    (e.g. `gramener.com`)
+  - [Set up HTTPS using certbot](https://certbot.eff.org/)
 - [Set up a reverse proxy](#proxy-servers) to expose the app on port 80
-    - Prefer [nginx](#nginx-reverse-proxy). It's faster than [Apache](#apache-reverse-proxy)
-    - [Use relative URLs](#relative-url-mapping) for the app to work locally and on the serer
+  - Prefer [nginx](#nginx-reverse-proxy). It's faster than [Apache](#apache-reverse-proxy)
+  - [Use relative URLs](#relative-url-mapping) for the app to work locally and on the serer
 - [Troubleshoot common errors](#common-errors)
 
 ## Secrets
@@ -294,10 +294,11 @@ Here's a checklist
 
 1. **Pass original HTTP headers** to Gramex that capture the actual request the Proxy Server received.
    Gramex can redirect URLs appropriately based on this.
-  - `Host`: Actual host the request was sent to (else proxy servers send localhost or an internal IP)
-  - `X-Real-IP`: Remote address of the request (else proxy servers send their own IP)
-  - `X-Scheme`: Protocol (HTTP/HTTPS) the request was made with (else proxy servers stay with HTTP)
-  - `X-Request-URI`: Original request URL (else proxyservers send `http://localhost:port/...`)
+   - `Host`: Actual host the request was sent to (else proxy servers send localhost or an internal IP)
+   - `X-Real-IP`: Remote address of the request (else proxy servers send their own IP)
+   - `X-Scheme`: Protocol (HTTP/HTTPS) the request was made with (else proxy servers stay with HTTP)
+   - `X-Request-URI`: Original request URL (else proxyservers send `http://localhost:port/...`)
+   - `X-Gramex-Root`: Base URL of Gramex application
 2. **Enable websocket proxying** via
    [proxy_pass](http://nginx.org/en/docs/http/websocket.html) on nginx, and
    [mod_proxy_wstunnel](https://httpd.apache.org/docs/2.4/mod/mod_proxy_wstunnel.html) on Apache
@@ -344,6 +345,7 @@ server {
     location /project/ {                    # example.com/project/* maps to
         proxy_pass http://127.0.0.1:9988/;  # 127.0.0.1:9988/
         proxy_redirect ~^/ /project/;       # Redirects are sent back to /project/
+        proxy_set_header X-Gramex-Root /project/;   # Tells Gramex where the app is hosted
     }
 }
 ```
@@ -436,6 +438,7 @@ Here is a minimal HTTP reverse proxy configuration:
     RequestHeader set X-Real-IP "%{REMOTE_ADDR}s"
     RequestHeader set X-Scheme "%{REQUEST_SCHEME}s"
     RequestHeader set X-Request-URI %{REQUEST_URI}s
+    RequestHeader set X-Gramex-Root "/project/"
 
     # Enable websocket proxying
     RewriteEngine on
@@ -874,52 +877,52 @@ you need to do 4 things:
 1. In the client, send the XSRF token and cookie from the HTML file. Note: this
    uses [templates](../filehandler/#templates):
 
-```html
-<script>
-$.ajax('https://gramex-server/cors-page', {
-  method: 'POST',
-  xhrFields: {withCredentials: true}            // Send cookies
-  data: { _xsrf: '{{ handler.xsrf_token }}' },  // Send XSRF token
-})
-</script>
-```
+    ```html
+    <script>
+    $.ajax('https://gramex-server/cors-page', {
+      method: 'POST',
+      xhrFields: {withCredentials: true}            // Send cookies
+      data: { _xsrf: '{{ handler.xsrf_token }}' },  // Send XSRF token
+    })
+    </script>
+    ```
 
 2. In the host, add additional headers in `gramex.yaml`:
 
-```yaml
-url:
-  cors:
-    pattern: /$YAMLURL/cors-page
-    handler: FunctionHandler
-    kwargs:
-      function: mymodule.mycalc(handler)
-      methods: [GET, POST, OPTIONS]             # Important: Allow OPTIONS
-      auth: true                                # Pick any auth conditions
-      headers:
-          Access-Control-Allow-Methods: GET, POST, OPTIONS      # Important
-          Access-Control-Allow-Credentials: true                # Important
-          # Access-Control-Allow-Origin: must be set dynamically by mycalc()
-```
+    ```yaml
+    url:
+      cors:
+        pattern: /$YAMLURL/cors-page
+        handler: FunctionHandler
+        kwargs:
+          function: mymodule.mycalc(handler)
+          methods: [GET, POST, OPTIONS]             # Important: Allow OPTIONS
+          auth: true                                # Pick any auth conditions
+          headers:
+              Access-Control-Allow-Methods: GET, POST, OPTIONS      # Important
+              Access-Control-Allow-Credentials: true                # Important
+              # Access-Control-Allow-Origin: must be set dynamically by mycalc()
+    ```
 
 3. In the client AND the host, enable a distributed
-   [session data mechanism](../auth/#session-data) like Redis,
-   and also to share cookies:
+    [session data mechanism](../auth/#session-data) like Redis,
+    and also to share cookies:
 
-```yaml
-app:
-  session:
-    type: redis
-    path: localhost:6379:0      # Run redis on localhost at port 6379. This uses DB 0
-    domain: .your-domain.com    # Allows cookies to be shared between *.your-domain.com
-```
+    ```yaml
+    app:
+      session:
+        type: redis
+        path: localhost:6379:0      # Run redis on localhost, port 6379, DB 0
+        domain: .your-domain.com    # Share cookies between *.your-domain.com
+    ```
 
 4. In the host `mymodule.mycalc()`, set the `Access-Control-Allow-Origin` header:
 
-```python
-def mycalc(handler):
-    origin = handler.request.headers.get('Origin', '*')
-    handler.set_header('Access-Control-Allow-Origin', origin)
-```
+    ```python
+    def mycalc(handler):
+        origin = handler.request.headers.get('Origin', '*')
+        handler.set_header('Access-Control-Allow-Origin', origin)
+    ```
 
 
 ## Shared deployment
@@ -957,7 +960,7 @@ url:
     handler: FileHandler
     kwargs:
       path: $YAMLPATH/data/
-      allow: ['data.csv', '*.xlsx']         # Explicitly allow required file types
+      allow: ['data.csv', '*.xlsx']         # Explicitly allow required types
 ```
 
 **Do not use a custom `deploy.yaml`** in your project. Import from `$GRAMEXPATH`
@@ -982,7 +985,7 @@ these will be loaded.
 url:            # THIS IS WRONG!
     data:       # This is defined by app1 -- only this config is loaded
         ...
-    data:       # This is defined by app2 -- this is ignored with a warning in the log
+    data:       # This is defined by app2 -- ignored with a warning
         ...
 ```
 
@@ -1017,11 +1020,11 @@ sections. A safe use is `namespace: [url, cache, schedule, watch]`
 ```yaml
 import:                                     # THIS IS RIGHT
     app1/ui:                                # app1
-        namespace: [url]                    # ensures that url: section names are unique
+        namespace: [url]                    # ensures names in url: are unique
         path: $GRAMEXAPPS/ui/gramex.yaml
         YAMLURL: $YAMLURL/app1/ui/
     app2/ui:                                # app2
-        namespace: [url]                    # ensures that url: section names are unique
+        namespace: [url]                    # ensures names in url: are unique
         path: $GRAMEXAPPS/ui/gramex.yaml
         YAMLURL: $YAMLURL/app2/ui/
 ```

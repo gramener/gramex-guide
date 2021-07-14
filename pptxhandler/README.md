@@ -184,13 +184,13 @@ slidesense config.yaml --target=my-output.pptx --no-open
 slidesense gramex.yaml my-url --data=my-data.xlsx
 ```
 
-------------------------------------------------------------------------
+---
 
-# Reference
+# Index
 
 [TOC]
 
-------------------------------------------------------------------------
+---
 
 # Rules
 
@@ -271,13 +271,13 @@ rules:
 By default, rules are applied to all slides. You can restrict changes to specific slides with:
 
 - `slide-number`: apply rule to specific slide numbers
-    - e.g. `slide-number: 1` picks only the 1st slide
-    - e.g. `slide-number: [2, 4]` picks the 2nd and 4th slide (not the 3rd)
+  - e.g. `slide-number: 1` picks only the 1st slide
+  - e.g. `slide-number: [2, 4]` picks the 2nd and 4th slide (not the 3rd)
 - `slide-title`: apply rule to specific slide titles
-    - e.g. `slide-title: f'Business Update'` picks all slides with the *exact* title "Business Update" (case-insensitive)
-    - e.g. `slide-title: f'*Update*'` picks all slides with "Update" anywhere in the title (case-insensitive)
-    - e.g. `slide-title: f'Day ?'` picks Day 1, Day 2, ... but not Day 10, ...
-    - Use `?` to match a single char, and `*` to match anything
+  - e.g. `slide-title: f'Business Update'` picks all slides with the *exact* title "Business Update" (case-insensitive)
+  - e.g. `slide-title: f'*Update*'` picks all slides with "Update" anywhere in the title (case-insensitive)
+  - e.g. `slide-title: f'Day ?'` picks Day 1, Day 2, ... but not Day 10, ...
+  - Use `?` to match a single char, and `*` to match anything
 
 For example:
 
@@ -518,9 +518,9 @@ content, or add new content (like charts). Here are some common commands:
 
 - `text`: sets the shape's [text and format](#text-format), e.g. `text: f'<p><a italic="y">New</a> <a bold="y">text</a></p>'`
 - `replace`: updates the shape's [text and format](#text-format), e.g. `replace: {old: f'new', (rabbit|fox): f'<a color="red">animal</a>'}`.
-    - Replace only works within a run, i.e. for words that have the same formatting. For example, in
-      "some<u>where</u>", "where" is underlined. You cannot replace "somewhere". But you can replace
-      "some" and "where" independently.
+  - Replace only works within a run, i.e. for words that have the same formatting. For example, in
+    "some<u>where</u>", "where" is underlined. You cannot replace "somewhere". But you can replace
+    "some" and "where" independently.
 - `bold`: makes the text bold or normal. It can be true/yes/y/1 or false/no/n/0/"", e.g. `bold: true`
 - `color`: sets the text color in [color units](#color-units), e.g. `color: f'red'`
 - `font-name`: sets the font name. It can be Arial, Calibri, or any valid font name, e.g. `font-name: f'Arial'`

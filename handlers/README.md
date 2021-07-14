@@ -95,10 +95,11 @@ The following attributes are available to `BaseHandler` instances:
   first value instead of the last.
 - `handler.session` (AttrDict): a unique object associated with each [session](../auth/)
 
-Apart from these, there are 4 other variables that may be created based on the
+Apart from these, there are other variables that may be created based on the
 configuration. These are not yet intended for general use:
 
 - `handler.xrequest_uri`: URL in the HTTP Header `X-Request-URI`. Defaults to `handler.request.uri`
+- `handler.gramex_root`: URL in the HTTP Header `X-Gramex-Root` without a trailing slash. Defaults to `''`
 - `handler.transform`
 - `handler.redirects`
 - `handler.permissions`
