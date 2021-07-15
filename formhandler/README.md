@@ -142,7 +142,7 @@ With additional libraries, FormHandler can connect to
 - [Apache Solr](https://github.com/aadel/sqlalchemy-solr)
   - Install: `pip install https://github.com/aadel/sqlalchemy-solr/Use/master.zip`
   - Use: `url: 'solr://$USER:$PASS@server:8983/solr/collection?use_ssl=true'`
-- [Apache Spart SQL](https://pypi.org/project/pyhive/)
+- [Apache Spark SQL](https://pypi.org/project/pyhive/)
   - Install: `pip install pyhive`
   - Use: `url: 'hive://hive@$HOST:$PORT/$DATABASE'`
 - [Azure MS SQL](https://pypi.org/project/pymssql/)
@@ -162,7 +162,7 @@ With additional libraries, FormHandler can connect to
   - Use: `url: 'dremio://$USER:$PASS@$HOST:31010/'`
 - [ElasticSearch](https://pypi.org/project/elasticsearch-dbapi/) - read-only
   - Install: `pip install elasticsearch-dbapi`
-  - Use: `url: 'elasticsearch+http://server:9200'`
+  - Use: `url: 'elasticsearch+http://$HOST:9200'`
   - Note: To avoid logging results on console, use `logging.getLogger('elasticsearch').setLevel(logging.INFO)` in [prepare](#formhandler-prepare)
 - [Exasol](https://pypi.org/project/sqlalchemy-exasol/)
   - Install: `pip install sqlalchemy-exasol`
@@ -175,10 +175,16 @@ With additional libraries, FormHandler can connect to
   - Use: `url: 'https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/edit#gid=0'`
 - [MongoDB](https://pymongo.readthedocs.io/)
   - Install: `pip install pymongo`
-  - Use: `url: 'plugin:mongodb://username:password@localhost:27017'`
+  - Use: `url: 'plugin:mongodb://$USER:$PASS@$HOST:27017'`
   - `kwargs`:
     - `database`: database to connect to
     - `collection`: collection to query
+- [ODBC](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15)
+  - Install: `pip install pyodbc`
+  - Configure: See [PyODBC wiki](https://github.com/mkleehammer/pyodbc/wiki)
+  - Use: `url: mssql+pyodbc//$USER:$PASS@$HOST/$DSN?driver=ODBC+Driver+17+for+SQL+Server"`.
+    Change driver based on your version. $DSN is the Data Source Name
+    `$DSN` is the [data source name](https://docs.microsoft.com/en-us/sql/integration-services/import-export-data/connect-to-an-odbc-data-source-sql-server-import-and-export-wizard)
 - [Presto](https://pypi.org/project/pyhive/)
   - Install: `pip install pyhive`
   - Use: `url: 'presto://'`
