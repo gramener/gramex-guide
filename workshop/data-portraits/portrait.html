@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Data Portrait</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uifactory@0.0.14/src/uifactory.js" import="@svg-chart @md-text"></script>
+  <script src="script.js"></script>
+
+  <div class="container">
+    <h1 class="text-center">Data Portrait</h1>
+    <div class="row flex-row-reverse">
+      <div class="col-lg-8">
+        <svg-chart src:urltext="https://cdn.glitch.com/00ca098e-1db3-4b35-aa48-6155f65df538%2Fportrait.svg?v=1623928230671" data:js="portraitData" rules:js="portraitRules"></svg-chart>
+      </div>
+      <div class="col-lg-4">
+        <form>
+          <div class="row mb-3">
+            <label for="age" class="col-sm-6 col-form-label">Age</label>
+            <div class="col-sm-6">
+              <select id="age" name="age" class="form-control">
+                <option></option>
+                <option>0-29</option>
+                <option>30-44</option>
+                <option>45-59</option>
+                <option>60+</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="continentBorn" class="col-sm-6 col-form-label">Continent (born)</label>
+            <div class="col-sm-6">
+              <select name="continentBorn" id="continentBorn" class="form-control">
+                <option></option>
+                <option>Africa</option>
+                <option>Asia</option>
+                <option>Europe</option>
+                <option>North America</option>
+                <option>South America</option>
+                <option>Oceania</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="age" class="col-sm-6 col-form-label">Continent (living)</label>
+            <div class="col-sm-6">
+              <select name="continentLiving" id="continentLiving" class="form-control">
+                <option></option>
+                <option>Africa</option>
+                <option>Asia</option>
+                <option>Europe</option>
+                <option>North America</option>
+                <option>South America</option>
+                <option>Oceania</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="glass" class="col-sm-6 col-form-label">The glass is...</label>
+            <div class="col-sm-6">
+              <select name="glass" id="glass" class="form-control">
+                <option></option>
+                <option>half-full</option>
+                <option>half-empty</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="morning" class="col-sm-6 col-form-label">Morning person?</label>
+            <div class="col-sm-6">
+              <select name="morning" id="morning" class="form-control">
+                <option></option>
+                <option>Morning person</option>
+                <option>Night owl</option>
+                <option>Both</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="sing" class="col-sm-6 col-form-label">Bathroom singer?</label>
+            <div class="col-sm-6">
+              <select name="sing" id="sing" class="form-control">
+                <option></option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="dogorcat" class="col-sm-6 col-form-label">Dog or cat?</label>
+            <div class="col-sm-6">
+              <select name="dogorcat" id="dogorcat" class="form-control">
+                <option></option>
+                <option>Dog</option>
+                <option>Cat</option>
+                <option>Both</option>
+                <option>Neither</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="pets" class="col-sm-6 col-form-label">Pets so far?</label>
+            <div class="col-sm-6">
+              <select name="pets" id="pets" class="form-control">
+                <option></option>
+                <option>None</option>
+                <option>1-3</option>
+                <option>4-9</option>
+                <option>10+</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="phone" class="col-sm-6 col-form-label">Which phone?</label>
+            <div class="col-sm-6">
+              <select name="phone" id="phone" class="form-control">
+                <option></option>
+                <option>iPhone</option>
+                <option>Android</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="keepPhone" class="col-sm-6 col-form-label">Your phone is...</label>
+            <div class="col-sm-6">
+              <select name="keepPhone" id="keepPhone" class="form-control">
+                <option></option>
+                <option>In bed</option>
+                <option>Within arm reach</option>
+                <option>In the same room but far</option>
+                <option>In another room</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="pencilPen" class="col-sm-6 col-form-label">Pencil / Pen?</label>
+            <div class="col-sm-6">
+              <select name="pencilPen" id="pencilPen" class="form-control">
+                <option></option>
+                <option>Pencil</option>
+                <option>Pen</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="introvert" class="col-sm-6 col-form-label">Introvert? Extrovert?</label>
+            <div class="col-sm-6">
+              <select name="introvert" id="introvert" class="form-control">
+                <option></option>
+                <option>Introvert</option>
+                <option>Extrovert</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="friends" class="col-sm-6 col-form-label">Friends on vacation</label>
+            <div class="col-sm-6">
+              <select name="friends" id="friends" class="form-control">
+                <option></option>
+                <option>None</option>
+                <option>1-3</option>
+                <option>4-9</option>
+                <option>10+</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="money" class="col-sm-6 col-form-label">If you find $100...</label>
+            <div class="col-sm-6">
+              <select name="money" id="money" class="form-control">
+                <option></option>
+                <option>Save it</option>
+                <option>Spend it</option>
+                <option>Give it away</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <hr>
+    <p><a href=".">Learn how this was created</a></p>
+  </div>
+
+  <script>
+    let portraitNode = document.querySelector('svg-chart')
+    document.querySelector('form').addEventListener('change', function (e) {
+      let name = e.target.getAttribute('name')
+      portraitData[name] = e.target.value
+      portraitNode.update({data: portraitData})
+    })
+  </script>
+</body>

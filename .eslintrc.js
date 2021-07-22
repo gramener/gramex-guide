@@ -1,4 +1,7 @@
 module.exports = {
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
   "env": {
     "browser": true,    // Include browser globals
     "jquery": true      // Include jQuery and $

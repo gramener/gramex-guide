@@ -5,7 +5,7 @@ prefix: workshop
 
 
 - Guide link: [https://bit.ly/mlappworkshop](https://bit.ly/mlappworkshop)
-- Opening survey link: [https://bit.ly/mlworkshopintro](https://bit.ly/mlworkshopintro)
+- Opening survey link: [https://bit.ly/mlappsurvey](https://bit.ly/mlappsurvey)
 - Project template: [https://github.com/gramener/building-ml-apps-rapidly](https://github.com/gramener/building-ml-apps-rapidly)
 - Dataset link: [https://www.dropbox.com/s/9p0510n3bpdn09w/admission.csv?dl=0](https://www.dropbox.com/s/9p0510n3bpdn09w/admission.csv?dl=0)
 - IDE link: [https://gramex.gramener.com](https://gramex.gramener.com)
@@ -17,7 +17,7 @@ prefix: workshop
 
 ### A Quick Survey
 
-Before we start, could you please fill in this 15-second survey? [https://bit.ly/mlworkshopintro](https://bit.ly/mlworkshopintro)
+Before we start, could you please fill in this 15-second survey? [https://bit.ly/mlappsurvey](https://bit.ly/mlappsurvey)
 
 
 ## Objective
@@ -73,11 +73,11 @@ But first, you need a GitHub account.
 
 1. Visit <https://github.com/gramener/building-ml-apps-rapidly>. Click the Fork icon on the top right.
 
-   ![Screenshot](github-fork.png){.img-fluid}
+   ![Screenshot](github-star-fork.png){.img-fluid}
 
 2. Click on the address bar. Copy the URL of the forked repo. It will look like `https://github.com/<your-github-id>/building-ml-apps-rapidly`
 
-   ![Screenshot](github-copy-url.png){.img-fluid}
+   ![Screenshot](github-copy-ssh.png){.img-fluid}
 
 3. Visit <https://gramex.gramener.com/>
 4. Click on the "Create new project" button
@@ -253,16 +253,15 @@ Now, try out different combinations of marks and see the result.
 
 Now, let’s save your app as repository on Github. You (or anyone) can run it with the Gramex IDE.
 
-
-3. Create a new repository at https://github.com/new. Call it "admission". Click "Create repository"
+1. Create a new repository at https://github.com/new. Call it "admission". Click "Create repository"
 
    ![Screenshot](new-github-repo.png){.img-fluid}
 
-4. Once the repository  is created, copy the HTTPS link on the next page. It will look like `https://github.com/<your-id>/admission.git`
+2. Once the repository  is created, copy the HTTPS link on the next page. It will look like `https://github.com/<your-id>/admission.git`
 
    ![Screenshot](new-repo-setup.png){.img-fluid}
 
-5. Click on the code editor on the left — the second icon. Press `` Ctrl+` `` (Ctrl-Backtick) to open the Terminal.
+3. Click on the code editor on the left — the second icon. Press `` Ctrl+` `` (Ctrl-Backtick) to open the Terminal.
    Then copy-paste these commands using `Shift+Ins`.
 
 ```bash

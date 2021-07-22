@@ -3,7 +3,4 @@ module.exports = {
     "node": true,
     "es6": true
   },
-  "parserOptions": {
-    "ecmaVersion": 6
-  }
 }
