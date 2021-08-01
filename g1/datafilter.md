@@ -23,6 +23,7 @@ g1.datafilter(data, {
 ```
 
 g1.datafilter with multiple datasets:
+
 ```js
 var data1 = [
   {"ID": "1", "product": "Fan", "sales": "100", "city": "NY"},

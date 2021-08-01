@@ -117,10 +117,15 @@ Run tests:
 make test
 ```
 
-Set up apps and & upgrade npm packages.
+Upgrade npm packages and audit security:
 
 ```bash
-find gramex/apps/ -maxdepth 2 -name package.json -print0 | xargs -0 -L1 yarn upgrade --cwd
+find gramex/apps/ -maxdepth 2 -name package.json | xargs dirname | xargs -L1 bash -c 'echo "$0" && cd "$0" && npm update'
+bandit gramex --aggregate vuln --recursive --exclude '*/node_modules/*' > reports/bandit.txt
+find gramex/apps/ -maxdepth 2 -name package.json | xargs dirname | xargs -L1 bash -c 'cd "$0" && npm audit --parseable' > reports/npm-audit.txt
+snyk test --dev --all-projects > reports/snyk.txt
+freshclam
+clamscan --recursive --exclude-dir=.git --exclude-dir=__pycache__ --exclude-dir=_build --exclude-dir=node_modules > reports/clamav.txt
 ```
 
 Update the following and commit to `master` branch:
@@ -128,7 +133,7 @@ Update the following and commit to `master` branch:
 - In `gramex/release.json` -- update the version number
 - In `gramex/apps.yaml` -- update the version number on the guide
 - In `gramex/apps/ui/package.json` -- update the version number
-- In [gramex-guide][gramex-guide] -- run `yarn upgrade`
+- In [gramex-guide][gramex-guide] -- run `npm upgrade`
 - In [gramex-guide][gramex-guide] / `release/README.md` -- add release entry
 - In [gramex-guide][gramex-guide] / `release/1.xx/README.md` -- add guide release notes.
   - Run `make stats` for code size stats. Take coverage stats from Travis

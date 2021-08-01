@@ -7,17 +7,17 @@ Transitions elements with flexible timing controls.
 It accepts 2 parameters
 
 1. `attrs`: changes any HTML / SVG attributes of the selection (e.g. `fill`, etc)
-  - `fill`, `stroke` for color
-  - `x`, `y`, `cx`, `cy`, `transform`, etc for position (but these are better controlled via the options)
-  - etc.
+   - `fill`, `stroke` for color
+   - `x`, `y`, `cx`, `cy`, `transform`, etc for position (but these are better controlled via the options)
+   - etc.
 2. `options`: defines layout options (e.g. `x`, `y`, `duration`, `speed`, etc)
-  - `x`: transition the elements to the x position
-  - `y`: transition the elements to the y position
-  - `speed`: transition at constant speed in pixels per second
-  - `duration`: transition time in milliseconds (overrides `speed`)
-  - `delay`: transition delay in milliseconds (default is 0)
-  - `easing`: transition easing in d3-ease method (default is d3.easeLinear)
-  - `filter`: filter the selection based on a column value (ex: age > 30)
+   - `x`: transition the elements to the x position
+   - `y`: transition the elements to the y position
+   - `speed`: transition at constant speed in pixels per second
+   - `duration`: transition time in milliseconds (overrides `speed`)
+   - `delay`: transition delay in milliseconds (default is 0)
+   - `easing`: transition easing in d3-ease method (default is d3.easeLinear)
+   - `filter`: filter the selection based on a column value (ex: age > 30)
 
 Examples:
 
@@ -172,6 +172,7 @@ selection.call(
   })
 )
 ```
+
 The values can also be specified as a scale config and the options definitions are same as grid.
 
 ## g1.sanddance methods

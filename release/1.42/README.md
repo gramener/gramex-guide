@@ -64,7 +64,7 @@ This allows you to ship gramex applications to machines that aren't always conne
 
 ## Bug fixes
 
-- In some versions of Python, the dict order is not defined. 
+- In some versions of Python, the dict order is not defined.
 `WebSocketHandler` constructs methods dynamically and needs method order. This is now fixed.
 - When multiple requests are sent to CaptureHandler simultaneously. Downloads get mixed up.
 This is now plugged. [#494](https://code.gramener.com/cto/gramex/issues/494)

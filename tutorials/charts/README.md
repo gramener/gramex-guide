@@ -289,6 +289,7 @@ well.
     view.addEventListener('click', filterTableOnClick)
   }
 ```
+
 [View Source](../charts/output/4/index.html){: class="source"}
 
 That's it!

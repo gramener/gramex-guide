@@ -1,4 +1,4 @@
-**g1.scale**
+# g1.scale
 
 Scales is an abstraction over d3-scales and d3-scale-chromatic libraries using configurations.
 
@@ -41,6 +41,7 @@ Scales are dictionaries with the following keys:
 
 
 Linear scale mapping numericals to colors (Red white Green)
+
 ```js
 var numericals_to_color = g1.scale(data, {
     scale: 'linear', // default
@@ -91,6 +92,7 @@ categorical_to_colorscheme('grapes') // "#efedf5"
 To map continuous data (numericals) to color schemes:
 
 **Notes**:
+
 - Quantile scale divides *total data points* to bins, with each bin containing equal number of data points.
 - Quantile scale takes domain as entire dataset. Metric is mandatory and should be continuous data.
 
@@ -104,6 +106,7 @@ var quantile_scale = g1.scale(data, {
 
 
 **Notes**:
+
 - Quantize scale divides *the domain* into bins of equi value (not count).
 
 ```js
@@ -138,6 +141,7 @@ quantize_scale(70) // "#efedf5"
 ```
 
 **Notes**:
+
 - Threshold scales should have `n+1` values in range, when `n` is the number of values in domain.
 
 ```js

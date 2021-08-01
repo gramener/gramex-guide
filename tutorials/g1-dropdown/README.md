@@ -11,6 +11,7 @@ product categories. This tutorial deals with adding even more granularity to the
 visualization with dropdown menus and search functionality.
 
 ## Introduction
+
 Here's the preview of the data and the corresponding chart.
 
 <div id="chart"></div>

@@ -5,8 +5,7 @@ prefix: Tip
 
 Store data in data files, not Python files.
 
-This lets other people (analysts, client IT teams, administrators) edit the data
-- especially if they cannot program.
+This lets other people (analysts, client IT teams, administrators) edit the data - especially if they cannot program.
 
 You're a good programmer when you stop thinking *How to write code* and begin
 thinking *How will people use my code*.

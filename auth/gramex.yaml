@@ -457,7 +457,10 @@ url:
         kwargs:
           service: gramex-guide-auth
           subject: 'OTP for Gramex Guide'
-          body: 'The OTP for {user} is {password}. Visit {link}'
+          body: |
+            The OTP for {user} is {password}
+
+            Visit {link}
           redirect:
               query: next
               header: Referer

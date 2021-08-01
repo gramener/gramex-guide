@@ -8,6 +8,7 @@ prefix: 1.57
 ## UI component upgrades
 
 g1 is upgraded from 0.17.1 to 0.17.3, which introduces
+
 - [g1.scale](../../g1/scales) supports `reverse: true` and discrete scales
 - Expose ES6 modules in `modules.js`. Allows `require('g1')` in node
 - Following libraries have been upgraded

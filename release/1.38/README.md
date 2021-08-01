@@ -65,13 +65,15 @@ Gramex guide also documents how to setup [Apache Load Balancing](../../deploy/#a
 ## Developer Updates
 
 ### g1
-[`g1.js`](https://code.gramener.com/cto/g1) is upgraded to `0.8.2`
+
+- [`g1.js`](https://code.gramener.com/cto/g1) is upgraded to `0.8.2`
 - g1 [$.urlfilter](https://code.gramener.com/cto/g1#urlfilter) works on forms,
-inputs & sliders (not just links)
+  inputs & sliders (not just links)
 - g1 [$.formhandler()](https://code.gramener.com/cto/g1#formhandler) accepts
-JavaScript data objects (instead of just a URL) as source
+  JavaScript data objects (instead of just a URL) as source
 
 ### Quickstart
+
 [quickstart tutorial](../../tutorials/quickstart/) is now updated with FDD: Formhandler Driven Dashboard
 approach, through a more generalized version of creating a dashboard/app in Gramex.
 

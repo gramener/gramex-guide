@@ -37,6 +37,7 @@ Search triggers support these attributes:
 - `data-show-class=` adds classes elements matching elements. Example:
   `data-hide-class="bg-success"` adds a `bg-success` class to all matching items.
   This is useful to highlight matches.
+
 <!--
 TODO: Document
 - `data-transform="strip"`

@@ -5,16 +5,18 @@ prefix: Tip
 
 To test build errors locally, set it up using:
 
-    :::shell
-    pip install -e flake8-gramex
-    npm install -g eslint@2.6.0 eslint-plugin-template htmllint-cli jscpd
+```bash
+pip install -e flake8-gramex
+npm install -g eslint@2.6.0 eslint-plugin-template htmllint-cli jscpd
+```
 
 Make sure you have `.flake8`, `.eslintrc` and `.htmllintrc` from `yo gramex`. Then run:
 
-    :::shell
-    flake8
-    eslint --ext js,html .
-    htmllint
+```bash
+flake8
+eslint --ext js,html .
+htmllint
+```
 
 This will test most build errors. But if you want to test them all, another approach is:
 

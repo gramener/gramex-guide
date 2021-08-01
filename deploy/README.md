@@ -1043,7 +1043,7 @@ or R library.
 The quickest way is to set these up is to run [`gramex setup <folder>`](../apps/#setting-up-apps) method. This automtically installs:
 
 - Python modules in `requirements.txt` via `pip install`
-- Node modules in `package.json` via `yarn install` or `npm install`
+- Node modules in `package.json` via `npm install`
 - Any custom code in `setup.sh`, `setup.py`, and `setup.ps1`
 
 ### Log file order

@@ -65,6 +65,7 @@ Add the formhandler table to the page as follows:
   $('.formhandler').formhandler({pageSize: 5})
 </script>
 ```
+
 [View Source](../dashboards/output/1/index.html){: class="source"}
 
 
@@ -80,6 +81,7 @@ g1 provides a way to listen to URL changes via [urlchange](https://learn.gramene
     .urlchange()
 </script>
 ```
+
 [View Source](../dashboards/output/2/index.html){: class="source"}
 
 

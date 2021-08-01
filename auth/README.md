@@ -1149,7 +1149,10 @@ url:
       # Send the strings below as subject and body. You can use variables
       # user=email ID, password=OTP, link=one-time login link
       subject: 'OTP for Gramex'
-      body: 'The OTP for {user} is {password}. Visit {link}'
+      body: |
+        The OTP for {user} is {password}
+
+        Visit {link}
       redirect:                 # After logging in, redirect the user to:
           query: next           #      the ?next= URL
           header: Referer       # else the Referer: header (i.e. page before login)
@@ -1192,7 +1195,10 @@ url:
     kwargs:
       service: gramex-guide-gmail     # Send messages using this provider
       subject: 'OTP for Gramex'
-      body: 'The OTP for {user} is {password}. Visit {link}'
+      body: |
+        The OTP for {user} is {password}
+
+        Visit {link}
       redirect:               # After logging in, redirect the user to:
         query: next           # the ?next= URL
         header: Referer       # else the Referer: header (i.e. page before login)

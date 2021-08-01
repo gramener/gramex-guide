@@ -28,13 +28,13 @@ The flow when `$.ajaxchain(request)` is called is:
 
 1. Fetch URL using [$.ajax][ajax] using the request options
 2. If the page limit is not reached, call the `.chain(response, request, xhr)` function.
-  - `request` is the request sent to [$.ajax][ajax]
-  - `response` is the response from [$.ajax][ajax]
-  - `xhr` is the [jqXHR][jqxhr] object
+   - `request` is the request sent to [$.ajax][ajax]
+   - `response` is the response from [$.ajax][ajax]
+   - `xhr` is the [jqXHR][jqxhr] object
 3. If `.chain()` returns a non-empty object
-  - update the `request` with the response of `.chain()`
-  - call `$.ajaxchain(request)` with the new request
-  - Otherwise, stop.
+   - update the `request` with the response of `.chain()`
+   - call `$.ajaxchain(request)` with the new request
+   - Otherwise, stop.
 
 ## $.ajaxchain options
 

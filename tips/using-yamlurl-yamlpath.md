@@ -36,7 +36,7 @@ url:
 Using `/$YAMLURL/` redirects users back to this app's home page, rather than the
 global home page.
 
-### Tips:
+Tips:
 
 - `/$YAMLURL/` will always have a `/` before and after it.
 - `pattern:` must always start with /$YAMLURL/
@@ -70,7 +70,7 @@ url:
       path: $YAMLPATH/index.html        # Path is relative to this directory
 ```
 
-### Tips:
+Tips:
 
 - `$YAMLPATH/` will never have a `/` before it, but generally have a `/` after it
 - `path:` must always start with a $YAMLPATH/

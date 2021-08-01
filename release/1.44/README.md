@@ -117,8 +117,7 @@ You can bust the cache using parameters
 
 Starting `1.44`, when running gramex, the application prompts the user on the command line:
 
-```
-
+```text
 -------------------------------------------------------------------------
 Read the license agreement at https://learn.gramener.com/guide/license/
 

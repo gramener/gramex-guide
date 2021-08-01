@@ -15,6 +15,10 @@ prefix: workshop
 - Output for certificate link (NPTEL): [http://bit.ly/GramexOP](http://bit.ly/GramexOP)
 -->
 
+<div class="ratio ratio-16x9">
+  <iframe src="https://www.youtube.com/embed/JSEntM00QVw" allowfullscreen></iframe>
+</div>
+
 ### A Quick Survey
 
 Before we start, could you please fill in this 15-second survey? [https://bit.ly/mlappsurvey](https://bit.ly/mlappsurvey)
@@ -79,38 +83,37 @@ But first, you need a GitHub account.
 
    ![Screenshot](github-copy-ssh.png){.img-fluid}
 
-3. Visit <https://gramex.gramener.com/>
-4. Click on the "Create new project" button
+3. Visit <https://gramex.gramener.com/>. Click on the "Create new project" button
 
    ![Screenshot](create-new-project.png){.img-fluid}
 
-5. Under "Clone a Repository", paste the URL you copied.
+4. Under "Clone a Repository", paste the URL you copied.
    Set the project name to "admission". Then click "Clone".
 
    ![Screenshot](new-project-dialog.png){.img-fluid}
 
-6. You'll now see a message on the top right saying "Please authorize Github". Click on that link.
+5. You'll now see a message on the top right saying "Please authorize Github". Click on that link.
 
    ![Screenshot](github-error.png){.img-fluid}
 
-7. You'll see a Github page titled "Authorize Gramex IDE". Click on the green "Authorize jaidevd" at the bottom.
+6. You'll see a Github page titled "Authorize Gramex IDE". Click on the green "Authorize jaidevd" at the bottom.
 
    ![Screenshot](github-auth.png){.img-fluid}
 
-8. You will be redirected back to <https://gramex.gramener.com/>. Now,
+7. You will be redirected back to <https://gramex.gramener.com/>. Now,
    <br>**REPEAT steps 2 and 3**.
 
-9. The "admission" project is created. Click on it to open the IDE.
+8. The "admission" project is created. Click on it to open the IDE.
 
    ![Screenshot](project-name.png){.img-fluid}
 
-10. Add an [MLHandler](/mlhandler) component
+9. Add an [MLHandler](/mlhandler) component
 
    ![Screenshot](mlhandler-card.png){.img-fluid}
 
-11. Enter "predict" under the Pattern: as the MLHandler end point URL.
-   Download the dataset `admission.csv` and upload it using the Upload icon.
-   Click on Preview to see the dataset.
+10. Enter "predict" under the Pattern: as the MLHandler end point URL.
+    Download the dataset `admission.csv` and upload it using the Upload icon.
+    Click on Preview to see the dataset.
 
 ![Screenshot](mlhandler-form.png){.img-fluid}
 

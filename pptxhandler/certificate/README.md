@@ -61,6 +61,7 @@ Next, let's set the name of the person on each slide:
 ```
 
 Let's do the same thing for Date and Course.
+
 ```yaml
     Course:
       text: copy.val.Course

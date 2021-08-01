@@ -38,10 +38,10 @@ Gramex guide also documents how to setup [Apache reverse proxy](../../deploy/#ap
 
 ## Developer Updates
 
-- The Google Font [Montserrat](https://fonts.google.com/specimen/Montserrat) 
+- The Google Font [Montserrat](https://fonts.google.com/specimen/Montserrat)
 is now available on the Gramex [UI components](../../uicomponents/).
 
-- [Goaccess](https://goaccess.io/) is useful for server monitoring based on logs. 
+- [Goaccess](https://goaccess.io/) is useful for server monitoring based on logs.
 Nearly all web log formats (Apache, Nginx, Amazon S3, CloudFront, etc) are supported.
 Simply set the log format and run it against your log.
 [Read deploy](../../deploy/#nginx-log-analyzer) notes to set it up for Gramex Apps.

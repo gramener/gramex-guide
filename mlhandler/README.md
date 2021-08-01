@@ -27,7 +27,7 @@ url:
     handler: MLHandler
     kwargs:
       data:
-      	url: $YAMLPATH/titanic.csv  # Path to the training dataset
+        url: $YAMLPATH/titanic.csv  # Path to the training dataset
       model:
         # The classification or regression algorithm to use
         class: LogisticRegression
@@ -56,24 +56,24 @@ MLHandler will then,
 
 Other kwargs that are supported are:
 
-* `include`: List of columns to include for training. If `include` and `exclude`
+- `include`: List of columns to include for training. If `include` and `exclude`
   are both specified, `include` overrides `exclude`.
-* `nums`: List of numerical features. All numerical features are normalized to
+- `nums`: List of numerical features. All numerical features are normalized to
   have zero mean and unit variance, with [StandardScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html).
-* `dropna`: Whether to drop NAs from the training data - true by default. If set
+- `dropna`: Whether to drop NAs from the training data - true by default. If set
   to false, sklearn may misbehave.
-* `deduplicate`: Whether to drop duplicates from the training data - true by default. If set
+- `deduplicate`: Whether to drop duplicates from the training data - true by default. If set
   to false, training may be slower.
 
 Note that **all kwargs in MLHandler are optional**. Any option can be specified
 at a later time with a PUT or a POST request. For example:
 
-  * If the model class and `data` kwargs are not specified, MLHandler will do no training - which
-    can be explicitly triggered at a later time, after supplying data and the
-    algorithm (more on this below).
-  * If the model path is not defined, the trained model will be saved under
-    `$GRAMEXDATA/apps/mlhandler/`.
-  * Any of the remaining kwargs can be specified before training begins.
+- If the model class and `data` kwargs are not specified, MLHandler will do no training - which
+  can be explicitly triggered at a later time, after supplying data and the
+  algorithm (more on this below).
+- If the model path is not defined, the trained model will be saved under
+  `$GRAMEXDATA/apps/mlhandler/`.
+- Any of the remaining kwargs can be specified before training begins.
 
 
 # Exposing Existing Models
@@ -175,8 +175,8 @@ curl -X GET /model?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S
   <div class="tab-pane fade" id="ajaxcode" role="tabpanel" aria-labelledby="ajax-tab">
     <pre><code>
     $.ajax({
-    	url: 'mlhandler?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S',
-      	method: 'GET'
+      url: 'mlhandler?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S',
+        method: 'GET'
     })
     </code></pre>
   </div>
@@ -232,11 +232,11 @@ curl -X POST -d @titanic_predict.json http://localhost:9988/mlhandler?_action=pr
   <div class="tab-pane fade" id="ajaxcode-bulk" role="tabpanel" aria-labelledby="ajax-bulk-tab">
     <pre><code>
     $.ajax({
-    	url: 'mlhandler?_action=predict',
-        method: 'POST',
-        data: new FormData(this),
-        processData: false,
-        contentType: false
+      url: 'mlhandler?_action=predict',
+      method: 'POST',
+      data: new FormData(this),
+      processData: false,
+      contentType: false
     })
     </code></pre>
   </div>
@@ -263,6 +263,7 @@ follows:
 curl -X POST -d @titanic.json /mlhandler?_action=retrain&target_col=Survived
 # Output: {'score': 0.80}  - the model has 80% accuracy on the training data.
 ```
+
 <form id="retrain" method="POST" enctype="multipart/form-data">
   <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
   <input id="fileupload" type="file" name="file" class="form-control">
@@ -294,11 +295,11 @@ curl -X POST -d @titanic.json /mlhandler?_action=retrain&target_col=Survived
   <div class="tab-pane fade" id="ajaxcode-retrain" role="tabpanel" aria-labelledby="ajax-retrain-tab">
     <pre><code>
     $.ajax({
-    	url: 'mlhandler?_action=retrain&target_col=Survived',
-	method: 'POST',
-	data: new FormData(this),
-	processData: false,
-	contentType: false
+      url: 'mlhandler?_action=retrain&target_col=Survived',
+      method: 'POST',
+      data: new FormData(this),
+      processData: false,
+      contentType: false
     })
     </code></pre>
   </div>
@@ -464,17 +465,17 @@ mlhandler/tutorial:
 The template so specified will be rendered at the `pattern` URL, and it will
 have access to the following variables:
 
-* `{{ handler }}`: The MLHandler instance
-* `{{ handler.model }}`: The sklearn object / estimator / model
-* `{{ data }}`: The training dataset, available as a pandas DataFrame.
+- `{{ handler }}`: The MLHandler instance
+- `{{ handler.model }}`: The sklearn object / estimator / model
+- `{{ data }}`: The training dataset, available as a pandas DataFrame.
 
 `{{ handler.model }}` gives you access to the underlying sklearn object. This can
 be used in many ways to replicate sklearn code. For example,
 
-* Use `{{ handler.model.get_params() }}` to see the parameters of the model.
-* Use `{{ handler.model.__class__.__name__ }}` to see the name of the algorithm
+- Use `{{ handler.model.get_params() }}` to see the parameters of the model.
+- Use `{{ handler.model.__class__.__name__ }}` to see the name of the algorithm
   being used.
-* Any other attribute or method of an sklearn estimator can be accessed as
+- Any other attribute or method of an sklearn estimator can be accessed as
   `{{ handler.model.<attribute> }}`
 
 If left unspecified, MLHandler will render a default template that shows some
@@ -507,7 +508,7 @@ first argument, and should return only the transformed dataframe.
 Consider the following dataset, containing two classes that are not linearly
 separable.
 
-![](circles.png)
+![Circles](circles.png)
 
 [Here is a file](circles.csv) containing this dataset. Suppose, we create an
 MLHandler endpoint using a logistic regression to classify this dataset, as
@@ -541,7 +542,7 @@ def transform(df, *args, **kwargs):
 
 The dataset transformed thus looks like follows:
 
-![](circles-transformed.png)
+![Circles transformed](circles-transformed.png)
 
 This transformed dataset is now manageable with logistic regression. To add the
 transformation to the MLHandler configuration, use the `transform:` key under
@@ -569,6 +570,7 @@ dataset for prediction, retraining or scoring.
 ## How to get the accuracy score of my model?
 
 When trying to see the accuracy of a new dataset against an existing model, use `?_action=score`. Specifically, POST the new data to the MLHandler endpoint, with `?_action=score`.
+
 ```bash
 # Check the score of a dataset - test.csv - against an existing model
 curl -X POST -F "file=@test.csv" 'http://localhost:9988/mlhandler?_action=score'
@@ -579,6 +581,7 @@ curl -X POST -F "file=@test.csv" 'http://localhost:9988/mlhandler?_action=score'
 Add the `?_download` query parameter to the MLHandler endpoint, and perform a
 GET. E.g to download the Titanic model included in this tutorial, click
 [here](model?_download).
+
 ```bash
 curl -X GET '/mlhandler?_download'
 ```
@@ -588,6 +591,7 @@ curl -X GET '/mlhandler?_download'
 Add the `?_cache` query parameter to the MLHandler endpoint, and perform a GET.
 E.g to download the Titanic dataset included in this tutorial, click
 [here](model?_cache).
+
 ```bash
 curl -X GET '/mlhandler?_cache'
 ```
@@ -601,17 +605,17 @@ Data can be `POST`ed in two ways:
 1. By including it as JSON in the request body and setting the `Content-Type`
    header to `application/json` as follows:
 
-```bash
-curl -X POST -d @data.json --header "Content-Type: application/json"
-'http://localhost:9988/mlhandler?_action=append'
-```
+   ```bash
+   curl -X POST -d @data.json --header "Content-Type: application/json"
+   'http://localhost:9988/mlhandler?_action=append'
+   ```
 
 2. By POSTing any dataset through a form as a file. (Any `gramex.cache.open`
    format is supported.)
 
-```bash
-curl -X POST -F "file=@data.json" 'http://localhost:9988/mlhandler?_action=append'
-```
+   ```bash
+   curl -X POST -F "file=@data.json" 'http://localhost:9988/mlhandler?_action=append'
+   ```
 
 Note that when data is being appended, the schema of the appendix has to match
 the schema of the existing dataset.

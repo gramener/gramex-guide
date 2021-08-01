@@ -64,9 +64,11 @@ Currently, restricted to @gramener folks.
 ## Developer Updates
 
 ### g1
+
 [`g1.js`](https://code.gramener.com/cto/g1) is upgraded to `0.9.0`
 
-### UI Componenets
+### UI Components
+
 UI Componenet's [`Bootstrap`](../../uicomponents/) is upgraded to `4.1`.
 Read the highlights [here](http://blog.getbootstrap.com/2018/04/09/bootstrap-4-1/#highlights)
 

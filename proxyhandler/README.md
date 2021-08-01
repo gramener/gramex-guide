@@ -12,13 +12,13 @@ type: microservice
 [ProxyHandler][proxyhandler] passes requests to another URL and returns its
 response. You can use it to:
 
-1. **Proxy APIs**.
+- **Proxy APIs**.
   - Google, Facebook, etc provide a REST API that require authentication.
     ProxyHandler lets users logged into Gramex use these APIs from the browser
     without needing to pass an API key. The API key is part of the application
   - Github provides a REST API, but this cannot be accessed from the browser.
     ProxyHandler can mirror the Github API for use from the browser
-2. **Proxy sites**.
+- **Proxy sites**.
   - If you want to restrict an app, e.g. written in R-Shiny app, only to authorized users,
     ProxyHandler can proxy it and allow only authorized users.
   - If you want to embed an existing dashboard, say from Tableau or Power BI, in your page, you can

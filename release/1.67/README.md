@@ -31,7 +31,7 @@ url:
 You can send HTTP requests to `/rugby` to teach it that tall heavy boys make the male rugby team.
 Suppose this data is in `data.csv`:
 
-```
+```text
 | sex | height | weight | ans |
 |-----|--------|--------|-----|
 |   m |    190 |     90 |   Y |

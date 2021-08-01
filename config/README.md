@@ -566,7 +566,7 @@ url:
     import: app1/gramex.yaml  # Imports app1/gramex.yaml into the url: section
 ```
 
-**Notes**
+Notes:
 
 - Using `$YAMLPATH` for import: is optional. By default, imports are relative to
   the YAML file.
@@ -683,9 +683,9 @@ available in every YAML file. (The examples assume you are processing
 - `$GRAMEXAPPS`: absolute path to the Gramex apps directory
 - `$GRAMEXHOST`: hostname of the system where Gramex is running
 - `$GRAMEXDATA` is the directory where local Gramex data is stored. This is at:
-    - `%LOCALAPPDATA%\Gramex Data\` on Windows
-    - `~/.config/gramexdata/` on Linux
-    - `~/Library/Application Support/Gramex Data/` on OS X
+  - `%LOCALAPPDATA%\Gramex Data\` on Windows
+  - `~/.config/gramexdata/` on Linux
+  - `~/Library/Application Support/Gramex Data/` on OS X
 
 You can also access these from Python modules:
 
@@ -1106,55 +1106,6 @@ This adds 2 apps:
 
 ## Config Viewer
 
-[`configview/`](configview/) shows `gramex` configuration as an explorable UI
+[Config viewer](configeditor.md) was removed in Gramex 1.71.
 
-To use it, add this to your gramex.yaml:
-
-```yaml
-import:
-  configviewer:
-    path: $GRAMEXAPPS/configeditor/gramex.yaml
-    YAMLURL: /$YAMLURL/configview/
-```
-
-Now [`configview/`](configview/) has a configuration viewer.
-
-To embed the viewer in a page, include this in your HTML:
-
-```html
-<link rel="stylesheet" href="configview/node_modules/jsoneditor/dist/jsoneditor.min.css">
-<script src="configview/ui/jquery/dist/jquery.min.js"></script>
-<script src="configview/node_modules/jsoneditor/dist/jsoneditor.min.js"></script>
-
-<script src="configview/app.js"
-    data-id="myeditor"
-    data-url="configview/config/"
-    data-style="height:600px;"></script>
-```
-
-This script adds JSON editor UI from `configview/config/` URL to `<div id="myeditor"></div>`.
- If `data-id` is missing, `editor` ID is created. Use `data-style` to set in-line styles.
-
-<link rel="stylesheet" href="configview/node_modules/jsoneditor/dist/jsoneditor.min.css">
-<script src="configview/ui/jquery/dist/jquery.min.js"></script>
-<script src="configview/node_modules/jsoneditor/dist/jsoneditor.min.js"></script>
-<script src="configview/app.js"
-    data-id="myeditor"
-    data-url="configview/config/"
-    data-style="height:600px;"></script>
-
-To `get` the modified configuration from UI.
-
-```javascript
-var editor = document.getElementById('myeditor').editor
-var conf = editor.get()
-```
-
-TODO: Re-configure gramex config via UI.
-<!---
-var conf = document.getElementById('myeditor').editor.get()
-$.ajax('configview/config/post?_xsrf='+_xsrf, {
-  method: 'POST',
-  data: {'data': JSON.stringify(conf)}
-})
---->
+Use the [Gramex IDE](https://gramex.gramener.com/) to edit the configuration visually.

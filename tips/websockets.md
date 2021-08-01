@@ -5,7 +5,7 @@ prefix: Tip
 
 We can use websockets to persist bidirectional connections with server. [WebSocketHandler docs](https://learn.gramener.com/guide/websockethandler/).
 
-**How can this be useful?**
+## How to use websockets
 
 Useful for real-time applications: insights or feed or data extraction, chat bots.
 
@@ -26,7 +26,7 @@ url:
         auth: true
 ```
 
-**Send a request - Javascript**
+## Send a websocket request
 
 ```js
 protocols = {http: 'ws://', https: 'wss://'}

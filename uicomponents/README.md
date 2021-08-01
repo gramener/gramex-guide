@@ -69,6 +69,7 @@ $primary: maroon;
 $body-bg: lavender;
 @import "theme/default.scss";
 ```
+
 [See the full list of Bootstrap variables](https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss).
 
 ::: example href="https://bootstrap.build/app" target="_blank"
@@ -476,6 +477,7 @@ You can add any text inside the divider. For example:
 <div class="divider border-dark"><i class="fab fa-2x fa-twitter mr-2"></i> Icons</div>
 <div class="divider border-primary"><div class="btn btn-primary round">Buttons</div></div>
 ```
+
 <div class="divider">Text</div>
 <div class="divider border-dark"><i class="fab fa-2x fa-twitter mr-2"></i> Icons</div>
 <div class="divider border-primary"><div class="btn btn-primary round">Buttons</div></div>

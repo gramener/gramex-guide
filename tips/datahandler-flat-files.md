@@ -10,7 +10,7 @@ You can use `DataHandler` to fetch data from CSV and remote databases using the 
 
 Here's a 3 minute video on its working: [https://asciinema.org/a/FWCjuoRJD3zbAl9OXL2W3fY4C](https://asciinema.org/a/FWCjuoRJD3zbAl9OXL2W3fY4C)
 
-**Modifying databases**
+## Modifying databases
 
 It can also be used to add/update/delete records in databases (with `POST`, `PUT`, `DELETE` options).
 

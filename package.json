@@ -12,11 +12,15 @@
     "uifactory": "0.0.6",
     "vue": "2"
   },
+  "scripts": {
+    "lint": "markdownlint --ignore node_modules ."
+  },
   "devDependencies": {
     "bootstrap-select": "1.13",
     "bootstrap-select-dropdown": "0.14",
     "front-matter": "3",
     "glob": "7",
+    "markdownlint-cli": "0.28",
     "marked": "0.7"
   }
 }

@@ -13,12 +13,12 @@ Gramex FunctionHandlers can run JavaScript code in node.js. Here is a simple exa
 
 ```python
 from gramex.pynode import node
-from tornado.gen import coroutine, Return
+from tornado.gen import coroutine
 
 @coroutine
 def total(handler):
     result = yield node.js('return Math.abs(x + y)', x=5, y=-10)    # Run code in JS
-    raise Return(result)
+    return result
 ```
 
 This returns the result:
@@ -40,7 +40,7 @@ Here is how `node.js()` works:
 - **Pass globals**. Any keyword arguments passed to `node.js()` become global
   variables. For example, `node.js('return x + y', x=1, y=2)` returns `3`.
 - **Returns a Future**. You must use `yield node.js()`, decorate your function
-  with `@tornado.gen.coroutine`, and return via `raise Return(...)`. Also see
+  with `@tornado.gen.coroutine`. Also see
   [asynchronous functions](../functionhandler/#asynchronous-functions).
 - **Returns an object**. The result of `yield node.js()` is an object with 2
   keys:
@@ -77,7 +77,7 @@ def inline_styles(handler):
         html=html,                            # Pass html as a global variable
         lib='juice'
     )
-    raise Return(result['result'])            # Return just the result
+    return result['result']                   # Return just the result
 ```
 
 This returns

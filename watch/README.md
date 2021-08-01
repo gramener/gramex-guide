@@ -11,15 +11,16 @@ type: library
 
 The `watch:` section in [gramex.yaml](../gramex.yaml.source) triggers events when files are modified. For example:
 
-    :::yaml
-    watch:                                  # Define files to watch
-        data-files:                         # Create a watched named data-files
-            paths:                          # Watch for these files
-                - $YAMLPATH/dir/            # - any file under the dir/ subdirectory
-                - $YAMLPATH/*.txt           # - any CSV file under this folder
-                - $YAMLPATH/data.csv        # - data.csv in this folder
-                - data.xslx                 # - data.xlsx from where Gramex was started
-            on_modified: module.function    # When file is changed, call module.function(event)
+```yaml
+watch:                                  # Define files to watch
+    data-files:                         # Create a watched named data-files
+        paths:                          # Watch for these files
+            - $YAMLPATH/dir/            # - any file under the dir/ subdirectory
+            - $YAMLPATH/*.txt           # - any CSV file under this folder
+            - $YAMLPATH/data.csv        # - data.csv in this folder
+            - data.xslx                 # - data.xlsx from where Gramex was started
+        on_modified: module.function    # When file is changed, call module.function(event)
+```
 
 Each named watch has the following keys:
 
@@ -39,9 +40,10 @@ The event handler functions are called with a single argument `event`. The
 
 Here is a sample event handler that prints the event:
 
-    :::python
-    def watch_file(event):
-        print(event.src_path, event.is_directory, event.event_type)
+```python
+def watch_file(event):
+    print(event.src_path, event.is_directory, event.event_type)
+```
 
 
 ## Watching files
@@ -51,18 +53,19 @@ Your functions can watch files efficiently. For example, this code will run
 called with a [watchdog event][event].
 
 
-    :::python
-    from gramex.services.watcher import watch
+```python
+from gramex.services.watcher import watch
 
-    def log(event):
-        print(event)
+def log(event):
+    print(event)
 
-    watch(name='unique-name', paths=['filename.txt'],
-          on_created=log, on_deleted=log, on_modified=log)
+watch(name='unique-name', paths=['filename.txt'],
+      on_created=log, on_deleted=log, on_modified=log)
 
-    # Now, when any changes are made to filename.txt, on_modified is called
-    # To stop watching, use this:
-    unwatch(name='unique-name')
+# Now, when any changes are made to filename.txt, on_modified is called
+# To stop watching, use this:
+unwatch(name='unique-name')
+```
 
 [event]: http://pythonhosted.org/watchdog/api.html#module-watchdog.events
 
@@ -74,9 +77,11 @@ default system limits may not be enough for this.
 If you see an "inotify watch limit reached" or "inotify instance limit reached"
 error, run these commands to increase the limit:
 
-    printf "fs.inotify.max_user_instances=512\n" | sudo tee -a /etc/sysctl.conf
-    printf "fs.inotify.max_user_watches=524288\n" | sudo tee -a /etc/sysctl.conf
-    sudo sysctl --system
+```bash
+printf "fs.inotify.max_user_instances=512\n" | sudo tee -a /etc/sysctl.conf
+printf "fs.inotify.max_user_watches=524288\n" | sudo tee -a /etc/sysctl.conf
+sudo sysctl --system
+```
 
 Some [useful commands for debugging](https://stackoverflow.com/questions/13758877/how-do-i-find-out-what-inotify-watches-have-been-registered):
 
@@ -96,6 +101,7 @@ for f in `/bin/ls /proc/<proc-id>/fd/`; do readlink -f "/proc/<proc-id>/fd/$f"; 
 
 Alternatively, you can disable the Watch by setting it as `False` in gramex.yaml. This can be useful in containerized apps where you can't modify the host inotify limit.
 
-    :::yaml
-        app:
-            watch: False
+```yaml
+    app:
+        watch: False
+```

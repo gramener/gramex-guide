@@ -39,8 +39,8 @@ LanguageTool accepts two query parameters:
 
 The JSON response consists of an object containing two keys:
 
-* `errors`: enumerates grammatical and spelling errors in the input text. [Read more](http://wiki.languagetool.org/http-server#toc2) about the HTTP API.
-* `correction`: contains the autocorrected version of the input text.
+- `errors`: enumerates grammatical and spelling errors in the input text. [Read more](http://wiki.languagetool.org/http-server#toc2) about the HTTP API.
+- `correction`: contains the autocorrected version of the input text.
 
 ### Play with LanguageTool
 
@@ -124,10 +124,10 @@ def check_grammar(handler):
 
 The LanguageTool app provides the following configurable [YAML variables](../config/#yaml-variables).
 
-* `LT_PORT`: The port at which the LanguageTool subprocess runs (default: 8081)
-* `LT_ALLOW_ORIGIN`: Set the Access-Control-Allow-Origin header in the HTTP response,
+- `LT_PORT`: The port at which the LanguageTool subprocess runs (default: 8081)
+- `LT_ALLOW_ORIGIN`: Set the Access-Control-Allow-Origin header in the HTTP response,
   used for direct (non-proxy) JavaScript-based access from browsers; (default : "*")
-* `LT_VERSION`: Version of LanguageTool to use. (default: 4.4)
-* `LT_TARGET`: Location at which to install LanguageTool. (default: `$GRAMEXDATA/languagetool`)
-* `LT_SRC`: URL from which to download LanguageTool.
+- `LT_VERSION`: Version of LanguageTool to use. (default: 4.4)
+- `LT_TARGET`: Location at which to install LanguageTool. (default: `$GRAMEXDATA/languagetool`)
+- `LT_SRC`: URL from which to download LanguageTool.
   (default: https://languagetool.org/download/LanguageTool-`${LT_VERSION}`.zip)

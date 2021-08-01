@@ -9,15 +9,16 @@ For example, if you use the same `auth:` section or `error:` section in multiple
 
 Here's an example
 
-    :::yaml
-	url1:
-	  kwargs: ...
-	    auth: &GRAMENER_AUTH      # & defines an anchor called GRAMENER_AUTH
-	      membership:
-	        hd: [gramener.com]
-	url2:
-	  kwargs: ...
-	    auth: *GRAMENER_AUTH      # * re-uses the GRAMENER_AUTH anchor
+```yaml
+url1:
+  kwargs: ...
+    auth: &GRAMENER_AUTH      # & defines an anchor called GRAMENER_AUTH
+      membership:
+        hd: [gramener.com]
+url2:
+  kwargs: ...
+    auth: *GRAMENER_AUTH      # * re-uses the GRAMENER_AUTH anchor
+```
 
 This is documented at [https://learn.gramener.com/guide/config/#reusing-configurations](https://learn.gramener.com/guide/config/#reusing-configurations)
 

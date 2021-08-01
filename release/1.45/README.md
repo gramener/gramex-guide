@@ -43,7 +43,7 @@ The `ADMIN_AUTH` section is the same as specifying the `auth:`
 
 ### Actions
 
-[Admin page](../../admin/admin/?tab=users) user table's actions were broken. They now work as expected. 
+[Admin page](../../admin/admin/?tab=users) user table's actions were broken. They now work as expected.
 
 **Breaking Change:** `g1.formhandler` `actions` now accepts array of objects as configuration.
 

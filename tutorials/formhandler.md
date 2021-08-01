@@ -85,11 +85,11 @@ Use environment variables.
 - Cache your data requests via cache-control headers. [Documentation](../cache/).
 - Prepare the arguments
 - URL parameters are not always in the required format that the data source expects.
-Use FormHandler's `prepare` option lets the user manipulate the URL parameters to suit the application needs.
-    - For example, parse month from date before querying.
-    Assume parameter from the URL request is: month (number).
-    But the query expects the format to be in month name (string format).
-    Data source can have many columns including names such as `State name` and `Month`.
+- Use FormHandler's `prepare` option lets the user manipulate the URL parameters to suit the application needs.
+  For example, parse month from date before querying.
+  Assume parameter from the URL request is: month (number).
+  But the query expects the format to be in month name (string format).
+  Data source can have many columns including names such as `State name` and `Month`.
 
 Request: `/data?s=telangana&m=3`
 
@@ -170,6 +170,7 @@ To increase/decrease this limit, specify `_limit` parameter using `?_limit=15000
 
 
 ## Modify the result
+
 Data returned post filtering by FormHandler can be changed via modify option.
 To modify result after executing the query.
 

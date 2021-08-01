@@ -24,8 +24,8 @@ delivery status responses -- which Amazon SNS API does not.
 ## Redis Store
 
 You can now run Gramex instances on multiple machines and load balance them.
-User sessions can be shared across instances using [Redis](https://redis.io/)
-- a fast in-memory database.
+User sessions can be shared across instances using [Redis](https://redis.io/) -
+a fast in-memory database.
 
 Specifically, nginx need not use
 [ip_hash](http://nginx.org/en/docs/http/ngx_http_upstream_module.html#ip_hash).

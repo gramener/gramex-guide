@@ -26,7 +26,7 @@ var url = g1.url.parse(location.href); // fetch current url using g1 library
 var capture_url = url.join('capture')
   .update({'url': location.href, 'exp': 'pdf', 'delay': 10000, 'd': 'true'})
 window.open(capture_url.toString())
-// or 
+// or
 $('.custom-pdf').attr('href', capture_url.toString())
 ```
 
@@ -45,7 +45,7 @@ To encode URLs using a `python` template:
 capture-scheduler:
   function: app.screenshot_scheduler
   dates: '-'
-  hours: '2'	  # 2nd hour of the day
+  hours: '2'    # 2nd hour of the day
   minutes: '30' # 30th minute
 ```
 
@@ -70,27 +70,27 @@ Arguments supported by `CaptureHandler`:
 
 For `PDF`:
 
-  - `?format=` PDF formats like A0, A1, A2, A3, A4, Legal, Letter or Tabloid. Default: A4
-  - `?orientation=`  portrait / landscape. Default: potrait
-  - `?title=` to add page footer (optional)
-  - `?media=` print / screen , Default: screen for chrome engine
+- `?format=` PDF formats like A0, A1, A2, A3, A4, Legal, Letter or Tabloid. Default: A4
+- `?orientation=`  portrait / landscape. Default: potrait
+- `?title=` to add page footer (optional)
+- `?media=` print / screen , Default: screen for chrome engine
 
 For `PNG`/`JPG`:
 
-  - `?width=` Image width, Default: `1200`
-  - `?height=` Image height, Default: auto (full page)
-  - `?selector=` restrict screenshot of the page using css selector (optional)
+- `?width=` Image width, Default: `1200`
+- `?height=` Image height, Default: auto (full page)
+- `?selector=` restrict screenshot of the page using css selector (optional)
 
 For `PPTX`:
 
-  - `?layout=` A3, A4, Letter, `16x9`, `16x10`, `4x3`. Default: `4x3`
-  - `?dpi=` image resolution (dots per inch). Default: `96` (optional)
-  - `?width=` viewport width in pixels (optional)
-  - `?height=` height to clip output to. Leave it blank for full page height (optional)
-  - `?selector=` restrict screenshot of the page using css selector
-  - `?title=` title slide (optional)
-  - `?title_size=` font size in points (optional)
-  - `?x=` x position in px, ie., left-margin
-  - `?y=` y position in px, ie., lefttop-margin
+- `?layout=` A3, A4, Letter, `16x9`, `16x10`, `4x3`. Default: `4x3`
+- `?dpi=` image resolution (dots per inch). Default: `96` (optional)
+- `?width=` viewport width in pixels (optional)
+- `?height=` height to clip output to. Leave it blank for full page height (optional)
+- `?selector=` restrict screenshot of the page using css selector
+- `?title=` title slide (optional)
+- `?title_size=` font size in points (optional)
+- `?x=` x position in px, ie., left-margin
+- `?y=` y position in px, ie., lefttop-margin
 
 For detailed documentation, visit [CaptureHandler](../capturehandler/).

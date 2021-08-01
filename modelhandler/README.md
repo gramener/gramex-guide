@@ -217,38 +217,38 @@ This form applies the URL query parameters directly. Try it.
 ## API Reference
 
 - `GET /model/<name>/` shows the model info ([example](model/iris/))
-    - Input: None
-    - Output: model info, e.g. `{"model_class": "sklearn.svm.SVC", ...}`
+  - Input: None
+  - Output: model info, e.g. `{"model_class": "sklearn.svm.SVC", ...}`
 - `GET /model/<name>/data` returns model data ([example](model/iris/data))
-    - Input: None
-    - Output: model training data, e.g. `[{"sepal_length":5.1,...},...]`
+  - Input: None
+  - Output: model training data, e.g. `[{"sepal_length":5.1,...},...]`
 - `POST /model/<name>` trains a model or gets a prediction
-    - Header: `Model-Retrain: true` retrains the model
-    - Input:
-        - URL query parameters: `?model_class=...&input=...&input=...`
-        - JSON body `{"col1":["val1",...],"col2":["val1",...]`}
-    - Output: model_class, input, output, url, labels, model_kwargs <column, value pairs>
+  - Header: `Model-Retrain: true` retrains the model
+  - Input:
+    - URL query parameters: `?model_class=...&input=...&input=...`
+    - JSON body `{"col1":["val1",...],"col2":["val1",...]`}
+  - Output: model_class, input, output, url, labels, model_kwargs <column, value pairs>
 - `POST /model/<name>/data` inserts rows into training data
-    - Input:
-        - URL query parameters: `?id=...&col1=...&col2=...`
-        - JSON body `{"col1":["val1",...],"col2":["val1",...]`}
-    - Output: column, value pairs
+  - Input:
+    - URL query parameters: `?id=...&col1=...&col2=...`
+    - JSON body `{"col1":["val1",...],"col2":["val1",...]`}
+  - Output: column, value pairs
 - `PUT /model/<name>` train a model
-    - Header: `Model-Retrain: true` retrains the model
-    - Input:
-        - URL query parameters: `?model_class=...&input=...&input=...`
-        - JSON body `{"col1":["val1",...],"col2":["val1",...]`}
-    - Output: model_class, input, output, url, labels, model_kwargs <column, value pairs>
+  - Header: `Model-Retrain: true` retrains the model
+  - Input:
+    - URL query parameters: `?model_class=...&input=...&input=...`
+    - JSON body `{"col1":["val1",...],"col2":["val1",...]`}
+  - Output: model_class, input, output, url, labels, model_kwargs <column, value pairs>
 - `PUT /model/<name>/data` filters rows by columns in id and updates with rest of args
-    - Input:
-        - URL query parameters: `?id=...&col1=...&col2=...`
-        - JSON body `{"col1":["val1",...],"col2":["val1",...]`}
-    - Output: id, (column, value) pairs
+  - Input:
+    - URL query parameters: `?id=...&col1=...&col2=...`
+    - JSON body `{"col1":["val1",...],"col2":["val1",...]`}
+  - Output: id, (column, value) pairs
 - `DELETE /model/<name>` deletes a model
 - `DELETE /model/<name>/data` deletes rows based on id, id needs to be a primary or composite key and in the case of files, a string/object type column
-    - Input:
-        - URL query parameters: `?id=...&col1=...&col2=...`
-        - JSON Body `{"id": ...}`
+  - Input:
+    - URL query parameters: `?id=...&col1=...&col2=...`
+    - JSON Body `{"id": ...}`
 
 # GroupMeans
 
@@ -263,9 +263,9 @@ groupmeans accepts the following parameters-
 - `cutoff` : ignore anything with prob > cutoff. `cutoff=None` ignores significance checks,
 speeding it up a LOT.
 - `quantile` : number that represents target improvement. Defaults to `.95`.
-    - The `diff` returned is the % impact of everyone moving to the 95th percentile
+  - The `diff` returned is the % impact of everyone moving to the 95th percentile
 - `minsize` : each group should contain at least `minsize` values.
-    - If `minsize=None`, automatically set the minimum size to 1% of the dataset,
+  - If `minsize=None`, automatically set the minimum size to 1% of the dataset,
     or 10, whichever is larger.
 
 For more information, see [autolysis.groupmeans](https://learn.gramener.com/docs/groupmeans.html.html)

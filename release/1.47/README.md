@@ -53,11 +53,11 @@ allowing AJAX requests to add to a list rather than replace them
 New UI classes are added
 
 - [border](../../uicomponents/#border) - `.border-2` for a border twice as thick.
-    - Similarly, `border-top-1`, `border-right-1`, `border-bottom-1`, `border-left-1` add a `1px` border on each side.
+  - Similarly, `border-top-1`, `border-right-1`, `border-bottom-1`, `border-left-1` add a `1px` border on each side.
 - [overflow](../../uicomponents/#overflow) - `.overflow-hidden`, `.overflow-auto` and `.overflow-scroll` set the overflow styles.
 - [text-decoration](../../uicomponents/#text-decoration) - `.text-decoration-none` removes the text-decoration.
 - [cursor](../../uicomponents/#cursor) - `.cursor-default` helps when you make clickable elements non-clickable.
-    - `.pointer-events-none` sets the pointer-events to none
+  - `.pointer-events-none` sets the pointer-events to none
 
 ## Auth
 

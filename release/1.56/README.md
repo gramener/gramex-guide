@@ -9,7 +9,7 @@ prefix: 1.56
 
 Vega charts now support [parameter substitution](../../formhandler/#parameter-substitution)
 
-For example, with below configuration you can control `CHART_TYPE`, `COL_DIMENSION`, 
+For example, with below configuration you can control `CHART_TYPE`, `COL_DIMENSION`,
 `COL_METRIC` from URL args `?_format=barchart&CHART_TYPE=bar&COL_METRIC=c4`
 
 ```yaml
@@ -32,14 +32,14 @@ Guide tutorials are restructed and updated to effectively guide you to build URL
 List of current tutorials:
 
 - [Tutorials](../../tutorials/)
-    - [Quickstart](../../tutorials/quickstart/)
-    - [Dashboards](../../tutorials/dashboards/)
-    - [Charts](../../tutorials/charts/)
-    - [Dropdown & Search](../../tutorials/g1-dropdown)
+  - [Quickstart](../../tutorials/quickstart/)
+  - [Dashboards](../../tutorials/dashboards/)
+  - [Charts](../../tutorials/charts/)
+  - [Dropdown & Search](../../tutorials/g1-dropdown)
 
 ## Chrome device emulation
 
-[Chrome capture](../../capturehandler) now supports device emulation. 
+[Chrome capture](../../capturehandler) now supports device emulation.
 
 For example, `?emulate=iPhone 6&...` uses `iPhone 6` userAgent for device emulation.
 This is useful for external websites where content is served based on device userAgent.

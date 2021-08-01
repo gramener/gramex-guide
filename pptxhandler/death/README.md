@@ -109,6 +109,7 @@ The `text:` is set up to show `Age 1-4` in the first column, `5-9` on the second
 ![Age group displayed on slide](age.png){.img-fluid}
 
 Now, we'll clone the `Cause` shape for each row in the dataset.
+
 ```yaml
           Cause:
             clone-shape: copy.val

@@ -66,12 +66,12 @@ This sets up a URL [translate](translate) that translates using the
 It accepts the following URL query parameters:
 
 - `?q=` is the string (or list of strings) to be translated.
-    - [translate?q=Apple](translate?q=Apple) returns "appel" in Dutch. (We specified Dutch "nl" as the default language in the YAML configuration above.)
-    - [translate?q=Apple&q=Orange](translate?q=Apple&q=Orange) translates both Apple and Orange to "appel" and "Oranje"
+  - [translate?q=Apple](translate?q=Apple) returns "appel" in Dutch. (We specified Dutch "nl" as the default language in the YAMconfiguration above.)
+  - [translate?q=Apple&q=Orange](translate?q=Apple&q=Orange) translates both Apple and Orange to "appel" and "Oranje"
 - `?target=` is the target [language](https://cloud.google.com/translate/docs/languages) to translate to.
-    - [translate?q=Apple&target=de](translate?q=Apple&target=de) returns "Apfel" in German
+  - [translate?q=Apple&target=de](translate?q=Apple&target=de) returns "Apfel" in German
 - `?source=` is the source [language](https://cloud.google.com/translate/docs/languages) to translate to.
-    - [translate?q=Apfel&source=de&target=en](translate?q=Apfel&source=de&target=en) returns "Apple" from German to English
+  - [translate?q=Apfel&source=de&target=en](translate?q=Apfel&source=de&target=en) returns "Apple" from German to English
 
 The response is a JSON list. Each entry is an object with the following keys:
 

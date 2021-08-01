@@ -38,7 +38,7 @@ Here's an example:
 <script src="../../formhandler/vega-1?_format=barchart"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega@3.2.1/build/vega.min.js"></script>
 
-```
+```js
 <script src="../../formhandler/vega?_format=barchart"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega@3.2.1/build/vega.min.js"></script>
 ```

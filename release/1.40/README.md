@@ -84,6 +84,7 @@ Dropdown component that integrates well with [`g1.urlfilter`](https://code.grame
   $('.container1').dropdown({data: ['Red', 'Green', 'Blue'] })
 </script>
 ```
+
 The above code snippet renders a dropdown with 3 options Red, Green, Blue using
 [bootstrap-select](https://silviomoreto.github.io/bootstrap-select/examples/) library.
 
@@ -129,6 +130,7 @@ To use `bootstrap-select` options, use `options:`
 ```
 
 ### $.dropdown events
+
 - `load` is triggered after dropdown is rendered
 - `change` is triggered whenever dropdown value is changed
 

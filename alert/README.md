@@ -245,12 +245,12 @@ The templates can use these variables:
 - `config`: the alert configuration as an AttrDict. For example,
   `config.subject` is the subject configuration
 - Each dataset passed to the alert is available as a variable:
-    - If a single dataset is passed, `data` holds the dataset
-    - If multiple datasets are passed as a dict of `{<key>: ...}`,
-    - then the variable `<key>` holds the respective dataset
+  - If a single dataset is passed, `data` holds the dataset
+  - If multiple datasets are passed as a dict of `{<key>: ...}`,
+  - then the variable `<key>` holds the respective dataset
 - If `each:` is used, then the following variables are also available:
-    - `row`: the data for each entry that `each:` loops through
-    - `index`: the key or index number of each entry
+  - `row`: the data for each entry that `each:` loops through
+  - `index`: the key or index number of each entry
 - `args`: If you run `alert.run(args=...)` via [alert API](#alert-api)
   it holds whatever value was passed. It defaults to an empty dict `{}`.
 
@@ -404,21 +404,21 @@ alert:
 ```
 
 - `args['done']` is a list of dicts for sent emails. Each dict has keys:
-    - `mail`: the email object that was sent. It has the following keys:
-        - `to`: sender
-        - `subject`: email subject
-        - `html`: html content
-        - `body`: body plain text content
-        - `attachments`: list of attachments
-        - `images`: dict of {image_name: path_to_image}
-        - other email headers such as `cc`, `bcc`, `reply_to`, etc
-    - `index`: the index of the email sent. If `each:` is used on a DataFrame or
-      dict, this is the key
-    - `row`: the data used in the email to be sent. If `each:` is used on a
-      DataFrame or dict, this is the value
+  - `mail`: the email object that was sent. It has the following keys:
+    - `to`: sender
+    - `subject`: email subject
+    - `html`: html content
+    - `body`: body plain text content
+    - `attachments`: list of attachments
+    - `images`: dict of {image_name: path_to_image}
+    - other email headers such as `cc`, `bcc`, `reply_to`, etc
+  - `index`: the index of the email sent. If `each:` is used on a DataFrame or
+    dict, this is the key
+  - `row`: the data used in the email to be sent. If `each:` is used on a
+    DataFrame or dict, this is the value
 - `args['fail]` is a list of dicts for failed emails. This is identical to
   `args['done']` but has an additional key:
-    - `error`: the Exception object that caused the failure
+  - `error`: the Exception object that caused the failure
 
 
 ### Use multiple datasets
@@ -494,12 +494,12 @@ The alert service takes four kinds of parameters:
 - data configuration uses data to drive the content and triggers.
   - `data`: Optional data file or dict of datasets. All keys are available as
     variables in the content templates and to `condition`. Optional. Examples:
-      - `data: {key: [...]}` -- loads data in-place
-      - `data: {key: {url: file}}` -- loads from a file
-      - `data: {key: {url: sqlalchemy-url, table: table}}` -- loads from a database
-      - `data: file` -- same as `data: {data: {url: file}}`
-      - `data: {key: file}` -- same as `data: {key: {url: file}}`
-      - `data: [...]` -- same as `data: {data: [...]}`
+    - `data: {key: [...]}` -- loads data in-place
+    - `data: {key: {url: file}}` -- loads from a file
+    - `data: {key: {url: sqlalchemy-url, table: table}}` -- loads from a database
+    - `data: file` -- same as `data: {data: {url: file}}`
+    - `data: {key: file}` -- same as `data: {key: {url: file}}`
+    - `data: [...]` -- same as `data: {data: [...]}`
   - `each`: dataset name. Optional. It sends an email for each element of the
     dataset. This adds 2 variables: `index` and `row`. If the dataset is a:
     - dict: `index` and `row` are the key and value
