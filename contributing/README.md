@@ -125,7 +125,7 @@ bandit gramex --aggregate vuln --recursive --exclude '*/node_modules/*' > report
 find gramex/apps/ -maxdepth 2 -name package.json | xargs dirname | xargs -L1 bash -c 'cd "$0" && npm audit --parseable' > reports/npm-audit.txt
 snyk test --dev --all-projects > reports/snyk.txt
 freshclam
-clamscan --recursive --exclude-dir=.git --exclude-dir=__pycache__ --exclude-dir=_build --exclude-dir=node_modules > reports/clamav.txt
+clamscan --recursive --exclude-dir=.git --exclude-dir=__pycache__ --exclude-dir=_build --exclude-dir=.eggs --exclude-dir=node_modules > reports/clamav.txt
 ```
 
 Update the following and commit to `master` branch:

@@ -47,6 +47,7 @@ Then learn from these tutorials:
 - [CaptureHandler takes screenshots](capturehandler/)
 - [MLHandler exposes ML models](mlhandler/)
 - [PPTXHandler generates PPTX](pptxhandler/)
+- [ComicHandler serves comics](comichandler/)
 - [FilterHandler filters columns](filterhandler/)
 - [JSONHandler writes JSON data](jsonhandler/)
 - [ProxyHandler proxies APIs](proxyhandler/)

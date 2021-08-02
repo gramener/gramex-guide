@@ -165,6 +165,27 @@ The result is:
 $.ajax('data/y')        // OUTPUT
 ```
 
+## Escaping slash in keys
+
+If your key has a `/` in it, use `\\/` to escape it. For example:
+
+```js
+$.ajax('data/', {
+  method: 'PUT',
+  data: '{"escaped\\/key": "OK"}'
+})  // OUTPUT
+```
+
+Now, you can fetch the key as a single unit. For example:
+
+```js
+$.ajax('data/' + encodeURIComponent('escaped\\/key'))
+// OUTPUT
+```
+
+- Note: `\\/` in Javascript translates to the string `\/`. So the key is stored as `escaped\/key`
+- Note: always use `encodeURIComponent` when fetching paths. Without this, `\` is converted to `/`.
+
 ## Method override
 
 You can use the `X-HTTP-Method-Override` header to override the method. For

@@ -185,6 +185,9 @@ gramex service remove
 Service logs can be viewed using the Windows Event Viewer. Gramex logs are at
 `%LOCALAPPDATA%\Gramex Data\logs\` unless over-ridden by `gramex.yaml`.
 
+Since services do not have a console, Gramex's console logs are saved in the application folder as
+`service.log`.
+
 To create multiple services running at different directories or ports, you can
 create one or more custom service classes in `yourproject_service.py`:
 

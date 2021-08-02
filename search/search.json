@@ -991,6 +991,11 @@
   "clone-shape": {
     "copy-slide-example": {}
   },
+  "comichandler": {
+    "": {
+      "ComicHandler serves comics": -1
+    }
+  },
   "config": {
     "": {
       "Configurations control Gramex": -1
@@ -1227,6 +1232,9 @@
     },
     "debug-mode": {
       "Debug mode": -1
+    },
+    "line-hits-time-per-hit-time-line-contents": {
+      "Line #      Hits         Time  Per Hit   % Time  Line Contents": -1
     },
     "line-profile": {
       "Line profile": -1
@@ -2121,6 +2129,9 @@
     "delete-remove-data": {
       "DELETE - remove data": -1
     },
+    "escaping-slash-in-keys": {
+      "Escaping slash in keys": -1
+    },
     "get-read-data": {
       "GET - read data": -1
     },
@@ -2213,11 +2224,10 @@
     "": {
       "Log viewer": -1
     },
-    "add-3rd-party-data": {
-      "Add 3rd-party data": -1
-    },
-    "add-custom-visuals": {
-      "Add custom visuals": -1
+    "add-3rd-party-data": {},
+    "add-custom-visuals": {},
+    "customizing-logviewer": {
+      "Customizing Logviewer": -1
     },
     "logviewer-usage": {
       "Logviewer usage": -1
@@ -2467,6 +2477,9 @@
     "image": {
       "Image": -1
     },
+    "index": {
+      "Index": -1
+    },
     "length-units": {
       "Length units": -1
     },
@@ -2496,9 +2509,7 @@
     "reference": {
       "Reference": -1
     },
-    "reference_1": {
-      "Reference": -1
-    },
+    "reference_1": {},
     "register": {
       "Register": -1
     },
@@ -3490,8 +3501,9 @@
     "stats": {
       "Stats": -1
     },
-    "ui-componenets": {
-      "UI Componenets": -1
+    "ui-componenets": {},
+    "ui-components": {
+      "UI Components": -1
     },
     "upgrade": {
       "Upgrade": -1
@@ -3570,6 +3582,9 @@
     },
     "stats": {
       "Stats": -1
+    },
+    "text": {
+      "```text": -1
     },
     "upgrade": {
       "Upgrade": -1
@@ -4430,6 +4445,38 @@
     },
     "vuejs-support": {
       "VueJS support": -1
+    }
+  },
+  "release/1.71": {
+    "": {
+      "Gramex 1.71 release notes": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "comichandler-serves-comics": {
+      "ComicHandler serves comics": -1
+    },
+    "deprecations": {
+      "Deprecations": -1
+    },
+    "gramex-prefers-npm-over-yarn": {
+      "Gramex prefers npm over yarn": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "jsonhandler-escapes-slashes-in-keys": {
+      "JSONHandler escapes slashes in keys": -1
+    },
+    "more-robust-security": {
+      "More robust security": -1
+    },
+    "specify-url-where-gramex-is-running": {
+      "Specify URL where Gramex is running": -1
+    },
+    "statistics": {
+      "Statistics": -1
     }
   },
   "release/old": {
@@ -5682,8 +5729,14 @@
     "lists-inotify-usage": {
       "Lists inotify usage:": -1
     },
+    "now-when-any-changes-are-made-to-filenametxt-on_modified-is-called": {
+      "Now, when any changes are made to filename.txt, on_modified is called": -1
+    },
     "to-get-the-list-of-processes-consuming-inotify-resources-run": {
       "To get the list of processes consuming inotify resources, run:": -1
+    },
+    "to-stop-watching-use-this": {
+      "To stop watching, use this:": -1
     },
     "watching-files": {
       "Watching files": -1
@@ -5742,6 +5795,17 @@
     },
     "what-if-you-need-help": {
       "What if you need help?": -1
+    }
+  },
+  "workshop/data-portraits": {
+    "": {
+      "Build a Data Portrait": -1
+    },
+    "examples-of-use": {
+      "Examples of use": -1
+    },
+    "tutorial": {
+      "Tutorial": -1
     }
   },
   "workshop\\building-ml-apps-rapidly": {

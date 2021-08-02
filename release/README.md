@@ -5,6 +5,7 @@ prefix: Release
 
 Gramex now releases feature updates on the 1st of every month, and patch updates as required.
 
+- [v1.71.0: ComicHandler, security updates](1.71/) <small>1 Aug 2021</small>
 - [v1.70.0: MLHandler templates, MongoDB, Bootstrap 5, Vue.](1.70/) <small>6 Jul 2021</small>
 - v1.69.3: Patch release <small>18 Jun 2021</small>: MongoDB in FormHandler, Auto-compile Vue files, MLHandler default template
 - v1.69.2: Patch release <small>12 May 2021</small>
