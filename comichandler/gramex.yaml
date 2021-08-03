@@ -1,0 +1,4 @@
+url:
+  comichandler/comics:
+    pattern: /$YAMLURL/comics
+    handler: ComicHandler
