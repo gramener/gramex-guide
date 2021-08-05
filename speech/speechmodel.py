@@ -1,38 +1,17 @@
-import io
 import os
-import requests
 from gramex import cache
-from tornado.web import HTTPError
-from gramex.config import variables
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from nltk.stem.porter import PorterStemmer
 
-sheet_id = '1HLndjr3jpbDbGFoJ8e3fF26ib4ES_2glKpmm78j5YuQ'
-file_name = 'speech.xlsx'
-guide_dir = os.path.join(variables['GRAMEXDATA'], 'apps', 'guide')
-file_path = os.path.join(guide_dir, file_name)
+file_path = os.path.join(os.path.dirname(__file__), 'speech.csv')
 stemmer = PorterStemmer()
 vectorizer = TfidfVectorizer(stop_words='english')
 
 
-def reload(handler):
-    '''download latest excel data'''
-    url = 'https://docs.google.com/spreadsheets/d/{0}/export?format=xlsx'.format(sheet_id)
-    r = requests.get(url)
-    if not os.path.isdir(guide_dir):
-        os.mkdir(guide_dir)
-    try:
-        with io.open(file_path, 'wb') as f:
-            f.write(r.content)
-        handler.redirect('.?refreshed')
-    except IOError:
-        raise HTTPError("Couldn't open or write to file (%s)." % file_path)
-
-
 def suggestion(handler):
     '''first 3 questions as suggestion'''
-    return cache.open(file_path).sample(3)['Question'].to_json(orient='values')
+    return cache.open(file_path).sample(5)['Question'].to_json(orient='values')
 
 
 def get_answer(handler):

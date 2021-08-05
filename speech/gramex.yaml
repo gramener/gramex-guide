@@ -19,12 +19,6 @@ url:
       headers:
         Content-Type: application/json
 
-  speech/reload:
-    pattern: /$YAMLURL/reload
-    handler: FunctionHandler
-    kwargs:
-      function: speechmodel.reload
-
   speech/suggestion:
     pattern: /$YAMLURL/suggestion
     handler: FunctionHandler
