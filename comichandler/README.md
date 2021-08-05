@@ -18,7 +18,7 @@ url:
     handler: ComicHandler
 ```
 
-Now, [`name=dee&angle=straight&emotion=smile&pose=super`](name=dee&angle=straight&emotion=smile&pose=super) serves this SVG image:
+Now, [`comics?name=dee&angle=straight&emotion=smile&pose=super`](comics?name=dee&angle=straight&emotion=smile&pose=super) serves this SVG image:
 
 ![Sample comic](sample.svg){.img-fluid}
 
