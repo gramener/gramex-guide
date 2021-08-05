@@ -20,7 +20,7 @@ url:
 
 Now, [`name=dee&angle=straight&emotion=smile&pose=super`](name=dee&angle=straight&emotion=smile&pose=super) serves this SVG image:
 
-![Sample comic](../../comichandler/sample.svg){.img-fluid}
+![Sample comic](sample.svg){.img-fluid}
 
 ::: example href=comics?name=dee&angle=straight&emotion=smile&pose=super source=https://github.com/gramener/gramex-guide/blob/master/comichandler/gramex.yaml
     Try ComicHandler
