@@ -112,6 +112,13 @@ You can still use `ext="txt"` to open them as text files, or use your own custom
 - We've fully switched to Python 3 and eliminated the `six` package
 
 
+## Backward compatibility
+
+Gramex 1.71 is backward compatible with [previous releases](../) unless the release notes say otherwise.
+[Automated builds](https://travis-ci.com/github/gramener/gramex/builds) test this.
+
+[Backward compatibility tests for 1.71](https://travis-ci.com/github/gramener/gramex/builds/234220301){:.btn .btn-lg .btn-primary}
+
 ## Statistics
 
 The Gramex code base has:

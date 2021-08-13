@@ -141,7 +141,7 @@ script:
 **v1.23**.
 To set up a Gramex application as a service, run PowerShell or the Command Prompt **as administrator**. Then:
 
-```bash
+```powershell
 cd D:\path\to\your\app
 gramex service install
 ```
@@ -149,7 +149,7 @@ gramex service install
 To start / stop the service, go to Control Panel > Administrative Tools > View Local Services. You
 can also do this from the command prompt **as administrator**:
 
-```bash
+```powershell
 gramex service start
 gramex service stop
 ```
@@ -159,7 +159,7 @@ Once started, the application is live at the port specified in your
 
 Here are additional install options:
 
-```bash
+```powershell
 gramex service install
     --cwd  "C:/path/to/application/"    # Run Gramex in this directory
     --user "DOMAIN\USER"                # Optional user to run as
@@ -172,13 +172,13 @@ The user domain and name are stored as environment variables `USERDOMAIN` and
 
 You can update these parameters any time via:
 
-```bash
+```powershell
 gramex service update --...             # Same parameters as install
 ```
 
 To uninstall the service, run:
 
-```bash
+```powershell
 gramex service remove
 ```
 
@@ -209,7 +209,7 @@ if __name__ == '__main__':
 
 You can now run:
 
-```bash
+```powershell
 python yourproject_service.py install --cwd=...     # install the service
 python yourproject_service.py remove                # uninstall the service
 ... etc ...
