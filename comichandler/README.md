@@ -9,7 +9,13 @@ type: microservice
 
 [TOC]
 
-**v1.71**. [ComicHandler](.) serves comics as SVG files. It's based on the [Comicgen](https://gramener.com/comicgen/) library. Here's how to create a ComicHandler:
+**v1.71**. [ComicHandler](.) serves comics as SVG files. It's based on the [Comicgen](https://gramener.com/comicgen/) library.
+
+<div class="ratio ratio-16x9">
+  <iframe src="https://www.youtube.com/embed/YapmEU8M-7I" allowfullscreen></iframe>
+</div>
+
+Here's how to create a ComicHandler:
 
 ```yaml
 url:
