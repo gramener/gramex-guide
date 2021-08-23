@@ -436,7 +436,7 @@ copying, the values of (`copy.key`, `copy.val`) are set as follows (just like
 
 For each copied slide, the [data variable `copy`](#data) is set. It has these attributes:
 
-- `copy.pos`: 0, 1, 2, ... for each cloned shape
+- `copy.pos`: 0, 1, 2, ... for each copied slide
 - `copy.key`: For lists or tuples, this is the same as `copy.pos`. For dicts, Series, DataFrames, etc, it's the key or index
 - `copy.val`: Value corresponding to `copy.key`
 - `copy.slides`: Currently copied [PPTX slides list](https://python-pptx.readthedocs.io/en/latest/api/slides.html#slides-objects), e.g. `copy.slides[0].shapes`

@@ -15,6 +15,10 @@ We made this using:
 
 In this workshop, we'll explain how this was created.
 
+<div class="ratio ratio-16x9">
+  <iframe src="https://www.youtube.com/embed/Np50SvvX8UY" allowfullscreen></iframe>
+</div>
+
 ## Tutorial
 
 Here's a step-by-step guide on how you can create a simple data portrait using an SVG file.
