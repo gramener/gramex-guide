@@ -133,12 +133,16 @@ Update the following and commit to `master` branch:
 - In `gramex/release.json` -- update the version number
 - In `gramex/apps.yaml` -- update the version number on the guide
 - In `gramex/apps/ui/package.json` -- update the version number
-- In [gramex-guide][gramex-guide] -- run `npm upgrade`
-- In [gramex-guide][gramex-guide] / `release/README.md` -- add release entry
-- In [gramex-guide][gramex-guide] / `release/1.xx/README.md` -- add guide release notes.
+
+In [gramex-guide][gramex-guide]:
+
+- Run `npm upgrade`
+- In `release/README.md` -- add release entry
+- Add video tutorial for all new features
+- In `release/1.xx/README.md` -- add guide release notes.
   - Run `make stats` for code size stats. Take coverage stats from Travis
-- In [gramex-guide][gramex-guide] run `python search/search.py` to update search index
-- In [gramex-guide][gramex-guide] run `node search/searchindex.js` to update search index
+- Run `python search/search.py` to update search index
+- Run `node search/searchindex.js` to update search index
 
 Commit and push the `master` branch of both repos to the server.
 **Ensure pipeline passes.**:
