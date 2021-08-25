@@ -2,7 +2,7 @@
 title: Gramex Roadmap
 ...
 
-<iframe src="roadmap.html" scrolling="no" style="border:0; width:800px; height:800px"></iframe>
+<img src="roadmap.svg" class="img-fluid"></img>
 
 # Releases
 
