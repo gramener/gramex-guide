@@ -38,81 +38,9 @@ def total(*items):
 
 To see all configurations used in this page, see [gramex.yaml](gramex.yaml.source):
 
-## Function output
-
-The output of the function is rendered as a string.
-
-String and byte outputs are rendered as-is. Other types (int, float, bool, datetime, DataFrame) are converted to JSON as follows:
-
-- `None`: this returns an empty string (as before), but without a warning
-- `bool`, `np.bool`: rendered as JSON, e.g. `true`, `false` (note the lowercase)
-- `int`, `float`, `np.integer`, `np.float`: rendered as JSON, e.g. `3`, `1.5`
-- `datetime.datetime` and `np.datetime`: rendered as ISO date, e.g. `1997-07-16T19:20:30+01:00`
-- `list`, `tuple`, `np.ndarray`: rendered as JSON arrays, e.g. `[1, "abc", true]`
-- `dict`: rendered as JSON, e.g. `{"x": 1, "y": "abc"}`. Keys *must* be strings
-- `pd.DataFrame`: rendered as JSON via `.to_json(orient="records", date_format="iso")`
-
-## Function methods
-
-FunctionHandler handles `GET` *and* `POST` requests by default. That is, the
-same function is called irrespective of whether the method is `GET` or `POST`.
-
-To change this, add a `methods:` key. For example:
-
-```yaml
-url:
-    total:
-        pattern: /total
-        handler: FunctionHandler
-        kwargs:
-            function: calculations.total(100, 200)
-            methods: [POST, PUT, DELETE]            # Allow only these 3 HTTP methods
-```
-
-## Function arguments
-
-You can define what parameters to pass to the function. By default, the Tornado
-[RequestHandler][requesthandler] is passed. The [add](add) URL takes the
-handler and sums up numbers you specify. [add?x=1&x=2](add?x=1&x=2) shows 3.0.
-Try it below:
-
-```html
-<form action="add">
-  <div><input name="x" value="10"></div>
-  <div><input name="x" value="20"></div>
-  <button type="submit">Add</button>
-</form>
-```
-
-To set this up, [gramex.yaml](gramex.yaml.source) used the following configuration:
-
-```yaml
-url:
-    add:
-        pattern: /add                               # The "add" URL
-        handler: FunctionHandler                    # runs a function
-        kwargs:
-            function: calculations.add              # add() from calculations.py
-            headers:
-                Content-Type: application/json      # Display as JSON
-```
-
-[calculations.add(handler)](calculations.py) is called with the Tornado
-[RequestHandler][requesthandler]. It accesses the URL query parameters to add up
-all `x` arguments.
-
-```python
-def add(handler):
-    args = handler.argparse(x={'nargs': '*', 'type': float})
-    return sum(args.x)
-```
-
-::: example href="add?x=10&x=20&x=30" source="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py"
-    Try `add?x=10&x=20&x=30`
-
 ## Function arguments from URL
 
-`gramex.transforms.handler` maps a function's arguments *directly* from the URL as a REST API.
+You can pass function arguments from the URL as a REST API.
 
 For example, to pass `combinations?n=10&k=4` as a function call `combinations(n=10, k=4)`, add this
 to `calculations.py`:
@@ -168,6 +96,38 @@ passed as a list `v = [10, 20, 30]` to return 10 x 20 x 30 = 6,000.
 ::: example href="multiply?v=10&v=20&v=30" source="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py"
     Try `multiply?v=10&v=20&v=30`
 
+
+## Function output
+
+The output of the function is rendered as a string.
+
+String and byte outputs are rendered as-is. Other types (int, float, bool, datetime, DataFrame) are converted to JSON as follows:
+
+- `None`: this returns an empty string (as before), but without a warning
+- `bool`, `np.bool`: rendered as JSON, e.g. `true`, `false` (note the lowercase)
+- `int`, `float`, `np.integer`, `np.float`: rendered as JSON, e.g. `3`, `1.5`
+- `datetime.datetime` and `np.datetime`: rendered as ISO date, e.g. `1997-07-16T19:20:30+01:00`
+- `list`, `tuple`, `np.ndarray`: rendered as JSON arrays, e.g. `[1, "abc", true]`
+- `dict`: rendered as JSON, e.g. `{"x": 1, "y": "abc"}`. Keys *must* be strings
+- `pd.DataFrame`: rendered as JSON via `.to_json(orient="records", date_format="iso")`
+
+## Function methods
+
+FunctionHandler handles `GET` *and* `POST` requests by default. That is, the
+same function is called irrespective of whether the method is `GET` or `POST`.
+
+To change this, add a `methods:` key. For example:
+
+```yaml
+url:
+    total:
+        pattern: /total
+        handler: FunctionHandler
+        kwargs:
+            function: calculations.total(100, 200)
+            methods: [POST, PUT, DELETE]            # Allow only these 3 HTTP methods
+```
+
 ## URL path arguments
 
 You can specify wildcards in the URL pattern. For example:
@@ -221,19 +181,58 @@ Sample output:
 
 `path_args` is available to [all handlers](../handlers/#basehandler-attributes).
 
+## Function arguments
+
+For greater control over arguments, you can pass a Tornado
+[RequestHandler][requesthandler] called `handler` to your function.
+
+For exammple, the [add](add) URL below takes `handler` and sums up numbers you specify.
+[add?x=1&x=2](add?x=1&x=2) shows 3.0:
+
+```html
+<form action="add">
+  <div><input name="x" value="10"></div>
+  <div><input name="x" value="20"></div>
+  <button type="submit">Add</button>
+</form>
+```
+
+To set this up, [gramex.yaml](gramex.yaml.source) used the following configuration:
+
+```yaml
+url:
+    add:
+        pattern: /add                               # The "add" URL
+        handler: FunctionHandler                    # runs a function
+        kwargs:
+            function: calculations.add(handler)     # add() from calculations.py
+            headers:
+                Content-Type: application/json      # Display as JSON
+```
+
+[calculations.add(handler)](calculations.py) is called with the Tornado
+[RequestHandler][requesthandler]. It accesses the URL query parameters to add up
+all `x` arguments.
+
+```python
+def add(handler):
+    args = handler.argparse(x={'nargs': '*', 'type': float})
+    return sum(args.x)
+```
+
+::: example href="add?x=10&x=20&x=30" source="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py"
+    Try `add?x=10&x=20&x=30`
+
 ## Parse URL arguments
 
-All URL query parameters are stored in ``handler.args`` as a dict with Unicode
-keys and list values. For example:
+You can manually parse the URL parameters. The URL parameters are stored in ``handler.args`` as a
+dict with Unicode keys and list values. For example:
 
 ```text
 ?x=1        => {'x': ['1']}
 ?x=1&x=2    => {'x': ['1', '2']}
 ?x=1&y=2    => {'x': ['1'], 'y': ['2']}
 ```
-
-It is better to use ``handler.args`` than Tornado's ``.get_arguments()`` because
-Tornado does not support Unicode keys well.
 
 To simplify URL query parameter parsing, all handlers have a `handler.argparse()`
 function. This returns the URL query parameters as an attribute dictionary.
