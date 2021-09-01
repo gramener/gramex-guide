@@ -3,8 +3,52 @@ title: Gramex release notes
 prefix: Release
 ...
 
-Gramex now releases feature updates on the 1st of every month, and patch updates as required.
 
+## Release Process
+
+Gramex is released with new features on the first of every month.
+
+**Major versions** are released every **4-6 years**
+
+- Examples:
+  - **Gramex 0.0** released in Nov 2011. It focused on custom data visualizations through templates.
+  - **Gramex 1.0** released in Sep 2015. It moved from code-based to configuration-based development.
+  - **Gramex 2.0** will release in 2022. It will move from configuration-based to UI-based development.
+- Major versions contain
+  - Significant architectural changes
+  - New features / UX etc.
+  - Changes for performance & productivity
+- Major versions may **NOT** be backward compatible.
+
+**Minor versions** are released on the **1st of every month**
+
+- Examples:
+  - [**Gramex 1.65**](1.65/) released on 1 Nov 2020. It had Excel table support, functions as REST APIs, logging via ElasticSearch.
+  - [**Gramex 1.66**](1.66/) released on 1 Dec 2020. It automatically created tables when users insert a row of data.
+  - [**Gramex 1.67**](1.67/) released on 1 Jan 2021. It trains and deploys ML models based without requiring code.
+- Minor versions contain
+  - New features
+  - Enhancements to existing features
+  - Bug fixes and consolidated patches
+- Minor versions are **backward compatible** unless explicitly deprecated.
+
+**Patch versions** are released as and **when required**
+
+- Examples:
+  - **Gramex 1.63.0** released on 1 Sep 2020. It was the minor version release.
+  - **Gramex 1.63.1** released on 15 Sep 2020. It fixed an authentication configuration bug.
+  - **Gramex 1.63.2** released on 22 Sep 2020. It fixed a URL redirection bug
+- Patch versions contain
+  - Critical Bug Fixes
+  - Reported Security issues
+  - Minor feature enhancements
+- Patch versions are backward compatible and roll up into the next minor version.
+
+This [presentation](gramex-release-process.pptx) documents the release process.
+
+## Release Notes
+
+- [v1.72.0: OpenAPI support, a root cause algorithm, charts in UIFactory](1.72/) <small>1 Sep 2021</small>
 - [v1.71.0: ComicHandler, security updates](1.71/) <small>1 Aug 2021</small>
 - [v1.70.0: MLHandler templates, MongoDB, Bootstrap 5, Vue.](1.70/) <small>6 Jul 2021</small>
 - v1.69.3: Patch release <small>18 Jun 2021</small>: MongoDB in FormHandler, Auto-compile Vue files, MLHandler default template
@@ -15,7 +59,7 @@ Gramex now releases feature updates on the 1st of every month, and patch updates
 - [v1.68.0: UI Factory creates embeddable forms.](1.68/) <small>1 Feb 2021</small>
 - [v1.67.0: Train and deploy ML models. Simpler names for micro-services.](1.67/) <small>1 Jan 2021</small>
 - [v1.66.0: Auto-create table schema, fetch inserted rows, and UI themes](1.66/) <small>1 Dec 2020</small>
-- [v1.65.0: Excel table support, functions as REST APIs, logging via ElasticSearch.](1.65/) <small>1 Nov 2020</small>
+- [v1.65.0: Excel table support, functions as REST APIs, logging via ElasticSearch](1.65/) <small>1 Nov 2020</small>
 - [v1.64.0: Multiple apps per server, multiple logins per app, and secure and offline deployment](1.64/) <small>1 Oct 2020</small>
 - [v1.63.2: Internal release](1.63.2/) <small>22 Sep 2020</small>
 - [v1.63.0: Docker and conda install, Guide UI & proxy websockets](1.63/) <small>1 Sep 2020</small>

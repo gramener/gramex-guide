@@ -2418,6 +2418,20 @@
     "v1280-2018-01-31": {},
     "v1290-2018-02-15": {}
   },
+  "openapihandler": {
+    "": {
+      "OpenAPIHandler documents APIs": -1
+    },
+    "functionhandler-openapi": {
+      "FunctionHandler OpenAPI": -1
+    },
+    "openapihandler": {
+      "OpenAPIHandler": -1
+    },
+    "openapihandler-configuration": {
+      "OpenAPIHandler Configuration": -1
+    }
+  },
   "position": {
     "position-example": {}
   },
@@ -3059,6 +3073,12 @@
   "release": {
     "": {
       "Gramex release notes": -1
+    },
+    "release-notes": {
+      "Release Notes": -1
+    },
+    "release-process": {
+      "Release Process": -1
     }
   },
   "release/1.30": {
@@ -4451,6 +4471,9 @@
     "": {
       "Gramex 1.71 release notes": -1
     },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
     "bug-fixes": {
       "Bug fixes": -1
     },
@@ -4477,6 +4500,53 @@
     },
     "statistics": {
       "Statistics": -1
+    }
+  },
+  "release/1.72": {
+    "": {
+      "Gramex 1.72 release notes": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "comichandler-templates": {
+      "ComicHandler templates": -1
+    },
+    "formhandler-mongodb-writeback": {
+      "FormHandler MongoDB writeback": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "openapi-support": {
+      "OpenAPI support": -1
+    },
+    "release-process": {
+      "Release process": -1
+    },
+    "search-for-records-where-date-year-2020-month-12": {
+      "Search for records where ": -1
+    },
+    "search-for-records-where-parent-child-value": {
+      "Search for records where `{\"parent\": {\"child\": \"value\"}}": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "to-insert-date-year-2020-month-12": {
+      "To insert ": -1
+    },
+    "to-insert-parent-child-value": {
+      "To insert ": -1
+    },
+    "topcause-analysis": {
+      "TopCause analysis": -1
+    },
+    "uifactory-charts": {
+      "UIFactory charts": -1
     }
   },
   "release/old": {
@@ -5154,6 +5224,14 @@
       "Index of topics": -1
     }
   },
+  "security": {
+    "": {
+      "Security": -1
+    },
+    "gramex-security-tests": {
+      "Gramex security tests": -1
+    }
+  },
   "server": {
     "": {
       "Gramex is a web server": -1
@@ -5312,6 +5390,17 @@
     },
     "reuse-code": {
       "Reuse code": -1
+    }
+  },
+  "topcause": {
+    "": {
+      "TopCause does root cause analysis": -1
+    },
+    "topcause-configuration": {
+      "TopCause configuration": -1
+    },
+    "topcause-results": {
+      "TopCause results": -1
     }
   },
   "transition": {

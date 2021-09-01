@@ -120,13 +120,12 @@ make test
 Upgrade npm packages and audit security:
 
 ```bash
-find gramex/apps/ -maxdepth 2 -name package.json | xargs dirname | xargs -L1 bash -c 'echo "$0" && cd "$0" && npm update'
-bandit gramex --aggregate vuln --recursive --exclude '*/node_modules/*' > reports/bandit.txt
-find gramex/apps/ -maxdepth 2 -name package.json | xargs dirname | xargs -L1 bash -c 'cd "$0" && npm audit --parseable' > reports/npm-audit.txt
-snyk test --dev --all-projects > reports/snyk.txt
-freshclam
-clamscan --recursive --exclude-dir=.git --exclude-dir=__pycache__ --exclude-dir=_build --exclude-dir=.eggs --exclude-dir=node_modules > reports/clamav.txt
+make update-npm
+make security
 ```
+
+If there are any security errors reported in `reports/*`, fix them and run `make security` again
+until there are no security errors.
 
 Update the following and commit to `master` branch:
 

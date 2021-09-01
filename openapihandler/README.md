@@ -9,7 +9,7 @@ type: microservice
 
 [TOC]
 
-**v1.72.0** OpenAPIHandler automatically generates OpenAPI specifications for your APIs.
+**v1.72.0** OpenAPIHandler automatically generates [OpenAPI specifications][openapi] for your APIs.
 
 ## OpenAPIHandler
 
@@ -51,7 +51,7 @@ def compare(
     Compare sum(2, 3) > sum(4)
 
 
-You can now add an OpenAPIHandler that generates an [OpenAPI JSON](https://swagger.io/specification/)
+You can now add an OpenAPIHandler that generates an [OpenAPI JSON][openapi]
 for this FunctionHandler.
 
 ```yaml
@@ -90,7 +90,7 @@ To allow users to interact with the API with a UI, use [Swagger UI](https://swag
 <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@3.51.1/swagger-ui-bundle.js"></script>
 <script>
   const ui = SwaggerUIBundle({
-    url: 'docs',
+    url: 'docs',    // OpenAPIHandler URL
     dom_id: '#swagger-ui',
     presets: [
       SwaggerUIBundle.presets.apis,
@@ -101,7 +101,7 @@ To allow users to interact with the API with a UI, use [Swagger UI](https://swag
 ```
 
 ::: example href=example.html source=https://github.com/gramener/gramex-guide/tree/master/openapihandler/example.html
-    See the Swagger UI
+    See the API UI
 
 
 ## OpenAPIHandler Configuration
@@ -149,7 +149,7 @@ In addition, the handlers it exposes (e.g. [FunctionHandler](../functionhandler/
 
 ## FunctionHandler OpenAPI
 
-When using [FunctionHandler](../functionhandler/), it's best to use it with
+If you expose a [FunctionHandler](../functionhandler/) via OpenAPIHandler, it's best to use it with
 [gramex.transforms.handler](../functionhandler/#function-arguments-from-url), like this:
 
 ```python
@@ -161,7 +161,7 @@ def compare(x, y):
     return sum(x) > sum(y)
 ```
 
-The docstring `Describe the function` is used to describe the function.
+The function docstring (e.g. `Describe the function` above) will describe the API endpoint.
 
 You can add function annotations that will define types in the OpenAPI. For example, the argument `x` can be defined as:
 
@@ -170,3 +170,5 @@ You can add function annotations that will define types in the OpenAPI. For exam
 - `x: List[float]` accepts a list of numbers, e.g. `?x=1&x=2`. You can import `List` from `typing`
 - `x: Annotated[float, 'first value']` accepts a number, and adds the description "first value"
 - `x: Annotated[List[float], 'first list']` accepts a list of number, and adds the description "first list"
+
+[openapi]: https://swagger.io/specification/

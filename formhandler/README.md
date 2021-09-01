@@ -179,6 +179,8 @@ With additional libraries, FormHandler can connect to
   - `kwargs`:
     - `database`: database to connect to
     - `collection`: collection to query
+  - Note: Keys can be nested. For example, `?parent.child=value` searches for `{"parent": {"child": "value"}}`
+  - Note: To insert JSON values, use the `.=` operator. For example, a `POST` request with `?parent.={"child": "value"}` sets `parent.child` to value.
 - [ODBC](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15)
   - Install: `pip install pyodbc`
   - Configure: See [PyODBC wiki](https://github.com/mkleehammer/pyodbc/wiki)

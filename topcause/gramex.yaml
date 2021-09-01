@@ -1,0 +1,14 @@
+url:
+  topcause-data:
+    pattern: /$YAMLURL/data
+    handler: FormHandler
+    kwargs:
+      url: $YAMLPATH/weight.csv
+
+  topcause-drivers:
+    pattern: /$YAMLURL/drivers
+    handler: FunctionHandler
+    kwargs:
+      function: topcausecalc.drivers
+      headers:
+        Content-Type: application/json

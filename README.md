@@ -48,6 +48,7 @@ Then learn from these tutorials:
 - [MLHandler exposes ML models](mlhandler/)
 - [PPTXHandler generates PPTX](pptxhandler/)
 - [ComicHandler serves comics](comichandler/)
+- [OpenAPIHandler documents APIs](openapihandler/)
 - [FilterHandler filters columns](filterhandler/)
 - [JSONHandler writes JSON data](jsonhandler/)
 - [ProxyHandler proxies APIs](proxyhandler/)
@@ -59,6 +60,7 @@ Then learn from these tutorials:
 
 ## Libraries
 
+- [Top Cause](topcause/)
 - [Cache requests](cache/)
 - [Send emails](email/)
 - [Smart alerts](alert/)
