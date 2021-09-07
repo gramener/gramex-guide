@@ -1,5 +1,11 @@
 TODO
 
+# Don't commit secrets
+.secret*.yaml
+
+# Don't commit generated files
+roadmap/issues.json
+
 # Ignore byte-compiled / optimised / DLL files
 *.py[cod]
 
@@ -25,7 +31,6 @@ TODO
 # Don't commit ZIP files
 *.7z
 *.zip
-
 
 # ... but there are exceptions
 !gramex-release-process.pptx

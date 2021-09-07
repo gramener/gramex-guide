@@ -1,0 +1,8 @@
+url:
+  roadmap/data:
+    pattern: /$YAMLURL/data
+    handler: FunctionHandler
+    kwargs:
+      function: roadmap.get_roadmap
+      headers:
+        Content-Type: application/json

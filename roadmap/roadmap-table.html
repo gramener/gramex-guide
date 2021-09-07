@@ -1,0 +1,38 @@
+<template component="roadmap-table">
+  Loading...
+  <script type="text/html">
+    <div class="" style="font-size: 75%">
+      <table class="table">
+        <thead>
+          <th class="text-nowrap">Release</th>
+          <th class="text-nowrap">Microservice</th>
+          <th class="text-nowrap">Component</th>
+          <th class="text-nowrap">App</th>
+          <th class="text-nowrap">Other</th>
+        </thead>
+        <tbody>
+          <% let epics = _.chain(data).values().sortBy('duedate').value() %>
+          <% _.each(epics, function (epic) { %>
+            <tr>
+              <td>
+                <h3><%= epic.summary %></h3>
+                <p><%= epic.description %></p>
+              </td>
+              <% _.each(epic.features, function (issues) { %>
+                <td>
+                  <% _.each(issues, function (issue) { %>
+                    <% let desc = (issue.description || '').replace(/\{\S+?\}/g, '') %>
+                    <% let done = issue.done ? '✅': 'ᐅ' %>
+                    <% let link = `https://gramenertech.atlassian.net/jira/software/c/projects/GRAMEX/boards/116/roadmap?selectedIssue=${issue.key}` %>
+                    <%= marked(`${done} [**${issue.summary.trim()}**](${link}). ${desc}`) %>
+                  <% }) %>
+                </td>
+              <% }) %>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</template>
