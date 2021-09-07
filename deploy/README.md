@@ -78,6 +78,18 @@ url:
       secret: $GOOGLE_AUTH_SECRET   # This comes from .secrets.yaml
 ```
 
+You can also access it in code (e.g. in [FunctionHandler](../functionhandler/)) as `gramex.config.variables['PASSWORD']`, etc. For example:
+
+```python
+from gramex.config import variables
+
+def my_function_handler():
+    password = variables.get('PASSWORD', '')
+    google_auth_secret = variables['GOOGLE_AUTH_SECRET']
+    twitter_secret = variables['TWITTER_SECRET']
+    ...
+```
+
 **NOTE**: Don't commit the `.secrets.yaml` file. Everyone who can access the repo can see the secret.
 
 ### .secrets.yaml imports
@@ -584,23 +596,13 @@ In your HTML code, use relative URLs where possible. For example:
 `http://localhost:9988/` becomes `.` (not `/` -- which is an absolute URL.)
 Similarly, `/css/style.css` becomes `css/style.css`.
 
-Sometimes, this is not desirable. For example, If you are linking to the same
-CSS file from different directories, you need specifying `/style.css` is
-helpful. This requires server-side templating.
+Sometimes, this is not possible. For example, `/main/` and `/main/sub/` use the same template, you
+can't specify `../style.css` and `../../style.css` in the same file.
 
-You can use a [Tornado template like this](template.html.source) that using a
-pre-defined variable, e.g. `APP_ROOT`.
-
-```html
-<link rel="stylesheet" href="/{{ APP_ROOT }}/style.css">
-```
-
-In `gramex.yaml`, we pass `APP_ROOT` to the that's set to `$YAMLURL`. For example:
+Instead, in `gramex.yaml`, pass an `APP_ROOT` variable to the template that has the absolute path
+to the application root. For example, this can be:
 
 ```yaml
-variables:
-    APP_ROOT: $YAMLURL       # Pre-define APP_ROOT as the absolute URL to gramex.yaml's directory
-
 url:
     deploy-url:
         pattern: /$YAMLURL/url/(.*)               # Any URL under this directory
@@ -609,9 +611,24 @@ url:
             path: $YAMLPATH/template.html         # Using this template
             transform:
                 "template.html":
-                    # Convert to a Tornado template
-                    # Pass the template the APP_ROOT variable
-                    function: template(content, APP_ROOT="$APP_ROOT")
+                    # APP_ROOT is the path to the root of the application
+                    function: template(content, APP_ROOT='/'))
+```
+
+Now you can use the `APP_ROOT` to locate static files in the template:
+
+```html
+<link rel="stylesheet" href="{{ APP_ROOT }}/style.css">
+```
+
+If your app is behind a proxy server, the URL may not be `/`. In that case, pass the
+[`X-Gramex-Root` HTTP header](#proxy-servers), and combine with `$YAMLURL` to locate your app root.
+
+```yaml
+            transform:
+                "template.html":
+                    # APP_ROOT is the path to the root of the application
+                    function: template(content, APP_ROOT=handler.gramex_root + r'$YAMLURL')
 ```
 
 To test this, open the following URLs:
@@ -620,8 +637,8 @@ To test this, open the following URLs:
 - [url/main/sub](url/main/sub)
 - [url/main/sub/third](url/main/sub/third)
 
-In every case, the correct absolute path for `/style.css` is used,
-irrespective of which path the app is deployed at.
+In every case, the correct absolute path for `style.css` is used, irrespective of which path the
+app is deployed at.
 
 ### Using YAMLPATH
 

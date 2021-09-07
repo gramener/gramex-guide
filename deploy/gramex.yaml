@@ -7,8 +7,8 @@ url:
             transform:
                 "template.html":
                     # Convert to a Tornado template
-                    # GUIDE_ROOT is the absolute URL to the Gramex guide
-                    function: template(content, GUIDE_ROOT="$GUIDE_ROOT")
+                    # APP_ROOT is the path to the root of the application
+                    function: template(content, APP_ROOT=handler.request.headers.get('X-Gramex-Root', '/') + r'$GUIDE_ROOT')
     gramex-config-file:
         pattern: /$YAMLURL/config                 # Map config under current URL
         handler: FileHandler

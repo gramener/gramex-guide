@@ -54,7 +54,7 @@ MLHandler will then,
    which are implicitly assumed to be numerical.
 5. train the model and save it.
 
-Other kwargs that are supported are:
+Other `kwargs.model` parameters that are supported are:
 
 - `include`: List of columns to include for training. If `include` and `exclude`
   are both specified, `include` overrides `exclude`.
