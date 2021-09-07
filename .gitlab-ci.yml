@@ -2,6 +2,8 @@
 deploy-gramener:
   only: [master, release, /^master-.*$/, /^release-.*$/]
   script:
+    # Refresh code by pulling the branch deployed on the server,
+    # NOT the pushed branch!
     - 'ssh ubuntu@gramener.com "
         cd /mnt/gramener/apps/guide;
         git checkout -- .;
@@ -9,8 +11,6 @@ deploy-gramener:
         export PATH=/mnt/gramener/anaconda3/bin:$PATH;
         gramex setup .;
       "'
-
-# To restart the server, run:
-#   cd /mnt/gramener/apps/guide
-#   pkill -f 9987
-#   nohup gramex --listen.port=9987 &
+    # Deploy secrets
+    - secrets JIRA_AUTH > .secrets.yaml
+    - rsync -tvz .secrets.yaml ubuntu@gramener.com:/mnt/gramener/apps/guide/

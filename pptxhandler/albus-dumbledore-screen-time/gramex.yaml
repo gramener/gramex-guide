@@ -1,0 +1,29 @@
+url:
+  pptxhandler/albus-dumbledore:
+    pattern: /$YAMLURL/output.pptx
+    handler: PPTXHandler
+    kwargs:
+      version: 2
+      source: template.pptx
+      data:
+        url: screen-time.xlsx
+      rules:
+        -
+          copy-slide: data.groupby('Movie', sort=False)
+          transition:
+            type: f'morph'
+            duration: 1
+          Title:
+            text: copy.key
+          Name:
+            clone-shape: copy.val
+            add-top: 1.2 * clone.pos
+            text: clone.val['Character']
+            name: f"!!{clone.val['Character']} name"
+          Bar:
+            clone-shape: copy.val
+            add-top: 1.2 * clone.pos
+            name: f"!!{clone.val['Character']} bar"
+            width: 5 * clone.val['Minutes'] / clone.val['Max Minutes']
+            text: f"{clone.val['Minutes']:.0f} min"
+            fill: "'ACCENT_2' if clone.val['Character'] == 'Albus Dumbledore' else 'ACCENT_4'"

@@ -6,11 +6,6 @@ title: Gramex Roadmap
 <script src="https://cdn.jsdelivr.net/npm/uifactory@0.0.16" import="roadmap-table.html"></script>
 
 <roadmap-table data:urljson="data"></roadmap-table>
-
------
-
-<img src="roadmap.svg" class="img-fluid"></img>
-
 # Releases
 
 See the [release notes](https://learn.gramener.com/gramex/history.html) for

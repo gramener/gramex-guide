@@ -22,4 +22,5 @@ tutorials/azure-oauth2/img/new-registration.png filter=lfs diff=lfs merge=lfs -t
 tutorials/azure-oauth2/img/search.png filter=lfs diff=lfs merge=lfs -text
 tutorials/azure-oauth2/img/copy-client-id.png filter=lfs diff=lfs merge=lfs -text
 *.pptx filter=lfs diff=lfs merge=lfs -text
+*.xlsx filter=lfs diff=lfs merge=lfs -text
 *.gif filter=lfs diff=lfs merge=lfs -text

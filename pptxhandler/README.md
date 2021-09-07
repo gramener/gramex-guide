@@ -22,6 +22,7 @@ Here are examples of what PPTXHandler can create. Click to see details.
 [![Rate of entrepreneurship](entrepreneurship/output.svg){: height=150}](entrepreneurship/)
 [![Causes of death](death/output.gif){: height=150}](death/)
 [![Certificates](certificate/output.png){: height=150}](certificate/)
+[![Albus Dumbledore's screen time](albus-dumbledore-screen-time/output.gif){: height=150}](albus-dumbledore-screen-time/)
 [![App store sales](appstore.png){: height=150}](https://gramener.com/appstore/appstore.pptx)
 [![FMCG revenue breakup](fmcg.png){: height=150}](https://gramener.com/fmcg/)
 
@@ -52,6 +53,12 @@ Re-create a portion of the [Kauffman Indicators of Rate of New Entrepreneurship]
 Re-create the [Shifting Causes of Death](https://flowingdata.com/2018/10/02/shifting-death/) visualization in PowerPoint.
 
 [![Shifting causes of death](death/output.gif){: width=320}](death/)
+
+### Albus Dumbledore's screen time
+
+Discover [Albus Dumbledore's screen time](albus-dumbledore-screen-time/) in the Harry Potter movies with PowerPoint.
+
+[![Albus Dumbledore's screen time](albus-dumbledore-screen-time/output.gif){: width=320}](albus-dumbledore-screen-time/)
 
 ### Bestselling Pharmaceutical Drugs
 
