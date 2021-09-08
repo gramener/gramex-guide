@@ -59,8 +59,8 @@ def get_roadmap(refresh: bool = False):
             'duedate': issue['fields']['duedate'],
             "done": bool(issue['fields']['resolution']),
             'features': {
-                'Microservice': [],
                 'Component': [],
+                'Microservice': [],
                 'App': [],
                 'Other': []
             }
