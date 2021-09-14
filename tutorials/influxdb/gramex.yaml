@@ -1,0 +1,15 @@
+variables:
+  token: N9eucNps2s0MILw2c4GgHZPAq0eV9TnMiuvH_dEQYCqb4qoPFJAqnOO0TlRsoTv-ar-d5dC8CE-DXXnm8BfVTg==
+
+url:
+  home:
+    pattern: /$YAMLURL/data
+    handler: FormHandler
+    kwargs:
+      url: influxdb:http://localhost:8086/
+      username: jaidevd
+      token: $token
+      org: Gramener
+      bucket: sofar
+      xsrf_cookies: false
+      id: _time
