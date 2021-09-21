@@ -19,6 +19,7 @@ Then learn from these tutorials:
 - [Dropdown & Search](tutorials/g1-dropdown)
 - [Create a ML classification application](https://github.com/gramexrecipes/gramex-ml-workshop/)
 - [Authenticate Users with a Microsoft Account](tutorials/azure-oauth2)
+- [Visualize Subsurface Float Movement with InfluxDB](tutorials/influxdb)
 - [Try out some exercises](exercises/)
 
 ## Workshops

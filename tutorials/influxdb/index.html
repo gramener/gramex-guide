@@ -59,7 +59,7 @@ $(document).ready(function() {
     function(resp) {
       data = resp
       var keys = _.keys(resp[0]);
-      let n_chunks = Math.max(..._.map(resp, 'batch'))
+      let n_chunks = Math.max(..._.map(resp, 'day'))
       let chunk_ix = 0
       let expNames = _.map(_.uniqBy(resp, 'exp'), 'exp')
       var colors = _.zipObject(expNames, ["red", "green", "blue", "yellow", "black", "magenta"])
@@ -67,8 +67,9 @@ $(document).ready(function() {
         if (chunk_ix > n_chunks) {
           clearInterval(pusher)
         } else {
-          let chunk = _.filter(resp, {batch: chunk_ix})
+          let chunk = _.filter(resp, {day: chunk_ix})
           chunk = _.zipObject(keys, _.map(keys, key => _.map(chunk, key)));
+          console.log(chunk)
           $.ajax({
             type: 'POST',
             url: '/data?measurement=latlong&tags=exp',
