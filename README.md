@@ -25,6 +25,7 @@ Then learn from these tutorials:
 ## Workshops
 
 - [Building Machine Learning Apps Rapidly](workshop/building-ml-apps-rapidly/)
+- [Visualizing Subsurface Float Movement with InfluxDB & FormHandler](workshop/influxdb/)
 
 ## Usage
 
