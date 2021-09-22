@@ -29,19 +29,21 @@ def get_issues(refresh: bool = False):
 
     # List all issues for board, paginated
     issues = []
-    url = 'https://gramenertech.atlassian.net/rest/agile/1.0/board/116/issue'
-    params = {'startAt': 0}
-    while True:
-        result = requests.get(url, params=params,
-                              auth=HTTPBasicAuth(*api_key)).json()
-        count = len(result['issues'])
-        if count == 0:
-            break
-        issues += result['issues']
-        params['startAt'] += count
+    boards = [115, 116]
+    for board in boards:
+        url = f'https://gramenertech.atlassian.net/rest/agile/1.0/board/{board}/issue'
+        params = {'startAt': 0}
+        while True:
+            result = requests.get(url, params=params,
+                                  auth=HTTPBasicAuth(*api_key)).json()
+            count = len(result['issues'])
+            if count == 0:
+                break
+            issues += result['issues']
+            params['startAt'] += count
 
-    with open(issues_file, 'w', encoding='utf-8') as handle:
-        json.dump(issues, handle, ensure_ascii=True)
+        with open(issues_file, 'w', encoding='utf-8') as handle:
+            json.dump(issues, handle, ensure_ascii=True)
 
     return issues
 
@@ -52,23 +54,24 @@ def get_roadmap(refresh: bool = False):
 
     # Select all future epics
     today = datetime.today().strftime('%Y-%m-%d')
-    roadmap = {
-        issue['id']: {
-            'summary': issue['fields']['summary'],
-            'description': issue['fields']['description'],
-            'duedate': issue['fields']['duedate'],
-            "done": bool(issue['fields']['resolution']),
-            'features': {
-                'Component': [],
-                'Microservice': [],
-                'App': [],
-                'Other': []
-            }
-        }
-        for issue in issues
-        if issue['fields']['issuetype']['hierarchyLevel'] == 1 and
-        (issue['fields']['duedate'] or '') > today
-    }
+    epicname, roadmap = {}, {}
+    for issue in issues:
+        if issue['fields']['issuetype']['hierarchyLevel'] == 1:
+            if (issue['fields']['duedate'] or '') > today:
+                epicname[issue['id']] = issue['fields']['summary']
+                roadmap[issue['fields']['summary']] = {
+                    'summary': issue['fields']['summary'],
+                    'description': issue['fields']['description'],
+                    'duedate': issue['fields']['duedate'],
+                    "done": bool(issue['fields']['resolution']),
+                    'features': {
+                        'Component': [],
+                        'Microservice': [],
+                        'App': [],
+                        'Other': []
+                    }
+                }
+
     # Add stories below them
     for issue in issues:
         # Only pick stories
@@ -78,7 +81,8 @@ def get_roadmap(refresh: bool = False):
         if not issue['fields']['epic']:
             continue
         # ... that are in the roadmap
-        epic = roadmap.get(str(issue['fields']['epic']['id']), None)  # noqa
+        epic_id = str(issue['fields']['epic']['id'])    # noqa
+        epic = roadmap.get(epicname.get(epic_id, None), None)
         if epic is None:
             continue
         # Add the features
@@ -94,4 +98,8 @@ def get_roadmap(refresh: bool = False):
             "done": bool(issue['fields']['resolution']),
         })
 
+    result = {}
+    for id, epic in roadmap.items():
+        entry = result.setdefault(epic['summary'], {})
+        entry['duedate'] = epic['duedate']
     return roadmap
