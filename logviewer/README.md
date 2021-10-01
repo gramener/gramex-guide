@@ -39,6 +39,7 @@ Use `LOGVIEWER_*` variables to configure your app.
 - `LOGVIEWER_SCHEDULER_PORT`: when running multiple instances of gramex, you can control to run scheduler only once from certain port
 - `LOGVIEWER_SCHEDULER_SETUP`: to control frequency when to run the scheduler. Default: daily.
 - `LOGVIEWER_SCHEDULER_KWARGS`: to change `transforms`
+- `LOGVIEWER_CUSTOM_DIMENSIONS`: to define custom columns and their value patterns
 
 All variables are optional.
 
@@ -82,6 +83,9 @@ import:
           op: NOTIN
           value: ['-', 'dev']
         as: user.id_1
+    LOGVIEWER_CUSTOM_DIMENSIONS:
+      user_agent: df['headers.User-Agent'].str.extract(r"\((?P<user_agent>[^\(|\)]+)\)")
+      slow: df['duration'] > 100
 ```
 
 ## Multiple logviewer instances
@@ -544,3 +548,61 @@ You can customize the cards to render visuals and graphs of your own choice.
 
 You can copy source for [logviewer-config.yaml](logviewer-config.yaml) and
 [logviewer-render.js](logviewer-render.js) if they are not present in your app folder.
+
+
+## Adding custom columns and reports
+
+Custom logging of parameters is now possible since Gramex version 1.73 wherein you can log additional values by applying functions on existing columns. e.g. If you want to log the browser and OS of users accessing your application viz. mobile, desktop, the same can be achieved by the below steps.
+
+**Step 1:**
+
+Define custom columns and their value patterns in your gramex.yaml as shown below.
+
+```yaml
+logviewer:
+  LOGVIEWER_CUSTOM_DIMENSIONS:
+    user_agent: df['headers.User-Agent'].str.extract(r"\((?P<user_agent>[^\(|\)]+)\)")
+    slow: df['duration'] > 100
+```
+
+**Step 2:**
+
+A custom visual representation of above can be achieved by subsequent steps given below.
+
+Add a custom query to your gramex.yaml file like:
+
+```yaml
+logviewer:
+  path: $GRAMEXAPPS/logviewer/gramex.yaml
+  YAMLURL: $YAMLURL/log/
+  LOGVIEWER_FORMHANDLER_QUERIES:
+    slow-loading-customview:
+      SELECT COUNT(DISTINCT uri) AS value
+      FROM {table}
+      WHERE slow == 1 {where}
+```
+
+Now add the following to [logviewer-config.yaml](logviewer-config.yaml) file:
+
+```yaml
+- '@class': d-flex flex-wrap my-4
+  _$: [
+      ..., # Your existing parameters
+      {'tpl': 'lv-kpi', 'on': 'slow-loading-customview', 'title': 'Custom Slow Loading View'}]
+```
+
+Similarly, add the following to [logviewer-render.js](logviewer-render.js) file in the viewsConfig section:
+
+```yaml
+viewsConfig: [
+  ..., # Your existing parameters
+  {
+    type: 'kpi', url: 'query/aggD/slow-loading-customview/', on: '.slow-loading-customview',
+    formatter: d3.format(',.2d')
+  }
+]
+```
+
+The output would look like below.
+
+![Custom Data Logging](img/Custom-Logviewer.png)
