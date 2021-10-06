@@ -6,4 +6,4 @@
 
 [This is the output PPTX](output.pptx){.slide}
 
-Source: https://www.bbc.com/news/world-us-canada-50097838
+[Source](https://www.bbc.com/news/world-us-canada-50097838)

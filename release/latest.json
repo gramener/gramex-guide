@@ -1,0 +1,82 @@
+{
+  "releases": [
+    {
+      "version": "v1.76.0",
+      "link": "https://gramener.com/gramex/guide/release/1.76/",
+      "title": "Python 3.9 support, Faster scheduler, Tutorial videos",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.76/#gramex-is-ready-for-python-3-9",
+          "title": "Python 3.9 support",
+          "description": "Gramex runs on Python 3.7, 3.8, 3.9"
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/scheduler/",
+          "title": "Second-level scheduler",
+          "description": "Scheduler runs at a 1-second granularity"
+        }
+      ]
+    },
+    {
+      "version": "v1.75.0",
+      "link": "https://gramener.com/gramex/guide/release/1.75/",
+      "title": "ServiceNow connector, MongoDB write-back",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/formhandler/#supported-databases",
+          "title": "ServiceNow connector",
+          "description": "FormHandler can read from ServiceNow."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/formhandler/#supported-databases",
+          "title": "MongoDB write-back",
+          "description": "FormHandler can write back to MongoDB databases."
+        }
+      ]
+    },
+    {
+      "version": "v1.74.0",
+      "link": "https://gramener.com/gramex/guide/release/1.74/",
+      "title": "UIFactory events, InfluxDB support, Comicgen icons",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/admin/#sign-up-users-with-a-welcome-email",
+          "title": "Add and welcome users",
+          "description": "Admin app lets administrators add new users, set their passwords, and send a welcome email."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/admin/#edit-user-attribute-rules",
+          "title": "Automated user roles",
+          "description": "Admin app lets administrators add custom fields and roles to any user based on rules."
+        },
+        {
+          "link": "https://uifactory.gramener.com/guide/#script-inline-runs-scripts-while-rendering",
+          "title": "UIFactory inline scripts",
+          "description": "UIFactory supports inline scripts, compresses components, and improves security."
+        }
+      ]
+    },
+    {
+      "version": "v1.73.0",
+      "link": "https://gramener.com/gramex/guide/release/1.73/",
+      "title": "UIFactory events, InfluxDB support, Comicgen icons",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/uifactory/",
+          "title": "UIFactory",
+          "description": "UIFactory is now out of beta. Version 1.20 is packaged in Gramex 1.73, and features a simpler way to add events and create blocks."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/comichandler/",
+          "title": "Comicgen icons",
+          "description": "Comicgen supports two new icon libraries that can be used as props. Microsoft’s FXEmoji with over 1,000 icons. Google’s Noto Emoji with over 2,000 icons."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/formhandler/",
+          "title": "FormHandler InfluxDB support",
+          "description": "FormHandler can read from and write into InfluxDB, a time series database."
+        }
+      ]
+    }
+  ]
+}

@@ -5,7 +5,8 @@ prefix: Tip
 
 As a service, Gramex can schedule tasks at regular intervals (lowest granularity at minute level) that can be configured as:
 
-    :::yaml
+```yaml
+schedule:
     # your friendly configuration to post a Tweet every day at 7:15 am
     run-at-your-interval:
         function: scraper.post_tweet
@@ -13,6 +14,7 @@ As a service, Gramex can schedule tasks at regular intervals (lowest granularity
         hours: '7'       # 7th hour of every day
         minutes: '15'    # 15th minute of that hour
         thread: true
+```
 
 ## Use-cases
 

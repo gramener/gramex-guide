@@ -27,6 +27,7 @@ sms:
 
 To set up SNS:
 
+- Run `pip install boto3`
 - [Create a new IAM user](https://console.aws.amazon.com/iam/home/?#users)
   - with **Access type** as **Programmatic access**.
   - to a new group with `AmazonSNSFullAccess` policy enabled

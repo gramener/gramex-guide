@@ -9,11 +9,12 @@ From now on, the page also displays the login IDs and passwords for these apps.
 
 To add this to your project, add a **test:** section to your **gramex.yaml**.
 
-    :::yaml
-    test:
-      auth:
-        user: test-user-name
-        password: test-user-password
+```yaml
+test:
+  auth:
+    user: test-user-name
+    password: test-user-password
+```
 
 This will automatically add the login and password on the UAT page.
 

@@ -9,8 +9,9 @@ To do this, our dashboards use URL query parameters to filter data. For example,
 
 Doing this is very easy in [Gramex 1.21](https://learn.gramener.com/gramex/gramex.html#gramex.data.filter) using `gramex.data.filter` inside a `FunctionHandler`:
 
-    :::python
+```python
     result = gramex.data.filter(data, handler.args)
+```
 
 If the URL is `?City=Tokyo` then result is `data[data['City'] == 'Tokyo']`
 
@@ -19,9 +20,10 @@ It supports equals, not equals, comparison and string matches. It also automatic
 
 You can apply this to databases as well. `gramex.data.filter` runs the query on the database, making it faster.
 
-    :::python
+```python
     result = gramex.data.filter('oracle://user:pass@server/db',
                                 handler.args, table='sales')
+```
 
 This filters the `sales` table in the `Oracle` database based on the URL query parameters.
 

@@ -9,6 +9,8 @@ type: microservice
 
 [TOC]
 
+[Video](https://youtu.be/4EAArVzmyGo){.youtube}
+
 [gramex.yaml](../gramex.yaml.source) uses the [FileHandler][filehandler]
 to display files. This folder uses the following configuration:
 
@@ -40,6 +42,8 @@ url:
 ```
 
 ## Directory listing
+
+[Video](https://youtu.be/vc6gj1ZFjMo){.youtube}
 
 `index: true` lists all files in the directory if the `default_filename` is
 missing. To customize the directory listing, specify `index_template: filename`.
@@ -79,6 +83,8 @@ url:
 
 
 ## File Patterns
+
+[Video](https://youtu.be/h7a-TthAsjY){.youtube}
 
 You can map any URL for any file. For example, to map the file
 `filehandler/data.csv` to the URL `/filehandler/data`, use this configuration:
@@ -250,6 +256,8 @@ except specific white-listed exceptions.
 
 ## MIME types
 
+[Video](https://youtu.be/wPDo7CEECs4){.youtube}
+
 The URL will be served with the MIME type of the file. CSV files have a MIME
 type `text/csv` and a `Content-Disposition` set to download the file. You
 can override these headers:
@@ -293,6 +301,8 @@ From **v1.23.1**, to serve different files with different MIME types, use file p
 
 ## Templates
 
+[Video](https://youtu.be/0kzphobMQnU){.youtube}
+
 FileHandler uses [Tornado templates][template] to generate content from data.
 For example, this `page.tmpl.html` renders 10 images:
 
@@ -302,7 +312,7 @@ For example, this `page.tmpl.html` renders 10 images:
 {% end %}
 ```
 
-The defualt, any file that ends with `.tmpl.html` or `.template.html` is rendered as a template.
+The default, any file that ends with `.tmpl.html` or `.template.html` is rendered as a template.
 You can specify amy file patterns using `template: patterns`. For example:
 
 ```yaml
@@ -389,6 +399,8 @@ The second open statement converts README.md into HTML. See
 
 ## SASS
 
+[Video](https://youtu.be/ryYjE5R9yX4){.youtube}
+
 FileHandler can compile [SCSS files](http://sass-lang.com/). The default FileHandler compiles any
 `.scss` or `.sass` file is compiled into CSS. For example, this `color.scss` file:
 
@@ -471,6 +483,8 @@ kwargs:
 
 ## XSRF
 
+[Video](https://youtu.be/2_rogB8UzXQ){.youtube}
+
 If you're submitting forms using the POST method, you need to submit an
 [_xsrf][xsrf] field that has the value of the `_xsrf` cookie.
 
@@ -552,6 +566,8 @@ Tornado's XSRF:
 
 ## FileHandler HTTP methods
 
+[Video](https://youtu.be/S86H9FxClYY){.youtube}
+
 By default FileHandler supports `GET`, `HEAD` and `POST` methods. You can map
 any of the following methods to the file using the `methods:` configuration as
 follows:
@@ -567,6 +583,8 @@ url:
 ```
 
 ## File concatenation
+
+[Video](https://youtu.be/opBiI7LJNns){.youtube}
 
 You can concatenate multiple files and serve them as a single file. For example:
 

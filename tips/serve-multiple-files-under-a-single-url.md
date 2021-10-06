@@ -7,7 +7,8 @@ prefix: Tip
 
 For example, if you use `jQuery`, `Bootstrap` and `D3` in your project, you can create a single URL called `libraries.js` that concatenates all of these files into one. See example:
 
-    :::yaml
+```yaml
+url:
     pattern: /$YAMLURL/libraries.js
     handler: FileHandler
     kwargs:
@@ -17,5 +18,6 @@ For example, if you use `jQuery`, `Bootstrap` and `D3` in your project, you can 
             - $YAMLPATH/bower_components/d3/d3.min.js
         headers:
             Content-Type: application/json
+```
 
 This is also try of CSS files, CSV files, and any other file formats that can be concatenated.

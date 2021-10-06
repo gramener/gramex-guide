@@ -1,0 +1,3 @@
+selector,pattern,field,value
+email,*@gramener.com,role,employee
+email,*@example.org,role,external

@@ -43,24 +43,28 @@ app:
 
 ## Session security
 
-The session cookie is:
+The session cookie can have the following configurations:
 
-- [HttpOnly](https://www.owasp.org/index.php/HttpOnly): You cannot access the
-  cookie via JavaScript using `document.cookie`
-- [Secure](https://www.owasp.org/index.php/SecureFlag) on HTTPS connections. If
-  you set the cookie on a HTTPS request, you cannot access it via HTTP.
-- [Domain](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie):
-  not specified. The cookie can be accessed by the Gramex server that sets the
-  cookie, but not subdomains.
+- [`httponly`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#httponly):
+  `true` prevents JavaScript from using `document.cookie`. Default: `true`
+- [`secure`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#secure): `true`
+  prevents HTTP requests from accessing the cookie. Only HTTPS is allowed. Default: `false`
+- [`samesite`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value): `Strict`
+  forces the browser to send cookies only for requests from the same site. Default: `Lax`
+- [`domain`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie): `example.org`
+  restricts the cookie to `example.org` and its subdomains. (Default: not specified, which
+  restricts the cookie to the host of the current document URL, not including subdomains.)
 
-You can change these defaults as follows:
+You can change these defaults to a more secure setting as follows:
 
 ```yaml
 app:
   session:
-    httponly: false         # Allow JavaScript access via document.cookie
-    secure: false           # Cookies can be accessed via HTTP (not just HTTPS)
-    domain: .example.org    # All subdomains in .example.org can access session
+    httponly: true        # Allow JavaScript access via document.cookie
+    secure: true          # Cookies can be accessed only via HTTPS (not HTTP)
+    samesite: Strict      # Browser sends the cookie only for same-site requests.
+                          # Values can be Strict, Lax or None. (Case-sensitive)
+    domain: example.org   # All subdomains in *.example.org can access session
 ```
 
 The cookie is stored for `app.session.expiry` days. Here is the default configuration:
@@ -71,8 +75,18 @@ app:
     expiry: 31              # Sessions expire after 31 days by default
 ```
 
-You can override session expiry duration with a `session_expiry: <days>` kwarg
-under any auth handler. See [session expiry](#session-expiry).
+Set `session_expiry: false` to create **session cookies**. Session cookies expire when the browser
+is closed. (Note: Gramex automatically expires session cookies on the server after 1 day, even if
+the browser is open for longer.)
+
+```yaml
+app:
+  session:
+    expiry: false           # Sessions expire when browser closes
+```
+
+You can override session expiry for individual auth handlers with a `session_expiry: <days>` kwarg.
+See [session expiry](#session-expiry).
 
 The cookies are encrypted using the `app.settings.cookie_secret` key. Change
 this to a random secret value, either via `gramex --settings.cookie_secret=...`
@@ -836,6 +850,8 @@ same of an [email service](../email/).
 
 The `forgot:` section takes the following parameters (default values are shown):
 
+- `key: forgot`. By default, the forgot password URL uses a `?forgot=`. You can
+  change that to any other key.
 - `email_from: ...`. This is mandatory. Create an [email service](../email/) and
   mention the name of the service here. Forgot password emails will be sent via
   that service. (The sender name will be the same as that service.)
@@ -850,16 +866,21 @@ The `forgot:` section takes the following parameters (default values are shown):
   or a user ID. The name of the email argument is configured by `arg:`. (The
   name of the user ID argument is already specified in `user.arg`)
 - `email_column: email`. The name of the email column in the database table.
-- `email_text: ...`. The text of the email that is sent to the user. This is a
-  template string where `{reset_url}` is replaced with the password reset URL.
-  You can use any database table columns as keys. For example, if the user ID is
-  in the `user` column, `email_text: {user} password reset link is {reset_url}`
-  will replace `{user}` with the value in the user column, and `{reset_url}`
-  with the actual password reset URL.
 - `email_subject: ...`. The subject of the email that is sent to the user. This
   is a template similar to `email_text`.
-- `key: forgot`. By default, the forgot password URL uses a `?forgot=`. You can
-  change that to any other key.
+- `email_body: ...`. The text of the email that is sent to the user.
+  - This is a template string where `{reset_url}` is replaced with the password reset URL.
+  - You can use any database table columns as keys. For example, if the user ID is
+    in the `user` column, `email_text: {user} password reset link is {reset_url}`
+    will replace `{user}` with the value in the user column, and `{reset_url}`
+    with the actual password reset URL.
+  - Note: `email_text` is an alias for `email_body`.
+- `email_bodyfile: contents.txt`. Load `email_body` from a file instead of writing it in
+  `gramex.yaml`
+- `email_html: ...`. HTML content of the email. If both `email_html` and `email_body` are
+  specified, the email contains both parts, with HTML taking preference.
+- `email_htmlbody: contents.html`: Load `email_html` from a file instead of writing it in
+  `gramex.yaml`
 
 Here is a more complete example:
 
@@ -873,10 +894,14 @@ kwargs:
     email_column: email               # The database column that contains the email ID
     email_subject: Gramex forgot password       # Subject of the email
     email_as: "S Anand <root.node@gmail.com>"   # Emails will be sent as if from this ID
-    email_text: |
+    email_body: |
         This is an email from Gramex guide.
         You clicked on the forgot password like for user {user}.
         Visit this link to reset the password: {reset_url}
+    email_html: |
+        <p>Hi from <a href="https://gramener.com/gramex/guide/">Gramex Guide</a>.</p>
+        <p>You clicked on the forgot password like for user {user}.</p>
+        <p><a href="{reset_url}">Click here</a> to reset the password.</p>
 ```
 
 ::: example href=db source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
@@ -1121,6 +1146,8 @@ url:
 
 ## Email Auth
 
+[Video](https://youtu.be/3og1HiU6Iik){.youtube}
+
 **Available in Gramex Enterprise**.
 [EmailAuth](#emailauth) allows any user with a valid email ID to log
 in. This is a convenient alternative to [DBAuth](#dbauth). Users do not need to
@@ -1153,19 +1180,23 @@ url:
         The OTP for {user} is {password}
 
         Visit {link}
-      redirect:                 # After logging in, redirect the user to:
-          query: next           #      the ?next= URL
-          header: Referer       # else the Referer: header (i.e. page before login)
-          url: .                # else the home page of current directory
+      html: |
+          <p>The OTP for {user} is {password}.</p>
+          <p><a href="{link}">Click here to log in</a></p>
 
       # Optional configuration. The values shown below are the defaults
       minutes_to_expiry: 15     # Minutes after which the OTP will expire
       size: 6                   # Number of characters in the OTP
-      template: auth.email.template.html    # Login template
+      instantlogin: false       # Fetching login link instantly logs user in
+                                # False is best for clients like Outlook that pre-fetch links
       user:
           arg: user             # ?user= contains the user email
       password:
           arg: password         # ?password= contains the OTP
+      redirect:                 # After logging in, redirect the user to:
+          query: next           #      the ?next= URL
+          header: Referer       # else the Referer header (i.e. page before login)
+          url: .                # else the home page of current directory
 ```
 
 ::: example href=email source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
@@ -1215,29 +1246,39 @@ url:
           - {email: [admin@example.org]}
 ```
 
-The login flow is:
+To customize the email message that's sent, you can change:
 
-1. User visits `/`. App shows form template asking for email (`user` field)
-2. User submits email. Browser redirects to `POST /?user=<email>`
-3. App generates a new OTP (valid for `minutes_to_expiry` minutes).
-4. App emails the OTP link to the user's email. On fail, ask for email again
-5. If email was sent, app shows a message asking user to check email
-6. User clicks on email and visits link with OTP (`GET /?password=<otp>`)
-7. App checks if OTP is valid. If yes, logs user in and redirects
-8. On any error, shows form template with error
+- `body`: The plain text email message sent to the user
+- `html`: The HTML email message sent to the user. This overrides `body` if the email client supports HTML
+- `bodyfile`: Load the `body` from a file instead of typing in YAML. This overrides `body`
+- `htmlfile`: Load the `html` from a file instead of typing in YAML. This overrides `html`
 
-The `template:` is a Tornado template. [Here is an example][email-auth-template].
-When you write your own login template form, you can use these Python variables:
+The email message is formatted as a Python string (i.e. `{variable}` is replaced with the value of
+`variable`). You can use these variables in the message:
 
-- `handler`: the handler. `handler.kwargs` has the configuration above
-- `email`: the phone number provided by the user
-- `error`: `None` if there is no error. Else:
+- `user`: The email ID of the user
+- `password`: The one-time password
+- `link`: The one-time login link
+
+To customize the login page, you can add a `template:` pointing to a Tornado template.
+[Here is a sample](https://github.com/gramener/gramex-guide/blob/master/auth/emailauth.template.html).
+You can use these variables in the template:
+
+- `handler`: the handler. `handler.kwargs` has the EmailAuth configuration
+- `email`: the user's email ID (if entered)
+- `otp`: the one-time password (if entered)
+- `error`: `None` if there is no error. Else, it has one of these values:
   - `'not-sent'` if the OTP could not be sent. `msg` has the Exception
   - `'wrong-pw'` if the OTP is wrong. `msg` has a string error
-- `msg`: sent only if `error` is not `None`. See `error`
+- `msg`: sent only if `error` is not `None`. It contains a textual descripton of the error.
+- `redirect`: has the original URL to redirect the user back to after login
+  - Use `<input type="hidden" name="{{ redirect['name'] }}" value="{{ redirect['value'] }}">`
+    in a form to redirect the user back to their original URL
+  - `redirect['name']` is typically `next`, creating a `?next=` query string
+  - `redirect['value']` is the URL to redirect the user to
 
-[email-auth-template]: https://github.com/gramener/gramex/blob/master/gramex/handlers/auth.email.template.html
-
+::: example href=emailtemplate source=https://github.com/gramener/gramex-guide/blob/master/auth/emailauth.template.html
+    Email auth template example
 
 ## SMS Auth
 
@@ -1387,7 +1428,9 @@ To redirect on success, change `window.location` in `.done()`.
 
 ## Login actions
 
-When a user logs in or logs out, you can register actions as follows:
+You can add custom functions to any AuthHandler. These will run when a user succesfully logs in.
+
+For example:
 
 ```yaml
 url:
@@ -1395,22 +1438,68 @@ url:
     pattern: /$YAMLURL/google
     handler: GoogleAuth
     kwargs:
-      key: YOURKEY
-      secret: YOURSECRET
-      action:                                     # Run multiple function on Google auth
-        - function: ensure_single_session         # Logs user out of all other sessions
-        - function: sys.stderr.write('Logged in via Google')      # Write to console
+      # ...
+      action:                                       # After login,
+        - function: admin.send_alert_mail(handler)  # Run custom functions
+        - function: print(handler.current_user, 'logged in via Google')
 ```
 
-For example, the [ldap login](ldap?next=.) page is set with `ensure_single_session`.
-You can log in on multiple browsers. Every log in will log out other sessions.
+You can also add your custom logout actions when the user successfully logs out to
+[`LogoutHandler`](#log-out).
 
-You can write your own custom functions. By default, the function will be passed
-the `handler` object. You can define any other `args` or `kwargs` to pass
-instead. The actions will be executed in order.
+You can write your own custom functions. By default, the function will be passed the `handler`
+object. `handler.current_user` will have the current user (even in `LogoutHandler`). You can define
+any other `args` or `kwargs` to pass instead. The actions will be executed in order.
 
-When calling actions, `handler.current_user` will have the user object on all
-auth handlers and the `LogoutHandler`.
+
+## Failed login delay
+
+To slow down hackers guessing passwords, add a `delay:` parameter under `kwargs:`. For example:
+
+```yaml
+url:
+  login/simple:
+    pattern: /$YAMLURL/simple
+    handler: SimpleAuth
+    kwargs:
+      delay: 5        # Wait 5 seconds before reporting wrong password
+      credentials:
+        alpha: alpha
+        beta: beta
+```
+
+::: example href=delay source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    Failed login delay example
+
+In the above example, you can log in as `alpha` / `alpha` instantaneously. But if you enter an
+incorrect password, it takes 5 seconds to report that.
+
+The `delay:` can be specified as a number or an array of numbers. For example:
+
+- `delay: 5`: Every failed login is reported 5 seconds later
+- `delay: [1, 2, 5]`
+  - The first failed login is reported 1 second later
+  - The second failed login is reported 2 seconds later
+  - Subsequent failed logins are reported 5 seconds later
+
+## Ensure single login session
+
+When a user logs in, you can log them out from all other sessions on any other device using the
+`ensure_single_session` [login action](#login-actions):
+
+```yaml
+url:
+  login/google:
+    pattern: /$YAMLURL/google
+    handler: GoogleAuth
+    kwargs:
+      # ...
+      action:
+        - function: ensure_single_session   # Logs user out of all other sessions
+```
+
+You can add the `action:` section under the `kwargs:` of any Auth handler.
+
 
 ## User attributes
 
@@ -1510,6 +1599,7 @@ url:
           day: 1          # If ?remember=day, session expires in 1 day
           week: 7         # If ?remember=week, session expires in 7 days
           month: 31       # If ?remember=month, session expires in 31 days
+          session: false  # If ?remember=session, session expires when browser closes
 ```
 
 ::: example href=customexpiry source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
@@ -1696,19 +1786,123 @@ just like for [FormHandler](../formhandler/).
 ::: example href=lookup-attributes source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
     Lookup attributes example
 
+
+## Add Attribute Rules
+
+Auth handlers support a `rules` kwarg which allows users to specify rules which
+can modify user attributes on the fly. For example, the following spec
+
+```yaml
+url:
+  auth/simple:
+    pattern: /$YAMLURL/login
+    handler: SimpleAuth
+    kwargs:
+      credentials:
+        alpha:
+          password: alpha
+          email: jane.doe@gramener.com
+          role: admin
+          location: BLR
+        beta:
+          password: beta
+          email: john.doe@gmail.com
+          role: intern
+          location: MUM
+      rules:
+        url: $YAMLPATH/rules.csv
+```
+
+declares two users, with three attributes each - email, role and location. The
+rules for modifying these attributes can be composed in a file named `rules.csv`
+as follows:
+
+| selector  |   pattern   | field    | value |
+|-----------|-------------|----------|-------|
+| email     | *@gmail.com | role     | guest |
+| role      | admin       | location | NYC   |
+
+These rules can be read as follows:
+
+1. If the "email" attribute of a user matches the pattern `*@gmail.com`, then
+   set their "role" attribute to guest, AND
+2. if the "role" attribute of a user matches the pattern "admin", then set their
+   "location" attribute to NYC.
+
+In the case of the users specified above, after logging in, `beta` would see
+their role changed to "guest" from "intern", and the user `alpha` would see
+their location changed to "NYC" from "BLR".
+
+Generally, for any auth handler, any existing user attribute can be used in the
+"selector" field, and if the value of that attribute matches the specified "pattern",
+then the attribute mentioned in the "field" is modified to the "value".
+
+::: example href=attr-rules source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    User attributes rules Example
+
 # Automated logins
 
-Gramex has two mechanisms to automate logins: [one-time passwords](#otp) and [encrypted users](#encrypted-user).
+Gramex has three mechanisms to automate logins: [one-time passwords](#otp), [API keys](#api-key) and [encrypted users](#encrypted-user).
 
 ## OTP
 
-Handlers support a `handler.otp(expire=seconds)` function. This returns a
-one-time password string linked to the *current user*. When you send a request
-with a `X-Gramex-OTP: <otp>` header or a `?gramex-otp=<otp>` query parameter,
-that session is automatically linked to the same user.
+One-time passwords (OTP) let users to log in once. Once the user logs in, they expire.
+
+These are useful to send one-time links. For example, to email a user a link they can log in from. (After logging in, the link expires.)
+
+Add this code to a [FunctionHandler](../functionhandler/) or any Python code in a handler:
+
+```python
+expiry = 24 * 60 * 60             # Expires in 24 hours
+otp = handler.otp(expire=expiry)  # Create OTP as current user
+```
+
+This creates an `otp` string for the currently logged-in user that expires after 24 hours (or once used, whichever is earlier).
+
+To create an `otp` for a different user, use:
+
+```python
+expiry = 24 * 60 * 60                         # Expires in 24 hours
+user = {'id': 'alpha'}                        # User to create OTP for
+otp = handler.otp(expire=expiry, user=user)   # Create OTP as specified user
+```
+
+When a user visits any page with `?gramex-otp=<otp>` added, or with a `X-Gramex-OTP: <otp>` header,
+the user is logged in *for that session*. `handler.current_user` is set to the user object.
 
 ::: example href=otp source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
     OTP example
+
+
+## API key
+
+API keys let users to log in multiple times, until expiry.
+
+These are useful to provide allow services (e.g. bots, apps, scripts) to act on behalf of a user.
+For example, to fetch data, trigger a refresh, etc.
+
+Add this code to a [FunctionHandler](../functionhandler/) or any Python code in a handler:
+
+```python
+expiry = 24 * 60 * 60                 # Expires in 24 hours
+key = handler.apikey(expire=expiry)   # Create API key as current user
+```
+
+This creates an API `key` string for the currently logged-in user that expires after 24 hours.
+
+To create an API `key` for a different user, use:
+
+```python
+expiry = 24 * 60 * 60                           # Expires in 24 hours
+user = {'id': 'alpha'}                          # User to create API key for
+key = handler.apikey(expire=expiry, user=user)  # Create key as specified user
+```
+
+When a user visits any page with `?gramex-key=<key>` added, or with a `X-Gramex-Key: <key>` header,
+the user is logged in *for that session*. `handler.current_user` is set to the user object.
+
+::: example href=apikey source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    API key example
 
 
 ## Encrypted user
@@ -1760,6 +1954,28 @@ The CSS/JS/images on your login page won't appear unless you set `auth: false` o
 Note: Any `auth:` on an `AuthHandler` is ignored. (That's asking users to log into a login page!)
 
 You can restrict who can log in using [roles](#roles) or any other condition.
+
+## Authorization HTTP methods
+
+To authorize the user for some HTTP methods (e.g. `POST`, `PUT`, `DELETE`) but not others (e.g.
+`GET`), use this:
+
+```yaml
+url:
+  public-read:
+    pattern: /$YAMLURL/public-read
+    handler: FunctionHandler
+    kwargs:
+      function: f'Method = $${handler.request.method}, User = $${handler.current_user}'
+      auth:
+        methods: [POST, PUT, DELETE]
+```
+
+Any `GET`, `OPTIONS` or other HTTP requests to `/public-read` can be made by anyone. But `POST`,
+`PUT`, `DELETE` can only be made by logged-in users.
+
+::: example href=methods source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    HTTP methods example
 
 ## Login URLs
 

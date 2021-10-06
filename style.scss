@@ -34,8 +34,8 @@ h3 { font-size: 1.25rem; font-weight: 600; margin-top: 2em; }
 .content h1:first-child { margin-top: 0; }
 
 /* Tables should have borders */
-table thead th { border-bottom: 1px solid #000; }
-table tbody td { border-bottom: 1px solid #eee; }
+table thead th { padding: 0 0.3rem; border-bottom: 1px solid #000; }
+table tbody td { padding: 0 0.3rem; border: 1px solid #eee; }
 
 /* Style the sidebar menu */
 @media print {
@@ -148,7 +148,7 @@ table tbody td { border-bottom: 1px solid #eee; }
   align-items: center;
 
   &:before {
-    content: url(example.png);
+    content: url(example.svg);
     margin-right: 1rem;
     line-height: 0;
   }
@@ -187,6 +187,26 @@ table tbody td { border-bottom: 1px solid #eee; }
   }
 }
 
+// YouTube component extends the example component
+.youtube {
+  float: right;
+  display: flex;
+  align-items: center;
+  color: var(--black);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 1rem;
+
+  &:before {
+    content: url(youtube.svg);
+    margin-right: 0.5rem;
+    line-height: 0;
+  }
+  &:hover {
+    color: var(--black);
+  }
+}
+
 .slide iframe {
   width: 640px;
   height: 480px;
@@ -217,7 +237,7 @@ table tbody td { border-bottom: 1px solid #eee; }
 }
 
 /* Search component */
-#search {
+.search {
   width: 100%;
   padding: 8px;
   margin-bottom: 16px;
@@ -225,7 +245,7 @@ table tbody td { border-bottom: 1px solid #eee; }
   box-shadow: 3px 1px 2px #ddd;
 }
 
-#searchresults {
+.navbar .searchresults {
   position: absolute;
   top: 3rem;
 }

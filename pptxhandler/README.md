@@ -23,6 +23,7 @@ Here are examples of what PPTXHandler can create. Click to see details.
 [![Causes of death](death/output.gif){: height=150}](death/)
 [![Certificates](certificate/output.png){: height=150}](certificate/)
 [![Albus Dumbledore's screen time](albus-dumbledore-screen-time/output.gif){: height=150}](albus-dumbledore-screen-time/)
+[![US Election Map choropleth](choropleth/output.svg){: height=150}](choropleth/)
 [![App store sales](appstore.png){: height=150}](https://gramener.com/appstore/appstore.pptx)
 [![FMCG revenue breakup](fmcg.png){: height=150}](https://gramener.com/fmcg/)
 
@@ -31,6 +32,12 @@ Learn using the [SlideSense/PPTXHandler Tutorial videos](https://www.youtube.com
 <div class="ratio ratio-16x9">
   <iframe src="https://www.youtube.com/embed/videoseries?list=PLrn2FHBzHtaOoMWOW8biS2gsY0jjnwuRG" allowfullscreen></iframe>
 </div>
+
+------
+
+[TOC]
+
+------
 
 ## Tutorials
 
@@ -60,6 +67,12 @@ Discover [Albus Dumbledore's screen time](albus-dumbledore-screen-time/) in the 
 
 [![Albus Dumbledore's screen time](albus-dumbledore-screen-time/output.gif){: width=320}](albus-dumbledore-screen-time/)
 
+### Color scales on maps
+
+Create [Choropleths (colored maps)](choropleth/) by exploring the results of the US Presidential elections over time.
+
+[![US Election Map choropleth](choropleth/output.svg){: width=320}](choropleth/)
+
 ### Bestselling Pharmaceutical Drugs
 
 Visualize the [Bestselling Pharmaceutical Drugs of 2017-18][pharma-drugs] data in PowerPoint.
@@ -70,6 +83,8 @@ Visualize the [Bestselling Pharmaceutical Drugs of 2017-18][pharma-drugs] data i
 
 
 ## About
+
+[Video](https://youtu.be/c230GZeh9Sc){.youtube}
 
 There are two versions of PPTXHandler.
 
@@ -141,6 +156,8 @@ Less used keys are:
 
 ## Command line
 
+[Video](https://youtu.be/iJ-vzV10SMA){.youtube}
+
 Run `slidesense` to run `PPTXHandler` from the command line. It renders any `gramex.yaml` in the
 current folder, creating an `output.pptx` (or the file specified by `target:` in `gramex.yaml`).
 It also opens the target PPTX in PowerPoint, if possible.
@@ -166,6 +183,8 @@ url:
     handler: PPTXHandler
     kwargs: ...
 ```
+
+[Video](https://youtu.be/z1yFFosaHu8){.youtube}
 
 Run `slidesense config.yaml` to render `config.yaml` with a simplified configuration that just
 contains the `kwargs` of a PPTXHandler. Here is a sample `config.yaml`:
@@ -193,13 +212,9 @@ slidesense gramex.yaml my-url --data=my-data.xlsx
 
 ---
 
-# Index
-
-[TOC]
-
----
-
 # Rules
+
+[Video](https://youtu.be/j3G7iFScr38){.youtube}
 
 A rule defines how to modify the source presentation. For example:
 
@@ -215,6 +230,8 @@ rules:                              # Apply these rules
 A rule can pick one or more shape names, and apply one or more [commands](#commands) to each shape.
 
 ## Shapes
+
+[Video](https://youtu.be/tRHktfccYpY){.youtube}
 
 Each rule in `rules:` is a dictionary of shape names.
 
@@ -258,6 +275,8 @@ This ensures that the morph will match the shape even if it's text changes.
 
 ## Groups
 
+[Video](https://youtu.be/hawg4xhYXA8){.youtube}
+
 Groups are shapes that contain other shapes. You can apply commands to the group itself (e.g. change its [size or position](#position)), or to the shapes inside a group, like this:
 
 ```yaml
@@ -274,6 +293,8 @@ rules:
     Run the Groups example
 
 ## Slide filters
+
+[Video](https://youtu.be/o_7l42TBoNU){.youtube}
 
 By default, rules are applied to all slides. You can restrict changes to specific slides with:
 
@@ -301,6 +322,8 @@ rules:
 ```
 
 ## Transition
+
+[Video](https://youtu.be/yJStzyjRUuM){.youtube}
 
 Add `transition:` to a rule to set the transition for all [applicable slides](#slide-filters).
 
@@ -411,6 +434,8 @@ You can also specify transitions as a dict with 3 keys:
 
 ## Copy slides
 
+[Video](https://youtu.be/cFQCdNhNYuY){.youtube}
+
 You can repeat a slide, changing the layouts or content based on data. This is used to:
 
 - Show a report across **time**, e.g. copy the slide and change data across months
@@ -458,6 +483,8 @@ content, or add new content (like charts). Here are some common commands:
 
 ## Position
 
+[Video](https://youtu.be/yRDahEDcTRA){.youtube}
+
 - `top`: sets top (Y) position in [length units](#length-units), e.g. `top: f'3 inches'`
 - `left`: sets left (X) position in [length units](#length-units), e.g. `left: f'3 inches'`
 - `width`: sets width in [length units](#length-units), e.g. `width: f'3 inches'`
@@ -485,6 +512,8 @@ content, or add new content (like charts). Here are some common commands:
 
 ## Style
 
+[Video](https://youtu.be/-MUymyCO7AQ){.youtube}
+
 - `fill`: sets fill (background) [color](#color-units), e.g. `fill: f'red'`
 - `stroke`: sets line [color](#color-units), e.g. `stroke: f'red'`
 - `fill-opacity`: sets fill transparency on solid color fills. 0 is transparent, 1 is opaque, e.g. `fill-opacity: 0.5` is half transparent
@@ -496,6 +525,8 @@ content, or add new content (like charts). Here are some common commands:
 
 ## Image
 
+[Video](https://youtu.be/GGTrFc-xou0){.youtube}
+
 - `image`: set image of a picture to a file or URL, e.g. `image: new-pic.png` or `image: https://picsum.photos/200`. Retains aspect ratio, width and position. May change the height
 - `image-width`: sets width in [length units](#length-units), e.g. `image-width: 3 inches`. Retains aspect ratio and position (top and left). May change the height
 - `image-height`: sets height in [length units](#length-units), e.g. `image-height: 3 inches`. Retains aspect ratio and position (top and left). May change the width
@@ -504,6 +535,8 @@ content, or add new content (like charts). Here are some common commands:
     Run the Clone Shape example to understand images
 
 ## Link
+
+[Video](https://youtu.be/8soEesXZ6t4){.youtube}
 
 - `link`: on click, shape opens another slide, file or URL, e.g. `link: 4`, `link: f'https://gramener.com/'`
 - `hover`: on hover, shape opens another slide, file or URL, e.g. `link: 4`, `link: f'https://gramener.com/'`
@@ -522,6 +555,8 @@ content, or add new content (like charts). Here are some common commands:
     Run the Link example
 
 ## Text
+
+[Video](https://youtu.be/T8XBtkhVOTA){.youtube}
 
 - `text`: sets the shape's [text and format](#text-format), e.g. `text: f'<p><a italic="y">New</a> <a bold="y">text</a></p>'`
 - `replace`: updates the shape's [text and format](#text-format), e.g. `replace: {old: f'new', (rabbit|fox): f'<a color="red">animal</a>'}`.
@@ -664,14 +699,26 @@ data:
   products: {url: $YAMLPATH/products.csv}
 rules:
   - Chart 1:
-      chart-data: products.set_index('Name')
+      chart:
+        data: products.set_index('Name')
 ```
 
-The dataset must be formatted with data for each series in a column. For a 1-series column chart like this:
+The `chart:` command supports these sub-commands:
+
+- `data`: sets the chart's data using a **DataFrame**, `e.g. data: pd.read_excel('data.xlsx')`. (Lists, dicts, etc won't work)
+  - Charts' `data:` must be a DataFrame exactly the chart data in PowerPoint.
+  - The 1st column in PowerPoint must be the index of the DataFrame. The 2nd in PowerPoint must be a column. See example below.
+- `header-row`: turns header row on or off, e.g. `header-row: false`
+  - If `header-row` is a list, it sets the header row text, e.g. `header-row: ['Sales', None, 'Growth <a sub="y">%</a>']`. `None` retains the existing header
+- `total-row`: turns special formatting for last row on or off, e.g. `total-row: true`
+- `first-column`: turns special formatting for first column on or off, e.g. `first-column: true`
+- `last-column`: turns special formatting for last column on or off, e.g. `last-column: true`
+
+Charts' `data:` must be a DataFrame exactly the chart data in PowerPoint. For example, a 1-series column chart like this:
 
 ![Column chart with 1 series](chart/column-chart-1-series.png)
 
-... the data needs to look like this:
+... uses data like this:
 
 ![Column chart with 1 series data](chart/column-chart-1-series-data.png)
 
@@ -690,7 +737,10 @@ Note: The first column name "Categories" is not used. It's just a placeholder fo
     Run the Chart example
 
 
+
 ## Clone shapes
+
+[Video](https://youtu.be/MpWUsN41ifg){.youtube}
 
 Use `clone-shape:` to clone a shape for as many times specified. For example:
 
@@ -725,6 +775,8 @@ For each cloned shape, the [data variable `clone`](#data) is set. It has these a
 
 ## Debug
 
+[Video](https://youtu.be/1bNmhD5qS_4){.youtube}
+
 If PPTXHandler fails, a good way to debug is to
 
 - `print:` prints the result of an expression using [data](#data), e.g. `print: shape.name` prints
@@ -757,6 +809,8 @@ rules:
 # Reference
 
 ## Expressions
+
+[Video](https://youtu.be/_G0N1yiWwDY){.youtube}
 
 PPTXHandler is mostly used to change presentations using [data](#data). So values are evaluated as
 Python expressions. For example:
@@ -842,6 +896,8 @@ pptgen('source.pptx', mode='expr', rules=yaml_config['rules'])
 
 ## Data
 
+[Video](https://youtu.be/kFkt3JlIGtU){.youtube}
+
 PPTGen can change presentations with data from various sources. It uses the same syntax as
 [FormHandler](../formhandler/). It supports these keys:
 
@@ -889,6 +945,8 @@ rules:
   - Rectangle 2:
       text: tweets[0]['text']
 ```
+
+[Video](https://youtu.be/khq4zItxbJQ){.youtube}
 
 Expressions can also use these pre-defined variables. (DON'T create a variable with these names.
 They will be over-ridden.)

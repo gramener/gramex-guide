@@ -189,6 +189,8 @@ url:
             password:
                 column: $USER_DATABASE_PASSWORDCOLUMN
                 function: passlib.hash.sha256_crypt.encrypt(content, salt="$USER_DATABASE_SALT")
+            rules:
+              url: $YAMLPATH/rules.csv
             redirect:
                 query: next
                 header: Referer
@@ -320,6 +322,7 @@ url:
                   day: 1          # ...day, it expires in 1 day
                   week: 7         # ...week, it expires in 7 days
                   month: 31       # ...month, it expires in 31 days
+                  session: false  # session cookie
                   "on": 31        # If ?remember=on, expire after 31 days (checkbox)
             credentials: {alpha: alpha, beta: beta}
             template: $YAMLPATH/customexpiry.html   # Use this login template for the demo
@@ -333,6 +336,31 @@ url:
             template: true
             headers:
               Cache-Control: no-cache
+
+    auth/apikey:
+        pattern: /$YAMLURL/apikey
+        handler: FileHandler
+        kwargs:
+            path: $YAMLPATH/apikey.html
+            template: true
+            headers:
+              Cache-Control: no-cache
+
+    auth/methods:
+      pattern: /$YAMLURL/methods
+      handler: FileHandler
+      kwargs:
+          path: $YAMLPATH/methods.html
+          template: true
+
+    public-read:
+      pattern: /$YAMLURL/public-read
+      handler: FunctionHandler
+      kwargs:
+        function: f'Method = $${handler.request.method}, User = $${handler.current_user}'
+        auth:
+          methods: [POST, PUT, DELETE]
+        xsrf_cookies: false
 
     auth/unauthorized-template:
         pattern: /$YAMLURL/unauthorized-template
@@ -420,6 +448,32 @@ url:
                 query: next
                 header: Referer
                 url: .
+    auth/rules:
+      pattern: /$YAMLURL/attr-rules
+      handler: SimpleAuth
+      kwargs:
+        template: $YAMLPATH/simple.rules.html
+        credentials:
+          alpha:
+            password: alpha
+            email: jane.doe@gramener.com
+            role: admin
+            location: BLR
+          beta:
+            password: beta
+            email: john.doe@gmail.com
+            role: intern
+            location: MUM
+        rules:
+          url: $YAMLPATH/rules.csv
+        redirect:
+            url: /$YAMLURL/attr-rules
+
+    auth/rules-csv:
+      pattern: /$YAMLURL/attr-rules-data
+      handler: FormHandler
+      kwargs:
+        url: $YAMLPATH/rules.csv
 
     auth/recaptcha:
         pattern: /$YAMLURL/recaptcha
@@ -461,10 +515,34 @@ url:
             The OTP for {user} is {password}
 
             Visit {link}
+          html: |
+            <p>The OTP for {user} is {password}.</p>
+            <p><a href="{link}">Click here to log in</a></p>
           redirect:
-              query: next
-              header: Referer
-              url: .
+            query: next
+            header: Referer
+            url: .
+
+    auth/emailtemplate:
+        pattern: /$YAMLURL/emailtemplate
+        handler: EmailAuth
+        kwargs:
+          service: gramex-guide-auth
+          subject: 'OTP for Gramex Guide'
+          bodyfile: $YAMLURL/emailauth.txt
+          htmlfile: $YAMLURL/emailauth.html
+          template: $YAMLURL/emailauth.template.html
+          redirect:
+            query: next
+            header: Referer
+            url: .
+
+    auth/delay:
+        pattern: /$YAMLURL/delay
+        handler: SimpleAuth
+        kwargs:
+            <<: *simplekwargs
+            delay: 5
 
     auth/multi:
         pattern: /$YAMLURL/multi

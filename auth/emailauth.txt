@@ -1,0 +1,5 @@
+Hi {user},
+
+Your OTP is {password}
+
+Log in at {link}
