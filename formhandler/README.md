@@ -173,9 +173,16 @@ With additional libraries, FormHandler can connect to
 - [Google Sheets](https://github.com/betodealmeida/gsheets-db-api)
   - Install: `pip install "gsheetsdb[sqlalchemy]"`
   - Use: `url: 'https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/edit#gid=0'`
+- [InfluxDB](https://pypi.org/project/influxdb-client/)
+  - Install: `pip install influxdb-client`
+  - Use: `url: 'influxdb:'http://localhost:8086'`
+  - `kwargs`:
+    - `token`: token for authorization
+    - `org`: default organization for writes and queries
+    - `timeout`: socket timeout in ms (default value is 60000)
 - [MongoDB](https://pymongo.readthedocs.io/)
   - Install: `pip install pymongo`
-  - Use: `url: 'plugin:mongodb://$USER:$PASS@$HOST:27017'`
+  - Use: `url: 'mongodb://$USER:$PASS@$HOST:27017'`
   - `kwargs`:
     - `database`: database to connect to
     - `collection`: collection to query

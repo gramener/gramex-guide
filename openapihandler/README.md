@@ -66,7 +66,7 @@ url:
           [Gramex](https://gramener.com/gramex/) OpenAPIHandler
         version: 0.1.2
       servers:
-        - url: /
+        - url: ..
           description: Gramex OpenAPIHandler demo
       urls:         # List of url: keys to expose.
         - compare   # Use '*' to match any string
@@ -101,7 +101,7 @@ To allow users to interact with the API with a UI, use [Swagger UI](https://swag
 ```
 
 ::: example href=example.html source=https://github.com/gramener/gramex-guide/tree/master/openapihandler/example.html
-    See the API UI
+    See the API UI for `compare`
 
 
 ## OpenAPIHandler Configuration
@@ -172,3 +172,21 @@ You can add function annotations that will define types in the OpenAPI. For exam
 - `x: Annotated[List[float], 'first list']` accepts a list of number, and adds the description "first list"
 
 [openapi]: https://swagger.io/specification/
+
+## FormHandler OpenAPI
+
+If you expose a [FormHandler](../formhandler/) via OpenAPIHandler, you must explicitly
+[specify the columns](../formhandler/#formhandler-columns), like this:
+
+```yaml
+url:
+  flagdata:
+    pattern: flagdata
+    handler: FormHandler
+    kwargs:
+      url: flags.csv
+      columns: [Name, Continent, Symbols, Shapes, Stripes]
+```
+
+::: example href=example.html source=https://github.com/gramener/gramex-guide/tree/master/openapihandler/example.html
+    See the API UI for `flagdata`

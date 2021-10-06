@@ -12,3 +12,13 @@ url:
       function: topcausecalc.drivers
       headers:
         Content-Type: application/json
+
+  topcause-results:
+    pattern: /$YAMLURL/results
+    handler: MLHandler
+    kwargs:
+      data:
+        url: $YAMLPATH/weight.csv
+      model:
+        class: TopCause
+        target_col: weight

@@ -11,6 +11,10 @@ type: component
 
 **v1.72.0** TopCause is an algorithm that answers the question ***What's the single biggest change I can make to improve my outcome?***.
 
+<div class="ratio ratio-16x9">
+  <iframe src="https://www.youtube.com/embed/5JfSryDrSVY" allowfullscreen></iframe>
+</div>
+
 TopCause takes two inputs:
 
 - `X`: all input variables that you can change as a DataFrame
@@ -91,10 +95,10 @@ This example says that:
 
 1. **weight** has the biggest impact on weight (obviously) -- let's ignore this
 2. **height** has the second biggest impact on weight. Specifically:
-    - **value**: Picking people with the (high) height of 164.5 cm
-    - **gain**: This can increase average weight by 12.7 kg.
-    - **p**: The probability of error is small (8E-13), i.e. height definitely impacts weight
-    - **type**. This column was treated as a number
+   - **value**: Picking people with the (high) height of 164.5 cm
+   - **gain**: This can increase average weight by 12.7 kg.
+   - **p**: The probability of error is small (8E-13), i.e. height definitely impacts weight
+   - **type**. This column was treated as a number
 3. **male** does not impact weight with enough confidence. There's a 5.7% chance it doesn't. (The default cutoff is 5%)
 4. **age** does not impact weight with enough confidence. There's a 45.3% chance it doesn't.
 

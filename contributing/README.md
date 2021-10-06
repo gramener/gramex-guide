@@ -140,6 +140,7 @@ In [gramex-guide][gramex-guide]:
 - Add video tutorial for all new features
 - In `release/1.xx/README.md` -- add guide release notes.
   - Run `make stats` for code size stats. Take coverage stats from Travis
+- Run `npm run lint` and fix any Markdown issues
 - Run `python search/search.py` to update search index
 - Run `node search/searchindex.js` to update search index
 

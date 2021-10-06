@@ -2225,6 +2225,9 @@
       "Log viewer": -1
     },
     "add-3rd-party-data": {},
+    "add-custom-kpis": {
+      "Add custom KPIs": -1
+    },
     "add-custom-visuals": {},
     "customizing-logviewer": {
       "Customizing Logviewer": -1
@@ -2422,6 +2425,9 @@
     "": {
       "OpenAPIHandler documents APIs": -1
     },
+    "formhandler-openapi": {
+      "FormHandler OpenAPI": -1
+    },
     "functionhandler-openapi": {
       "FunctionHandler OpenAPI": -1
     },
@@ -2441,6 +2447,9 @@
     },
     "about": {
       "About": -1
+    },
+    "albus-dumbledores-screen-time": {
+      "Albus Dumbledore's screen time": -1
     },
     "bar-chart-race": {
       "Bar chart race": -1
@@ -3072,14 +3081,12 @@
   },
   "release": {
     "": {
-      "Gramex release notes": -1
+      "Gramex releases": -1
     },
     "release-notes": {
       "Release Notes": -1
     },
-    "release-process": {
-      "Release Process": -1
-    }
+    "release-process": {}
   },
   "release/1.30": {
     "": {
@@ -4547,6 +4554,47 @@
     },
     "uifactory-charts": {
       "UIFactory charts": -1
+    }
+  },
+  "release/1.73": {
+    "": {
+      "Gramex 1.73 release notes": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "comicgen-icons": {
+      "Comicgen icons": -1
+    },
+    "formhandler-influxdb-support": {
+      "FormHandler InfluxDB support": -1
+    },
+    "gramex-roadmap": {
+      "Gramex Roadmap": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "logviewer-supports-custom-kpis": {
+      "LogViewer supports custom KPIs": -1
+    },
+    "openapihandler-supports-formhandlers": {
+      "OpenAPIHandler supports FormHandlers": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "uifactory": {
+      "UIFactory": -1
+    },
+    "uifactory-blocks": {
+      "UIFactory blocks": -1
+    },
+    "uifactory-events": {
+      "UIFactory events": -1
     }
   },
   "release/old": {

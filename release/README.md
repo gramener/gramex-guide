@@ -1,53 +1,15 @@
 ---
-title: Gramex release notes
+title: Gramex releases
 prefix: Release
 ...
 
-
-## Release Process
-
 Gramex is released with new features on the first of every month.
 
-**Major versions** are released every **4-6 years**
-
-- Examples:
-  - **Gramex 0.0** released in Nov 2011. It focused on custom data visualizations through templates.
-  - **Gramex 1.0** released in Sep 2015. It moved from code-based to configuration-based development.
-  - **Gramex 2.0** will release in 2022. It will move from configuration-based to UI-based development.
-- Major versions contain
-  - Significant architectural changes
-  - New features / UX etc.
-  - Changes for performance & productivity
-- Major versions may **NOT** be backward compatible.
-
-**Minor versions** are released on the **1st of every month**
-
-- Examples:
-  - [**Gramex 1.65**](1.65/) released on 1 Nov 2020. It had Excel table support, functions as REST APIs, logging via ElasticSearch.
-  - [**Gramex 1.66**](1.66/) released on 1 Dec 2020. It automatically created tables when users insert a row of data.
-  - [**Gramex 1.67**](1.67/) released on 1 Jan 2021. It trains and deploys ML models based without requiring code.
-- Minor versions contain
-  - New features
-  - Enhancements to existing features
-  - Bug fixes and consolidated patches
-- Minor versions are **backward compatible** unless explicitly deprecated.
-
-**Patch versions** are released as and **when required**
-
-- Examples:
-  - **Gramex 1.63.0** released on 1 Sep 2020. It was the minor version release.
-  - **Gramex 1.63.1** released on 15 Sep 2020. It fixed an authentication configuration bug.
-  - **Gramex 1.63.2** released on 22 Sep 2020. It fixed a URL redirection bug
-- Patch versions contain
-  - Critical Bug Fixes
-  - Reported Security issues
-  - Minor feature enhancements
-- Patch versions are backward compatible and roll up into the next minor version.
-
-This [presentation](gramex-release-process.pptx) documents the release process.
+[![Gramex release process](gramex-release-process.svg){:.img-fluid}](gramex-release-process.pptx)
 
 ## Release Notes
 
+- [v1.73.0: UIFactory events, InfluxDB support, Comicgen icons](1.73/) <small>4 Oct 2021</small>
 - [v1.72.0: OpenAPI support, a root cause algorithm, charts in UIFactory](1.72/) <small>1 Sep 2021</small>
 - [v1.71.0: ComicHandler, security updates](1.71/) <small>1 Aug 2021</small>
 - [v1.70.0: MLHandler templates, MongoDB, Bootstrap 5, Vue.](1.70/) <small>6 Jul 2021</small>

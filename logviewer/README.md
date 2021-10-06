@@ -550,26 +550,26 @@ You can copy source for [logviewer-config.yaml](logviewer-config.yaml) and
 [logviewer-render.js](logviewer-render.js) if they are not present in your app folder.
 
 
-## Adding custom columns and reports
+## Add custom KPIs
 
-Custom logging of parameters is now possible since Gramex version 1.73 wherein you can log additional values by applying functions on existing columns. e.g. If you want to log the browser and OS of users accessing your application viz. mobile, desktop, the same can be achieved by the below steps.
+**v1.73**. From Gramex version 1.73, you can log additional columns. For example, to log the browser.
 
 **Step 1:**
 
-Define custom columns and their value patterns in your gramex.yaml as shown below.
+Define custom column names and their formulas in `gramex.yaml`:
 
 ```yaml
 logviewer:
   LOGVIEWER_CUSTOM_DIMENSIONS:
+    # Create a column called user_agent from the User-Agent header using regular expressions
     user_agent: df['headers.User-Agent'].str.extract(r"\((?P<user_agent>[^\(|\)]+)\)")
+    # Create a boolean column called slow from the duration column
     slow: df['duration'] > 100
 ```
 
 **Step 2:**
 
-A custom visual representation of above can be achieved by subsequent steps given below.
-
-Add a custom query to your gramex.yaml file like:
+To use these columns on the logviewer page, add a custom query to `gramex.yaml`:
 
 ```yaml
 logviewer:
@@ -605,4 +605,4 @@ viewsConfig: [
 
 The output would look like below.
 
-![Custom Data Logging](img/Custom-Logviewer.png)
+![Custom Data Logging](img/Custom-Logviewer.png){:.img-fluid}

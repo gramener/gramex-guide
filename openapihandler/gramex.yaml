@@ -8,6 +8,13 @@ url:
       openapi:          # Optional OpenAPI info
         summary: List Comparison FunctionHandler
 
+  flagdata:
+    pattern: /$YAMLURL/flagdata
+    handler: FormHandler
+    kwargs:
+      url: $YAMLPATH/../formhandler/flags.csv
+      columns: [Name, Continent, Symbols, Shapes, Stripes]
+
   openapi:
     pattern: /$YAMLURL/docs
     handler: OpenAPIHandler
@@ -18,7 +25,8 @@ url:
           [Gramex](https://gramener.com/gramex/) OpenAPIHandler
         version: 0.1.2
       servers:
-        - url: /
+        - url: ..
           description: Gramex OpenAPIHandler demo
       urls:         # List of url: keys to expose.
         - compare   # Use '*' to match any string
+        - flagdata

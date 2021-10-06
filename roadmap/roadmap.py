@@ -39,11 +39,13 @@ def get_issues(refresh: bool = False):
             count = len(result['issues'])
             if count == 0:
                 break
+            for item in result['issues']:
+                item['board'] = board
             issues += result['issues']
             params['startAt'] += count
 
-        with open(issues_file, 'w', encoding='utf-8') as handle:
-            json.dump(issues, handle, ensure_ascii=True)
+    with open(issues_file, 'w', encoding='utf-8') as handle:
+        json.dump(issues, handle, ensure_ascii=True)
 
     return issues
 
@@ -57,13 +59,13 @@ def get_roadmap(refresh: bool = False):
     epicname, roadmap = {}, {}
     for issue in issues:
         if issue['fields']['issuetype']['hierarchyLevel'] == 1:
-            if (issue['fields']['duedate'] or '') > today:
+            if (issue['fields']['duedate'] or '') >= today:
                 epicname[issue['id']] = issue['fields']['summary']
                 roadmap[issue['fields']['summary']] = {
                     'summary': issue['fields']['summary'],
                     'description': issue['fields']['description'],
                     'duedate': issue['fields']['duedate'],
-                    "done": bool(issue['fields']['resolution']),
+                    "status": issue['fields']['status']['name'],
                     'features': {
                         'Component': [],
                         'Microservice': [],
@@ -95,7 +97,8 @@ def get_roadmap(refresh: bool = False):
             'key': issue['key'],
             'summary': summary,
             'description': issue['fields']['description'],
-            "done": bool(issue['fields']['resolution']),
+            'status': issue['fields']['status']['name'],
+            'board': issue['board'],
         })
 
     result = {}
