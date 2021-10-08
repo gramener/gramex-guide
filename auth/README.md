@@ -1744,7 +1744,7 @@ their role changed to "guest" from "intern", and the user `alpha` would see
 their location changed to "NYC" from "BLR".
 
 Generally, for any auth handler, any existing user attribute can be used in the
-"selector" field, and if they value of that attribute matches the specified "pattern",
+"selector" field, and if the value of that attribute matches the specified "pattern",
 then the attribute mentioned in the "field" is modified to the "value".
 
 
