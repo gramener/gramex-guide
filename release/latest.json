@@ -1,0 +1,26 @@
+{
+  "releases": [
+    {
+      "version": "v1.73.0",
+      "link": "https://gramener.com/gramex/guide/release/1.73/",
+      "title": "UIFactory events, InfluxDB support, Comicgen icons",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/uifactory/",
+          "title": "UIFactory",
+          "description": "UIFactory is now out of beta. Version 1.20 is packaged in Gramex 1.73, and features a simpler way to add events and create blocks."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/comichandler/",
+          "title": "Comicgen icons",
+          "description": "Comicgen supports two new icon libraries that can be used as props. Microsoft’s FXEmoji with over 1,000 icons. Google’s Noto Emoji with over 2,000 icons."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/formhandler/",
+          "title": "FormHandler InfluxDB support",
+          "description": "FormHandler can read from and write into InfluxDB, a time series database."
+        }
+      ]
+    }
+  ]
+}
