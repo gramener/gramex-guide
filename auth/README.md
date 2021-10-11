@@ -1697,7 +1697,7 @@ just like for [FormHandler](../formhandler/).
     Lookup attributes example
 
 
-## Modify User Attributes with Rules
+## Add Attribute Rules
 
 Auth handlers support a `rules` kwarg which allows users to specify rules which
 can modify user attributes on the fly. For example, the following spec
