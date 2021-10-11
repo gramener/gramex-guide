@@ -1696,6 +1696,58 @@ just like for [FormHandler](../formhandler/).
 ::: example href=lookup-attributes source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
     Lookup attributes example
 
+
+## Add Attribute Rules
+
+Auth handlers support a `rules` kwarg which allows users to specify rules which
+can modify user attributes on the fly. For example, the following spec
+
+```yaml
+url:
+  auth/simple:
+    pattern: /$YAMLURL/login
+    handler: SimpleAuth
+    kwargs:
+      credentials:
+        alpha:
+          password: alpha
+          email: jane.doe@gramener.com
+          role: admin
+          location: BLR
+        beta:
+          password: beta
+          email: john.doe@gmail.com
+          role: intern
+          location: MUM
+      rules:
+        url: $YAMLPATH/rules.csv
+```
+
+declares two users, with three attributes each - email, role and location. The
+rules for modifying these attributes can be composed in a file named `rules.csv`
+as follows:
+
+| selector  |   pattern   | field    | value |
+|-----------|-------------|----------|-------|
+| email     | *@gmail.com | role     | guest |
+| role      | admin       | location | NYC   |
+
+These rules can be read as follows:
+
+1. If the "email" attribute of a user matches the pattern `*@gmail.com`, then
+   set their "role" attribute to guest, AND
+2. if the "role" attribute of a user matches the pattern "admin", then set their
+   "location" attribute to NYC.
+
+In the case of the users specified above, after logging in, `beta` would see
+their role changed to "guest" from "intern", and the user `alpha` would see
+their location changed to "NYC" from "BLR".
+
+Generally, for any auth handler, any existing user attribute can be used in the
+"selector" field, and if the value of that attribute matches the specified "pattern",
+then the attribute mentioned in the "field" is modified to the "value".
+
+
 # Automated logins
 
 Gramex has two mechanisms to automate logins: [one-time passwords](#otp) and [encrypted users](#encrypted-user).
