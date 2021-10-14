@@ -24,15 +24,14 @@ In this workshop, we'll explain how this was created.
 Here's a step-by-step guide on how you can create a simple data portrait using an SVG file.
 
 1. OPTIONAL: Draw this image in PowerPoint and save it as an SVG file.
-   ![Phone](https://cdn.glitch.com/00ca098e-1db3-4b35-aa48-6155f65df538%2Fphone.svg?v=1623937023597){.img-fluid}
+   ![Phone](https://raw.githubusercontent.com/gramener/gramex-guide/master/workshop/data-portraits/phone.svg){.img-fluid}
 2. [Log into CodePen](https://codepen.io/login) with any account
 3. [Create a new Pen](https://codepen.io/pen/)
 4. Copy this code to the HTML pane:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/lodash/lodash.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/uifactory@0.0.14/src/uifactory.js" import="@svg-chart"></script>
-<svg-chart src:urltext="https://cdn.glitch.com/00ca098e-1db3-4b35-aa48-6155f65df538%2Fphone.svg?v=1623937023597"
+<script src="https://cdn.jsdelivr.net/npm/uifactory@1.22.0/src/uifactory.js" import="@svg-chart"></script>
+<svg-chart src:urltext="https://raw.githubusercontent.com/gramener/gramex-guide/master/workshop/data-portraits/phone.svg"
      data:js="{phone: 'iPhone', hours: 2.3}"
      rules:js="{
      }"></svg-chart>
@@ -62,7 +61,9 @@ Set the hours of usage text. (The text should change from 1 to 2.3)
        '.hours-text': { text: data.hours }
 ```
 
-Inside `data:js`, change the phone from `iPhone` to `Android`, and hours from `2.3` to `5.5`. See the change
+Inside `data:js`, change the phone from `iPhone` to `Android`, and hours from `2.3` to `5.5`. See the change.
+
+[See a working example](https://codepen.io/sanand0/pen/zYdvqbw?editors=1000)
 
 # Examples of use
 
