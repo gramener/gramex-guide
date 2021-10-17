@@ -84,14 +84,17 @@ Then learn from these tutorials:
 
 - [Speech recognition demo](speech/)
 
+## Product
+
+- [Roadmap](roadmap/). Read about what's next on Gramex
+- [Release Notes](release/). History of every Gramex release and its features
+- [Gramex Editions](edition/). Explains Enterprise vs Community Editions
+- [Gramex FAQ](faq/)
+
 ## Reference
 
-- [Roadmap](roadmap/)
-- [Release Notes](release/)
-- [Python API reference](https://learn.gramener.com/gramex/gramex.html)
 - [Gramex License](license/). Gramex Community Edition is MIT licensed
-- [Gramex is a web server](server/)
-- [Gramex FAQ](faq/)
+- [Python API reference](https://learn.gramener.com/gramex/gramex.html)
 - [Link check](linkcheck/) tests if all links on the Gramex Guide are working
 - [Index of topics on the Gramex Guide](search/)
 
