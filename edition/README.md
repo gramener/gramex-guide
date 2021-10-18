@@ -54,13 +54,11 @@ Use Community Edition if
 
 ## Switch between editions easily
 
-You can switch from the Community Edition to the Lite Ediiton, and then to the Enterprise Edition
-at any point by [purchasing a license](https://gramener.com/demorequest/).
+You can switch from the Community Edition to the Lite Edition, and then to the Enterprise Edition
+at any point by [purchasing a license](https://gramener.com/demorequest/) and installing the edition.
 
 ## License model
 
 Gramex is built on an open core model.
-
-1. Community Edition is open source, with an MIT license.
-2. Lite Edition is built on top of the Commuity Edition with additional proprietary features that are source available.
-3. Enterprise Edition is built on top of the Lite Edition with additional proprietary features that are private-source.
+The Community Edition is open source, with an MIT license.
+The Lite & Enterprise Editions are built on top of the Commuity Edition with additional proprietary features.
