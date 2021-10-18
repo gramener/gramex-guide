@@ -323,6 +323,18 @@ More options can be provided to `$().formhandler()` via JavaScript. See the
 [g1]: https://code.gramener.com/cto/g1/
 [g1-formhandler]: https://code.gramener.com/cto/g1/#formhandler
 
+### Exporting the entire table
+
+You can export data in Excel/CSV/JSON/HTML formats by passing the following parameters:
+
+- `_meta`: Should be `y` in your query string parameters
+- `_limit`: Maximum data limit as present in `fh-data-count` in your request headers
+- `format`: Available options are `xlsx`, `csv`, `json`, `html`
+
+In the above case, if you want to download `xlsx` data and has `fh-data-count`=196; visit [flags?_limit=196&_format=xlsx&_meta=y]([flags?_limit=196&_format=xlsx&_meta=y]).
+
+You can also pass the count as a variable viz. `data_count` = `<fh-data-count>`. In this case, you can visit [flags?_limit=data_count&_format=xlsx&_meta=y]([flags?_limit=data_count&_format=xlsx&_meta=y]) to download data.
+
 ## FormHandler charts
 
 **v1.28**. FormHandler supports [seaborn](https://seaborn.pydata.org/) charts.
@@ -415,6 +427,10 @@ More chart types can be created. See the [Seaborn API](https://seaborn.pydata.or
 
 [![heatmap][heatmap]][heatmap]
 [![clustermap][clustermap]][clustermap]
+
+### Plotting entire data
+
+By default, FormHandler chart shows you the filtered data. To plot entire data, ensure  that you do not pass `_limit` and `_offset` parameters. Passing those parameters would plot the filtered data viz. [chart?_format=barchart&_limit=6&_offset=2](chart?_format=barchart&_limit=4&_offset=2) would select 4 Continents (due to `_limit=4`) and skip the first 2 Continents (due to `_offset=2`) replacing it with next 2 (if available).
 
 More examples to be added.
 
