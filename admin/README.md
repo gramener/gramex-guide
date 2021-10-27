@@ -190,7 +190,7 @@ under the `schedule:` section, and run them.
     Schedule example
 
 
-The admin schedule component can also be embdded in any page:
+The admin schedule component can be embdded in any page:
 
 ```html
 <div class="schedule"></div>
