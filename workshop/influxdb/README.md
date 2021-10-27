@@ -14,17 +14,16 @@ and visualize them on a map with [Leaflet](https://leafletjs.com).
 
 To follow through this tutorial completely, you will need:
 
-1. Gramex community edition
+1. Gramex community edition ([see installation instructions](/install))
 2. An InfluxDB server
 
-Gramex can be installed as follows:
+
+We recommend running InfluxDB via Docker, as follows:
 
 ```bash
-conda install -c conda-forge -c gramener gramex
+$ docker pull influxdb:latest
+$ docker run --name influxdb -p 8086:8086 influxdb:latest
 ```
-
-We recommend running InfluxDB via Docker,
-but it can be installed in a [variety of ways](https://portal.influxdata.com/downloads/).
 
 ## Setting Up FormHandler for InfluxDB
 
@@ -37,8 +36,7 @@ tutorial.
 - The bucket name
 
 All of these can be obtained when creating the initial setup with InfluxDB.
-Once we have these details, we can create a FormHandler connection to InfluxDB
-as follows:
+Then, create a file named "gramex.yaml" with the following content.
 
 ```yaml
 url:
@@ -46,15 +44,18 @@ url:
     pattern: /$YAMLURL/data
     handler: FormHandler
     kwargs:
-      url: influxdb:http://localhost:8086/  # Assuming the InfluxDB server is
-                                            # running locally on port 8086.
-      username: username                    # Your username
-      token: token  	                    # Token associated with the username
-      org: org                              # Organization
-      bucket: bucket                        # Bucket
+      url: influxdb:http://localhost:8086/
+      username: username
+      token: token
+      org: org
+      bucket: bucket
       xsrf_cookies: false
       id: _time
 ```
+
+Run Gramex in the directory, and visit
+[`http://localhost:9988/data`](http://localhost:9988/data) in the
+browser. You should see an empty array.
 
 Now, when Gramex and InfluxDB are both running, we are ready to push data to
 InfluxDB and query data from it.
