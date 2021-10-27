@@ -10,7 +10,15 @@ Specifically, we will store a dataset of the GPS coordinates of a [set of
 subsurface floats](https://www.aoml.noaa.gov/phod/float_traj/index.php) in InfluxDB,
 and visualize them on a map with [Leaflet](https://leafletjs.com).
 
-## Prerequisites
+![Floats](floats.png){.img-fluid}
+
+The dataset contains floats belonging to six experiments. Over the course of the
+experiment, the floats travelled along the Americas as shown above. In this
+tutorial, we will build an app that visualizes the journey of these floats in
+real-time.
+
+
+## Step 0: Prerequisites
 
 To follow through this tutorial completely, you will need:
 
@@ -21,54 +29,26 @@ To follow through this tutorial completely, you will need:
 We recommend running InfluxDB via Docker, as follows:
 
 ```bash
-$ docker pull influxdb:latest
-$ docker run --name influxdb -p 8086:8086 influxdb:latest
+docker pull influxdb:latest
+docker run -d -p 8086:8086 \
+  -e DOCKER_INFLUXDB_INIT_MODE=setup \
+  -e DOCKER_INFLUXDB_INIT_USERNAME=user \
+  -e DOCKER_INFLUXDB_INIT_PASSWORD=password \
+  -e DOCKER_INFLUXDB_INIT_ORG=org \
+  -e DOCKER_INFLUXDB_INIT_BUCKET=sofar \
+  -e DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=mytoken123 \
+  influxdb:latest
 ```
 
-## Setting Up FormHandler for InfluxDB
+## Step 1: Getting the data
 
-Once InfluxDB is set up with an initial bucket, you will need these details to proceed with the
-tutorial.
+Download the dataset [here](floats.json), and put it in an empty folder.
 
-- Username
-- A token associated with the username
-- The org name
-- The bucket name
-
-All of these can be obtained when creating the initial setup with InfluxDB.
-Then, create a file named "gramex.yaml" with the following content.
-
-```yaml
-url:
-  home:
-    pattern: /$YAMLURL/data
-    handler: FormHandler
-    kwargs:
-      url: influxdb:http://localhost:8086/
-      username: username
-      token: token
-      org: org
-      bucket: bucket
-      xsrf_cookies: false
-      id: _time
-```
-
-Run Gramex in the directory, and visit
-[`http://localhost:9988/data`](http://localhost:9988/data) in the
-browser. You should see an empty array.
-
-Now, when Gramex and InfluxDB are both running, we are ready to push data to
-InfluxDB and query data from it.
-
-## The Dataset - Subsurface Float Trajectories
-
-In this tutorial, we will explore a dataset of SOFAR (SOund Fixing and Ranging)
+The dataset tracks the movement of SOFAR (SOund Fixing and Ranging)
 floats. These are acoustically tracked submersible devices left in the ocean,
 and their movements are tracked over a period of time to study oceanic currents.
 
-We will use a subset of this dataset, which covers some of floats that have
-traveled the longest in nearly a decade. The data looks like
-this:
+The data looks like this:
 
 
 <table class="table table-striped">
@@ -120,22 +100,61 @@ is nearly a decade, but since we need to finish running the visualization in a
 much shorter time (say, 30 seconds), we have preprocessed the data such that it
 appears as if the entire lifetime of the floats is a little over 30 seconds.
 
-Download the dataset [here](floats.json).
+## Step 2: Setting Up FormHandler for InfluxDB
 
-## Visualizing Float Trajectories in Real Time
+### Step 2.1: The Gramex App Specification
+Once the InfluxDB is set up with an initial bucket, create a file named `gramex.yaml` in the same folder with the following contents:
 
-The dataset contains floats belonging to six experiments. Over the course of the
-experiment, the floats travelled along the Americas as shown here:
+```yaml
+app:
+  browser: true
 
-![Floats](floats.png){.img-fluid}
+schedule:
+  push-data:
+    function: main.push
+    startup: true
+    thread: true
 
-In the following steps, we will attempt to build a real-time visualization of
-how the floats travelled.
+url:
+  influxdbhandler-data:
+    pattern: /$YAMLURL/data
+    handler: FormHandler
+    kwargs:
+      url: influxdb:http://localhost:8086/
+      username: user
+      token: mytoken123
+      org: org
+      bucket: sofar
+      xsrf_cookies: false
+      id: _time
+```
 
-### Making a Map
+### Step 2.2: Push Data to InfluxDB
 
-Create a file named `map.html` next to `gramex.yaml`, and add the following code
-to it.
+Next, create a file named `main.py` in the folder, and add the following
+content:
+
+```python
+import time
+import pandas as pd
+import requests
+
+
+def push():
+    df = pd.read_json("floats.json")
+    while True:
+        for day, group in df.groupby("day"):
+            requests.post(
+                "http://localhost:9988/data?measurement=latlong&tags=exp",
+                data=group.to_dict(orient="list"),
+            )
+            time.sleep(1)
+```
+
+### Step 2.3: Add a Map
+
+Next, create a file named `index.html` in the folder, with the following
+content:
 
 ```html
 <!DOCTYPE html>
@@ -201,215 +220,64 @@ Note that we have:
 * left a placeholder comment to accommodate more Javascript code
 as we develop the application through the following steps.
 
-Run Gramex in this folder, and visit
-[http://localhost:9988/map.html](http://localhost:9988/map.html) in your browser.
-You should be able to see a map in your browser as follows:
+Run Gramex in this folder, and a browser window should open with a map:
 
 ![Map](world.png){.img-fluid}
 
-### Getting the data into the web app
+If you visit the [`/data?bucket=sofar`](http://localhost:9988/data?bucket=sofar) endpoint in the browser,
+you should see some data coming into InfluxDB as follows:
 
-Assuming that the [downloaded dataset](floats.json) is in the same folder as the
-HTML and `gramex.yaml` files, add the following snippet at the end of the
-`<script>` tag:
 
-```js
-
-function runApp(data) {
-  // Note: The main function that the page will run,
-  // to be modified later
-  console.log(data)
-}
-$(document).ready(function() {
-  $.getJSON('floats.json').done(runApp)
-})
+```json
+[
+  {
+    "_start": 1632727879731,
+    "_stop": 1635319879731,
+    "_time": 1635319879185,
+    "_value": 15.0,
+    "_field": "day",
+    "_measurement": "latlong",
+    "exp": "ACALACE"
+  }, {
+    "_start": 1632727879731,
+    "_stop": 1635319879731,
+    "_time": 1635319873012,
+    "_value": 9.0,
+    "_field": "day",
+    "_measurement": "latlong",
+    "exp": "BOUNCE"
+  }, // etc
+]
 ```
 
-Now, when you refresh the page and open the browser console, you should be able
-to see the dataset as a Javascript array.
+As you refresh the page a few more times, you should see more and more records.
 
-### Preprocessing the Data
 
-Now that we have access to the data from within the application, before pushing
-it to influxdb, we need to do some preprocessing. Primarily, we need to answer
-questions like:
+### Step 3: Plotting the Data on the Map
 
-* At what rate do we push the data to InfluxDB so that the visualization cycle
-  finishes in a reasonable time?
-* How do we render each experiment with a different color?
+In step 2.2, we created a mechanism that pushes data to InfluxDB every second.
+Therefore, we also need a corresponding javascript function that _pulls_ the data
+from InfluxDB every second, and plots it on the map.
 
-We have already modified the original data to make look like the experiment ran over
-a course of 35 days (refer to the `day` column in the dataset). Therefore, if we
-were to visualize one day's data in a second, we should be able to run through
-the entire visualization in about 35 seconds.
-
-In order to do this, modify the `runApp` function to look like this:
+To do this, add the following code at the end of the `<script>` tag in
+`index.html` (note that we had left a comment there earlier, to indicate the
+position for the following code.
 
 ```javascript
-function runApp(data) {
-  // Note: The main function that the page will run,
-  // to be modified later
-  
-  // Find the columns in the dataset
-  var columns = _.keys(data[0]);
+    var colors = _.zipObject(
+      ['TROATL', 'BOUNCE', 'ACALACE', 'CLIMODE', 'DIMES1', 'DIMES2'],
+      ["red", "green", "blue", "yellow", "black", "magenta"]
+    )
+    var puller = setInterval(function() {
+      // Get data accumulated in the last one second
+      $.getJSON('data?bucket=sofar&_offset=-1s').done(function(d) {
+          let latest = _.groupBy(_.filter(d, i => ['lat', 'long'].includes(i._field)), 'exp')
+          for (const [expname, latlongs] of Object.entries(latest)) {
+	    updatePath(expname, latlongs, colors)
+          }
+        })
+    }, 1000)  // Run this every second
 
-  // Find the number of days in the dataset
-  let n_days = Math.max(..._.map(data, 'day'))
-
-  // Get the names of the experiments
-  let expNames = _.map(_.uniqBy(data, 'exp'), 'exp')
-
-  // Map experiment names to colors
-  var colors = _.zipObject(
-    expNames,
-    ["red", "green", "blue", "yellow", "black", "magenta"]
-  )
-}
-
-```
-
-### Pushing the Data to InfluxDB
-
-Next, we add a recurring function to the app, which pushes a day's data to
-InfluxDB every second. We have already established a FormHandler connection to
-InfluxDB in the [second section](#setting-up-formhandler-for-influxdb) of this tutorial.
-
-Now, we need to filter the dataset for each day, and push the filtered dataset
-to InfluxDB every second. To do this, add the following lines to the `runApp`
-function:
-
-```javascript
-// Initialize a counter to keep track of how many days' data has been pushed
-let day_ix = 0
-
-let pusher = setInterval(function() {
-
-  // If the counter exceeds the number of days in the dataset, stop pushing.
-  if (day_ix > n_days) {
-    clearInterval(pusher)
-  } else {
-
-    // Filter the dataset by the current counter value
-    let day_data = _.filter(data, {day: day_ix})
-    chunk = _.zipObject(columns, _.map(columns, key => _.map(day_data, key)));
-
-    // POST the data to FormHandler
-    $.ajax({
-      type: 'POST',
-      url: 'data?measurement=latlong&tags=exp',
-      data: JSON.stringify(chunk),
-      contentType: 'application/json',
-      traditional: true,
-
-      // On success, increment the counter, move to the next day
-      success: function(xhr) {
-        day_ix += 1
-      },
-      error: console.log
-    })
-  }
-}, 1000)  // Run this every second
-```
-
-### Pulling the Data from InfluxDB
-
-Next, we need to pull data from InfluxDB every second, and render the GPS
-coordinates of the fetched data points on the map, and update them as time
-passes. To do this, we add another recurring function, as follows:
-
-```javascript
-let puller = setInterval(function() {
-
-  // Get data accumulated in the last one second
-  $.getJSON('data?bucket=sofar&_offset=-1s').done(function(d) {
-    
-    // If no data comes in the last one second, stop pulling
-    if (d.length == 0) {
-      clearInterval(puller)
-    } else {
-
-      // Otherwise plot it on the map
-      let latest = _.groupBy(_.filter(d, i => ['lat', 'long'].includes(i._field)), 'exp')
-      for (const [expname, latlongs] of Object.entries(latest)) {
-  	updatePath(expname, latlongs, colors)
-      }
-    }
-  })
-}, 1000)  // Run this every second
-```
-
-### Putting it all together
-
-By now, your `runApp` function should look like this:
-
-```javascript
-function runApp(data) {
-  
-  // Find the columns in the dataset
-  var columns = _.keys(data[0]);
-
-  // Find the number of days in the dataset
-  let n_days = Math.max(..._.map(data, 'day'))
-
-  // Get the names of the experiments
-  let expNames = _.map(_.uniqBy(data, 'exp'), 'exp')
-
-  // Map experiment names to colors
-  var colors = _.zipObject(
-    expNames,
-    ["red", "green", "blue", "yellow", "black", "magenta"]
-  )
-
-  // Initialize a counter to keep track of how many days' data has been pushed
-  let day_ix = 0
-  
-  let pusher = setInterval(function() {
-  
-    // If the counter exceeds the number of days in the dataset, stop pushing.
-    if (day_ix > n_days) {
-      clearInterval(pusher)
-    } else {
-  
-      // Filter the dataset by the current counter value
-      let day_data = _.filter(data, {day: day_ix})
-      chunk = _.zipObject(columns, _.map(columns, key => _.map(day_data, key)));
-  
-      // POST the data to FormHandler
-      $.ajax({
-        type: 'POST',
-        url: 'data?measurement=latlong&tags=exp',
-        data: JSON.stringify(chunk),
-        contentType: 'application/json',
-        traditional: true,
-  
-        // On success, increment the counter, move to the next day
-        success: function(xhr) {
-          day_ix += 1
-        },
-        error: console.log
-      })
-    }
-  }, 1000)  // Run this every second
-
-  let puller = setInterval(function() {
-  
-    // Get data accumulated in the last one second
-    $.getJSON('data?bucket=sofar&_offset=-1s').done(function(d) {
-      
-      // If no data comes in the last one second, stop pulling
-      if (d.length == 0) {
-        clearInterval(puller)
-      } else {
-  
-        // Otherwise plot it on the map
-        let latest = _.groupBy(_.filter(d, i => ['lat', 'long'].includes(i._field)), 'exp')
-        for (const [expname, latlongs] of Object.entries(latest)) {
-    	updatePath(expname, latlongs, colors)
-        }
-      }
-    })
-  }, 1000)  // Run this every second
-}
 ```
 
 Refresh the page, and you should see a visualization that looks like this:
