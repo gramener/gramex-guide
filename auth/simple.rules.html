@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Login page</title>
+  <link rel="stylesheet" href="../style.scss">
+</head>
+<body class="container">
+
+  <nav class="py-4">
+    <a href=".">&laquo; Back to Auth</a>
+  </nav>
+
+  <section>
+    <h1>Simple login</h1>
+
+    {% if error %}
+      <div class="alert alert-danger">
+        <h2>Error logging in</h2>
+        <p><strong>code</strong> {{ error['code'] }}</p>
+        <p><strong>error</strong> {{ error['error'] }}</p>
+      </div>
+    {% end %}
+
+    <p>You can log in as <code>alpha</code> or as <code>beta</code>. The password is the same as the username.</p>
+    <p>This AuthHandler enforces the following <a href="../#add-attribute-rules">User Attribute Modification Rules<a>:</p>
+    <ul>
+      <li>If the <kbd>email</kbd> attribute ends with "@gmail.com", then the <kbd>role</kbd> attribute is set to "guest".</li>
+      <li>If the <kbd>role</kbd> attribute is "admin", then the <kbd>location</kbd> attribute is set to "NYC".</li>
+    </ul>
+    <p>Therefore,</p>
+    <ul>
+      <li>If you log in as <code>beta</code>, your role is "guest".</li>
+      <li>If you log in as <code>alpha</code>, your location will be "NYC".</li>
+    </ul>
+
+    <p>Log in to see your user attributes</p>
+
+
+
+    <form method="POST">
+      <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
+      <input type="hidden" name="recaptcha">
+      <div class="form-group">
+        <label for="user">Username</label>
+        <input name="user" class="form-control" placeholder="Username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input name="password" type="password" class="form-control" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary">Log in</button>
+    </form>
+    <br>
+    <p>Your session data is:</p>
+    <iframe class="w-100" frameborder="0" src="session"></iframe>
+  </section>
+  {% if 'recaptcha' in handler.kwargs %}
+    {% set recaptcha = handler.kwargs.recaptcha %}
+    <script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha.key }}"></script>
+    <script>
+      /* globals grecaptcha */
+      grecaptcha.ready(function () {
+        grecaptcha.execute('{{ recaptcha.key }}', { action: '{{ recaptcha.action }}' }).then(function (token) {
+          document.querySelector('input[name="recaptcha"]').value = token
+        })
+      })
+    </script>
+  {% end %}
+</body>
+</html>

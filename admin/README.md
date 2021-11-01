@@ -157,6 +157,7 @@ import:
 
 sends emails to new users with the subject and body as specified, where `user`,
 `org` and `location` are user attributes contained in the `login` authhandler.
+The templates work for any user attributes.
 
 
 ### Edit User Attribute Rules

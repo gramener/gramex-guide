@@ -1747,6 +1747,8 @@ Generally, for any auth handler, any existing user attribute can be used in the
 "selector" field, and if the value of that attribute matches the specified "pattern",
 then the attribute mentioned in the "field" is modified to the "value".
 
+::: example href=attr-rules source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    User attributes rules Example
 
 # Automated logins
 
