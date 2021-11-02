@@ -149,7 +149,7 @@ import:
     ADMIN_KWARGS:
       authhandler: login        # Manages users via the url: key named "login"
       signup:
-      	email_subject: Welcome {user} to {org}
+        email_subject: Welcome {user} to {org}
         email_body: |
           Hello, {user}! Welcome to {org}.
           Your location is {location}.
