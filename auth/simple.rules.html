@@ -23,21 +23,21 @@
       </div>
     {% end %}
 
-    <p>You can log in as <code>alpha</code> or as <code>beta</code>. The password is the same as the username.</p>
-    <p>This AuthHandler enforces the following <a href="../#add-attribute-rules">User Attribute Modification Rules<a>:</p>
-    <ul>
-      <li>If the <kbd>email</kbd> attribute ends with "@gmail.com", then the <kbd>role</kbd> attribute is set to "guest".</li>
-      <li>If the <kbd>role</kbd> attribute is "admin", then the <kbd>location</kbd> attribute is set to "NYC".</li>
-    </ul>
-    <p>Therefore,</p>
-    <ul>
-      <li>If you log in as <code>beta</code>, your role is "guest".</li>
-      <li>If you log in as <code>alpha</code>, your location will be "NYC".</li>
-    </ul>
+    <h3>Rules</h3>
+    <p><a href="attr-rules-data?_format=html">See the rules</a></p>
 
-    <p>Log in to see your user attributes</p>
+    <ol>
+      <li><strong>If</strong> you log in as <code>alpha</code> (password: <code>alpha</code>),
+        <br><strong>then</strong> your location will be "NYC"
+        <br><strong>because</strong> <code>alpha</code> has role <code>admin</code>,
+        <br><strong>and</strong> <a href="attr-rules-data?_format=html&_limit=1&_offset=0">rule #1</a> sets location to "NYC" if role is admin</li>
+      <li><strong>If</strong> you log in as <code>beta</code> (password: <code>beta</code>),
+        <br><strong>then</strong> your role will be "guest"
+        <br><strong>because</strong> <code>beta</code> has email <code>john.doe@gmail.com</code>,
+        <br><strong>and</strong> <a href="attr-rules-data?_format=html&_limit=1&_offset=1">rule #2</a> sets role to "guest" if email matches <code>*@gmail.com</code></li>
+    </ol>
 
-
+    <h3>Log in to see your user attributes</h3>
 
     <form method="POST">
       <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
@@ -53,7 +53,10 @@
       <button type="submit" class="btn btn-primary">Log in</button>
     </form>
     <br>
-    <p>Your session data is:</p>
+
+    <h3>See if the rules were applied. {% if handler.current_user %}You are logged in as {{ handler.current_user.id }}{% end %}</h3>
+
+
     <iframe class="w-100" frameborder="0" src="session"></iframe>
   </section>
   {% if 'recaptcha' in handler.kwargs %}

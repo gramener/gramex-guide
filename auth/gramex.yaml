@@ -441,10 +441,13 @@ url:
         rules:
           url: $YAMLPATH/rules.csv
         redirect:
-            query: next
-            header: Referer
             url: /$YAMLURL/attr-rules
 
+    auth/rules-csv:
+      pattern: /$YAMLURL/attr-rules-data
+      handler: FormHandler
+      kwargs:
+        url: $YAMLPATH/rules.csv
 
     auth/recaptcha:
         pattern: /$YAMLURL/recaptcha
