@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Login page</title>
+  <link rel="stylesheet" href="../style.scss">
+</head>
+<body class="container">
+
+  <nav class="py-4">
+    <a href=".">&laquo; Back to Auth</a>
+  </nav>
+
+  <section>
+    <h1>Simple login</h1>
+
+    {% if error %}
+      <div class="alert alert-danger">
+        <h2>Error logging in</h2>
+        <p><strong>code</strong> {{ error['code'] }}</p>
+        <p><strong>error</strong> {{ error['error'] }}</p>
+      </div>
+    {% end %}
+
+    <h3>Rules</h3>
+    <p><a href="attr-rules-data?_format=html">See the rules</a></p>
+
+    <ol>
+      <li><strong>If</strong> you log in as <code>alpha</code> (password: <code>alpha</code>),
+        <br><strong>then</strong> your location will be "NYC"
+        <br><strong>because</strong> <code>alpha</code> has role <code>admin</code>,
+        <br><strong>and</strong> <a href="attr-rules-data?_format=html&_limit=1&_offset=0">rule #1</a> sets location to "NYC" if role is admin</li>
+      <li><strong>If</strong> you log in as <code>beta</code> (password: <code>beta</code>),
+        <br><strong>then</strong> your role will be "guest"
+        <br><strong>because</strong> <code>beta</code> has email <code>john.doe@gmail.com</code>,
+        <br><strong>and</strong> <a href="attr-rules-data?_format=html&_limit=1&_offset=1">rule #2</a> sets role to "guest" if email matches <code>*@gmail.com</code></li>
+    </ol>
+
+    <h3>Log in to see your user attributes</h3>
+
+    <form method="POST">
+      <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
+      <input type="hidden" name="recaptcha">
+      <div class="form-group">
+        <label for="user">Username</label>
+        <input name="user" class="form-control" placeholder="Username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input name="password" type="password" class="form-control" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary">Log in</button>
+    </form>
+    <br>
+
+    <h3>See if the rules were applied. {% if handler.current_user %}You are logged in as {{ handler.current_user.id }}{% end %}</h3>
+
+
+    <iframe class="w-100" frameborder="0" src="session"></iframe>
+  </section>
+  {% if 'recaptcha' in handler.kwargs %}
+    {% set recaptcha = handler.kwargs.recaptcha %}
+    <script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha.key }}"></script>
+    <script>
+      /* globals grecaptcha */
+      grecaptcha.ready(function () {
+        grecaptcha.execute('{{ recaptcha.key }}', { action: '{{ recaptcha.action }}' }).then(function (token) {
+          document.querySelector('input[name="recaptcha"]').value = token
+        })
+      })
+    </script>
+  {% end %}
+</body>
+</html>

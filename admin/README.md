@@ -132,6 +132,56 @@ FormHandler table component:
 
 You can specify custom actions & formats using FormHandler table. See the [admin page source code](https://github.com/gramener/gramex/blob/master/gramex/apps/admin2/index.html) for examples of custom actions.
 
+### Sign Up Users with a Welcome Email
+
+You can send welcome emails to new users added through the user management
+component. To enable it, add a `signup:` key to `ADMIN_KWARGS`. It supports two
+values, `email_subject` and `email_body`. Both values are template strings that
+can be formatted with any user attribute.
+
+For example, the following spec
+
+```yaml
+import:
+  admin/admin-user:
+    path: $GRAMEXAPPS/admin2/gramex.yaml
+    YAMLURL: /$YAMLURL/admin-user/
+    ADMIN_KWARGS:
+      authhandler: login        # Manages users via the url: key named "login"
+      signup:
+      	email_subject: Welcome {user} to {org}
+        email_body: |
+          Hello, {user}! Welcome to {org}.
+          Your location is {location}.
+```
+
+sends emails to new users with the subject and body as specified, where `user`,
+`org` and `location` are user attributes contained in the `login` authhandler.
+The templates work for any user attributes.
+
+
+### Edit User Attribute Rules
+
+The user management component also includes an editor for the
+[rules that modify user attributes](../auth/#add-attribute-rules). If the
+`authhandler` associated with your Admin app contains a `rules` kwarg, then an
+editor for those rules appears in the user management component as a FormHandler
+table.
+
+This table can also be embedded anywhere else as follows:
+
+```html
+<div class="user-rules"></div>
+<script>
+  $('.user-rules').formhandler({
+    src: 'admin/auth-rules',    // Assuming the admin page is at admin/
+                                // and the corresponding `authhandler` contains `rules`
+    edit: true,                 // Allow editing rules
+    add: true                   // Allow adding rules
+  })
+</script>
+```
+
 ## Admin: Schedule
 
 The schedule component lets you see all [scheduler tasks](../scheduler/) defined
