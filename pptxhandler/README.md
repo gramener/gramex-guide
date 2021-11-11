@@ -23,6 +23,7 @@ Here are examples of what PPTXHandler can create. Click to see details.
 [![Causes of death](death/output.gif){: height=150}](death/)
 [![Certificates](certificate/output.png){: height=150}](certificate/)
 [![Albus Dumbledore's screen time](albus-dumbledore-screen-time/output.gif){: height=150}](albus-dumbledore-screen-time/)
+[![US Election Map choropleth](choropleth/output.svg){: height=150}](choropleth/)
 [![App store sales](appstore.png){: height=150}](https://gramener.com/appstore/appstore.pptx)
 [![FMCG revenue breakup](fmcg.png){: height=150}](https://gramener.com/fmcg/)
 
@@ -31,6 +32,12 @@ Learn using the [SlideSense/PPTXHandler Tutorial videos](https://www.youtube.com
 <div class="ratio ratio-16x9">
   <iframe src="https://www.youtube.com/embed/videoseries?list=PLrn2FHBzHtaOoMWOW8biS2gsY0jjnwuRG" allowfullscreen></iframe>
 </div>
+
+------
+
+[TOC]
+
+------
 
 ## Tutorials
 
@@ -59,6 +66,12 @@ Re-create the [Shifting Causes of Death](https://flowingdata.com/2018/10/02/shif
 Discover [Albus Dumbledore's screen time](albus-dumbledore-screen-time/) in the Harry Potter movies with PowerPoint.
 
 [![Albus Dumbledore's screen time](albus-dumbledore-screen-time/output.gif){: width=320}](albus-dumbledore-screen-time/)
+
+### Color scales on maps
+
+Create [Choropleths (colored maps)](choropleth/) by exploring the results of the US Presidential elections over time.
+
+[![US Election Map choropleth](choropleth/output.svg){: width=320}](choropleth/)
 
 ### Bestselling Pharmaceutical Drugs
 
@@ -190,12 +203,6 @@ slidesense --source=my-template.pptx
 slidesense config.yaml --target=my-output.pptx --no-open
 slidesense gramex.yaml my-url --data=my-data.xlsx
 ```
-
----
-
-# Index
-
-[TOC]
 
 ---
 

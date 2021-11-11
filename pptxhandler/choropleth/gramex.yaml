@@ -1,0 +1,32 @@
+url:
+  pptxhandler/choropleth:
+    pattern: /$YAMLURL/output.pptx
+    handler: PPTXHandler
+    kwargs:
+      version: 2
+      source: $YAMLPATH/template.pptx
+      data:
+        url: $YAMLPATH/us-president-election-margin.csv
+      rules:
+        - copy-slide: data.groupby('year')
+          Year:
+            text: copy.key
+          data:
+            margins: copy.val.set_index('state')
+            color: >
+              {
+                'democrat': gramex.scale.color(domain=[-20, 50], range='Blues'),
+                'republican': gramex.scale.color(domain=[-20, 50], range='Reds'),
+                'democratic-farmer-labor': gramex.scale.color(domain=[-20, 50], range='Purples'),
+              }
+          '??':
+            fill: color[margins['party'][shape.name]](margins['margin'][shape.name])
+            text: f'<p><a font-size="11 pt">{shape.name}</a></p><p><a font-size="8 pt">{margins["margin"][shape.name]}%</a></p>'
+          Dem-0: {fill: 'color["democrat"](0)'}
+          Rep-0: {fill: 'color["republican"](0)'}
+          Dem-10: {fill: 'color["democrat"](10)'}
+          Rep-10: {fill: 'color["republican"](10)'}
+          Dem-20: {fill: 'color["democrat"](20)'}
+          Rep-20: {fill: 'color["republican"](20)'}
+          Dem-50: {fill: 'color["democrat"](50)'}
+          Rep-50: {fill: 'color["republican"](50)'}
