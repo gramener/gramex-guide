@@ -8,7 +8,8 @@ type: component
 template: true
 ...
 
-<a class="mt-5 p-3 btn btn-large btn-primary" href="editor/">Try the Component Editor</a>
+[UIFactory](https://uifactory.gramener.com/) is a small, easy-to-learn web component framework.
 
-{% import gramex.cache %}
-{% raw gramex.cache.open("node_modules/uifactory/README.md") %}
+UI Components in Gramex are written with UIFactory.
+
+See the documentation at <https://uifactory.gramener.com/>.
