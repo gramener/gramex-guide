@@ -24,6 +24,7 @@ To follow through this tutorial completely, you will need:
 
 1. Gramex community edition ([see installation instructions](/install))
 2. An InfluxDB server
+3. The InfluxDB Python client
 
 
 We recommend running InfluxDB via Docker, as follows:
@@ -38,6 +39,11 @@ docker run -d -p 8086:8086 \
   -e DOCKER_INFLUXDB_INIT_BUCKET=sofar \
   -e DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=mytoken123 \
   influxdb:latest
+```
+
+Install the InfluxDB Python client as follows:
+```bash
+pip install 'influxdb-client[ciso]'
 ```
 
 ## Step 1: Getting the data
