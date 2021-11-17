@@ -24,3 +24,6 @@ tutorials/azure-oauth2/img/copy-client-id.png filter=lfs diff=lfs merge=lfs -tex
 *.pptx filter=lfs diff=lfs merge=lfs -text
 *.xlsx filter=lfs diff=lfs merge=lfs -text
 *.gif filter=lfs diff=lfs merge=lfs -text
+workshop/influxdb/*.png filter=lfs diff=lfs merge=lfs -text
+workshop/influxdb/*.json filter=lfs diff=lfs merge=lfs -text
+workshop/influxdb/*.gif filter=lfs diff=lfs merge=lfs -text
