@@ -252,3 +252,32 @@ twine upload -u gramener dist/*
 Re-start gramex on deployed servers.
 
 [gramex-guide]: https://github.com/gramener/gramex-guide/
+
+
+## Creating tutorials
+
+- Add tutorials to {this repo}
+- Under `tutorials/`
+- Each tutorial is a new folder with a README.md
+- Add YAML frontmatter: title: & prefix:
+- The tutorial should have
+  - a title like "Do/Doing X with Y". Y can be a Gramex feature, e.g. MLHandler, UIFactory, etc.
+  - a video walking through the tutorial. Record this after you create the tutorial
+  - a series of small & simple steps. Each step should have:
+    - A title / subtitle (H2 / H3) that explains what the user will be doing
+    - Titles begin with "Step 1", "Step 2", etc.
+    - An explanation of what they are going to do
+    - Any dataset / template / resources should be linked, allowing them to download them from this page
+    - A code snippet that they can just copy-paste (without reading the explanations). It should be obvious where to paste it. Ideally, the code snippets should just be pasted one below the other, i.e. the user can copy each code snippet, paste it below the previous one, and each step will work.
+    - A sample output image
+    - An explanation of how the code snippet works
+  - a working output linked at the end that shows the code in action
+- Users should not have to navigate away from the page
+- Images should have a `{.img-fluid}` class added
+- Embed the video using this code:
+
+```html
+<div class="ratio ratio-16x9">
+  <iframe src="https://www.youtube.com/embed/Np50SvvX8UY" allowfullscreen></iframe>
+</div>
+```
