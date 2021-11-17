@@ -224,7 +224,7 @@ Run Gramex in this folder, and a browser window should open with a map:
 
 ![Map](world.png){.img-fluid}
 
-If you visit the [`/data?bucket=sofar`](http://localhost:9988/data?bucket=sofar) endpoint in the browser,
+If you visit the [`/data`](http://localhost:9988/data) endpoint in the browser,
 you should see some data coming into InfluxDB as follows:
 
 
@@ -270,7 +270,7 @@ position for the following code.
     )
     var puller = setInterval(function() {
       // Get data accumulated in the last one second
-      $.getJSON('data?bucket=sofar&_offset=-1s').done(function(d) {
+      $.getJSON('data?_offset=-1s').done(function(d) {
           let latest = _.groupBy(_.filter(d, i => ['lat', 'long'].includes(i._field)), 'exp')
           for (const [expname, latlongs] of Object.entries(latest)) {
 	    updatePath(expname, latlongs, colors)
