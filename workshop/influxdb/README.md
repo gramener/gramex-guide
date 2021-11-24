@@ -3,8 +3,6 @@ title: Visualizing Subsurface Float Movement with InfluxDB & FormHandler
 prefix: influxdb
 ...
 
-[TOC]
-
 This tutorial shows how to use [InfluxDB](https://www.influxdata.com/) via [FormHandler](../../formhandler/).
 Specifically, we will store a dataset of the GPS coordinates of a [set of
 subsurface floats](https://www.aoml.noaa.gov/phod/float_traj/index.php) in InfluxDB,
@@ -17,6 +15,7 @@ experiment, the floats travelled along the Americas as shown above. In this
 tutorial, we will build an app that visualizes the journey of these floats in
 real-time.
 
+[TOC]
 
 ## Step 0: Prerequisites
 
@@ -42,6 +41,7 @@ docker run -d -p 8086:8086 \
 ```
 
 Install the InfluxDB Python client as follows:
+
 ```bash
 pip install 'influxdb-client[ciso]'
 ```
@@ -109,6 +109,7 @@ appears as if the entire lifetime of the floats is a little over 30 seconds.
 ## Step 2: Setting Up FormHandler for InfluxDB
 
 ### Step 2.1: The Gramex App Specification
+
 Once the InfluxDB is set up with an initial bucket, create a file named `gramex.yaml` in the same folder with the following contents:
 
 ```yaml
@@ -207,7 +208,7 @@ content:
     var data = null
     var polyLines = {}
     var colors = {}
-    
+
     const updatePath = function(name, latlongs, colors) {
       let lat = _.filter(latlongs, {_field: 'lat'})[0]._value
       let lon = _.filter(latlongs, {_field: 'long'})[0]._value
@@ -225,7 +226,7 @@ content:
 
 Note that we have:
 
-* added some empty variables to accommodate data later, 
+* added some empty variables to accommodate data later,
 * added a function that renders the path of a float on the map, and
 * left a placeholder comment to accommodate more Javascript code
 as we develop the application through the following steps.
@@ -238,7 +239,7 @@ If you visit the [`/data`](http://localhost:9988/data) endpoint in the browser,
 you should see some data coming into InfluxDB as follows:
 
 
-```json
+```js
 [
   {
     "_start": 1632727879731,
@@ -281,11 +282,11 @@ position for the following code.
     var puller = setInterval(function() {
       // Get data accumulated in the last one second
       $.getJSON('data?_offset=-1s').done(function(d) {
-          let latest = _.groupBy(_.filter(d, i => ['lat', 'long'].includes(i._field)), 'exp')
-          for (const [expname, latlongs] of Object.entries(latest)) {
-	    updatePath(expname, latlongs, colors)
-          }
-        })
+        let latest = _.groupBy(_.filter(d, i => ['lat', 'long'].includes(i._field)), 'exp')
+        for (const [expname, latlongs] of Object.entries(latest)) {
+          updatePath(expname, latlongs, colors)
+        }
+      })
     }, 1000)  // Run this every second
 
 ```
