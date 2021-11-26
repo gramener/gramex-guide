@@ -514,7 +514,7 @@ content, or add new content (like charts). Here are some common commands:
 
 - `link`: on click, shape opens another slide, file or URL, e.g. `link: 4`, `link: f'https://gramener.com/'`
 - `hover`: on hover, shape opens another slide, file or URL, e.g. `link: 4`, `link: f'https://gramener.com/'`
-- `tooltip`: adds a text tooltip, e.g. `f'Title text'`. Does not work with `hover: f'back'` nor `link: f'back'`
+- `tooltip`: adds a text tooltip, e.g. `f'Title text'`. Use `\n` for newline. Does not work with `hover: f'back'` nor `link: f'back'`
 
 `link` and `hover` can be specified as a:
 

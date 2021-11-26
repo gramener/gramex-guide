@@ -1,0 +1,87 @@
+url:
+  pptxhandler/sunburst:
+    pattern: /$YAMLURL/output.pptx
+    handler: PPTXHandler
+    kwargs:
+      version: 2
+      source: $YAMLPATH/template.pptx
+      data:
+        sales:
+          url: $YAMLPATH/sales.csv
+        # We will group the data using these columns
+        columns:
+          function: >
+            ['Category', 'Country', 'Channel', 'Genre']
+        # slideData contains data for each slide.
+        # We create a new slide for each column, and for each unique value in that column:
+        #   Slide 1: ('', ''):         sales
+        #   Slide 2: (Category, Song): sales[Category==Song]
+        #   Slide 3: (Country, UK):    sales[Country==UK]
+        #   Slide 4: (Country, Japan): sales[Country==Japan]
+        #   ... etc
+        slideData:
+          function: >
+            {
+              ('', ''): sales,
+              **{
+                (col, val): sales[sales[col] == val]
+                for col in columns
+                for val in sales[col].unique()
+              }
+            }
+      rules:
+        - copy-slide: slideData
+          Column:
+            text: copy.key[0]
+          Value:
+            text: copy.key[1]
+          Sales:
+            text: f'{copy.val.Size.sum():,.0f}'
+          Growth:
+            text: f'{copy.val.Size.sum() / copy.val.Prev.sum() - 1:+.1%}'
+          data:
+            # shapeData contains data for each arc.
+            # For each column (e.g. Country), we have one band (e.g. in orange).
+            # Within each band, we have one arc for each value (e.g. Germany, Japan).
+            # The arc for the parent column (e.g. Category) is the total of the column's values.
+            #   Category  Country Channel Genre   Size
+            #   Song                              9553
+            #   Song      Germany                 2335
+            #   Song      Germany Direct            34
+            #   Song      Germany Direct  Country    5
+            #   Song      Germany Direct  African   10
+            #   ...
+            shapeData: >
+              gramexlayout.subtotal(copy.val, columns, calc={
+                'width': lambda x: x['Size'] / x['Size'].sum(),
+                'end': lambda x: x['width'].cumsum(),
+                'start': lambda x: x['end'].shift(1).fillna(0),
+              })
+            color: >
+              [
+                gramex.scale.color(domain=[0, 0.25], range='Reds'),
+                gramex.scale.color(domain=[0, 0.25], range='Blues'),
+                gramex.scale.color(domain=[0, 0.25], range='Greens'),
+                gramex.scale.color(domain=[0, 0.25], range='Oranges'),
+                gramex.scale.color(domain=[0, 0.25], range='Purples'),
+              ]
+            slideNumber:
+              function: '{key: index + 1 for (index, key) in enumerate(slideData)}'
+          Arc:
+            # If the width (angle) is less than 1E-5, the angles become equal, i.e. a full circle.
+            # Avoid this scenario
+            clone-shape: shapeData[shapeData.width > 1E-5]
+            data:
+              index: clone.key
+              level: sum(col != '' for col in index)
+            zoom: level + 1
+            adjustment1: (270 + 90 * clone.val.start) * 60 / 100
+            adjustment2: (270 + 90 * clone.val.end) * 60 / 100
+            adjustment3: 0.5 / (level + 1)
+            tooltip: >
+              f'{columns[level - 1]}: {clone.key[level - 1]}
+              \nSales: {clone.val.Size:,.0f}
+              \nGrowth: {clone.val.Size/clone.val.Prev - 1:+.0%}' if level > 0 else ''
+            fill: color[level](clone.val.Size / clone.val.Prev - 1) if clone.val.Prev > 0 else 'white'
+            text: f'{clone.key[level - 1]}' if level > 0 and clone.val.width > 0.05 else ''
+            link: slideNumber[(columns[level - 1], clone.key[level - 1]) if level > 0 else ('', '')]
