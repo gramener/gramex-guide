@@ -27,6 +27,8 @@ url:
 
 ## Supported Files
 
+[Video](https://youtu.be/bdMnvaETE48){.youtube}
+
 You can read from multiple file formats. The URL may be any file path or URL.
 
 For example, you can read from Excel files in a variety of ways:
@@ -218,6 +220,8 @@ With additional libraries, FormHandler can connect to
 
 
 ## FormHandler formats
+
+[Video](https://youtu.be/5q10991wxHM){.youtube}
 
 By default, FormHandler renders data as JSON. Use `?_format=` to change that.
 
@@ -570,6 +574,8 @@ You can specify `?_download=` to download any format as any filename.
 
 ## FormHandler filters
 
+[Video](https://youtu.be/1DAcuxjW0FM){.youtube}
+
 The URL supports operators for filtering rows. The operators can be combined.
 
 - [?Continent=Europe](flags?Continent=Europe&_format=html) ► Continent = Europe
@@ -603,6 +609,8 @@ Note: You can use `FormHandler` to render specific columns in navbar filters usi
 
 
 ## FormHandler groupby
+
+[Video](https://youtu.be/1DAcuxjW0FM?t=620){.youtube}
 
 **v1.38**. The URL supports grouping by columns using `?_by=col`. For example:
 

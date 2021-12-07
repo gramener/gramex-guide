@@ -148,7 +148,7 @@ table tbody td { border-bottom: 1px solid #eee; }
   align-items: center;
 
   &:before {
-    content: url(example.png);
+    content: url(example.svg);
     margin-right: 1rem;
     line-height: 0;
   }
@@ -186,6 +186,26 @@ table tbody td { border-bottom: 1px solid #eee; }
     }
   }
 }
+
+// YouTube component extends the example component
+.youtube {
+  float: right;
+  display: flex;
+  align-items: center;
+  color: var(--black);
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  &:before {
+    content: url(youtube.svg);
+    margin-right: 0.5rem;
+    line-height: 0;
+  }
+  &:hover {
+    color: var(--black);
+  }
+}
+
 
 .slide iframe {
   width: 640px;

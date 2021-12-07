@@ -293,6 +293,8 @@ From **v1.23.1**, to serve different files with different MIME types, use file p
 
 ## Templates
 
+[Video](https://youtu.be/0kzphobMQnU){.youtube}
+
 FileHandler uses [Tornado templates][template] to generate content from data.
 For example, this `page.tmpl.html` renders 10 images:
 
@@ -302,7 +304,7 @@ For example, this `page.tmpl.html` renders 10 images:
 {% end %}
 ```
 
-The defualt, any file that ends with `.tmpl.html` or `.template.html` is rendered as a template.
+The default, any file that ends with `.tmpl.html` or `.template.html` is rendered as a template.
 You can specify amy file patterns using `template: patterns`. For example:
 
 ```yaml
