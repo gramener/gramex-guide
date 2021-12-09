@@ -836,6 +836,8 @@ same of an [email service](../email/).
 
 The `forgot:` section takes the following parameters (default values are shown):
 
+- `key: forgot`. By default, the forgot password URL uses a `?forgot=`. You can
+  change that to any other key.
 - `email_from: ...`. This is mandatory. Create an [email service](../email/) and
   mention the name of the service here. Forgot password emails will be sent via
   that service. (The sender name will be the same as that service.)
@@ -850,16 +852,21 @@ The `forgot:` section takes the following parameters (default values are shown):
   or a user ID. The name of the email argument is configured by `arg:`. (The
   name of the user ID argument is already specified in `user.arg`)
 - `email_column: email`. The name of the email column in the database table.
-- `email_text: ...`. The text of the email that is sent to the user. This is a
-  template string where `{reset_url}` is replaced with the password reset URL.
-  You can use any database table columns as keys. For example, if the user ID is
-  in the `user` column, `email_text: {user} password reset link is {reset_url}`
-  will replace `{user}` with the value in the user column, and `{reset_url}`
-  with the actual password reset URL.
 - `email_subject: ...`. The subject of the email that is sent to the user. This
   is a template similar to `email_text`.
-- `key: forgot`. By default, the forgot password URL uses a `?forgot=`. You can
-  change that to any other key.
+- `email_body: ...`. The text of the email that is sent to the user.
+  - This is a template string where `{reset_url}` is replaced with the password reset URL.
+  - You can use any database table columns as keys. For example, if the user ID is
+    in the `user` column, `email_text: {user} password reset link is {reset_url}`
+    will replace `{user}` with the value in the user column, and `{reset_url}`
+    with the actual password reset URL.
+  - Note: `email_text` is an alias for `email_body`.
+- `email_bodyfile: contents.txt`. Load `email_body` from a file instead of writing it in
+  `gramex.yaml`
+- `email_html: ...`. HTML content of the email. If both `email_html` and `email_body` are
+  specified, the email contains both parts, with HTML taking preference.
+- `email_htmlbody: contents.html`: Load `email_html` from a file instead of writing it in
+  `gramex.yaml`
 
 Here is a more complete example:
 
@@ -873,10 +880,14 @@ kwargs:
     email_column: email               # The database column that contains the email ID
     email_subject: Gramex forgot password       # Subject of the email
     email_as: "S Anand <root.node@gmail.com>"   # Emails will be sent as if from this ID
-    email_text: |
+    email_body: |
         This is an email from Gramex guide.
         You clicked on the forgot password like for user {user}.
         Visit this link to reset the password: {reset_url}
+    email_html: |
+        <p>Hi from <a href="https://gramener.com/gramex/guide/">Gramex Guide</a>.</p>
+        <p>You clicked on the forgot password like for user {user}.</p>
+        <p><a href="{reset_url}">Click here</a> to reset the password.</p>
 ```
 
 ::: example href=db source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
