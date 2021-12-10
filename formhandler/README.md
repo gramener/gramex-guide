@@ -89,28 +89,42 @@ This is cached permanently unless the URL is changed or the server is restarted.
 
 ## Supported Databases
 
-`url:` can also be any SQLAlchemy URL. For example:
+[Video](https://youtu.be/3Ds0x-xI_6E){.youtube}
+
+You can read from almost any database as well. To do this, specify `url:` as an
+[SQLAlchemy URL](https://docs.sqlalchemy.org/en/14/core/engines.html#database-urls).
+
+Here is an example for SQLite:
 
 ```yaml
-    url: 'mysql+pymysql://$USER:$PASS@server/db'    # Reads from MySQL
+    url: 'sqlite:///D:/path/to/file.db'
+    table: sales
+```
+
+Most databases require additional libraries to be installed. For example, PostgreSQL requires
+[psycopg2](https://pypi.org/project/psycopg2/). Run the `pip install ...` command below to make
+these popular databases work:
+
+```yaml
+    # pip install psycopg2
+    url: 'postgresql://$USER:$PASS@server/db'
+    table: public.sales   # schema.table
+
+    # pip install pymysql
+    url: 'mysql+pymysql://$USER:$PASS@server/db'
     table: sales
 
-    url: 'postgresql://$USER:$PASS@server/db'       # Reads from PostgreSQL
+    # pip install cx_Oracle
+    url: 'oracle://$USER:$PASS@server/db'
     table: sales
 
-    url: 'oracle://$USER:$PASS@server/db'           # Reads from Oracle
-    table: sales
-
-    url: 'mssql+pyodbc://$USER:$PASS@dsn'           # Reads from MS SQL
-    table: sales
-
-    url: 'sqlite:///D:/path/to/file.db'             # Reads from SQLite
+    # pip install pyodbc
+    url: 'mssql+pyodbc://$USER:$PASS@dsn'
     table: sales
 ```
 
 Additional parameters like `table:`, `encoding:`, etc are passed to
-[gramex.cache.query](../cache/#query-caching), which uses
-``sqlalchemy.create_engine``.
+[`sqlalchemy.create_engine`](https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine).
 
 With additional libraries, FormHandler can connect to
 [more](https://docs.sqlalchemy.org/en/13/dialects/index.html#external-dialects)
@@ -336,6 +350,8 @@ More options can be provided to `$().formhandler()` via JavaScript. See the
 
 ## FormHandler charts
 
+[Video](https://youtu.be/JUonFVg1BBg){.youtube}
+
 **v1.28**. FormHandler supports [seaborn](https://seaborn.pydata.org/) charts.
 To render FormHandler data as charts, use:
 
@@ -351,9 +367,9 @@ formhandler-chart:
         format: seaborn               # This uses seaborn as the format
         chart: barplot                # Chart can be any standard seaborn chart
         ext: png                      # Use a matplot backend (svg, pdf, png)
-        width: 400                    # Image width in pixels. Default: 640px
-        height: 300                   # Image height in pixels. Default: 480px
-        dpi: 48                       # Image resolution (dots per inch). Default: 96
+        width: 400                    # Image width in pixels. Default 640px
+        height: 300                   # Image height in pixels. Default 480px
+        dpi: 48                       # Image resolution (dots per inch). Default 96
         x: Continent                  # additional parameters are passed to barplot()
         y: c1
         headers:
@@ -564,6 +580,9 @@ Similarly, Use `format: vegam` for [Vegam](https://www.npmjs.com/package/vegam) 
 
 ## FormHandler downloads
 
+[Video](https://youtu.be/B9lt92GoOmk){.youtube}
+
+
 CSV and XLSX formats are downloaded as `data.csv` and `data.xlsx` by default.
 You can specify `?_download=` to download any format as any filename.
 
@@ -650,6 +669,8 @@ Sorting (`?_sort=`) and pagination (`?_limit=` and `?_offset=`) apply *after* th
 
 
 ## FormHandler metadata
+
+[Video](https://youtu.be/3xFj0WnYH2I){.youtube}
 
 When `?_meta=y` is specified, the HTTP headers have additional metadata about the
 request and the response. These headers are available:
