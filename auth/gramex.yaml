@@ -489,10 +489,27 @@ url:
             The OTP for {user} is {password}
 
             Visit {link}
+          html: |
+            <p>The OTP for {user} is {password}.</p>
+            <p><a href="{link}">Click here to log in</a></p>
           redirect:
-              query: next
-              header: Referer
-              url: .
+            query: next
+            header: Referer
+            url: .
+
+    auth/emailtemplate:
+        pattern: /$YAMLURL/emailtemplate
+        handler: EmailAuth
+        kwargs:
+          service: gramex-guide-auth
+          subject: 'OTP for Gramex Guide'
+          bodyfile: $YAMLURL/emailauth.txt
+          htmlfile: $YAMLURL/emailauth.html
+          template: $YAMLURL/emailauth.template.html
+          redirect:
+            query: next
+            header: Referer
+            url: .
 
     auth/multi:
         pattern: /$YAMLURL/multi

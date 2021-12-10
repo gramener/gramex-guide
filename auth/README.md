@@ -1164,19 +1164,23 @@ url:
         The OTP for {user} is {password}
 
         Visit {link}
-      redirect:                 # After logging in, redirect the user to:
-          query: next           #      the ?next= URL
-          header: Referer       # else the Referer: header (i.e. page before login)
-          url: .                # else the home page of current directory
+      html: |
+          <p>The OTP for {user} is {password}.</p>
+          <p><a href="{link}">Click here to log in</a></p>
 
       # Optional configuration. The values shown below are the defaults
       minutes_to_expiry: 15     # Minutes after which the OTP will expire
       size: 6                   # Number of characters in the OTP
-      template: auth.email.template.html    # Login template
+      instantlogin: false       # Fetching login link instantly logs user in
+                                # False is best for clients like Outlook that pre-fetch links
       user:
           arg: user             # ?user= contains the user email
       password:
           arg: password         # ?password= contains the OTP
+      redirect:                 # After logging in, redirect the user to:
+          query: next           #      the ?next= URL
+          header: Referer       # else the Referer header (i.e. page before login)
+          url: .                # else the home page of current directory
 ```
 
 ::: example href=email source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
@@ -1226,29 +1230,39 @@ url:
           - {email: [admin@example.org]}
 ```
 
-The login flow is:
+To customize the email message that's sent, you can change:
 
-1. User visits `/`. App shows form template asking for email (`user` field)
-2. User submits email. Browser redirects to `POST /?user=<email>`
-3. App generates a new OTP (valid for `minutes_to_expiry` minutes).
-4. App emails the OTP link to the user's email. On fail, ask for email again
-5. If email was sent, app shows a message asking user to check email
-6. User clicks on email and visits link with OTP (`GET /?password=<otp>`)
-7. App checks if OTP is valid. If yes, logs user in and redirects
-8. On any error, shows form template with error
+- `body`: The plain text email message sent to the user
+- `html`: The HTML email message sent to the user. This overrides `body` if the email client supports HTML
+- `bodyfile`: Load the `body` from a file instead of typing in YAML. This overrides `body`
+- `htmlfile`: Load the `html` from a file instead of typing in YAML. This overrides `html`
 
-The `template:` is a Tornado template. [Here is an example][email-auth-template].
-When you write your own login template form, you can use these Python variables:
+The email message is formatted as a Python string (i.e. `{variable}` is replaced with the value of
+`variable`). You can use these variables in the message:
 
-- `handler`: the handler. `handler.kwargs` has the configuration above
-- `email`: the phone number provided by the user
-- `error`: `None` if there is no error. Else:
+- `user`: The email ID of the user
+- `password`: The one-time password
+- `link`: The one-time login link
+
+To customize the login page, you can add a `template:` pointing to a Tornado template.
+[Here is a sample](https://github.com/gramener/gramex-guide/blob/master/auth/emailauth.html).
+You can use these variables in the template:
+
+- `handler`: the handler. `handler.kwargs` has the EmailAuth configuration
+- `email`: the user's email ID (if entered)
+- `otp`: the one-time password (if entered)
+- `error`: `None` if there is no error. Else, it has one of these values:
   - `'not-sent'` if the OTP could not be sent. `msg` has the Exception
   - `'wrong-pw'` if the OTP is wrong. `msg` has a string error
-- `msg`: sent only if `error` is not `None`. See `error`
+- `msg`: sent only if `error` is not `None`. It contains a textual descripton of the error.
+- `redirect`: has the origial URL to redirect the user back to after login
+  - Use `<input type="hidden" name="{{ redirect['name'] }}" value="{{ redirect['value'] }}">`
+    in a form to redirect the user back to their original URL
+  - `redirect['name']` is typically `next`, creating a `?next=` query string
+  - `redirect['value']` is the URL to redirect the user to
 
-[email-auth-template]: https://github.com/gramener/gramex/blob/master/gramex/handlers/auth.email.template.html
-
+::: example href=emailtemplate source=https://github.com/gramener/gramex-guide/blob/master/auth/emailauth.template.html
+    Email auth template example
 
 ## SMS Auth
 
