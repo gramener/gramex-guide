@@ -49,7 +49,7 @@ md = markdown.Markdown(extensions=[
     CustomBlocksExtension(generators={
         'example': markdown_block('example', href='', source='', target=''),
         'card': markdown_block('card', title='Getting Started Guide'),
-        'course_content': markdown_block('course_content', title='Getting Started Guide'),
+        'course_content': markdown_block('course_content'),
     }),
 ], soutput_format='html5')
 # Create a cache for guide markdown content
@@ -57,7 +57,7 @@ md_cache = cachetools.LRUCache(maxsize=5000000, getsizeof=len)
 
 
 def markdown_template(content, handler):
-    # Cache the markdown contents locally, to avoid Markdown re-conversion
+    # Cache the markdown contents locally, to avoid Markdown re-conversion    
     hash = hashlib.md5(content.encode('utf-8')).hexdigest()
     if hash not in md_cache:
         md_cache[hash] = {
@@ -79,11 +79,18 @@ def markdown_template(content, handler):
     if match:
         root = match.group(0).strip('/')        # Strip slashes for consistency with $YAMLURL
     # Set up template variable defaults
+    # import pdb; pdb.set_trace()
+    # course_content = gramex.cache.open(f'_template/course_content.html', 'html', rel=True)
+    course_content = ""
+    if "/home" not in uri:
+        with open(f'_template/course_content.html', "r", encoding='utf-8') as f:
+            course_content = f.read()
     kwargs = {
         'GUIDE_ROOT': root,
         'classes': '',
         'body': content['content'],
         'title': '',
+        'course_content': course_content,
         'handler': handler,
     }
     # ... which can be updated by the YAML frontmatter on the Markdown files
@@ -93,8 +100,8 @@ def markdown_template(content, handler):
     if 'xsrf' in content:
         handler.xsrf_token
     
-    main_html= "home" if "/home" in uri else "markdown"
-    # main_html= "home"
+    # main_html= "home" if "/home" in uri else "markdown"
+    main_html= "home"
     # tmpl = gramex.cache.open('_template/markdown.html', 'template', rel=True)
     tmpl = gramex.cache.open(f'_template/{main_html}.html', 'template', rel=True)
     return tmpl.generate(**kwargs).decode('utf-8')

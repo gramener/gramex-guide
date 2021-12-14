@@ -1,5 +1,3 @@
-## GRAMEX University
-
 <div class="row" markdown="1">
 ::: card title='Getting Started' image_src='/../assets/img/get_strated.svg' content='A step-by-guide guide on how to get started with Gramex.' btn_text='Get Started'
 
