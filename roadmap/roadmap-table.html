@@ -23,7 +23,7 @@
                     <% let desc = (issue.description || '').replace(/\{\S+?\}/g, '').replace(/┆.*/, '') %>
                     <% let status = issue.status.match(/done/i) ? '🟢': issue.status.match(/progress/i) ? '🟡' : '⚪' %>
                     <% let link = `https://gramenertech.atlassian.net/jira/software/c/projects/GRAMEX/boards/${issue.board}/roadmap?selectedIssue=${issue.key}` %>
-                    <%= marked(`${status} [**${issue.summary.trim()}**](${link}). ${desc}`) %>
+                    <%= marked.parse(`${status} [**${issue.summary.trim()}**](${link}). ${desc}`) %>
                   <% }) %>
                 </td>
               <% }) %>
