@@ -18,6 +18,9 @@
     "micro-services": {
       "Micro-services": -1
     },
+    "product": {
+      "Product": -1
+    },
     "reference": {
       "Reference": -1
     },
@@ -579,6 +582,12 @@
     },
     "admin-user-management": {
       "Admin: User management": -1
+    },
+    "edit-user-attribute-rules": {
+      "Edit User Attribute Rules": -1
+    },
+    "sign-up-users-with-a-welcome-email": {
+      "Sign Up Users with a Welcome Email": -1
     }
   },
   "albus-dumbledore-screen-time": {
@@ -695,6 +704,9 @@
   "auth": {
     "": {
       "Auth handlers log in users": -1
+    },
+    "add-attribute-rules": {
+      "Add Attribute Rules": -1
     },
     "ajax-login": {
       "AJAX login": -1
@@ -1462,6 +1474,29 @@
     },
     "user-fields": {
       "User fields": -1
+    }
+  },
+  "edition": {
+    "": {
+      "Gramex Editions": -1
+    },
+    "gramex-comes-in-3-editions": {
+      "Gramex comes in 3 editions": -1
+    },
+    "license-model": {
+      "License model": -1
+    },
+    "switch-between-editions-easily": {
+      "Switch between editions easily": -1
+    },
+    "when-to-use-the-community-edition": {
+      "When to use the Community Edition": -1
+    },
+    "when-to-use-the-enterprise-edition": {
+      "When to use the Enterprise edition": -1
+    },
+    "when-to-use-the-lite-edition": {
+      "When to use the Lite Edition": -1
     }
   },
   "email": {
@@ -4597,6 +4632,32 @@
       "UIFactory events": -1
     }
   },
+  "release/1.74": {
+    "": {
+      "Gramex 1.74 release notes": -1
+    },
+    "add-custom-fields-and-roles-for-users": {
+      "Add custom fields and roles for users": -1
+    },
+    "add-new-users-on-admin-app": {
+      "Add new users on Admin app": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "uifactory-inline-scripts": {
+      "UIFactory inline scripts": -1
+    }
+  },
   "release/old": {
     "": {
       "Gramex Old Release Notes": -1
@@ -5281,15 +5342,9 @@
     }
   },
   "server": {
-    "": {
-      "Gramex is a web server": -1
-    },
-    "creating-gramex-apps": {
-      "Creating Gramex apps": -1
-    },
-    "gramex-0x-changes": {
-      "Gramex 0.x changes": -1
-    }
+    "": {},
+    "creating-gramex-apps": {},
+    "gramex-0x-changes": {}
   },
   "sms": {
     "": {

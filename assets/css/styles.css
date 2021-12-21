@@ -11312,12 +11312,16 @@ html {
 
 aside,
 section {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .app-badge {
   height: 3rem;
+}
+
+.bg-footer{
+  background-color: #000 !important;
 }
 
 #mainNav {
@@ -11343,7 +11347,7 @@ section {
   position: relative;
 }
 #mainNav .navbar-nav .nav-item .nav-link:hover {
-  color: #6c757d;
+  color: #ff4f45;
 }
 #mainNav .navbar-nav .nav-item .nav-link.active {
   color: #2937f0;
@@ -11351,10 +11355,10 @@ section {
 #mainNav .navbar-nav .nav-item::before {
   content: '/';
   font-size: 14px;
-  color: #666;
+  color: #ff4f45;
   position: absolute;
-  left: -5px;
-  bottom: 8px;
+  left: -10px;
+  bottom: 9px;
 }
 .navl:before, .navl:after {
   content: " " !important;
@@ -11488,18 +11492,32 @@ section {
 	color: white;
 }
 
+.card-head{
+  font-size: 1.15rem !important;
+}
+
 footer ul{
   list-style: none;
   padding-left: 0px;
   
 }
 footer ul li a{
-  color: #3e3e3e;
+  color: #999;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 14px;
   text-align: left;
 }
 footer p{
-  color: #3e3e3e;
-  font-size: 13px;
+  color: #999;
+  line-height: 32px;
+  font-size: 14px;
+}
+.footer_custom {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  border: 1px solid grey;
+  font-size: 14px;
+  color: grey !important;
+  padding: 10px;
 }

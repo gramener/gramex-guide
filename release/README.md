@@ -9,6 +9,7 @@ Gramex is released with new features on the first of every month.
 
 ## Release Notes
 
+- [v1.74.0: Admin signup, user management rules, UIFactory scripts](1.74/) <small>2 Nov 2021</small>
 - [v1.73.0: UIFactory events, InfluxDB support, Comicgen icons](1.73/) <small>4 Oct 2021</small>
 - [v1.72.0: OpenAPI support, a root cause algorithm, charts in UIFactory](1.72/) <small>1 Sep 2021</small>
 - [v1.71.0: ComicHandler, security updates](1.71/) <small>1 Aug 2021</small>

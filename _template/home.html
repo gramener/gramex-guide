@@ -6,12 +6,26 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Gramex Learning | GRAMENER</title>
-        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Google fonts-->        
+        <!-- Google fonts-->
+        <!-- <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" /> -->
         <!-- Core theme CSS (includes Bootstrap)-->
+        <!-- <link href="css/styles.css" rel="stylesheet" /> -->
         <link href="/{{ GUIDE_ROOT }}/assets/css/styles.css" rel="stylesheet" />
+        <style>
+            .sidebar li .submenu{ 
+                list-style: none; 
+                margin: 0; 
+                padding: 0; 
+                padding-left: 1rem; 
+                padding-right: 1rem;
+            }
+        </style>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -41,18 +55,10 @@
                         <span class="d-flex align-items-center">
                             <span class="small">Download</span>
                         </span>
-                    </button> 
+                    </button>
                 </div>
             </div>
         </nav>
-        <!-- Sticky social icons -->
-        <!-- <div class="social-widget">
-            <div class="icon-bar">
-                <a href="#" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="twitter" target="_blank"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
-            </div>
-        </div> -->
         <!-- header-->
         <section class="bg-gramex">
             <div class="container px-5">
@@ -60,37 +66,113 @@
                     <div class="col-lg-12">
                         <!-- Text info-->
                         <div class="mb-5 mb-lg-0 text-center text-lg-start">
-                            <h1 class="display-1 lh-1 mb-3 text-white">Your Learning Space</h1>
-                            <p class="lead fw-light text-white mb-5">
+                            <h1 class="display-1 lh-1 mb-3 text-white">
+                                Your Learning Space</h1>
+                            <p class="lead fw-light text-white mb-3">
                                 Get one-stop access to everything Gramex: tutorials, e-books, white papers, online courses, certification, and more.
                             </p>
+                            
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <!-- Text info-->                        
+                        <!-- Text info-->
+                        
                     </div>
                 </div>
             </div>
         </section>
        
-        <section id="features" class="features-bg">
-            <div class="container-fluid px-5">
+        <section id="features" class="">
+            <div class="container px-5">
                 <div class="row gx-5">
-                    <!-- <div class="col-lg-12 order-lg-1  mb-lg-0">
-                        <div class="container-fluid px-5">
-                            <div class="row "> -->
-                                <!-- <div class="row gx-5"> -->
-                                    {% raw course_content %}
-                                    <div class="col">
-                                        {% raw body %}
-                                    </div>                                    
-                                <!-- </div> -->
-                                
-                            <!-- </div>
-                        </div>
-                    </div> -->
-                    <!-- <div class="col-lg-4 order-lg-0">                                                
-                    </div> -->
+                    {% if course_index== 'yes' %}
+                    <div class="col-lg-4 ">
+                        <nav class="sidebar vertical-navigation">
+                            <ul class="nav flex-column">
+                                <li class="nav-item has-submenu">
+                                  <a class="nav-link active" aria-current="page" href="/{{ GUIDE_ROOT }}/">
+                                      <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Overview</a>
+                                  <ul class="submenu collapse">
+                                    <li><a class="nav-link" href="#">Submenu item 1 </a></li>
+                                    <li><a class="nav-link" href="#">Submenu item 2 </a></li>
+                                    <li><a class="nav-link" href="#">Submenu item 3 </a> </li>
+                                </ul>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/quickstart/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Quickstart tutorial</a>
+                                    <ul class="submenu collapse">
+                                        <li><a class="nav-link" href="#">Submenu item 1 </a></li>
+                                        <li><a class="nav-link" href="#">Submenu item 2 </a></li>
+                                        <li><a class="nav-link" href="#">Submenu item 3 </a> </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/dashboards/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Dashboard tutorial</a>
+                                    <ul class="submenu collapse">
+                                        <li><a class="nav-link" href="#">Submenu item 1 </a></li>
+                                        <li><a class="nav-link" href="#">Submenu item 2 </a></li>
+                                        <li><a class="nav-link" href="#">Submenu item 3 </a> </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/charts/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Charts tutorial</a>
+                                    <ul class="submenu collapse">
+                                        <li><a class="nav-link" href="#">Submenu item 1 </a></li>
+                                        <li><a class="nav-link" href="#">Submenu item 2 </a></li>
+                                        <li><a class="nav-link" href="#">Submenu item 3 </a> </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/g1-dropdown/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Dropdown tutorial</a>
+                                    <ul class="submenu collapse">
+                                        <li><a class="nav-link" href="#">Submenu item 1 </a></li>
+                                        <li><a class="nav-link" href="#">Submenu item 2 </a></li>
+                                        <li><a class="nav-link" href="#">Submenu item 3 </a> </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link" target="_blank" href="https://github.com/gramexrecipes/gramex-ml-workshop/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />ML app tutorial</a>
+                                    <ul class="submenu collapse">
+                                        <li><a class="nav-link" href="#">Submenu item 1 </a></li>
+                                        <li><a class="nav-link" href="#">Submenu item 2 </a></li>
+                                        <li><a class="nav-link" href="#">Submenu item 3 </a> </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/exercises/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Exercises</a>
+                                    <ul class="submenu collapse">
+                                        <li><a class="nav-link" href="#">Submenu item 1 </a></li>
+                                        <li><a class="nav-link" href="#">Submenu item 2 </a></li>
+                                        <li><a class="nav-link" href="#">Submenu item 3 </a> </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link d-flex" href="#">
+                                        <img class="d-inline mr-3 mt-2" src="/{{ GUIDE_ROOT }}/assets/img/g1full.png" />
+                                        <div>
+                                        <div>Gramener One (G1)</div>
+                                        <div class="small">One Stop Solution</div>
+                                        </div>
+                                        </a>
+                                        <ul class="submenu collapse">
+                                            <li><a class="nav-link" href="#">Submenu item 1 </a></li>
+                                            <li><a class="nav-link" href="#">Submenu item 2 </a></li>
+                                            <li><a class="nav-link" href="#">Submenu item 3 </a> </li>
+                                        </ul>
+                                </li>
+                              </ul>
+                        </nav>
+                    </div>
+                    {% end %}                    
+                    <div class="col">
+                        {% raw body %}
+                    </div>
                 </div>
             </div>
         </section>
@@ -103,7 +185,7 @@
                 <div class="d-grid gap-2 col-3 mx-auto mx-auto ">
                     <!-- <button class="btn btn-bg rounded-pill mb-2 mt-4" data-bs-toggle="modal" data-bs-target="#feedbackModal">
                         <span class="align-items-center">
-                            <span class="small">Learn more about Gramex</span>
+                            <span class="small">Get Started</span>
                         </span>
                     </button> -->
                     <a href="https://www.gramener.com/gramex" class="btn btn-bg rounded-pill mb-2 mt-4">
@@ -115,76 +197,113 @@
             </div>
         </section>
         <!-- Footer-->
-        <footer class="bg-light  py-3">
-            <div class="container px-5">
-                <div class="row">
-                <div class="col-md-2">
-                    <h6>CONNECT</h6>
-                    <ul class="footer-list pl-0">
-                        <li class="footer-list__item"><a class="footer-list__link" href="#">News</a></li>
-                        <li class="footer-list__item"><a class="footer-list__link" href="#">Blog</a></li>
-                        <li class="footer-list__item"><a class="footer-list__link" href="#">Events</a></li>
-                        <li class="footer-list__item"><a class="footer-list__link" href="#" target="_blank">Forum</a></li>
-                        <li class="footer-list__item"><a class="footer-list__link" href="#">Gramex Hub</a></li>
-                    </ul>
+    <footer class="bg-footer  text-white py-5">
+        <div class="container px-5">
+            <div class="row">
+                <div class="col-md-2 col-lg-5">
+                    <h5>Gramener</h5>
+                    <p>Gramener is a design-led data science company that helps solve complex business problems with
+                        compelling data stories using insights and a low-code analytics platform. We help enterprises
+                        large and small with data insights and storytelling by leveraging Machine Learning, Artificial
+                        Intelligence, Automated Analysis, and Visual Intelligence using modern charts and narratives.
+                        Our services & technology has been recognized by Gartner and has won several awards.</p>
                 </div>
-                <div class="col-md-2">
-                    <h6>SOFTWARE</h6>
+                <div class="col-md-2 col-lg-2">
+                    <h5>Quick Links</h5>
                     <ul class="footer-list">
-                        <li class="footer-list__item"><a href="/software-overview">Gramex Software Overview</a>
+                        <li class="footer-list__item pt-3"><a href="/software-overview">About</a>
                         </li>
-                        <li class="footer-list__item"><a class="footer-list__link" href="academy.html">Gramex Analytics Platform</a></li>
-                        <li class="footer-list__item"><a class="footer-list__link" href="academy.html">GRAMEX
-                                Server</a></li>
-                        <li class="footer-list__item"><a class="footer-list__link" href="academy.html">Gramex Extensions</a></li>
-                        <li class="footer-list__item"><a class="footer-list__link" href="academy.html">Gramex Integrations</a></li>
-                        <li class="footer-list__item"><a class="footer-list__link" href="https://www.gramener.com" title="https://www.gramener.com/">Community
-                                Extensions</a></li>
-                        <li class="footer-list__item"><a class="footer-list__link" href="https://www.gramener.com/" title="https://www.gramener.com">Partner Extensions</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-2">
-                    <h6>KNOWLEDGE BASE</h6>
-                    <ul class="footer-list">
-                        <li class="footer-list__item"><a class="footer-list__link" href="academy.html">Getting Started</a></li>
-                        <li class="footer-list__item"><a class="footer-list__link" href="https://gramener.com">Documentation</a></li>
-                        <li class="footer-list__item"><a class="footer-list__link" href="/developer-guide">Developer</a></li>
-                        <li class="footer-list__item"><a class="footer-list__link" href="academy.html">White
-                                Papers</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-2">
-                    <h6>QUICK LINKS</h6>
-                    <ul class="footer-list">
-                        <li class="footer-list__item"><a class="footer-list__link" href="/download">Download</a>
+                        <li class="footer-list__item pt-3"><a class="footer-list__link" href="academy.html">News</a>
                         </li>
-                        <li class="footer-list__item"><a class="footer-list__link" href="academy.html">Gramex Open Source Story</a></li>
-                        <li class="footer-list__item"><a class="footer-list__link" href="/open-for-innovation">Open for Innovation</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-2">
-                    <h6>LEGAL</h6>
-                    <ul class="footer-list">
-                        <li class="footer-list__item"><a class="footer-list__link" href="/download">Download</a>
+                        <li class="footer-list__item pt-3"><a class="footer-list__link" href="academy.html">Videos</a>
                         </li>
-                        <li class="footer-list__item"><a class="footer-list__link" href="academy.html">Gramex Open Source Story</a></li>
-                        <li class="footer-list__item"><a class="footer-list__link" href="/open-for-innovation">Open for Innovation</a></li>
+                        <li class="footer-list__item pt-3"><a class="footer-list__link" href="academy.html">Blog</a>
+                        </li>
+                        <li class="footer-list__item pt-3"><a class="footer-list__link" href="academy.html">Careers</a>
+                        </li>
+                        <li class="footer-list__item pt-3"><a class="footer-list__link" href="https://www.gramener.com"
+                                title="https://www.gramener.com/">Cookie Policy</a></li>
+                        <li class="footer-list__item pt-3"><a class="footer-list__link" href="https://www.gramener.com/"
+                                title="https://www.gramener.com">Privacy Policy</a></li>
                     </ul>
                 </div>
-                <div class="col-md-2">
-                    <h6>GRAMENER</h6>
-                    <p>Madhapur<br>
-                        Hyderabad<br>
-                        Telangana</p>
+                <div class="col-md-2 col-lg-3">
+                    <h5>Products & Offerings</h5>
+                    <ul class="footer-list">
+                        <li class="footer-list__item pt-3"><a class="footer-list__link" href="academy.html">Gramex
+                                Low-code Platform</a></li>
+                        <li class="footer-list__item pt-3"><a class="footer-list__link"
+                                href="https://gramener.com">SlideSense</a></li>
+                        <li class="footer-list__item pt-3"><a class="footer-list__link"
+                                href="/developer-guide">Clusters</a></li>
+                        <li class="footer-list__item pt-3"><a class="footer-list__link" href="academy.html">Data
+                                Explorer</a></li>
+                        <li class="footer-list__item pt-3"><a class="footer-list__link" href="academy.html">ComicGen</a>
+                        </li>
+                        <li class="footer-list__item pt-3"><a class="footer-list__link"
+                                href="https://gramener.com">Solutions</a></li>
+                        <li class="footer-list__item pt-3"><a class="footer-list__link"
+                                href="/developer-guide">Narrative</a></li>
+                        <li class="footer-list__item pt-3"><a class="footer-list__link" href="academy.html">Data Science
+                                Advisory</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-lg-2">
+                    <h5>Contact Us</h5>
+                    <ul class="footer-list">
+                        <li class="footer-list__item pt-3"><a class="footer-list__link" href="/#">Request Demo</a>
+                        </li>
+                        <li class="footer-list__item pt-3"><a class="footer-list__link" href="tel:+16094543669">+1 609
+                                454 3669</a></li>
+                        <li class="footer-list__item pt-3"><a class="footer-list__link"
+                                href="mailto:reachus@gramener.com">reachus@gramener.com</a></li>
+                    </ul>
+                    <h5>Get Social With Us</h5>
+                    <p>
+                        <a href="#" class="facebook  mr-2" target="_blank"><i class="bi bi-facebook footer_custom"></i></a>
+                        <a href="#" class="twitter   mr-2" target="_blank"><i class="bi bi-twitter footer_custom"></i></a>
+                        <a href="#" class="linkedin  " target="_blank"><i class="bi bi-linkedin footer_custom"></i></a>
+                    </p>
                 </div>
             </div>
-            </div>
-        </footer>
+        </div>
+    </footer>
      
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="../assets/js/scripts.js"></script>
+        <!-- <script src="js/scripts.js"></script> -->
+        <script src="/{{ GUIDE_ROOT }}/assets/js/scripts.js"></script>
         
+        <script>
+            document.addEventListener("DOMContentLoaded", function(){
+  document.querySelectorAll('.sidebar .nav-link').forEach(function(element){
+    
+    // element.addEventListener('click', function (e) {
+
+    //   let nextEl = element.nextElementSibling;
+    //   let parentEl  = element.parentElement;	
+
+    //     if(nextEl) {
+    //         e.preventDefault();	
+    //         let mycollapse = new bootstrap.Collapse(nextEl);
+            
+    //         if(nextEl.classList.contains('show')){
+    //           mycollapse.hide();
+    //         } else {
+    //             mycollapse.show();
+    //             // find other submenus with class=show
+    //             var opened_submenu = parentEl.parentElement.querySelector('.submenu.show');
+    //             // if it exists, then close all of them
+    //             if(opened_submenu){
+    //               new bootstrap.Collapse(opened_submenu);
+    //             }
+    //         }
+    //     }
+    // }); // addEventListener
+  }) // forEach
+}); 
+// DOMContentLoaded  end
+        </script>
     </body>
 </html>

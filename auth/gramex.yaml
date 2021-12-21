@@ -189,6 +189,8 @@ url:
             password:
                 column: $USER_DATABASE_PASSWORDCOLUMN
                 function: passlib.hash.sha256_crypt.encrypt(content, salt="$USER_DATABASE_SALT")
+            rules:
+              url: $YAMLPATH/rules.csv
             redirect:
                 query: next
                 header: Referer
@@ -420,6 +422,32 @@ url:
                 query: next
                 header: Referer
                 url: .
+    auth/rules:
+      pattern: /$YAMLURL/attr-rules
+      handler: SimpleAuth
+      kwargs:
+        template: $YAMLPATH/simple.rules.html
+        credentials:
+          alpha:
+            password: alpha
+            email: jane.doe@gramener.com
+            role: admin
+            location: BLR
+          beta:
+            password: beta
+            email: john.doe@gmail.com
+            role: intern
+            location: MUM
+        rules:
+          url: $YAMLPATH/rules.csv
+        redirect:
+            url: /$YAMLURL/attr-rules
+
+    auth/rules-csv:
+      pattern: /$YAMLURL/attr-rules-data
+      handler: FormHandler
+      kwargs:
+        url: $YAMLPATH/rules.csv
 
     auth/recaptcha:
         pattern: /$YAMLURL/recaptcha
@@ -461,10 +489,27 @@ url:
             The OTP for {user} is {password}
 
             Visit {link}
+          html: |
+            <p>The OTP for {user} is {password}.</p>
+            <p><a href="{link}">Click here to log in</a></p>
           redirect:
-              query: next
-              header: Referer
-              url: .
+            query: next
+            header: Referer
+            url: .
+
+    auth/emailtemplate:
+        pattern: /$YAMLURL/emailtemplate
+        handler: EmailAuth
+        kwargs:
+          service: gramex-guide-auth
+          subject: 'OTP for Gramex Guide'
+          bodyfile: $YAMLURL/emailauth.txt
+          htmlfile: $YAMLURL/emailauth.html
+          template: $YAMLURL/emailauth.template.html
+          redirect:
+            query: next
+            header: Referer
+            url: .
 
     auth/multi:
         pattern: /$YAMLURL/multi

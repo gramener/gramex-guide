@@ -836,6 +836,8 @@ same of an [email service](../email/).
 
 The `forgot:` section takes the following parameters (default values are shown):
 
+- `key: forgot`. By default, the forgot password URL uses a `?forgot=`. You can
+  change that to any other key.
 - `email_from: ...`. This is mandatory. Create an [email service](../email/) and
   mention the name of the service here. Forgot password emails will be sent via
   that service. (The sender name will be the same as that service.)
@@ -850,16 +852,21 @@ The `forgot:` section takes the following parameters (default values are shown):
   or a user ID. The name of the email argument is configured by `arg:`. (The
   name of the user ID argument is already specified in `user.arg`)
 - `email_column: email`. The name of the email column in the database table.
-- `email_text: ...`. The text of the email that is sent to the user. This is a
-  template string where `{reset_url}` is replaced with the password reset URL.
-  You can use any database table columns as keys. For example, if the user ID is
-  in the `user` column, `email_text: {user} password reset link is {reset_url}`
-  will replace `{user}` with the value in the user column, and `{reset_url}`
-  with the actual password reset URL.
 - `email_subject: ...`. The subject of the email that is sent to the user. This
   is a template similar to `email_text`.
-- `key: forgot`. By default, the forgot password URL uses a `?forgot=`. You can
-  change that to any other key.
+- `email_body: ...`. The text of the email that is sent to the user.
+  - This is a template string where `{reset_url}` is replaced with the password reset URL.
+  - You can use any database table columns as keys. For example, if the user ID is
+    in the `user` column, `email_text: {user} password reset link is {reset_url}`
+    will replace `{user}` with the value in the user column, and `{reset_url}`
+    with the actual password reset URL.
+  - Note: `email_text` is an alias for `email_body`.
+- `email_bodyfile: contents.txt`. Load `email_body` from a file instead of writing it in
+  `gramex.yaml`
+- `email_html: ...`. HTML content of the email. If both `email_html` and `email_body` are
+  specified, the email contains both parts, with HTML taking preference.
+- `email_htmlbody: contents.html`: Load `email_html` from a file instead of writing it in
+  `gramex.yaml`
 
 Here is a more complete example:
 
@@ -873,10 +880,14 @@ kwargs:
     email_column: email               # The database column that contains the email ID
     email_subject: Gramex forgot password       # Subject of the email
     email_as: "S Anand <root.node@gmail.com>"   # Emails will be sent as if from this ID
-    email_text: |
+    email_body: |
         This is an email from Gramex guide.
         You clicked on the forgot password like for user {user}.
         Visit this link to reset the password: {reset_url}
+    email_html: |
+        <p>Hi from <a href="https://gramener.com/gramex/guide/">Gramex Guide</a>.</p>
+        <p>You clicked on the forgot password like for user {user}.</p>
+        <p><a href="{reset_url}">Click here</a> to reset the password.</p>
 ```
 
 ::: example href=db source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
@@ -1153,19 +1164,23 @@ url:
         The OTP for {user} is {password}
 
         Visit {link}
-      redirect:                 # After logging in, redirect the user to:
-          query: next           #      the ?next= URL
-          header: Referer       # else the Referer: header (i.e. page before login)
-          url: .                # else the home page of current directory
+      html: |
+          <p>The OTP for {user} is {password}.</p>
+          <p><a href="{link}">Click here to log in</a></p>
 
       # Optional configuration. The values shown below are the defaults
       minutes_to_expiry: 15     # Minutes after which the OTP will expire
       size: 6                   # Number of characters in the OTP
-      template: auth.email.template.html    # Login template
+      instantlogin: false       # Fetching login link instantly logs user in
+                                # False is best for clients like Outlook that pre-fetch links
       user:
           arg: user             # ?user= contains the user email
       password:
           arg: password         # ?password= contains the OTP
+      redirect:                 # After logging in, redirect the user to:
+          query: next           #      the ?next= URL
+          header: Referer       # else the Referer header (i.e. page before login)
+          url: .                # else the home page of current directory
 ```
 
 ::: example href=email source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
@@ -1215,29 +1230,39 @@ url:
           - {email: [admin@example.org]}
 ```
 
-The login flow is:
+To customize the email message that's sent, you can change:
 
-1. User visits `/`. App shows form template asking for email (`user` field)
-2. User submits email. Browser redirects to `POST /?user=<email>`
-3. App generates a new OTP (valid for `minutes_to_expiry` minutes).
-4. App emails the OTP link to the user's email. On fail, ask for email again
-5. If email was sent, app shows a message asking user to check email
-6. User clicks on email and visits link with OTP (`GET /?password=<otp>`)
-7. App checks if OTP is valid. If yes, logs user in and redirects
-8. On any error, shows form template with error
+- `body`: The plain text email message sent to the user
+- `html`: The HTML email message sent to the user. This overrides `body` if the email client supports HTML
+- `bodyfile`: Load the `body` from a file instead of typing in YAML. This overrides `body`
+- `htmlfile`: Load the `html` from a file instead of typing in YAML. This overrides `html`
 
-The `template:` is a Tornado template. [Here is an example][email-auth-template].
-When you write your own login template form, you can use these Python variables:
+The email message is formatted as a Python string (i.e. `{variable}` is replaced with the value of
+`variable`). You can use these variables in the message:
 
-- `handler`: the handler. `handler.kwargs` has the configuration above
-- `email`: the phone number provided by the user
-- `error`: `None` if there is no error. Else:
+- `user`: The email ID of the user
+- `password`: The one-time password
+- `link`: The one-time login link
+
+To customize the login page, you can add a `template:` pointing to a Tornado template.
+[Here is a sample](https://github.com/gramener/gramex-guide/blob/master/auth/emailauth.html).
+You can use these variables in the template:
+
+- `handler`: the handler. `handler.kwargs` has the EmailAuth configuration
+- `email`: the user's email ID (if entered)
+- `otp`: the one-time password (if entered)
+- `error`: `None` if there is no error. Else, it has one of these values:
   - `'not-sent'` if the OTP could not be sent. `msg` has the Exception
   - `'wrong-pw'` if the OTP is wrong. `msg` has a string error
-- `msg`: sent only if `error` is not `None`. See `error`
+- `msg`: sent only if `error` is not `None`. It contains a textual descripton of the error.
+- `redirect`: has the origial URL to redirect the user back to after login
+  - Use `<input type="hidden" name="{{ redirect['name'] }}" value="{{ redirect['value'] }}">`
+    in a form to redirect the user back to their original URL
+  - `redirect['name']` is typically `next`, creating a `?next=` query string
+  - `redirect['value']` is the URL to redirect the user to
 
-[email-auth-template]: https://github.com/gramener/gramex/blob/master/gramex/handlers/auth.email.template.html
-
+::: example href=emailtemplate source=https://github.com/gramener/gramex-guide/blob/master/auth/emailauth.template.html
+    Email auth template example
 
 ## SMS Auth
 
@@ -1695,6 +1720,60 @@ just like for [FormHandler](../formhandler/).
 
 ::: example href=lookup-attributes source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
     Lookup attributes example
+
+
+## Add Attribute Rules
+
+Auth handlers support a `rules` kwarg which allows users to specify rules which
+can modify user attributes on the fly. For example, the following spec
+
+```yaml
+url:
+  auth/simple:
+    pattern: /$YAMLURL/login
+    handler: SimpleAuth
+    kwargs:
+      credentials:
+        alpha:
+          password: alpha
+          email: jane.doe@gramener.com
+          role: admin
+          location: BLR
+        beta:
+          password: beta
+          email: john.doe@gmail.com
+          role: intern
+          location: MUM
+      rules:
+        url: $YAMLPATH/rules.csv
+```
+
+declares two users, with three attributes each - email, role and location. The
+rules for modifying these attributes can be composed in a file named `rules.csv`
+as follows:
+
+| selector  |   pattern   | field    | value |
+|-----------|-------------|----------|-------|
+| email     | *@gmail.com | role     | guest |
+| role      | admin       | location | NYC   |
+
+These rules can be read as follows:
+
+1. If the "email" attribute of a user matches the pattern `*@gmail.com`, then
+   set their "role" attribute to guest, AND
+2. if the "role" attribute of a user matches the pattern "admin", then set their
+   "location" attribute to NYC.
+
+In the case of the users specified above, after logging in, `beta` would see
+their role changed to "guest" from "intern", and the user `alpha` would see
+their location changed to "NYC" from "BLR".
+
+Generally, for any auth handler, any existing user attribute can be used in the
+"selector" field, and if the value of that attribute matches the specified "pattern",
+then the attribute mentioned in the "field" is modified to the "value".
+
+::: example href=attr-rules source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    User attributes rules Example
 
 # Automated logins
 

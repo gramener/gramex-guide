@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Gramex Learning | GRAMENER</title>
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->        
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/{{ GUIDE_ROOT }}/assets/css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light  shadow-sm" id="mainNav">
+            <div class="container px-5">
+                <a class="navbar-brand fw-bold" href="#page-top">
+                    <img src="/{{ GUIDE_ROOT }}/assets/img/logo_black.jpg" width="180px" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="bi-list"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+                        <li class="nav-item navl"><a class="nav-link me-lg-3" href="#platform">Platform </a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="#price">Pricing</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="#community">Community</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="#tutorials">Tutorials</a></li>                        
+                        <li class="nav-item"><a class="nav-link me-lg-3" target="_blank" href="https://gramener.com/companystory/">About Us</a></li>
+                    </ul>
+                    <!-- <button class="btn btn-border rounded-pill px-3 mb-2 mb-lg-0 " style="margin-right: 5px;;" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                        <span class="d-flex align-items-center ">
+                            <span class="small">Sign in</span>
+                        </span>
+                    </button> -->
+                    <button class="btn text-white btn-bg rounded-pill px-3 mb-2  mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                        <span class="d-flex align-items-center">
+                            <span class="small">Download</span>
+                        </span>
+                    </button> 
+                </div>
+            </div>
+        </nav>
+        <!-- Sticky social icons -->
+        <!-- <div class="social-widget">
+            <div class="icon-bar">
+                <a href="#" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="twitter" target="_blank"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div> -->
+        <!-- header-->
+        <section class="bg-gramex">
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-12">
+                        <!-- Text info-->
+                        <div class="mb-5 mb-lg-0 text-center text-lg-start">
+                            <h1 class="display-1 lh-1 mb-3 text-white">
+                                Your Learning Space</h1>
+                            <p class="lead fw-light text-white mb-5">
+                                Get one-stop access to everything Gramex: tutorials, e-books, white papers, online courses, certification, and more.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <!-- Text info-->                        
+                    </div>
+                </div>
+            </div>
+        </section>
+       
+        <section id="features" class="features-bg">
+            <div class="container-fluid px-5">
+                <div class="row gx-5">
+                    <!-- <div class="col-lg-12 order-lg-1  mb-lg-0">
+                        <div class="container-fluid px-5">
+                            <div class="row "> -->
+                                <!-- <div class="row gx-5"> -->
+                                    {% raw course_content %}
+                                    <div class="col">
+                                        {% raw body %}
+                                    </div>                                    
+                                <!-- </div> -->
+                                
+                            <!-- </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="col-lg-4 order-lg-0">                                                
+                    </div> -->
+                </div>
+            </div>
+        </section>
+        <!-- Basic features section-->
+        <section class="bg-dark" id="download">
+            <div class="container px-5">
+                <h2 class="text-center text-white font-alt mb-4 fw-light">
+                    “Wisdom is not a product of schooling but of the lifelong attempt to acquire it.” – Albert Einstein
+                </h2>
+                <div class="d-grid gap-2 col-3 mx-auto mx-auto ">
+                    <!-- <button class="btn btn-bg rounded-pill mb-2 mt-4" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                        <span class="align-items-center">
+                            <span class="small">Learn more about Gramex</span>
+                        </span>
+                    </button> -->
+                    <a href="https://www.gramener.com/gramex" class="btn btn-bg rounded-pill mb-2 mt-4">
+                        <span class="align-items-center">
+                            <span class="small">Learn more about Gramex</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="bg-light  py-3">
+            <div class="container px-5">
+                <div class="row">
+                <div class="col-md-2">
+                    <h6>CONNECT</h6>
+                    <ul class="footer-list pl-0">
+                        <li class="footer-list__item"><a class="footer-list__link" href="#">News</a></li>
+                        <li class="footer-list__item"><a class="footer-list__link" href="#">Blog</a></li>
+                        <li class="footer-list__item"><a class="footer-list__link" href="#">Events</a></li>
+                        <li class="footer-list__item"><a class="footer-list__link" href="#" target="_blank">Forum</a></li>
+                        <li class="footer-list__item"><a class="footer-list__link" href="#">Gramex Hub</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h6>SOFTWARE</h6>
+                    <ul class="footer-list">
+                        <li class="footer-list__item"><a href="/software-overview">Gramex Software Overview</a>
+                        </li>
+                        <li class="footer-list__item"><a class="footer-list__link" href="academy.html">Gramex Analytics Platform</a></li>
+                        <li class="footer-list__item"><a class="footer-list__link" href="academy.html">GRAMEX
+                                Server</a></li>
+                        <li class="footer-list__item"><a class="footer-list__link" href="academy.html">Gramex Extensions</a></li>
+                        <li class="footer-list__item"><a class="footer-list__link" href="academy.html">Gramex Integrations</a></li>
+                        <li class="footer-list__item"><a class="footer-list__link" href="https://www.gramener.com" title="https://www.gramener.com/">Community
+                                Extensions</a></li>
+                        <li class="footer-list__item"><a class="footer-list__link" href="https://www.gramener.com/" title="https://www.gramener.com">Partner Extensions</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h6>KNOWLEDGE BASE</h6>
+                    <ul class="footer-list">
+                        <li class="footer-list__item"><a class="footer-list__link" href="academy.html">Getting Started</a></li>
+                        <li class="footer-list__item"><a class="footer-list__link" href="https://gramener.com">Documentation</a></li>
+                        <li class="footer-list__item"><a class="footer-list__link" href="/developer-guide">Developer</a></li>
+                        <li class="footer-list__item"><a class="footer-list__link" href="academy.html">White
+                                Papers</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h6>QUICK LINKS</h6>
+                    <ul class="footer-list">
+                        <li class="footer-list__item"><a class="footer-list__link" href="/download">Download</a>
+                        </li>
+                        <li class="footer-list__item"><a class="footer-list__link" href="academy.html">Gramex Open Source Story</a></li>
+                        <li class="footer-list__item"><a class="footer-list__link" href="/open-for-innovation">Open for Innovation</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h6>LEGAL</h6>
+                    <ul class="footer-list">
+                        <li class="footer-list__item"><a class="footer-list__link" href="/download">Download</a>
+                        </li>
+                        <li class="footer-list__item"><a class="footer-list__link" href="academy.html">Gramex Open Source Story</a></li>
+                        <li class="footer-list__item"><a class="footer-list__link" href="/open-for-innovation">Open for Innovation</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h6>GRAMENER</h6>
+                    <p>Madhapur<br>
+                        Hyderabad<br>
+                        Telangana</p>
+                </div>
+            </div>
+            </div>
+        </footer>
+     
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../assets/js/scripts.js"></script>
+        
+    </body>
+</html>
