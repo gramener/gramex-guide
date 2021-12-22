@@ -1132,6 +1132,8 @@ url:
 
 ## Email Auth
 
+[Video](https://youtu.be/3og1HiU6Iik){.youtube}
+
 **Available in Gramex Enterprise**.
 [EmailAuth](#emailauth) allows any user with a valid email ID to log
 in. This is a convenient alternative to [DBAuth](#dbauth). Users do not need to
@@ -1245,7 +1247,7 @@ The email message is formatted as a Python string (i.e. `{variable}` is replaced
 - `link`: The one-time login link
 
 To customize the login page, you can add a `template:` pointing to a Tornado template.
-[Here is a sample](https://github.com/gramener/gramex-guide/blob/master/auth/emailauth.html).
+[Here is a sample](https://github.com/gramener/gramex-guide/blob/master/auth/emailauth.template.html).
 You can use these variables in the template:
 
 - `handler`: the handler. `handler.kwargs` has the EmailAuth configuration
@@ -1255,7 +1257,7 @@ You can use these variables in the template:
   - `'not-sent'` if the OTP could not be sent. `msg` has the Exception
   - `'wrong-pw'` if the OTP is wrong. `msg` has a string error
 - `msg`: sent only if `error` is not `None`. It contains a textual descripton of the error.
-- `redirect`: has the origial URL to redirect the user back to after login
+- `redirect`: has the original URL to redirect the user back to after login
   - Use `<input type="hidden" name="{{ redirect['name'] }}" value="{{ redirect['value'] }}">`
     in a form to redirect the user back to their original URL
   - `redirect['name']` is typically `next`, creating a `?next=` query string
