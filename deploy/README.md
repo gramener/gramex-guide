@@ -194,11 +194,31 @@ To uninstall the service, run:
 gramex service remove
 ```
 
-Service logs can be viewed using the Windows Event Viewer. Gramex logs are at
-`%LOCALAPPDATA%\Gramex Data\logs\` unless over-ridden by `gramex.yaml`.
+### Troubleshooting Windows Services
 
-Since services do not have a console, Gramex's console logs are saved in the application folder as
-`service.log`.
+If the service doesn't run, check the log files. Log files can be accessed as follows:
+
+- For Service logs, use the Windows "Event Viewer" app under Windows Logs > System.
+- For Gramex console logs, see `service.log` in the application's source folder (where `gramex.yaml` is).
+- For Gramex logs are at `%LOCALAPPDATA%\Gramex Data\logs\` unless over-ridden by `gramex.yaml`.
+
+[PyWin32](https://pypi.org/project/pywin32/) has a common problem. When you run `gramex service install`, you may get this warning:
+
+> The executable at "...\PythonService.exe" is being used as a service. This executable doesn't
+> have pythonXX.dll and/or pywintypesXX.dll in the same directory. This is likely to fail when used
+> in the context of a service. The exact environment needed will depend on which user runs the
+> service and where Python is installed. If the service fails to run, this will be why. NOTE: You
+> should consider copying this executable to the directory where these DLLs live -
+> "...\pywin32_system32" might be a good place.
+
+In that case:
+
+1. Copy `PythonService.exe`, `python37.dll` and `pywintypes37.dll` (for Python 3.7) to Lib\site-packages\pywin32_system32\
+2. Run `gramex service remove`
+3. Run `gramex service install` to re-install. Check that the're no warning now
+4. Run `gramex service start`. You should see a `service.log` file in the source folder with the Gramex console.logs
+
+### Multiple Windows Services
 
 To create multiple services running at different directories or ports, you can
 create one or more custom service classes in `yourproject_service.py`:

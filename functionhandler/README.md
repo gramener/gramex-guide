@@ -186,7 +186,7 @@ Sample output:
 For greater control over arguments, you can pass a Tornado
 [RequestHandler][requesthandler] called `handler` to your function.
 
-For exammple, the [add](add) URL below takes `handler` and sums up numbers you specify.
+For example, the [add](add) URL below takes `handler` and sums up numbers you specify.
 [add?x=1&x=2](add?x=1&x=2) shows 3.0:
 
 ```html
