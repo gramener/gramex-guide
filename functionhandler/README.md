@@ -9,6 +9,8 @@ type: microservice
 
 [TOC]
 
+[Video](https://youtu.be/fbtade_2BCI){.youtube}
+
 The [FunctionHandler][functionhandler] runs a function and displays the output.
 
 For example, this configuration maps the URL [total](total) to a FunctionHandler:
@@ -39,6 +41,8 @@ def total(*items):
 To see all configurations used in this page, see [gramex.yaml](gramex.yaml.source):
 
 ## Function arguments from URL
+
+[Video](https://youtu.be/hSwQQ2wOmIk){.youtube}
 
 You can pass function arguments from the URL as a REST API.
 
@@ -99,6 +103,8 @@ passed as a list `v = [10, 20, 30]` to return 10 x 20 x 30 = 6,000.
 
 ## Function output
 
+[Video](https://youtu.be/I9ZxPSvcvdo){.youtube}
+
 The output of the function is rendered as a string.
 
 String and byte outputs are rendered as-is. Other types (int, float, bool, datetime, DataFrame) are converted to JSON as follows:
@@ -111,7 +117,9 @@ String and byte outputs are rendered as-is. Other types (int, float, bool, datet
 - `dict`: rendered as JSON, e.g. `{"x": 1, "y": "abc"}`. Keys *must* be strings
 - `pd.DataFrame`: rendered as JSON via `.to_json(orient="records", date_format="iso")`
 
-## Function methods
+## HTTP methods
+
+[Video](https://youtu.be/FPZ1dczw94s){.youtube}
 
 FunctionHandler handles `GET` *and* `POST` requests by default. That is, the
 same function is called irrespective of whether the method is `GET` or `POST`.
@@ -129,6 +137,8 @@ url:
 ```
 
 ## URL path arguments
+
+[Video](https://youtu.be/9GtjQoZb9Fg){.youtube}
 
 You can specify wildcards in the URL pattern. For example:
 
@@ -225,6 +235,8 @@ def add(handler):
 
 ## Parse URL arguments
 
+[Video](https://youtu.be/V4ibl-u_SZg){.youtube}
+
 You can manually parse the URL parameters. The URL parameters are stored in ``handler.args`` as a
 dict with Unicode keys and list values. For example:
 
@@ -304,7 +316,9 @@ args = handler.argparse(
 )
 ```
 
-## Function headers
+## HTTP headers
+
+[Video](https://youtu.be/Tz8cESGNCrY){.youtube}
 
 If you have a `download.pdf` in your folder and display it using a function, the output will be rendered as text, by default. For example:
 
@@ -356,6 +370,8 @@ documented the [redirection configuration](../config/#redirection).
 
 ## Streaming output
 
+[Video](https://youtu.be/YoIpychPzSs){.youtube}
+
 If you perform slow calculations and want to flush interim calculations out to
 the browser, use `yield`. For example, [slow?x=1&x=2&x=3](slow?x=1&x=2&x=3) uses
 the function below to print the values 1, 2, 3 as soon as they are "calculated".
@@ -377,6 +393,8 @@ yielded.)
     Trye `slow?x=1&x=2&x=3`
 
 ## Asynchronous functions
+
+[Video](https://youtu.be/gNHfG1NoivU){.youtube}
 
 If you are using an asynchronous Tornado function, like
 [AsyncHTTPClient][asynchttpclient], they will not block the server. The function
