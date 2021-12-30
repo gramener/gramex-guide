@@ -112,6 +112,35 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
 h1, .h1 {
   font-size: calc(1.375rem + 1.5vw);
 }
+
+/* Style PRE elements They take up full width */
+.codehilite pre {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  margin: 0 -1rem 1rem -1rem;
+  color: #fff;
+  background-color: inherit;
+  /* On small screens, wrap code */
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.btn-xs {
+  padding: 0.125rem 0.25rem;
+  font-size: 0.825rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+.mr-n2, .mx-n2 {
+  margin-right: -0.5rem !important;
+}
+.mt-2, .my-2 {
+  margin-top: 0.5rem !important;
+}
+.btn-dark {
+  color: #fff;
+  background-color: #3f327d;
+  border-color: #3f327d;
+}
 @media (min-width: 1200px) {
   h1, .h1 {
     font-size: 2.5rem;
@@ -248,7 +277,7 @@ a:not([href]):not([class]), a:not([href]):not([class]):hover {
   text-decoration: none;
 }
 
-pre,
+/* pre,
 code,
 kbd,
 samp {
@@ -256,26 +285,32 @@ samp {
   font-size: 1em;
   direction: ltr /* rtl:ignore */;
   unicode-bidi: bidi-override;
-}
+} */
 
-pre {
+/* pre {
   display: block;
   margin-top: 0;
   margin-bottom: 1rem;
   overflow: auto;
   font-size: 0.875em;
-}
+} */
 pre code {
   font-size: inherit;
   color: inherit;
   word-break: normal;
+} 
+.pos-tr {
+  top: 0;
+  right: 0;
 }
-
-code {
+.pos-tl, .pos-tr, .pos-bl, .pos-br {
+  position: absolute;
+}
+/* code {
   font-size: 0.875em;
   color: #d63384;
   word-wrap: break-word;
-}
+} */
 a > code {
   color: inherit;
 }
