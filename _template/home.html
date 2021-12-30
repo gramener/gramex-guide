@@ -90,67 +90,32 @@
                         <nav class="sidebar vertical-navigation">
                             <ul class="nav flex-column">
                                 <li class="nav-item has-submenu">
-                                  <a class="nav-link active" aria-current="page" href="/{{ GUIDE_ROOT }}/">
+                                  <a class="nav-link" aria-current="page" href="/{{ GUIDE_ROOT }}/home/">
                                       <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Overview</a>
-                                  <ul class="submenu collapse">
-                                    <li><a class="nav-link" href="#">Submenu item 1 </a></li>
-                                    <li><a class="nav-link" href="#">Submenu item 2 </a></li>
-                                    <li><a class="nav-link" href="#">Submenu item 3 </a> </li>
-                                </ul>
                                 </li>
                                 <li class="nav-item has-submenu">
                                     <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/quickstart/">
                                         <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Quickstart tutorial</a>
-                                    <ul class="submenu collapse">
-                                        <li><a class="nav-link" href="#">Submenu item 1 </a></li>
-                                        <li><a class="nav-link" href="#">Submenu item 2 </a></li>
-                                        <li><a class="nav-link" href="#">Submenu item 3 </a> </li>
-                                    </ul>
                                 </li>
                                 <li class="nav-item has-submenu">
                                     <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/dashboards/">
                                         <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Dashboard tutorial</a>
-                                    <ul class="submenu collapse">
-                                        <li><a class="nav-link" href="#">Submenu item 1 </a></li>
-                                        <li><a class="nav-link" href="#">Submenu item 2 </a></li>
-                                        <li><a class="nav-link" href="#">Submenu item 3 </a> </li>
-                                    </ul>
                                 </li>
                                 <li class="nav-item has-submenu">
                                     <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/charts/">
                                         <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Charts tutorial</a>
-                                    <ul class="submenu collapse">
-                                        <li><a class="nav-link" href="#">Submenu item 1 </a></li>
-                                        <li><a class="nav-link" href="#">Submenu item 2 </a></li>
-                                        <li><a class="nav-link" href="#">Submenu item 3 </a> </li>
-                                    </ul>
                                 </li>
                                 <li class="nav-item has-submenu">
                                     <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/g1-dropdown/">
                                         <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Dropdown tutorial</a>
-                                    <ul class="submenu collapse">
-                                        <li><a class="nav-link" href="#">Submenu item 1 </a></li>
-                                        <li><a class="nav-link" href="#">Submenu item 2 </a></li>
-                                        <li><a class="nav-link" href="#">Submenu item 3 </a> </li>
-                                    </ul>
                                 </li>
                                 <li class="nav-item has-submenu">
                                     <a class="nav-link" target="_blank" href="https://github.com/gramexrecipes/gramex-ml-workshop/">
                                         <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />ML app tutorial</a>
-                                    <ul class="submenu collapse">
-                                        <li><a class="nav-link" href="#">Submenu item 1 </a></li>
-                                        <li><a class="nav-link" href="#">Submenu item 2 </a></li>
-                                        <li><a class="nav-link" href="#">Submenu item 3 </a> </li>
-                                    </ul>
                                 </li>
                                 <li class="nav-item has-submenu">
                                     <a class="nav-link" href="/{{ GUIDE_ROOT }}/exercises/">
                                         <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Exercises</a>
-                                    <ul class="submenu collapse">
-                                        <li><a class="nav-link" href="#">Submenu item 1 </a></li>
-                                        <li><a class="nav-link" href="#">Submenu item 2 </a></li>
-                                        <li><a class="nav-link" href="#">Submenu item 3 </a> </li>
-                                    </ul>
                                 </li>
                                 <li class="nav-item has-submenu">
                                     <a class="nav-link d-flex" href="#">
@@ -160,17 +125,16 @@
                                         <div class="small">One Stop Solution</div>
                                         </div>
                                         </a>
-                                        <ul class="submenu collapse">
-                                            <li><a class="nav-link" href="#">Submenu item 1 </a></li>
-                                            <li><a class="nav-link" href="#">Submenu item 2 </a></li>
-                                            <li><a class="nav-link" href="#">Submenu item 3 </a> </li>
-                                        </ul>
                                 </li>
                               </ul>
                         </nav>
                     </div>
-                    {% end %}                    
-                    <div class="col">
+                    {% end %}
+                    <script src="/{{ GUIDE_ROOT }}/ui/jquery/dist/jquery.min.js"></script>
+                    <script src="/{{ GUIDE_ROOT }}/ui/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                    <script src="/{{ GUIDE_ROOT }}/ui/lodash/lodash.min.js"></script>
+                    <script src="/{{ GUIDE_ROOT }}/ui/g1/dist/g1.min.js"></script>                 
+                    <div class="col content">
                         {% raw body %}
                     </div>
                 </div>
@@ -270,40 +234,10 @@
     </footer>
      
         <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
         <!-- Core theme JS-->
         <!-- <script src="js/scripts.js"></script> -->
         <script src="/{{ GUIDE_ROOT }}/assets/js/scripts.js"></script>
-        
-        <script>
-            document.addEventListener("DOMContentLoaded", function(){
-  document.querySelectorAll('.sidebar .nav-link').forEach(function(element){
-    
-    // element.addEventListener('click', function (e) {
-
-    //   let nextEl = element.nextElementSibling;
-    //   let parentEl  = element.parentElement;	
-
-    //     if(nextEl) {
-    //         e.preventDefault();	
-    //         let mycollapse = new bootstrap.Collapse(nextEl);
-            
-    //         if(nextEl.classList.contains('show')){
-    //           mycollapse.hide();
-    //         } else {
-    //             mycollapse.show();
-    //             // find other submenus with class=show
-    //             var opened_submenu = parentEl.parentElement.querySelector('.submenu.show');
-    //             // if it exists, then close all of them
-    //             if(opened_submenu){
-    //               new bootstrap.Collapse(opened_submenu);
-    //             }
-    //         }
-    //     }
-    // }); // addEventListener
-  }) // forEach
-}); 
-// DOMContentLoaded  end
-        </script>
+        <script src="/{{ GUIDE_ROOT }}/script.js?v=62"></script>              
     </body>
 </html>

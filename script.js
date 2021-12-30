@@ -2,21 +2,39 @@
 $(function () {
   // Sidebar menu: Highlight current page
   var url = location.origin + location.pathname
-  $('.menu a').each(function () {
+  
+  // $('.menu a').each(function () {
+  //   if (this.href == url) {
+  //     $(this).parent().addClass('active').append('<ul>')
+  //     this.scrollIntoView()
+  //   }
+  // })
+
+  $('.sidebar a').each(function () {    
     if (this.href == url) {
-      $(this).parent().addClass('active').append('<ul>')
+      $(this).addClass('active');
+      $(this).parent().append('<ul class="submenu"></ul>')
       this.scrollIntoView()
     }
   })
 
   // Sidebar menu: Add headings to page
-  $('.content').find('h2, h3').each(function () {
-    $('.menu .active ul').append(
-      '<li class="nav-item menu-' + this.tagName.toLowerCase() + '">' +
-      '<a class="nav-link py-0" href="#' + $(this).attr('id') + '">' +
-      $(this).text() +
-      '</a></li>')
-  })
+  // $('.content').find('h2, h3').each(function () {
+  //   $('.menu .active ul').append(
+  //     '<li class="nav-item menu-' + this.tagName.toLowerCase() + '">' +
+  //     '<a class="nav-link py-0" href="#' + $(this).attr('id') + '">' +
+  //     $(this).text() +
+  //     '</a></li>')
+  // })
+
+$('.content').find('h2, h3').each(function () {
+  $('.sidebar .active').next('ul').append(    
+        '<li>'+
+          '<a class="nav-link" href="#' + $(this).attr('id') + '">'+ 
+          $(this).text() + '</a>' +
+          '</li>'
+  )
+})
 
   // Scroll-spy offset must be the same as <html> scroll-padding-top. Otherwise it won't work
   $('body').attr('data-offset', parseInt(getComputedStyle(document.querySelector('html'))['scroll-padding-top']))
