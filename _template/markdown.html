@@ -26,7 +26,7 @@
         <span class="h5 text-uppercase d-none d-md-inline">Guide</span>
       </a>
       <form class="form-inline">
-        <input class="form-control form-control-sm shadow-none my-2 mr-2 d-none d-sm-block" type="search" id="search" placeholder="Search topics" size="30" data-prefix="/{{ GUIDE_ROOT }}/" data-url="/{{ GUIDE_ROOT }}/search/searchindex.json" autocomplete="off">
+        <input class="search form-control form-control-sm shadow-none my-2 mr-2 d-none d-sm-block" type="search" id="search" placeholder="Search topics" size="30" data-prefix="/{{ GUIDE_ROOT }}/" data-url="/{{ GUIDE_ROOT }}/search/searchindex.json" autocomplete="off">
       </form>
       <div class="nav-item dropdown">
         <a class="dropdown-toggle btn btn-success btn-sm d-none d-md-block font-weight-bold" href="#" id="help-dropdown"
@@ -75,6 +75,7 @@
 
   <div class="container">
     <nav class="menu collapse sm1 py-4">
+      <a class="d-block" href="/{{ GUIDE_ROOT }}/search/"><i class="fas fa-search"></i> Search</a>
       <ul class="p-0 nav">
         <li><div class="menu-section">Gramex Guide</div>
           <ul>
@@ -160,7 +161,6 @@
             <li><a href="/{{ GUIDE_ROOT }}/license/">License</a></li>
             <li><a target="_blank" href="https://learn.gramener.com/gramex/gramex.html">API Reference</a></li>
             <li><a href="/{{ GUIDE_ROOT }}/linkcheck/">Link check</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/search/">Index</a></li>
           </ul>
         </li>
       </ul>
@@ -232,6 +232,6 @@
   <script src="/{{ GUIDE_ROOT }}/node_modules/clipboard/dist/clipboard.min.js"></script>
   <script src="/{{ GUIDE_ROOT }}/node_modules/anchor-js/anchor.min.js"></script>
   <script src="/{{ GUIDE_ROOT }}/node_modules/lunr/lunr.js"></script>
-  <script src="/{{ GUIDE_ROOT }}/script.js?v=62"></script>
+  <script src="/{{ GUIDE_ROOT }}/script.js?v=63"></script>
 </body>
 </html>

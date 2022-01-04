@@ -106,12 +106,11 @@ $(function () {
       })
   })
 
-  $('#search').each(function () {
+  $('input.search').each(function () {
     var $search = $(this)
     var prefix = $search.data('prefix') || ''
     var $results = $('<div></div>').attr({
-      'id': 'searchresults',
-      'class': 'bg-white p-2 border',
+      'class': 'searchresults bg-white p-2 border',
     }).insertAfter(this).hide()
     $.ajax($search.data('url'))
       .done(function (index) {

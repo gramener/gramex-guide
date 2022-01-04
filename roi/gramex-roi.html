@@ -1,0 +1,72 @@
+<template $name="gramex-roi" cost:number="100000" dashboards:number="30" models="40" data="30">
+  <style>
+    gramex-roi form {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-gap: 1px 0.5rem;
+    }
+    gramex-roi .new-section {
+      margin-top: 1.5rem
+    }
+    gramex-roi .gramex-roi-savings { display: flex; }
+    gramex-roi .saving-pc, gramex-roi .saving-amt {
+      font-size: 4rem;
+    }
+  </style>
+  <div class="gramex-roi-savings">
+    <form>
+      <label>Effort ($)</label>
+      <input id="gramex-roi-cost" class="cost" type="range" value="${Math.log10(cost)}" min="3" max="10" step="0.1">
+
+      <label class="new-section">Data effort (%)</label>
+      <input id="gramex-roi-data" class="new-section data" type="range" value="${data}" min="0" max="100">
+
+      <label>Modeling effort (%)</label>
+      <input id="gramex-roi-models" class="models" type="range" value="${models}" min="0" max="100">
+
+      <label>Dashboard effort (%)</label>
+      <input id="gramex-roi-dashboards" class="dashboards" type="range" value="${dashboards}" min="0" max="100">
+    </form>
+    <div>
+      <div class="saving-pc"></div>
+      <div class="saving-amt"></div>
+    </div>
+  </div>
+  <script $oninput $onrender>
+    let dashboards = +this.querySelector('.dashboards').value
+    let models = +this.querySelector('.models').value
+    let data = +this.querySelector('.data').value
+
+    // Ensure that the sum is 100%
+    let excess = dashboards + models + data - 100
+    if (excess != 0) {
+      let a, b
+      if (e.target.matches('.data')) {
+        a = this.querySelector('.models')
+        b = this.querySelector('.dashboards')
+      } else if (e.target.matches('.models')) {
+        a = this.querySelector('.dashboards')
+        b = this.querySelector('.data')
+      }
+      else if (e.target.matches('.dashboards')) {
+        a = this.querySelector('.data')
+        b = this.querySelector('.models')
+      }
+      if (a && b) {
+        a.value -= +a.value / (+a.value + +b.value) * excess
+        b.value -= +b.value / (+a.value + +b.value) * excess
+        dashboards = +this.querySelector('.dashboards').value
+        models = +this.querySelector('.models').value
+        data = +this.querySelector('.data').value
+      }
+    }
+    let savings = (dashboards * 0.24 + models * 0.45 + data * 0.42) / (dashboards + models + data)
+    this.querySelector('.saving-pc').innerHTML = Math.round(savings * 100)
+    let cost = Math.pow(10, this.querySelector('.cost').value)
+    this.querySelector('.saving-amt').innerHTML = Math.round(savings * cost)
+  </script>
+</template>
+
+<script src="https://cdn.jsdelivr.net/npm/uifactory@1.22.1/dist/uifactory.min.js"></script>
+
+<gramex-roi></gramex-roi>
