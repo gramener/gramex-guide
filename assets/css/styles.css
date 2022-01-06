@@ -187,6 +187,21 @@ nav.sidebar.vertical-navigation {
   overflow-y: scroll;
   }
 
+/* HIDE RADIO */[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */[type=radio] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */[type=radio]:checked + img {
+  outline: 2px solid #f00;
+}
+
 @media (min-width: 1200px) {
   h2, .h2 {
     font-size: 2rem;
@@ -2543,7 +2558,7 @@ textarea.form-control-lg {
   margin-bottom: 0.125rem;
 }
 .form-check .form-check-input {
-  float: left;
+  /* float: left; */
   margin-left: -1.5em;
 }
 
