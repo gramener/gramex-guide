@@ -16,7 +16,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" /> -->
         <!-- Core theme CSS (includes Bootstrap)-->
         <!-- <link href="css/styles.css" rel="stylesheet" /> -->
-        <link href="/{{ GUIDE_ROOT }}/monokai.css" rel="stylesheet" />
+        <link href="/{{ GUIDE_ROOT }}/monokai.css" rel="stylesheet" />        
+        <link href="/ui/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet" />
         <link href="/{{ GUIDE_ROOT }}/assets/css/styles.css" rel="stylesheet" />
         
         <style>
@@ -53,11 +54,16 @@
                             <span class="small">Sign in</span>
                         </span>
                     </button> -->
-                    <button class="btn text-white btn-bg rounded-pill px-3 mb-2  mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                    <form class="form-inline">
+                        <input class="form-control form-control-sm shadow-none my-2 mr-2 d-none d-sm-block" type="search" id="search" size="30"
+                        placeholder="Search topics" data-prefix="/{{ GUIDE_ROOT }}/" data-url="/{{ GUIDE_ROOT }}/search/searchindex.json" 
+                        autocomplete="off">
+                      </form>
+                    <!-- <button class="btn text-white btn-bg rounded-pill px-3 mb-2  mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
                         <span class="d-flex align-items-center">
                             <span class="small">Download</span>
                         </span>
-                    </button>
+                    </button> -->
                 </div>
             </div>
         </nav>
@@ -139,10 +145,63 @@
                     <script src="/{{ GUIDE_ROOT }}/ui/g1/dist/g1.min.js"></script>                 
                     <div class="{{style_class}} content">
                         {% raw body %}
+                        <div class="my-5">
+                            <form class="border-top border-dark feedback text-center" data-url="/{{ GUIDE_ROOT }}/feedback">
+                                <input type="hidden" name="page" value="{{ handler.request.path }}">
+                                <div class="py-3">
+                                  <strong>Is this page helpful?</strong>
+                                  <div class="form-check d-inline">
+                                    <input class="form-check-input" type="radio" name="helpful" id="helpful-yes" value="y">
+                                    <label class="form-check-label" for="helpful-yes">
+                                      <i class="far fa-thumbs-up"></i> Yes
+                                    </label>
+                                  </div>
+                                  <div class="form-check d-inline">
+                                    <input class="form-check-input" type="radio" name="helpful" id="helpful-no" value="n">
+                                    <label class="form-check-label" for="helpful-no">
+                                      <i class="far fa-thumbs-down"></i> No
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="py-3 feedback-details d-none">
+                                  <textarea name="feedback" class="feedback-text form-control" placeholder="Any additional feedback?"></textarea>
+                                </div>
+                                <div class="py-3 feedback-details d-none">
+                                  <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+                                  <button type="reset" class="feedback-skip btn btn-sm btn-light">Skip</button>
+                                </div>
+                                <div class="py-3 feedback-thanks d-none">
+                                  Thanks for your feedback.
+                                </div>
+                              </form>
+                      
+                              <div class="text-center">
+                                <a class="btn btn-sm btn-primary my-1" href="https://stackoverflow.com/questions/tagged/gramex">Ask a question on StackOverflow</a>
+                                <a class="btn btn-sm btn-warning my-1" href="https://github.com/gramener/gramex/issues/new?labels=bug&title={{ title }}+issue">Report a bug on Github</a>
+                              </div>
+                      
+                              <div class="d-flex justify-content-between align-items-center py-4 border-top border-dark">
+                                <a href="https://gramener.com/" target="_blank"><img height="40" src="https://gramener.com/img-2019/gramener_icon.png" alt="Gramener"></a>
+                                <div class="sm1 text-uppercase">
+                                  <a href="/{{ GUIDE_ROOT }}/" class="text-dark">Gramex Guide</a>
+                                  |
+                                  <a href="https://gramener.com/platform/" class="text-dark">Powered by Gramex</a>
+                                </div>
+                                <div>
+                                  <a href="https://stackoverflow.com/questions/tagged/gramex" target="_blank" class="text-dark"><i class="fab fa-stack-overflow fa-2x ml-3" title="Gramex on StackOverflow"></i></a>
+                                  <a href="https://github.com/gramener/gramex/" target="_blank" class="text-dark"><i class="fab fa-github fa-2x ml-3" title="Gramex on Github"></i></a>
+                                </div>
+                              </div>
+                            </div>
+                    
                     </div>
                 </div>
+
+                
+
             </div>
         </section>
+        
         <!-- Basic features section-->
         <section class="bg-dark" id="download">
             <div class="container px-5">
