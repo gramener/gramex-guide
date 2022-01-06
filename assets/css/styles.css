@@ -182,7 +182,10 @@ h2, .h2 {
     var(--padding);
   margin-top: calc(0px - var(--header-height));
 }
-
+nav.sidebar.vertical-navigation {
+  height: 100vh;
+  overflow-y: scroll;
+  }
 
 @media (min-width: 1200px) {
   h2, .h2 {
