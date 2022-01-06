@@ -95,47 +95,55 @@
                 <div class="row gx-5">
                     {% if course_index== 'yes' %}
                     <div class="col-lg-4">
-                        <nav class="sidebar vertical-navigation">
-                            <ul class="nav flex-column">
-                                <li class="nav-item has-submenu">
-                                  <a class="nav-link" aria-current="page" href="/{{ GUIDE_ROOT }}/home/">
-                                      <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Overview</a>
-                                </li>
-                                <li class="nav-item has-submenu">
-                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/quickstart/">
-                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Quickstart tutorial</a>
-                                </li>
-                                <li class="nav-item has-submenu">
-                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/dashboards/">
-                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Dashboard tutorial</a>
-                                </li>
-                                <li class="nav-item has-submenu">
-                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/charts/">
-                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Charts tutorial</a>
-                                </li>
-                                <li class="nav-item has-submenu">
-                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/g1-dropdown/">
-                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Dropdown tutorial</a>
-                                </li>
-                                <li class="nav-item has-submenu">
-                                    <a class="nav-link" target="_blank" href="https://github.com/gramexrecipes/gramex-ml-workshop/">
-                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />ML app tutorial</a>
-                                </li>
-                                <li class="nav-item has-submenu">
-                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/exercises/">
-                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Exercises</a>
-                                </li>
-                                <!-- <li class="nav-item has-submenu">
-                                    <a class="nav-link d-flex" href="#">
-                                        <img class="d-inline mr-3 mt-2" src="/{{ GUIDE_ROOT }}/assets/img/g1full.png" />
-                                        <div>
-                                        <div>Gramener One (G1)</div>
-                                        <div class="small">One Stop Solution</div>
-                                        </div>
-                                        </a>
-                                </li> -->
-                              </ul>
-                        </nav>
+
+                        
+                        <div class="sidebar-2"><div class="sticky-spacer"></div>
+                        <div class="sticky-content">
+                            <nav class="sidebar vertical-navigation">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item has-submenu">
+                                      <a class="nav-link" aria-current="page" href="/{{ GUIDE_ROOT }}/home/">
+                                          <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Overview</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/quickstart/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Quickstart tutorial</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/dashboards/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Dashboard tutorial</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/charts/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Charts tutorial</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/g1-dropdown/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Dropdown tutorial</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" target="_blank" href="https://github.com/gramexrecipes/gramex-ml-workshop/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />ML app tutorial</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/exercises/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Exercises</a>
+                                    </li>
+                                    <!-- <li class="nav-item has-submenu">
+                                        <a class="nav-link d-flex" href="#">
+                                            <img class="d-inline mr-3 mt-2" src="/{{ GUIDE_ROOT }}/assets/img/g1full.png" />
+                                            <div>
+                                            <div>Gramener One (G1)</div>
+                                            <div class="small">One Stop Solution</div>
+                                            </div>
+                                            </a>
+                                    </li> -->
+                                  </ul>
+                            </nav>                          
+                          </div>
+                        </div>
+
+                        
                     </div>
                     {% end %}
                     {% set style_class = 'col-lg-8' if course_index == 'yes' else 'col' %}
@@ -144,6 +152,8 @@
                     <script src="/{{ GUIDE_ROOT }}/ui/lodash/lodash.min.js"></script>
                     <script src="/{{ GUIDE_ROOT }}/ui/g1/dist/g1.min.js"></script>                 
                     <div class="{{style_class}} content">
+                       <div class="sticky-spacer"></div>
+                       <div class="sticky-content">
                         {% raw body %}
                         <div class="my-5">
                             <form class="border-top border-dark feedback text-center" data-url="/{{ GUIDE_ROOT }}/feedback">
@@ -193,8 +203,9 @@
                                 </div>
                               </div>
                             </div>
-                    
                     </div>
+                    </div>
+                    
                 </div>
 
                 
