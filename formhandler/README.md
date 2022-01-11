@@ -1055,6 +1055,22 @@ picks up data. For example, take this structure:
 
 ```yaml
 url:
+  dynamic-file:
+    pattern: /csv
+    handler: FormHandler
+    kwargs:
+      url: $YAMLPATH/{file}.csv         # Maps ?file=data to data.csv
+```
+
+Now:
+
+- `/csv?file=1` fetches data from `1.csv`
+- `/csv?file=2` fetches data from `2.csv`
+- etc.
+
+This applies to database URLs and queries as well. For example:
+
+```yaml
   db-parameters:
     pattern: /db/$YAMLURL/(\w+)/(\w+)   # Maps /db/table to {_0:db, _1:table}
     handler: FormHandler

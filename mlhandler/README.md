@@ -48,7 +48,7 @@ url:
 MLHandler will then,
 
 1. instantiate a LogisticRegression model
-2. load the training data as a pandas dataframe
+2. load the training data as a Pandas DataFrame
 3. drop the excluded columns
 4. [one-hot encode](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html) the categorical columns and normalize any remaining columns -
    which are implicitly assumed to be numerical.
@@ -467,7 +467,7 @@ have access to the following variables:
 
 - `{{ handler }}`: The MLHandler instance
 - `{{ handler.model }}`: The sklearn object / estimator / model
-- `{{ data }}`: The training dataset, available as a pandas DataFrame.
+- `{{ data }}`: The training dataset, available as a Pandas DataFrame.
 
 `{{ handler.model }}` gives you access to the underlying sklearn object. This can
 be used in many ways to replicate sklearn code. For example,

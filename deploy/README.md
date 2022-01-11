@@ -150,6 +150,8 @@ script:
 
 ## Windows Service
 
+[Video](https://youtu.be/xKlcTo7IX6Q){.youtube}
+
 **v1.23**.
 To set up a Gramex application as a service, run PowerShell or the Command Prompt **as administrator**. Then:
 
@@ -210,6 +212,9 @@ If the service doesn't run, check the log files. Log files can be accessed as fo
 > service and where Python is installed. If the service fails to run, this will be why. NOTE: You
 > should consider copying this executable to the directory where these DLLs live -
 > "...\pywin32_system32" might be a good place.
+
+Or, when starting the service, you may get "Error starting service: The service did not respond to
+the start or control request in a timely fashion".
 
 In that case:
 
