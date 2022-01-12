@@ -1414,7 +1414,9 @@ To redirect on success, change `window.location` in `.done()`.
 
 ## Login actions
 
-When a user logs in or logs out, you can register actions as follows:
+You can add custom functions to any AuthHandler. These will run when a user succesfully logs in.
+
+For example:
 
 ```yaml
 url:
@@ -1422,22 +1424,38 @@ url:
     pattern: /$YAMLURL/google
     handler: GoogleAuth
     kwargs:
-      key: YOURKEY
-      secret: YOURSECRET
-      action:                                     # Run multiple function on Google auth
-        - function: ensure_single_session         # Logs user out of all other sessions
-        - function: sys.stderr.write('Logged in via Google')      # Write to console
+      # ...
+      action:                                       # After login,
+        - function: admin.send_alert_mail(handler)  # Run custom functions
+        - function: print(handler.current_user, 'logged in via Google')
 ```
 
-For example, the [ldap login](ldap?next=.) page is set with `ensure_single_session`.
-You can log in on multiple browsers. Every log in will log out other sessions.
+You can also add your custom logout actions when the user successfully logs out to
+[`LogoutHandler`](#log-out).
 
-You can write your own custom functions. By default, the function will be passed
-the `handler` object. You can define any other `args` or `kwargs` to pass
-instead. The actions will be executed in order.
+You can write your own custom functions. By default, the function will be passed the `handler`
+object. `handler.current_user` will have the current user (even in `LogoutHandler`). You can define
+any other `args` or `kwargs` to pass instead. The actions will be executed in order.
 
-When calling actions, `handler.current_user` will have the user object on all
-auth handlers and the `LogoutHandler`.
+
+## Ensure single login session
+
+When a user logs in, you can log them out from all other sessions on any other device using the
+`ensure_single_session` [login action](#login-actions):
+
+```yaml
+url:
+  login/google:
+    pattern: /$YAMLURL/google
+    handler: GoogleAuth
+    kwargs:
+      # ...
+      action:
+        - function: ensure_single_session   # Logs user out of all other sessions
+```
+
+You can add the `action:` section under the `kwargs:` of any Auth handler.
+
 
 ## User attributes
 

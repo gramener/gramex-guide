@@ -216,6 +216,9 @@ With additional libraries, FormHandler can connect to
 - [SAP Hana](https://github.com/SAP/sqlalchemy-hana)
   - Install: `pip install sqlalchemy-hana`
   - Use: `url: 'hana://$USER:$PASS@server:30015'`
+- [ServiceNow](https://pysnow.readthedocs.io/en/latest/)
+  - Install: `pip install pysnow`
+  - Use: `url: 'servicenow://user:password@hostname.com/table/incident'`
 - [Snowflake](https://pypi.org/project/snowflake-sqlalchemy/)
   - Install: `pip install snowflake-sqlalchemy`
   - Use: `url: 'snowflake://$USER:$PASS@$ACCOUNT.$REGION/$DATABASE?role=$ROLE&warehouse=$WAREHOUSE'`

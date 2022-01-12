@@ -1,6 +1,23 @@
 {
   "releases": [
     {
+      "version": "v1.75.0",
+      "link": "https://gramener.com/gramex/guide/release/1.74/",
+      "title": "ServiceNow connector, MongoDB write-back",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/formhandler/#supported-databases",
+          "title": "ServiceNow connector",
+          "description": "FormHandler can read from ServiceNow."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/formhandler/#supported-databases",
+          "title": "MongoDB write-back",
+          "description": "FormHandler can write back to MongoDB databases."
+        }
+      ]
+    },
+    {
       "version": "v1.74.0",
       "link": "https://gramener.com/gramex/guide/release/1.74/",
       "title": "UIFactory events, InfluxDB support, Comicgen icons",

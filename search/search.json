@@ -745,6 +745,9 @@
     "encrypted-user": {
       "Encrypted user": -1
     },
+    "ensure-single-login-session": {
+      "Ensure single login session": -1
+    },
     "facebook-auth": {
       "Facebook auth": -1
     },
@@ -1356,6 +1359,9 @@
     "missing-dependency": {
       "Missing dependency": -1
     },
+    "multiple-windows-services": {
+      "Multiple Windows Services": -1
+    },
     "mymodulepy": {
       "mymodule.py": -1
     },
@@ -1415,6 +1421,9 @@
     },
     "testing": {
       "Testing": -1
+    },
+    "troubleshooting-windows-services": {
+      "Troubleshooting Windows Services": -1
     },
     "using-relative-urls": {
       "Using relative URLs": -1
@@ -1935,17 +1944,19 @@
     "function-arguments-from-url": {
       "Function arguments from URL": -1
     },
-    "function-headers": {
-      "Function headers": -1
-    },
-    "function-methods": {
-      "Function methods": -1
-    },
+    "function-headers": {},
+    "function-methods": {},
     "function-output": {
       "Function output": -1
     },
     "function-redirection": {
       "Function redirection": -1
+    },
+    "http-headers": {
+      "HTTP headers": -1
+    },
+    "http-methods": {
+      "HTTP methods": -1
     },
     "parse-url-arguments": {
       "Parse URL arguments": -1
@@ -2504,6 +2515,9 @@
       "Clone shapes": -1
     },
     "color-scales": {},
+    "color-scales-on-maps": {
+      "Color scales on maps": -1
+    },
     "color-units": {
       "Color units": -1
     },
@@ -2535,9 +2549,7 @@
     "image": {
       "Image": -1
     },
-    "index": {
-      "Index": -1
-    },
+    "index": {},
     "length-units": {
       "Length units": -1
     },
@@ -2685,6 +2697,23 @@
     },
     "see-the-result": {
       "See the result": -1
+    }
+  },
+  "pptxhandler/choropleth": {
+    "create-the-data": {
+      "Create the data": -1
+    },
+    "create-the-rules": {
+      "Create the rules": -1
+    },
+    "create-the-source-template": {
+      "Create the source template": -1
+    },
+    "see-the-result": {
+      "See the result": -1
+    },
+    "us-election-results-map": {
+      "US Election Results Map": -1
     }
   },
   "pptxhandler/clone-shape": {
@@ -4658,6 +4687,47 @@
       "UIFactory inline scripts": -1
     }
   },
+  "release/1.75": {
+    "": {
+      "Gramex 1.75 release notes": -1
+    },
+    "allow-computing-variables-from-functions-on-first-load": {
+      "Allow computing variables from functions on first load": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "filehandler-reloads-index-templates": {
+      "FileHandler reloads index templates": -1
+    },
+    "formhandler-writes-data-to-mongodb": {
+      "FormHandler writes data to MongoDB": -1
+    },
+    "gramex-diagnostics": {
+      "Gramex diagnostics": -1
+    },
+    "gramex-reloads-after-invalid-configurations": {
+      "Gramex reloads after invalid configurations": -1
+    },
+    "gramex-windows-service-shutdown-is-graceful": {
+      "Gramex Windows Service shutdown is graceful": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "page-redirection-works-after-restart": {
+      "Page redirection works after restart": -1
+    },
+    "servicenow-data-connector": {
+      "ServiceNow data connector": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "users-are-not-logged-out-unexpectedly": {
+      "Users are not logged out unexpectedly": -1
+    }
+  },
   "release/old": {
     "": {
       "Gramex Old Release Notes": -1
@@ -5998,6 +6068,32 @@
     },
     "tutorial": {
       "Tutorial": -1
+    }
+  },
+  "workshop/influxdb": {
+    "": {
+      "Visualizing Subsurface Float Movement with InfluxDB & FormHandler": -1
+    },
+    "step-0-prerequisites": {
+      "Step 0: Prerequisites": -1
+    },
+    "step-1-getting-the-data": {
+      "Step 1: Getting the data": -1
+    },
+    "step-2-setting-up-formhandler-for-influxdb": {
+      "Step 2: Setting Up FormHandler for InfluxDB": -1
+    },
+    "step-21-the-gramex-app-specification": {
+      "Step 2.1: The Gramex App Specification": -1
+    },
+    "step-22-push-data-to-influxdb": {
+      "Step 2.2: Push Data to InfluxDB": -1
+    },
+    "step-23-add-a-map": {
+      "Step 2.3: Add a Map": -1
+    },
+    "step-3-plotting-the-data-on-the-map": {
+      "Step 3: Plotting the Data on the Map": -1
     }
   },
   "workshop\\building-ml-apps-rapidly": {
