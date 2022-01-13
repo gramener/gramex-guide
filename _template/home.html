@@ -133,36 +133,196 @@
                                   </ul>
                                   <hr>
                                   <div class="inline-block"><i class="fa fa-star"></i><h5 class="pad-lf-4">Usage</h5></div>
-                                  <ul class="nav flex-column menu-highlighter">                                      
-                                      <li class="nav-item has-submenu">
-                                        <a class="nav-link" aria-current="page" href="/{{ GUIDE_ROOT }}/home/">
-                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Overview</a>
-                                      </li>
-                                      <li class="nav-item has-submenu">
-                                          <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/quickstart/">
-                                              <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Quickstart tutorial</a>
-                                      </li>
-                                      <li class="nav-item has-submenu">
-                                          <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/dashboards/">
-                                              <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Dashboard tutorial</a>
-                                      </li>
-                                      <li class="nav-item has-submenu">
-                                          <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/charts/">
-                                              <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Charts tutorial</a>
-                                      </li>
-                                      <li class="nav-item has-submenu">
-                                          <a class="nav-link" href="/{{ GUIDE_ROOT }}/tutorials/g1-dropdown/">
-                                              <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Dropdown tutorial</a>
-                                      </li>
-                                      <li class="nav-item has-submenu">
-                                          <a class="nav-link" target="_blank" href="https://github.com/gramexrecipes/gramex-ml-workshop/">
-                                              <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />ML app tutorial</a>
-                                      </li>
-                                      <li class="nav-item has-submenu">
-                                          <a class="nav-link" href="/{{ GUIDE_ROOT }}/exercises/">
-                                              <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Exercises</a>
-                                      </li>                                      
-                                    </ul>
+                                  <ul class="nav flex-column menu-highlighter">                                                                                                                                           
+                                    <li class="nav-item has-submenu">
+                                    <a class="nav-link" aria-current="page" href="/{{ GUIDE_ROOT }}/install/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Install Gramex</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/init/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Gramex init</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/config/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Configurations</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/deploy/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Deployment patterns</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/debug/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Debugging Gramex</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" target="_blank" href="/{{ GUIDE_ROOT }}/security/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Security</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/test/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Testing Gramex</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/tips/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Tips</a>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/snippets/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />VS Code Snippets</a>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/contributing/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Contributing</a>
+                                </li>
+                            </ul>
+                            <hr>
+                                  <div class="inline-block"><i class="fa fa-star"></i><h5 class="pad-lf-4">Microservices</h5></div>
+                                  <ul class="nav flex-column menu-highlighter">                                                                                                                                           
+                                    <li class="nav-item has-submenu">
+                                    <a class="nav-link" aria-current="page" href="/{{ GUIDE_ROOT }}/filehandler/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />FileHandler</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/formhandler/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />FormHandler</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/functionhandler/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />FunctionHandler</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/auth/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Auth handlers</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/drivehandler/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />DriveHandler</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" target="_blank" href="/{{ GUIDE_ROOT }}/capturehandler/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />CaptureHandler</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/mlhandler/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />MLHandler</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/pptxhandler/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />PPTXHandler</a>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/comichandler/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />ComicHandler</a>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/openapihandler/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />OpenAPIHandler</a>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/filterhandler/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />FilterHandler</a>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/jsonhandler/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />JSONHandler</a>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/proxyhandler/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />ProxyHandler</a>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/processhandler/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />ProcessHandler</a>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/websockethandler/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />WebSocketHandler</a>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/twitterresthandler/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />TwitterRESTHandler</a>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/facebookgraphhandler/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />FacebookGraphHandler</a>
+                                </li>
+                                <li class="nav-item has-submenu">
+                                    <a class="nav-link" href="/{{ GUIDE_ROOT }}/handlers/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Write handlers</a>
+                                </li>
+                            </ul>
+                            <hr>
+                                  <div class="inline-block"><i class="fa fa-star"></i><h5 class="pad-lf-4">Libraries</h5></div>
+                                  <ul class="nav flex-column menu-highlighter">                                                                                                                                           
+                                    <li class="nav-item has-submenu">
+                                    <a class="nav-link" aria-current="page" href="/{{ GUIDE_ROOT }}/topcause/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />TopCause</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/cache/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Cache requests</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/email/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Send email</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/alert/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Smart alerts</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/logging/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Logging</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" target="_blank" href="/{{ GUIDE_ROOT }}/scheduler/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Schedule tasks</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/watch/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Watch files</a>
+                                    </li>                                    
+                            </ul>
+                            <hr>
+                                  <div class="inline-block"><i class="fa fa-star"></i><h5 class="pad-lf-4">Apps</h5></div>
+                                  <ul class="nav flex-column menu-highlighter">                                                                                                                                           
+                                    <li class="nav-item has-submenu">
+                                    <a class="nav-link" aria-current="page" href="/{{ GUIDE_ROOT }}/apps/">
+                                        <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Run apps</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/admin/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Admin page</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/chart/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Charts</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/uicomponents/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />UI Components</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/uifactory/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />UIFactory</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" target="_blank" href="/{{ GUIDE_ROOT }}/g1/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />g1</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/mapviewer/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Mapviewer</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/logviewer/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />View logs</a>
+                                    </li>
+                                    <li class="nav-item has-submenu">
+                                        <a class="nav-link" href="/{{ GUIDE_ROOT }}/languagetool/">
+                                            <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Language Tool</a>
+                                    </li>                                   
+                            </ul>
                             </nav>                          
                           </div>
                         </div>
