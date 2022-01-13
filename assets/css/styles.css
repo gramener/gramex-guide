@@ -319,11 +319,11 @@ sup {
 }
 
 a {
-  color: #2937f0;
+  color: #5aa0e8;
   text-decoration: underline;
 }
 a:hover {
-  color: #212cc0;
+  color: #5aa0e8;
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
@@ -337,7 +337,7 @@ kbd,
 samp {
   font-family: var(--bs-font-monospace);
   font-size: 1em;
-  direction: ltr /* rtl:ignore */;
+  direction: ltr /* rtl:ignore ;
   unicode-bidi: bidi-override;
 } */
 
@@ -348,6 +348,11 @@ samp {
   overflow: auto;
   font-size: 0.875em;
 } */
+code {
+  font-size: 87.5%;
+  color: #e83e8c;
+  word-wrap: break-word;
+}
 pre code {
   font-size: inherit;
   color: inherit;
@@ -11486,15 +11491,26 @@ section {
 }
 /* Academy Page */
 
-.vertical-navigation {
+/* .vertical-navigation {
   border-left: 1px solid #c2c2c2;
+} */
+.menu-highlighter {
+  border-left: 1px solid #c2c2c2;
+}
+.pad-lf-4 {
+  padding-left: 4px;
 }
 .vertical-navigation a{
   color: #333;
   font-weight: 400;
-  font-size: 1.10rem;
+  /* font-size: 1.10rem; */
+  font-size: 14px;
   display: inline-block;
-    padding: 10px 0 10px 20px;
+  padding: 4px 8px;
+    /* padding: 10px 0 10px 20px; */
+}
+.inline-block {
+  display: -webkit-box;
 }
 .vertical-navigation a.active{
   color: #ff4f45 !important;
