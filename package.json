@@ -24,6 +24,6 @@
     "front-matter": "3",
     "glob": "7",
     "markdownlint-cli": "0.28",
-    "marked": "0.7"
+    "marked": "4.0"
   }
 }
