@@ -108,6 +108,12 @@ Here are some examples:
     every: 2.5 hours
 ```
 
+If the function takes long and runs beyond the next scheduled time, it skips the next schedule
+and continues on schedule after that.
+
+For example, a function scheduled every 10 seconds but takes 15 seconds to run will actually run
+every 20 seconds.
+
 ## Scheduler preview
 
 You can run schedules manually using the
