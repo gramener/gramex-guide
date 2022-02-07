@@ -1,6 +1,6 @@
 # Add guide-specific dependencies
 conda install -y -q -c r rpy2 r-ggplot2 r-rmarkdown
-pip install 'openpyxl>=3.0.4' boto3 markdown-customblocks mdx_truly_sane_lists textblob
+pip install boto3 markdown-customblocks mdx_truly_sane_lists nltk textblob
 
 # Set up apps
 # -----------
