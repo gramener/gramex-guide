@@ -904,9 +904,7 @@
     "data-caching": {
       "Data caching": -1
     },
-    "mixing-python-versions": {
-      "Mixing Python versions": -1
-    },
+    "mixing-python-versions": {},
     "module-caching": {
       "Module caching": -1
     },
@@ -4728,6 +4726,32 @@
       "Users are not logged out unexpectedly": -1
     }
   },
+  "release/1.76": {
+    "": {
+      "Gramex 1.76 release notes": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "gramex-is-ready-for-python-39": {
+      "Gramex is ready for Python 3.9": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "schedulers-run-every-second": {
+      "Schedulers run every second": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "tutorial-videos": {
+      "Tutorial videos": -1
+    }
+  },
   "release/old": {
     "": {
       "Gramex Old Release Notes": -1
@@ -5385,9 +5409,46 @@
     "": {
       "Schedule tasks": -1
     },
-    "schedule-examples": {
-      "Schedule examples": -1
+    "if-its-a-weekday-in-2016-2025": {
+      "(if it's a weekday) in 2016-2025.": -1
     },
+    "run-at-530-am-utc-not-local-time-zone-daily": {
+      "Run at 5:30 am UTC (not local time zone) daily": -1
+    },
+    "run-at-8-am-10-am-12-noon-2-pm-6-pm-daily-local-time-and-on-startup": {
+      "Run at 8 am, 10 am, 12 noon, 2 pm, 6 pm daily (local time), and on startup": -1
+    },
+    "run-at-the-15th-and-45th-minute-every-4-hours-on-the-first-and-last-day-of-the-month": {
+      "Run at the 15th and 45th minute every 4 hours on the first and last day of the month": -1
+    },
+    "run-every-2-hours-on-the-hour-from-9-am-to-5-pm-and-on-startup": {
+      "Run every 2 hours, on the hour, from 9 am to 5 pm, and on startup": -1
+    },
+    "run-every-25-hours": {
+      "Run every 2.5 hours": -1
+    },
+    "run-every-90-seconds": {
+      "Run every 90 seconds": -1
+    },
+    "run-every-hour-on-the-hour-ie-minutesseconds0-in-a-separate-thread": {
+      "Run every hour, on the hour (i.e. minutes=seconds=0), in a separate thread:": -1
+    },
+    "run-every-minute-and-a-half-same-as-90-seconds": {
+      "Run every minute and a half (same as 90 seconds)": -1
+    },
+    "run-every-saturday-at-2-am-utc": {
+      "Run every Saturday at 2 am UTC": -1
+    },
+    "run-on-startup-and-re-runs-every-time-the-yaml-file-changes": {
+      "Run on startup, and re-runs every time the YAML file changes:": -1
+    },
+    "run-on-the-first-and-15th-of-every-month-at-1030-am-utc": {
+      "Run on the first and 15th of every month at 10:30 am UTC": -1
+    },
+    "run-only-on-startup-and-never-run-again": {
+      "Run only on startup, and never run again": -1
+    },
+    "schedule-examples": {},
     "schedule-timing": {
       "Schedule timing": -1
     },

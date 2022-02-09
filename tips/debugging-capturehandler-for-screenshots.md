@@ -5,10 +5,7 @@ prefix: Tip
 
 CaptureHandler has an option to debug at PhantomJS level. This is documented in the [guide for CaptureHandler](../capturehandler/#screenshot-service).
 
-While sending the request, you can mention a debug flag as below
-
-    :::yaml
-    /capture?debug=2&delay=3000&url=...
+While sending the request, you can mention a debug flag like this: `/capture?debug=2&delay=3000&url=...`.
 
 - `?debug=1` logs all responses, HTTP codes along with console.log messages
 - `?debug=2` logs the above + all HTTP requests

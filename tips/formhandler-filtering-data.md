@@ -9,10 +9,11 @@ Gramex 1.21 has a powerful handler called [FormHandler](../formhandler/). This m
 
 You can just point to a CSV, XLSX or HDF file.
 
-    :::yaml
-    handler: FormHandler
-    kwargs:
-        url: $YAMLPATH/flags.csv
+```yaml
+handler: FormHandler
+kwargs:
+    url: $YAMLPATH/flags.csv
+```
 
 The result looks like [this](../formhandler/flags)
 
@@ -20,11 +21,12 @@ The result looks like [this](../formhandler/flags)
 
 If you want to return data after performing calculations, add a function:
 
-    :::yaml
-    handler: FormHandler
-    kwargs:
-      url: $YAMLPATH/flags.csv
-      function: mymodule.myfunction(data)
+```yaml
+handler: FormHandler
+kwargs:
+  url: $YAMLPATH/flags.csv
+  function: mymodule.myfunction(data)
+```
 
 This uses the results of mymodule.myfunction(data) instead of data.
 
@@ -32,7 +34,7 @@ This uses the results of mymodule.myfunction(data) instead of data.
 
 Just change the URL from the file to an SQLAlchemy URL. You need to specify a table. You can optionally add a query.
 
-    :::yaml
+```yaml
     url: 'mysql+pymysql://$USER:$PASS@server/db'
     table: sales
     query: 'SELECT * FROM sales ORDER BY date DESC'
@@ -43,6 +45,7 @@ Just change the URL from the file to an SQLAlchemy URL. You need to specify a ta
 
     url: 'sqlite:///D:/path/to/file.db'
     table: sales
+```
 
 ## Filter with ease
 
