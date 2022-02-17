@@ -1,7 +1,4 @@
-import os
-import requests
 import gramex.ml
-import tornado.gen
 
 
 def autolyse_add(data):
