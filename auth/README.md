@@ -43,24 +43,26 @@ app:
 
 ## Session security
 
-The session cookie is:
+The session cookie can have the following configurations:
 
-- [HttpOnly](https://www.owasp.org/index.php/HttpOnly): You cannot access the
-  cookie via JavaScript using `document.cookie`
-- [Secure](https://www.owasp.org/index.php/SecureFlag) on HTTPS connections. If
-  you set the cookie on a HTTPS request, you cannot access it via HTTP.
-- [Domain](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie):
-  not specified. The cookie can be accessed by the Gramex server that sets the
-  cookie, but not subdomains.
+- [`httponly`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#httponly):
+  `true` prevents JavaScript from using `document.cookie`. Default: `true`
+- [`secure`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#secure): `true`
+  prevents HTTP requests from accessing the cookie. Only HTTPS is allowed. Default: `false`
+- [`domain`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie): `example.org`
+  restricts the cookie to `example.org` and its subdomains. (Default: not specified, which
+  restricts the cookie to the host of the current document URL, not including subdomains.)
 
-You can change these defaults as follows:
+You can change these defaults to a more secure setting as follows:
 
 ```yaml
 app:
   session:
-    httponly: false         # Allow JavaScript access via document.cookie
-    secure: false           # Cookies can be accessed via HTTP (not just HTTPS)
-    domain: .example.org    # All subdomains in .example.org can access session
+    httponly: true        # Allow JavaScript access via document.cookie
+    secure: true          # Cookies can be accessed only via HTTPS (not HTTP)
+    samesite: Strict      # Browser sends the cookie only for same-site requests.
+                          # Values can be Strict, Lax or None. (Case-sensitive)
+    domain: example.org   # All subdomains in *.example.org can access session
 ```
 
 The cookie is stored for `app.session.expiry` days. Here is the default configuration:
