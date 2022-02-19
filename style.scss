@@ -34,8 +34,8 @@ h3 { font-size: 1.25rem; font-weight: 600; margin-top: 2em; }
 .content h1:first-child { margin-top: 0; }
 
 /* Tables should have borders */
-table thead th { border-bottom: 1px solid #000; }
-table tbody td { border-bottom: 1px solid #eee; }
+table thead th { padding: 0 0.3rem; border-bottom: 1px solid #000; }
+table tbody td { padding: 0 0.3rem; border: 1px solid #eee; }
 
 /* Style the sidebar menu */
 @media print {

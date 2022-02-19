@@ -1,8 +1,17 @@
 url:
-    jsonhandler-data:
-        pattern: /$YAMLURL/data/(.*)
-        handler: JSONHandler
-        kwargs:
-            data:
-                y: {a: 1, b: 2}
-                z: [1, 2, 3]
+  jsonhandler-data:
+    pattern: /$YAMLURL/data/(.*)
+    handler: JSONHandler
+    kwargs:
+      data:
+        y: {a: 1, b: 2}
+        z: [1, 2, 3]
+
+  jsonhandler-update2:
+    pattern: /$YAMLURL/data2/(.*)
+    handler: JSONHandler
+    kwargs:
+      data:
+        y: {a: 1, b: 2}
+        z: [1, 2, 3]
+      xsrf_cookies: false

@@ -7,236 +7,108 @@ by: TeamGramener
 type: microservice
 ...
 
-[JSONHandler][jsonhandler] offers a persistent key-value store with an API inspired by
-[Firebase](https://www.firebase.com/docs/rest/api/). For example:
+JSONHandler offers a persistent key-value store with an API inspired by
+[Firebase](https://www.firebase.com/docs/rest/api/).
+
+Set it up with:
 
 ```yaml
 url:
-    jsonhandler-data:
-        pattern: /$YAMLURL/data/(.*)
-        handler: JSONHandler
-        kwargs:
-            # Optional location where JSON data is persisted.
-            # (If path is not specified, the JSON data is not persisted.
-            #  When Gramex restarts, the data is lost.)
-            path: $GRAMEXDATA/jsonhandler.json
-
-            # Optional initial dataset to be used -- used only if path is
-            # not specified. (Defaults to null.)
-            data: {x: 1}
+  jsonhandler-data:
+    pattern: /$YAMLURL/data/(.*)
+    handler: JSONHandler
+    kwargs:
+      path: $GRAMEXDATA/jsonhandler.json    # JSON data source
+      data: {x: 1}    # Initial dataset. Used if path: is not specified. Default: null
 ```
 
-The examples below use [jQuery.ajax][jquery-ajax] and the [cookie.js][cookie.js]
-libraries.
+To [fetch](https://developer.mozilla.org/en-US/docs/Web/API/fetch) this data, you can use this code in JavaScript:
 
-[jquery-ajax]: http://api.jquery.com/jquery.ajax/
-[cookie.js]: https://github.com/florian/cookie.js
-[jsonhandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.JSONHandler
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cookie.js/1.2.0/cookie.min.js"></script>
-
+```js
+let response = await fetch('data/', { method: 'GET' })
+if (response.ok)
+  let result = await response.json()
+```
 
 ## GET - read data
 
-You can read data via a GET request:
+You can read data via a HTTP GET request.
 
-```js
-$.ajax('data/')
-// OUTPUT
-```
-
-You can read data from a specific key:
-
-```js
-$.ajax('data/y')    // OUTPUT
-```
-
-... or from a sub-key:
-
-```js
-$.ajax('data/y/a')  // OUTPUT
-```
-
-Missing keys return `null`:
-
-```js
-$.ajax('data/na')   // OUTPUT
-```
-
-Array values can be accessed via integer path elements:
-
-```js
-$.ajax('data/z/0')  // OUTPUT
-```
-
+| Request             | Response |                                 |
+|:--------------------|:--------:|:--------------------------------|
+| `GET data/`         |    ⌛    | Fetches all data                |
+| `GET data/y`        |    ⌛    | Fetches key `data.y`            |
+| `GET data/y/a`      |    ⌛    | Fetches sub-key `data.y.a`      |
+| `GET data/z/0`      |    ⌛    | Fetches array value `data.z[0]` |
+| `GET data/na`       |    ⌛    | Missing paths return null       |
 
 ## PUT - write data
 
-You can write JSON data via a PUT request.
+You can write JSON data via a HTTP PUT request.
 
-```js
-$.ajax('data/new', {
-  method: 'PUT',
-  data: '{"x": 1}'
-})  // OUTPUT
-```
-
-This stores the JSON value as-is:
-
-```js
-$.ajax('data/new')        // OUTPUT
-```
-
-Incorrect values raise an error:
-
-```js
-$.ajax('data/invalid', {
-  method: 'PUT',
-  data: 'xxx'             // Invalid JSON
-})  // OUTPUT
-```
-
-## POST - add data
-
-You can add new records via a POST request. First, let's start with an empty object.
-
-```js
-$.ajax('data/list', {method: 'DELETE'})    // OUTPUT
-```
-
-... and POST a record to it.
-
-```js
-$.ajax('data/list', {
-  method: 'POST',
-  data: '{"x": 1}'
-})                      // OUTPUT
-```
-
-Records are added with a unique random key. The final dataset looks like this:
-
-```js
-$.ajax('data/list')
-// OUTPUT
-```
-
-## PATCH - update data
-
-You can update existing data via PATCH. For example, the initial data:
-
-```js
-$.ajax('data/y')        // OUTPUT
-```
-
-... can be updated via PATCH:
-
-```js
-$.ajax('data/y', {
-  method: 'PATCH',
-  data: '{"c":3}'
-})                      // OUTPUT
-```
-
-The result is:
-
-```js
-$.ajax('data/y')        // OUTPUT
-```
+| Request             | Data       | Response |                                 |
+|:--------------------|:----------:|:--------:|:--------------------------------|
+| `PUT data2/new`     | `{"x": 1}` |    ⌛    | Set data to `{"x": 1}`          |
+| `GET data2/new`     |            |    ⌛    | Result is set                   |
+| `PUT data2/new`     | `xxx`      |    ⌛    | Invalid JSON raises an error    |
 
 ## DELETE - remove data
 
-You can delete any key via DELETE. For example, the initial data:
+You can delete any key via DELETE.
 
-```js
-$.ajax('data/y')        // OUTPUT
-```
+| Request                | Data               | Response |                       |
+|:-----------------------|:------------------:|:--------:|:----------------------|
+| `PUT data2/tmp`        | `{"x": {"y": 1}}`  |    ⌛    | Set `tmp.x.y: 1`      |
+| `DELETE data2/tmp/x/y` |                    |    ⌛    | Delete `tmp.x.y`      |
+| `GET data2/tmp`        |                    |    ⌛    | Result is `tmp.x: {}` |
+| `DELETE data2/tmp/x`   |                    |    ⌛    | Delete `tmp.x`        |
+| `GET data2/tmp`        |                    |    ⌛    | Result is `tmp: {}`   |
+| `DELETE data2/tmp`     |                    |    ⌛    | Delete `tmp`          |
+| `GET data2/tmp`        |                    |    ⌛    | Result is `{}`        |
 
-... can have keys removed:
+## POST - add data
 
-```js
-$.ajax('data/y/a', {
-  method: 'DELETE'
-})                      // OUTPUT
-```
+You can add new records via a POST request.
 
-The result is:
+| Request             | Data       | Response |                                 |
+|:--------------------|:----------:|:--------:|:--------------------------------|
+| `DELETE data2/list` |            |    ⌛    | Delete `.list`                  |
+| `POST data2/list`   | `{"x": 1}` |    ⌛    | Creates unique random key       |
+| `GET data2/list`    |            |    ⌛    | Record stored with unique key   |
+| `POST data2/list`   | `{"x": 2}` |    ⌛    | Creates unique random key       |
+| `GET data2/list`    |            |    ⌛    | Record stored with unique key   |
 
-```js
-$.ajax('data/y')        // OUTPUT
-```
+## PATCH - update data
+
+You can update existing data via PATCH.
+
+| Request             | Data       | Response |                                 |
+|:--------------------|:----------:|:--------:|:--------------------------------|
+| `PUT data2/new`     | `{"x": 1}` |    ⌛    | Creates a new record            |
+| `PATCH data2/new`   | `{"y": 2}` |    ⌛    | Update record with new data     |
+| `GET data2/new`     |            |    ⌛    | Result has both entries         |
 
 ## Escaping slash in keys
 
-If your key has a `/` in it, use `\\/` to escape it. For example:
+If your key has a `/` in it, use `%5C/` (`\/`) to escape it in the URL.
 
-```js
-$.ajax('data/', {
-  method: 'PUT',
-  data: '{"escaped\\/key": "OK"}'
-})  // OUTPUT
-```
+| Request                | Data         | Response |                                 |
+|:--------------------   |:------------:|:--------:|:--------------------------------|
+| `PUT data2/esc`        | `{"x/y": 1}` |    ⌛    | Creates a record with `/` in it |
+| `GET data2/esc/x%5C/y` |              |    ⌛    | Use `%5C/` to escape the `/`    |
 
-Now, you can fetch the key as a single unit. For example:
-
-```js
-$.ajax('data/' + encodeURIComponent('escaped\\/key'))
-// OUTPUT
-```
-
-- Note: `\\/` in Javascript translates to the string `\/`. So the key is stored as `escaped\/key`
-- Note: always use `encodeURIComponent` when fetching paths. Without this, `\` is converted to `/`.
 
 ## Method override
 
-You can use the `X-HTTP-Method-Override` header to override the method. For
-example, this is the same as a PUT request:
+You can use the `X-HTTP-Method-Override` header or the `?x-http-method-override=` query parameter
+to override the HTTP method. For example, these three are equivalent:
 
 ```js
-$.ajax('data/new', {
-    method: 'POST',
-    headers: {
-      'X-HTTP-Method-Override': 'PUT',
-    },
-    data: '1'
-})  // OUTPUT
-```
-
-You an also use the `?x-http-method-override=` query parameter:
-
-```js
-$.ajax('data/new?x-http-method-override=PUT', {
-    method: 'POST',
-    data: '1'
-})  // OUTPUT
+fetch('data/new', { method: 'DELETE' })
+fetch('data/new', { headers: { 'X-HTTP-Method-Override': 'DELETE' } })
+fetch('data/new?x-http-method-override=DELETE')
 ```
 
 **NOTE:** The method must be in capitals, e.g. `PUT`, `DELETE`, `PATCH`, etc.
 
-<script>
-var pre = [].slice.call(document.querySelectorAll('pre'))
-function next() {
-  var element = pre.shift()
-  var text = element.textContent
-  if (text.match(/RUN/))
-    return eval.call(this, text).always(next)
-  if (!text.match(/OUTPUT/))
-    return setTimeout(next, 0)
-  if (text.match(/\$.ajax/)) {
-    eval(text)
-      .always(function(result) {
-        element.innerHTML = element.innerHTML.replace(/OUTPUT/, 'returns: ' + JSON.stringify(result))
-        if (pre.length > 0) { next() }
-      })
-  } else if (text.match(/fetch/)) {
-    eval(text).then(function(response) {
-      return response.text()
-    }).then(function(result) {
-      element.innerHTML = element.innerHTML.replace(/OUTPUT/, 'returns: ' + result)
-      if (pre.length > 0) {
-        next()
-      }
-    })
-  }
-}
-next()
-</script>
+<script src="script.js"></script>
