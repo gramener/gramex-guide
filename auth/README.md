@@ -49,6 +49,8 @@ The session cookie can have the following configurations:
   `true` prevents JavaScript from using `document.cookie`. Default: `true`
 - [`secure`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#secure): `true`
   prevents HTTP requests from accessing the cookie. Only HTTPS is allowed. Default: `false`
+- [`samesite`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value): `Strict`
+  forces the browser to send cookies only for requests from the same site. Default: `Lax`
 - [`domain`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie): `example.org`
   restricts the cookie to `example.org` and its subdomains. (Default: not specified, which
   restricts the cookie to the host of the current document URL, not including subdomains.)
@@ -73,8 +75,18 @@ app:
     expiry: 31              # Sessions expire after 31 days by default
 ```
 
-You can override session expiry duration with a `session_expiry: <days>` kwarg
-under any auth handler. See [session expiry](#session-expiry).
+Set `session_expiry: false` to create **session cookies**. Session cookies expire when the browser
+is closed. (Note: Gramex automatically expires session cookies on the server after 1 day, even if
+the browser is open for longer.)
+
+```yaml
+app:
+  session:
+    expiry: false           # Sessions expire when browser closes
+```
+
+You can override session expiry for individual auth handlers with a `session_expiry: <days>` kwarg.
+See [session expiry](#session-expiry).
 
 The cookies are encrypted using the `app.settings.cookie_secret` key. Change
 this to a random secret value, either via `gramex --settings.cookie_secret=...`
@@ -1440,6 +1452,36 @@ object. `handler.current_user` will have the current user (even in `LogoutHandle
 any other `args` or `kwargs` to pass instead. The actions will be executed in order.
 
 
+## Failed login delay
+
+To slow down hackers guessing passwords, add a `delay:` parameter under `kwargs:`. For example:
+
+```yaml
+url:
+  login/simple:
+    pattern: /$YAMLURL/simple
+    handler: SimpleAuth
+    kwargs:
+      delay: 5        # Wait 5 seconds before reporting wrong password
+      credentials:
+        alpha: alpha
+        beta: beta
+```
+
+::: example href=delay source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    Failed login delay example
+
+In the above example, you can log in as `alpha` / `alpha` instantaneously. But if you enter an
+incorrect password, it takes 5 seconds to report that.
+
+The `delay:` can be specified as a number or an array of numbers. For example:
+
+- `delay: 5`: Every failed login is reported 5 seconds later
+- `delay: [1, 2, 5]`
+  - The first failed login is reported 1 second later
+  - The second failed login is reported 2 seconds later
+  - Subsequent failed logins are reported 5 seconds later
+
 ## Ensure single login session
 
 When a user logs in, you can log them out from all other sessions on any other device using the
@@ -1557,6 +1599,7 @@ url:
           day: 1          # If ?remember=day, session expires in 1 day
           week: 7         # If ?remember=week, session expires in 7 days
           month: 31       # If ?remember=month, session expires in 31 days
+          session: false  # If ?remember=session, session expires when browser closes
 ```
 
 ::: example href=customexpiry source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
