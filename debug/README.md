@@ -79,9 +79,11 @@ has changed.
 Press `Ctrl+D` on the console to start the [Python debugger](#python-debugger)
 inside Gramex at any time.
 
-On Linux, run `gramex --settings.debug` to trigger [debug mode][debug-mode] in
-Tornado. This auto-reloads templates, Python scripts, etc. when any of them
-change.
+Run `gramex --settings.debug` to trigger the [debug mode][debug-mode].
+When any template or Python file changes, the application will reload.
+
+On Windows, you need to run `python -m gramex --settings.debug` instead,
+due to a [Tornado issue](https://github.com/bokeh/bokeh/issues/8529#issuecomment-451328922).
 
 [debug-mode]: http://www.tornadoweb.org/en/stable/guide/running.html?highlight=debug#debug-mode-and-automatic-reloading
 

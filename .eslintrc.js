@@ -1,6 +1,6 @@
 module.exports = {
   "parserOptions": {
-    "ecmaVersion": 6
+    "ecmaVersion": 10
   },
   "env": {
     "browser": true,    // Include browser globals
