@@ -9,5 +9,5 @@ course_index: 'no'
 
 ::: card title='GRAMEX Hub' image_src='assets/img/get_strated.svg' content='Access the GRAMEX IDE and learn on-the-go. Start your own project or build a starter app.' btn_text='Go to Gramex IDE' redirect_to='home/'
 
-::: card title='Gramex Forum' image_src='assets/img/forum.svg' content='Sync up with the Gramex community of developers and data enthusiasts. Explore path-breaking data science solutions.' btn_text='Explore Gramex Community' redirect_to='home/'
+::: card title='Gramex Forum' image_src='assets/img/forum.svg' content='Sync up with the Gramex community of developers and data enthusiasts. Explore path-breaking data science solutions.' btn_text='Explore Gramex Community' redirect_to='https://stackoverflow.com/search?tab=Relevance&pagesize=-1&q=gramex&searchOn=1'
 </div>
