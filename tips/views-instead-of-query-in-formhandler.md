@@ -14,20 +14,22 @@ Now, you can filter parameters from the view instead. This is VERY efficient com
 
 For example, this is a bad idea:
 
-    :::yaml
-    handler: FormHandler
-    kwargs:
-        url: mysql://server/db
-        table: sales
-        query: SELECT city, SUM(sales) FROM table GROUP BY city WHERE state="{state}"
+```yaml
+handler: FormHandler
+kwargs:
+    url: mysql://server/db
+    table: sales
+    query: SELECT city, SUM(sales) FROM table GROUP BY city WHERE state="{state}"
+```
 
 Instead use:
 
-    :::yaml
+```yaml
     handler: FormHandler
     kwargs:
         url: mysql://server/db
         table: sales_by_city
+```
 
 ... where `sales_by_city` is a view created using `SELECT state, city, SUM(sales) FROM table GROUP BY state, city`.
 

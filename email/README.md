@@ -9,9 +9,7 @@ type: library
 
 [TOC]
 
-<div class="ratio ratio-16x9">
-  <iframe src="https://www.youtube.com/embed/GRTCgLsGVGE" allowfullscreen></iframe>
-</div>
+[Video](https://youtu.be/GRTCgLsGVGE){.youtube}
 
 The `email` service creates a service that can send email via SMTP. Here is a
 sample configuration for GMail:

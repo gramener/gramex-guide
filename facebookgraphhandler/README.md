@@ -11,18 +11,19 @@ type: microservice
 
 [FacebookGraphHandler][facebookgraphhandler] offers a proxy for the [Facebook Graph API](https://developers.facebook.com/docs/graph-api/). Here is an example:
 
-    :::yaml
-    url:
-        facebook:
-            pattern: /facebook/(.*)
-            handler: FacebookGraphHandler
-            kwargs:
-                # Visit https://developers.facebook.com/apps/ to get these keys
-                key: '...'
-                secret: '...'
-            redirect:
-                header: Referer
-                url: /$YAMLURL/
+```yaml
+url:
+    facebook:
+        pattern: /facebook/(.*)
+        handler: FacebookGraphHandler
+        kwargs:
+            # Visit https://developers.facebook.com/apps/ to get these keys
+            key: '...'
+            secret: '...'
+        redirect:
+            header: Referer
+            url: /$YAMLURL/
+```
 
 Follow the steps for [Facebook auth](../auth/#facebook-auth) to get the keys above.
 
@@ -37,8 +38,9 @@ Now, follow these steps:
 The request below will show your name once you log in. To log in, visit
 [/facebook/](facebook/):
 
-    :::js
-    $.get('facebook/me')  // OUTPUT
+```js
+$.get('facebook/me')  // OUTPUT
+```
 
 After the OAuth login, users can be redirected via the `redirect:` config
 documented the [redirection configuration](../config/#redirection).
@@ -67,22 +69,24 @@ This is typically used to show the latest posts / photos of a user or page on
 every visit. Typically, such requests are cached as well. Here is a sample
 configuration:
 
-    :::yaml
-    url:
-      facebook-persist:
-        pattern: /persist/(.*)
-        handler: FacebookGraphHandler
-        kwargs:
-            key: '...'
-            secret: '...'
-            access_token: persist     # Persist the access token after first login
-        cache:
-            duration: 300             # Cache requests for 5 seconds
+```yaml
+url:
+  facebook-persist:
+    pattern: /persist/(.*)
+    handler: FacebookGraphHandler
+    kwargs:
+        key: '...'
+        secret: '...'
+        access_token: persist     # Persist the access token after first login
+    cache:
+        duration: 300             # Cache requests for 5 seconds
+```
 
 Here is a sample response:
 
-    :::js
-    $.get('persist/me')  // OUTPUT
+```js
+$.get('persist/me')  // OUTPUT
+```
 
 The first time, you get an access_token error. Visit [/persist/](persist/) to log
 in. Thereafter, your access_token will be stored and used for future requests

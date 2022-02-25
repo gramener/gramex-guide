@@ -1,6 +1,40 @@
 {
   "releases": [
     {
+      "version": "v1.76.0",
+      "link": "https://gramener.com/gramex/guide/release/1.76/",
+      "title": "Python 3.9 support, Faster scheduler, Tutorial videos",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.76/#gramex-is-ready-for-python-3-9",
+          "title": "Python 3.9 support",
+          "description": "Gramex runs on Python 3.7, 3.8, 3.9"
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/scheduler/",
+          "title": "Second-level scheduler",
+          "description": "Scheduler runs at a 1-second granularity"
+        }
+      ]
+    },
+    {
+      "version": "v1.75.0",
+      "link": "https://gramener.com/gramex/guide/release/1.75/",
+      "title": "ServiceNow connector, MongoDB write-back",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/formhandler/#supported-databases",
+          "title": "ServiceNow connector",
+          "description": "FormHandler can read from ServiceNow."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/formhandler/#supported-databases",
+          "title": "MongoDB write-back",
+          "description": "FormHandler can write back to MongoDB databases."
+        }
+      ]
+    },
+    {
       "version": "v1.74.0",
       "link": "https://gramener.com/gramex/guide/release/1.74/",
       "title": "UIFactory events, InfluxDB support, Comicgen icons",

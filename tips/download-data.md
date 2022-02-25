@@ -7,12 +7,13 @@ prefix: Tip
 
 For example:
 
-    :::python
-    def download_as_excel(handler):
-        handler.set_header('Content-Type', 'application/' +
-            'vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-        handler.set_header('Content-Disposition', 'attachment;filename=data.xlsx')
-        return gramex.data.download(dataframe, format='xlsx')
+```python
+def download_as_excel(handler):
+    handler.set_header('Content-Type', 'application/' +
+        'vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    handler.set_header('Content-Disposition', 'attachment;filename=data.xlsx')
+    return gramex.data.download(dataframe, format='xlsx')
+```
 
 You can choose to download as CSV, JSON, HTML, or you can construct a template to render in any other format (e.g. XML, custom dashboard, etc.)
 

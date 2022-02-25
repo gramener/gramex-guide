@@ -10,7 +10,7 @@ type: library
 [TOC]
 
 The `schedule:` section in [gramex.yaml](gramex.yaml.source) lets you run tasks on
-startup or at specific times. Here are some sample uses:
+startup, at specific times or specific intervals. Here are some sample uses:
 
 - email insights every Wednesday
 - data refresh every 4 hours
@@ -24,96 +24,95 @@ schedule:
         function: logging.info(msg="Scheduled msg (on startup)")
         startup: true
     run-every-hour:
-        function: schedule_utils.log_time   # Log the current time
-        minutes: 0
-        hours: '*'
+        function: schedule_utils.log_time() # Log the current time
+        minutes: 0            # when the minute strikes zero
+        hours: '*'            # every hour
+        utc: true             # in the UTC (not local) time zone
+    run-at-specific-interval:
+        function: schedule_utils.log_time() # Log the current time
+        every: 4h 10m 30s     # Every 4 hours, 10 min, 30 seconds
 ```
 
-Each named schedule section has the following keys:
+Each named schedule section may the following keys:
 
-- `function`: the function or expression to run (**required**)
-- `args` and `kwargs`: the positional and keyword arguments to pass to the
-  function. The function will be called as `function(*args, **kwargs)`. These
-  are optional -- the function will by default be called as `function()`.
-- `startup`: set this to true to run the function once at startup.
-  Set this to `'*'` to run the function every time the config changes.
-- `thread`: set this to true to run in a separate thread (if available.)
+- `function`: the expression to run (**required**)
+- `startup`:
+  - `True` to run once at startup.
+  - `"*"` to run once at startup, and every time the config changes.
+  - `False` to only run on schedule (Default: `False`).
+- `thread`: `True` to run in a separate thread, without blocking Gramex (Default: `False`)
+- In addition, you can use the [Schedule timing](#schedule-timing) keys to schedule the run.
+
 
 ## Schedule timing
 
-In addition, the schedule is specified via the `minutes`, `hours`, `dates`, `weekdays`, `months` and `years` keys.
+- `every`: to run at an interval. Values can be like `1.5 min`, `2 hrs 15 min`, etc.
+- `years`: which year(s) to run on (e.g. `2020-2025`)
+- `months`: which month(s) to run on (e.g. `3-5` or `Mar, Apr, May`). Use numbers or 3-letter abbreviations (Jan, Feb, Mar, etc.)
+- `weekdays`: which weekdays(s) to run on (e.g. `3, 4` or `Wed, Thu`). Use numbers or 3-letter abbreviations (Mon, Tue, Wed, etc.). Monday is 1.
+- `hours`: which hour(s) to run at (e.g. `9-17`)
+- `minutes`: which minute(s) to run at (e.g. `0, 30`)
+- There is no `seconds:`. Use `every:` to specify runs in seconds
+- `utc`: `True` to run the schedule in UTC time zone. (Default: `False` for local time zone)
 
-- Any of these 6 fields may be an asterisk (*). This would mean the entire range
-  of possible values, i.e. each minute, each hour, etc.
-- Any field may contain a list of values separated by commas, (e.g. `1,3,7`) or
-  a range of values (e.g. `1-5`).
-- After an asterisk (*) or a range of values, you can use slash `/` to specify
-  that values are repeated periodically. For example, you can write `0-23/2` in
-  `hours:` to indicate every two hours (it will have the same effect as
-  `0,2,4,6,8,10,12,14,16,18,20,22`); value `*/4` in `minutes:` means that the
-  action should be performed every 4 minutes, `1-10/3` means the same as
-  `1,4,7,10`.
-- In `months:` and `weekdays:`, you can use names of months or days of weeks
-  abbreviated to first three letters ("Jan,Feb,...,Dec" or "Mon,Tue,...,Sun")
-  instead of their numeric values. Case does not matter.
+The `minutes`, `hours`, `dates`, `weekdays`, `months` and `years` keys can take these values:
 
-## Schedule examples
+- `*`: use all possible values, i.e. every minute, every hour, etc.
+- `3,4,5`: use multiple values separated by commas
+- `1-5`: use range of values
+- `*/4`: repeat every 4th time, i.e. every 4th minute, 4th hour, etc.
+- `8-16/2`: repeat every 2nd time between 8 to 16. Same as `8,10,12,14,16`
 
-For example, this configuration runs at on the 15th and 45th minute every 4 hours
-on the first and last day of the month (if it's a weekday) in 2016-17.
+Here are some examples:
 
 ```yaml
-schedule:
-  run-when-i-say:
-    function: schedule_utils.log_time()
+# Run only on startup, and never run again
+    startup: true
+# Run on startup, and re-runs every time the YAML file changes:
+    startup: '*'
+# Run every hour, on the hour (i.e. minutes=seconds=0), in a separate thread:
+    hours: '*'
+    thread: true
+# Run every 2 hours, on the hour, from 9 am to 5 pm, and on startup
+    hours: 9-17/2
+# Run at 8 am, 10 am, 12 noon, 2 pm, 6 pm daily (local time), and on startup
+    hours: 8, 10, 12, 14, 18
+    startup: true
+    utc: false    # use local time
+# Run at 5:30 am UTC (not local time zone) daily
+    hours: 5
+    minutes: 30
+    utc: true
+# Run on the first and 15th of every month at 10:30 am UTC
+    dates: 1, 15
+    hours: 10
+    minutes: 30
+    utc: true
+# Run every Saturday at 2 am UTC
+    weekday: sat
+    hours: 2
+    utc: true
+# Run at the 15th and 45th minute every 4 hours on the first and last day of the month
+# (if it's a weekday) in 2016-2025.
     minutes: '15, 45'           # Every 15th & 45th minute
     hours: '*/4'                # Every 4 hours
     dates: '1, L'               # On the first and last days of the month
     weekdays: 'mon-fri'         # On weekdays
     months: '*'                 # In every month
-    years: '2016, 2017'         # the next 2 years
+    years: '2016-2025'         # Of the specified years
+# Run every 90 seconds
+    every: 90s
+# Run every minute and a half (same as 90 seconds)
+    every: 1 min 30 sec
+# Run every 2.5 hours
+    every: 2.5 hours
 ```
 
-This configuration runs only on startup:
+If the function takes long and runs beyond the next scheduled time, it skips the next schedule
+and continues on schedule after that.
 
-```yaml
-schedule:
-  run-on-startup:
-    function: schedule_utils.log_time()
-    startup: true
-```
-
-This configuration runs on startup, and re-runs every time the YAML file changes:
-
-```yaml
-schedule:
-  run-on-startup:
-    function: schedule_utils.log_time()
-    startup: '*'
-```
-
-This configuration runs every hour on a separate thread:
-
-```yaml
-schedule:
-  run-every-hour:
-    function: schedule_utils.log_time()
-    hours: '*'
-    thread: true
-```
-
-The scheduler uses the local time zone of the server Gramex runs on. To run on
-[UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (i.e. GMT), add
-`utc: true`:
-
-```yaml
-schedule:
-  run-on-utc-schedule:
-    function: schedule_utils.log_time()
-    hours: 5            # Run at 5am UTC
-    utc: true
-```
-
+For example, a function scheduled every 10 seconds but takes 15 seconds to run will actually run
+every 20 seconds.
 
 ## Scheduler preview
 
@@ -151,7 +150,7 @@ def update_schedule(handler):
         function=scheduler_method,            # Run this function
         minutes=handler.get_arg('minutes'),   # ... based on the URL's ?minutes=
     )
-    # Set up the scheduled task. This will at the minute specified by ?minutes=
+    # Set up a new scheduled task. This will at the minute specified by ?minutes=
     service.schedule['custom-schedule'] = Task(
         'custom-schedule', schedule, service.threadpool)
 ```

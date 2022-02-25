@@ -9,6 +9,8 @@ Gramex is released with new features on the first of every month.
 
 ## Release Notes
 
+- [v1.76.0: Python 3.9 support, Faster scheduler, Tutorial videos](1.76/) <small>1 Feb 2022</small>
+- [v1.75.0: ServiceNow connector, MongoDB write-back](1.75/) <small>4 Jan 2022</small>
 - [v1.74.0: Admin signup, user management rules, UIFactory scripts](1.74/) <small>2 Nov 2021</small>
 - [v1.73.0: UIFactory events, InfluxDB support, Comicgen icons](1.73/) <small>4 Oct 2021</small>
 - [v1.72.0: OpenAPI support, a root cause algorithm, charts in UIFactory](1.72/) <small>1 Sep 2021</small>

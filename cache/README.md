@@ -11,6 +11,8 @@ type: library
 
 ## Browser caching
 
+[Video](https://youtu.be/k2bRMMEjVv0){.youtube}
+
 The `Cache-Control:` header supersedes previous caching headers (e.g. Expires).
 Modern browsers support Cache-Control. This is all we need.
 
@@ -55,6 +57,8 @@ Ctrl-F5 on the browser. Below is a useful reference for `cache-control` checks (
 ![HTTP Cache Control](http-cache-decision-tree.png "HTTP Cache Control")
 
 ## Server caching
+
+[Video](https://youtu.be/XPgA1wp4Yxw){.youtube}
 
 The `url:` handlers accept a `cache:` key that defines caching behaviour. For
 example, this configuration at [random](random) generates random letters every
@@ -262,28 +266,14 @@ del cache['key']  # clears the key
 cache.set('key', 'value', expire=30)    # key expires in 30 seconds
 ```
 
-### Mixing Python versions
-
-The cache implementation in Python 2 is different from Python 3 because:
-
-- `diskcache`'s sqlite3 versions differ between Python 2 and Python 3
-- The cache is stored as a pickle dump in Python 3, and a json dump in Python 2.
-  (JSON is faster in Python 2, but slower in Python 3, and does not encode
-  bytestrings, besides.)
-
-This means that you cannot have Gramex instances on Python 2 and Python 3 share
-the same cache. (Gramex instances running the same Python version can share the
-cache.)
-
-
 ### Cache static files
 
 You can cache static files with both server and client side caching. For example,
-to cache the `bower_components` and `assets` directories, use this configuration:
+to cache the `node_modules` and `assets` directories, use this configuration:
 
 ```yaml
 static_files:
-    pattern: /$YAMLURL/(bower_components/.*|assets/.*)    # Map all static files
+    pattern: /$YAMLURL/(node_modules/.*|assets/.*)    # Map all static files
     handler: FileHandler
     kwargs:
     path: $YAMLPATH/                              # from under this directory
@@ -297,6 +287,8 @@ is arbitrary. You can use any query parameter instead of `v`.)
 
 
 ## Data caching
+
+[Video](https://youtu.be/Q8Ehhsd0j_E){.youtube}
 
 `gramex.cache.open` opens files and caches them unless they are changed. You can
 use this to load any type of file. For example:
@@ -450,12 +442,12 @@ does not reload it.
 During development, this means that you need to restart Gramex every time you
 change a Python file.
 
-You can reload the module using `six.moves.reload_module(module_name)`, but this
+You can reload the module using `importlib.reload(module_name)`, but this
 reloads them module every time, even if nothing has changed. If the module has
 any large calculations, this slows things down.
 
 Instead, use `gramex.cache.reload_module(module_name)`. This is like
-`six.moves.reload_module`, but it reloads *only if the file has changed.*
+`importlib.reload`, but it reloads *only if the file has changed.*
 
 For example, you can use it in a FunctionHandler:
 

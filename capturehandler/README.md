@@ -17,6 +17,8 @@ type: microservice
 
 ## Chrome
 
+[Video](https://youtu.be/v081GH3Z_LU){.youtube}
+
 **Chrome is the recommended engine from v1.23**. Add this to `gramex.yaml`:
 
 ```yaml
@@ -112,6 +114,8 @@ url:
 ```
 
 ## Screenshot service
+
+[Video](https://youtu.be/VsmmH6oPy_k){.youtube}
 
 You can add a link from any page to the `capture` page to take a screenshot.
 
@@ -216,7 +220,7 @@ ensure that the URL is encoded. So a selector `#item` does not become
 To encode URLs using a Python template:
 
 ```html
-{% from six.moves.urllib_parse import urlencode %}
+{% from urllib.parse import urlencode %}
 <a href="capture?{{ urlencode(url='...', header='header text') }}
 ```
 
@@ -255,6 +259,8 @@ If `capture.js` was not started, or it terminated, you can restart it by adding
 restarts `capture.js` only if required.
 
 ## Screenshot library
+
+[Video](https://youtu.be/Q7yowSGOsdA){.youtube}
 
 You can take screenshots from any Python program, using Gramex as a library.
 

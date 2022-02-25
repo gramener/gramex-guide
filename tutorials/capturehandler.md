@@ -33,7 +33,7 @@ $('.custom-pdf').attr('href', capture_url.toString())
 To encode URLs using a `python` template:
 
 ```javascript
-{% from six.moves.urllib_parse import urlencode %}
+{% from urllib.parse import urlencode %}
 <a href="capture?{{ urlencode(url='...', header='header text') }}"
 ```
 

@@ -7,10 +7,12 @@ prefix: Debug
 
 ## Browser on startup
 
+[Video](https://youtu.be/ywS5RAIxfB0){.youtube}
+
 To open the browser when Gramex starts, use `--browser`. To prevent opening the
 browser on startup, use `--browser=false`.
 
-If `gramex.yaml` is missing in the directory from where Gramex is run, it will run the [Gramex Guide application](https://learn.gramener.com/guide/) locally and open the [welcome page](https://learn.gramener.com/guide/welcome).
+If `gramex.yaml` is missing in the directory from where Gramex is run, Gramex will report an error.
 
 You can also press `Ctrl+B` on the Gramex console at any point to start the
 browser.
@@ -26,6 +28,8 @@ You can add it to [gramex.yaml](../config/) under `app` as `browser: true`,
 `browser: url` or `browser: false`.
 
 ## Reloading
+
+[Video](https://youtu.be/scnW3MhXP64){.youtube}
 
 **Configurations auto-reload**. By default, Gramex auto-reloads `gramex.yaml`
 configurations (including any imported files). If you have a
@@ -54,10 +58,6 @@ import gramex.cache
 gramex.cache.reload_module(yourmodule1, yourmodule2)
 ```
 
-Gramex can also [auto restart][restart] on Python files change when you
-run Gramex with ``gramex --settings.debug=true``. **This uses a lot of CPU**. It
-also serves tracebacks on error. Do not enable this on production systems.
-
 **Files can auto-reload**. When using [FileHandler](../filehandler/), files and
 modules are always auto-reloaded. So are
 [Login templates](../auth/#login-templates),
@@ -76,21 +76,26 @@ has changed.
 
 ## Debug mode
 
-Run Gramex with a `--settings.debug` to trigger [debug mode][debug-mode] in
-Tornado. This auto-reloads templates, Python scripts, etc. when any of them
-change.
-
 Press `Ctrl+D` on the console to start the [Python debugger](#python-debugger)
 inside Gramex at any time.
+
+Run `gramex --settings.debug` to trigger the [debug mode][debug-mode].
+When any template or Python file changes, the application will reload.
+
+On Windows, you need to run `python -m gramex --settings.debug` instead,
+due to a [Tornado issue](https://github.com/bokeh/bokeh/issues/8529#issuecomment-451328922).
 
 [debug-mode]: http://www.tornadoweb.org/en/stable/guide/running.html?highlight=debug#debug-mode-and-automatic-reloading
 
 
 ## Python debugger
 
+[Video](https://youtu.be/FcjJMpNrCRw){.youtube}
+
 The Python debugger lets you stop, inspect and step through code line-by-line.
 You can learn more from this
-[video tutorial on pdb](https://www.youtube.com/watch?v=lnlZGhnULn4).
+[video tutorial on pdb](https://www.youtube.com/watch?v=ChuU3NlYRLQ) and this
+[detailed talk](https://www.youtube.com/watch?v=lnlZGhnULn4).
 
 There are many ways to start the debugger:
 
@@ -138,6 +143,8 @@ h or help         # Help -- list available commands
 
 ## Print statements
 
+[Video](https://youtu.be/YfwtllON8gw){.youtube}
+
 `gramex.debug.print()` is an improved `print` function for debugging. For example:
 
 ```python
@@ -175,6 +182,8 @@ Remember to remove all print statements before committing your code.
 
 ## Tracing
 
+[Video](https://youtu.be/RqIRbn49lC0){.youtube}
+
 Add the `@gramex.debug.trace()` decorator before any function to print every line
 it executes. For example:
 
@@ -201,6 +210,8 @@ Remember to remove all trace statements before committing your code.
 
 
 ## Profiling
+
+[Video](https://youtu.be/qJdsvQuUJyQ){.youtube}
 
 `gramex.debug` provides support for timing and line profiling via `timer`,
 `Timer` and `lineprofile`.

@@ -43,24 +43,28 @@ app:
 
 ## Session security
 
-The session cookie is:
+The session cookie can have the following configurations:
 
-- [HttpOnly](https://www.owasp.org/index.php/HttpOnly): You cannot access the
-  cookie via JavaScript using `document.cookie`
-- [Secure](https://www.owasp.org/index.php/SecureFlag) on HTTPS connections. If
-  you set the cookie on a HTTPS request, you cannot access it via HTTP.
-- [Domain](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie):
-  not specified. The cookie can be accessed by the Gramex server that sets the
-  cookie, but not subdomains.
+- [`httponly`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#httponly):
+  `true` prevents JavaScript from using `document.cookie`. Default: `true`
+- [`secure`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#secure): `true`
+  prevents HTTP requests from accessing the cookie. Only HTTPS is allowed. Default: `false`
+- [`samesite`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value): `Strict`
+  forces the browser to send cookies only for requests from the same site. Default: `Lax`
+- [`domain`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie): `example.org`
+  restricts the cookie to `example.org` and its subdomains. (Default: not specified, which
+  restricts the cookie to the host of the current document URL, not including subdomains.)
 
-You can change these defaults as follows:
+You can change these defaults to a more secure setting as follows:
 
 ```yaml
 app:
   session:
-    httponly: false         # Allow JavaScript access via document.cookie
-    secure: false           # Cookies can be accessed via HTTP (not just HTTPS)
-    domain: .example.org    # All subdomains in .example.org can access session
+    httponly: true        # Allow JavaScript access via document.cookie
+    secure: true          # Cookies can be accessed only via HTTPS (not HTTP)
+    samesite: Strict      # Browser sends the cookie only for same-site requests.
+                          # Values can be Strict, Lax or None. (Case-sensitive)
+    domain: example.org   # All subdomains in *.example.org can access session
 ```
 
 The cookie is stored for `app.session.expiry` days. Here is the default configuration:
@@ -71,8 +75,18 @@ app:
     expiry: 31              # Sessions expire after 31 days by default
 ```
 
-You can override session expiry duration with a `session_expiry: <days>` kwarg
-under any auth handler. See [session expiry](#session-expiry).
+Set `session_expiry: false` to create **session cookies**. Session cookies expire when the browser
+is closed. (Note: Gramex automatically expires session cookies on the server after 1 day, even if
+the browser is open for longer.)
+
+```yaml
+app:
+  session:
+    expiry: false           # Sessions expire when browser closes
+```
+
+You can override session expiry for individual auth handlers with a `session_expiry: <days>` kwarg.
+See [session expiry](#session-expiry).
 
 The cookies are encrypted using the `app.settings.cookie_secret` key. Change
 this to a random secret value, either via `gramex --settings.cookie_secret=...`
@@ -1132,6 +1146,8 @@ url:
 
 ## Email Auth
 
+[Video](https://youtu.be/3og1HiU6Iik){.youtube}
+
 **Available in Gramex Enterprise**.
 [EmailAuth](#emailauth) allows any user with a valid email ID to log
 in. This is a convenient alternative to [DBAuth](#dbauth). Users do not need to
@@ -1245,7 +1261,7 @@ The email message is formatted as a Python string (i.e. `{variable}` is replaced
 - `link`: The one-time login link
 
 To customize the login page, you can add a `template:` pointing to a Tornado template.
-[Here is a sample](https://github.com/gramener/gramex-guide/blob/master/auth/emailauth.html).
+[Here is a sample](https://github.com/gramener/gramex-guide/blob/master/auth/emailauth.template.html).
 You can use these variables in the template:
 
 - `handler`: the handler. `handler.kwargs` has the EmailAuth configuration
@@ -1255,7 +1271,7 @@ You can use these variables in the template:
   - `'not-sent'` if the OTP could not be sent. `msg` has the Exception
   - `'wrong-pw'` if the OTP is wrong. `msg` has a string error
 - `msg`: sent only if `error` is not `None`. It contains a textual descripton of the error.
-- `redirect`: has the origial URL to redirect the user back to after login
+- `redirect`: has the original URL to redirect the user back to after login
   - Use `<input type="hidden" name="{{ redirect['name'] }}" value="{{ redirect['value'] }}">`
     in a form to redirect the user back to their original URL
   - `redirect['name']` is typically `next`, creating a `?next=` query string
@@ -1412,7 +1428,9 @@ To redirect on success, change `window.location` in `.done()`.
 
 ## Login actions
 
-When a user logs in or logs out, you can register actions as follows:
+You can add custom functions to any AuthHandler. These will run when a user succesfully logs in.
+
+For example:
 
 ```yaml
 url:
@@ -1420,22 +1438,68 @@ url:
     pattern: /$YAMLURL/google
     handler: GoogleAuth
     kwargs:
-      key: YOURKEY
-      secret: YOURSECRET
-      action:                                     # Run multiple function on Google auth
-        - function: ensure_single_session         # Logs user out of all other sessions
-        - function: sys.stderr.write('Logged in via Google')      # Write to console
+      # ...
+      action:                                       # After login,
+        - function: admin.send_alert_mail(handler)  # Run custom functions
+        - function: print(handler.current_user, 'logged in via Google')
 ```
 
-For example, the [ldap login](ldap?next=.) page is set with `ensure_single_session`.
-You can log in on multiple browsers. Every log in will log out other sessions.
+You can also add your custom logout actions when the user successfully logs out to
+[`LogoutHandler`](#log-out).
 
-You can write your own custom functions. By default, the function will be passed
-the `handler` object. You can define any other `args` or `kwargs` to pass
-instead. The actions will be executed in order.
+You can write your own custom functions. By default, the function will be passed the `handler`
+object. `handler.current_user` will have the current user (even in `LogoutHandler`). You can define
+any other `args` or `kwargs` to pass instead. The actions will be executed in order.
 
-When calling actions, `handler.current_user` will have the user object on all
-auth handlers and the `LogoutHandler`.
+
+## Failed login delay
+
+To slow down hackers guessing passwords, add a `delay:` parameter under `kwargs:`. For example:
+
+```yaml
+url:
+  login/simple:
+    pattern: /$YAMLURL/simple
+    handler: SimpleAuth
+    kwargs:
+      delay: 5        # Wait 5 seconds before reporting wrong password
+      credentials:
+        alpha: alpha
+        beta: beta
+```
+
+::: example href=delay source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    Failed login delay example
+
+In the above example, you can log in as `alpha` / `alpha` instantaneously. But if you enter an
+incorrect password, it takes 5 seconds to report that.
+
+The `delay:` can be specified as a number or an array of numbers. For example:
+
+- `delay: 5`: Every failed login is reported 5 seconds later
+- `delay: [1, 2, 5]`
+  - The first failed login is reported 1 second later
+  - The second failed login is reported 2 seconds later
+  - Subsequent failed logins are reported 5 seconds later
+
+## Ensure single login session
+
+When a user logs in, you can log them out from all other sessions on any other device using the
+`ensure_single_session` [login action](#login-actions):
+
+```yaml
+url:
+  login/google:
+    pattern: /$YAMLURL/google
+    handler: GoogleAuth
+    kwargs:
+      # ...
+      action:
+        - function: ensure_single_session   # Logs user out of all other sessions
+```
+
+You can add the `action:` section under the `kwargs:` of any Auth handler.
+
 
 ## User attributes
 
@@ -1535,6 +1599,7 @@ url:
           day: 1          # If ?remember=day, session expires in 1 day
           week: 7         # If ?remember=week, session expires in 7 days
           month: 31       # If ?remember=month, session expires in 31 days
+          session: false  # If ?remember=session, session expires when browser closes
 ```
 
 ::: example href=customexpiry source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml

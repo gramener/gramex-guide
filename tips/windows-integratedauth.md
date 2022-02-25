@@ -13,20 +13,23 @@ GroupM and Novartis), we can use this.
 
 The setup is very simple:
 
-    :::yaml
+```yaml
+url:
     auth/login:
         pattern: /$YAMLURL/login
         handler: IntegratedAuth
+```
 
 When the user visits `/login`, it will automatically log the user in. The `handler.current_user` object looks like this:
 
-    :::js
-    {
-        "id": "EC2-175-41-170-\\Administrator", // same as domain\username
-        "domain": "EC2-175-41-170-",            // Windows domain name
-        "username": "Administrator",            // Windows user name
-        "realm": "WIN-8S90I248M00"              // Windows hostname
-    }
+```js
+{
+    "id": "EC2-175-41-170-\\Administrator", // same as domain\username
+    "domain": "EC2-175-41-170-",            // Windows domain name
+    "username": "Administrator",            // Windows user name
+    "realm": "WIN-8S90I248M00"              // Windows hostname
+}
+```
 
 This MAY ASK for a username and password. If so, users can enter their Windows ID and password.
 

@@ -132,7 +132,7 @@ Next,
 
    ![Screenshot](mlhandler-endpoint-card.png){.img-fluid}
 
-8. The URL will look something like this: https://9286.gramex.gramener.co/predict. From now on, we’ll refer to it as `/predict`. You need to type out the https://… part by yourself.
+8. The URL will look something like this: `https://9286.gramex.gramener.co/predict`. From now on, we’ll refer to it as `/predict`. You need to type out the https://... part by yourself.
 9. Let’s predict the admissions of a few people. Add these query parameters to your URL and see if the "Admitted" field is correct.
    - Ethan Koch: `/predict?GREScore=337&TOEFLScore=118&UniversityRating=4&SOP=4.5&LOR=4.5&CGPA=9.65&Research=1`
    - Diana Strong: `/predict?GREScore=324&TOEFLScore=107&UniversityRating=4&SOP=4&LOR=4.5&CGPA=8.87&Research=1`
@@ -320,11 +320,11 @@ Now, this project is is available on your Github repository. To clone it, anyone
 First, let’s set up your StackOverflow accounts.
 
 
-- If you don’t have a StackOverflow account, sign up: [https://stackoverflow.com/users/signup](https://stackoverflow.com/users/signup)
-- If you have a StackOverflow account, log in: [https://stackoverflow.com/users/login](https://stackoverflow.com/users/login)
-- Search for questions tagged Gramex: [https://stackoverflow.com/questions/tagged/gramex](https://stackoverflow.com/questions/tagged/gramex)
+- If you don’t have a StackOverflow account, sign up: <https://stackoverflow.com/users/signup>
+- If you have a StackOverflow account, log in: <https://stackoverflow.com/users/login>
+- Search for questions tagged Gramex: <https://stackoverflow.com/questions/tagged/gramex>
 - Click on any question. Test your account by upvoting it. (You can undo it later if you wish.)
-- Now you can ask any question about Gramex via https://stackoverflow.com/questions/ask?tags=gramex
+- Now you can ask any question about Gramex via <https://stackoverflow.com/questions/ask?tags=gramex>
 
 With your Github account, you can report a Gramex bug at [https://github.com/gramener/gramex/issues/new](https://github.com/gramener/gramex/issues/new)
 

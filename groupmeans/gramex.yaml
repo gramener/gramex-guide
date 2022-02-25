@@ -44,11 +44,6 @@ url:
       path: $YAMLPATH/uploaded-files/
       if_exists: overwrite
       methods: post
-  groupmeans-filedownloader:
-    pattern: /$YAMLURL/download-data
-    handler: FunctionHandler
-    kwargs:
-      function: guide_groupmeans.autolyse_download
   # Filehandlers to render pages and templates.
   groupmeans-user-data:
     pattern: /$YAMLURL/custom-explore

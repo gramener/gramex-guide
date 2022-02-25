@@ -745,6 +745,9 @@
     "encrypted-user": {
       "Encrypted user": -1
     },
+    "ensure-single-login-session": {
+      "Ensure single login session": -1
+    },
     "facebook-auth": {
       "Facebook auth": -1
     },
@@ -901,9 +904,7 @@
     "data-caching": {
       "Data caching": -1
     },
-    "mixing-python-versions": {
-      "Mixing Python versions": -1
-    },
+    "mixing-python-versions": {},
     "module-caching": {
       "Module caching": -1
     },
@@ -1356,6 +1357,9 @@
     "missing-dependency": {
       "Missing dependency": -1
     },
+    "multiple-windows-services": {
+      "Multiple Windows Services": -1
+    },
     "mymodulepy": {
       "mymodule.py": -1
     },
@@ -1415,6 +1419,9 @@
     },
     "testing": {
       "Testing": -1
+    },
+    "troubleshooting-windows-services": {
+      "Troubleshooting Windows Services": -1
     },
     "using-relative-urls": {
       "Using relative URLs": -1
@@ -1935,17 +1942,19 @@
     "function-arguments-from-url": {
       "Function arguments from URL": -1
     },
-    "function-headers": {
-      "Function headers": -1
-    },
-    "function-methods": {
-      "Function methods": -1
-    },
+    "function-headers": {},
+    "function-methods": {},
     "function-output": {
       "Function output": -1
     },
     "function-redirection": {
       "Function redirection": -1
+    },
+    "http-headers": {
+      "HTTP headers": -1
+    },
+    "http-methods": {
+      "HTTP methods": -1
     },
     "parse-url-arguments": {
       "Parse URL arguments": -1
@@ -2504,6 +2513,9 @@
       "Clone shapes": -1
     },
     "color-scales": {},
+    "color-scales-on-maps": {
+      "Color scales on maps": -1
+    },
     "color-units": {
       "Color units": -1
     },
@@ -2535,9 +2547,7 @@
     "image": {
       "Image": -1
     },
-    "index": {
-      "Index": -1
-    },
+    "index": {},
     "length-units": {
       "Length units": -1
     },
@@ -2685,6 +2695,23 @@
     },
     "see-the-result": {
       "See the result": -1
+    }
+  },
+  "pptxhandler/choropleth": {
+    "create-the-data": {
+      "Create the data": -1
+    },
+    "create-the-rules": {
+      "Create the rules": -1
+    },
+    "create-the-source-template": {
+      "Create the source template": -1
+    },
+    "see-the-result": {
+      "See the result": -1
+    },
+    "us-election-results-map": {
+      "US Election Results Map": -1
     }
   },
   "pptxhandler/clone-shape": {
@@ -4658,6 +4685,73 @@
       "UIFactory inline scripts": -1
     }
   },
+  "release/1.75": {
+    "": {
+      "Gramex 1.75 release notes": -1
+    },
+    "allow-computing-variables-from-functions-on-first-load": {
+      "Allow computing variables from functions on first load": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "filehandler-reloads-index-templates": {
+      "FileHandler reloads index templates": -1
+    },
+    "formhandler-writes-data-to-mongodb": {
+      "FormHandler writes data to MongoDB": -1
+    },
+    "gramex-diagnostics": {
+      "Gramex diagnostics": -1
+    },
+    "gramex-reloads-after-invalid-configurations": {
+      "Gramex reloads after invalid configurations": -1
+    },
+    "gramex-windows-service-shutdown-is-graceful": {
+      "Gramex Windows Service shutdown is graceful": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "page-redirection-works-after-restart": {
+      "Page redirection works after restart": -1
+    },
+    "servicenow-data-connector": {
+      "ServiceNow data connector": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "users-are-not-logged-out-unexpectedly": {
+      "Users are not logged out unexpectedly": -1
+    }
+  },
+  "release/1.76": {
+    "": {
+      "Gramex 1.76 release notes": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "gramex-is-ready-for-python-39": {
+      "Gramex is ready for Python 3.9": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "schedulers-run-every-second": {
+      "Schedulers run every second": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "tutorial-videos": {
+      "Tutorial videos": -1
+    }
+  },
   "release/old": {
     "": {
       "Gramex Old Release Notes": -1
@@ -5315,9 +5409,46 @@
     "": {
       "Schedule tasks": -1
     },
-    "schedule-examples": {
-      "Schedule examples": -1
+    "if-its-a-weekday-in-2016-2025": {
+      "(if it's a weekday) in 2016-2025.": -1
     },
+    "run-at-530-am-utc-not-local-time-zone-daily": {
+      "Run at 5:30 am UTC (not local time zone) daily": -1
+    },
+    "run-at-8-am-10-am-12-noon-2-pm-6-pm-daily-local-time-and-on-startup": {
+      "Run at 8 am, 10 am, 12 noon, 2 pm, 6 pm daily (local time), and on startup": -1
+    },
+    "run-at-the-15th-and-45th-minute-every-4-hours-on-the-first-and-last-day-of-the-month": {
+      "Run at the 15th and 45th minute every 4 hours on the first and last day of the month": -1
+    },
+    "run-every-2-hours-on-the-hour-from-9-am-to-5-pm-and-on-startup": {
+      "Run every 2 hours, on the hour, from 9 am to 5 pm, and on startup": -1
+    },
+    "run-every-25-hours": {
+      "Run every 2.5 hours": -1
+    },
+    "run-every-90-seconds": {
+      "Run every 90 seconds": -1
+    },
+    "run-every-hour-on-the-hour-ie-minutesseconds0-in-a-separate-thread": {
+      "Run every hour, on the hour (i.e. minutes=seconds=0), in a separate thread:": -1
+    },
+    "run-every-minute-and-a-half-same-as-90-seconds": {
+      "Run every minute and a half (same as 90 seconds)": -1
+    },
+    "run-every-saturday-at-2-am-utc": {
+      "Run every Saturday at 2 am UTC": -1
+    },
+    "run-on-startup-and-re-runs-every-time-the-yaml-file-changes": {
+      "Run on startup, and re-runs every time the YAML file changes:": -1
+    },
+    "run-on-the-first-and-15th-of-every-month-at-1030-am-utc": {
+      "Run on the first and 15th of every month at 10:30 am UTC": -1
+    },
+    "run-only-on-startup-and-never-run-again": {
+      "Run only on startup, and never run again": -1
+    },
+    "schedule-examples": {},
     "schedule-timing": {
       "Schedule timing": -1
     },
@@ -5998,6 +6129,32 @@
     },
     "tutorial": {
       "Tutorial": -1
+    }
+  },
+  "workshop/influxdb": {
+    "": {
+      "Visualizing Subsurface Float Movement with InfluxDB & FormHandler": -1
+    },
+    "step-0-prerequisites": {
+      "Step 0: Prerequisites": -1
+    },
+    "step-1-getting-the-data": {
+      "Step 1: Getting the data": -1
+    },
+    "step-2-setting-up-formhandler-for-influxdb": {
+      "Step 2: Setting Up FormHandler for InfluxDB": -1
+    },
+    "step-21-the-gramex-app-specification": {
+      "Step 2.1: The Gramex App Specification": -1
+    },
+    "step-22-push-data-to-influxdb": {
+      "Step 2.2: Push Data to InfluxDB": -1
+    },
+    "step-23-add-a-map": {
+      "Step 2.3: Add a Map": -1
+    },
+    "step-3-plotting-the-data-on-the-map": {
+      "Step 3: Plotting the Data on the Map": -1
     }
   },
   "workshop\\building-ml-apps-rapidly": {

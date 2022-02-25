@@ -150,6 +150,8 @@ script:
 
 ## Windows Service
 
+[Video](https://youtu.be/xKlcTo7IX6Q){.youtube}
+
 **v1.23**.
 To set up a Gramex application as a service, run PowerShell or the Command Prompt **as administrator**. Then:
 
@@ -194,11 +196,53 @@ To uninstall the service, run:
 gramex service remove
 ```
 
-Service logs can be viewed using the Windows Event Viewer. Gramex logs are at
-`%LOCALAPPDATA%\Gramex Data\logs\` unless over-ridden by `gramex.yaml`.
+### Troubleshooting Windows Services
 
-Since services do not have a console, Gramex's console logs are saved in the application folder as
-`service.log`.
+**If the service doesn't run, check the log files**. Log files can be accessed as follows:
+
+- For Service installation logs, use the Windows "Event Viewer" app under Windows Logs > System.
+- For Service execution logs, use the Windows "Event Viewer" app under Windows Logs > Application.
+- For Gramex console logs, see `service.log` in the application's source folder (where `gramex.yaml` is).
+- For Gramex logs are at `%LOCALAPPDATA%\Gramex Data\logs\` unless over-ridden by `gramex.yaml`.
+
+**Check PyWin32 paths**.
+
+[PyWin32](https://pypi.org/project/pywin32/) has a common problem. When you run `gramex service install`, you may get this warning:
+
+```text
+The executable at "...\Lib\site-packages\win32\PythonService.exe" is being used as a service.
+
+This executable doesn't have pythonXX.dll and/or pywintypesXX.dll in the same
+directory. This is likely to fail when used in the context of a service.
+
+The exact environment needed will depend on which user runs the service and
+where Python is installed. If the service fails to run, this will be why.
+
+NOTE: You should consider copying this executable to the directory where these
+DLLs live - "...\Lib\site-packages\win32" might be a good place.
+```
+
+Or, when starting the service, you may get "Error starting service: The service did not respond to
+the start or control request in a timely fashion".
+
+In that case:
+
+1. Copy the following files under `...\Lib\site-packages\win32\` (same location as the error above).
+   - `pythonXX.dll` from `...\` -- the root of your Conda environment. Replace XX with 37 for Python 3.7, etc.
+   - `pywintypesXX.dll` from `...\Library\bin\`. Replace XX with 37 for Python 3.7, etc.
+2. Run `gramex service remove`
+3. Run `gramex service install` to re-install. Check that the're no warning now
+4. Run `gramex service start`. You should see a `service.log` file in the source folder with the Gramex console.logs
+
+**Check Permissions**. If you get an `Access is denied` error like this:
+
+```text
+pywintypes.error: (5, 'OpenSCManager', 'Access is denied.')
+```
+
+... then re-run from an Administrator Command Prompt.
+
+### Multiple Windows Services
 
 To create multiple services running at different directories or ports, you can
 create one or more custom service classes in `yourproject_service.py`:

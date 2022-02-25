@@ -322,6 +322,7 @@ url:
                   day: 1          # ...day, it expires in 1 day
                   week: 7         # ...week, it expires in 7 days
                   month: 31       # ...month, it expires in 31 days
+                  session: false  # session cookie
                   "on": 31        # If ?remember=on, expire after 31 days (checkbox)
             credentials: {alpha: alpha, beta: beta}
             template: $YAMLPATH/customexpiry.html   # Use this login template for the demo
@@ -510,6 +511,13 @@ url:
             query: next
             header: Referer
             url: .
+
+    auth/delay:
+        pattern: /$YAMLURL/delay
+        handler: SimpleAuth
+        kwargs:
+            <<: *simplekwargs
+            delay: 5
 
     auth/multi:
         pattern: /$YAMLURL/multi

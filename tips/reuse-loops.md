@@ -6,11 +6,12 @@ prefix: Tip
 This is a fragment of code we deployed at a large bank to calculate year-on-year
 growth of balance:
 
-    :::python
+```python
     data['yoy_CDAB'] = map(
         calculate_calender_yoy,
         data['TOTAL_CDAB_x'],
         data['TOTAL_CDAB_y'])
+```
 
 On 29 Aug, the client added more metrics:
 
@@ -20,7 +21,7 @@ On 29 Aug, the client added more metrics:
 
 This led to:
 
-    :::python
+```python
     data['yoy_CDAB'] = map(
         calculate_calender_yoy,
         data['TOTAL_CDAB_x'],
@@ -33,6 +34,7 @@ This led to:
         calculate_calender_yoy,
         data['TOTAL_MEB_x'],
         data['TOTAL_MEB_y'])
+```
 
 On 31 Aug, the client wanted to see this for different areas:
 
@@ -42,7 +44,7 @@ On 31 Aug, the client wanted to see this for different areas:
 
 This led to:
 
-    :::python
+```python
     data['yoy_CDAB'] = map(
         calculate_calender_yoy,
         data['TOTAL_CDAB_x'],
@@ -81,6 +83,7 @@ This led to:
         calculate_calender_yoy,
         etb_data['TOTAL_MEB_x'],
         etb_data['TOTAL_MEB_y'])
+```
 
 The above code that actually deployed in production.
 
@@ -90,12 +93,13 @@ The above code that actually deployed in production.
 
 Whenever you see code copy-pasted with a few changes, use loops.
 
-    :::python
+```python
     for area in [data, total_data, etb_data]:
         for val in ['CDAB', 'MDAB', 'MEB']:
             area['yoy_' + val] = map(
                 calculate_calendar_yoy,
                 area['TOTAL_' + val + '_x'],
                 area['TOTAL_' + val + '_y'])
+```
 
 This reduces 39 lines to 7 - and makes it easier to add more areas and metrics.

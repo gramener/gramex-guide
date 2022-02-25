@@ -101,7 +101,7 @@ LanguageTool can be used with a FunctionHandler as follows:
 import json
 from tornado.gen import coroutine, Return
 from tornado.httpclient import AsyncHTTPClient
-from six.moves.urllib_parse import urlencode
+from urllib.parse import urlencode
 
 @coroutine
 def check_grammar(handler):
