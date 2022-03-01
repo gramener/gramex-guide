@@ -1855,6 +1855,17 @@ that session is automatically linked to the same user.
     OTP example
 
 
+## API key
+
+Handlers support a `handler.apikey({user={...}})` function. This returns an
+API key string linked to the *current user*. When you send a request
+with a `X-Gramex-Key: <key>` header or a `?gramex-key=<key>` query parameter,
+that session is automatically linked to the same user.
+
+::: example href=key source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    API key example
+
+
 ## Encrypted user
 
 You can mimic a user by passing a `X-Gramex-User` HTTP header. This fetches a
