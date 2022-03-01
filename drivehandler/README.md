@@ -296,7 +296,7 @@ url:
       prepare: mymodule.prepare(args, handler)
 ```
 
-This calls `mymodule.prepare(args, handler)` for every request. `args` is the same as [hander.args](../handlers/#basehandler-attributes). For example, this function
+This calls `mymodule.prepare(args, handler)` for every request. `args` is the same as [handler.args](../handlers/#basehandler-attributes). For example, this function
 will add a line at the end of each .txt file:
 
 ```python

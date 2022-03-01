@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API key example</title>
+  <link rel="stylesheet" href="../style.scss">
+</head>
+<body class="container">
+
+  <nav class="py-4">
+    <a href=".">&laquo; Back to Auth</a>
+  </nav>
+
+  <section>
+    <h1>API Key Example</h1>
+
+    {% import json %}
+    {% set user = handler.current_user %}
+    {% if user %}
+      <p>You are logged in. Here is your user object.</p>
+      <div class="codehilite"><pre>{{ json.dumps(user) }}</pre></div>
+      <p>Log in as another user via
+        <a href="google?next=apikey">Google</a>,
+        <a href="ldap?next=apikey">LDAP</a>,
+        <a href="simple?next=apikey">Simple</a> or
+        <a href="db?next=apikey">DB</a>.</p>
+
+      {% if handler.get_argument('generate-key', None) %}
+        {% set key = handler.apikey() %}
+        {% set url = handler.request.protocol + '://' + handler.request.host + handler.request.path + '?gramex-key=' + key %}
+        <h2>Test API key</h2>
+        <p>Your API key is <code>{{ key }}</code>
+        <p>Open this link <code><a href="{{ url }}">{{ url }}</a></code>
+          in a new browser or private window. You will be logged in
+          as the same user.</p>
+        <p>When making server-side or AJAX requests, a better way is to use the <code>X-Gramex-Key: {{ key }}</code> HTTP header.</p>
+      {% elif handler.get_argument('gramex-key', None) %}
+        <h2>User set using API Key</h2>
+        <p>This URL has used the API Key <code>{{ handler.get_argument('gramex-key') }}</code>.</p>
+        <p>You can reload this page or load it from another browser. This API key is valid until expiry.</p>
+      {% else %}
+        <h2>Generate Key</h2>
+        <p><a href="?generate-key=1">Click here to generate a new Key.</a></p>
+      {% end %}
+
+    {% else %}
+      <p>You are not logged in.</p>
+      <p>To try this example, log in via
+        <a href="google?next=apikey">Google</a>,
+        <a href="ldap?next=apikey">LDAP</a>,
+        <a href="simple?next=apikey">Simple</a> or
+        <a href="db?next=apikey">DB</a>.</p>
+    {% end %}
+
+  </section>
+
+</body>
+</html>

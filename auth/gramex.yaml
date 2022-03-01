@@ -337,6 +337,15 @@ url:
             headers:
               Cache-Control: no-cache
 
+    auth/apikey:
+        pattern: /$YAMLURL/apikey
+        handler: FileHandler
+        kwargs:
+            path: $YAMLPATH/apikey.html
+            template: true
+            headers:
+              Cache-Control: no-cache
+
     auth/unauthorized-template:
         pattern: /$YAMLURL/unauthorized-template
         handler: FileHandler

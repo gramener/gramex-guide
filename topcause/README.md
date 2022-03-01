@@ -34,7 +34,7 @@ Say a Rugby team is recruiting for heavy people, and have [weight data](weight.c
     See the data
 
 If they want to know **What's the single biggest driver of weight?**, TopCause can answer that.
-Here is `topcausecalc.py` which has a [FunctionHander](../functionhandler/) that returns the drivers.
+Here is `topcausecalc.py` which has a [FunctionHandler](../functionhandler/) that returns the drivers.
 
 ```python
 import gramex.ml

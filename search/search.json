@@ -711,6 +711,9 @@
     "ajax-login": {
       "AJAX login": -1
     },
+    "api-key": {
+      "API key": -1
+    },
     "authentication": {
       "Authentication": -1
     },
@@ -750,6 +753,9 @@
     },
     "facebook-auth": {
       "Facebook auth": -1
+    },
+    "failed-login-delay": {
+      "Failed login delay": -1
     },
     "forgot-password": {
       "Forgot password": -1
@@ -4750,6 +4756,35 @@
     },
     "tutorial-videos": {
       "Tutorial videos": -1
+    }
+  },
+  "release/1.77": {
+    "": {
+      "Gramex 1.77 release notes": -1
+    },
+    "api-keys-support": {
+      "API keys support": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "samesite-cookies": {
+      "SameSite cookies": -1
+    },
+    "secure-mongodb-access": {
+      "Secure MongoDB access": -1
+    },
+    "session-cookies": {
+      "Session cookies": -1
+    },
+    "statistics": {
+      "Statistics": -1
     }
   },
   "release/old": {

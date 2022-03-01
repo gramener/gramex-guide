@@ -1842,17 +1842,67 @@ then the attribute mentioned in the "field" is modified to the "value".
 
 # Automated logins
 
-Gramex has two mechanisms to automate logins: [one-time passwords](#otp) and [encrypted users](#encrypted-user).
+Gramex has three mechanisms to automate logins: [one-time passwords](#otp), [API keys](#api-key) and [encrypted users](#encrypted-user).
 
 ## OTP
 
-Handlers support a `handler.otp(expire=seconds)` function. This returns a
-one-time password string linked to the *current user*. When you send a request
-with a `X-Gramex-OTP: <otp>` header or a `?gramex-otp=<otp>` query parameter,
-that session is automatically linked to the same user.
+One-time passwords (OTP) let users to log in once. Once the user logs in, they expire.
+
+These are useful to send one-time links. For example, to email a user a link they can log in from. (After logging in, the link expires.)
+
+Add this code to a [FunctionHandler](../functionhandler/) or any Python code in a handler:
+
+```python
+expiry = 24 * 60 * 60             # Expires in 24 hours
+otp = handler.otp(expire=expiry)  # Create OTP as current user
+```
+
+This creates an `otp` string for the currently logged-in user that expires after 24 hours (or once used, whichever is earlier).
+
+To create an `otp` for a different user, use:
+
+```python
+expiry = 24 * 60 * 60                         # Expires in 24 hours
+user = {'id': 'alpha'}                        # User to create OTP for
+otp = handler.otp(expire=expiry, user=user)   # Create OTP as specified user
+```
+
+When a user visits any page with `?gramex-otp=<otp>` added, or with a `X-Gramex-OTP: <otp>` header,
+the user is logged in *for that session*. `handler.current_user` is set to the user object.
 
 ::: example href=otp source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
     OTP example
+
+
+## API key
+
+API keys let users to log in multiple times, until expiry.
+
+These are useful to provide allow services (e.g. bots, apps, scripts) to act on behalf of a user.
+For example, to fetch data, trigger a refresh, etc.
+
+Add this code to a [FunctionHandler](../functionhandler/) or any Python code in a handler:
+
+```python
+expiry = 24 * 60 * 60                 # Expires in 24 hours
+key = handler.apikey(expire=expiry)   # Create API key as current user
+```
+
+This creates an API `key` string for the currently logged-in user that expires after 24 hours.
+
+To create an API `key` for a different user, use:
+
+```python
+expiry = 24 * 60 * 60                           # Expires in 24 hours
+user = {'id': 'alpha'}                          # User to create API key for
+key = handler.apikey(expire=expiry, user=user)  # Create key as specified user
+```
+
+When a user visits any page with `?gramex-key=<key>` added, or with a `X-Gramex-Key: <key>` header,
+the user is logged in *for that session*. `handler.current_user` is set to the user object.
+
+::: example href=apikey source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    API key example
 
 
 ## Encrypted user

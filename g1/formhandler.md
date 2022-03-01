@@ -191,7 +191,7 @@ returns an object with these keys:
 For example:
 
 ```js
-$('.formhandler').formhander()
+$('.formhandler').formhandler()
 var data = $('.formhandler').data('formhandler')
 data.data   // data displayed by component
 data.meta   // metadata returned by the FormHandler
