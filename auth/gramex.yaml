@@ -346,6 +346,22 @@ url:
             headers:
               Cache-Control: no-cache
 
+    auth/methods:
+      pattern: /$YAMLURL/methods
+      handler: FileHandler
+      kwargs:
+          path: $YAMLPATH/methods.html
+          template: true
+
+    public-read:
+      pattern: /$YAMLURL/public-read
+      handler: FunctionHandler
+      kwargs:
+        function: f'Method = $${handler.request.method}, User = $${handler.current_user}'
+        auth:
+          methods: [POST, PUT, DELETE]
+        xsrf_cookies: false
+
     auth/unauthorized-template:
         pattern: /$YAMLURL/unauthorized-template
         handler: FileHandler

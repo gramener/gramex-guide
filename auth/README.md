@@ -1955,6 +1955,28 @@ Note: Any `auth:` on an `AuthHandler` is ignored. (That's asking users to log in
 
 You can restrict who can log in using [roles](#roles) or any other condition.
 
+## Authorization HTTP methods
+
+To authorize the user for some HTTP methods (e.g. `POST`, `PUT`, `DELETE`) but not others (e.g.
+`GET`), use this:
+
+```yaml
+url:
+  public-read:
+    pattern: /$YAMLURL/public-read
+    handler: FunctionHandler
+    kwargs:
+      function: f'Method = $${handler.request.method}, User = $${handler.current_user}'
+      auth:
+        methods: [POST, PUT, DELETE]
+```
+
+Any `GET`, `OPTIONS` or other HTTP requests to `/public-read` can be made by anyone. But `POST`,
+`PUT`, `DELETE` can only be made by logged-in users.
+
+::: example href=methods source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    HTTP methods example
+
 ## Login URLs
 
 By default, this will redirect users to `/login/`. This is configured in the `app.settings.login_url` like this:
