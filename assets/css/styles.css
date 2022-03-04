@@ -11650,5 +11650,6 @@ footer p{
   border: 1px solid grey;
   font-size: 14px;
   color: grey !important;
-  padding: 10px;
+  padding: 4px 8px;
+  /* padding: 10px; */
 }
