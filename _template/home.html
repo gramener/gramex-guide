@@ -123,15 +123,60 @@
                                 <div class="col-md-12" id="test">
                                     <div class="col-md-7 mx-auto">
                                         <div class="w-100 mb-lg-0 mb-3 mb-md-0">
-                                            <div class="row no-gutters align-items-center">
+                                            <!-- <div class="row no-gutters align-items-center">
                                                 <div class="col-md-12 search-design">
-                                                    <i class='fas fa-search'></i>
+                                                    <i class='fas fa-search search-icon'></i>
                                                     <input class="form-control border-primary text-color6 h5 mb-0 border-0 fw-600 search bg-light px-5" 
                                                     type="search" id="example-search-input1" data-search="@text" data-target=".gallery-item" data-hide-class="d-none"
                                                     placeholder="Search topics" data-prefix="/{{ GUIDE_ROOT }}/" data-url="/{{ GUIDE_ROOT }}/search/searchindex.json" 
                                                     autocomplete="off">                
                                                 </div>
-                                            </div>
+                                            </div> -->
+                                            <style>
+                                                .one {
+                                                    display: inline-flex;
+                                                    width: 100% !important;
+                                                }
+                                                /* .two {
+                                                    margin: -2px;
+                                                } */
+                                                .three {
+                                                    width: 100%;
+                                                }
+                                                .two {
+                                                    position: absolute;
+                                                    color: #bb9e9e;
+                                                    left: 310px;
+                                                    padding: 8px 0px;
+                                                }
+                                                @media(max-width:768px) {
+                                                    .two{ 
+                                                        left: 30px !important;
+                                                    }                                                    
+                                                }
+                                                @media(max-width:767px) {
+                                                    .two{ 
+                                                        left: 30px !important;
+                                                    }                                                    
+                                                }
+                                                
+                                            </style>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-md-12">                                                
+                                                <div class="one">
+                                                    <div class="two">                                                
+                                                        <i class='fas fa-search search-icon'></i>                                                
+                                                    </div>
+                                                <div class="three">                                                     
+                                                <input class="form-control border-primary text-color6 h5 mb-0 border-0 fw-600 search bg-light px-5"
+                                                type="search" id="example-search-input1" data-search="@text" data-target=".gallery-item" data-hide-class="d-none"
+                                                placeholder="Search topics" data-prefix="/{{ GUIDE_ROOT }}/" data-url="/{{ GUIDE_ROOT }}/search/searchindex.json"
+                                                autocomplete="off">
+                                                </div>                                                
+                                                                                               
+                                                </div>                                                
+                                                </div>
+                                                </div>                                          
                                         </div>
                                     </div>
                                 </div>

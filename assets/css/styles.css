@@ -11663,7 +11663,7 @@ footer p{
 input#example-search-input1 {
   border-radius: 50px !important;
 }
-i.fas.fa-search {
+/* .search-icon {
   position: relative;
   top: 11px;
   left: 42px;
@@ -11672,4 +11672,4 @@ i.fas.fa-search {
 .col-md-12.search-design {
   display: inherit;
   position: relative;
-}
+} */
