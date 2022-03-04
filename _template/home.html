@@ -19,29 +19,6 @@
         <link href="/{{ GUIDE_ROOT }}/monokai.css" rel="stylesheet" />        
         <link href="/{{ GUIDE_ROOT }}/ui/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet" />
         <link href="/{{ GUIDE_ROOT }}/assets/css/styles.css" rel="stylesheet" />
-        
-        <style>
-            .sidebar li .submenu{ 
-                list-style: none; 
-                margin: 0; 
-                padding: 0; 
-                padding-left: 1rem; 
-                padding-right: 1rem;
-            }
-            input#example-search-input1 {
-                border-radius: 50px !important;
-            }
-            i.fas.fa-search {
-                position: relative;
-                top: 11px;
-                left: 42px;
-                color: #000;
-            }
-            .col-md-12.search-design {
-                display: inherit;
-                position: relative;
-            }
-        </style>
     </head>
     <body id="page-top">
         <div class="sticky-top" style="text-transform: uppercase;">
@@ -57,125 +34,64 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto fs-14" style="font-weight: 400;">     
             <li class="nav-item">                       
-            <a class="nav-link js-scroll-trigger mx-lg-1  gramex " href="/gramex/">Platform</a>
+                <a class="nav-link js-scroll-trigger mx-lg-1  gramex " href="/gramex/">Platform</a>
             </li>
             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle js-scroll-trigger mx-lg-1" href="/solutions/">Solutions</a>
-            <div class="dropdown-menu text-dark fs-14 dropdown-menu-color menu-pad">
-            
-            <a class="dropdown-item-du dropdown-item text-light advisory-consulting dropdown_item" href="/advisory-consulting/">Advisory Consulting</a>
-            
-            <a class="dropdown-item-du dropdown-item text-light digital-twin dropdown_item" href="/digital-twin/">Digital Twin</a>
-            
-            <a class="dropdown-item-du dropdown-item text-light spatial-analytics dropdown_item" href="/spatial-analytics/">Spatial Analytics</a>
-            
-            <a class="dropdown-item-du dropdown-item text-light computer-vision-solutions dropdown_item" href="/computer-vision-solutions/">Computer Vision</a>
-            
-            </div>
+                <a class="nav-link dropdown-toggle js-scroll-trigger mx-lg-1" href="/solutions/">Solutions</a>
+                <div class="dropdown-menu text-dark fs-14 dropdown-menu-color menu-pad">            
+                <a class="dropdown-item-du dropdown-item text-light advisory-consulting dropdown_item" href="/advisory-consulting/">Advisory Consulting</a>            
+                <a class="dropdown-item-du dropdown-item text-light digital-twin dropdown_item" href="/digital-twin/">Digital Twin</a>            
+                <a class="dropdown-item-du dropdown-item text-light spatial-analytics dropdown_item" href="/spatial-analytics/">Spatial Analytics</a>            
+                <a class="dropdown-item-du dropdown-item text-light computer-vision-solutions dropdown_item" href="/computer-vision-solutions/">Computer Vision</a>            
+                </div>
             </li>
             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle js-scroll-trigger mx-lg-1" href="/products/">Products</a>
-            <div class="dropdown-menu text-dark fs-14 dropdown-menu-color menu-pad">
-            
-            <a class="dropdown-item-du dropdown-item text-light  dropdown_item" href="https://slidesense.ai/">SlideSense</a>
-            
-            <a class="dropdown-item-du dropdown-item text-light comicgen dropdown_item" href="/comicgen/">Comicgen</a>
-            
-            <a class="dropdown-item-du dropdown-item text-light cluster dropdown_item" href="/cluster/">Cluster</a>
-            
-            <a class="dropdown-item-du dropdown-item text-light data-explorer dropdown_item" href="/data-explorer/">Data explorer</a>
-            
-            </div>
+                <a class="nav-link dropdown-toggle js-scroll-trigger mx-lg-1" href="/products/">Products</a>
+                <div class="dropdown-menu text-dark fs-14 dropdown-menu-color menu-pad">            
+                <a class="dropdown-item-du dropdown-item text-light  dropdown_item" href="https://slidesense.ai/">SlideSense</a>            
+                <a class="dropdown-item-du dropdown-item text-light comicgen dropdown_item" href="/comicgen/">Comicgen</a>            
+                <a class="dropdown-item-du dropdown-item text-light cluster dropdown_item" href="/cluster/">Cluster</a>            
+                <a class="dropdown-item-du dropdown-item text-light data-explorer dropdown_item" href="/data-explorer/">Data explorer</a>            
+                </div>
             </li>
-            <li class="nav-item">
-            
-            
-            <a class="nav-link js-scroll-trigger mx-lg-1  ailabs " href="/ailabs/">AI Labs</a>
+            <li class="nav-item">            
+                <a class="nav-link js-scroll-trigger mx-lg-1  ailabs " href="/ailabs/">AI Labs</a>
             </li>                                 
             <li class="nav-item">            
-            <a class="nav-link js-scroll-trigger mx-lg-1  storylabs " href="/storylabs/">Story Labs</a>
+                <a class="nav-link js-scroll-trigger mx-lg-1  storylabs " href="/storylabs/">Story Labs</a>
+            </li>
+            <li class="nav-item">            
+                <a class="nav-link js-scroll-trigger mx-lg-1  downloads " href="/downloads/">Resources</a>
             </li>
             <li class="nav-item">
-            
-            
-            <a class="nav-link js-scroll-trigger mx-lg-1  downloads " href="/downloads/">Resources</a>
-            </li>
-            <li class="nav-item">
-            
-            
-            <a class="nav-link js-scroll-trigger mx-lg-1  companystory " href="/companystory/">About Us</a>
-            </li>
-                     
-            <li class="nav-item">
-            
+                <a class="nav-link js-scroll-trigger mx-lg-1  companystory " href="/companystory/">About Us</a>
+            </li>                     
+            <li class="nav-item">            
             <a class="nav-link js-scroll-trigger mx-lg-1  https://blog.gramener.com d-lg-none d-xl-none d-xs-none" href="https://blog.gramener.com">Blogs</a>
             </li>
-            <li class="nav-item">
-            
-            
+            <li class="nav-item">            
             <a class="nav-link js-scroll-trigger mx-lg-1  news d-lg-none d-xl-none d-xs-none" href="/news/">News</a>
-            </li>
-            
-            <li class="nav-item">
-            
-            
+            </li>            
+            <li class="nav-item">            
             <a class="nav-link js-scroll-trigger mx-lg-1  data-science-whiteboards d-flex d-md-flex d-lg-none d-xl-none" href="/data-science-whiteboards/">Whiteboard Videos</a>
             </li>
-            
-            
-            
-            
-            <li class="nav-item">
-            
-            
+            <li class="nav-item">            
             <a class="nav-link js-scroll-trigger mx-lg-1  downloads/#t=webinar d-flex d-md-flex d-lg-none d-xl-none" href="/downloads/#t=webinar">Webinars</a>
             </li>
-            <li class="nav-item">           
-            
+            <li class="nav-item">            
             <a class="nav-link js-scroll-trigger mx-lg-1 careers d-flex d-md-flex d-lg-none d-xl-none font-weight-bold" href="/careers/">Careers</a>
             </li>
             <li class="nav-item">            
             <a class="nav-link js-scroll-trigger mx-lg-1  demorequest " href="/demorequest/">Book A Demo</a>
-            </li>
-            
+            </li>            
             <!-- <li class="nav-item">
-
-
                 <a class="nav-link js-scroll-trigger mx-lg-1  demorequest " href="/demorequest/">Contact Us</a>
-                </li> -->
-            
-            
+                </li> -->            
             </ul>
             </div>
             </div>
             </nav>
-            </div>
-        <!-- Navigation-->
-        <!-- <nav class="navbar navbar-expand-lg navbar-light  shadow-sm" id="mainNav">
-            <div class="container px-5">
-                <a class="navbar-brand fw-bold" href="/{{ GUIDE_ROOT }}">
-                    <img src="/{{ GUIDE_ROOT }}/assets/img/logo_black.jpg" width="180px" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="bi-list"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-                        <li class="nav-item navl"><a class="nav-link me-lg-3" href="#platform">Platform </a></li>
-                        <li class="nav-item"><a class="nav-link me-lg-3" href="#price">Pricing</a></li>
-                        <li class="nav-item"><a class="nav-link me-lg-3" href="#community">Community</a></li>
-                        <li class="nav-item"><a class="nav-link me-lg-3" href="#tutorials">Tutorials</a></li>                        
-                        <li class="nav-item"><a class="nav-link me-lg-3" target="_blank" href="https://gramener.com/companystory/">About Us</a></li>
-                    </ul>
-                    <form class="form-inline">
-                        <input class="form-control form-control-sm shadow-none my-2 mr-2 d-none d-sm-block search" type="search" id="search" size="30"
-                        placeholder="Search topics" data-prefix="/{{ GUIDE_ROOT }}/" data-url="/{{ GUIDE_ROOT }}/search/searchindex.json" 
-                        autocomplete="off">
-                    </form>
-                </div>
-            </div>
-        </nav> -->
+            </div>        
         <!-- header-->
         <section class="bg-gramex">
             <div class="container px-5">
@@ -192,8 +108,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <!-- Text info-->
-                        
+                        <!-- Text info-->                        
                     </div>
                 </div>
             </div>
@@ -202,27 +117,27 @@
         <section>
             <div class="container-fluid py-60">
                 <div class="custom_floating_card pb-3 mb-4">
-                <div class="container-fluid px-0 rounded bg-dark">
-                <div class="col text-center px-0">
-                <div class="text-white py-4">
-                <div class="col-md-12" id="test">
-                <div class="col-md-7 mx-auto">
-                <div class="w-100 mb-lg-0 mb-3 mb-md-0">
-                <div class="row no-gutters align-items-center">
-                <div class="col-md-12 search-design">
-                    <i class='fas fa-search'></i>
-                <input class="form-control border-primary text-color6 h5 mb-0 border-0 fw-600 search bg-light px-5" 
-                type="search" id="example-search-input1" data-search="@text" data-target=".gallery-item" data-hide-class="d-none"
-                placeholder="Search topics" data-prefix="/{{ GUIDE_ROOT }}/" data-url="/{{ GUIDE_ROOT }}/search/searchindex.json" 
-                autocomplete="off">                
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>
+                    <div class="container-fluid px-0 rounded bg-dark">
+                        <div class="col text-center px-0">
+                            <div class="text-white py-4">
+                                <div class="col-md-12" id="test">
+                                    <div class="col-md-7 mx-auto">
+                                        <div class="w-100 mb-lg-0 mb-3 mb-md-0">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-md-12 search-design">
+                                                    <i class='fas fa-search'></i>
+                                                    <input class="form-control border-primary text-color6 h5 mb-0 border-0 fw-600 search bg-light px-5" 
+                                                    type="search" id="example-search-input1" data-search="@text" data-target=".gallery-item" data-hide-class="d-none"
+                                                    placeholder="Search topics" data-prefix="/{{ GUIDE_ROOT }}/" data-url="/{{ GUIDE_ROOT }}/search/searchindex.json" 
+                                                    autocomplete="off">                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -236,8 +151,7 @@
                         <div class="sticky-content">
                             <nav class="sidebar vertical-navigation">
                                 <div class="inline-block"><i class="fa fa-star"></i><h5 class="pad-lf-4">Gramex Guide</h5></div>
-                                <ul class="nav flex-column menu-highlighter">
-                                    
+                                <ul class="nav flex-column menu-highlighter">                                    
                                     <li class="nav-item has-submenu">
                                       <a class="nav-link" aria-current="page" href="/{{ GUIDE_ROOT }}/home/">
                                           <img class="d-inline" src="/{{ GUIDE_ROOT }}/assets/img/overview.svg" />Overview</a>

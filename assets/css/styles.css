@@ -11651,5 +11651,25 @@ footer p{
   font-size: 14px;
   color: grey !important;
   padding: 4px 8px;
-  /* padding: 10px; */
+}
+
+.sidebar li .submenu{ 
+  list-style: none; 
+  margin: 0; 
+  padding: 0; 
+  padding-left: 1rem; 
+  padding-right: 1rem;
+}
+input#example-search-input1 {
+  border-radius: 50px !important;
+}
+i.fas.fa-search {
+  position: relative;
+  top: 11px;
+  left: 42px;
+  color: #000;
+}
+.col-md-12.search-design {
+  display: inherit;
+  position: relative;
 }
