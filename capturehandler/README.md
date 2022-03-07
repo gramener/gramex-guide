@@ -142,6 +142,8 @@ It accepts the following arguments:
   <br>**Example**: [?file=newfile](capture?file=newfile&url=.)
 - `?ext=`: format of output. Can be pdf, png, jpg or pptx. Default: `pdf`.
   <br>**Example**: [?ext=png](capture?ext=png&url=.). (`ext=pptx` available only in `engine: chrome` from **v1.23.1**)
+- `?domain=`: set cookies on specified domain. Use this if sending CORS (cross-origin requests) and CaptureHandler must [set cookie  domains](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#domaindomain-value).
+  <br>**Example**: [?domain=.example.org](capture?domain=.example.org&url=.)
 - `?delay=`: wait for before taking a screenshot.
   - If this is a number, waits for this many milliseconds.
     <br>**Example**: [?delay=1000](capture?url=timer.html&delay=1000)

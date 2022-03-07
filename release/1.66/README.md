@@ -165,7 +165,7 @@ $dark: #204066;
 
 ## Transform multiple file types
 
-[FileHander transforms](../../filehandler/#transforming-content) now lets you pick multiple
+[FileHandler transforms](../../filehandler/#transforming-content) now lets you pick multiple
 extensions for the same transform. For example, to treat all `template*.html` and `template*.svg`
 files as templates, use:
 

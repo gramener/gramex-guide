@@ -938,55 +938,54 @@ CORS does not send cookie information. Nor does it send custom HTTP headers
 To enable a Gramex client server to communicate a Gramex host server via CORS,
 you need to do 4 things:
 
-1. In the client, send the XSRF token and cookie from the HTML file. Note: this
-   uses [templates](../filehandler/#templates):
+Step 1. In the client, send the XSRF token and cookie from the HTML file. Note: this
+uses [templates](../filehandler/#templates):
 
-    ```html
-    <script>
-    $.ajax('https://gramex-server/cors-page', {
-      method: 'POST',
-      xhrFields: {withCredentials: true}            // Send cookies
-      data: { _xsrf: '{{ handler.xsrf_token }}' },  // Send XSRF token
-    })
-    </script>
-    ```
+```html
+<script>
+$.ajax('https://gramex-server/cors-page', {
+  method: 'POST',
+  xhrFields: {withCredentials: true}            // Send cookies
+  data: { _xsrf: '{{ handler.xsrf_token }}' },  // Send XSRF token
+})
+</script>
+```
 
-2. In the host, add additional headers in `gramex.yaml`:
+Step 2. In the host, add additional headers in `gramex.yaml`:
 
-    ```yaml
-    url:
-      cors:
-        pattern: /$YAMLURL/cors-page
-        handler: FunctionHandler
-        kwargs:
-          function: mymodule.mycalc(handler)
-          methods: [GET, POST, OPTIONS]             # Important: Allow OPTIONS
-          auth: true                                # Pick any auth conditions
-          headers:
-              Access-Control-Allow-Methods: GET, POST, OPTIONS      # Important
-              Access-Control-Allow-Credentials: true                # Important
-              # Access-Control-Allow-Origin: must be set dynamically by mycalc()
-    ```
+```yaml
+url:
+  cors:
+    pattern: /$YAMLURL/cors-page
+    handler: FunctionHandler
+    kwargs:
+      function: mymodule.mycalc(handler)
+      methods: [GET, POST, OPTIONS]             # Important: Allow OPTIONS
+      auth: true                                # Pick any auth conditions
+      headers:
+          Access-Control-Allow-Credentials: 'true'              # Quotes the "true"
+          Access-Control-Allow-Methods: GET, POST, OPTIONS      # Allow OPTIONS
+          Access-Control-Allow-Headers: Accept, Cache-Control, Content-Type, If-None-Match, Origin, Pragma, Upgrade-Insecure-Requests, X-Requested-With
+          # Access-Control-Allow-Origin: must be set dynamically by mycalc()
+```
 
-3. In the client AND the host, enable a distributed
-    [session data mechanism](../auth/#session-data) like Redis,
-    and also to share cookies:
+Step 3. In the client AND the host, enable a distributed [session data mechanism](../auth/#session-data) like Redis, and also to share cookies:
 
-    ```yaml
-    app:
-      session:
-        type: redis
-        path: localhost:6379:0      # Run redis on localhost, port 6379, DB 0
-        domain: .your-domain.com    # Share cookies between *.your-domain.com
-    ```
+```yaml
+app:
+  session:
+    type: redis
+    path: localhost:6379:0      # Run redis on localhost, port 6379, DB 0
+    domain: your-domain.com     # Share cookies between *.your-domain.com
+```
 
-4. In the host `mymodule.mycalc()`, set the `Access-Control-Allow-Origin` header:
+Step 4. In the host `mymodule.mycalc()`, set the `Access-Control-Allow-Origin` header:
 
-    ```python
-    def mycalc(handler):
-        origin = handler.request.headers.get('Origin', '*')
-        handler.set_header('Access-Control-Allow-Origin', origin)
-    ```
+```python
+def mycalc(handler):
+    origin = handler.request.headers.get('Origin', '*')
+    handler.set_header('Access-Control-Allow-Origin', origin)
+```
 
 
 ## Shared deployment

@@ -8,4 +8,5 @@ url:
       data: {url: $YAMLPATH/social-media-platform.csv}
       rules:
         - Column Chart:
-            chart-data: data.set_index('Platform')
+            chart:
+              data: data.set_index('Platform')
