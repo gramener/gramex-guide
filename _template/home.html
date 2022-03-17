@@ -20,6 +20,15 @@
         <link href="/{{ GUIDE_ROOT }}/ui/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet" />
         <link href="/{{ GUIDE_ROOT }}/assets/css/styles.css" rel="stylesheet" />
         <style>
+            .guide-card a{ 
+                text-decoration:none;
+            }
+            .guide-card-btn {
+                background-color: #ff4f45;
+            }
+            .guide-card-btn-text {
+                color: #fff;
+            }
             .one {
                 display: inline-flex;
                 width: 100% !important;
@@ -33,10 +42,28 @@
                 left: 330px;
                 padding: 8px 0px;
             }
+            @media(max-width:1400px){
+                .two {
+                position: absolute;
+                left: 310px;
+                }
+            }
             @media(max-width:1366px){
                 .two {
                 position: absolute;
                 left: 310px;
+                }
+            }
+            @media(max-width:1280px){
+                .two {
+                position: absolute;
+                left: 300px;
+                }
+            }
+            @media(max-width:1180px){
+                .two {
+                position: absolute;
+                left: 280px;
                 }
             }
             @media(max-width:1024px){
@@ -49,6 +76,12 @@
                 .two {
                 position: absolute;
                 left: 200px;
+                }
+            }
+            @media(max-width:920px){
+                .two {
+                position: absolute;
+                left: 220px;
                 }
             }
             @media (max-width: 768px){
@@ -139,15 +172,16 @@
             </nav>
             </div>        
         <!-- header-->
+        {% if course_index!= 'yes' %}
         <section class="bg-gramex">
             <div class="container px-5">
                 <div class="row gx-5 align-items-center">
                     <div class="col-lg-12">
                         <!-- Text info-->
-                        <div class="mb-5 mb-lg-0 text-center text-lg-start">
-                            <h1 class="display-1 lh-1 mb-3 text-white">
+                        <div class="mb-lg-0 text-center text-lg-start">
+                            <h1 class="display-1 lh-1 text-white">
                                 Your Learning Space</h1>
-                            <p class="lead fw-light text-white mb-3">
+                            <p class="lead fw-light text-white">
                                 Get one-stop access to everything Gramex: tutorials, e-books, white papers, online courses, certification, and more.
                             </p>
                             
@@ -159,7 +193,7 @@
                 </div>
             </div>
         </section>        
-        
+        {% end %}
         <section>
             <div class="container-fluid py-60">
                 <div class="custom_floating_card pb-3 mb-4">
@@ -567,9 +601,6 @@
                     </div>
                     
                 </div>
-
-                
-
             </div>
         </section>
         
@@ -587,7 +618,7 @@
                     </button> -->
                     <a href="https://www.gramener.com/gramex" class="btn btn-bg rounded-pill mb-2 mt-4">
                         <span class="align-items-center">
-                            <span class="small">Learn more about Gramex</span>
+                            <span class="small guide-card-btn-text">Learn more about Gramex</span>
                         </span>
                     </a>
                 </div>
