@@ -3,7 +3,7 @@ course_index: 'no'
 ...
 
 <div class="row" markdown="1">
-::: card title='Getting Started' image_src='assets/img/__01.svg' content='A step-by-guide guide on how to get started with Gramex.' btn_text='Get Started' redirect_to='home/'
+::: card title='Getting Started' image_src='assets/img/__01.svg' content='A step-by-guide guide on how to get started with Gramex.' btn_text='Get Started' redirect_to='home'
 
 ::: card title='Gramex Tutorials' image_src='assets/img/__02.svg' content='What is Gramex? What are its applications? Watch video tutorials and never lose sleep over wasted efforts again.' btn_text='Watch Tutorials' redirect_to='https://www.youtube.com/watch?v=lkBqm6XoccI&list=PLrn2FHBzHtaMDFAkpJ1JDXbtfvcVvpsAJ'
 
