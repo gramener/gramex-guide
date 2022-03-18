@@ -6,7 +6,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Gramex Learning | GRAMENER</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="https://gramener.com/wp-content/uploads/2021/07/favicon.ico" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Google fonts-->
@@ -41,6 +41,20 @@
                 color: #bb9e9e;
                 left: 330px;
                 padding: 8px 0px;
+            }
+            #searchresults {
+                position: absolute;
+                width: 57.3%;
+                border-radius: 15px;
+                z-index: 9;
+                text-align: left;
+            }
+            div#searchresults .my-2 a {
+                color: #000;
+                text-decoration: none;
+            }
+            #features {
+                padding-top: 0px;
             }
             @media(max-width:1400px){
                 .two {
@@ -88,12 +102,18 @@
                 .two {
                 position: absolute;
                 left: 186px;
-                }
+                }                
             }
             @media (max-width: 767px){
                 .two {
                 position: absolute;
                 left: 30px;
+                }
+                .guide-card {
+                    padding: 10px;
+                }
+                #searchresults {
+                    width: 94%;
                 }
             }
             
@@ -101,7 +121,8 @@
     </head>
     <body id="page-top">
         <div class="sticky-top" style="text-transform: uppercase;">
-            <nav class="navbar navbar-expand-lg navbar-dark px-sm-3 py-0 body-color black_bg px-md-4" id="mainNav" style="border-bottom: 1px solid #ccc;">
+            <nav class="navbar navbar-expand-lg navbar-dark px-sm-3 py-0 body-color black_bg px-md-4" id="mainNav" 
+            style="border-bottom: 1px solid #ccc; padding: 20px;">
             <div class="container py-2 px-0">
             <a class="navbar-brand js-scroll-trigger" href="../">
             <img src="https://gramener.com/img-2019/gramener.jpg" class="mt-0 bg-dark" alt="Gramener" width="130px">
@@ -610,12 +631,7 @@
                 <h2 class="text-center text-white font-alt mb-4 fw-light">
                     “Wisdom is not a product of schooling but of the lifelong attempt to acquire it.” – Albert Einstein
                 </h2>
-                <div class="d-grid gap-2 col-3 mx-auto mx-auto ">
-                    <!-- <button class="btn btn-bg rounded-pill mb-2 mt-4" data-bs-toggle="modal" data-bs-target="#feedbackModal">
-                        <span class="align-items-center">
-                            <span class="small">Get Started</span>
-                        </span>
-                    </button> -->
+                <div class="d-grid gap-2 col-md-3 col-lg-3 col-xs-12 mx-auto">
                     <a href="https://www.gramener.com/gramex" class="btn btn-bg rounded-pill mb-2 mt-4">
                         <span class="align-items-center">
                             <span class="small guide-card-btn-text">Learn more about Gramex</span>
