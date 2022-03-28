@@ -15,7 +15,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" /> -->
         <!-- Core theme CSS (includes Bootstrap)-->
-        <!-- <link href="css/styles.css" rel="stylesheet" /> -->
         <link href="/{{ GUIDE_ROOT }}/monokai.css" rel="stylesheet" />        
         <link href="/{{ GUIDE_ROOT }}/ui/@fortawesome/fontawesome-free/css/all.css" rel="stylesheet" />
         <link href="/{{ GUIDE_ROOT }}/assets/css/styles.css" rel="stylesheet" />
@@ -41,8 +40,14 @@
             .two {
                 position: absolute;
                 color: #bb9e9e;
-                left: 330px;
+                left: 425px;
                 padding: 8px 0px;
+            }
+            .mini-search-icon{
+                position: absolute;
+                color: #bb9e9e;
+                padding: 10px 0px;
+                left: 360px;
             }
             #searchresults {
                 position: absolute;
@@ -56,60 +61,157 @@
                 text-decoration: none;
             }
             #features {
-                padding-top: 0px;
+                padding-top: 20px;
+            }
+            .menu-pad {
+                padding: 0 0 !important;
+                margin: -6px 0 0 0 !important;
+            }
+            .dropdown-item-du {
+                border-radius: 8px !important;
+                background-color: #00000099 0% 0% no-repeat padding-box;
+                opacity: 1;
+            }
+            .nav-link:hover {
+                color: #5067EB !important;
+            }
+            .dropdown-toggle:hover {
+                border-color: #1B174F !important;
+            }.navbar-nav .dropdown:hover>.dropdown-menu {
+                display: block;
+            }
+            .menu-pad {
+                padding: 0 0 !important;
+                margin: -6px 0 0 0 !important;
+            }.dropdown-item-du {
+                border-radius: 8px !important;
+                background-color: #00000099 0% 0% no-repeat padding-box;
+                opacity: 1;
+            }
+            .dropdown-menu-color {background: #000000;}
+            a.dropdown-item.text-light:hover {
+                color: #5067EB !important;
+                background-color: #55555566 !important;
+                opacity: 1;
+            }
+            @media(max-width:1800px){
+                .two {
+                    position: absolute;
+                    left: 380px;
+                }
+                .mini-search-icon{
+                    position: absolute;                
+                    left: 170px;
+                }
+            }
+            @media(max-width:1600px){
+                .two {
+                    position: absolute;
+                    left: 360px;
+                }
+                .mini-search-icon{
+                    position: absolute;                
+                    left: 200px;
+                }
+            }
+            @media(max-width:1440px){
+                .two {
+                    position: absolute;
+                    left: 325px;
+                }
+                .mini-search-icon{
+                    position: absolute;                
+                    left: 125px;
+                }
             }
             @media(max-width:1400px){
                 .two {
-                position: absolute;
-                left: 310px;
+                    position: absolute;
+                    left: 310px;
+                }
+                .mini-search-icon{
+                    position: absolute;                
+                    left: 175px;
                 }
             }
             @media(max-width:1366px){
                 .two {
-                position: absolute;
-                left: 310px;
+                    position: absolute;
+                    left: 310px;
+                }
+                .mini-search-icon{
+                    position: absolute;                
+                    left: 175px;
                 }
             }
             @media(max-width:1280px){
                 .two {
-                position: absolute;
-                left: 300px;
+                    position: absolute;
+                    left: 300px;
+                }
+                .mini-search-icon{
+                    position: absolute;                
+                    left: 145px;
                 }
             }
             @media(max-width:1180px){
                 .two {
-                position: absolute;
-                left: 280px;
+                    position: absolute;
+                    left: 280px;
+                }
+                .mini-search-icon{
+                    position: absolute;                
+                    left: 175px;
                 }
             }
             @media(max-width:1024px){
                 .two {
-                position: absolute;
-                left: 240px;
+                    position: absolute;
+                    left: 240px;
+                }
+                .mini-search-icon{
+                    position: absolute;                
+                    left: 105px;
                 }
             }
             @media(max-width:980px){
                 .two {
-                position: absolute;
-                left: 200px;
+                    position: absolute;
+                    left: 200px;
+                }
+                .mini-search-icon{
+                    position: absolute;                
+                    left: 175px;
                 }
             }
             @media(max-width:920px){
                 .two {
-                position: absolute;
-                left: 220px;
+                    position: absolute;
+                    left: 220px;
+                }
+                .mini-search-icon{
+                    position: absolute;                
+                    left: 125px;
                 }
             }
             @media (max-width: 768px){
                 .two {
-                position: absolute;
-                left: 186px;
-                }                
+                    position: absolute;
+                    left: 186px;
+                }
+                .mini-search-icon{
+                    position: absolute;                
+                    left: 95px;
+                }
             }
             @media (max-width: 767px){
                 .two {
-                position: absolute;
-                left: 30px;
+                    position: absolute;
+                    left: 30px;
+                }
+                .mini-search-icon{
+                    position: absolute;                
+                    left: 75px;
                 }
                 .guide-card {
                     padding: 10px;
@@ -216,10 +318,10 @@
                 </div>
             </div>
         </section>        
-        {% end %}
+                
         <section>
             <div class="container-fluid py-60">
-                <div class="custom_floating_card pb-3 mb-4">
+                <div class="custom_floating_card">
                     <div class="container-fluid px-0 rounded">
                         <div class="col text-center px-0">
                             <div class="text-white py-4">
@@ -239,7 +341,8 @@
                                                 autocomplete="off">
                                                 </div>                                                
                                                                                                
-                                                </div>                                                
+                                                </div>
+
                                                 </div>
                                                 </div>                                          
                                         </div>
@@ -251,13 +354,29 @@
                 </div>
             </div>
         </section>
-        
+        {% end %}
         <section id="features" class="">
             <div class="container px-5">
                 <div class="row gx-5">
                     {% if course_index== 'yes' %}
-                    <div class="col-lg-4">                        
-                        <div class="sidebar-2"><div class="sticky-spacer"></div>
+                    <div class="col-lg-4">
+                        <div class="mini-search-box">
+                            <div class="one">
+                                <div class="mini-search-icon">                                                
+                                    <i class='fas fa-search search-icon'></i>                                                
+                                </div>
+                                <div class="three">                                                     
+                                    <input class="form-control mb-0 search bg-light px-5"
+                                    type="search" id="example-search-input1" data-search="@text" data-target=".gallery-item" 
+                                    data-hide-class="d-none" placeholder="Search topics" data-prefix="/{{ GUIDE_ROOT }}/" 
+                                    data-url="/{{ GUIDE_ROOT }}/search/searchindex.json"
+                                    autocomplete="off">
+                                </div>
+                            </div>
+                        </div>                     
+                        <div class="sidebar-2"><div class="sticky-spacer">
+                            
+                        </div>
                         <div class="sticky-content">
                             <nav class="sidebar vertical-navigation">
                                 <div class="inline-block"><i class="fa fa-star"></i><h5 class="pad-lf-4">Gramex Guide</h5></div>
