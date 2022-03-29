@@ -47,7 +47,8 @@ md = markdown.Markdown(extensions=[
     'fenced_code',
     'toc',
     CustomBlocksExtension(generators={
-        'example': markdown_block('example', href='', source='', target='')
+        'example': markdown_block('example', href='', source='', target=''),
+        'card': markdown_block('card', title='Getting Started Guide'),
     }),
 ], soutput_format='html5')
 # Create a cache for guide markdown content
@@ -83,6 +84,7 @@ def markdown_template(content, handler):
         'body': content['content'],
         'title': '',
         'handler': handler,
+        'course_index': 'yes'
     }
     # ... which can be updated by the YAML frontmatter on the Markdown files
     for key, val in content['meta'].items():
@@ -90,7 +92,7 @@ def markdown_template(content, handler):
     # TODO: Document why we need this
     if 'xsrf' in content:
         handler.xsrf_token
-    tmpl = gramex.cache.open('_template/markdown.html', 'template', rel=True)
+    tmpl = gramex.cache.open('_template/home.html', 'template', rel=True)
     return tmpl.generate(**kwargs).decode('utf-8')
 
 

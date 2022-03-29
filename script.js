@@ -2,20 +2,22 @@
 $(function () {
   // Sidebar menu: Highlight current page
   var url = location.origin + location.pathname
-  $('.menu a').each(function () {
+
+  $('.sidebar a').each(function () {
     if (this.href == url) {
-      $(this).parent().addClass('active').append('<ul>')
+      $(this).addClass('active');
+      $(this).parent().append('<ul class="submenu"></ul>')
       this.scrollIntoView()
     }
   })
 
-  // Sidebar menu: Add headings to page
   $('.content').find('h2, h3').each(function () {
-    $('.menu .active ul').append(
-      '<li class="nav-item menu-' + this.tagName.toLowerCase() + '">' +
-      '<a class="nav-link py-0" href="#' + $(this).attr('id') + '">' +
-      $(this).text() +
-      '</a></li>')
+    $('.sidebar .active').next('ul').append(
+          '<li>'+
+            '<a class="nav-link" href="#' + $(this).attr('id') + '">'+
+            $(this).text() + '</a>' +
+            '</li>'
+    )
   })
 
   // Scroll-spy offset must be the same as <html> scroll-padding-top. Otherwise it won't work
@@ -44,6 +46,40 @@ $(function () {
     $('.feedback-thanks').removeClass('d-none')
   })
 
+  // $('#search').each(function () {
+    $('input.search').each(function () {
+      var $search = $(this);
+      var prefix = $search.data('prefix') || ''
+      var $results = $('<div></div>').attr({
+        'id': 'searchresults',
+        'class': 'bg-white p-2 border',
+      }).insertAfter(this).hide()
+      $.ajax($search.data('url'))
+        .done(function (index) {
+          var idx = lunr.Index.load(index.index)
+          var docs = index.docs
+          $search
+            .on('input', function () {
+              var text = $(this).val().replace(/^\s+/, '').replace(/\s+$/, '')
+              var results = []
+              if (text)
+                results = idx.search(text)
+              if (results.length)
+                $results.html(results.slice(0, 20).map(function (result) {
+                  var d = docs[result.ref]
+                  return '<div class="my-2"><a href="' + prefix + d.link + '">' + d.prefix + ' &raquo; ' + d.title + '</a></div>'
+                })).show()
+              else
+                $results.html('').hide()
+            })
+            .trigger('input')
+          // Clicking outside the search results clears search results
+          $('body').on('click', function (e) {
+            if (!($results.is(e.target) || $.contains($results, e.target)))
+              $results.html('').hide()
+          })
+        })
+    })
 
   // Add a copy button to each .codehilite
   $('.codehilite')

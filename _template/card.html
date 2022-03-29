@@ -1,0 +1,24 @@
+{# ::: card title="..." image_src="..."
+    title: Header for card
+#} 
+
+<div class="col-lg-3 col-md-6 guide-card">
+    <a target="_blank" href="{{redirect_to}}">
+        <div class="card text-center h-100 border-0 features-hover">
+            <div class="card-header bg-white border-0 mt-2">
+                <h3 class="card-title card-head">{{title}}</h3>
+            </div>
+            <div class="card-body ">
+                <span class="mx-160"><img class="width-150 py-3" src="{{image_src}}" /></span>
+                <p class="text-dark fw-light mb-0">{{content}}</p>
+            </div>
+            <div class="card-footer bg-white border-0">
+                <span class="btn btn-border btn-hover-bg rounded-pill mb-2 guide-card-btn">
+                    <span class="align-items-center">
+                        <span class="small guide-card-btn-text">{{btn_text}}</span>
+                    </span>
+                </span>
+            </div>
+        </div>
+    </a>    
+</div>
