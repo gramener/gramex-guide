@@ -755,15 +755,18 @@ url:
       # prepare: my_module.calc(args, handler)
 ```
 
-This `prepare:` method replaces the `?c=` with `?Cross=`. So
+This `prepare:` method or expression replaces the `?c=` with `?Cross=`. So
 [replace?c=Yes](replace?c=Yes&_format=html) is actually the same as
 [flags?Cross=Yes](flags?Cross=Yes&_format=html).
 
-`prepare:` is a Python expression that modifies `args`. `args` is a dict
-containing the URL query parameters as lists of strings. `?x=1&y=2` becomes is
-`{'x': ['1'], 'y': ['2']}`. `args` has [default values](#formhandler-defaults)
-merged in. You can modify `args` in-place and return None, or return a value that
-replaces `args`.
+`prepare(args, key, handler)` is the function signature. You can use:
+
+- `args`: (dict) URL query parameters as lists of strings. E.g. `?x=1&y=2` becomes `{'x': ['1'], 'y': ['2']}`. `args` has [default values](#formhandler-defaults)
+merged in
+- `key`: (str) Name of dataset if you have [multiple datasets](#formhandler-multiple-datasets). Defaults to `"data"`
+- `handler`: FormHandler instance
+
+You can modify `args` in-place and return None, or return a value that replaces `args`.
 
 Some sample uses:
 
@@ -803,6 +806,11 @@ That this transforms the data *before filtering*.
 e.g. [filtering for c1 > 1000](continent?c1>=1000) filters on the totals, not individual rows.
 To transform the data after filtering, use [modify](#formhandler-modify).
 
+`function(data, handler)` is the function signature. You can use:
+
+- `data`: (DataFrame) data loaded from the source (before filtering)
+- `handler`: FormHandler instance
+
 `function:` also works with [database queries](#formhandler-query), but loads
 the **entire** table before transforming, so ensure that you have enough memory.
 
@@ -826,6 +834,12 @@ Here, `modify:` returns the sum of numeric columns, rather than the data itself.
 `modify:` runs *after filtering*. e.g. the [Asia result](totals?Continent=Asia) shows totals only for Asia. To transform the data before filtering, use [function](#formhandler-functions).
 
 `modify:` can be any expression / function that uses `data` & `handler`. For single datasets, `data` is a DataFrame. `modify:` should return a DataFrame.
+
+`modify(data, key, handler)` is the function signature. You can use:
+
+- `data`: (DataFrame) data loaded from the source (after filtering)
+- `key`: (str) Name of dataset if you have [multiple datasets](#formhandler-multiple-datasets). Defaults to `"data"`
+- `handler`: FormHandler instance
 
 If you have [multiple datasets](#formhandler-multiple-datasets), `data:` is a dict of DataFrames. `modify:` can modify all of these datasets -- and join them if required. It should return a dict of DataFrames.
 
@@ -1009,7 +1023,12 @@ def sales_query(args):
 The resulting query is treated *exactly* like the `query:` statement. So
 further formatting and argument substitution still happens.
 
-In addition to `args`, queryfunction can also use `handler`.
+`queryfunction(data, key, handler)` is the function signature. You can use:
+
+- `args`: (dict) URL query parameters as lists of strings. E.g. `?x=1&y=2` becomes `{'x': ['1'], 'y': ['2']}`. `args` has [default values](#formhandler-defaults)
+merged in
+- `key`: (str) Name of dataset if you have [multiple datasets](#formhandler-multiple-datasets). Defaults to `"data"`
+- `handler`: FormHandler instance
 
 ### Preventing SQL injection
 
