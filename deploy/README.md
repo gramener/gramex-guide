@@ -754,7 +754,7 @@ The most common security options are pre-configured in `$GRAMEXPATH/deploy.yaml`
   - Image formats: `png`, `.svg`, `.jp*g`, `.gif`, `.ico`
   - Media formats: `.mp3`, `.mp4`, `.avi`, `.flv`, .`mkv`
   - Font formats: `.ttf`, `.woff*`, `.eot`, `.otf`
-  - Front-end formats: `.js`, `.map`, `.vue`, `.less`, `.css` (not back-end formats like `.coffee`, `.scss`)
+  - Front-end formats: `.js`, `.map`, `.vue`, `.ts`, `.css`, `.scss`, `.sass`, `.less`
   - Front-end data format: `.json`
 - enables `XSS` protection. Read more at [Mozilla Developer Docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection).
 - enables protection against browsers performing MIME-type sniffing. [Read more](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options).

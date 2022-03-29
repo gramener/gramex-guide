@@ -87,12 +87,13 @@ url:
 
     # Static files are cached on the browser
     guide-static:
-        pattern: /$YAMLURL/(.*\.s?css|.*\.js|.*\.vue)
+        pattern: /$YAMLURL/(.*\.s?css|.*\.js|.*\.vue|.*\.ts)
         handler: FileHandler
         kwargs:
             path: $YAMLPATH/*
             sass: '*.scss'
             vue: '*.vue'
+            ts: '*.ts'
             headers:
                 Cache-Control: public, max-age=300
 

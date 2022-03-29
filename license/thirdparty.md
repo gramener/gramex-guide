@@ -97,6 +97,7 @@ Gramex uses open source third party libraries that use one of these licenses:
 - [tether-sheperd](https://www.npmjs.com/package/tether-shepherd): [MIT license][MIT]
 - [tmp](https://www.npmjs.com/package/tmp): [MIT license][MIT]
 - [topojson](https://www.npmjs.com/package/topojson): [BSD license][BSD]
+- [ts](https://www.npmjs.com/package/ts): [MIT license][MIT]
 - [uglify-js](https://www.npmjs.com/package/uglify-js): [BSD license][BSD]
 - [url-search-params](https://www.npmjs.com/package/url-search-params): [MIT license][MIT]
 - [vega-embed](https://www.npmjs.com/package/vega-embed): [BSD license][BSD]

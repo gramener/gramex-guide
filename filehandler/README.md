@@ -435,6 +435,39 @@ URL query parameters are automatically passed as variables to the SASS file. For
 You can use this to allow users to customize your theme.
 
 
+## TypeScript
+
+FileHandler can compile [TypeScript](https://www.typescriptlang.org/).
+The default FileHandler compiles any `.ts` file into JS. For example, this `typescript.ts` file:
+
+```ts
+type WindowStates = "open" | "closed" | "minimized";
+function getLength(obj: WindowStates | WindowStates[]) {
+  return obj.length;
+}
+```
+
+... [is rendered as](typescript.ts):
+
+```js
+function getLength(obj) {
+    return obj.length;
+}
+//# sourceMappingURL=typescript.ts?map
+```
+
+::: example href=typescript.ts source="https://github.com/gramener/gramex-guide/blob/master/filehandler/typescript.ts"
+    See typescript.ts
+
+To enable this in your FileHandler, add:
+
+```yaml
+kwargs:
+    ...
+    ts: '*.ts'      # Compile .ts files into JS
+```
+
+
 ## Vue
 
 FileHandler can compile [Vue single-file components](https://vuejs.org/v2/guide/single-file-components.html).
