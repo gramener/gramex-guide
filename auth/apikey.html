@@ -28,10 +28,9 @@
 
       {% if handler.get_argument('generate-key', None) %}
         {% set key = handler.apikey() %}
-        {% set url = handler.request.protocol + '://' + handler.request.host + handler.request.path + '?gramex-key=' + key %}
         <h2>Test API key</h2>
         <p>Your API key is <code>{{ key }}</code>
-        <p>Open this link <code><a href="{{ url }}">{{ url }}</a></code>
+        <p>Open this link <code><a href="?gramex-key={{ key }}">?gramex-key={{ key }}</a></code>
           in a new browser or private window. You will be logged in
           as the same user.</p>
         <p>When making server-side or AJAX requests, a better way is to use the <code>X-Gramex-Key: {{ key }}</code> HTTP header.</p>

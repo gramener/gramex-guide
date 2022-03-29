@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auth HTTP Methods example</title>
+  <link rel="stylesheet" href="../style.scss">
+</head>
+<body class="container">
+
+  <nav class="py-4">
+    <a href=".">&laquo; Back to Auth</a>
+  </nav>
+
+  <section>
+    <h1>Auth HTTP Methods Example</h1>
+
+    <p>The <a href="public-read">public-read</a> page can be accessed by anyone.</p>
+
+    <p>But to post the form below, you need to <a href="simple">be logged in</a>.</p>
+
+    {% set user = handler.current_user %}
+    {% if user %}
+      <p>You are logged in as <code>{{ handler.current_user.get('id') }}</code>. You can post the form below. <a href="logout">Click here to log out.</a></p>
+    {% else %}
+      <p>You are not logged in. You cannot post the form below. <a href="simple">Click here to log in.</a></p>
+    {% end %}
+    <form method="POST" action="public-read">
+      <button type="submit">Send POST request</button>
+    </form>
+
+  </section>
+
+</body>
+</html>
