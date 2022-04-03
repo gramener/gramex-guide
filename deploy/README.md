@@ -878,115 +878,79 @@ self-signed certificate. Ignore the warning proceed to the website.
 
 ## CORS
 
-When one server sends a request to another server via AJAX, we need to enable
+**New in 1.78**. When one server sends a request to another server via browser JavaScript, we need to enable
 [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).
 
-To enable this, you need to add the
-[Access-Control-Allow-Origin: *](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)
-HTTP header. For example:
+If a Gramex app is deployed on multiple servers, or if you want a client-side app to fetch data from a URL, add `cors: true` to the URL's `kwargs`. For example, this page returns session information to pages from any server:
 
 ```yaml
 url:
-  cors-page:
-    pattern: /$YAMLURL/cors-page
-    handler: ...
-    kwargs:
-      ...
-      headers:
-        Access-Control-Allow-Origin: '*'        # Allow CORS from any domain
-```
-
-Now, you can access this URL from any server via AJAX. For example:
-
-```js
-$.getJSON('https://gramex-server/cors-page')
-    .done(...)
-```
-
-Instead of `Access-Control-Allow-Origin: *`, you may specify a **single**
-domain, like: `Access-Control-Allow-Origin: https://gramener.com/`.
-
-But if you want to allow multiple domains, define them in Python. For example:
-
-```yaml
-url:
-  cors-page:
-    pattern: ...
+  deploy-cors:
+    pattern: /$YAMLURL/cors
     handler: FunctionHandler
     kwargs:
-      function: mymodule.mycalc(handler)    # Headers are set by this function
+      function: handler.session
+      cors: true  # Enable CORS
 ```
 
-```python
-# mymodule.py
-def mycalc(handler):
-    # The request has an 'Origin:' headers.
-    origin = handler.request.headers.get('Origin')
-    # If it is an allowed domain, send the same as a response.
-    allowed_domains = {'https://gramener.com', 'https://learn.gramener.com'}
-    if origin in allowed_domains:
-        handler.set_header('Access-Control-Allow-Origin', origin)
-    # ... rest of your code
+`cors: true` is a shortcut for:
+
+```yaml
+      cors:
+        origins: '*'      # Allow from all servers
+        methods: '*'      # Allow all HTTP methods
+        headers: '*'      # Allow all default HTTP headers
+        auth: true        # Allow cookies
 ```
+
+`cors:` can have the following keys:
+
+- `origins` is a [list of origin domain names allowed](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin).
+  Wildcards are supported. For example,
+  - `*` matches all domains
+  - `[*.gramener.com, *.ibm.com]` matches all gramener.com or ibm.com domains
+- `methods` is a [list of HTTP methods allowed](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Methods),
+  e.g. `[GET, HEAD, POST, PUT, DELETE, OPTIONS, PATCH, CONNECT, TRACE]`
+- `headers` is a [list of HTTP headers allowed](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Headers).
+  Gramex's default list (`*`) includes `Accept`, `Cache-Control`, `Content-Type`, `If-None-Match`, `Origin`, `Pragma`, `Upgrade-Insecure-Requests`, `X-Requested-With`.
+  You can add more with `headers: [*, X-Custom-Header-1, X-Custom-Header-2, ...]`
+- `auth` is a boolean value. If `true`, CORS requests will include cookies and pass on the [user credentials](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials).
+
+For example, this CORS page can be accessed from any server via AJAX / fetch.
+
+::: example href=cors source=https://github.com/gramener/gramex-guide/tree/master/deploy/gramex.yaml
+    CORS page
+
+On any page, you can run this JS code:
+
+```js
+fetch('https://gramener.com/gramex/guide/deploy/cors', { method: 'POST' })
+  .then(r => r.text())
+  .then(console.log)
+```
+
+This will send a POST request to the CORS page, and print the response.
 
 ### CORS POST with auth
 
-CORS does not send cookie information. Nor does it send custom HTTP headers
-(e.g. X-XsrfToken). So CORS does not work with POST requests with
-[XSRF](#../filehandler/#xsrf), nor with [authenticated users](../auth/).
+CORS does not send cookie information by default, and workarounds were required.
+Since **Gramex 1.78**, this is handled automatically by Gramex with `cors: true`.
 
-To enable a Gramex client server to communicate a Gramex host server via CORS,
-you need to do 4 things:
+So, if you have:
 
-Step 1. In the client, send the XSRF token and cookie from the HTML file. Note: this
-uses [templates](../filehandler/#templates):
+- a Gramex app running on `x.example.com` and `y.example.com`
+- the [cookie domain](../auth/#session-security) is `example.com`
 
-```html
-<script>
-$.ajax('https://gramex-server/cors-page', {
-  method: 'POST',
-  xhrFields: {withCredentials: true}            // Send cookies
-  data: { _xsrf: '{{ handler.xsrf_token }}' },  // Send XSRF token
-})
-</script>
+... then you can send a POST request from `x.example.com` to `y.example.com` like this:
+
+```js
+fetch('https//y.example.com', { method: 'POST', credentials: 'include' })
+  .then(r => r.text())
+  .then(console.log)
 ```
 
-Step 2. In the host, add additional headers in `gramex.yaml`:
-
-```yaml
-url:
-  cors:
-    pattern: /$YAMLURL/cors-page
-    handler: FunctionHandler
-    kwargs:
-      function: mymodule.mycalc(handler)
-      methods: [GET, POST, OPTIONS]             # Important: Allow OPTIONS
-      auth: true                                # Pick any auth conditions
-      headers:
-          Access-Control-Allow-Credentials: 'true'              # Quotes the "true"
-          Access-Control-Allow-Methods: GET, POST, OPTIONS      # Allow OPTIONS
-          Access-Control-Allow-Headers: Accept, Cache-Control, Content-Type, If-None-Match, Origin, Pragma, Upgrade-Insecure-Requests, X-Requested-With
-          # Access-Control-Allow-Origin: must be set dynamically by mycalc()
-```
-
-Step 3. In the client AND the host, enable a distributed [session data mechanism](../auth/#session-data) like Redis, and also to share cookies:
-
-```yaml
-app:
-  session:
-    type: redis
-    path: localhost:6379:0      # Run redis on localhost, port 6379, DB 0
-    domain: your-domain.com     # Share cookies between *.your-domain.com
-```
-
-Step 4. In the host `mymodule.mycalc()`, set the `Access-Control-Allow-Origin` header:
-
-```python
-def mycalc(handler):
-    origin = handler.request.headers.get('Origin', '*')
-    handler.set_header('Access-Control-Allow-Origin', origin)
-```
-
+Note: For CORS to work on [CaptureHandler](../capturehandler/) with authentication, pass a
+`?domain=` argument that has the domain for which cookies are to be set.
 
 ## Shared deployment
 

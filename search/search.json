@@ -1,35 +1,15 @@
 {
   ".": {
-    "": {
-      "Gramex Guide": -1
-    },
-    "apps": {
-      "Apps": -1
-    },
-    "demos": {
-      "Demos": -1
-    },
-    "deprecated": {
-      "Deprecated": -1
-    },
-    "libraries": {
-      "Libraries": -1
-    },
-    "micro-services": {
-      "Micro-services": -1
-    },
-    "product": {
-      "Product": -1
-    },
-    "reference": {
-      "Reference": -1
-    },
-    "usage": {
-      "Usage": -1
-    },
-    "workshops": {
-      "Workshops": -1
-    }
+    "": {},
+    "apps": {},
+    "demos": {},
+    "deprecated": {},
+    "libraries": {},
+    "micro-services": {},
+    "product": {},
+    "reference": {},
+    "usage": {},
+    "workshops": {}
   },
   "1.30": {
     "": {},
@@ -723,6 +703,9 @@
     "authorization": {
       "Authorization": -1
     },
+    "authorization-http-methods": {
+      "Authorization HTTP methods": -1
+    },
     "automated-logins": {
       "Automated logins": -1
     },
@@ -1366,9 +1349,7 @@
     "multiple-windows-services": {
       "Multiple Windows Services": -1
     },
-    "mymodulepy": {
-      "mymodule.py": -1
-    },
+    "mymodulepy": {},
     "nginx-log-analyzer": {
       "nginx log analyzer": -1
     },
@@ -1759,6 +1740,9 @@
     },
     "transforming-content": {
       "Transforming content": -1
+    },
+    "typescript": {
+      "TypeScript": -1
     },
     "ui-modules": {
       "UI Modules": -1
@@ -3063,6 +3047,12 @@
     },
     "proxyhandler-configuration": {
       "ProxyHandler Configuration": -1
+    },
+    "proxyhandler-modify": {
+      "ProxyHandler modify": -1
+    },
+    "proxyhandler-prepare": {
+      "ProxyHandler prepare": -1
     },
     "reverse-proxyhandler": {}
   },
@@ -4785,6 +4775,38 @@
     },
     "statistics": {
       "Statistics": -1
+    }
+  },
+  "release/1.78": {
+    "": {
+      "Gramex 1.78 release notes": -1
+    },
+    "authorization-http-methods": {
+      "Authorization HTTP methods": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "cors-with-auth": {
+      "CORS with auth": -1
+    },
+    "dynamic-sass-imports": {
+      "Dynamic SASS imports": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "time-series-models": {
+      "Time Series Models": -1
+    },
+    "typescript": {
+      "TypeScript": -1
     }
   },
   "release/old": {

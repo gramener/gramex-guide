@@ -235,7 +235,7 @@
     })
 
     // copy code block
-    var clipboard = new Clipboard('.copy-button', {
+    var clipboard = new ClipboardJS('.copy-button', {
       text: function() {
         return document.querySelector('.upload-container').innerHTML
       }
@@ -269,7 +269,7 @@
       var $wrapper = $this.parent()
       $wrapper.addClass('viewsource-wrapper').css({position: 'relative'})
       $button.css({position: 'absolute', top: 10, right: 10}).appendTo($wrapper).addClass('viewsource btn btn-light')
-      var copyCode = new Clipboard('button.viewsource', {
+      var copyCode = new ClipboardJS('button.viewsource', {
         target: function (trigger) {
           return trigger.previousElementSibling
         }

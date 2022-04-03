@@ -102,7 +102,7 @@ lists the permissions you need. Here is the
 
 ### Google Services
 
-::: example href=../auth/google source=https://github.com/gramener/gramex-guide/blob/master/auth/
+::: example href=../auth/google?next=../proxyhandler/ source=https://github.com/gramener/gramex-guide/blob/master/auth/
     Log into Google
 
 Once logged in, you can:
@@ -308,6 +308,43 @@ caching reverse proxy.
     Proxied Gramex page
 
 **NOTE**: the page won't display perfectly unless all URLs are fully mapped.
+
+## ProxyHandler prepare
+
+To modify the arguments before forwarding the request, use `prepare:`. For example, this adds an
+
+```yaml
+url:
+  replace:
+    pattern: /$YAMLURL/replace
+    handler: FormHandler
+    kwargs:
+      url: $YAMLPATH/flags.csv
+      prepare: request.headers.set('APIKey', 'My-API-Key')
+```
+
+This `prepare:` method or expression replaces the `?c=` with `?Cross=`. So
+[replace?c=Yes](replace?c=Yes&_format=html) is actually the same as
+[flags?Cross=Yes](flags?Cross=Yes&_format=html).
+
+`prepare(handler, request, response)` is the function signature. You can use:
+
+- `handler`: ProxyHandler instance
+- `request`: [HTTPRequest][httprequest] object
+- `response`: [HTTPResponse][httpresponse] object
+
+You can modify `args` in-place and return None, or return a value that replaces `args`.
+
+Some sample uses:
+
+- [Validate inputs](#formhandler-validation)
+- Add/modify/delete arguments based on the user. You can access the user ID via
+  `handler.current_user` inside the `prepare:` expression
+- Add/modify/delete arguments based on external data.
+- Replace argument values.
+
+## ProxyHandler modify
+
 
 
 <script src="proxyhandler.js"></script>

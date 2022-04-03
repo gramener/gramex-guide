@@ -1,22 +1,31 @@
 url:
-    deploy-url:
-        pattern: /$YAMLURL/url/(.*)               # Any URL under this directory
-        handler: FileHandler                      # is rendered as a FileHandler
-        kwargs:
-            path: $YAMLPATH/template.html         # Using this template
-            transform:
-                "template.html":
-                    # Convert to a Tornado template
-                    # APP_ROOT is the path to the root of the application
-                    function: template(content, APP_ROOT=handler.request.headers.get('X-Gramex-Root', '/') + r'$GUIDE_ROOT')
-    gramex-config-file:
-        pattern: /$YAMLURL/config                 # Map config under current URL
-        handler: FileHandler
-        kwargs:
-            path: $GRAMEXPATH/gramex.yaml         # to the core Gramex config ile
-    deploy-secrets:
-        pattern: /$YAMLURL/secrets
-        handler: FileHandler
-        kwargs:
-            path: $YAMLPATH/secrets.html
-            template: true
+  deploy-url:
+    pattern: /$YAMLURL/url/(.*)               # Any URL under this directory
+    handler: FileHandler                      # is rendered as a FileHandler
+    kwargs:
+      path: $YAMLPATH/template.html         # Using this template
+      transform:
+        "template.html":
+          # Convert to a Tornado template
+          # APP_ROOT is the path to the root of the application
+          function: template(content, APP_ROOT=handler.request.headers.get('X-Gramex-Root', '/') + r'$GUIDE_ROOT')
+  gramex-config-file:
+    pattern: /$YAMLURL/config                 # Map config under current URL
+    handler: FileHandler
+    kwargs:
+      path: $GRAMEXPATH/gramex.yaml         # to the core Gramex config ile
+  deploy-secrets:
+    pattern: /$YAMLURL/secrets
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/secrets.html
+      template: true
+  deploy-cors:
+    pattern: /$YAMLURL/cors
+    handler: FunctionHandler
+    kwargs:
+      function: handler.session
+      cors: true
+      xsrf_cookies: false
+      headers:
+        Content-Type: application/json

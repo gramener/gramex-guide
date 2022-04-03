@@ -138,9 +138,9 @@ In [gramex-guide][gramex-guide]:
 - Run `npm upgrade`
 - In `release/README.md` -- add release entry
 - Add video tutorial for all new features
-- In `release/latest.json` -- add latest release notes.
 - In `release/1.xx/README.md` -- add guide release notes.
   - Run `make stats` for code size stats. Take coverage stats from Travis
+- In `release/latest.json` -- add latest release notes.
 - Run `npm run lint` and fix any Markdown issues
 - Run `python search/search.py` to update search index
 - Run `node search/searchindex.js` to update search index

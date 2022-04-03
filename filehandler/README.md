@@ -12,7 +12,9 @@ type: microservice
 [Video](https://youtu.be/4EAArVzmyGo){.youtube}
 
 [gramex.yaml](../gramex.yaml.source) uses the [FileHandler][filehandler]
-to display files. This folder uses the following configuration:
+to display files.
+
+For example, this page is rendered by a Markdown file using the following configuration:
 
 ```yaml
 url:
@@ -434,6 +436,8 @@ URL query parameters are automatically passed as variables to the SASS file. For
 
 You can use this to allow users to customize your theme.
 
+You can also pass a `?@import=path/to/filename.sass` to include a file in the SASS file. This SASS
+file path must be relative to the requested SASS file or the directory Gramex is running in.
 
 ## TypeScript
 

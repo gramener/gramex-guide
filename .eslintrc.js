@@ -7,8 +7,8 @@ module.exports = {
     "jquery": true      // Include jQuery and $
   },
   "globals": {
-    "_": true,          // underscore.js
-    "Clipboard": true,  // clipboard.js
-    "anchors": true     // anchor.js
+    "_": true,            // underscore.js
+    "ClipboardJS": true,  // clipboard.js
+    "anchors": true       // anchor.js
   }
 };

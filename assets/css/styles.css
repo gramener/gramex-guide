@@ -154,6 +154,7 @@ h1, .h1 {
   font-size: 1.5rem;
   font-weight: bold;
   margin-left: 1rem;
+  text-decoration: none;
 }
 .youtube:before {
   content: url(youtube.svg);
@@ -176,42 +177,42 @@ h1, .h1 {
   align-items: center;
 }
 .example:before {
-    content: url(example.svg);
-    margin-right: 1rem;
-    line-height: 0;
-  }
-
-  .example a {
-    border: none;
-    color: var(--black);
-  }
-
-  .example.example-src {
-    display: block;
-    margin-left: auto;
-    background-color: var(--success);
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 0.25rem;
-  }
-  .example:hover {
-      text-decoration: none;
-      background-color: var(--dark);
-      color: var(--white);
-    }
-  .example:after {
-    content: "\f35d";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 1;
-    margin-left: 0.5rem;
-  }
+  content: url(example.svg);
+  margin-right: 1rem;
+  line-height: 0;
+}
+.example a {
+  text-decoration: none;
+  border: none;
+  color: var(--bs-black);
+}
+.example .example-src {
+  display: block;
+  margin-left: auto;
+  background-color: var(--bs-success);
+  color: var(--bs-white);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+}
+.example .example-src:hover {
+  text-decoration: none;
+  background-color: var(--bs-dark);
+  color: var(--bs-white);
+}
+.example .example-src:after {
+  content: "\f35d";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  margin-left: 0.5rem;
+}
 
 @media (min-width: 1200px) {
   h1, .h1 {
@@ -259,7 +260,7 @@ nav.sidebar.vertical-navigation {
   overflow-y: scroll;
   }
 
-/* HIDE RADIO */[type=radio] { 
+/* HIDE RADIO */[type=radio] {
   position: absolute;
   opacity: 0;
   width: 0;
@@ -429,7 +430,7 @@ pre code {
   font-size: inherit;
   color: inherit;
   word-break: normal;
-} 
+}
 .pos-tr {
   top: 0;
   right: 0;
@@ -4254,7 +4255,7 @@ a.nav-link.js-scroll-trigger.mx-lg-1.demorequest {
   color: #ffffff !important;
   border-radius: 4px;
   border: 1px solid #ff4f45;
-  padding: 6px 16px;  
+  padding: 6px 16px;
 }
 
 a.nav-link.js-scroll-trigger.mx-lg-1.demorequest:hover {
@@ -11571,7 +11572,7 @@ section {
   transition: box-shadow .3s;
 }
 .features-hover:hover{
-  box-shadow: 0 0 11px rgba(16,16,66,.2); 
+  box-shadow: 0 0 11px rgba(16,16,66,.2);
 }
 .btn-bg{
   background-color: #ff4f45;
@@ -11610,7 +11611,7 @@ section {
 }
 .vertical-navigation a:link.active {
   box-shadow: -2px 0 0 0 #ff4f45, inset 1px 0 0 0 #ff4f45;
-  
+
   font-weight: 700;
 }
 .vertical-navigation img {
@@ -11697,7 +11698,7 @@ section {
 footer ul{
   list-style: none;
   padding-left: 0px;
-  
+
 }
 footer ul li a{
   color: #999;
@@ -11720,11 +11721,11 @@ footer p{
   padding: 4px 8px;
 }
 
-.sidebar li .submenu{ 
-  list-style: none; 
-  margin: 0; 
-  padding: 0; 
-  padding-left: 1rem; 
+.sidebar li .submenu{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-left: 1rem;
   padding-right: 1rem;
 }
 input#example-search-input1 {

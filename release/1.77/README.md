@@ -9,7 +9,8 @@ Gramex 1.77 supports API keys, secure MongoDB access, session cookies, and more.
 
 ## API keys support
 
-API keys let users to log in multiple times, until expiry.
+[API keys](../../auth/#api-key) let users access services as if they were logged-in users.
+These are like [one-time passwords](../../auth/#otp), but can be used multiple times, until expiry.
 
 These are useful to provide allow services (e.g. bots, apps, scripts) to act on behalf of a user.
 For example, to fetch data, trigger a refresh, etc.

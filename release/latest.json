@@ -1,6 +1,50 @@
 {
   "releases": [
     {
+      "version": "v1.78.0",
+      "link": "https://gramener.com/gramex/guide/release/1.78/",
+      "title": "TypeScript, Time series models, CORS with auth",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.78/#typescript",
+          "title": "FileHandler supports TypeScript",
+          "description": "FileHandler compiles any `.ts` file into JavaScript on the fly."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.78/#time-series-models",
+          "title": "MLHandler supports time series models",
+          "description": "MLHandler allows time series models."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.78/#cors-with-auth",
+          "title": "Gramex makes cross-origin requesys easy",
+          "description": "Just add `cors: true` to the URL's `kwargs` to enable CORS."
+        }
+      ]
+    },
+    {
+      "version": "v1.77.0",
+      "link": "https://gramener.com/gramex/guide/release/1.77/",
+      "title": "API keys, secure MongoDB access, session cookies",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.77/#api-key-support",
+          "title": "API keys support",
+          "description": "API keys let users access services as if they were logged-in users."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.77/#secure-mongodb-access",
+          "title": "Secure MongoDB access",
+          "description": "It's now possible to connect securely to a MongoDB instance using TLS/SSL."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.77/#session-cookies",
+          "title": "Session cookies",
+          "description": "Gramex allows setting session cookies (that expire when the browser is closed, normally)"
+        }
+      ]
+    },
+    {
       "version": "v1.76.0",
       "link": "https://gramener.com/gramex/guide/release/1.76/",
       "title": "Python 3.9 support, Faster scheduler, Tutorial videos",
