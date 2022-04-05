@@ -28,12 +28,14 @@ url:
     kwargs:
       data:
         url: $YAMLPATH/titanic.csv  # Path to the training dataset
+
+      # Path where the serialized model, training data and configuration is
+      # saved
+      config_dir: $YAMLPATH
+
       model:
         # The classification or regression algorithm to use
         class: LogisticRegression
-
-        # Location where the trained model will be saved
-        path: $YAMLPATH/titanic.pkl
 
         # The column to predict
         target_col: Survived
@@ -71,7 +73,8 @@ at a later time with a PUT or a POST request. For example:
 - If the model class and `data` kwargs are not specified, MLHandler will do no training - which
   can be explicitly triggered at a later time, after supplying data and the
   algorithm (more on this below).
-- If the model path is not defined, the trained model will be saved under
+- If the `config_dir` is not defined, the trained model and related
+  configuration will be saved under
   `$GRAMEXDATA/apps/mlhandler/`.
 - Any of the remaining kwargs can be specified before training begins.
 
@@ -92,8 +95,7 @@ url:
     pattern: /$YAMLURL/model
     handler: MLHandler
     kwargs:
-      model:
-        path: $YAMLPATH/model.pkl
+      config_dir: $YAMLPATH
 ```
 
 # Model operations
