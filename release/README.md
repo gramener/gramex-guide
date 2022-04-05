@@ -9,7 +9,7 @@ Gramex is released with new features on the first of every month.
 
 ## Release Notes
 
-- [v1.78.0: TypeScript, Time series models, CORS with auth](1.77/) <small>2 Apr 2022</small>
+- [v1.78.0: TypeScript, Time series models, CORS with auth](1.78/) <small>2 Apr 2022</small>
 - [v1.77.0: API keys, secure MongoDB access, session cookies](1.77/) <small>1 Mar 2022</small>
 - [v1.76.0: Python 3.9 support, Faster scheduler, Tutorial videos](1.76/) <small>1 Feb 2022</small>
 - [v1.75.0: ServiceNow connector, MongoDB write-back](1.75/) <small>4 Jan 2022</small>
