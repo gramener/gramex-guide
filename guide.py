@@ -89,7 +89,9 @@ def markdown_template(content, handler):
     # ... which can be updated by the YAML frontmatter on the Markdown files
     for key, val in content['meta'].items():
         kwargs[key] = val[0]
-    # TODO: Document why we need this
+    # Some pages that use XSRF assume that the XSRF cookie is set.
+    # Set the XSRF cookie if the page mentions XSRF.
+    # TODO: Use YAML frontmatter to do this in a more controlled way.
     if 'xsrf' in content:
         handler.xsrf_token
     tmpl = gramex.cache.open('_template/home.html', 'template', rel=True)
