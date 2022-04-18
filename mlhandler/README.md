@@ -567,6 +567,43 @@ the `data:` kwarg, as follows:
 This will result in the handler transforming the training data, and any incoming
 dataset for prediction, retraining or scoring.
 
+# Timeseries Forecasting with MLHandler
+
+Since v1.79.0, Gramex supports creating forecasting models with MLHandler, via
+the [`SARIMAX` algorithm in `statsmodels`](https://www.statsmodels.org/dev/generated/statsmodels.tsa.statespace.sarimax.SARIMAX.html).
+
+To use it, first install stasmodels,
+
+```bash
+pip install statsmodels
+```
+
+## Usage
+
+The following YAML spec shows how to setup an MLHandler instance to model and
+forecast on the [German Interest and Inflation Rate](https://www.statsmodels.org/stable/datasets/generated/interest_inflation.html) dataset. You can download a copy [here](infl?_download=inflation.csv&_format=csv).
+
+```yaml
+  mlhandler/forecast:
+    pattern: /$YAMLURL/forecast
+    handler: MLHandler
+    kwargs:
+      data:
+        url: $YAMLPATH/inflation.csv  # The dataframe associated with the
+	                              # inflation dataset.
+      model:
+        index_col: index  # Use the column named `index` as the timestamps
+        target_col: R
+        class: SARIMAX
+        params:
+          order: [7, 1, 0]  # This creates an ARIMA estimator with a (p, d, q)
+	                    # order of (7, 1, 0). Other parameters can be added
+                            # similarly
+```
+
+Then, to get the forecast for a specific time period, POST the exogenous data and
+corresponding timestamps to the `/forecast` URL.
+
 # FAQs
 
 ## How to get the accuracy score of my model?
