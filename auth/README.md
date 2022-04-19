@@ -1873,7 +1873,6 @@ the user is logged in *for that session*. `handler.current_user` is set to the u
 ::: example href=otp source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
     OTP example
 
-
 ## API key
 
 API keys let users to log in multiple times, until expiry.
@@ -1904,7 +1903,6 @@ the user is logged in *for that session*. `handler.current_user` is set to the u
 ::: example href=apikey source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
     API key example
 
-
 ## Encrypted user
 
 You can mimic a user by passing a `X-Gramex-User` HTTP header. This fetches a
@@ -1919,6 +1917,30 @@ r = requests.get(url, headers={
 
 `cookie` must be the value of `app.settings.cookie_secret` in `gramex.yaml`.
 You can fetch this in gramex as `gramex.service.app.settings['cookie_secret']`.
+
+## Distributed OTP and API keys
+
+By default, [OTPs](#otp) and [API keys](#api-key) are stored locally in a SQLite database.
+
+If you load-balance a Gramex app across multiple servers, the OTPs and API keys created on one
+server won't be shared with the other servers.
+
+To share the keys, add an `otp:` service to `gramex.yaml`:
+
+```yaml
+otp:
+  url: mysql+pymysql://root@server/db
+  table: otp
+```
+
+The `url` can point to any [FormHandler compatible database](../formhandler/#supported-databases).
+The `table` can be any new table name. Gramex tries to create it with the following columns. You
+can point to any existing table with these columns too:
+
+- `user`: TEXT
+- `email`: TEXT
+- `token`: TEXT
+- `expire`: REAL
 
 
 # Authorization
