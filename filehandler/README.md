@@ -39,15 +39,40 @@ files from the home directory of your folder. To prevent that, override the
 
 ```yaml
 url:
-  default:                              # This overrides the default URL handler
+  default:        # This overrides the default URL handler
     pattern: ...
 ```
+
+## Default filename
+
+When a FileHandler points to a directory:
+
+- If `default_filename:` is specified and exists, it renders that file.
+- Else, if `index: true`, it [lists files in the directory](#directory-listing)
+- Else, it throws an error
+
+The `default_filename:` can be specified as one or more filenames. For example:
+
+```yaml
+url:
+  default-filehandler:
+    pattern: /$YAMLURL/(.*)
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/directory/
+      default_filename:
+        - default.template.html     # Serve this as a template, if it exists
+        - index.html                # Else serve this as HTML
+        - README.md                 # Else serve this as Markdown to HTML
+```
+
+FileHandler checks the files in the order specified in the `default_filename:` The first file that exists is rendered.
 
 ## Directory listing
 
 [Video](https://youtu.be/vc6gj1ZFjMo){.youtube}
 
-`index: true` lists all files in the directory if the `default_filename` is
+`index: true` lists all files in the directory if the [`default_filename`](#default-filename) is
 missing. To customize the directory listing, specify `index_template: filename`.
 This file will be shown as HTML, with `$path` replaced by the directory's
 absolute path, and `$body` replaced by a list of all files in that directory.
