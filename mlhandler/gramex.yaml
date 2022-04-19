@@ -22,6 +22,11 @@ url:
       data:
         url: $YAMLPATH/titanic.csv
       xsrf_cookies: false
+  mlhandler/inflation:
+    pattern: /$YAMLURL/infl
+    handler: FormHandler
+    kwargs:
+      url: $YAMLPATH/inflation.csv
   mlhandler/titanic:
     pattern: /$YAMLURL/titanic
     handler: FormHandler
