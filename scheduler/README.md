@@ -49,6 +49,7 @@ Each named schedule section may the following keys:
 - `every`: to run at an interval. Values can be like `1.5 min`, `2 hrs 15 min`, etc.
 - `years`: which year(s) to run on (e.g. `2020-2025`)
 - `months`: which month(s) to run on (e.g. `3-5` or `Mar, Apr, May`). Use numbers or 3-letter abbreviations (Jan, Feb, Mar, etc.)
+- `dates`: which date(s) to run on (e.g. `7, 14, 21, 28`)
 - `weekdays`: which weekdays(s) to run on (e.g. `3, 4` or `Wed, Thu`). Use numbers or 3-letter abbreviations (Mon, Tue, Wed, etc.). Monday is 1.
 - `hours`: which hour(s) to run at (e.g. `9-17`)
 - `minutes`: which minute(s) to run at (e.g. `0, 30`)
