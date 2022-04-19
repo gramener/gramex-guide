@@ -1925,7 +1925,7 @@ By default, [OTPs](#otp) and [API keys](#api-key) are stored locally in a SQLite
 If you load-balance a Gramex app across multiple servers, the OTPs and API keys created on one
 server won't be shared with the other servers.
 
-To share the keys, add an `otp:` service to `gramex.yaml`:
+To share the keys, add an `otp:` service to `gramex.yaml` that points to a shared database:
 
 ```yaml
 otp:

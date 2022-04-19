@@ -41,7 +41,32 @@ kwargs:
 
 ## Time Series Models
 
-To be documented
+[MLHandler supports time series forecasting](../../mlhandler/#time-series-forecasting).
+
+This now lets MLHandler perform 3 distinct tasks:
+
+1. Classification: Categorize a data point into discrete buckets (e.g. good/bad)
+2. Regression: Predict a number based on other values (e.g. temperature based on pressure)
+3. Time series: Predict a number based on time and, optionally, other values (e.g. stock price)
+
+To specify a time series model, use `class: SARIMAX`. This uses the
+[`SARIMAX` algorithm in `statsmodels`](https://www.statsmodels.org/dev/generated/statsmodels.tsa.statespace.sarimax.SARIMAX.html).
+
+```yaml
+  mlhandler/forecast:
+    pattern: /$YAMLURL/forecast
+    handler: MLHandler
+    kwargs:
+      data:
+        url: $YAMLPATH/inflation.csv  # Inflation dataset
+      model:
+        index_col: index    # Use index column as timestamps
+        target_col: R
+        class: SARIMAX
+        params:
+          order: [7, 1, 0]  # Creates ARIMA estimator with (p,d,q)=(7,1,0)
+                            # Add other parameters similarly
+```
 
 ## CORS with auth
 

@@ -567,7 +567,7 @@ the `data:` kwarg, as follows:
 This will result in the handler transforming the training data, and any incoming
 dataset for prediction, retraining or scoring.
 
-# Timeseries Forecasting with MLHandler
+# Time series forecasting
 
 Since v1.78.0, Gramex supports creating forecasting models with MLHandler, via
 the [`SARIMAX` algorithm in `statsmodels`](https://www.statsmodels.org/dev/generated/statsmodels.tsa.statespace.sarimax.SARIMAX.html).
@@ -577,8 +577,6 @@ To use it, first install stasmodels,
 ```bash
 pip install statsmodels
 ```
-
-## Usage
 
 The following YAML spec shows how to setup an MLHandler instance to model and
 forecast on the [German Interest and Inflation Rate](https://www.statsmodels.org/stable/datasets/generated/interest_inflation.html) dataset. You can download a copy [here](infl?_download=inflation.csv&_format=csv).
