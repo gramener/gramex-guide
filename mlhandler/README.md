@@ -569,7 +569,7 @@ dataset for prediction, retraining or scoring.
 
 # Timeseries Forecasting with MLHandler
 
-Since v1.79.0, Gramex supports creating forecasting models with MLHandler, via
+Since v1.78.0, Gramex supports creating forecasting models with MLHandler, via
 the [`SARIMAX` algorithm in `statsmodels`](https://www.statsmodels.org/dev/generated/statsmodels.tsa.statespace.sarimax.SARIMAX.html).
 
 To use it, first install stasmodels,
@@ -589,16 +589,14 @@ forecast on the [German Interest and Inflation Rate](https://www.statsmodels.org
     handler: MLHandler
     kwargs:
       data:
-        url: $YAMLPATH/inflation.csv  # The dataframe associated with the
-	                              # inflation dataset.
+        url: $YAMLPATH/inflation.csv  # Inflation dataset
       model:
-        index_col: index  # Use the column named `index` as the timestamps
+        index_col: index    # Use index column as timestamps
         target_col: R
         class: SARIMAX
         params:
-          order: [7, 1, 0]  # This creates an ARIMA estimator with a (p, d, q)
-	                    # order of (7, 1, 0). Other parameters can be added
-                            # similarly
+          order: [7, 1, 0]  # Creates ARIMA estimator with (p,d,q)=(7,1,0)
+                            # Add other parameters similarly
 ```
 
 Then, to get the forecast for a specific time period, POST the exogenous data and
