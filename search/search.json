@@ -725,6 +725,9 @@
     "direct-ldap-login": {
       "Direct LDAP login": -1
     },
+    "distributed-otp-and-api-keys": {
+      "Distributed OTP and API keys": -1
+    },
     "email-auth": {
       "Email Auth": -1
     },
@@ -1699,6 +1702,9 @@
     "caching": {
       "Caching": -1
     },
+    "default-filename": {
+      "Default filename": -1
+    },
     "directory-listing": {
       "Directory listing": -1
     },
@@ -2366,6 +2372,9 @@
     },
     "see-whether-a-22-year-old-male-traveling-with-a-sibling-in-the-third-class": {
       "See whether a 22 year old male, traveling with a sibling in the third class,": -1
+    },
+    "time-series-forecasting": {
+      "Time series forecasting": -1
     }
   },
   "modelhandler": {
@@ -2470,6 +2479,11 @@
     },
     "openapihandler-configuration": {
       "OpenAPIHandler Configuration": -1
+    }
+  },
+  "pipelines": {
+    "": {
+      "Create pipelines": -1
     }
   },
   "position": {
@@ -4807,6 +4821,29 @@
     },
     "typescript": {
       "TypeScript": -1
+    }
+  },
+  "release/1.79": {
+    "": {
+      "Gramex 1.79 release notes": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "distributed-otp-and-api-keys": {
+      "Distributed OTP and API keys": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "multiple-default-filenames": {
+      "Multiple default filenames": -1
+    },
+    "relative-opens-in-templates": {
+      "Relative opens in templates": -1
+    },
+    "statistics": {
+      "Statistics": -1
     }
   },
   "release/old": {

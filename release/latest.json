@@ -1,6 +1,28 @@
 {
   "releases": [
     {
+      "version": "v1.79.0",
+      "link": "https://gramener.com/gramex/guide/release/1.79/",
+      "title": "Multiple default filenames, Relative opens in templates, Distributed OTP",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.79/#multiple-default-filenames",
+          "title": "FileHandler supports multiple default filenames",
+          "description": "If a directory has an `index.html` or `README.md`, one can act as a fallback."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.79/#relative-opens-in-templates",
+          "title": "Templates can open relative paths",
+          "description": "`gramex.cache.open(path, rel=True)` inside a Tornado template opens path relative to template."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.79/#distributed-otp-and-api-keys",
+          "title": "OTPs and API keys work on multi-server setups",
+          "description": "The `otp:` service can use any distributed database to store OTPs and API keys."
+        }
+      ]
+    },
+    {
       "version": "v1.78.0",
       "link": "https://gramener.com/gramex/guide/release/1.78/",
       "title": "TypeScript, Time series models, CORS with auth",
@@ -17,7 +39,7 @@
         },
         {
           "link": "https://gramener.com/gramex/guide/release/1.78/#cors-with-auth",
-          "title": "Gramex makes cross-origin requesys easy",
+          "title": "Gramex makes cross-origin requests easy",
           "description": "Just add `cors: true` to the URL's `kwargs` to enable CORS."
         }
       ]
