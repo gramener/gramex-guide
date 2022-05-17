@@ -676,90 +676,39 @@ This is useful to pack multiple static files into one, as the example shows.
 
 ## Transforming content
 
-Rather than render files as-is, the following parameters transform the markdown
-into HTML:
+Use `transform:` to apply functions before rendering the content. [Templates](#templates),
+[SASS](#sass), [Vue](#vue) and [TypeScript](#typescript) use this feature behind the scenes.
+
+Any function can be used to transform. For example, this renders `.md` or `.markdown` files as HTML:
 
 ```yaml
     # ... contd ...
       transform:
         "*.md, *.markdown":                     # Any file matching .md or .markdown
-          function: markdown.markdown(content)  #   Convert it to html
-          kwargs:                               #   Pass these arguments to markdown.markdown
-            output_format: html5                #     Output in HTML5
+          function: markdown.markdown(content, output_format='html5')
           headers:                              #   Use these HTTP headers:
             Content-Type: text/html             #     MIME type: text/html
 ```
 
-Any `.md` file will be displayed as HTML -- including this file (which is [README.md](README.md.source).)
-
-Any transformation is possible. For example, this configuration converts YAML
-into HTML using the [BadgerFish](http://www.sklar.com/badgerfish/) convention.
+This configuration converts YAML into HTML using the [BadgerFish](http://www.sklar.com/badgerfish/) convention.
 
 ```yaml
     # ... contd ...
-        "*.yaml":                               # YAML files use BadgerFish
-          function: badgerfish(content)         # transformed via gramex.transforms.badgerfish()
+        "*.yaml":                           # YAML files use BadgerFish
+          function: badgerfish(content)     # return gramex.transforms.badgerfish()
           headers:
-            Content-Type: text/html             # and served as HTML
+            Content-Type: text/html         # and served as HTML
 ```
 
-Using this, the following file [page.yaml](page.yaml) is rendered as HTML:
+::: example href=page.yaml source=https://github.com/gramener/gramex-guide/tree/master/filehandler/page.yaml
+    Run the YAML to HTML example
 
-```yaml
-    html:
-      "@lang": en
-      head:
-        meta:
-          - {"@charset": utf-8}
-          - {"@name": viewport, "@content": "width=device-width, initial-scale=1.0"}
-        title: Page title
-        link: {"@rel": stylesheet, "@href": /style.css}
-      body:
-        h1: Page constructed using YAML
-        p: This file was created as YAML and converted into HTML using the BadgerFish convention.
-```
+Transform keys matches one or more [glob patterns](https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob)
+separated by space/comma (e.g. ``'*.md, 'data/**'``.)
 
-Transforms take the following keys:
+Transform values are dicts that accepts these keys:
 
-- **function**: The expression to call. You can use the variables `content` for the file contents
-  and `handler` for the handler. Example: `function: mymodule.transform(content, handler)`
-- **encoding**: If blank, the file is treated as binary. The transform
-  `function` MUST accept the content as binary. If you specify an encoding, the
+- **function**: The expression to return. Example: `function: mymodule.transform(content, handler)`. `content` has the file contents. `handler` has the FileHandler object
+- **encoding**: If `None`, the file is read as bytes. The transform `function` MUST accept the content as bytes. If you specify an encoding, the
   file is loaded with that encoding.
 - **headers**: HTTP headers for the response.
-
-Any function can be used as a transform. Gramex provides the following (commonly
-used) transforms:
-
-1. **template**. See [Templates](#templates). But if you need to pass additional arguments to the
-   template, use `function: template(content, handler, **kwargs)`. The `kwargs` are sent as
-   variables to the template. For example, this adds `title` and `path` as template variables:
-
-   ```yaml
-    transform:
-        "template.*.html":
-            function: template(content, handler, title='Hello', path=r'$YAMLPATH')
-   ```
-
-2. **badgerfish**. Use `function: badgerfish(content, handler)` to convert YAML files into
-   HTML. For example, this YAML file is converted into a HTML as you would
-   logically expect:
-
-   ```yaml
-    html:
-        head:
-        title: Sample file
-        body:
-        h1: Sample file
-        p:
-            - First paragraph
-            - Second paragraph
-   ```
-
-3. **sass**. Use `function: sass` to convert SASS/SCSS files into CSS. For example:
-
-   ```yaml
-    transform:
-        "*.scss, *.sass":
-            function: sass
-   ```
