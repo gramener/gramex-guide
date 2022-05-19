@@ -686,6 +686,7 @@ Any function can be used to transform. For example, this renders `.md` or `.mark
       transform:
         "*.md, *.markdown":                     # Any file matching .md or .markdown
           function: markdown.markdown(content, output_format='html5')
+          encoding: utf-8                       # Read input file as UTF-8
           headers:                              #   Use these HTTP headers:
             Content-Type: text/html             #     MIME type: text/html
 ```
@@ -696,6 +697,7 @@ This configuration converts YAML into HTML using the [BadgerFish](http://www.skl
     # ... contd ...
         "*.yaml":                           # YAML files use BadgerFish
           function: badgerfish(content)     # return gramex.transforms.badgerfish()
+          encoding: utf-8                       # Read input file as UTF-8
           headers:
             Content-Type: text/html         # and served as HTML
 ```
@@ -709,6 +711,5 @@ separated by space/comma (e.g. ``'*.md, 'data/**'``.)
 Transform values are dicts that accepts these keys:
 
 - **function**: The expression to return. Example: `function: mymodule.transform(content, handler)`. `content` has the file contents. `handler` has the FileHandler object
-- **encoding**: If `None`, the file is read as bytes. The transform `function` MUST accept the content as bytes. If you specify an encoding, the
-  file is loaded with that encoding.
-- **headers**: HTTP headers for the response.
+- **encoding**: The encoding to read the file with, e.g. `utf-8`. If `None` (the default), the file is read as bytes, and the transform `function` MUST accept the content as bytes
+- **headers**: HTTP headers for the response
