@@ -48,24 +48,64 @@ The `app:` section controls Gramex's startup. It has these sub-sections.
 
 ## Command line args
 
-The app section alone can be over-ridden from the command line. (Other sections
-cannot.) For example:
+Gramex supports these command line options. The default values are shown:
 
 ```bash
-gramex --listen.port=8888 --settings.debug=True --browser=/
+--listen.port=9988              # Run on port 9988
+--log.level=debug               # Log all debug messages
+--browser=false                 # Run browser on startup?
+--settings.debug=false          # Start debugger on errors?
+--settings.xsrf_cookies=true    # Require XSRF cookies?
 ```
 
-... will override the `gramex.yaml` parameters for the `port` and `browser`.
-This is the same as specifying:
+Here are more settings:
+
+```bash
+--settings.serve_traceback=true              # Show traceback on error
+--settings.cookie_secret=secret-key          # Encrypt cookies with "secret key"
+--settings.xsrf_cookie_kwargs.httponly=true  # No JS access to XSRF cookies?
+--settings.xsrf_cookie_kwargs.secure=false   # Only HTTPS for XSRF cookies?
+--settings.login_url=/login/                 # Default login URL
+--settings.autoescape=xhtml_escape           # Escape HTML in templates
+--settings.autoreload=False                  # Reload Gramex on code change?
+--settings.compiled_template_cache=true      # Cache template files?
+--settings.compress_response=true            # GZip the HTTP response?
+--settings.static_hash_cache=true            # Cache static files?
+--settings.key_version=2                     # Cookie encryption version
+
+--session.expiry=31             # Session cookies expiry in days
+--session.httponly=true         # Only HTTP access, no JS access
+--session.flush=5               # Write store to disk every 5s
+--session.purge=3600            # Purge every hour
+--session.cookie=sid            # Name of the session ID cookie
+--session.type=json             # Store session in hdf5|json|memory
+--session.path=/path/to/file    # Store file (ignored for memory)
+```
+
+You can specify multiple options, e.g.
+
+```bash
+gramex --listen.port=8080 --log.level=warning
+```
+
+Internally, the command line overrides the `gramex.yaml` configuration.
+
+- Anything prefixed with `--log.*` overrides `log.loggers.gramex.*`
+- The rest over overrides `app.*`
+
+For example, `gramex --listen.port=8080 --log.level=warning` is the same as specifying:
 
 ```yaml
 app:
     listen:
-        port: 8888
-    settings:
-        debug: True
-    browser: '/'
+        port: 8080
+log:
+    loggers:
+        gramex:
+            level: WARNING      # Gramex capitalizes --log.level
 ```
+
+The Gramex logger settings
 
 ## URL mapping
 
@@ -175,15 +215,16 @@ raises a `HTTP 405: Method not allowed` response.
 
 ## Logging
 
-The `log:` section defines Gramex's logging behaviour. See
+The `log:` section defines Gramex's logging behavior. See
 [gramex.yaml][gramex-yaml] for the default configuration.
 
 To only log WARNING messages to the console, use:
 
 ```yaml
 log:
-    root:
-        level: WARNING      # Default: DEBUG. Can be INFO, WARNING, ERROR
+  loggers:
+    gramex:
+      level: WARNING    # Default is DEBUG. Can be INFO, WARNING, ERROR
 ```
 
 From **v1.23**, Gramex also saves all console logs to `logs/gramex.log` under
