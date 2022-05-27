@@ -1,0 +1,17 @@
+url:
+  random-function:
+    pattern: /$YAMLURL/random
+    handler: FunctionHandler
+    kwargs:
+      function:
+        - random.seed(0)
+        - random.randint(0, 100)
+
+  random-sum:
+    pattern: /$YAMLURL/randomsum
+    handler: FunctionHandler
+    kwargs:
+      function:
+        - {name: x, function: 'random.randint(0, 100)'}
+        - {name: y, function: 'random.randint(0, 100)'}
+        - x + y
