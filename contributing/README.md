@@ -137,7 +137,7 @@ In [gramex-guide][gramex-guide]:
 
 - Run `npm upgrade`
 - In `release/README.md` -- add release entry
-- Add video tutorial for all new features
+- Add [video tutorial](#video-tutorial) for all new features
 - In `release/1.xx/README.md` -- add guide release notes.
   - Run `make stats` for code size stats. Take coverage stats from Travis
 - In `release/latest.json` -- add latest release notes.
@@ -252,3 +252,48 @@ twine upload -u gramener dist/*
 Re-start gramex on deployed servers.
 
 [gramex-guide]: https://github.com/gramener/gramex-guide/
+
+## Video tutorials
+
+For each section of each page on the [guide](../), we add YouTube videos that explain that section.
+
+For example, the [Function arguments from URL](../functionhandler/#function-arguments-from-url) page links to [this video](https://youtu.be/hSwQQ2wOmIk).
+
+### Decide the storyline
+
+- Decide who the audience is. Pick the 1-3 points they should take away. Mention these multiple times.
+- Open the section of the guide to record.
+- Talk through the section, explaining the code. If required, revise the documentation.
+- Show how to execute the code samples and the output.
+- Show any relevant errors they might encounter.
+- Don't refer to anything outside the section (e.g., "You've already learned this", or "In a future video, we'll do ...").
+
+### Record the video
+
+- Use any full-screen recording tool you're comfortable with.
+  - [PowerPoint screen recording](https://support.microsoft.com/en-us/office/record-your-screen-in-powerpoint-0b4c3f65-534c-4cf1-9c59-402b6e9d79d0)
+  - [Microsoft Stream](https://web.microsoftstream.com/) > Create > Record screen or video
+  - [Open Broadcaster Studio](https://obsproject.com/)
+- Upload to [Gramener's channel on YouTube](https://www.youtube.com/channel/UC6Av2xW5pfCmFtseY4uWzzg/)
+- Video recording tips
+  - Screen resolution: At least 1280x720. 1920x1080 if possible.
+  - Font size: Make sure you can read the screen at clearly at 2 arms' length.
+- Audio recording tips
+  - Use your headset, not the laptop mic.
+  - Test your mic volume. Make sure it's loud enough. (Windows: Settings > Sound Settings > Input > Device properties > Additional device properties and increase the Volume Boost).
+  - Make sure your breathing is not audible. Make sure your sibilance ("sss") is not too loud. (Maybe keep the mic *above* your mouth, not below. Use microphone sponge).
+  - Enable noise reduction plugins if any (e.g. RRNoise on OBS).
+- Planning tips
+  - Keep your laptop on power, not battery. Recording encoding takes power.
+  - Keep the recording to 5 min or less.
+  - Record in one session. Pause recording in the middle as required. Learn keyboard shortcuts for pausing.
+  - Set aside time for 5-10 times the length of the video.
+  - Listen to your recording. Re-record if required.
+
+### Insert the video
+
+Select "Share" on the YouTube video and copy the link, e.g. `https://youtu.be/hSwQQ2wOmIk` Then add this snippet to the beginning of the section:
+
+```markdown
+[Video](https://youtu.be/hSwQQ2wOmIk){.youtube}
+```
