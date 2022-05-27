@@ -9,8 +9,9 @@ variables:
     GOOGLE_API_KEY: AIzaSyBsSkZb3hxciFp0ZB3KLqO1-aQW-K-hqSw
 
 log:
-    root:
-        level: INFO                     # Just log info, not debug
+  loggers:
+    gramex:
+      level: WARNING
 
 app:
   settings:
