@@ -53,15 +53,18 @@ url:
             headers: &HEADERS
                 Cache-Control: public, max-age=300
                 Access-Control-Allow-Origin: '*'        # Allow CORS from any domain
-
     guide-home:
         pattern: /$YAMLURL/home
         handler: FileHandler
         kwargs:
             path: $YAMLPATH/home.md
             transform: *MARKDOWN_TO_HTML
-
-
+    guide-api:
+        pattern: /$YAMLURL/api/(.*)
+        handler: FileHandler
+        kwargs:
+            path: $YAMLPATH/api/
+            default_filename: index.html
     guide-markdown-g1:
         pattern: /$YAMLURL/g1/([a-z0-9]+)
         handler: FileHandler
