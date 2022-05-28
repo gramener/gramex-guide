@@ -90,7 +90,7 @@ On Windows, you may need to [enable Powershell scripts](http://stackoverflow.com
 
 The tests take a long time. To test a subset, use `nosetests tests.<module>:<ClassName>.<method>`.
 
-Commit your changes and push your branch:
+[Commit your changes](#committing) and push your branch:
 
 ```bash
 git add .
@@ -127,7 +127,7 @@ make security
 If there are any security errors reported in `reports/*`, fix them and run `make security` again
 until there are no security errors.
 
-Update the following and commit to `master` branch:
+Update the following and [commit to `master` branch](#committing):
 
 - In `gramex/release.json` -- update the version number
 - In `gramex/apps.yaml` -- update the version number on the guide
@@ -145,7 +145,7 @@ In [gramex-guide][gramex-guide]:
 - Run `python search/search.py` to update search index
 - Run `node search/searchindex.js` to update search index
 
-Commit and push the `master` branch of both repos to the server.
+[Commit](#committing) and push the `master` branch of both repos to the server.
 **Ensure pipeline passes.**:
 
 ```bash
@@ -217,12 +217,12 @@ Gramener.com administrators: re-start Gramex after deployment.
 
 ## Release Gramex Enterprise Edition
 
-Update the following and commit to `master` branch:
+Update the following and [commit to `master` branch](#committing):
 
 - `setup.py` -- update the version number to the Gramex version number
 - `README.md` -- update the CHANGELOG
 
-Commit and push the `master` branch to the server. **Ensure pipeline passes.**:
+[Commit](#committing) and push the `master` branch to the server. **Ensure pipeline passes.**:
 
 ```bash
 git commit -m"DOC: Add v1.x.x release notes"
@@ -253,6 +253,22 @@ Re-start gramex on deployed servers.
 
 [gramex-guide]: https://github.com/gramener/gramex-guide/
 
+## Committing
+
+Begin the commit with a prefix:
+
+- `ENH:` Enhancement
+- `FIX:` Bug fix. (Avoid `BUG:`)
+- `DOC:` Documentation
+- `TST:` Addition or modification of tests
+- `STY:` Style fix (whitespace, PEP8)
+- `BLD:` Change related to building
+- `API:` An (incompatible) API change, deprecation
+
+Add a short subject line in imperative mood, e.g. `FIX: FileHandler transforms require encoding`.
+
+Add a long body. Explain WHAT and WHY.
+
 ## Video tutorials
 
 For each section of each page on the [guide](../), we add YouTube videos that explain that section.
@@ -262,11 +278,13 @@ For example, the [Function arguments from URL](../functionhandler/#function-argu
 ### Decide the storyline
 
 - Decide who the audience is. Pick the 1-3 points they should take away. Mention these multiple times.
-- Open the section of the guide to record.
-- Talk through the section, explaining the code. If required, revise the documentation.
-- Show how to execute the code samples and the output.
-- Show any relevant errors they might encounter.
-- Don't refer to anything outside the section (e.g., "You've already learned this", or "In a future video, we'll do ...").
+- Plan videos for 5 min or less. Long videos are hard to record and hard to watch.
+- Open the Guide section to record.
+- Explain the text.
+- Explain the code. (Rewrite the Guide if required.)
+- Execute the code and show the output.
+- Show errors if they occur. It helps users debug
+- Don't refer to outside that section (e.g., "You've already learned this", or "In a future video, we'll do ...").
 
 ### Record the video
 
@@ -279,13 +297,14 @@ For example, the [Function arguments from URL](../functionhandler/#function-argu
   - Screen resolution: At least 1280x720. 1920x1080 if possible.
   - Font size: Make sure you can read the screen at clearly at 2 arms' length.
 - Audio recording tips
+  - Be in a quiet place.
   - Use your headset, not the laptop mic.
   - Test your mic volume. Make sure it's loud enough. (Windows: Settings > Sound Settings > Input > Device properties > Additional device properties and increase the Volume Boost).
   - Make sure your breathing is not audible. Make sure your sibilance ("sss") is not too loud. (Maybe keep the mic *above* your mouth, not below. Use microphone sponge).
   - Enable noise reduction plugins if any (e.g. RRNoise on OBS).
 - Planning tips
+  - Turn off mobile and laptop alerts.
   - Keep your laptop on power, not battery. Recording encoding takes power.
-  - Keep the recording to 5 min or less.
   - Record in one session. Pause recording in the middle as required. Learn keyboard shortcuts for pausing.
   - Set aside time for 5-10 times the length of the video.
   - Listen to your recording. Re-record if required.
