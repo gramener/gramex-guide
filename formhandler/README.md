@@ -16,10 +16,10 @@ Here is a sample configuration to read data from a CSV file:
 ```yaml
 url:
   flags:
-    pattern: /$YAMLURL/flags
+    pattern: /flags
     handler: FormHandler
     kwargs:
-      url: $YAMLPATH/flags.csv
+      url: flags.csv
 ```
 
 ::: example href=cashflow source="https://github.com/gramener/gramex-guide/blob/master/formhandler/cashflow/"
@@ -185,7 +185,7 @@ With additional libraries, FormHandler can connect to
   - Use: `url: 'exa+pyodbc://$USER:$PASS@$HOST:$PORT/my_schema?CONNECTIONLCALL=en_US.UTF-8&driver=EXAODBC'`
 - [Google BigQuery](https://pypi.org/project/pybigquery/)
   - Install: `pip install pybigquery`
-  - Use: `{url: bigquery://project, credentials_path: $YAMLPATH/.keyfile.json}`
+  - Use: `{url: bigquery://project, credentials_path: .keyfile.json}`
 - [Google Sheets](https://github.com/betodealmeida/gsheets-db-api)
   - Install: `pip install "gsheetsdb[sqlalchemy]"`
   - Use: `url: 'https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/edit#gid=0'`
@@ -255,18 +255,18 @@ configuration adds a custom PPTX format called `pptx-table`:
 
 ```yaml
 formhandler-flags:
-  pattern: /$YAMLURL/flags
+  pattern: /flags
   handler: FormHandler
   kwargs:
-    url: $YAMLPATH/flags.csv
+    url: flags.csv
     formats:
-      pptx-table:                       # Define a format called pptx-table
-        format: pptx                    # It generates a PPTX output
-        source: $YAMLPATH/input.pptx    # ... based on input.pptx
-        change-table:                   # The first rule to apply...
-          Table:                        # ... takes all shapes named Table
-            table:                      # ... runs a "table" command (to update tables)
-              data: data['data']        # ... using flags data (default name is 'data)
+      pptx-table:                 # Define a format called pptx-table
+        format: pptx              # It generates a PPTX output
+        source: input.pptx        # ... based on input.pptx
+        change-table:             # The first rule to apply...
+          Table:                  # ... takes all shapes named Table
+            table:                # ... runs a "table" command (to update tables)
+              data: data['data']  # ... using flags data (default name is 'data)
 ```
 
 - Download the output at [flags?_format=pptx-table](flags?_format=pptx-table&_limit=10&_c=ID&_c=Name&_c=Continent&_c=Stripes).
@@ -279,11 +279,11 @@ If a file has dates stored as text, use `parse_dates: [date_column]` to convert 
 For example:
 
 ```yaml
-formhandler-...:
-  pattern: /$YAMLURL/...
+formhandler-dateparse:
+  pattern: /dateparse
   handler: FormHandler
   kwargs:
-    url: $YAMLPATH/data.csv
+    url: data.csv
     parse_dates: [start_date]               # convert start_date from string to datetime
     parse_dates: [start_date, end_date]     # convert both columns from string to datetime
 ```
@@ -297,7 +297,7 @@ to ISO. This returns something like `2019-01-01T00:00:00.000Z`.
 
 ```yaml
 formhandler-...:
-  pattern: /$YAMLURL/...
+  pattern: /...
   handler: FormHandler
   kwargs:
     url: ...
@@ -362,10 +362,10 @@ To render FormHandler data as charts, use:
 
 ```yaml
 formhandler-chart:
-  pattern: /$YAMLURL/chart
+  pattern: /chart
   handler: FormHandler
   kwargs:
-    url: $YAMLPATH/flags.csv
+    url: flags.csv
     function: data.groupby('Continent').sum().reset_index()
     formats:
       barchart:                       # Define a format called barchart
@@ -475,10 +475,10 @@ More examples to be added.
 ```yaml
 url:
   formhandler-vega-1:
-    pattern: /$YAMLURL/vega-1
+    pattern: /vega-1
     handler: FormHandler
     kwargs:
-      url: $YAMLPATH/flags.csv
+      url: flags.csv
       formats:
         barchart:           # Allows ?_format=barchart
           format: vega
@@ -529,10 +529,10 @@ Vega spec can be formatted using the path arguments and URL query parameters.
 ```yaml
 url:
   formhandler-vega-lite-1:
-    pattern: /$YAMLURL/vega-lite-1
+    pattern: /vega-lite-1
     handler: FormHandler
     kwargs:
-      url: $YAMLPATH/flags.csv
+      url: flags.csv
       function: data.groupby('Continent').sum().reset_index()
       default:
         COL_METRIC: c1                   # COL_METRIC defaults to c1
@@ -746,10 +746,10 @@ To modify the arguments before executing the query, use `prepare:`.
 ```yaml
 url:
   replace:
-    pattern: /$YAMLURL/replace
+    pattern: /replace
     handler: FormHandler
     kwargs:
-      url: $YAMLPATH/flags.csv
+      url: flags.csv
       prepare: args.update(Cross=args.pop('c', []))
       # Another example:
       # prepare: my_module.calc(args, handler)
@@ -785,10 +785,10 @@ Add `function: ...` to transform the data before filtering. Try this
 ```yaml
 url:
   continent:
-    pattern: /$YAMLURL/continent
+    pattern: /continent
     handler: FormHandler
     kwargs:
-      url: $YAMLPATH/flags.csv
+      url: flags.csv
       function: data.groupby('Continent').sum().reset_index()
       # Another example:
       # function: my_module.calc(data, handler.args)
@@ -822,10 +822,10 @@ this [example](totals):
 ```yaml
 url:
   totals:
-    pattern: /$YAMLURL/totals
+    pattern: /totals
     handler: FormHandler
     kwargs:
-      url: $YAMLPATH/flags.csv
+      url: flags.csv
       modify: data.sum(numeric_only=True).to_frame().T
 ```
 
@@ -862,17 +862,17 @@ single query, the second applies on both datasets.
 ```yaml
 url:
   formhandler-modify-multi:
-    pattern: /$YAMLURL/modify-multi
+    pattern: /modify-multi
     handler: FormHandler
     kwargs:
       symbols:
-        url: sqlite:///$YAMLPATH/../datahandler/database.sqlite3
+        url: sqlite:///database.sqlite3
         table: flags
         query: 'SELECT Continent, COUNT(DISTINCT Symbols) AS dsymbols FROM flags GROUP BY Continent'
         # Modify ONLY this query. Adds rank column to symbols dataset
         modify: data.assign(rank=data['dsymbols'].rank())
       colors:
-        url: $YAMLPATH/flags.csv
+        url: flags.csv
         function: data.groupby('Continent').sum().reset_index()
       # Modify BOTH datasets. data is a dict of DataFrames.
       modify: data['colors'].merge(data['symbols'], on='Continent')
@@ -882,7 +882,7 @@ url:
 
 ```yaml
   formhandler-edits-multidata-modify:
-    pattern: /$YAMLURL/edits-multidata-modify
+    pattern: /edits-multidata-modify
     handler: FormHandler
     kwargs:
       sql:
@@ -903,10 +903,10 @@ You may also use a `query:` to select data from an SQLAlchemy databases. For exa
 ```yaml
 url:
   query:
-    pattern: /$YAMLURL/query
+    pattern: /query
     handler: FormHandler
     kwargs:
-      url: sqlite:///$YAMLPATH/database.sqlite3
+      url: sqlite:///database.sqlite3
       query: 'SELECT Continent, COUNT(*) AS num, SUM(c1) FROM flags GROUP BY Continent'
 ```
 
@@ -976,11 +976,11 @@ Instead of entering a `query:` directly, you can point to an SQL file using
 ```yaml
 url:
   query:
-    pattern: /$YAMLURL/query
+    pattern: /query
     handler: FormHandler
     kwargs:
-      url: sqlite:///$YAMLPATH/database.sqlite3
-      queryfile: $YAMLPATH/query.sql
+      url: sqlite:///database.sqlite3
+      queryfile: query.sql
 ```
 
 For example:
@@ -1074,8 +1074,11 @@ def good_query_function(args):
 
 FormHandler parameters such as `url:`, `ext:`, `table:`, `query:`, `queryfile:`
 and all other kwargs (e.g. `sheet_name`) are formatted using the path arguments
-and URL query parameters. This allows users to control where and how FormHandler
-picks up data. For example, take this structure:
+and URL query parameters.
+
+This gives front-end developers and users some control over the queries.
+
+For example, to pick up data from different files based on the URL, use:
 
 ```yaml
 url:
@@ -1083,52 +1086,57 @@ url:
     pattern: /csv
     handler: FormHandler
     kwargs:
-      url: $YAMLPATH/{file}.csv         # Maps ?file=data to data.csv
+      url: {file}.csv   # Maps ?file=data to data.csv
 ```
 
 Now:
 
-- `/csv?file=1` fetches data from `1.csv`
-- `/csv?file=2` fetches data from `2.csv`
+- `/csv?file=alpha` fetches data from `alpha.csv`
+- `/csv?file=beta` fetches data from `beta.csv`
 - etc.
 
-This applies to database URLs and queries as well. For example:
+You can use regular expressions on the path to define parameters.
+For example, `pattern: /file/(.*?)` matches anything beginning with `/file/`.
+Each group in brackets `(...)` can be used as `{_0}`, `{_1}`, etc.
 
 ```yaml
-  db-parameters:
-    pattern: /db/$YAMLURL/(\w+)/(\w+)   # Maps /db/table to {_0:db, _1:table}
+url:
+  excel-parameters:             #                        {_0}  {_1}
+    pattern: /xl/(.*?)/(.*?)    # Matches URLs like /xl/sales/revenue
     handler: FormHandler
     kwargs:
-      url: sqlite:///$YAMLPATH/{_0}.db  # Use _0 as the DB file name
+      url: {_0}.xlsx        # sales.xlsx is the Excel file
+      sheet_name: '{_1}'    # revenue is the sheet name
+```
+
+The URL `/xl/sales/revenue` opens `sales.xlsx` and fetches the `revenue` sheet.
+
+You can use this for database URLs and queries as well. For example:
+
+```yaml
+url:
+  db-parameters:                  #     {_0} {_1} {group}   {col}    {val}
+    pattern: /db/(.*?)/(.*?)      # /db/data/sales?group=org&col=city&val=Oslo
+    handler: FormHandler
+    kwargs:
+      url: sqlite:///{_0}.db      # data.db is the DB file
       query:
-        SELECT {group}, COUNT(*)        # ?group= specifies column to group by
-        FROM {_1}                       # _1 comes from the path arguments
-        WHERE {col}=:val                # ?col= as column, ?val= as val
-        GROUP BY {group}
-  excel-parameters:
-    pattern: /xl/$YAMLURL/(\w+)/(\w+)    # Maps /file/sheet to {_0:file, _1:sheet}
-    handler: FormHandler
-    kwargs:
-      url: $YAMLPATH/{_0}.xlsx          # Use _0 as the file name
-      sheet_name: '{_1}'                # Use _1 as the sheet name
+        SELECT {group}, COUNT(*)  # SELECT org, COUNT(*)
+        FROM {_1}                 # FROM sales
+        WHERE {col}=:val          # WHERE city=Oslo
+        GROUP BY {group}          # GROUP BY org
 ```
 
 The URL `/db/data/sales?group=org&col=city&val=London` returns the results of
-`SELECT org, COUNT(*) FROM sales GROUP BY org WHERE city=London` running on
-`data.db`.
-
-The URL `/xl/sales/revenue` returns the "revenue" sheet from `sales.xlsx`.
-
-The `:val` used above is an SQLAlchemy argument. It is replaced by the value
-of `?val=` in values (not in column names or in any other place). This will be
-safely formatted by SQL and can contain any value. On the other hand, use
-`{arg}` for column names, filenames, etc.
+`SELECT org, COUNT(*) FROM sales GROUP BY org WHERE city=London` on `data.db`.
 
 For security, there are 2 constraints:
 
-- The arguments for file URLs should not go outside the specified directory
+- File URLs should not go outside the specified directory
   (e.g. using `..` or `/`). Sub-directories are fine
-- The arguments for SQLAlchemy URLs and queries cannot contain spaces
+- Values for arguments (e.g. `{file}`) cannot contain spaces. But use `:val` instead of
+  `{val}` inside [`query:`](#formhandler-query) for values (not column/table names, etc). This
+  allows spaces, and is SQL-injection safe.
 
 ## FormHandler defaults
 
@@ -1137,10 +1145,10 @@ To specify default values for arguments, use the `default:` key.
 ```yaml
 url:
   continent:
-    pattern: /$YAMLURL/continent
+    pattern: /continent
     handler: FormHandler
     kwargs:
-      url: $YAMLPATH/flags.csv
+      url: flags.csv
       function: data.groupby('Continent').sum().reset_index()
       default:
         _limit: 10                  # By default, limit to 10 rows, i.e. ?_limit=10
@@ -1179,14 +1187,14 @@ You can return any number of datasets from any number of sources. For example:
 ```yaml
 url:
   multidata:
-    pattern: /$YAMLURL/multidata
+    pattern: /multidata
     handler: FormHandler
     kwargs:
       continents:
-        url: $YAMLPATH/flags.csv
+        url: flags.csv
         function: data.groupby('Continent').sum().reset_index()
       stripes:
-        url: $YAMLPATH/flags.csv
+        url: flags.csv
         function: data.groupby('Stripes').sum().reset_index()
 ```
 
@@ -1217,10 +1225,10 @@ FormHandler allows listing files in a directory. To set this up, use a `dir://`
 URL like this: `url: dir:///path/to/directory`:
 
 ```yaml
-    pattern: /$YAMLURL/dir
+    pattern: /dir
     handler: FormHandler
     kwargs:
-      url: dir:///$YAMLPATH          # Point to any directory
+      url: dir:///D:/temp/    # Point to any directory
 ```
 
 Here is a sample output:
@@ -1231,11 +1239,11 @@ Here is a sample output:
 This URL is interpolatable using arguments as well for example:
 
 ```yaml
-    pattern: /$YAMLURL/dir/(.*)
+    pattern: /dir/(.*)
     handler: FormHandler
     kwargs:
-      url: dir:///$YAMLPATH/{_0}    # /dir/abc points to abc/ under this directory
-    # url: dir:///$YAMLPATH/{root}  # /dir/?root=abc points to abc/ under this directory
+      url: dir:///D:/temp/{_0}    # /dir/abc points to abc/ under this directory
+    # url: dir:///D:/temp/{root}  # /dir/?root=abc points to abc/ under this directory
 ```
 
 The arguments are escaped and cannot contain `../` and other mechanisms to go
@@ -1250,18 +1258,18 @@ The output of FormHandler can be rendered as a custom template using the
     pattern: text
     handler: FormHandler
     kwargs:
-      url: $YAMLPATH/flags.csv
+      url: flags.csv
       formats:
         text:
           format: template
-          template: $YAMLPATH/text-template.txt
+          template: text-template.txt
           headers:
               Content-Type: text/plain
 ```
 
 Here is the output of [?_format=text&_limit=10](flags?_format=text&_limit=10).
 
-The file [$YAMLPATH/text-template.txt](text-template.txt) is rendered as a Gramex
+The file [text-template.txt](text-template.txt) is rendered as a Gramex
 template using the following variables:
 
 - `data`: the DataFrame to render, after filters, sorts, etc. If the handler
@@ -1288,7 +1296,7 @@ POST, PUT and GET HTTP operators. For example:
 This requires primary keys to be defined in the FormHandler as follows:
 
 ```yaml
-    pattern: /$YAMLURL/flags
+    pattern: /flags
     handler: FormHandler
     kwargs:
       url: /path/to/flags.csv
@@ -1584,7 +1592,7 @@ This sets custom HTTP headers. For example, to access a
 server, add the CORS `Access-Control-Allow-Origin` headers.
 
 ```yaml
-pattern: /$YAMLURL/flags
+pattern: /flags
 handler: FormHandler
 kwargs:
     ...
