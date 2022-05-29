@@ -1444,6 +1444,7 @@ url:
         - function: print(handler.current_user, 'logged in via Google')
 ```
 
+The `function` can be any [expression or pipeline](../function/).
 You can also add your custom logout actions when the user successfully logs out to
 [`LogoutHandler`](#log-out).
 
@@ -1635,8 +1636,8 @@ url:
 
 ## Change inputs
 
-All auth handlers support a `prepare:` function. You can use this to modify the
-inputs passed by the user. For example:
+All auth handlers support a `prepare:` [expression or pipeline](../function/). You can use this to
+modify the inputs passed by the user. For example:
 
 - If the username is encrypted and you want to decrypt it
 - To add the domain name before the user, e.g. user types USERNAME, you change it to DOMAIN\USERNAME

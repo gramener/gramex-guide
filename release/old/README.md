@@ -201,7 +201,7 @@ library](https://learn.gramener.com/guide/uicomponents/):
 
 - [g1](https://www.npmjs.com/package/g1) is the new Gramex interaction
   library. It is bundled with Gramex and currently features URL
-  manipulation, templating and a few utilities.
+  manipulation, templates and a few utilities.
 - [Leaflet](http://leafletjs.com/),
   [topojson](https://github.com/topojson/topojson),
   [shepherd](http://github.hubspot.com/shepherd/docs/welcome/) and
@@ -267,7 +267,7 @@ extended with several custom components:
 - Absolute positioning classes
 - Overlay classes
 - Divider component
-- Tail (callout) component
+- Tail (call-out) component
 - Switches (styled checkboxes)
 
 Also, D3 4.0 is now part of the UI components library.
@@ -611,7 +611,7 @@ improved. Specifically:
 - You can [overwrite
   uploads](https://learn.gramener.com/guide/uploadhandler/#overwriting-uploads)
   in the way you want.
-- You can customise the [uploaded
+- You can customize the [uploaded
   filename](https://learn.gramener.com/guide/uploadhandler/#saving-uploads).
 
 All requests are now logged under `$GRAMEXDATA/logs/requests.csv`,
@@ -1190,7 +1190,7 @@ There are two changes that may disrupt your code:
   For example, `VAR: {function: module.fn}` will run `module.fn()` and
   assign `$VAR` the returned value.
 - [FileHandler](https://learn.gramener.com/guide/filehandler/)
-  supports an `index_template:` key that allows customised directory
+  supports an `index_template:` key that allows customized directory
   listings. It can be any custom-styled HTML file that uses `$path`
   and `$body` respectively to represent the full path to the directory
   and the contents of the directory.

@@ -335,7 +335,7 @@ This data can be used directly in templates as variables named `plainlist`,
 
 `each:` specifies a dataset to iterate over. Each row becomes a separate email.
 
-`condition:` is a Python expression that filters the data and returns the final
+`condition:` is a Python [expression or pipeline](../function/) that filters the data and returns the final
 rows to send as email. If the result is `False`, `[]`, `{}` or any false-y
 value, the alert will exit.
 
@@ -505,8 +505,8 @@ The alert service takes four kinds of parameters:
     - dict: `index` and `row` are the key and value
     - list: `index` and `row` are the index and value
     - DataFrame: `index` and `row` are the row index and DataFrame row
-  - `condition`: an optional Python expression that determines whether to run the
-    alert. All `data:` keys are available to the expression. This may return a:
+  - `condition`: an optional Python [expression or pipeline](../function/) that determines
+    whether to run the alert. All `data:` keys are available to the expression. This may return a:
     - False-y value or empty DataFrame: to prevent running the alert. For example,
       the `once()` transform can be used. e.g. `once('unique-key')` runs the alert
       only once for every unique value of the arguments.

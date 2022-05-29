@@ -35,7 +35,7 @@ schedule:
 
 Each named schedule section may the following keys:
 
-- `function`: the expression to run (**required**)
+- `function`: the [expression or pipeline](../function/) to run (**required**)
 - `startup`:
   - `True` to run once at startup.
   - `"*"` to run once at startup, and every time the config changes.

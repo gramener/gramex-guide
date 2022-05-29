@@ -35,15 +35,15 @@ Extending `BaseHandler` automatically provides these features:
 - [Caching](../cache/) via the `cache:` settings
 - [Sessions](../auth/) via the `session:` settings
 - Headers via the `headers:` settings for some handlers
-- Transforms via the `transform:` settings for some handlers like
-  [ProcessHandler](../processhandler/) and [FileHandler](../filehandler/)
+- Transforms as an [expression or pipeline](../function/) via the `transform:` settings for some
+  handlers like [ProcessHandler](../processhandler/) and [FileHandler](../filehandler/)
 
 **Note**: when naming your Python script, avoid namespaces such as `services.` or
 `handlers.` -- these are already used by Gramex, and will not reflect your custom
 handler.
 
 
-## Initialisation
+## Initialization
 
 Any arguments passed to the handler are passed to the `setup()` and
 `initialize()` methods. `setup()` is a class method that is called once.
@@ -65,7 +65,7 @@ class SetupHandler(BaseHandler):
         self.write('Name %s was called %d times' % (self.name, self.count[self.name]))
 ```
 
-... can be initialised at [setup](setup) as follows:
+... can be initialized at [setup](setup) as follows:
 
 ```yaml
 url:

@@ -38,7 +38,8 @@ url:
             # auth: true
 ```
 
-This passes on the `open`, `on_message` and `on_close` events to `pingbot.py`:
+`open`, `on_message` and `on_close` are [expressions or pipelines](../function/).
+Here's a sample definition from [`pingbot.py`](pingbot.py.source):
 
 ```python
 def open(handler):

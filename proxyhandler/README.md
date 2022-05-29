@@ -67,9 +67,9 @@ ProxyHandler configuration accepts these kwargs:
 - `methods`: list of HTTP methods allowed. Defaults to `GET`, `HEAD` and `POST`.
   Remember that `POST` and other write methods require [XSRF][xsrf] -- either a
   `?_xsrf=` argument or a `X-Xsrftoken` HTTP header.
-- `prepare`: a function that accepts any of `handler` and `request` (a
-  [HTTPRequest][httprequest]) and modifies the `request` in-place
-- `modify`: a function that accepts any of `handler`, `request` (a
+- `prepare`: an [expression or pipeline](../function/) that accepts any of `handler` and `request`
+  (a [HTTPRequest][httprequest]) and modifies the `request` in-place
+- `modify`: an [expression or pipeline](../function/) that accepts any of `handler`, `request` (a
   [HTTPRequest][httprequest]), and `response` (a [HTTPResponse][httpresponse])
   and modifies the `response` in-place
 - `connect_timeout`: timeout for initial connection in seconds (default: 20)
@@ -323,11 +323,11 @@ url:
       prepare: request.headers.set('APIKey', 'My-API-Key')
 ```
 
-This `prepare:` method or expression replaces the `?c=` with `?Cross=`. So
+This `prepare:` [expression or pipeline](../function/) replaces the `?c=` with `?Cross=`. So
 [replace?c=Yes](replace?c=Yes&_format=html) is actually the same as
 [flags?Cross=Yes](flags?Cross=Yes&_format=html).
 
-`prepare(handler, request, response)` is the function signature. You can use:
+You can use these variables in the `prepare:` expression:
 
 - `handler`: ProxyHandler instance
 - `request`: [HTTPRequest][httprequest] object

@@ -147,7 +147,7 @@ With additional libraries, FormHandler can connect to
   - Install: `pip install "pyhive[hive]"`
   - Use: `url: 'hive://server:10000/default`
 - [Apache Impala](https://pypi.org/project/impala/)
-  - Install: `pip install impaala`
+  - Install: `pip install impala`
   - Use: `url: 'impala://$HOST:$PORT/$DATABASE'`
 - [Apache Kylin](https://pypi.org/project/kylinpy/)
   - Install: `pip install kylinpy`
@@ -726,7 +726,7 @@ parameters directly.
 
 ## FormHandler transforms
 
-FormHandler has 4 ways of transforming the request / data using Python expressions.
+FormHandler has 4 ways of transforming the request / data using a Python [expression or pipeline](../function/).
 
 1. [prepare](#formhandler-prepare) runs **before loading data** and can **replace `handler.args`**.
    Allows variables `args` as [handler.args](../handlers/#basehandler-attributes) and [`handler`](../handlers/)

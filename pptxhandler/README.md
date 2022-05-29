@@ -913,7 +913,7 @@ PPTGen can change presentations with data from various sources. It uses the same
 - Any additional keys are passed to `gramex.data.filter()`, and in turn to `gramex.cache.open()` or
   `sqlalchemy.create_engine()`.
 
-You can also specify the data as a function using `function:`. This can be any Python expression.
+You can also specify the data as a function using `function:`. This can be any Python [expression or pipeline](../function/).
 
 Example:
 

@@ -504,6 +504,7 @@ mlhandler/transform:
 
 Note that the function used to transform the data must accept a dataframe as the
 first argument, and should return only the transformed dataframe.
+The transform can also be an [expression or pipeline](../function/), instead of a function name.
 
 ## Example: Classify overlapping patterns with logistic regression
 

@@ -11,7 +11,8 @@ type: microservice
 
 [Video](https://youtu.be/fbtade_2BCI){.youtube}
 
-The [FunctionHandler][functionhandler] runs a function and displays the output.
+The [FunctionHandler][functionhandler] runs any [expression or pipeline](../function/) and displays
+the output.
 
 For example, this configuration maps the URL [total](total) to a FunctionHandler:
 
@@ -117,6 +118,7 @@ String and byte outputs are rendered as-is. Other types (int, float, bool, datet
 - `dict`: rendered as JSON, e.g. `{"x": 1, "y": "abc"}`. Keys *must* be strings
 - `pd.DataFrame`: rendered as JSON via `.to_json(orient="records", date_format="iso")`
 
+
 ## HTTP methods
 
 [Video](https://youtu.be/FPZ1dczw94s){.youtube}
@@ -135,6 +137,7 @@ url:
             function: calculations.total(100, 200)
             methods: [POST, PUT, DELETE]            # Allow only these 3 HTTP methods
 ```
+
 
 ## URL path arguments
 
@@ -190,6 +193,7 @@ Sample output:
 - [path/age/30](path/age/30) shows `["age", "30"]`
 
 `path_args` is available to [all handlers](../handlers/#basehandler-attributes).
+
 
 ## Function arguments
 

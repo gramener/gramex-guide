@@ -2,7 +2,7 @@
 
 Let's say you run a course or workshop. You need to create e-certificates for participation.
 
-It will be be tedious to generte these manually for each participants -- especially if the volume is large.
+It will be be tedious to generate these manually for each participants -- especially if the volume is large.
 
 Let's automate this, and create certificates like this:
 

@@ -407,16 +407,16 @@ url:
                 function: config_error_page.show_error
 ```
 
-The function is passed the same 3 keyword arguments mentioned above. Its return
-value is rendered as a string.
+The function can be any [expression or pipeline](../function/) that can use `status_code`, `kwargs`
+or `handler`. Its return value is rendered as a string.
 
 If a `function:` **and** `path:` are both specified, `function:` is used, and
 `path:` is ignored with a warning log.
 
 To repeat error pages across multiple handlers, see [Reusing Configurations](#reusing-configurations).
 
-Both methods support some customisations. Here is a full example showing the
-customisations:
+Both methods support some customizations. Here is a full example showing the
+customizations:
 
 ```yaml
 url:
@@ -460,7 +460,7 @@ user after completing the action. For example, after a
 **NOTE**: You can only redirect pages that don't return any content. If the
 handler renders content or triggers a download, redirection will fail.
 
-Redirection can also be customised based on:
+Redirection can also be customized based on:
 
 - a URL `query` parameter
 - a HTTP `header`, or
@@ -504,8 +504,7 @@ The `schedule:` section schedules functions to run at specific times or on
 startup. It has a name - schedule mapping. The names are unique identifiers. The
 schedules have the following keys:
 
-- `function:` name of the function or expression to run. (If `function:` is the
-  function name, you can optionally add `args:` and `kwargs:`)
+- `function:` [expression or pipeline](../function/) to run
 - `startup`: True to run the function on startup (default: False)
 
 It also accepts a timing that is based on the [crontab format][crontab]. Here is
@@ -738,34 +737,16 @@ variables['GRAMEXDATA']     # Same as $GRAMEXDATA
 
 ### Computed variables
 
-Variables can also be computed. For example, this runs `utils.get_root` to
-assign `$URLROOT`:
+Variables can also be computed as an [expression or pipeline](../function/).
+For example, this assigns `utils.get_root("URLROOT")` to assign `$URLROOT`:
 
 ```yaml
 variables:
     URLROOT:
-        function: utils.get_root
+        function: utils.get_root(key)
 ```
 
-By default, the function is called with the variable name as key, i.e.
-`utils.get_root(key='URLROOT')`. But you can specify any arguments. For example,
-this calls `utils.get_root('URLROOT', 'test', x=1)`:
-
-```yaml
-variables:
-    URLROOT:
-        function: utils.get_root(key, 'test', x=1)
-```
-
-This is another way of doing the same thing:
-
-```yaml
-variables:
-    URLROOT:
-        function: utils.get_root
-        args: [=key, 'test']
-        kwargs: {x: 1}
-```
+The key we're assigning is available as a variable `key`.
 
 Computed variables can also use defaults. For example, this assigns `get_home()`
 to `$HOME` only if it's not already defined.
@@ -787,8 +768,8 @@ practice, read [deployment patterns](../deploy/).
 
 ### Conditional variables
 
-You can set variables based on a conditional expression. For example, this sets
-`$PORT` based on `$OS`:
+You can set variables based on a conditional [expression or pipeline](../function/).
+For example, this sets `$PORT` based on `$OS`:
 
 ```yaml
 variables:
@@ -863,8 +844,8 @@ auth if 'win' not in sys.platform:
 ```
 
 If ` if ` is present in any key, the portion after `if` is evaluated as a Python
-expression. All [YAML variables](#yaml-variables) and common modules (`re`,
-`os`, `sys`, `datetime`, `socket`, `six`) are available to the expression.
+[expression or pipeline](../function/). All [YAML variables](#yaml-variables) and common modules
+(`re`, `os`, `sys`, `datetime`, `socket`, `six`) are available to the expression.
 
 Here are useful examples of conditions:
 

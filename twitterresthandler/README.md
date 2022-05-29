@@ -164,7 +164,8 @@ $.get('twitter-open/followers/list.json?screen_name=gramener&count=1')  // OUTPU
 
 ## Twitter transforms
 
-You can use the `transform:` configuration to modify the response in any way. Here is a simple transform that adds the sentiment to each tweet:
+You can use the `transform:` configuration to modify the response in any way. It can be any
+[expression or pipeline](../function/). Here is a transform that adds the sentiment to each tweet:
 
 ```yaml
 twittersentiment:
