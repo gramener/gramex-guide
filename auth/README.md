@@ -1876,33 +1876,48 @@ the user is logged in *for that session*. `handler.current_user` is set to the u
 
 ## API key
 
-API keys let users to log in multiple times, until expiry.
+API keys protect a URL with an access token or key. This is used to:
 
-These are useful to provide allow services (e.g. bots, apps, scripts) to act on behalf of a user.
-For example, to fetch data, trigger a refresh, etc.
+- Build APIs, e.g. to allow a bot/app to fetch the list of users
+- Trigger refresh, e.g. to fetch data again, logging in as a specific user
 
-Add this code to a [FunctionHandler](../functionhandler/) or any Python code in a handler:
+**Create the API key** for a user `{'id': 'user@example.com'}`, call:
 
 ```python
+user = {id: 'user@example.com'}       # Ensure there's an 'id' key
 expiry = 24 * 60 * 60                 # Expires in 24 hours
-key = handler.apikey(expire=expiry)   # Create API key as current user
-```
-
-This creates an API `key` string for the currently logged-in user that expires after 24 hours.
-
-To create an API `key` for a different user, use:
-
-```python
-expiry = 24 * 60 * 60                           # Expires in 24 hours
-user = {'id': 'alpha'}                          # User to create API key for
 key = handler.apikey(expire=expiry, user=user)  # Create key as specified user
 ```
 
-When a user visits any page with `?gramex-key=<key>` added, or with a `X-Gramex-Key: <key>` header,
-the user is logged in *for that session*. `handler.current_user` is set to the user object.
+You can add this to a [FunctionHandler](../functionhandler/) or any Python code, and share it with users.
+
+**Use the API key** by adding an [`auth:`](#authorization) to **any `url:`**. For example:
+
+```yaml
+url:
+  my-api-url:
+    pattern: /api/v1
+    handler: FunctionHandler
+    kwargs:
+      function: my_api.get_users(handler)
+      # Add auth: to restrict the users
+      auth:
+        condition:
+          function: handler.current_user.id.endswith('@example.com')
+```
+
+When the user visits `/api/v1?gramex-key=<key>`,
+`handler.current_user` becomes the `user` object (i.e. `{id: 'user@example.com'}`).
+
+Note: `?gramex-key=` is a special key Gramex uses across all URLs. Instead of `?gramex-key=<key>`, users can also send the HTTP header `X-Gramex-Key: <key>`.
+
+You can restrict API usage with the [`auth:` kwarg](#roles).
+
+You can restrict API usage or take actions based on `handler.current_user` in your
+code `my_api.get_users(handler)`
 
 ::: example href=apikey source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    API key example
+    Try the API key example
 
 ## Encrypted user
 
