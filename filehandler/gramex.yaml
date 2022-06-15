@@ -18,16 +18,6 @@ url:
     kwargs:
       path: $YAMLPATH/template.html
       template: true
-  yaml-badgerfish:
-    pattern: /$YAMLURL/page.yaml                # Any URL starting with /filehandler/
-    handler: FileHandler                        # uses this handler
-    kwargs:
-      path: $YAMLPATH/page.yaml                 # Serve files from this YAML file's directory
-      transform:
-        "*.yaml":                               # YAML files use BadgerFish
-          function: badgerfish(content)         # transformed via gramex.transforms.badgerfish()
-          headers:
-            Content-Type: text/html             # and served as HTML
   yaml-extensions:
     pattern: /$YAMLURL/yaml/(.*)                # Any URL starting with yaml
     handler: FileHandler                        # uses this handler

@@ -691,20 +691,6 @@ Any function can be used to transform. For example, this renders `.md` or `.mark
             Content-Type: text/html             #     MIME type: text/html
 ```
 
-This configuration converts YAML into HTML using the [BadgerFish](http://www.sklar.com/badgerfish/) convention.
-
-```yaml
-    # ... contd ...
-        "*.yaml":                           # YAML files use BadgerFish
-          function: badgerfish(content)     # return gramex.transforms.badgerfish()
-          encoding: utf-8                       # Read input file as UTF-8
-          headers:
-            Content-Type: text/html         # and served as HTML
-```
-
-::: example href=page.yaml source=https://github.com/gramener/gramex-guide/tree/master/filehandler/page.yaml
-    Run the YAML to HTML example
-
 Transform keys matches one or more [glob patterns](https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob)
 separated by space/comma (e.g. ``'*.md, 'data/**'``.)
 
