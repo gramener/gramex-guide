@@ -18,8 +18,8 @@ url:
         handler: FacebookGraphHandler
         kwargs:
             # Visit https://developers.facebook.com/apps/ to get these keys
-            key: '...'
-            secret: '...'
+            key: ...      # App ID
+            secret: ...   # App Secret
         redirect:
             header: Referer
             url: /$YAMLURL/
