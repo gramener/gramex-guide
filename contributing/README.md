@@ -5,36 +5,69 @@ prefix: Contributing
 
 [TOC]
 
-## Set up Gramex
+[Gramex Community Edition](https://github.com/gramener/gramex/) is open source. You're welcome to contribute by raising [issues](https://github.com/gramener/gramex/issues) and [pull requests](https://github.com/gramener/gramex/pulls).
 
-- The [release branch](http://github.com/gramener/gramex/tree/release/)
-  holds the latest stable version.
-- The [master branch](http://github.com/gramener/gramex/tree/master/) has the
-  latest working version
-- All other branches are temporary feature branches
+## Set up Gramex for development
 
-Gramex can be developed on Python >= 3.7 on Windows or Linux.
-To set up the development environment:
+**Step 1**: Install
+[Anaconda](http://continuum.io/downloads),
+[NodeJS](https://nodejs.org/en/download/current/), and
+[Git](https://git-scm.com/download). Add `node` and `git` to your `PATH`.
 
-1. Download and install [Anaconda 5.0](http://continuum.io/downloads) or later
-2. Install databases. Install PostgreSQL and MySQL. On Linux, this works:
+You also need `bash` to test. On Windows, this comes with [Git](https://git-scm.com/download).
 
-```bash
-sudo apt-get install -y git make sqlite3 postgresql postgresql-contrib libpq-dev python-dev
-DEBIAN_FRONTEND=noninteractive apt-get -y -q install mysql-server
-```
+**Step 2**: Clone and install the [master branch](http://github.com/gramener/gramex/tree/master/).
 
-Clone and install the [master branch](http://github.com/gramener/gramex/tree/master/).
+```shell
+# Create a new Conda environment with Python 3.7+
+conda create -y --name gramex python=3.7
+conda activate gramex
 
-```bash
+# Clone and install Gramex
 git clone git@github.com:gramener/gramex.git
 cd gramex
-git checkout master     # Optional
+# master branch is the latest working version.
+# release branch is the latest released version.
+git checkout master
 pip install -e .
 gramex setup --all
 ```
 
+**Step 3 (OPTIONAL)**: Install databases.
+
+- [Redis](https://redis.io/download/) (on [Windows](https://github.com/microsoftarchive/redis))
+- [MySQL](https://dev.mysql.com/downloads/) or [MariaDB](https://mariadb.org/download/)
+- [PostgreSQL](https://www.postgresql.org/download/)
+- [MongoDB](https://www.mongodb.com/try/download/community)
+- [Elasticsearch](https://www.elastic.co/downloads/elasticsearch)
+
+<!--
+sudo apt-get install -y git sqlite3 postgresql postgresql-contrib libpq-dev python-dev
+DEBIAN_FRONTEND=noninteractive apt-get -y -q install mysql-server
+-->
+
+
 ## Test Gramex
+
+**Step 1**: [Install Gramex Enterprise](../install/#install-gramex-enterprise) to run tests.
+
+```shell
+pip install gramexenterprise    # Install Gramex Enterprise
+gramex license accept           # Accept the Gramex license
+```
+
+**Step 2**: Install dependencies.
+
+```shell
+bash task testsetup
+```
+
+**Step 3**: Run tests
+
+```shell
+bash task lint
+nosetests
+```
 
 Gramex uses [nosetests](https://nose.readthedocs.io/en/latest/) for unit tests.
 The tests are in 2 folders:
@@ -43,15 +76,6 @@ The tests are in 2 folders:
   has library tests that can run without starting Gramex.
 - [tests/](https://github.com/gramener/gramex/tree/release/tests/)
   has URL-based tests that run after starting the Gramex server.
-
-Run `make test-setup` for the first time. Then you can run `nosetests`.
-
-You must [install Gramex Enterprise](../install/#install-gramex-enterprise) to run tests.
-
-```bash
-pip install gramexenterprise    # Install Gramex Enterprise
-gramex license accept           # Accept the Gramex license
-```
 
 The tests take long. To test a subset, use `nosetests tests.<module>:<ClassName>.<method>`. For example:
 
@@ -114,14 +138,14 @@ Run tests:
 2. Test the `master` branch locally on Python >= 3.7:
 
 ```bash
-make test
+nosetests
 ```
 
 Upgrade npm packages and audit security:
 
 ```bash
-make update-npm
-make security
+bash task update
+bash task security
 ```
 
 If there are any security errors reported in `reports/*`, fix them and run `make security` again
@@ -139,7 +163,7 @@ In [gramex-guide][gramex-guide]:
 - In `release/README.md` -- add release entry
 - Add [video tutorial](#video-tutorial) for all new features
 - In `release/1.xx/README.md` -- add guide release notes.
-  - Run `make stats` for code size stats. Take coverage stats from Travis
+  - Run `bash task stats` for code size stats. Take coverage stats from Travis
 - In `release/latest.json` -- add latest release notes.
 - Run `npm run lint` and fix any Markdown issues
 - Run `python search/search.py` to update search index
@@ -174,11 +198,11 @@ git remote add gitlab git@code.gramener.com:cto/gramex-guide.git  # For Guide
 Then run these deployment steps on the Gramex repo:
 
 ```bash
-# Deploy docs on https://learn.gramener.com/gramex/
-make push-docs                # Deploy pydoc
+# Deploy docs on https://gramener.com/gramex/guide/api/
+bash task pushdocs
 
 # Deploy on pypi: https://pypi.python.org/pypi/gramex
-make push-pypi                # Log in as gramener
+bash task pushpypi    # Log in as gramener
 
 # Deploy on conda (Windows): https://anaconda.org/gramener/gramex
 # Run this from any temporary directory on a Windows system.
@@ -189,13 +213,13 @@ pip install -e .
 
 # Follow instructions to upload. Log in as gramener
 # Replace the path to the Gramex tarball below. It will by under anaconda/conda-bld
-make conda
+bash task conda
 anaconda upload D:/path/to/conda-bld/win-64/gramex-1.<version>.tar.bz2
 
 # Now you can delete this Gramex folder and restore your Gramex via pip install gramex
 
 # Deploy on docker: https://hub.docker.com/r/gramener/gramex/
-make push-docker              # Log in as sanand0 / pratapvardhan
+bash task pushdocker    # Log in as sanand0 / pratapvardhan
 ```
 
 Note: to run `make conda` on Linux, create a new Docker instance via
@@ -208,7 +232,7 @@ conda install -y conda-build anaconda             # Required for build
 git clone https://github.com/gramener/gramex/ -b release    # Clone Gramex release branch
 cd gramex                                         # Change into gramex dir
 pip install -e .                                  # Test gramex, and get orderedattrdict
-make conda                                        # Create conda
+bash task conda                                   # Create conda
 anaconda upload /opt/conda/conda-bld/linux-64/gramex-*.tar.bz2    # Log in as gramener
 ```
 
