@@ -123,7 +123,7 @@ these popular databases work:
     table: sales
 ```
 
-Additional parameters like `table:`, `encoding:`, etc are passed to
+Additional parameters like `table:`, `encoding:`, `connect_args`, etc are passed to
 [`sqlalchemy.create_engine`](https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine).
 
 With additional libraries, FormHandler can connect to
