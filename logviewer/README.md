@@ -31,6 +31,7 @@ This configuration mounts the app at [log/](log/):
 
 Use `LOGVIEWER_*` variables to configure your app.
 
+- `LOGVIEWER_DB`: database to store logviewer data. Defaults to `{url: sqlite:///$GRAMEXDATA/logs/logviewer.db}`
 - `LOGVIEWER_PATH_UI`: path to customized layout config. Use sample default `$GRAMEXAPPS/logviewer/config.yaml` layout
 - `LOGVIEWER_PATH_RENDER`: path to customized renderer config. Use sample default `$GRAMEXAPPS/logviewer/render.js` js file
 - `LOGVIEWER_FORMHANDLER_KWARGS`: to update `url.name.kwargs` section
@@ -42,6 +43,41 @@ Use `LOGVIEWER_*` variables to configure your app.
 - `LOGVIEWER_CUSTOM_DIMENSIONS`: to define custom columns and their value patterns
 
 All variables are optional.
+
+## Logviewer database location
+
+Logviewer stores data in a local SQLite database by default, at `sqlite:///$GRAMEXDATA/logs/logviewer.db`.
+
+Distributed apps (e.g. load-balanced apps running on multiple servers) need logs stored centrally, e.g. on a database.
+
+To store Logviewer data in MySQL, use:
+
+```yaml
+import:
+  logviewer:
+    path: $GRAMEXAPPS/logviewer/gramex.yaml
+    YAMLURL: $YAMLURL/log/
+    LOGVIEWER_DB:
+      url: mysql+pymysql://root@localhost/logviewer
+```
+
+To store Logviewer data in Postgres, use:
+
+```yaml
+import:
+  logviewer:
+    path: $GRAMEXAPPS/logviewer/gramex.yaml
+    YAMLURL: $YAMLURL/log/
+    LOGVIEWER_DB:
+      url: postgresql://postgres@localhost/test_formhandler
+```
+
+Note: Logviewer stores data in 3 tables:
+
+- `aggD`: daily aggregates
+- `aggW`: weekly aggregates
+- `aggM`: monthly aggregates
+
 
 ## Using Variables
 
