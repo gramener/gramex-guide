@@ -12,6 +12,14 @@ log:
   loggers:
     gramex:
       level: WARNING
+    matplotlib:
+      level: INFO
+    botocore:
+      level: INFO
+    MARKDOWN:
+      level: INFO
+    passlib:
+      level: INFO
 
 app:
   settings:
