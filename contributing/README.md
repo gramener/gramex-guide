@@ -161,7 +161,7 @@ In [gramex-guide][gramex-guide]:
 
 - Run `npm upgrade`
 - In `release/README.md` -- add release entry
-- Add [video tutorial](#video-tutorial) for all new features
+- Add [video tutorial](#video-tutorials) for all new features
 - In `release/1.xx/README.md` -- add guide release notes.
   - Run `bash task stats` for code size stats. Take coverage stats from Travis
 - In `release/latest.json` -- add latest release notes.

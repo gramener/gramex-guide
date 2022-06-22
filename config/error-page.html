@@ -16,11 +16,36 @@
     <h1>{{ status_code }} Error Page</h1>
     <p>This is an error page. It acts as a template and is passed 3 keyword arguments:</p>
     <ol>
-      <li><code>status_code</code>: currently, this is <code>{{ status_code }}</code></li>
-      <li><code>kwargs</code>: if this error was caused by an uncaught exception or raising a HTTPError, <code>kwargs['exc_info']</code> is available as an exception triple.</li>
-      <li><code>handler</code>: the handler object. For example, <code>handler.request.uri</code> is <code>{{ handler.request.uri }}</code>.</li>
+      <li><code>status_code</code>: HTTP status code. Currently, this is <code>{{ status_code }}</code></li>
+      <li><code>kwargs</code>: For HTTP errors,
+        <code>kwargs['exc_info']</code></a> is a <code>(type, value, traceback)</code> tuple
+        as returned by <a href="https://docs.python.org/3/library/sys.html#sys.exc_info">sys.exc_info</a>.</li>
+      <li><code>handler</code>: the <a href="../handlers/">handler object</a>.
+        e.g. <code>handler.request.uri</code> is <code>{{ handler.request.uri }}</code>
+      </li>
     </ol>
-    <p>You may show any information you want here.</p>
+
+    <h2>Exception information</h2>
+    <p><code>kwargs['exc_info']</code></a> is a <code>(type, value, traceback)</code> tuple</p>
+    <ol>
+      <li><code>kwargs['exc_info'][0]</code> is a <a href="https://docs.python.org/3/library/functions.html#type">type</a>, e.g. <code>{{ kwargs['exc_info'][0] }}</code></li>
+      <li><code>kwargs['exc_info'][1]</code> is an <a href="https://docs.python.org/3/library/exceptions.html?highlight=exception#BaseException">Exception</a>, e.g. <code>{{ kwargs['exc_info'][1] }}</code></li>
+      <li><code>kwargs['exc_info'][2]</code> is a traceback object, e.g. <code>{{ kwargs['exc_info'][2] }}</code></li>
+    </ol>
+    <p>The Exception object has 3 attributes:</p>
+    <ul>
+      <li><code>status_code</code>, e.g. <code>{{ kwargs['exc_info'][1].status_code }}</code></li>
+      <li><code>log_message</code>, e.g. <code>{{ kwargs['exc_info'][1].log_message }}</code></li>
+      <li><code>reason</code>, e.g. <code>{{ kwargs['exc_info'][1].reason }}</code></li>
+    </ul>
+
+    <p>You can get the traceback via
+      <code>{{! ''.join(traceback.format_tb(kwargs['exc_info'][2])) }}</code>
+    </p>
+    {% import traceback %}
+    <pre>{{ ''.join(traceback.format_tb(kwargs['exc_info'][2])) }}</pre>
+    </pre>
+
   </section>
 </body>
 </html>

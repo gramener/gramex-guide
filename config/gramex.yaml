@@ -18,3 +18,20 @@ url:
         kwargs:
             path: $YAMLPATH/handler
             error: *ERROR_PAGES
+
+    config/json-error:
+        priority: 1
+        pattern: /$YAMLURL/json-error
+        handler: FunctionHandler
+        kwargs:
+            function: str(1/0)
+            error:
+                500:
+                  function: >
+                    json.dumps({
+                      "code": status_code,
+                      "message": str(kwargs['exc_info'][1]),
+                      "traceback": ''.join(traceback.format_tb(kwargs['exc_info'][2])),
+                    }, indent=2)
+                  headers:
+                    Content-Type: application/json

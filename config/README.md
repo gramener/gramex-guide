@@ -9,14 +9,14 @@ All features of Gramex are controlled by `gramex.yaml`. Here's a simple
 `gramex.yaml` that serves the file `home.html` as the home page.
 
 ```yaml
-url:                            # URL configuration section
-    root:                       # Add a configuration called "root"
-        pattern: /              # It maps the URL / (the home page)...
-        handler: FileHandler    # ... to a Gramex FileHandler
-        kwargs:                 # ... and passes it these arguments:
-            path: home.html     # Use home.html as the path to serve
+url:                        # URL configuration section
+  root:                     # Add a configuration called "root"
+    pattern: /              # It maps the URL / (the home page)...
+    handler: FileHandler    # ... to a Gramex FileHandler
+    kwargs:                 # ... and passes it these arguments:
+      path: home.html       # Use home.html as the path to serve
 app:
-    browser: /                  # Open the home page when the app loads
+  browser: /                # Open the home page when the app loads
 ```
 
 Create this `home.html` in the same directory:
@@ -97,12 +97,12 @@ For example, `gramex --listen.port=8080 --log.level=warning` is the same as spec
 
 ```yaml
 app:
-    listen:
-        port: 8080
+  listen:
+    port: 8080
 log:
-    loggers:
-        gramex:
-            level: WARNING      # Gramex capitalizes --log.level
+  loggers:
+    gramex:
+      level: WARNING      # Gramex capitalizes --log.level
 ```
 
 The Gramex logger settings
@@ -113,17 +113,17 @@ The `url:` section maps URLs to content. Here is an example:
 
 ```yaml
 url:
-    homepage:                           # "homepage" can be replaced with any unique name
-        pattern: /                      # Map the URL /
-        handler: FileHandler            # using a built-in FileHandler
-        kwargs:                         # Pass these options to FileHandler
-            path: $YAMLPATH/index.html  # Show the index.html in the same directory as this YAML file
+  homepage:                         # "homepage" can be replaced with any unique name
+    pattern: /                      # Map the URL /
+    handler: FileHandler            # using a built-in FileHandler
+    kwargs:                         # Pass these options to FileHandler
+      path: $YAMLPATH/index.html    # Show the index.html in the same directory as this YAML file
 
-    hello:                              # A unique name for this mapping
-        pattern: /hello                 # Map the URL /hello
-        handler: FunctionHandler        # using the build-in FunctionHandler
-        kwargs:                         # Pass these options to FunctionHandler
-            function: str("Hello")      # Run the str() function with the argument "Hello"
+  hello:                            # A unique name for this mapping
+    pattern: /hello                 # Map the URL /hello
+    handler: FunctionHandler        # using the build-in FunctionHandler
+    kwargs:                         # Pass these options to FunctionHandler
+      function: str("Hello")        # Run the str() function with the argument "Hello"
 ```
 
 The `url:` section is a name - mapping dictionary. The names are just unique
@@ -157,7 +157,7 @@ Now, you can add this configuration to your `url:` section:
 
 ```yaml
 url:                # Do not include this line if you already have it
-  hello:                        # a name you want to give to the handler
+  hello:                      # a name you want to give to the handler
     pattern: /hello           # URL pattern
     handler: hello.Hello      # class that implements the handler
 ```
@@ -232,9 +232,9 @@ From **v1.23**, Gramex also saves all console logs to `logs/gramex.log` under
 
 ```yaml
 log:
-    handlers:
-        logfile:
-            filename: $GRAMEXDATA/your-app/gramex.log       # Change file location
+  handlers:
+    logfile:
+      filename: $GRAMEXDATA/your-app/gramex.log       # Change file location
 ```
 
 The log file is backed up weekly by default. You can change these [parameters][trfh]:
@@ -271,18 +271,18 @@ To change the location of this file, use `log.handlers.requests.filename`:
 
 ```yaml
 log:
-    handlers:
-        requests:
-            filename: $GRAMEXDATA/your-app/requests.csv      # The path can point ANYWHERE
+  handlers:
+    requests:
+      filename: $GRAMEXDATA/your-app/requests.csv      # The path can point ANYWHERE
 ```
 
 To change the columns that are logged, use `log.handlers.requests.keys:`
 
 ```yaml
 log:
-    handlers:
-        requests:
-            keys: [time, ip, user.email, status, uri]
+  handlers:
+    requests:
+      keys: [time, ip, user.email, status, uri]
 ```
 
 You can use any of the following as keys for logging:
@@ -322,18 +322,18 @@ To change the location of this file, use `log.handlers.user.filename`:
 
 ```yaml
 log:
-    handlers:
-        user:
-            filename: $GRAMEXDATA/your-app/user.csv     # The path can point ANYWHERE
+  handlers:
+    user:
+      filename: $GRAMEXDATA/your-app/user.csv     # The path can point ANYWHERE
 ```
 
 To change the columns that are logged, use `log.handlers.user.keys:`
 
 ```yaml
 log:
-    handlers:
-        user:
-            keys: [time, ip, user, status, uri, error]
+  handlers:
+    user:
+      keys: [time, ip, user, status, uri, error]
 ```
 
 For the list of valid keys, see [request logging](#request-logging).
@@ -345,15 +345,15 @@ log events like this:
 
 ```yaml
 auth:
-    pattern: /$YAMLURL/auth
-    handler: SimpleAuth
-    kwargs:
-        log:                                # Log this when a user logs in via this handler
-            fields:                         # List of fields:
-                - session.id                  #   handler.session['id']
-                - current_user.id             #   handler.current_user['id']
-                - request.remote_ip           #   handler.request.remote_ip
-                - request.headers.User-Agent  #   handler.request.headers['User-Agent']
+  pattern: /$YAMLURL/auth
+  handler: SimpleAuth
+  kwargs:
+    log:                              # Log this when a user logs in via this handler
+      fields:                         # List of fields:
+        - session.id                  #   handler.session['id']
+        - current_user.id             #   handler.current_user['id']
+        - request.remote_ip           #   handler.request.remote_ip
+        - request.headers.User-Agent  #   handler.request.headers['User-Agent']
 ```
 
 The `log:` key has been **removed since v1.23**.
@@ -377,43 +377,87 @@ URL handlers allow custom logging of errors. For example, to show a custom 404 p
 
 ```yaml
 url:
-    pattern: ...
-    handler: ...
-    kwargs:
-        ...
-        error:
-            404:
-                path: $YAMLPATH/error-page.html
+  pattern: ...
+  handler: ...
+  kwargs:
+    ...
+    error:
+      404:
+        path: $YAMLPATH/error-page.html
 ```
 
-Here is an example of an [error-page](error-page). The error page is rendered as
-a Tornado template with 3 keyword arguments:
+::: example href=error-page source=https://github.com/gramener/gramex-guide/blob/master/config/error-page.html
+    Error page example
 
-- `status_code`: the HTTP status code of the error
-- `kwargs`: if this error was caused by an uncaught exception or raising a
-  HTTPError, `kwargs['exc_info']` is available as an exception triple
-- `handler`: the handler object
+The error page is rendered as a Tornado template with 3 keyword arguments:
+
+1. `status_code`: HTTP status code. e.g. `404`
+2. `kwargs`: For HTTP errors, `kwargs['exc_info']` is a `(type, value, traceback)` tuple as returned by [sys.exc_info](https://docs.python.org/3/library/sys.html#sys.exc_info).
+3. `handler`: the [handler object](../handlers/). e.g. `handler.request.uri`
+
+### Exception information
+
+`kwargs['exc_info']` is a `(type, value, traceback)` tuple
+
+1. `kwargs['exc_info'][0]` is a [type](https://docs.python.org/3/library/functions.html#type), e.g. `<class 'tornado.web.HTTPError'>`
+2. `kwargs['exc_info'][1]` is an [Exception](https://docs.python.org/3/library/exceptions.html?highlight=exception#BaseException), e.g. `HTTP 404: Not Found (gramex-guide/config/handler missing)`
+3. `kwargs['exc_info'][2]` is a traceback object, e.g. `<traceback object at 0x000001A033E13EC8>`
+
+The Exception object (`kwargs['exc_info'][1]`) has 3 attributes:
+
+- `status_code`, e.g. `404`
+- `log_message`, e.g. `/gramex-guide/config/handler missing`
+- `reason`, e.g. `None`
+
+You can get the traceback via `{{ ''.join(traceback.format_tb(kwargs['exc_info'][2])) }}`
+
+```text
+  File "tornado/web.py", line 1704, in _execute
+    result = await result
+  File "tornado/gen.py", line 769, in run
+    yielded = self.gen.throw(*exc_info)  # type: ignore
+  File "gramex/handlers/filehandler.py", line 196, in get
+    yield self._get_path(self.root / path if self.root.is_dir() else self.root)
+  File "tornado/gen.py", line 762, in run
+    value = future.result()
+  File "tornado/gen.py", line 234, in wrapper
+    yielded = ctx_run(next, result)
+  File "gramex/handlers/filehandler.py", line 240, in _get_path
+    raise HTTPError(NOT_FOUND, f'{self.file} missing')
+```
+
+To reuse error pages across multiple handlers, see [Reusing Configurations](#reusing-configurations).
+
+### JSON error response
 
 The error page can also be a function. For example:
 
 ```yaml
 url:
-    pattern: ...
-    handler: ...
-    kwargs:
-        ...
-        error:
-            500:
-                function: config_error_page.show_error
+  pattern: ...
+  handler: ...
+  kwargs:
+    ...
+    error:
+      500:
+        function: >
+          json.dumps({
+            "code": status_code,
+            "message": str(kwargs['exc_info'][1]),
+            "traceback": ''.join(traceback.format_tb(kwargs['exc_info'][2])),
+          }, indent=2)
+        headers:
+          Content-Type: application/json
 ```
+
+::: example href=json-error source=https://github.com/gramener/gramex-guide/blob/master/config/gramex.yaml
+    JSON error example
 
 The function can be any [expression or pipeline](../function/) that can use `status_code`, `kwargs`
 or `handler`. Its return value is rendered as a string.
 
 If a `function:` **and** `path:` are both specified, `function:` is used, and
 `path:` is ignored with a warning log.
-
-To repeat error pages across multiple handlers, see [Reusing Configurations](#reusing-configurations).
 
 Both methods support some customizations. Here is a full example showing the
 customizations:
@@ -423,19 +467,19 @@ url:
     pattern: ...
     handler: ...
     kwargs:
-        ...
-        error:
-            404:
-                path: $YAMLPATH/error-page.json   # Content-Type is set to application/json based on extension
-                autoescape: false         # To avoid converting quotes to &quot; etc
-                whitespace: oneline       # Remove all whitespace. 'single' preserves newlines. 'all' preserves all whitespace
-                headers:                  # Override HTTP headers
-                    Content-Type: text/plain
-            500:
-                # Call your function errors.show with the predefined parameters available
-                function: errors.show(status_code, kwargs, handler)
-                headers:                                  # Override HTTP headers
-                    Cache-Control: no-cache
+      ...
+      error:
+        404:
+          path: $YAMLPATH/error-page.json   # Content-Type is set to application/json based on extension
+          autoescape: false         # To avoid converting quotes to &quot; etc
+          whitespace: oneline       # Remove all whitespace. 'single' preserves newlines. 'all' preserves all whitespace
+          headers:                  # Override HTTP headers
+            Content-Type: text/plain
+        500:
+          # Call your function errors.show with the predefined parameters available
+          function: errors.show(status_code, kwargs, handler)
+          headers:                                  # Override HTTP headers
+            Cache-Control: no-cache
 ```
 
 ## Redirection
@@ -487,11 +531,11 @@ However, you can specify `external: true` to override this:
 
 ```yaml
     kwargs:
-        ...
-        redirect:                     # Under the redirect section,
-            external: true            # add an external: true
-            query: next               # The ?next= can now be an external URL
-            url: http://example.com/  # So can the pre-defined URL
+      ...
+      redirect:                   # Under the redirect section,
+        external: true            # add an external: true
+        query: next               # The ?next= can now be an external URL
+        url: http://example.com/  # So can the pre-defined URL
 ```
 
 You can test this at
@@ -552,10 +596,10 @@ To import multiple files, path can be a list or a wildcard. For example:
 import:
   app:
     path:
-        - another.yaml          # Relative paths are relative to this YAML file
-        - D:/temp/gramex.yaml   # Absolute paths are OK too
-        - '*/gramex.yaml'       # Any gramex.yaml file under an immediate sub-directory
-        - '**/gramex.yaml'      # Any gramex.yaml file under ANY sub-directory
+      - another.yaml          # Relative paths are relative to this YAML file
+      - D:/temp/gramex.yaml   # Absolute paths are OK too
+      - '*/gramex.yaml'       # Any gramex.yaml file under an immediate sub-directory
+      - '**/gramex.yaml'      # Any gramex.yaml file under ANY sub-directory
     namespace: [url, schedule, cache, import]
 ```
 
@@ -575,9 +619,9 @@ you may change `$YAMLURL` to mount an import at a different URL. Consider this
 
 ```yaml
 url:
-    myroot:
-        pattern: /$YAMLURL/
-        ...
+  myroot:
+    pattern: /$YAMLURL/
+    ...
 ```
 
 When imported using `import: dir/app.yaml`, `$YAMLURL` becomes `/dir/`. But you
@@ -586,15 +630,15 @@ imported file's `$YAMLURL` as follows:
 
 ```yaml
 import:
-    app1:
-        path: dir/app.yaml          # YAMLURL is /dir/ by default
-        YAMLURL: /app1/             # YAMLURL is set to /app1/ instead
-        # Here are some other options
-        # YAMLURL: $YAMLURL         # pattern is $YAMLURL, as if dir/app.yaml were copy-pasted here
-        # YAMLURL: /app/dir/        # pattern is /app/dir/
-    app2:
-        path: dir/app2.yaml         # Another application
-        YAMLURL: /app2/             # is mounted at /app2/
+  app1:
+    path: dir/app.yaml          # YAMLURL is /dir/ by default
+    YAMLURL: /app1/             # YAMLURL is set to /app1/ instead
+    # Here are some other options
+    # YAMLURL: $YAMLURL         # pattern is $YAMLURL, as if dir/app.yaml were copy-pasted here
+    # YAMLURL: /app/dir/        # pattern is /app/dir/
+  app2:
+    path: dir/app2.yaml         # Another application
+    YAMLURL: /app2/             # is mounted at /app2/
 ```
 
 The keys `app1`, `app2`, etc. are just identifiers, not used for anything.
@@ -603,7 +647,7 @@ You can also use imports within sections. For example:
 
 ```yaml
 url:
-    import: app1/gramex.yaml  # Imports app1/gramex.yaml into the url: section
+  import: app1/gramex.yaml  # Imports app1/gramex.yaml into the url: section
 ```
 
 Notes:
@@ -654,8 +698,8 @@ When building an application for re-use, use wildcard keys like this:
 
 ```yaml
 url:
-    my-app-$*:                  # Note the '$*' in the key
-        pattern: ...
+  my-app-$*:                  # Note the '$*' in the key
+    pattern: ...
 ```
 
 Every `'$*'` in a key is replaced with a random string every time the file is
@@ -676,9 +720,9 @@ You can define or override variables using the `variables:` section like this:
 
 ```yaml
 variables:
-    URLROOT: "/site"                  # Define $URLROOT
-    HOME: {default: "/home"}          # Define $HOME if not defined earlier
-    PATH: $URLROOT/path               # Define $PATH based on $URLROOT
+  URLROOT: "/site"                  # Define $URLROOT
+  HOME: {default: "/home"}          # Define $HOME if not defined earlier
+  PATH: $URLROOT/path               # Define $PATH based on $URLROOT
 ```
 
 `$URLROOT` is set to `/site`. If the variable was defined earlier in another
@@ -694,8 +738,8 @@ Variables can be of any type. For example:
 
 ```yaml
 variables:
-    NUMBER: 10
-    BOOLEAN: false
+  NUMBER: 10
+  BOOLEAN: false
 ```
 
 They are substituted as-is if the variable is used directly. If it's part of a
@@ -742,8 +786,8 @@ For example, this assigns `utils.get_root("URLROOT")` to assign `$URLROOT`:
 
 ```yaml
 variables:
-    URLROOT:
-        function: utils.get_root(key)
+  URLROOT:
+    function: utils.get_root(key)
 ```
 
 The key we're assigning is available as a variable `key`.
@@ -753,9 +797,9 @@ to `$HOME` only if it's not already defined.
 
 ```yaml
 variables:
-    HOME:
-        default:
-            function: utils.get_home()
+  HOME:
+    default:
+      function: utils.get_home()
 ```
 
 Note: As of now, the `function:` cannot use variables like `$HOME`, but can use
@@ -773,8 +817,8 @@ For example, this sets `$PORT` based on `$OS`:
 
 ```yaml
 variables:
-    PORT:
-        function: 4444 if "$OS".lower() is 'windows' else 8888
+  PORT:
+    function: 4444 if "$OS".lower() is 'windows' else 8888
 ```
 
 ### Merging variables
@@ -786,13 +830,13 @@ Here's how it works. In the code below, the `first:` and `second:` are identical
 
 ```yaml
 variables:
-    var:                    # Defines $var
-        key: value
-first:
-    key: default-value      # If no $var is defined, use this key
-    import.merge: $var      # If it's defined, just merge the $var here, overriding key:
-second:                     # The result of first: is the same as second:
+  var:                    # Defines $var
     key: value
+first:
+  key: default-value      # If no $var is defined, use this key
+  import.merge: $var      # If it's defined, just merge the $var here, overriding key:
+second:                     # The result of first: is the same as second:
+  key: value
 ```
 
 A practical use is when write apps. If you write a FormHandler that will be
@@ -800,30 +844,30 @@ imported by a project:
 
 ```yaml
 url:
-    app-data-$*:                    # FYI: $* avoids namespace clash when importing
-        pattern: /$YAMLURL/data
-        handler: FormHandler
-        kwargs:
-            ...
-            query:
-                # By default, these are the queries available
-                sales: SELECT * FROM sales
-                cost: SELECT * FROM cost
-                # But you can allow the importing app to over-ride these queries
-                import.merge: $queries
+  app-data-$*:                    # FYI: $* avoids namespace clash when importing
+    pattern: /$YAMLURL/data
+    handler: FormHandler
+    kwargs:
+      ...
+      query:
+        # By default, these are the queries available
+        sales: SELECT * FROM sales
+        cost: SELECT * FROM cost
+        # But you can allow the importing app to over-ride these queries
+        import.merge: $queries
 ```
 
 ... then the project can import your app and override the queries like this:
 
 ```yaml
 import:
-    app:
-        path: /path/to/app/gramex.yaml
-        # The section below is passed to the app as $queries
-        # It replaces the sales: and cost: in the app
-        queries:
-            sales: SELECT * FROM sales WHERE product='Laptop'
-            cost: SELECT * FROM cost WHERE product='Laptop'
+  app:
+    path: /path/to/app/gramex.yaml
+    # The section below is passed to the app as $queries
+    # It replaces the sales: and cost: in the app
+    queries:
+      sales: SELECT * FROM sales WHERE product='Laptop'
+      cost: SELECT * FROM cost WHERE product='Laptop'
 ```
 
 ## Conditions
@@ -836,11 +880,11 @@ For example, this sets up different authentications on Windows vs non-Windows:
 
 ```yaml
 auth if 'win' in sys.platform:
-    pattern: /login
-    handler: IntegratedAuth
+  pattern: /login
+  handler: IntegratedAuth
 auth if 'win' not in sys.platform:
-    pattern: /login
-    handler: LDAPAuth
+  pattern: /login
+  handler: LDAPAuth
 ```
 
 If ` if ` is present in any key, the portion after `if` is evaluated as a Python
@@ -885,8 +929,8 @@ Imports over-write the entire key. For example, if `a.yaml` has:
 
 ```yaml
 key:
-    x: 1
-    y: 2
+  x: 1
+  y: 2
 import: b.yaml
 ```
 
@@ -894,7 +938,7 @@ import: b.yaml
 
 ```yaml
 key:
-    z: 3
+  z: 3
 ```
 
 ... the final `key` will only have `z: 3`.
@@ -906,18 +950,18 @@ These *update* keys, rather than overwriting them. For example, Gramex's
 
 ```yaml
 url:
-    default:
-        pattern: /(.*)
-        ...
+  default:
+    pattern: /(.*)
+    ...
 ```
 
 When your `gramex.yaml` uses a `url:` section like this:
 
 ```yaml
 url:
-    homepage:
-        pattern: /
-        ...
+  homepage:
+    pattern: /
+    ...
 ```
 
 ... the final URL section will have both the `default` and the `homepage` keys.
@@ -949,40 +993,40 @@ authentication:
 
 ```yaml
 url1:
-    pattern: ...
-    handler: ...
-    kwargs: ...
-        auth: &GRAMENER_AUTH          # Define a variable called GRAMENER_AUTH
-            membership:               # Whatever is under auth: is copied into GRAMENER_AUTH
-                hd: [gramener.com]
+  pattern: ...
+  handler: ...
+  kwargs: ...
+    auth: &GRAMENER_AUTH        # Define a variable called GRAMENER_AUTH
+      membership:               # Whatever is under auth: is copied into GRAMENER_AUTH
+        hd: [gramener.com]
 url2:
-    pattern: ...
-    handler: ...
-    kwargs: ...
-        auth: *GRAMENER_AUTH          # Use the variable GRAMENER_AUTH
-        # This is the same as copy-pasting the earlier auth: section here
-        # auth:
-        #     membership:
-        #         hd: [gramener.com]
+  pattern: ...
+  handler: ...
+  kwargs: ...
+    auth: *GRAMENER_AUTH          # Use the variable GRAMENER_AUTH
+    # This is the same as copy-pasting the earlier auth: section here
+    # auth:
+    #     membership:
+    #         hd: [gramener.com]
 ```
 
 This is how you re-use error page definitions:
 
 ```yaml
 url1:
-    pattern: ...
-    handler: ...
-    kwargs:
-        ...
-        error: &DASHBOARD_ERROR      # Define a reference called DASHBOARD_ERROR
-            404: {path: $YAMLPATH/error-page.html}
-            500: {function: config_error_page.show_error}
+  pattern: ...
+  handler: ...
+  kwargs:
+    ...
+    error: &DASHBOARD_ERROR      # Define a reference called DASHBOARD_ERROR
+      404: {path: $YAMLPATH/error-page.html}
+      500: {function: config_error_page.show_error}
 url2:
-    pattern: ...
-    handler: ...
-    kwargs:
-        ...
-        error: *DASHBOARD_ERROR       # Reuse DASHBOARD_ERROR reference
+  pattern: ...
+  handler: ...
+  kwargs:
+    ...
+    error: *DASHBOARD_ERROR       # Reuse DASHBOARD_ERROR reference
 ```
 
 You can also re-use parts of a configuration. Place any configuration you want in
@@ -993,21 +1037,21 @@ For example, if you need to re-use common headers, do this:
 
 ```yaml
 variables:
-    # Define any YAML configuration in the variables: section
-    headers: &commonheaders
-        Server: False
-        X-XSS-Protection: '1'
-        X-Frame-Options: SAMEORIGIN
-        ...
+  # Define any YAML configuration in the variables: section
+  headers: &commonheaders
+    Server: False
+    X-XSS-Protection: '1'
+    X-Frame-Options: SAMEORIGIN
+    ...
 
 url:
-    pattern: ...
-    handler: ...
-        kwargs:
-            ...
-            headers:
-                Content-Type: text/plain
-                <<: *commonheaders          # Copy-paste this reference
+  pattern: ...
+  handler: ...
+    kwargs:
+      ...
+      headers:
+        Content-Type: text/plain
+        <<: *commonheaders          # Copy-paste this reference
 ```
 
 You can use `<<: *commonheaders` in multiple URL patterns
@@ -1044,12 +1088,12 @@ For example, if `gramex.yaml` has:
 
 ```yaml
 url:
-    app/home:
-        pattern: /
-        handler: FunctionHandler
-        kwargs:
-            function: mymodule.myfunc()
-            key: value
+  app/home:
+    pattern: /
+    handler: FunctionHandler
+    kwargs:
+      function: mymodule.myfunc()
+      key: value
 ```
 
 ... then:
@@ -1072,11 +1116,11 @@ For example:
 
 ```yaml
 url:
-    app/google:
-        pattern: /google
-        handler: GoogleAuth
-        kwargs:
-            ...
+  app/google:
+    pattern: /google
+    handler: GoogleAuth
+    kwargs:
+      ...
 ```
 
 ... then:
