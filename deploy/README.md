@@ -36,6 +36,48 @@ configured in `gramex.yaml` using pre-defined variables.
   - [Use relative URLs](#relative-url-mapping) for the app to work locally and on the serer
 - [Troubleshoot common errors](#common-errors)
 
+### Deploy on gramener.com servers
+
+Gramener employees who commit to [code.gramener.com](https://code.gramener.com/) can deploy to
+[gramener.com](https://gramener.com/) or [uat.gramener.com](https://uat.gramener.com/).
+
+Add the following to `.gitlab-ci.yml` in your repository.
+
+```yaml
+# Reference: http://doc.gitlab.com/ce/ci/yaml/README.html
+deploy:
+  stage: deploy
+  script: deploy                          # Run the Gramener deployment script
+  only: [master, /dev-.*/]                # List branches to deploy as a list or RegExs
+  variables:
+    SERVER: ubuntu@uat.gramener.com       # Deploy to uat.gramener.com/app-name/
+    URL: app-name                         # Change this to your app-name
+    SETUP: gramex setup .                 # You can use any setup script here
+    VERSION: py3v1                        # py3v1 or static
+```
+
+You may change the following keys:
+
+- `only`: A list of branches to deploy. Only these branches will be deployed.
+  - `[master]` only deploys the master branch
+  - `[master, dev]` deploys only the master and dev branches
+  - `[/dev-.*/]` deploys all branches starting with `dev-`
+- `variables.SERVER`: user and server to deploy at. Options:
+  - `SERVER: ubuntu@gramener.com` to deploy on gramener.com
+  - `SERVER: ubuntu@uat.gramener.com` to deploay on uat.gramener.com
+- `variables.URL`: path to deploy on the server. Example:
+  - `URL: myapp` will deploy at `https://gramener.com/myapp` (if `SERVER: ubuntu@gramener.com`)
+- `variables.SETUP`: setup script to run. Examples:
+  - `SETUP: gramex setup .` runs `npm install`, `bash setup.sh` and `pip install -r requirements.txt`
+  - `SETUP: npm install` runs `npm install`
+- `variables.VERSION` specifies the Gramex version to deploy. Options:
+  - `VERSION: py3v1` Python 3, Gramex v1.x. Use this for all Gramex apps
+  - `VERSION: static` just hosts the files. Use for plain HTML hosting (static sites)
+- `variables: PORT` is the deployment port. This is **automatically** chosen. But see
+  [gramener.com/monitor/apps](https://gramener.com/monitor/apps) or
+  [uat.gramener.com/monitor/apps](https://uat.gramener.com/monitor/apps)
+  for a list of available ports and who has access.
+
 ## Secrets
 
 **v1.64**. Passwords, access tokens, and other sensitive information must be
