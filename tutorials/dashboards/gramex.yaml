@@ -18,4 +18,3 @@ url:
     handler: FormHandler
     kwargs:
       url: $YAMLPATH/../../quickstart/store-sales.csv
-

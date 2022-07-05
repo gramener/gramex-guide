@@ -10,7 +10,9 @@
   },
   "width": 600,
   "height": 355,
-  "padding": {"top": 5},
+  "padding": {
+    "top": 5
+  },
   "autosize": "fit",
   "signals": [
     {
@@ -31,93 +33,162 @@
         {
           "type": "treemap",
           "field": "<%= data_mapper.column_4 %>",
-          "sort": {"field": "<%= data_mapper.column_4 %>"},
+          "sort": {
+            "field": "<%= data_mapper.column_4 %>"
+          },
           "method": "squarify",
           "ratio": 1,
           "round": true,
-          "size": [{"signal": "width"}, {"signal": "height"}]
+          "size": [
+            {
+              "signal": "width"
+            },
+            {
+              "signal": "height"
+            }
+          ]
         }
       ]
     },
     {
       "name": "nodes",
       "source": "tree",
-      "transform": [{ "type": "filter", "expr": "datum.children" }]
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum.children"
+        }
+      ]
     },
     {
       "name": "leaves",
       "source": "tree",
-      "transform": [{ "type": "filter", "expr": "!datum.children" }]
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "!datum.children"
+        }
+      ]
     }
   ],
-
   "scales": [
     {
       "name": "color",
       "type": "quantize",
-      "domain": {"data": "leaves", "field": "<%= data_mapper.column_4 %>"},
-      "range": {"scheme": "blues", "count": 5}
+      "domain": {
+        "data": "leaves",
+        "field": "<%= data_mapper.column_4 %>"
+      },
+      "range": {
+        "scheme": "blues",
+        "count": 5
+      }
     },
     {
       "name": "<%= data_mapper.column_4 %>",
       "type": "linear",
-      "domain": {"data": "leaves", "field": "<%= data_mapper.column_4 %>"},
-      "range": [20, 28, 20]
+      "domain": {
+        "data": "leaves",
+        "field": "<%= data_mapper.column_4 %>"
+      },
+      "range": [
+        20,
+        28,
+        20
+      ]
     }
   ],
-
   "marks": [
     {
       "type": "rect",
-      "from": {"data": "nodes"},
+      "from": {
+        "data": "nodes"
+      },
       "interactive": false,
       "encode": {
-        "enter": {
-
-        },
+        "enter": {},
         "update": {
-          "x": {"field": "x0"},
-          "y": {"field": "y0"},
-          "x2": {"field": "x1"},
-          "y2": {"field": "y1"}
+          "x": {
+            "field": "x0"
+          },
+          "y": {
+            "field": "y0"
+          },
+          "x2": {
+            "field": "x1"
+          },
+          "y2": {
+            "field": "y1"
+          }
         }
       }
     },
     {
       "type": "rect",
-      "from": {"data": "leaves"},
+      "from": {
+        "data": "leaves"
+      },
       "encode": {
         "enter": {
           "fill": {
             "scale": "color",
             "field": "<%= data_mapper.column_4 %>"
           },
-          "stroke": {"value": "#fff"}
+          "stroke": {
+            "value": "#fff"
+          }
         },
         "update": {
-          "x": {"field": "x0"},
-          "y": {"field": "y0"},
-          "x2": {"field": "x1"},
-          "y2": {"field": "y1"}
+          "x": {
+            "field": "x0"
+          },
+          "y": {
+            "field": "y0"
+          },
+          "x2": {
+            "field": "x1"
+          },
+          "y2": {
+            "field": "y1"
+          }
         }
       }
     },
     {
       "type": "text",
-      "from": {"data": "leaves"},
+      "from": {
+        "data": "leaves"
+      },
       "interactive": false,
       "encode": {
         "enter": {
-          "font": {"value": "Helvetica"},
-          "align": {"value": "center"},
-          "baseline": {"value": "middle"},
-          "fill": {"signal": "datum['<%= data_mapper.column_4 %>'] < 35 ? 'black': 'white'"},
-          "text": {"field": "<%= data_mapper.column_2 %>"},
-          "fontSize": {"scale": "<%= data_mapper.column_4 %>", "field": "depth"}
+          "font": {
+            "value": "Helvetica"
+          },
+          "align": {
+            "value": "center"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fill": {
+            "signal": "datum['<%= data_mapper.column_4 %>'] < 35 ? 'black': 'white'"
+          },
+          "text": {
+            "field": "<%= data_mapper.column_2 %>"
+          },
+          "fontSize": {
+            "scale": "<%= data_mapper.column_4 %>",
+            "field": "depth"
+          }
         },
         "update": {
-          "x": {"signal": "0.5 * (datum.x0 + datum.x1)"},
-          "y": {"signal": "0.5 * (datum.y0 + datum.y1)"}
+          "x": {
+            "signal": "0.5 * (datum.x0 + datum.x1)"
+          },
+          "y": {
+            "signal": "0.5 * (datum.y0 + datum.y1)"
+          }
         }
       }
     },
@@ -125,26 +196,52 @@
       "type": "text",
       "encode": {
         "enter": {
-          "fill": {"value": "#000"},
-          "text": {"value": ""}
+          "fill": {
+            "value": "#000"
+          },
+          "text": {
+            "value": ""
+          }
         },
         "update": {
-          "opacity": {"value": 1},
-          "x": {"value": 100},
-          "y": {"value": -10},
-
-          "dx": {"value": 0},
-          "angle": {"value": 0},
-          "align": {"value": "center"},
-
-          "font": {"value": "Roboto"},
-          "fontSize": {"value": 12},
-          "fontStyle": {"value": "normal"},
-          "fontWeight": {"value": "bold"},
-          "limit": {"value": 0}
+          "opacity": {
+            "value": 1
+          },
+          "x": {
+            "value": 100
+          },
+          "y": {
+            "value": -10
+          },
+          "dx": {
+            "value": 0
+          },
+          "angle": {
+            "value": 0
+          },
+          "align": {
+            "value": "center"
+          },
+          "font": {
+            "value": "Roboto"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontStyle": {
+            "value": "normal"
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "limit": {
+            "value": 0
+          }
         },
         "hover": {
-          "opacity": {"value": 0.5}
+          "opacity": {
+            "value": 0.5
+          }
         }
       }
     },
@@ -152,26 +249,52 @@
       "type": "text",
       "encode": {
         "enter": {
-          "fill": {"value": "#000"},
-          "text": {"value": ""}
+          "fill": {
+            "value": "#000"
+          },
+          "text": {
+            "value": ""
+          }
         },
         "update": {
-          "opacity": {"value": 1},
-          "x": {"value": 250},
-          "y": {"value": 0},
-
-          "dx": {"value": 0},
-          "angle": {"value": 0},
-          "align": {"value": "center"},
-
-          "font": {"value": "Roboto"},
-          "fontSize": {"value": 12},
-          "fontStyle": {"value": "normal"},
-          "fontWeight": {"value": "bold"},
-          "limit": {"value": 0}
+          "opacity": {
+            "value": 1
+          },
+          "x": {
+            "value": 250
+          },
+          "y": {
+            "value": 0
+          },
+          "dx": {
+            "value": 0
+          },
+          "angle": {
+            "value": 0
+          },
+          "align": {
+            "value": "center"
+          },
+          "font": {
+            "value": "Roboto"
+          },
+          "fontSize": {
+            "value": 12
+          },
+          "fontStyle": {
+            "value": "normal"
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "limit": {
+            "value": 0
+          }
         },
         "hover": {
-          "opacity": {"value": 0.9}
+          "opacity": {
+            "value": 0.9
+          }
         }
       }
     }
@@ -180,7 +303,9 @@
     {
       "type": "gradient",
       "orient": "none",
-      "gradientLength": {"signal": "signal_gradientLength"},
+      "gradientLength": {
+        "signal": "signal_gradientLength"
+      },
       "encode": {
         "labels": {
           "update": {

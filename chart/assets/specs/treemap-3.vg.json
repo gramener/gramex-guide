@@ -10,7 +10,9 @@
   },
   "width": 600,
   "height": 355,
-  "padding": {"top": 5},
+  "padding": {
+    "top": 5
+  },
   "autosize": "fit",
   "signals": [
     {
@@ -31,11 +33,20 @@
         {
           "type": "treemap",
           "field": "<%= data_mapper.column_4 %>",
-          "sort": {"field": "<%= data_mapper.column_4 %>"},
+          "sort": {
+            "field": "<%= data_mapper.column_4 %>"
+          },
           "method": "squarify",
           "ratio": 1,
           "round": true,
-          "size": [{"signal": "width"}, {"signal": "height"}]
+          "size": [
+            {
+              "signal": "width"
+            },
+            {
+              "signal": "height"
+            }
+          ]
         }
       ]
     },
@@ -334,7 +345,9 @@
     {
       "type": "gradient",
       "orient": "none",
-      "gradientLength": {"signal": "signal_gradientLength"},
+      "gradientLength": {
+        "signal": "signal_gradientLength"
+      },
       "encode": {
         "labels": {
           "update": {

@@ -4,31 +4,82 @@
   "height": 360,
   "autosize": "fit",
   "signals": [
-    {"name": "signal_ustartAngle", "value": -1.55},
-    {"name": "signal_uendAngle", "value": 1.55},
-    {"name": "signal_dstartAngle", "value": 1.57},
-    {"name": "signal_dendAngle", "value": 4.71},
-    {"name": "signal_innerRadius", "update": "width/6"},
-    {"name": "signal_outerRadius", "update": "width/4"},
-    {"name": "tension", "value": 0},
-    {"name": "radius", "update": "width/6"},
-    {"name": "extent", "value": 360},
-    {"name": "rotate", "value": 0},
-    {"name": "textSize", "update": "width/40"},
-    {"name": "originX", "update": "width / 2"},
-    {"name": "originY", "update": "height / 2"}
+    {
+      "name": "signal_ustartAngle",
+      "value": -1.55
+    },
+    {
+      "name": "signal_uendAngle",
+      "value": 1.55
+    },
+    {
+      "name": "signal_dstartAngle",
+      "value": 1.57
+    },
+    {
+      "name": "signal_dendAngle",
+      "value": 4.71
+    },
+    {
+      "name": "signal_innerRadius",
+      "update": "width/6"
+    },
+    {
+      "name": "signal_outerRadius",
+      "update": "width/4"
+    },
+    {
+      "name": "tension",
+      "value": 0
+    },
+    {
+      "name": "radius",
+      "update": "width/6"
+    },
+    {
+      "name": "extent",
+      "value": 360
+    },
+    {
+      "name": "rotate",
+      "value": 0
+    },
+    {
+      "name": "textSize",
+      "update": "width/40"
+    },
+    {
+      "name": "originX",
+      "update": "width / 2"
+    },
+    {
+      "name": "originY",
+      "update": "height / 2"
+    }
   ],
   "data": [
     {
       "name": "data_tree",
       "url": "<%= absolute_url %>data/chord1.json",
       "transform": [
-        {"type": "stratify", "key": "id", "parentKey": "parent"},
+        {
+          "type": "stratify",
+          "key": "id",
+          "parentKey": "parent"
+        },
         {
           "type": "tree",
           "field": "parent",
-          "size": [1, 1],
-          "as": ["alpha", "beta", "depth", "children"]
+          "size": [
+            1,
+            1
+          ],
+          "as": [
+            "alpha",
+            "beta",
+            "depth",
+            "children"
+          ]
         },
         {
           "type": "formula",
@@ -51,11 +102,18 @@
       "name": "data_upperLeaves",
       "source": "data_tree",
       "transform": [
-        {"type": "filter", "expr": "!datum.children && datum.parent =='grp1'"},
+        {
+          "type": "filter",
+          "expr": "!datum.children && datum.parent =='grp1'"
+        },
         {
           "type": "pie",
-          "startAngle": {"signal": "signal_ustartAngle"},
-          "endAngle": {"signal": "signal_uendAngle"}
+          "startAngle": {
+            "signal": "signal_ustartAngle"
+          },
+          "endAngle": {
+            "signal": "signal_uendAngle"
+          }
         }
       ]
     },
@@ -63,11 +121,18 @@
       "name": "data_downLeaves",
       "source": "data_tree",
       "transform": [
-        {"type": "filter", "expr": "!datum.children && datum.parent =='grp2'"},
+        {
+          "type": "filter",
+          "expr": "!datum.children && datum.parent =='grp2'"
+        },
         {
           "type": "pie",
-          "startAngle": {"signal": "signal_dstartAngle"},
-          "endAngle": {"signal": "signal_dendAngle"}
+          "startAngle": {
+            "signal": "signal_dstartAngle"
+          },
+          "endAngle": {
+            "signal": "signal_dendAngle"
+          }
         }
       ]
     },
@@ -97,19 +162,38 @@
         {
           "type": "line",
           "interactive": false,
-          "from": {"data": "path"},
+          "from": {
+            "data": "path"
+          },
           "encode": {
             "enter": {
-              "interpolate": {"value": "basis"},
-              "strokeOpacity": {"value": 0.7},
-              "x": {"field": "x"},
-              "y": {"field": "y"},
-              "strokeCap": {"value": "round"}
+              "interpolate": {
+                "value": "basis"
+              },
+              "strokeOpacity": {
+                "value": 0.7
+              },
+              "x": {
+                "field": "x"
+              },
+              "y": {
+                "field": "y"
+              },
+              "strokeCap": {
+                "value": "round"
+              }
             },
             "update": {
-              "tension": {"signal": "tension"},
-              "strokeWidth": {"signal": "width/40"},
-              "stroke": {"scale": "scale_strokeColor", "field": "id"}
+              "tension": {
+                "signal": "tension"
+              },
+              "strokeWidth": {
+                "signal": "width/40"
+              },
+              "stroke": {
+                "scale": "scale_strokeColor",
+                "field": "id"
+              }
             }
           }
         }
@@ -117,74 +201,148 @@
     },
     {
       "type": "arc",
-      "from": {"data": "data_upperLeaves"},
+      "from": {
+        "data": "data_upperLeaves"
+      },
       "encode": {
         "enter": {
-          "fill": {"scale": "scale_color", "field": "id"},
-          "startAngle": {"field": "startAngle"},
-          "endAngle": {"field": "endAngle"}
+          "fill": {
+            "scale": "scale_color",
+            "field": "id"
+          },
+          "startAngle": {
+            "field": "startAngle"
+          },
+          "endAngle": {
+            "field": "endAngle"
+          }
         },
         "update": {
-          "x": {"signal": "width / 2"},
-          "y": {"signal": "height / 2"},
-          "innerRadius": {"signal": "signal_innerRadius"},
-          "outerRadius": {"signal": "signal_outerRadius"}
+          "x": {
+            "signal": "width / 2"
+          },
+          "y": {
+            "signal": "height / 2"
+          },
+          "innerRadius": {
+            "signal": "signal_innerRadius"
+          },
+          "outerRadius": {
+            "signal": "signal_outerRadius"
+          }
         }
       }
     },
     {
       "type": "text",
-      "from": {"data": "data_upperLeaves"},
+      "from": {
+        "data": "data_upperLeaves"
+      },
       "encode": {
         "enter": {
-          "baseline": {"value": "middle"},
-          "fill": {"value": "#fff"},
-          "dx": {"value": -5}
+          "baseline": {
+            "value": "middle"
+          },
+          "fill": {
+            "value": "#fff"
+          },
+          "dx": {
+            "value": -5
+          }
         },
         "update": {
-          "text": {"signal": "datum.name"},
-          "x": {"signal": "width/2"},
-          "y": {"signal": "height/2"},
-          "radius": {"signal": "signal_innerRadius * 1.2"},
-          "theta": {"signal": "(datum.startAngle + datum.endAngle)/2"},
-          "fontSize": {"signal": "textSize"}
+          "text": {
+            "signal": "datum.name"
+          },
+          "x": {
+            "signal": "width/2"
+          },
+          "y": {
+            "signal": "height/2"
+          },
+          "radius": {
+            "signal": "signal_innerRadius * 1.2"
+          },
+          "theta": {
+            "signal": "(datum.startAngle + datum.endAngle)/2"
+          },
+          "fontSize": {
+            "signal": "textSize"
+          }
         }
       }
     },
     {
       "type": "arc",
-      "from": {"data": "data_downLeaves"},
+      "from": {
+        "data": "data_downLeaves"
+      },
       "encode": {
         "enter": {
-          "fill": {"scale": "scale_color", "field": "id"},
-          "startAngle": {"field": "startAngle"},
-          "endAngle": {"field": "endAngle"}
+          "fill": {
+            "scale": "scale_color",
+            "field": "id"
+          },
+          "startAngle": {
+            "field": "startAngle"
+          },
+          "endAngle": {
+            "field": "endAngle"
+          }
         },
         "update": {
-          "x": {"signal": "width / 2"},
-          "y": {"signal": "height / 2"},
-          "innerRadius": {"signal": "signal_innerRadius"},
-          "outerRadius": {"signal": "signal_outerRadius"}
+          "x": {
+            "signal": "width / 2"
+          },
+          "y": {
+            "signal": "height / 2"
+          },
+          "innerRadius": {
+            "signal": "signal_innerRadius"
+          },
+          "outerRadius": {
+            "signal": "signal_outerRadius"
+          }
         }
       }
     },
     {
       "type": "text",
-      "from": {"data": "data_downLeaves"},
+      "from": {
+        "data": "data_downLeaves"
+      },
       "encode": {
         "enter": {
-          "baseline": {"value": "middle"},
-          "fill": {"value": "#fff"},
-          "dx": {"value": -5},
+          "baseline": {
+            "value": "middle"
+          },
+          "fill": {
+            "value": "#fff"
+          },
+          "dx": {
+            "value": -5
+          },
           "zindex": 10
         },
         "update": {
-          "text": {"signal": "datum.name"},
-          "x": {"signal": "width/2"},
-          "y": {"signal": "height/2"},
-          "radius": {"signal": "signal_innerRadius*1.2"},
-          "theta": {"signal": "(datum.startAngle + datum.endAngle)/2"},
-          "fontSize": {"signal": "textSize"}
+          "text": {
+            "signal": "datum.name"
+          },
+          "x": {
+            "signal": "width/2"
+          },
+          "y": {
+            "signal": "height/2"
+          },
+          "radius": {
+            "signal": "signal_innerRadius*1.2"
+          },
+          "theta": {
+            "signal": "(datum.startAngle + datum.endAngle)/2"
+          },
+          "fontSize": {
+            "signal": "textSize"
+          }
         }
       }
     }
@@ -193,14 +351,30 @@
     {
       "name": "scale_color",
       "type": "ordinal",
-      "domain": {"data": "data_tree", "field": "id"},
-      "range": ["#E99712", "#2599A6", "#67943C", "#C82744"]
+      "domain": {
+        "data": "data_tree",
+        "field": "id"
+      },
+      "range": [
+        "#E99712",
+        "#2599A6",
+        "#67943C",
+        "#C82744"
+      ]
     },
     {
       "name": "scale_strokeColor",
       "type": "ordinal",
-      "domain": {"data": "data_tree", "field": "id"},
-      "range": ["#E99712", "#2599A6", "#67943C", "#C82744"]
+      "domain": {
+        "data": "data_tree",
+        "field": "id"
+      },
+      "range": [
+        "#E99712",
+        "#2599A6",
+        "#67943C",
+        "#C82744"
+      ]
     }
   ],
   "config": {}

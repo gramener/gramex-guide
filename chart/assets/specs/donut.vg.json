@@ -21,7 +21,8 @@
         "value": 6.29
       },
       {
-        "name": "sort", "value": true
+        "name": "sort",
+        "value": true
       }
     ],
     "data": [
@@ -38,13 +39,21 @@
             "endAngle": {
               "signal": "two_PI"
             },
-            "sort": {"signal": "sort"}
+            "sort": {
+              "signal": "sort"
+            }
           },
           {
             "type": "joinaggregate",
-            "fields": ["<%= data_mapper.column_1 %>"],
-            "ops": ["sum"],
-            "as": ["total"]
+            "fields": [
+              "<%= data_mapper.column_1 %>"
+            ],
+            "ops": [
+              "sum"
+            ],
+            "as": [
+              "total"
+            ]
           }
         ]
       }
@@ -68,7 +77,7 @@
         },
         "range": {
           "scheme": "blues"
-        }      
+        }
       }
     ],
     "marks": [
@@ -108,7 +117,9 @@
             "opacity": {
               "value": 0.9
             },
-            "tooltip": {"signal": "datum"}
+            "tooltip": {
+              "signal": "datum"
+            }
           }
         }
       },
@@ -126,7 +137,9 @@
             "fill": {
               "value": "#800040"
             },
-            "opacity": {"signal": "datum.endAngle < 1 ? 0: 1"},
+            "opacity": {
+              "signal": "datum.endAngle < 1 ? 0: 1"
+            },
             "fontSize": {
               "value": 12
             },

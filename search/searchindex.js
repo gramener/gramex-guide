@@ -56,9 +56,9 @@ glob('*/*.md', { cwd: root }, function (err, files) {
   fs.writeFileSync(path.join(__dirname, 'searchindex.json'), JSON.stringify({
     'docs': docs,
     'index': idx.toJSON()
-  }))
+  }) + '\n')
 
-  fs.writeFileSync(path.join(__dirname, 'meta.json'), JSON.stringify(metadatalist))
+  fs.writeFileSync(path.join(__dirname, 'meta.json'), JSON.stringify(metadatalist) + '\n')
 })
 
 function url(file, title) {

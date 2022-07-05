@@ -10,7 +10,9 @@
   },
   "width": 600,
   "height": 355,
-  "padding": {"top": 5},
+  "padding": {
+    "top": 5
+  },
   "autosize": "fit",
   "signals": [
     {

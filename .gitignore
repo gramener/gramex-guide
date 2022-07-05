@@ -1,7 +1,7 @@
 TODO
 
 # Gramex API mkdocs are rsynced under api/ on gramener.com by Gramex. Ignore these
-api/
+api
 
 # gramener.com generates nohup.out. Ignore this
 nohup.out
