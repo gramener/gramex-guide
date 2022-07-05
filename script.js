@@ -46,40 +46,6 @@ $(function () {
     $('.feedback-thanks').removeClass('d-none')
   })
 
-  $('input.search').each(function () {
-    var $search = $(this);
-    var prefix = $search.data('prefix') || ''
-    var $results = $('<div></div>').attr({
-      'id': 'searchresults',
-      'class': 'bg-white p-2 border',
-    }).insertAfter(this).hide()
-    $.ajax($search.data('url'))
-      .done(function (index) {
-        var idx = lunr.Index.load(index.index)
-        var docs = index.docs
-        $search
-          .on('input', function () {
-            var text = $(this).val().replace(/^\s+/, '').replace(/\s+$/, '')
-            var results = []
-            if (text)
-              results = idx.search(text)
-            if (results.length)
-              $results.html(results.slice(0, 20).map(function (result) {
-                var d = docs[result.ref]
-                return '<div class="my-2"><a href="' + prefix + d.link + '">' + d.prefix + ' &raquo; ' + d.title + '</a></div>'
-              })).show()
-            else
-              $results.html('').hide()
-          })
-          .trigger('input')
-        // Clicking outside the search results clears search results
-        $('body').on('click', function (e) {
-          if (!($results.is(e.target) || $.contains($results, e.target)))
-            $results.html('').hide()
-        })
-      })
-  })
-
   // Add a copy button to each .codehilite
   $('.codehilite')
     .css('position', 'relative')
@@ -114,7 +80,7 @@ $(function () {
 
   // Add anchors
   anchors.options.placement = 'left'
-  anchors.add()
+  anchors.add('.content h1, .content h2, .content h3')
 
   // Explicitly scroll selected element into view
   if (location.hash) {

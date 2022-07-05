@@ -633,7 +633,7 @@ Now visit `/sentiment?text=wrong&text=right` to see the following output:
 
 # Named Entity Recognition
 
-**v1.81.0** supports sentiment analysis. To set it up, install:
+**v1.81.1** supports sentiment analysis. To set it up, install:
 
 ```shell
 pip install spacy transformers torch datasets
