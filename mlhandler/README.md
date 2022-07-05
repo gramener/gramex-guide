@@ -15,7 +15,6 @@ over a REST API. (From **v1.67**.) It allows users to:
 
 [TOC]
 
-
 # Creating New Models
 
 To train a new model on, say, the [Titanic dataset](titanic?_download=titanic.csv&_format=csv), from scratch, use the following configuration:
@@ -600,6 +599,107 @@ forecast on the [German Interest and Inflation Rate](https://www.statsmodels.org
 
 Then, to get the forecast for a specific time period, POST the exogenous data and
 corresponding timestamps to the `/forecast` URL.
+
+# Sentiment Analysis
+
+**v1.80.0** supports sentiment analysis. To set it up, install:
+
+```shell
+pip install spacy transformers torch datasets
+```
+
+Then use this configuration:
+
+```yaml
+url:
+  sentiment:
+    pattern: /sentiment
+    handler: MLHandler
+    kwargs:
+      model:
+        class: SentimentAnalysis
+      xsrf_cookies: false
+```
+
+Now visit `/sentiment?text=wrong&text=right` to see the following output:
+
+```json
+[
+  "NEGATIVE",
+  "POSITIVE"
+]
+```
+
+
+# Named Entity Recognition
+
+**v1.81.0** supports sentiment analysis. To set it up, install:
+
+```shell
+pip install spacy transformers torch datasets
+```
+
+Then use this configuration:
+
+```yaml
+url:
+  ner:
+    pattern: /ner
+    handler: MLHandler
+    kwargs:
+      model:
+        class: NER
+      xsrf_cookies: false
+```
+
+Now visit:
+
+```text
+/ner?
+  text=Narendra Modi is the PM of India&
+  text=Joe Biden is the President of the United States and lives in Washington DC
+```
+
+... to see the following output:
+
+```json
+[
+  {
+    "text": "Narendra Modi is the PM of India.",
+    "labels": [{
+      "start": 0,
+      "end": 13,
+      "label": "PER"
+    },
+    {
+      "start": 27,
+      "end": 32,
+      "label": "LOC"
+    }
+    ]
+  },
+  {
+    "text": "Joe Biden is the President of the United States and lives in Washington DC.",
+    "labels": [{
+      "start": 0,
+      "end": 9,
+      "label": "PER"
+    },
+    {
+      "start": 40,
+      "end": 47,
+      "label": "LOC"
+    },
+    {
+      "start": 61,
+      "end": 74,
+      "label": "LOC"
+    },
+    ]
+   }
+]
+```
+
 
 # FAQs
 

@@ -68,18 +68,16 @@ The Gramex Guide now has video tutorials explaining most features in several pag
 Gramex 1.76 is backward compatible with [previous releases](../) unless the release notes say otherwise.
 [Automated builds](https://travis-ci.com/github/gramener/gramex/builds) test this.
 
-[Backward compatibility tests for 1.76](https://travis-ci.com/github/gramener/gramex/builds/TODO){:.btn .btn-lg .btn-primary}
-
 Every Gramex release is tested for security vulnerabilities using the following tools.
 
 1. [Bandit](https://bandit.readthedocs.io/) tests for back-end Python vulnerabilities.
-   [See Bandit results](https://github.com/gramener/gramex/blob/master/reports/bandit.txt){:.btn .btn-xs .btn-success}
+   [See Bandit results](https://github.com/gramener/gramex/blob/master/reports/bandit.txt)
 2. [npm-audit](https://docs.npmjs.com/cli/v6/commands/npm-audit) tests for front-end JavaScript vulnerabilities.
-   [See npm-audit results](https://github.com/gramener/gramex/blob/master/reports/npm-audit.txt){:.btn .btn-xs .btn-success}
+   [See npm-audit results](https://github.com/gramener/gramex/blob/master/reports/npm-audit.txt)
 3. [Snyk](https://snyk.io/) for front-end and back-end vulnerabilities.
-   [See Synk results](https://github.com/gramener/gramex/blob/master/reports/snyk.txt){:.btn .btn-xs .btn-success}
+   [See Synk results](https://github.com/gramener/gramex/blob/master/reports/snyk.txt)
 4. [ClamAV](https://www.clamav.net/) for anti-virus scans.
-   [See ClamAV results](https://github.com/gramener/gramex/blob/master/reports/clamav.txt){:.btn .btn-xs .btn-success}
+   [See ClamAV results](https://github.com/gramener/gramex/blob/master/reports/clamav.txt)
 
 ## Statistics
 

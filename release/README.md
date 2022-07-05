@@ -3,12 +3,9 @@ title: Gramex releases
 prefix: Release
 ...
 
-Gramex is released with new features on the first of every month.
-
-[![Gramex release process](gramex-release-process.svg){:.img-fluid}](gramex-release-process.pptx)
-
 ## Release Notes
 
+- [v1.80.0: Sentiment analysis, pipelines, API documentation](1.80/) <small>7 Jun 2022</small>
 - [v1.79.0: Multiple default filenames, Relative opens in templates, Distributed OTP](1.79/) <small>3 May 2022</small>
 - [v1.78.0: TypeScript, Time series models, CORS with auth](1.78/) <small>2 Apr 2022</small>
 - [v1.77.0: API keys, secure MongoDB access, session cookies](1.77/) <small>1 Mar 2022</small>
@@ -100,3 +97,9 @@ Gramex is released with new features on the first of every month.
 - [v1.0.2](old#v102-2015-10-11) <small>11 Oct 2015</small>
 - [v1.0.1](old#v101-2015-09-09) <small>09 Sep 2015</small>
 - [v1.0.0](old#v100-2015-09-08) <small>08 Sep 2015</small>
+
+## Release cycle
+
+Gramex is released with new features in the first week of every month.
+
+[![Gramex release process](gramex-release-process.svg){:.img-fluid}](gramex-release-process.pptx)

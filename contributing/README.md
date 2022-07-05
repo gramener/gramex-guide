@@ -155,7 +155,6 @@ Update the following and [commit to `master` branch](#committing):
 
 - In `gramex/release.json` -- update the version number
 - In `gramex/apps.yaml` -- update the version number on the guide
-- In `gramex/apps/ui/package.json` -- update the version number
 
 In [gramex-guide][gramex-guide]:
 
