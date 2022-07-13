@@ -78,6 +78,16 @@ Note: Logviewer stores data in 3 tables:
 - `aggW`: weekly aggregates
 - `aggM`: monthly aggregates
 
+If you use a custom database or location for logviewer database, you need to specify the database in LOGVIEWER_FORMHANDLER_KWARGS:
+
+```yaml
+import:
+  logviewer:
+    path: $GRAMEXAPPS/logviewer/gramex.yaml
+    YAMLURL: $YAMLURL/log/
+    LOGVIEWER_FORMHANDLER_KWARGS:
+      url: mysql+pymysql://root@localhost/logviewer
+```
 
 ## Using Variables
 
