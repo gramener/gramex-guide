@@ -21,7 +21,7 @@ To train a new model on, say, the [Titanic dataset](titanic?_download=titanic.cs
 
 ```yaml
 url:
-  mlhandler/tutorial:
+  mlhandler-tutorial:
     pattern: /$YAMLURL/ml
     handler: MLHandler
     kwargs:
@@ -72,17 +72,21 @@ at a later time with a PUT or a POST request. For example:
 - If the model class and `data` kwargs are not specified, MLHandler will do no training - which
   can be explicitly triggered at a later time, after supplying data and the
   algorithm (more on this below).
-- If the `config_dir` is not defined, the trained model and related
-  configuration will be saved under
-  `$GRAMEXDATA/apps/mlhandler/`.
 - Any of the remaining kwargs can be specified before training begins.
 
+`config_dir` is the directory where the model, data, and configuration are stored. It has 3 files:
+
+1. `config.json`: Model parameters & configuration
+2. `data.h5`: Training data
+3. `model.pkl`: The actual model, serialized as a Pickle file
+
+`config_dir` defaults to `$GRAMEXDATA/apps/mlhandler/<handler-key>/`, where `<handler-key>` is the handler name, e.g. `mlhandler-tutorial` in the example above.
 
 # Exposing Existing Models
 
 Existing [scikit-learn models](https://scikit-learn.org/stable/modules/model_persistence.html) can be exposed with the MLHandler.
 
-You can download a sample logistic regression [model here](model.pkl), trained
+You can download a sample [logistic regression model](model.pkl), trained
 on the [Titanic dataset](titanic?_download=titanic.csv&_format=csv). The model is trained to predict if a
 passenger would have survived the Titanic disaster, given attributes of the
 passenger like age, gender, travel class, etc. The model can then be exposed in
@@ -457,7 +461,7 @@ curl -X DELETE /mlhandler?_model
 MLHandler supports Tornado templates which can be used to create front-end applications which use MLHandler. You can specify a `template` kwarg as follows:
 
 ```yaml
-mlhandler/tutorial:
+mlhandler-tutorial:
   pattern: /$YAMLURL/ml
   handler: MLHandler
   template: $YAMLPATH/template.html
@@ -490,7 +494,7 @@ Transformations can be enabled by adding a `transform:` value to the data parame
 MLHandler config, as follows:
 
 ```yaml
-mlhandler/transform:
+mlhandler-transform:
   pattern: /$YAMLURL/transform
   handler: MLHandler
   kwargs:
@@ -517,7 +521,7 @@ MLHandler endpoint using a logistic regression to classify this dataset, as
 follows:
 
 ```yaml
-  mlhandler/basiccircles:
+  mlhandler-basiccircles:
     pattern: /$YAMLURL/circlebasic
     handler: MLHandler
     kwargs:
@@ -551,7 +555,7 @@ transformation to the MLHandler configuration, use the `transform:` key under
 the `data:` kwarg, as follows:
 
 ```yaml
-  mlhandler/basiccircles:
+  mlhandler-basiccircles:
     pattern: /$YAMLURL/circlebasic
     handler: MLHandler
     kwargs:
@@ -582,7 +586,7 @@ The following YAML spec shows how to setup an MLHandler instance to model and
 forecast on the [German Interest and Inflation Rate](https://www.statsmodels.org/stable/datasets/generated/interest_inflation.html) dataset. You can download a copy [here](infl?_download=inflation.csv&_format=csv).
 
 ```yaml
-  mlhandler/forecast:
+  mlhandler-forecast:
     pattern: /$YAMLURL/forecast
     handler: MLHandler
     kwargs:
