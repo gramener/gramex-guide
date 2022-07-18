@@ -702,7 +702,10 @@ The [user attributes](#user-attributes) in `handler.current_user` look like this
 ## Database auth
 
 **Available in Gramex Enterprise**.
-This is the minimal configuration that lets you log in from an Excel file:
+Database auth (or `DBAuth`) lets users log in with a username and password from any data source.
+Users with email can also [sign-up](#sign-up) and [reset their password](#forgot-password).
+
+This is the minimal configuration that lets you log in from an **Excel file**:
 
 ```yaml
 url:
@@ -742,42 +745,58 @@ matches it with the `auth.xlsx` database.
 
 [auth-template]: http://github.com/gramener/gramex/blob/master/gramex/handlers/auth.template.html
 
+Here is a more complete example using a **SQLite database**:
+
+```yaml
+url:
+  auth/db:
+    pattern: /$YAMLURL/db                 # Map this URL
+    handler: DBAuth                       # to the DBAuth handler
+    kwargs:
+      url: sqlite:///$YAMLPATH/auth.db  # Pick up list of users from this sqlalchemy URL
+      table: users                      # ... and this table (may be prefixed as schema.users)
+      template: $YAMLPATH/dbauth.html   # Optional login template
+      user:
+        column: user                  # The users.user column is matched with
+        arg: user                     # ... the ?user= argument from the form
+      delay: [1, 2, 5, 10]              # Delay for failed logins
+      password:
+        column: password              # The users.password column is matched with
+        arg: password                 # ... the ?password= argument from the form
+        # You should encrypt passwords when storing them.
+        # The function below specifies the encryption method.
+        # Remember to change secret-key to something unique
+        function: passlib.hash.sha256_crypt.encrypt(content, salt="secret-key")
+        # hash: true                  # Client side encryption
+```
+
+::: example href=db source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
+    DBAuth example
+
+Other `kwargs` are passed to [`gramex.data.filter`](../api/data/#gramex.data.filter), which passes it to
+[`sqlalchemy.create_engine()`](https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine) for databases,
+[`gramex.cache.open()`](../api/cache/#gramex.cache.open) for files, or
+the respective plugin filters.
+
+For example, adding:
+
+```yaml
+    kwargs:
+      url: mysql+pymysql://localhost/test
+      pool_recycle: 3600
+      # ...
+```
+
+... is the same as [setting `pool_recycle=3600`](https://docs.sqlalchemy.org/en/14/core/pooling.html#setting-pool-recycle),
+i.e. `sqlalchemy.create_engine('mysql+pymysql://localhost/test', pool_recycle=3600, ...)`
+
 You can configure several aspects of this flow. You can (and *should*) use:
 
 - `template:` to customize the appearance of the login page
 - `url:` to a SQLAlchemy database (with `table:`) instead of using CSV / Excel files
 - `password.function:` to encrypt the password
 - `delay:` to specify the login failure delay
-- `password.hash:` to enable client side encryption of password.
-Set this to `true` when required. This will block any MITM attacks.
-
-Here is a more complete example:
-
-```yaml
-url:
-  auth/db:
-  pattern: /$YAMLURL/db                 # Map this URL
-  handler: DBAuth                       # to the DBAuth handler
-  kwargs:
-    url: sqlite:///$YAMLPATH/auth.db  # Pick up list of users from this sqlalchemy URL
-    table: users                      # ... and this table (may be prefixed as schema.users)
-    template: $YAMLPATH/dbauth.html   # Optional login template
-    user:
-      column: user                  # The users.user column is matched with
-      arg: user                     # ... the ?user= argument from the form
-    delay: [1, 2, 5, 10]              # Delay for failed logins
-    password:
-      column: password              # The users.password column is matched with
-      arg: password                 # ... the ?password= argument from the form
-      # You should encrypt passwords when storing them.
-      # The function below specifies the encryption method.
-      # Remember to change secret-key to something unique
-      function: passlib.hash.sha256_crypt.encrypt(content, salt="secret-key")
-      # hash: true                  # Client side encryption
-```
-
-::: example href=db source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    DBAuth example
+- `password.hash: true` to enable client side encryption of password and block man-in-the-middle attacks.
 
 You should create a [HTML login form](db?next=.) that requests a username and password
 (with an [xsrf][xsrf] field). See [login templates](#login-templates) to learn
