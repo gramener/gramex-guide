@@ -1070,5 +1070,5 @@ PPTGen currently cannot handle:
 - Equations
 - Zoom
 
-[pptxhandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.PPTXHandler
-[pptgen]: https://learn.gramener.com/gramex/gramex.pptgen.html
+[pptxhandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.PPTXHandler
+[pptgen]: https://gramener.com/gramex/guide/api/pptgen/

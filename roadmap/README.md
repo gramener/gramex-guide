@@ -9,7 +9,6 @@ title: Gramex Roadmap
 
 # Releases
 
-See the [release notes](https://learn.gramener.com/gramex/history.html) for
-information about past releases.
+See the [release notes](../release/) for information about past releases.
 
 Bugs to be fixed are at the [issue tracker](http://github.com/gramener/gramex/issues).

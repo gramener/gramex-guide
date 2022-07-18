@@ -312,6 +312,6 @@ applied. Add styles inline, via `style="..."`.
 ::: example href=html2canvas.html source=https://github.com/gramener/gramex-guide/blob/tree/capturehandler/html2canvas.html
     Client-side capture example
 
-[capturehandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.CaptureHandler
-[capture]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.Capture
+[capturehandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.CaptureHandler
+[capture]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.Capture
 [mobiledevices]: https://github.com/GoogleChrome/puppeteer/blob/v1.17.0/lib/DeviceDescriptors.js

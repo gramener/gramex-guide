@@ -3,7 +3,7 @@ title: Download Data
 prefix: Tip
 ...
 
-[gramex.data.download](https://learn.gramener.com/gramex/gramex.html#gramex.data.download) lets users download a DataFrame inside a FunctionHandler.
+[gramex.data.download](https://gramener.com/gramex/guide/api/data/#gramex.data.download) lets users download a DataFrame inside a FunctionHandler.
 
 For example:
 

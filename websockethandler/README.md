@@ -109,7 +109,7 @@ http {
 }
 ```
 
-[websockethandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.WebSocketHandler
+[websockethandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.WebSocketHandler
 [chatbot-source]: https://github.com/gramener/gramex-guide/blob/master/websockethandler/websocketchat.py
 [websocket-clients]: https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications
 

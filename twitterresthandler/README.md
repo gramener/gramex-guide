@@ -298,4 +298,4 @@ for each.
 
 <script src="script.js"></script>
 
-[twitterresthandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.TwitterRESTHandler
+[twitterresthandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.TwitterRESTHandler

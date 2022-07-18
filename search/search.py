@@ -98,4 +98,4 @@ if __name__ == '__main__':
     # Save the search index. This only works in Python 3
     with io.open(index_file, 'w', encoding='utf-8', newline='') as handle:
         json.dump(result, handle, ensure_ascii=True, sort_keys=True, indent=2)
-        result.write('\n')
+        handle.write('\n')

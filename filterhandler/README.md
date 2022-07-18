@@ -45,4 +45,4 @@ returns all unique values of `Name` without filtering `Name=Andorra` and `Contin
 By default, FilterHandler renders data as JSON. Use `?_format=` to change that.
 To see supported formats please refer [FormHandler Formats](../formhandler/#formhandler-formats)
 
-[filterhandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.FilterHandler
+[filterhandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.FilterHandler

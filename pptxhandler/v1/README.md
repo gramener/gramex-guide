@@ -1019,5 +1019,5 @@ You can override parameters from the command line like this:
 pptgen config.yaml --target new.pptx "--change.Title 1.text" "Updated title"
 ```
 
-[pptxhandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.PPTXHandler
-[pptgen]: https://learn.gramener.com/gramex/gramex.pptgen.html
+[pptxhandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.PPTXHandler
+[pptgen]: https://gramener.com/gramex/guide/api/pptgen2/

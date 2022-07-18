@@ -12,7 +12,7 @@ It's a bad idea to run calculations after loading cached data.
 ```
 
 There is no point re-computing the data unless `data_file` has changed. Instead,
-[gramex.cache.open](https://learn.gramener.com/gramex/gramex.html#gramex.cache.open)
+[gramex.cache.open](https://gramener.com/gramex/guide/api/cache/#gramex.cache.open)
 supports a `transform=` parameter. Do the following:
 
 ```python

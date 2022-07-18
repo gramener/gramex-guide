@@ -141,12 +141,12 @@ log:
 
 We are rewriting the documentation for all the Gramex modules, functions and classes to make them easier.
 
-[This Gramex API documentation](../../api/) has been rewritten in Markdown. For example:
+[This Gramex API documentation](https://gramener.com/gramex/guide/api/) has been rewritten in Markdown. For example:
 
-- [gramex.cache](../../api/cache/)
-- [gramex.data](../../api/data/)
-- [gramex.ml](../../api/ml/)
-- [... and more](../../api/)
+- [gramex.cache](https://gramener.com/gramex/guide/api/cache/)
+- [gramex.data](https://gramener.com/gramex/guide/api/data/)
+- [gramex.ml](https://gramener.com/gramex/guide/api/ml/)
+- [... and more](https://gramener.com/gramex/guide/api/)
 
 These functions and methods can be imported and used as part of any [function](../../function/) or
 [template](../../filehandler/#templates).

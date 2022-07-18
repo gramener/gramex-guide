@@ -703,7 +703,7 @@ specified, the transforms are applied before concatenation.
 This is useful to pack multiple static files into one, as the example shows.
 
 
-[filehandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.FileHandler
+[filehandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.FileHandler
 [template]: http://www.tornadoweb.org/en/stable/template.html
 [template-syntax]: http://www.tornadoweb.org/en/stable/guide/templates.html#template-syntax
 

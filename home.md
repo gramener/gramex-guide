@@ -95,7 +95,7 @@ Then learn from these tutorials:
 ## Reference
 
 - [Gramex License](license/). Gramex Community Edition is MIT licensed
-- [Python API reference](https://learn.gramener.com/gramex/gramex.html)
+- [Python API reference](https://gramener.com/gramex/guide/api/)
 - [Link check](linkcheck/) tests if all links on the Gramex Guide are working
 - [Index of topics on the Gramex Guide](search/)
 

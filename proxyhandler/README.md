@@ -349,7 +349,7 @@ Some sample uses:
 
 <script src="proxyhandler.js"></script>
 
-[proxyhandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.ProxyHandler
+[proxyhandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.ProxyHandler
 [xsrf]: ../filehandler/#xsrf
 [httprequest]: http://www.tornadoweb.org/en/stable/httpclient.html#tornado.httpclient.HTTPRequest
 [httpresponse]: http://www.tornadoweb.org/en/stable/httpclient.html#tornado.httpclient.HTTPResponse

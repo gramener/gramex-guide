@@ -1473,7 +1473,7 @@ tables. For example:
 If the `profile` table already has any of these columns, it is left unaltered. Else, the missing
 columns are *added*. No columns are removed.
 
-This uses [gramex.data.alter()](https://learn.gramener.com/gramex/gramex.html#gramex.data.alter)
+This uses [gramex.data.alter()](https://gramener.com/gramex/guide/api/data/#gramex.data.alter)
 behind the scenes to add columns.
 
 
@@ -1607,4 +1607,4 @@ kwargs:
     Cache-Control: public, max-age=3600   # All formats are cached for 1 hour
 ```
 
-[formhandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.FormHandler
+[formhandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.FormHandler

@@ -3,7 +3,7 @@ title: Windows IntegratedAuth
 prefix: Tip
 ...
 
-[Gramex 1.22](https://learn.gramener.com/gramex/history.html#id2) has a new authentication mechanism called
+[Gramex 1.22](../release/old/) has a new authentication mechanism called
 [IntegratedAuth](../auth/#integrated-auth). This lets Windows users automatically
 log in without having to type their ID or password.
 

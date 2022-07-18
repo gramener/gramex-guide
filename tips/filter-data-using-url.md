@@ -7,7 +7,7 @@ All dashboards should be URL-driven. That is, if you copy-paste the URL into ano
 
 To do this, our dashboards use URL query parameters to filter data. For example, '?City=Tokyo' shows data where the "City" column equals "Tokyo".
 
-Doing this is very easy in [Gramex 1.21](https://learn.gramener.com/gramex/gramex.html#gramex.data.filter) using `gramex.data.filter` inside a `FunctionHandler`:
+Doing this is very easy in [Gramex 1.21](https://gramener.com/gramex/guide/api/data/#gramex.data.filter) using `gramex.data.filter` inside a `FunctionHandler`:
 
 ```python
     result = gramex.data.filter(data, handler.args)
@@ -27,7 +27,7 @@ You can apply this to databases as well. `gramex.data.filter` runs the query on 
 
 This filters the `sales` table in the `Oracle` database based on the URL query parameters.
 
-You should read the [documentation](https://learn.gramener.com/gramex/gramex.html#gramex.data.filter) - it supports more options like:
+You should read the [documentation](https://gramener.com/gramex/guide/api/data/#gramex.data.filter) - it supports more options like:
 
 - a **meta** parameter that returns which URL parameters were not used for filtering, and other information
 - **query** and **transform** parameters that transform the data before filtering

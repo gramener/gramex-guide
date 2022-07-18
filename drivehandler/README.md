@@ -325,4 +325,4 @@ url:
 If you uploaded any CSV/XLSX into the [DriveHandler] above, see them at `data/your-file.csv`.
 
 
-[drivehandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.DriveHandler
+[drivehandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.DriveHandler

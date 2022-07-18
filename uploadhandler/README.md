@@ -258,4 +258,4 @@ def func(content, handler):
 
 If the user uploads multiple files, the last redirect is used.
 
-[uploadhandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.UploadHandler
+[uploadhandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.UploadHandler

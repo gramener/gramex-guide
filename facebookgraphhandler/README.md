@@ -93,7 +93,7 @@ in. Thereafter, your access_token will be stored and used for future requests
 until it expires, or a user logs in again at [/persist/](persist/).
 
 [source]: https://github.com/gramener/gramex-guide/blob/master/facebookgraphhandler/
-[facebookgraphhandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.FacebookGraphHandler
+[facebookgraphhandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.FacebookGraphHandler
 
 <script>
 function replace(e, regex, text) {

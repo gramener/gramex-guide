@@ -65,4 +65,4 @@ url:
                 Content-Type: text/x-plain
 ```
 
-[processhandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.ProcessHandler
+[processhandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.ProcessHandler

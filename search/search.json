@@ -1044,6 +1044,9 @@
     "error-handlers": {
       "Error handlers": -1
     },
+    "exception-information": {
+      "Exception information": -1
+    },
     "good": {
       "GOOD": -1
     },
@@ -1070,6 +1073,9 @@
     },
     "if-gramex-was-started-with-a-specific-command-line-eg-listenport8001": {
       "If Gramex was started with a specific command line, e.g. --listen.port=8001": -1
+    },
+    "json-error-response": {
+      "JSON error response": -1
     },
     "logging": {
       "Logging": -1
@@ -1124,10 +1130,23 @@
     "": {
       "Contributing to Gramex": -1
     },
-    "deploy-docs-and-code-coverage-on-httpsgramenercomgramex-update": {},
-    "deploy-docs-on-httpslearngramenercomgramex": {
-      "Deploy docs on https://learn.gramener.com/gramex/": -1
+    "clone-and-install-gramex": {
+      "Clone and install Gramex": -1
     },
+    "committing": {
+      "Committing": -1
+    },
+    "create-a-new-conda-environment-with-python-37": {
+      "Create a new Conda environment with Python 3.7+": -1
+    },
+    "decide-the-storyline": {
+      "Decide the storyline": -1
+    },
+    "deploy-docs-and-code-coverage-on-httpsgramenercomgramex-update": {},
+    "deploy-docs-on-httpsgramenercomgramexguideapi": {
+      "Deploy docs on https://gramener.com/gramex/guide/api/": -1
+    },
+    "deploy-docs-on-httpslearngramenercomgramex": {},
     "deploy-on-conda-httpsanacondaorggramenergramex": {},
     "deploy-on-conda-windows-httpsanacondaorggramenergramex": {
       "Deploy on conda (Windows): https://anaconda.org/gramener/gramex": -1
@@ -1147,11 +1166,23 @@
     "if-this-fails-add-p-password": {
       "If this fails, add '-p PASSWORD'": -1
     },
+    "insert-the-video": {
+      "Insert the video": -1
+    },
+    "master-branch-is-the-latest-working-version": {
+      "master branch is the latest working version.": -1
+    },
     "now-you-can-delete-this-gramex-folder-and-restore-your-gramex-via-pip-install-gramex": {
       "Now you can delete this Gramex folder and restore your Gramex via pip install gramex": -1
     },
     "push-docs-and-coverage-tests": {},
     "push-to-pypi": {},
+    "record-the-video": {
+      "Record the video": -1
+    },
+    "release-branch-is-the-latest-released-version": {
+      "release branch is the latest released version.": -1
+    },
     "release-gramex-community-edition": {
       "Release Gramex Community Edition": -1
     },
@@ -1166,8 +1197,9 @@
       "Run this from any temporary directory on a Windows system.": -1
     },
     "run-this-on-windows-and-linux": {},
-    "set-up-gramex": {
-      "Set up Gramex": -1
+    "set-up-gramex": {},
+    "set-up-gramex-for-development": {
+      "Set up Gramex for development": -1
     },
     "test-gramex": {
       "Test Gramex": -1
@@ -1175,6 +1207,9 @@
     "update-gramex": {},
     "update-gramex-community-edition": {
       "Update Gramex Community Edition": -1
+    },
+    "video-tutorials": {
+      "Video tutorials": -1
     },
     "yarn-upgrade-cwd-gramexappsadmin": {}
   },
@@ -1294,6 +1329,9 @@
     "cors-post-with-auth": {
       "CORS POST with auth": -1
     },
+    "deploy-on-gramenercom-servers": {
+      "Deploy on gramener.com servers": -1
+    },
     "deploying-secrets": {
       "Deploying secrets": -1
     },
@@ -1313,9 +1351,7 @@
     "etc": {
       "... etc": -1
     },
-    "goaccess-output": {
-      "GoAccess Output": -1
-    },
+    "goaccess-output": {},
     "gramexyaml-secrets": {
       "gramex.yaml secrets": -1
     },
@@ -1353,18 +1389,14 @@
       "Multiple Windows Services": -1
     },
     "mymodulepy": {},
-    "nginx-log-analyzer": {
-      "nginx log analyzer": -1
-    },
+    "nginx-log-analyzer": {},
     "nginx-reverse-proxy": {
       "nginx reverse proxy": -1
     },
     "nginx-security": {
       "nginx security": -1
     },
-    "nginxconf": {
-      "nginx.conf": -1
-    },
+    "nginxconf": {},
     "or-a-dict-of-imports-keys-are-ignored-values-are-used": {
       "... or a dict of imports. Keys are ignored. Values are used.": -1
     },
@@ -1382,6 +1414,9 @@
     },
     "redirect-http-to-https": {
       "Redirect HTTP to HTTPS": -1
+    },
+    "reference-httpdocgitlabcomceciyamlreadmehtml": {
+      "Reference: http://doc.gitlab.com/ce/ci/yaml/README.html": -1
     },
     "relative-url-mapping": {
       "Relative URL mapping": -1
@@ -1702,6 +1737,12 @@
     "caching": {
       "Caching": -1
     },
+    "configure-all-filehandlers": {
+      "Configure all FileHandlers": -1
+    },
+    "default-filehandler": {
+      "Default FileHandler": -1
+    },
     "default-filename": {
       "Default filename": -1
     },
@@ -1925,6 +1966,17 @@
     "prepare-the-data": {},
     "see-the-result": {}
   },
+  "function": {
+    "": {
+      "Functions": -1
+    },
+    "expressions": {
+      "Expressions": -1
+    },
+    "pipelines": {
+      "Pipelines": -1
+    }
+  },
   "functionhandler": {
     "": {
       "FunctionHandler runs Python code": -1
@@ -2042,8 +2094,9 @@
     "basehandler-attributes": {
       "BaseHandler Attributes": -1
     },
-    "initialisation": {
-      "Initialisation": -1
+    "initialisation": {},
+    "initialization": {
+      "Initialization": -1
     },
     "tornado-handler-attributes": {
       "Tornado handler attributes": -1
@@ -2272,6 +2325,9 @@
     "customizing-logviewer": {
       "Customizing Logviewer": -1
     },
+    "logviewer-database-location": {
+      "Logviewer database location": -1
+    },
     "logviewer-usage": {
       "Logviewer usage": -1
     },
@@ -2352,6 +2408,9 @@
     "model-operations": {
       "Model operations": -1
     },
+    "named-entity-recognition": {
+      "Named Entity Recognition": -1
+    },
     "output": {
       "Output": -1
     },
@@ -2372,6 +2431,9 @@
     },
     "see-whether-a-22-year-old-male-traveling-with-a-sibling-in-the-third-class": {
       "See whether a 22 year old male, traveling with a sibling in the third class,": -1
+    },
+    "sentiment-analysis": {
+      "Sentiment Analysis": -1
     },
     "time-series-forecasting": {
       "Time series forecasting": -1
@@ -2482,9 +2544,7 @@
     }
   },
   "pipelines": {
-    "": {
-      "Create pipelines": -1
-    }
+    "": {}
   },
   "position": {
     "position-example": {}
@@ -3154,6 +3214,9 @@
   "release": {
     "": {
       "Gramex releases": -1
+    },
+    "release-cycle": {
+      "Release cycle": -1
     },
     "release-notes": {
       "Release Notes": -1
@@ -4846,6 +4909,41 @@
       "Statistics": -1
     }
   },
+  "release/1.80": {
+    "": {
+      "Gramex 1.80 release notes": -1
+    },
+    "api-documentation": {
+      "API Documentation": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "command-line-logging-control": {
+      "Command-line logging control": -1
+    },
+    "deprecations": {
+      "Deprecations": -1
+    },
+    "displaying-logger": {
+      "Displaying logger": -1
+    },
+    "function-pipelines": {
+      "Function pipelines": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "js-security-updates": {
+      "JS security updates": -1
+    },
+    "sentiment-analysis-with-huggingface-transformers": {
+      "Sentiment analysis with Huggingface transformers": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    }
+  },
   "release/old": {
     "": {
       "Gramex Old Release Notes": -1
@@ -6081,11 +6179,12 @@
     "overwriting-uploads": {
       "Overwriting uploads": -1
     },
-    "process-uploads": {
-      "Process uploads": -1
-    },
+    "process-uploads": {},
     "saving-uploads": {
       "Saving uploads": -1
+    },
+    "transform-uploads": {
+      "Transform uploads": -1
     },
     "upload-arguments": {
       "Upload arguments": -1

@@ -105,7 +105,7 @@ configuration. These are not yet intended for general use:
 - `handler.permissions`
 - `handler.cache`
 
-[basehandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.BaseHandler
+[basehandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.BaseHandler
 
 ## Tornado handler attributes
 

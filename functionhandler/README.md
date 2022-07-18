@@ -464,5 +464,5 @@ def calculate(data1, data2):
 
 [requesthandler]: https://tornado.readthedocs.org/en/stable/web.html#request-handlers
 [asynchttpclient]: https://tornado.readthedocs.org/en/latest/httpclient.html#tornado.httpclient.AsyncHTTPClient
-[functionhandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.FunctionHandler
+[functionhandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.FunctionHandler
 [coroutines]: https://tornado.readthedocs.org/en/latest/guide/coroutines.html

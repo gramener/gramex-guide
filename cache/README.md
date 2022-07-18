@@ -290,7 +290,8 @@ is arbitrary. You can use any query parameter instead of `v`.)
 
 [Video](https://youtu.be/Q8Ehhsd0j_E){.youtube}
 
-`gramex.cache.open` opens files and caches them unless they are changed. You can
+[`gramex.cache.open`]((https://gramener.com/gramex/guide/api/cache/#gramex.cache.open))
+opens files and caches them unless they are changed. You can
 use this to load any type of file. For example:
 
 ```python
@@ -399,7 +400,8 @@ data = gramex.cache.open('template.txt', mode='rb', encoding=None, errors=None)
 
 ## Query caching
 
-`gramex.cache.query` returns SQL queries as DataFrames and caches the results.
+[`gramex.cache.query`](https://gramener.com/gramex/guide/api/cache/#gramex.cache.query)
+returns SQL queries as DataFrames and caches the results.
 The next time it is called, the query re-runs only if required.
 
 For example, take this slow query:
@@ -446,8 +448,8 @@ You can reload the module using `importlib.reload(module_name)`, but this
 reloads them module every time, even if nothing has changed. If the module has
 any large calculations, this slows things down.
 
-Instead, use `gramex.cache.reload_module(module_name)`. This is like
-`importlib.reload`, but it reloads *only if the file has changed.*
+Instead, use [`gramex.cache.reload_module(module_name)`](https://gramener.com/gramex/guide/api/cache/#gramex.cache.reload_module).
+This is like `importlib.reload`, but it reloads *only if the file has changed.*
 
 For example, you can use it in a FunctionHandler:
 
@@ -476,7 +478,8 @@ be used to render the FunctionHandler or template.
 
 ## Subprocess streaming
 
-You can run an OS command asynchronously using `gramex.cache.Subprocess`. Use
+You can run an OS command asynchronously using
+`gramex.cache.Subprocess`](https://gramener.com/gramex/guide/api/cache/#gramex.cache.Subprocess). Use
 this instead of [subprocess.Popen][popen] because the latter will block Gramex
 until the command runs.
 

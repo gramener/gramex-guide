@@ -10,56 +10,62 @@ var root = path.join(__dirname, '..')
 
 var index = []
 var docs = []
-var metadatalist = []
-glob('*/*.md', { cwd: root }, function (err, files) {
+var metadataList = []
+glob("*/*.md", { cwd: root, ignore: ['**/api/**'] }, function (err, files) {
   files.forEach(function (file) {
-    var text = fs.readFileSync(path.join(root, file), 'utf8')
-    var content = fm(text)
-    var tokens = marked.lexer(content.body)
-    var title = content.attributes.title
-    var prefix = content.attributes.prefix || title
+    var text = fs.readFileSync(path.join(root, file), "utf8");
+    var content = fm(text);
+    var tokens = marked.lexer(content.body);
+    var title = content.attributes.title;
+    var prefix = content.attributes.prefix || title;
     var metadata = {
-      type: content.attributes.type || 'other',
+      type: content.attributes.type || "other",
       prefix: prefix,
       title: title,
-      desc: content.attributes.desc || 'desc',
-      icon: content.attributes.icon || 'iconpath',
+      desc: content.attributes.desc || "desc",
+      icon: content.attributes.icon || "iconpath",
       views: content.attributes.views || 0,
-      by: content.attributes.by || 'TeamGramener',
-      deprecated: content.attributes.deprecated || false
-    }
-    var body = []
+      by: content.attributes.by || "TeamGramener",
+      deprecated: content.attributes.deprecated || false,
+    };
+    var body = [];
     if (title) {
       tokens.forEach(function (token) {
-        if (token.type == 'heading') {
-          add_doc(title, prefix, body, file)
-          add_meta(title, metadata, file)
-          title = token.text
-          body = []
+        if (token.type == "heading") {
+          add_doc(title, prefix, body, file);
+          add_meta(title, metadata, file);
+          title = token.text;
+          body = [];
         } else if (token.text) {
-          body.push(token.text)
+          body.push(token.text);
         }
-      })
-      add_doc(title, prefix, body, file)
-      add_meta(title, metadata, file)
+      });
+      add_doc(title, prefix, body, file);
+      add_meta(title, metadata, file);
     }
-  })
+  });
   var idx = lunr(function () {
-    this.field('title')
-    this.field('body')
-    this.field('id')
-    var lunr_index = this
+    this.field("title");
+    this.field("body");
+    this.field("id");
+    var lunr_index = this;
     index.forEach(function (entry) {
-      lunr_index.add(entry)
-    })
-  })
-  fs.writeFileSync(path.join(__dirname, 'searchindex.json'), JSON.stringify({
-    'docs': docs,
-    'index': idx.toJSON()
-  }) + '\n')
+      lunr_index.add(entry);
+    });
+  });
+  fs.writeFileSync(
+    path.join(__dirname, "searchindex.json"),
+    JSON.stringify({
+      docs: docs,
+      index: idx.toJSON(),
+    }) + "\n"
+  );
 
-  fs.writeFileSync(path.join(__dirname, 'meta.json'), JSON.stringify(metadatalist) + '\n')
-})
+  fs.writeFileSync(
+    path.join(__dirname, "meta.json"),
+    JSON.stringify(metadataList) + "\n"
+  );
+});
 
 function url(file, title) {
   var slug = title.toLowerCase().replace(/[^\w]+/g, '-')
@@ -74,12 +80,12 @@ function add_doc(title, prefix, body, file) {
 function add_meta(title, metadata, file) {
   var link = 'https://learn.gramener.com/guide/'
   var entry = { title: title, link: link + url(file, title) }
-  var match = metadatalist.find(row => row.prefix == metadata.prefix)
+  var match = metadataList.find(row => row.prefix == metadata.prefix)
   if (match)
     match.info.push(entry)
   else {
     metadata.info = [entry]
     metadata.link = link + url(file, '')
-    metadatalist.push(metadata)
+    metadataList.push(metadata)
   }
 }

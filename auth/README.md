@@ -773,9 +773,9 @@ url:
 ::: example href=db source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
     DBAuth example
 
-Other `kwargs` are passed to [`gramex.data.filter`](../api/data/#gramex.data.filter), which passes it to
+Other `kwargs` are passed to [`gramex.data.filter`](https://gramener.com/gramex/guide/api/data/#gramex.data.filter), which passes it to
 [`sqlalchemy.create_engine()`](https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine) for databases,
-[`gramex.cache.open()`](../api/cache/#gramex.cache.open) for files, or
+[`gramex.cache.open()`](https://gramener.com/gramex/guide/api/cache/#gramex.cache.open) for files, or
 the respective plugin filters.
 
 For example, adding:
