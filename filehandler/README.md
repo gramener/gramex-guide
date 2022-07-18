@@ -417,9 +417,6 @@ navbar.html can use title and menu variables.
 Templates import [modules](https://www.tornadoweb.org/en/stable/guide/templates.html#ui-modules)
 using `{% module Template('path/to/template.html', **kwargs) %}`.
 
-- The path is relative to the FileHandler root path (which may be different from the parenttemplate
-- Only the variables passed are available to the sub-template.
-
 For example:
 
 ```html
@@ -430,27 +427,36 @@ This import navbar.html in-place as a template.
 %}
 ```
 
+Note:
+
+- The path is relative to the FileHandler root path (which may be different from the parent template location)
+- Parent template variables are NOT available in the sub-template. Only the passed kwargs are available.
+
+<!-- This is rarely used. Therefore un-documented. But kept for Gramex authors' reference.
+
 Modules can add CSS and JS to the parent template. For example:
 
 ```html
-{% set_resources(css_files='/ui/bootstrap/dist/bootstrap.min.css') %} <!-- add Bootstrap -->
-{% set_resources(javascript_files='/ui/lodash/lodash.min.js') %}      <!-- add lodash -->
-{% set_resources(embedded_css='th { padding: 4px; }') %}    <!-- add CSS -->
-{% set_resources(embedded_js='alert("OK")') %}              <!-- add CSS -->
+{% set_resources(css_files='/ui/bootstrap/dist/bootstrap.min.css') %}
+{% set_resources(javascript_files='/ui/lodash/lodash.min.js') %}
+{% set_resources(embedded_css='th { padding: 4px; }') %}
+{% set_resources(embedded_js='alert("OK")') %}
 ```
+-->
 
 ### Raw sub-templates
 
 You can also include other files using `{{ gramex.cache.open(...) }}`. For example:
 
 ```html
-{% raw gramex.cache.open('README.txt') %}   -- inserts README.txt in-place
-{% raw gramex.cache.open('README.md') %}    -- inserts README.md as HTML
+{% raw gramex.cache.open('README.txt', rel=True) %}   -- inserts README.txt in-place
+{% raw gramex.cache.open('README.md', rel=True) %}    -- inserts README.md as HTML
 ```
 
 The second open statement converts README.md into HTML. See
 [data caching](../caching/#data-caching) for more formats.
 
+`rel=True` loads the file relative to the **template** path.
 
 ## SASS
 
