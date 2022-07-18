@@ -19,7 +19,7 @@ url:
       path: $GRAMEXDATA/apps/guide/upload/    # ... save files here
 ```
 
-By default, `.meta.db` keystore is created in `kwargs:path` directory to store uploaded files' metadata.
+By default, `.meta.db` keystore is created in `kwargs:path` directory to store uploaded files' info.
 You can configure `store` as follows:
 
 ```yaml
@@ -200,9 +200,9 @@ To prevent users from changing or setting the filename, use:
       save: []    # No field names can override the user provided filename
 ```
 
-## Process uploads
+## Transform uploads
 
-`UploadHandler` accepts a `transform:` config that processes the files after they have been saved. For example:
+`UploadHandler` accepts a `transform:` function that is called after **EACH** file is saved. For example:
 
 ```yaml
 url:
@@ -212,24 +212,50 @@ url:
     kwargs:
       path: ...
       transform:
-        function: module.func(meta, handler)
+        function: module.func(content, handler)
 ```
 
-This calls `module.func(meta, handler)` where `meta` is an AttrDict with the
-keys mentioned in [Upload listing](#upload-listing). For example, this function
-will save CSV files as `data.json`:
+This calls `module.func(content, handler)` where
+
+- `content` is an AttrDict with the keys mentioned in [Upload listing](#upload-listing)
+- `handler` is the `UploadHandler` class
+
+For example, this function will save CSV files as `data.json`:
 
 ```python
-def func(meta, handler):
-  if meta.mime == 'text/csv':
-    path = os.path.join('... upload path ...', meta.file)
-    pd.read_csv(path).to_json('data.json')
+def func(content, handler):
+    if content.mime == 'text/csv':
+        path = os.path.join('... upload path ...', content.file)
+        pd.read_csv(path).to_json('data.json')
 ```
 
-If `module.func()` returns a value, it replaces the file metadata. This allows
-you to add / modify delete keys in the [Upload listing](#upload-listing).
+You can modify the file info before it is saved. For example:
 
-If no `args` or `kwargs` are specified, the transform function is called with
-`(meta, handler)` as the keyword arguments.
+```python
+def func(content, handler):
+    # # Add a `year` field
+    content['year'] = datetime.datetime.today().year
+    # Remove `user` field if ?anonymize is passed
+    if 'anonymize' in content['data']:
+        del content['user']
+```
+
+You can modify the file info by returning a new dictionary too. For example:
+
+```python
+def func(content, handler):
+    # Only store the key and file, nothing else
+    return {'key': content['key'], 'file': content['file']}
+```
+
+You can redirect after uploading. To upload a file and send the user to `output?file=<filename>`, use:
+
+```python
+def func(content, handler):
+    handler.set_status(status_code=302)
+    handler.set_header("Location", f'output?file={content["file"]}')
+```
+
+If the user uploads multiple files, the last redirect is used.
 
 [uploadhandler]: https://learn.gramener.com/gramex/gramex.handlers.html#gramex.handlers.UploadHandler
