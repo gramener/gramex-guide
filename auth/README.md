@@ -1171,8 +1171,8 @@ url:
 [Video](https://youtu.be/3og1HiU6Iik){.youtube}
 
 **Available in Gramex Enterprise**.
-[EmailAuth](#emailauth) allows any user with a valid email ID to log
-in. This is a convenient alternative to [DBAuth](#dbauth). Users do not need to
+[EmailAuth](#email-auth) allows any user with a valid email ID to log
+in. This is a convenient alternative to [DBAuth](#database-auth). Users do not need to
 sign-up. Administrators don't need to provision accounts. Gramex can [restrict
 access](#authorization) just based on just their email ID or domain.
 
@@ -2138,7 +2138,7 @@ url:
 You can specify any function of your choice. The function must return (or yield)
 `True` to allow the user access, and `False` to raise a HTTP 403 error.
 
-To repeat auth conditions across multiple handlers, see [Reusing Configurations](#reusing-configurations).
+To repeat auth conditions across multiple handlers, see [Reusing Configurations](../config/#reusing-configurations).
 
 ## Protect all pages
 
