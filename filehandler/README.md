@@ -43,6 +43,34 @@ url:
     pattern: ...
 ```
 
+## Default FileHandler
+
+Even with an empty `gramex.yaml`, Gramex uses a default FileHandler. It does the following:
+
+1. If there's a [`default.template.html` or `default.tmpl.html`](#default-filename), it renders it as a HTML [template](#templates)
+2. Else if there's an [`index.html`](#default-filename), it renders as a HTML file (not a template)
+3. Else it shows a [directory listing of all files/folders](#directory-listing)
+4. It compiles [`.sass` and `.scss`](#sass) files to CSS and renders them
+5. It compiles [`.ts`](#typescript) files to JavaScript and renders them
+6. It compiles [`.vue`](#vue) single-file components to JavaScript and renders them
+7. It compiles `.template.html` and `.tmpl.html` as [templates](#templates) and renders them
+8. It [caches on the browser](../cache/#browser-caching) for 60 seconds, but files under
+   - `assets/` and `favicon.ico` are cached for 1 day
+   - `node_modules/` are cached for 10 years
+
+[See the default FileHandler configuration](https://github.com/gramener/gramex/blob/master/gramex/gramex.yaml).
+
+To override this, add a FileHandler called `default:` in your `gramex.yaml`. For example:
+
+```yaml
+url:
+  default:
+    kwargs:
+      index: false                  # Disable indices
+      headers:
+        Cache-Control: max-age=0    # Disable browser caching
+```
+
 ## Default filename
 
 When a FileHandler points to a directory:
@@ -699,3 +727,28 @@ Transform values are dicts that accepts these keys:
 - **function**: The expression to return. Example: `function: mymodule.transform(content, handler)`. `content` has the file contents. `handler` has the FileHandler object
 - **encoding**: The encoding to read the file with, e.g. `utf-8`. If `None` (the default), the file is read as bytes, and the transform `function` MUST accept the content as bytes
 - **headers**: HTTP headers for the response
+
+
+## Configure all FileHandlers
+
+Gramex adds the following kwargs to **all** FileHandlers for security reasons, [ignoring these files](#ignore-files):
+
+1. Any `gramex.yaml` files (`gramex*.yaml`)
+2. Any files beginning with `.` (`.*`)
+3. Any Python files (`.py*`)
+
+To modify this, update `handlers.FileHandler` in your `gramex.yaml`. For example:
+
+```yaml
+handlers:
+  FileHandler:
+    ignore:
+      - gramex*.yaml    # Always ignore gramex config files
+      - ".*"            # Hide dotfiles
+      - "*.py*"         # Hide Python scripts
+      - "*secret*"      # Ignore all secret files
+    allow:
+      - "README.*"      # Always allow README files, even README.secret
+```
+
+[See the default FileHandler configuration](https://github.com/gramener/gramex/blob/master/gramex/gramex.yaml).
