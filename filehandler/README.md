@@ -75,11 +75,11 @@ url:
 
 When a FileHandler points to a directory:
 
-- If `default_filename:` is specified and exists, it renders that file.
+- If `default_filename:` is specified and exists, it renders that file
 - Else, if `index: true`, it [lists files in the directory](#directory-listing)
 - Else, it throws an error
 
-The `default_filename:` can be specified as one or more filenames. For example:
+You can override `default_filename:` to specify one or more filenames. For example:
 
 ```yaml
 url:
