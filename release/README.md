@@ -5,6 +5,7 @@ prefix: Release
 
 ## Release Notes
 
+- [v1.81.0: Distributed logging, schema caching, computed variables](1.81/) <small>3 Jul 2022</small>
 - [v1.80.0: Sentiment analysis, pipelines, API documentation](1.80/) <small>7 Jun 2022</small>
 - [v1.79.0: Multiple default filenames, Relative opens in templates, Distributed OTP](1.79/) <small>3 May 2022</small>
 - [v1.78.0: TypeScript, Time series models, CORS with auth](1.78/) <small>2 Apr 2022</small>

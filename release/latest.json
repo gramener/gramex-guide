@@ -1,6 +1,28 @@
 {
   "releases": [
     {
+      "version": "v1.80.0",
+      "link": "https://gramener.com/gramex/guide/release/1.81/",
+      "title": "Distributed logging, schema caching, computed variables",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.81/#distributed-logging",
+          "title": "Distributed Logging",
+          "description": "LogViewer can aggregate data into a distributed database like MySQL."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.81/#better-table-schema-caching",
+          "title": "Better table schema caching",
+          "description": "`If one instance changes a database table structure, all other instances re-use it."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.81/#better-computed-variables",
+          "title": "Better computed variables",
+          "description": "If a computed variable fails, Gramex uses the default instead of crashing."
+        }
+      ]
+    },
+    {
       "version": "v1.79.0",
       "link": "https://gramener.com/gramex/guide/release/1.79/",
       "title": "Multiple default filenames, Relative opens in templates, Distributed OTP",

@@ -4944,6 +4944,38 @@
       "Statistics": -1
     }
   },
+  "release/1.81": {
+    "": {
+      "Gramex 1.81 release notes": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "better-computed-variables": {
+      "Better computed variables": -1
+    },
+    "better-table-schema-caching": {
+      "Better table schema caching": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "deprecations": {
+      "Deprecations": -1
+    },
+    "distributed-logging": {
+      "Distributed Logging": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "transform-variable-arguments": {
+      "Transform variable arguments": -1
+    }
+  },
   "release/old": {
     "": {
       "Gramex Old Release Notes": -1

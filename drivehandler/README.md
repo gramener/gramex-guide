@@ -322,7 +322,7 @@ url:
       url: $GRAMEXDATA/apps/guide/drive-data/{_0}
 ```
 
-If you uploaded any CSV/XLSX into the [DriveHandler] above, see them at `data/your-file.csv`.
+If you uploaded any CSV/XLSX into the DriveHandler above, see them at `data/your-file.csv`.
 
 
 [drivehandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.DriveHandler
