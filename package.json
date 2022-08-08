@@ -16,7 +16,7 @@
     "vue": "^2.6.14"
   },
   "scripts": {
-    "lint": "markdownlint --ignore node_modules ."
+    "lint": "markdownlint **/*.md"
   },
   "devDependencies": {
     "bootstrap-select": "1.13",

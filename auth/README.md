@@ -1882,6 +1882,12 @@ otp = handler.otp(expire=expiry)  # Create OTP as current user
 
 This creates an `otp` string for the currently logged-in user that expires after 24 hours (or once used, whichever is earlier).
 
+To revoke the OTP, call:
+
+```python
+handler.revoke_otp(otp)
+```
+
 To create an `otp` for a different user, use:
 
 ```python
@@ -1909,6 +1915,12 @@ API keys protect a URL with an access token or key. This is used to:
 user = {id: 'user@example.com'}       # Ensure there's an 'id' key
 expiry = 24 * 60 * 60                 # Expires in 24 hours
 key = handler.apikey(expire=expiry, user=user)  # Create key as specified user
+```
+
+To revoke the API key, call:
+
+```python
+handler.revoke_apikey(key)
 ```
 
 You can add this to a [FunctionHandler](../functionhandler/) or any Python code, and share it with users.

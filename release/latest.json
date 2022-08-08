@@ -1,7 +1,29 @@
 {
   "releases": [
     {
-      "version": "v1.80.0",
+      "version": "v1.82.0",
+      "link": "https://gramener.com/gramex/guide/release/1.82/",
+      "title": "Revoke API keys, set session cookie paths, and Bootstrap 5 support",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.82/#revoke-api-keys-and-otps",
+          "title": "Revoke API keys and OTPs",
+          "description": "Developers can manage and cancel API keys and one time passwords."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.82/#better-table-schema-caching",
+          "title": "Session cookie path",
+          "description": "Gramex apps can restrict cookies to specific paths and reduce cookie leakage."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.82/#bootstrap-5-support-in-g1",
+          "title": "Bootstrap 5 support in G1",
+          "description": "Bootstrap 5 components in G1, like FormHandler work with Bootstrap 4 and Bootstrap 5."
+        }
+      ]
+    },
+    {
+      "version": "v1.81.0",
       "link": "https://gramener.com/gramex/guide/release/1.81/",
       "title": "Distributed logging, schema caching, computed variables",
       "features": [
@@ -13,7 +35,7 @@
         {
           "link": "https://gramener.com/gramex/guide/release/1.81/#better-table-schema-caching",
           "title": "Better table schema caching",
-          "description": "`If one instance changes a database table structure, all other instances re-use it."
+          "description": "If one instance changes a database table structure, all other instances re-use it."
         },
         {
           "link": "https://gramener.com/gramex/guide/release/1.81/#better-computed-variables",

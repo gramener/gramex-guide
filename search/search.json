@@ -4976,6 +4976,32 @@
       "Transform variable arguments": -1
     }
   },
+  "release/1.82": {
+    "": {
+      "Gramex 1.82 release notes": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "bootstrap-5-support-in-g1": {
+      "Bootstrap 5 support in G1": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "revoke-api-keys-and-otps": {
+      "Revoke API keys and OTPs": -1
+    },
+    "session-cookie-path": {
+      "Session cookie path": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    }
+  },
   "release/old": {
     "": {
       "Gramex Old Release Notes": -1

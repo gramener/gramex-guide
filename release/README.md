@@ -5,6 +5,7 @@ prefix: Release
 
 ## Release Notes
 
+- [v1.82.0: Revoke API keys, set session cookie paths, and Bootstrap 5 support](1.82/) <small>2 Aug 2022</small>
 - [v1.81.0: Distributed logging, schema caching, computed variables](1.81/) <small>3 Jul 2022</small>
 - [v1.80.0: Sentiment analysis, pipelines, API documentation](1.80/) <small>7 Jun 2022</small>
 - [v1.79.0: Multiple default filenames, Relative opens in templates, Distributed OTP](1.79/) <small>3 May 2022</small>
