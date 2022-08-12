@@ -372,6 +372,22 @@ See [Common MIME types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics
 After the function executes, users can be redirected via the `redirect:` config
 documented the [redirection configuration](../config/#redirection).
 
+Or, inside the function, use
+[`handler.redirect(url)`](https://www.tornadoweb.org/en/stable/web.html#tornado.web.RequestHandler.redirect)
+to redirect. For example:
+
+```python
+def method(handler):
+    if 'password' in handler.args:
+        handler.redirect('/password-provided')
+    else:
+        handler.redirect('/password-not-provided')
+```
+
+You can pass `permanent=True` to `handler.redirect()`, e.g. `handler.redirect(new_url, permanent=True)`.
+This uses HTTP 301 which browsers and proxies cache, and will ALWAYS redirect to the
+URL without checking with Gramex. Use with care.
+
 ## Streaming output
 
 [Video](https://youtu.be/YoIpychPzSs){.youtube}
