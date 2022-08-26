@@ -49,7 +49,6 @@ The dataset [admission.csv](https://www.dropbox.com/s/9p0510n3bpdn09w/admission.
 
 ![Screenshot](table.png){.img-fluid}
 
-
 Each row is a student. We have data for 500 students. For every student, we know their
 
 - Name
@@ -66,54 +65,25 @@ Each row is a student. We have data for 500 students. For every student, we know
 
 We’ll use the Gramex IDE at [https://gramex.gramener.com](https://gramex.gramener.com/) for this.
 
-### GitHub account
-
-But first, you need a GitHub account.
-
-1. If you don’t have a Github account, sign up at https://github.com/join
-2. If you have a Github account, log in at https://github.com/login
+[Sign into Gramex](https://gramex.gramener.com/) with a Microsoft or Google account. [Create a Google account if required](https://support.google.com/accounts/answer/27441).
 
 ### IDE Tutorial
 
-1. Visit <https://github.com/gramener/building-ml-apps-rapidly>. Click the Fork icon on the top right.
-
-   ![Screenshot](github-star-fork.png){.img-fluid}
-
-2. Click on the address bar. Copy the URL of the forked repo. It will look like `https://github.com/<your-github-id>/building-ml-apps-rapidly`
-
-   ![Screenshot](github-copy-ssh.png){.img-fluid}
-
-3. Visit <https://gramex.gramener.com/>. Click on the "Create new project" button
+1. Visit <https://gramex.gramener.com/>. Click on the "Create new project" button
 
    ![Screenshot](create-new-project.png){.img-fluid}
 
-4. Under "Clone a Repository", paste the URL you copied.
-   Set the project name to "admission". Then click "Clone".
-
-   ![Screenshot](new-project-dialog.png){.img-fluid}
-
-5. You'll now see a message on the top right saying "Please authorize Github". Click on that link.
-
-   ![Screenshot](github-error.png){.img-fluid}
-
-6. You'll see a Github page titled "Authorize Gramex IDE". Click on the green "Authorize jaidevd" at the bottom.
-
-   ![Screenshot](github-auth.png){.img-fluid}
-
-7. You will be redirected back to <https://gramex.gramener.com/>. Now,
-   <br>**REPEAT steps 2 and 3**.
-
-8. The "admission" project is created. Click on it to open the IDE.
+2. Set the project name to "admission". Then click "Create Project". The "admission" project is created. Click on it to open the IDE.
 
    ![Screenshot](project-name.png){.img-fluid}
 
-9. Add an [MLHandler](/mlhandler) component
+3. Add an [MLHandler](/mlhandler) component
 
    ![Screenshot](mlhandler-card.png){.img-fluid}
 
-10. Enter "predict" under the Pattern: as the MLHandler end point URL.
-    Download the dataset `admission.csv` and upload it using the Upload icon.
-    Click on Preview to see the dataset.
+4. Enter "predict" under the Pattern: as the MLHandler end point URL.
+   Download the dataset `admission.csv` and upload it using the Upload icon.
+   Click on Preview to see the dataset.
 
 ![Screenshot](mlhandler-form.png){.img-fluid}
 
@@ -132,15 +102,40 @@ Next,
 
    ![Screenshot](mlhandler-endpoint-card.png){.img-fluid}
 
-8. The URL will look something like this: `https://9286.gramex.gramener.co/predict`. From now on, we’ll refer to it as `/predict`. You need to type out the https://... part by yourself.
-9. Let’s predict the admissions of a few people. Add these query parameters to your URL and see if the "Admitted" field is correct.
-   - Ethan Koch: `/predict?GREScore=337&TOEFLScore=118&UniversityRating=4&SOP=4.5&LOR=4.5&CGPA=9.65&Research=1`
-   - Diana Strong: `/predict?GREScore=324&TOEFLScore=107&UniversityRating=4&SOP=4&LOR=4.5&CGPA=8.87&Research=1`
+The URL will look something like this: `https://1234.gramex.gramener.co/predict`. From now on, we’ll refer to it as `/predict`. You need to type out the `https://1234.gramex.gramener.co/` before the URLs.
+
+You can train the model with other models using the "Pick a Model" dropdown and clicking on "Train".
+
+![Screenshot](mlhandler-models.png){.img-fluid}
+
+Choose "DecisionTreeClassifier" as the final model and click on "Train".
+
+NOTE: You can do the same steps via configuration. Open the "Editor", edit `gramex.yaml` and add this configuration:
+
+```yaml
+  building-ml-apps-predict:
+    pattern: /$YAMLURL/predict
+    handler: MLHandler
+    kwargs:
+      data:
+        url: $YAMLPATH/admission.csv
+      config_dir: $YAMLPATH
+      model:
+        class: LogisticRegression
+        target_col: Admitted
+        exclude: [Name]
+        cats: [Research]
+        nums: [GREScore, TOEFLScore, UniversityRating, SOP, LOR, CGPA]
+```
+
+Let’s predict the admissions of a few people. Add these query parameters to your URL and see if the "Admitted" field is correct.
+
+- Ethan Koch: `/predict?GREScore=337&TOEFLScore=118&UniversityRating=4&SOP=4.5&LOR=4.5&CGPA=9.65&Research=1`
+- Diana Strong: `/predict?GREScore=324&TOEFLScore=107&UniversityRating=4&SOP=4&LOR=4.5&CGPA=8.87&Research=1`
 
 Now let’s explore a student — Darius Michael. He has an excellent GRE score — 340. In fact, that’s the highest score. But Darius did not get admitted. What could he have done differently? Let’s explore.
 
 `/predict?GREScore=340&TOEFLScore=114&UniversityRating=5&SOP=4&LOR=4&CGPA=9.6&Research=1`
-
 
 - Increase his TOEFL score from 114 to 115. Does he get admitted?
 - Increase his SOP from 4 to 4.5. Does he get admitted?
@@ -168,14 +163,12 @@ Let’s now build a web app that uses this data like an API.
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>admission</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.scss">
+  <link rel="stylesheet" href="ui/theme/default.scss">
   <style>
     #result { font-weight: normal; }
   </style>
 </head>
 <body>
-  {% set base = '.' %}
-  {% include template-navbar.html %}
   <div class="container py-4">
     <div class="row">
       <div class="col-sm-6">
@@ -252,6 +245,7 @@ Visit your app by going to the home page and clicking on "Launch app" against th
 
 Now, try out different combinations of marks and see the result.
 
+<!--
 ## Publish your project on GitHub
 
 Now, let’s save your app as repository on Github. You (or anyone) can run it with the Gramex IDE.
@@ -298,6 +292,7 @@ Now, this project is is available on your Github repository. To clone it, anyone
 
    ![Screenshot](clone-repo-dialog.png){.img-fluid}
 
+-->
 
 ## Summarize Learnings
 
@@ -340,5 +335,3 @@ Could you please fill this 1-minute survey:
 
 If you like Gramex, visit [https://github.com/gramener/gramex/](https://github.com/gramener/gramex/)
 and click on `☆ Star` to stay updated with Gramex.
-
-![Screenshot](github-star-fork.png){.img-fluid}
