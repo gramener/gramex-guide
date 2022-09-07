@@ -983,8 +983,13 @@ signup:
   auth DB. E.g., `columns: {age: user_age}` will save the `<input name="age">`
   value in the column `user_age`.
 - `validate: expression(handler, args)`. Runs any expression using `handler`
-  and/or `args` as pre-defined variables. If the result is false-y, raises a HTTP
-  400: Bad Request. The result is passed to the template as an `error` variable.
+  and/or `args` as pre-defined variables.
+  - `expression` should be `None` or False-y for the sign-up to happen
+  - To stop the sign-up (e.g. if the user is from an invalid domain), return an error string.
+    This re-renders the signup template with the variables
+    - `code`: `400` (BAD_REQUEST)
+    - `event`: `"signup-invalid"`
+    - `error`: `"Validation failed: {your-returned-error-message}"`
 
 [signup-template]: http://github.com/gramener/gramex/blob/master/gramex/handlers/signup.template.html
 
