@@ -56,6 +56,11 @@ for this FunctionHandler.
 
 ```yaml
 url:
+  compare:
+    pattern: /$YAMLURL/my-compare-url
+    handler: FunctionHandler
+    kwargs:
+      function: str('Hello world')
   openapi:
     pattern: /$YAMLURL/docs
     handler: OpenAPIHandler
@@ -68,8 +73,9 @@ url:
       servers:
         - url: ..
           description: Gramex OpenAPIHandler demo
-      urls:         # List of url: keys to expose.
-        - compare   # Use '*' to match any string
+      urls:         # List of url: keys (not pattern) to expose.
+        - compare   # "compare" is the key under url:, not the pattern
+        - '*'       # Use '*' to match any string
 ```
 
 ::: example href=docs?indent=2 source=https://github.com/gramener/gramex-guide/tree/master/openapihandler/gramex.yaml
