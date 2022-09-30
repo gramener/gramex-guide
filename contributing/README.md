@@ -218,7 +218,7 @@ anaconda upload D:/path/to/conda-bld/win-64/gramex-1.<version>.tar.bz2
 # Now you can delete this Gramex folder and restore your Gramex via pip install gramex
 
 # Deploy on docker: https://hub.docker.com/r/gramener/gramex/
-bash task pushdocker    # Log in as sanand0 / pratapvardhan
+VERSION=1.x.x bash task pushdocker    # Log in as sanand0 / pratapvardhan
 ```
 
 Note: to run `make conda` on Linux, create a new Docker instance via
