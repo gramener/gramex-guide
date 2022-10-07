@@ -166,10 +166,10 @@ be fed into:
   128GB and 800GB. This can be housed on a single large server, or spread across
   multiple servers. However, there are two reasons why these are typically
   spread out:
-    1. **Risk mitigation.** If one server fails, the other applications are
-       still live.
-    2. **Compartmentalization.** You may not want the administrators of one
-       application to inadvertently access data from another.
+  1. **Risk mitigation.** If one server fails, the other applications are
+     still live.
+  2. **Compartmentalization.** You may not want the administrators of one
+     application to inadvertently access data from another.
 
 We’ve often found that our clients use **one server per department** that
 consumes these visualizations.
@@ -318,7 +318,6 @@ and the custom Solution.
 5. Custom packages are upgraded and managed via versioning of .msi file.
 6. Changing server resources will not have any impact as long as there it does not result in downtime of the solution.
 7. When there is a server downtime the solution will not be available for use.
-
 
 ## Security
 
@@ -521,7 +520,7 @@ SMS verification can be customized if required
 Yes. Gramex stores user login information against a secure session cookie with a
 configurable expiration time.
 
-### How does Gramex restrict access based on business purpose? Does Gramex support authorization control for functions or services?**
+### How does Gramex restrict access based on business purpose? Does Gramex support authorization control for functions or services?\*\*
 
 Yes. Gramex controls access to all resources via a configuration editable by the
 administrator. The configuration defines the conditions under which a user can
@@ -542,7 +541,9 @@ sales.
 Gramex is used to build applications that allow any kind of role-based access
 control mechanisms to be implemented. There are no pre-defined roles.
 
-### How are Gramex applications audited for security compliance?
+### How are Gramex and Gramex applications audited for security compliance?
+
+[The security page explains how Gramex is audited for security.](../security/)
 
 Gramener runs industry standard security audit tools such as OWASP Zed Attack
 Proxy on applications before deployment. Clients may run their security tests on
@@ -560,3 +561,63 @@ Gramex uses open source components that are licensed under one of these licenses
 - [Apache software license](https://opensource.org/licenses/Apache-2.0)
 
 The [full list of libraries is here](../license/thirdparty.md).
+
+## Development
+
+### Who develops Gramex?
+
+Gramex is developed by the Gramener Platform Team, informally called the "CTO Team".
+The majority of the [contributions](https://github.com/gramener/gramex/graphs/contributors)
+to Gramex are from this team.
+
+### What does the Gramex team work on?
+
+1. **Security**: Updating dependencies and fixing vulnerabilities quickly. For example:
+   - In Apr 2022, the popular JavaScript date library [moment](https://github.com/moment/moment/)
+     [fixed a bug](https://github.com/moment/moment/commit/4211bfc8f15746be4019bba557e29a7ba83d54c5)
+     that allowed [access to ANY file on the server](https://github.com/moment/moment/security/advisories/GHSA-8hfj-j24r-96c4).
+     In May 2022, [Gramex 1.79.0 upgraded moment](https://github.com/gramener/gramex/commit/7d584db611a48cea66abdcf27924f84f2abedb98#diff-96b6586dcc69ea24245aedcca8b56354c650b987a4a8015e22b6e6961bc88ede)
+     and absorbed their fix.
+   - In Feb 2022, we found Gramex cannot log out users when they close the browser.
+     We [fixed it](https://github.com/gramener/gramex/commit/3f88065f) the same month by
+     enabling [`session_expiry.values.session: false`](../auth/#session-security)
+     to close the session when the browser closes.
+2. **Dependencies**. Keeping code working even when dependencies change. For example:
+   - [`sqlalchemy 1.4`](https://pypi.org/project/SQLAlchemy/1.4.0/),
+     changed the way you [check if a table exists in a database](https://docs.sqlalchemy.org/en/14/core/reflection.html#sqlalchemy.engine.reflection.Inspector.has_table).
+     For backward compatibility, Gramex added code to
+     [handle old and new versions](https://github.com/gramener/gramex/blob/17dc95cf07f271fed2fb9efa8bc60803c208c092/gramex/data.py#L421-L426).
+   - [`python-pptx 0.6.20`](https://pypi.org/project/python-pptx/0.6.20),
+     changed the you you [list objects in a slide](https://github.com/scanny/python-pptx/issues/754#issuecomment-942568880).
+     To avoid breaking changes,
+     [Gramex pins the version to `0.6.19`](https://github.com/gramener/gramex/blob/17dc95cf07f271fed2fb9efa8bc60803c208c092/gramex/release.json#L60).
+3. **Bug Fixes**. Making sure code works as expected. For example:
+   - [FormHandler](../formhandler/) supports any database with a SQLAlchemy engine.
+     But it had an [explicit check to ignore unknown engines](https://github.com/gramener/gramex/issues/514),
+     like snowflake. [Gramex 1.78](../release/1.78/#bug-fixes)
+     fixed it, supporting [several new databases](../formhandler/#supported-databases).
+   - The [Gramex Windows Service](../deploy/#windows-service)
+     [did not stop](https://github.com/gramener/gramex/issues/486)
+     due to incorrect thread management.
+     [Gramex 1.75](../release/1.75/#gramex-windows-service-shutdown-is-graceful)
+     fixed this by [stopping Gramex from the main thread](https://github.com/gramener/gramex/commit/a1fe3eb7b45e7289ce49cc6225e989d862a301ed).
+4. **Adding features**. Helping developers by standardizing commonly used code.
+   - When running on multiple servers, each instance would log events to a local SQLite database.
+     [Developers needed a single distributed database](https://github.com/gramener/gramex/issues/545).
+     We releases this in [Gramex 1.81](../release/1.81/#distributed-logging).
+   - [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) is a complex
+     specification that lets one app share data with another via the browser securely.
+     Implementing the right HTTP headers securely was [complex](https://github.com/gramener/gramex/issues/513).
+     [Gramex 1.78](https://gramener.com/gramex/guide/release/1.78/#cors-with-auth) fixed this by
+     [abstracting that complexity](https://github.com/gramener/gramex/commit/56e6aa37a8ee7309112a908af1327cc12f472697)
+     and exposing a single configuration: [`cors: true`](../deploy/#cors)
+5. **Supporting developers**. Answering questions to speed up others' work. For example:
+   - Sandeep asked [How to create or alter a DB schema dynamically](https://stackoverflow.com/q/71792397/100904).
+     [Ans: use `gramex.data.alter()`](https://stackoverflow.com/a/71792625/100904)
+   - Shraddheya asked [Can Gramex scheduler take dynamic schedule values from a file or database?](https://stackoverflow.com/q/73850150/100904).
+     [Ans: use schedules running every minute](https://stackoverflow.com/a/73850365/100904)
+
+### How is Gramex funded?
+
+Gramex is funded by the [license fee on the Enterprise Edition](https://gramener.com/gramex/) and
+support fees.
