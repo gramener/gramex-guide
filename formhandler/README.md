@@ -752,7 +752,7 @@ url:
       url: flags.csv
       prepare: args.update(Cross=args.pop('c', []))
       # Another example:
-      # prepare: my_module.calc(args, handler)
+      # prepare: mymodule.calc(args, handler)
 ```
 
 This `prepare:` method or expression replaces the `?c=` with `?Cross=`. So
@@ -791,7 +791,7 @@ url:
       url: flags.csv
       function: data.groupby('Continent').sum().reset_index()
       # Another example:
-      # function: my_module.calc(data, handler.args)
+      # function: mymodule.calc(data, handler.args)
 ```
 
 This runs the following steps:
@@ -898,7 +898,7 @@ url:
 
 ## FormHandler query
 
-You may also use a `query:` to select data from an SQLAlchemy databases. For example:
+Use a `query:` to run a SQL SELECT query on an SQLAlchemy databases. For example:
 
 ```yaml
 url:
@@ -916,62 +916,47 @@ on top of this query. For example:
 - [query](query?_format=html) returns data grouped by Continent
 - [query?num>=20](query?num>=20&_format=html) ► continents where number of countries > 20
 
-This uses [gramex.cache.query](../cache/#query-caching) behind the scenes. You
-can cache the query based on a smaller query or table name by specifying a
-`table:` parameter. For example:
+Queries bind URL arguments as parameters. `:city` will be replaced by the value of `?city=`. For example:
 
 ```yaml
-      table: 'SELECT MAX(date) FROM source'
-      query: 'SELECT city, SUM(sales) FROM source GROUP BY city'
+      query: SELECT * FROM sales WHERE city = :city
 ```
 
-... will run `query:` only if the result of running `table:` changes. You can
-also specify `table: source`. This attempts to automatically check if the table
-has changed.
+For `?city=New York` it returns all rows where `city = "New York"`.
+This is [SQL-injection safe](#preventing-sql-injection).
 
-The `table:` parameter also supports query substitutions like `query:`.
-
-`state:` parameter can be used to pass a function which checks if the data has changed. This is
-evaluated every time the FormHandler is accessed. If the returned value changes, the query is run.
-Else, the previously cached query value is returned.
-
-For example:
+To specific a default city, use:
 
 ```yaml
-    kwargs:
-      query: ...    # Some long-running query
-      # Use any ONE such state: in your gramex.yaml
-      # 1. Re-run query once per day
-      state: datetime.date.today()      # Run once per day
-      # OR: 2. Re-run when the number of records in `table` changes
-      state: "gramex.data.filter(
-                'sqlite:///my.db',
-                query='SELECT COUNT(*) FROM table')"
-      # OR: 3. Re-run when the latest `date` in `table` changes
-      state: "gramex.data.filter(
-                'sqlite:///my.db',
-                query='SELECT MAX(date) FROM table')"
-      # OR: 4. Re-run when any utils.cache_func()'s result changes
-      state: utils.cache_func(args, handler)
+      query: SELECT * from sales where city = :city
+      default:
+        city: New York
+```
+
+To specify parameters programmatically, create a [prepare function](#formhandler-prepare). For example:
+
+```yaml
+      query: SELECT * from sales where city = :city
+      prepare: mymodule.set_city(handler, args)
+```
+
+```python
+def set_city(handler, args):
+    args['city'] = find_city_for(handler.current_user)
 ```
 
 **WARNING**:
 
 1. `query` loads the full result into memory. So keep the result small.
-2. `query` ignores URL query parameters with spaces. `?group=city name` or
-   `?group=city+name` **WON'T** select the `"city name"` column. It will fail --
-   to avoid [SQL injection](https://en.wikipedia.org/wiki/SQL_injection) attack.
-3. The `query` is passed as-is to the DB driver. Escape strings based on the
-   driver. E.g. `... WHERE col LIKE '%.com'` should be `... WHERE col LIKE
-   '%%.com'` for [pymysql](http://pymysql.readthedocs.io/en/latest/), since `%`
-   is treated as a formatting string.
-4. Use the correct SQL flavour. E.g. SQL Server, uses `SELECT TOP 10 FROM table`
+2. Don't use [`{}` parameter substitution](#formhandler-parameters) for  `query`.
+   Values with spaces won't work, to avoid [SQL injection](https://en.wikipedia.org/wiki/SQL_injection) attack.
+   Use `:<name>` as described above.
+3. Use the correct SQL flavour. E.g. SQL Server uses `SELECT TOP 10 FROM table`
    instead of `SELECT * FROM table LIMIT 10`.
 
 ## FormHandler queryfile
 
-Instead of entering a `query:` directly, you can point to an SQL file using
-``queryfile:``
+For long queries, you can point to an SQL file using `queryfile:` instead of `query:`.
 
 ```yaml
 url:
@@ -988,28 +973,23 @@ For example:
 - [queryfile](queryfile?_format=html) returns data grouped by Continent
 - [queryfile?num>=20](queryfile?num>=20&_format=html) ► continents where number of countries > 20
 
-This is **exactly the same as [FormHandler queries](#formhandler-query)** with
-the contents of `query.sql` inserted as a `query:` statement. This is best for
-long queries that need to be formatted clearly for readability.
+The loaded query is treated **exactly like [FormHandler queries](#formhandler-query)**.
 
 If both `query:` and `queryfile:` are present, `queryfile:` takes priority.
 
 ## FormHandler queryfunction
 
-To construct very complex queries that depend on the URL query parameters, use
-`queryfunction:` instead of `query:`. This can be any expression that accepts
-`args` as a dict of lists, and returns a query string. The query string is
-processed like a [query:](#formhandler-query) statement. For example:
+For dynamic queries, use `queryfunction:` instead of `query:`.
+This can be any expression that returns a `query` string. For example:
 
 ```yaml
       queryfunction: mymodule.sales_query(args)
 ```
 
-... can use a function like this:
-
 ```python
+# mymodule.py
 def sales_query(args):
-    cities = args.get('ct', [])
+    cities = args.get('city', [])
     if len(cities) > 0:
         vals = ', '.join("'%s'" % pymysql.escape_string(v) for v in cities)
         return 'SELECT * FROM sales WHERE city IN (%s)' % vals
@@ -1017,20 +997,64 @@ def sales_query(args):
         return 'SELECT * FROM sales'
 ```
 
-- `?ct=Paris&ct=Delhi` returns `SELECT * FROM sales WHERE city in ('Paris','Delhi')`.
+- `?city=Rome&city=Oslo` returns `SELECT * FROM sales WHERE city in ('Rome', 'Oslo')`.
 - `?` returns `SELECT * FROM sales`
 
-The resulting query is treated *exactly* like the `query:` statement. So
-further formatting and argument substitution still happens.
+The returned query is treated **exactly like [FormHandler queries](#formhandler-query)**.
 
-`queryfunction(data, key, handler)` is the function signature. You can use:
+The `queryfunction:` expression can use these 3 variables:
 
-- `args`: (dict) URL query parameters as lists of strings. E.g. `?x=1&y=2` becomes `{'x': ['1'], 'y': ['2']}`. `args` has [default values](#formhandler-defaults)
-merged in
+- `args`: (dict) URL query parameters. `?x=1&y=2` becomes `{'x': ['1'], 'y': ['2']}`. `args` supports [default values](#formhandler-defaults)
 - `key`: (str) Name of dataset if you have [multiple datasets](#formhandler-multiple-datasets). Defaults to `"data"`
-- `handler`: FormHandler instance
+- `handler`: [FormHandler](../handlers/) instance. Useful to get `handler.current_user`, etc.
 
-### Preventing SQL injection
+## FormHandler query caching
+
+`state:` can be used to cache queries. `state:` can be a
+
+- a table name: cache query unless last updated time of table changes, using:
+  - MySQL/Snowflake [`information_schema.tables`](https://dev.mysql.com/doc/refman/8.0/en/information-schema-tables-table.html)
+  - PostgreSQL [`pg_stat_all_tables`](https://www.postgresql.org/docs/9.6/static/monitoring-stats.html)
+  - SQL Server `sys.dm_db_index_usage_stats`
+  - else don't cache the query
+- a list of table names: cache query unless last updated time of **any** table changes
+- any Python expression: cache query unless expression value is different from previous call
+
+If the tables or expresion returns a different value, the query is re-run.
+Else, it returns previously cached query values.
+
+For example:
+
+```yaml
+    kwargs:
+      query: SELECT * from sales, city WHERE sales.city = city.city
+
+      # 1. Re-run if sales has changed. Uses DB-specific logic.
+      # For example, it checks information_schema.tables on MySQL.
+      state: sales
+
+      # OR: 2. Re-run if sales/city have changed. Uses DB-specific logic.
+      # For example, it checks information_schema.tables on MySQL.
+      state: [sales, city]
+
+      # OR: 3. Re-run query once per day
+      state: datetime.date.today()      # Run once per day
+
+      # OR: 4. Re-run when the number of records in `table` changes
+      state: "gramex.data.filter(
+                'sqlite:///my.db',
+                query='SELECT COUNT(*) FROM table')"
+
+      # OR: 5. Re-run when the latest `date` in `table` changes
+      state: "gramex.data.filter(
+                'sqlite:///my.db',
+                query='SELECT MAX(date) FROM table')"
+
+      # OR: 6. Re-run when any utils.cache_func()'s result changes
+      state: utils.cache_func(args, handler)
+```
+
+## Preventing SQL injection
 
 `queryfunction:` lets you create custom database queries based on user input.
 Gramex cannot ensure that the returned query is safe to execute. To avoid this:
@@ -1134,9 +1158,8 @@ For security, there are 2 constraints:
 
 - File URLs should not go outside the specified directory
   (e.g. using `..` or `/`). Sub-directories are fine
-- Values for arguments (e.g. `{file}`) cannot contain spaces. But use `:val` instead of
-  `{val}` inside [`query:`](#formhandler-query) for values (not column/table names, etc). This
-  allows spaces, and is SQL-injection safe.
+- Values cannot contain spaces. Use `:val` instead of `{val}` inside [`query:`](#formhandler-query).
+  This allows spaces, and [prevents SQL-injection](#preventing-sql-injection).
 
 ## FormHandler defaults
 
@@ -1159,11 +1182,11 @@ url:
 ## FormHandler validation
 
 The [prepare](#formhandler-prepare) function can raise a HTTPError in case of
-invalid inputs. For example, add a `prepare: my_module.validate(args, handler)`
+invalid inputs. For example, add a `prepare: mymodule.validate(args, handler)`
 and use this `validate()` function:
 
 ```python
-# my_module.py
+# mymodule.py
 from tornado.web import HTTPError
 from gramex.http import BAD_REQUEST
 

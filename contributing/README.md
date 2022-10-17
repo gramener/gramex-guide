@@ -198,7 +198,7 @@ Then run these deployment steps on the Gramex repo:
 
 ```bash
 # Deploy docs on https://gramener.com/gramex/guide/api/
-bash task pushdocs
+bash task docs pushdocs
 
 # Deploy on pypi: https://pypi.python.org/pypi/gramex
 bash task pushpypi    # Log in as gramener

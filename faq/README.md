@@ -588,7 +588,7 @@ to Gramex are from this team.
      For backward compatibility, Gramex added code to
      [handle old and new versions](https://github.com/gramener/gramex/blob/17dc95cf07f271fed2fb9efa8bc60803c208c092/gramex/data.py#L421-L426).
    - [`python-pptx 0.6.20`](https://pypi.org/project/python-pptx/0.6.20),
-     changed the you you [list objects in a slide](https://github.com/scanny/python-pptx/issues/754#issuecomment-942568880).
+     changed the way you [list objects in a slide](https://github.com/scanny/python-pptx/issues/754#issuecomment-942568880).
      To avoid breaking changes,
      [Gramex pins the version to `0.6.19`](https://github.com/gramener/gramex/blob/17dc95cf07f271fed2fb9efa8bc60803c208c092/gramex/release.json#L60).
 3. **Bug Fixes**. Making sure code works as expected. For example:
@@ -602,20 +602,20 @@ to Gramex are from this team.
      [Gramex 1.75](../release/1.75/#gramex-windows-service-shutdown-is-graceful)
      fixed this by [stopping Gramex from the main thread](https://github.com/gramener/gramex/commit/a1fe3eb7b45e7289ce49cc6225e989d862a301ed).
 4. **Adding features**. Helping developers by standardizing commonly used code.
-   - When running on multiple servers, each instance would log events to a local SQLite database.
+   - Gramex logged events to a local SQLite database.
      [Developers needed a single distributed database](https://github.com/gramener/gramex/issues/545).
-     We releases this in [Gramex 1.81](../release/1.81/#distributed-logging).
+     We released this in [Gramex 1.81](../release/1.81/#distributed-logging).
    - [Cross-Origin Resource Sharing](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) is a complex
-     specification that lets one app share data with another via the browser securely.
-     Implementing the right HTTP headers securely was [complex](https://github.com/gramener/gramex/issues/513).
+     specification to securely share data across web apps via the browser.
+     Getting the HTTP headers right was [complex](https://github.com/gramener/gramex/issues/513).
      [Gramex 1.78](https://gramener.com/gramex/guide/release/1.78/#cors-with-auth) fixed this by
      [abstracting that complexity](https://github.com/gramener/gramex/commit/56e6aa37a8ee7309112a908af1327cc12f472697)
-     and exposing a single configuration: [`cors: true`](../deploy/#cors)
+     and exposing a single secure-by-default configuration: [`cors: true`](../deploy/#cors)
 5. **Supporting developers**. Answering questions to speed up others' work. For example:
    - Sandeep asked [How to create or alter a DB schema dynamically](https://stackoverflow.com/q/71792397/100904).
-     [Ans: use `gramex.data.alter()`](https://stackoverflow.com/a/71792625/100904)
-   - Shraddheya asked [Can Gramex scheduler take dynamic schedule values from a file or database?](https://stackoverflow.com/q/73850150/100904).
-     [Ans: use schedules running every minute](https://stackoverflow.com/a/73850365/100904)
+     **ANS**: [use `gramex.data.alter()`](https://stackoverflow.com/a/71792625/100904)
+   - Shraddheya asked [Can Gramex scheduler take dynamic schedule values from a file or database?](https://stackoverflow.com/q/73850150/100904)
+     **ANS**: [use schedules running every minute](https://stackoverflow.com/a/73850365/100904)
 
 ### How is Gramex funded?
 
