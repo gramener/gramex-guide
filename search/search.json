@@ -2463,6 +2463,11 @@
       "Time series forecasting": -1
     }
   },
+  "mlpredictor": {
+    "": {
+      "MLPredictor runs models": -1
+    }
+  },
   "modelhandler": {
     "": {
       "ModelHandler provides ML APIs": -1
@@ -5050,6 +5055,29 @@
     },
     "slim-docker-build": {
       "Slim Docker build": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    }
+  },
+  "release/1.84": {
+    "": {
+      "Gramex 1.84 release notes": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "deprecate-old-ui-libraries": {
+      "Deprecate old UI libraries": -1
+    },
+    "formhandler-date-comparison": {
+      "FormHandler date comparison": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "mlpredictor": {
+      "MLPredictor": -1
     },
     "statistics": {
       "Statistics": -1

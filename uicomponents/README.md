@@ -104,6 +104,8 @@ similarly for `accent2`.
 
 ## Libraries
 
+**UI Libraries are deprecated** since [Gramex 1.84](../release/1.84/) and will be removed in [Gramex 1.86](../release/1.86/).
+
 The UI component library ships with commonly used [UI libraries](https://www.npmjs.com/).
 
 ::: example href="libraries" source="../ui/"

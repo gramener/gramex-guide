@@ -5,6 +5,7 @@ prefix: Release
 
 ## Release Notes
 
+- [v1.84.0: ML Predictor, FormHandler date comparisons, Deprecate old UI libraries](1.84/) <small>2 Oct 2022</small>
 - [v1.83.0: Named Entity Recognition, distributed OTPs, slim Docker build](1.83/) <small>19 Sep 2022</small>
 - [v1.82.0: Revoke API keys, set session cookie paths, and Bootstrap 5 support](1.82/) <small>2 Aug 2022</small>
 - [v1.81.0: Distributed logging, schema caching, computed variables](1.81/) <small>3 Jul 2022</small>
