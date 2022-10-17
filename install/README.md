@@ -14,58 +14,12 @@ You can try Gramex without installing using the [Gramex IDE](https://gramex.gram
   <br><small>(Log in with any Google account)</small>
 </a>
 
-There are 4 ways to install or upgrading the Gramex Community Edition on your system.
+There are 4 ways to install the Gramex Community Edition.
 
-1. [**Conda**](#conda-install) (**RECOMMENDED**). Best for beginners and Python developers
-2. [**Docker**](#docker-install). Best to try out new versions, or to deploy apps
-3. [**Offline**](#offline-install). Best for machines without an Internet connection
-4. [**Pip**](#pip-install). Best for people contributing to Gramex
-
-## Conda install
-
-Install [Anaconda3-2019.07][anaconda]. (Gramex does not yet work with Python 3.8. So avoid later versions). Here are downloads for:
-
-- [Windows 64-bit](https://repo.anaconda.com/archive/Anaconda3-2019.07-Windows-x86_64.exe)
-- [Windows 32-bit](https://repo.anaconda.com/archive/Anaconda3-2019.07-Windows-x86.exe)
-- [MacOSX](https://repo.anaconda.com/archive/Anaconda3-2019.07-MacOSX-x86_64.pkg)
-- [Linux 64-bit](https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh)
-
-To install [gramex](https://anaconda.org/gramener/gramex),
-type this in your Anaconda Prompt / Command Prompt / shell:
-
-```bash
-conda create -y --name gramex python=3.7            # Create a new environment
-conda activate gramex                               # Activate it
-conda install -y -c conda-forge -c gramener gramex  # Install Gramex
-```
-
-This is what your screen might look like when installing:
-
-<asciinema-player src="gramex-conda.json" cols="100" rows="20" idle-time-limit="0.5" font-size="" loop="1"></asciinema-player>
-
-Now you can [Run your first app](#run-a-gramex-app).
-
-### Upgrade Gramex via conda
-
-To upgrade Gramex, run:
-
-```bash
-conda update -c conda-forge -c gramener gramex
-```
-
-### Uninstall Gramex via conda
-
-To remove the entire Gramex environment, run:
-
-```bash
-conda env remove -n gramex
-```
-
-To remove just the Gramex package, run:
-
-```bash
-conda uninstall gramex
-```
+1. [**Docker**](#docker-install). Best to try out new versions, or to deploy apps
+2. [**Pip**](#pip-install). Best for people contributing to Gramex
+3. [**Conda**](#conda-install) (**RECOMMENDED**). Best for beginners and Python developers
+4. [**Offline**](#offline-install). Best for machines without an Internet connection
 
 
 ## Docker install
@@ -178,16 +132,59 @@ git clone https://github.com/gramener/gramex.git
 pip install --verbose -e gramex
 ```
 
-[anaconda]: https://repo.anaconda.com/archive/
-[conda-proxy]: https://conda.io/docs/user-guide/configuration/use-winxp-with-proxy.html
-[nodejs]: https://nodejs.org/en/download/
-
 ### Uninstall Gramex via pip
 
 To remove the Gramex package, run:
 
 ```bash
 pip uninstall gramex
+```
+
+
+## Conda install
+
+Install [Anaconda3-2019.07][anaconda]. (Gramex does not yet work with Python 3.8. So avoid later versions). Here are downloads for:
+
+- [Windows 64-bit](https://repo.anaconda.com/archive/Anaconda3-2019.07-Windows-x86_64.exe)
+- [Windows 32-bit](https://repo.anaconda.com/archive/Anaconda3-2019.07-Windows-x86.exe)
+- [MacOSX](https://repo.anaconda.com/archive/Anaconda3-2019.07-MacOSX-x86_64.pkg)
+- [Linux 64-bit](https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh)
+
+To install [gramex](https://anaconda.org/gramener/gramex),
+type this in your Anaconda Prompt / Command Prompt / shell:
+
+```bash
+conda create -y --name gramex python=3.7            # Create a new environment
+conda activate gramex                               # Activate it
+conda install -y -c conda-forge -c gramener gramex  # Install Gramex
+```
+
+This is what your screen might look like when installing:
+
+<asciinema-player src="gramex-conda.json" cols="100" rows="20" idle-time-limit="0.5" font-size="" loop="1"></asciinema-player>
+
+Now you can [Run your first app](#run-a-gramex-app).
+
+### Upgrade Gramex via conda
+
+To upgrade Gramex, run:
+
+```bash
+conda update -c conda-forge -c gramener gramex
+```
+
+### Uninstall Gramex via conda
+
+To remove the entire Gramex environment, run:
+
+```bash
+conda env remove -n gramex
+```
+
+To remove just the Gramex package, run:
+
+```bash
+conda uninstall gramex
 ```
 
 
@@ -428,3 +425,7 @@ Install [`Gramex Snippets` extension](https://marketplace.visualstudio.com/items
 
 
 <script src="../node_modules/asciinema-player/resources/public/js/asciinema-player.js"></script>
+
+[anaconda]: https://repo.anaconda.com/archive/
+[conda-proxy]: https://conda.io/docs/user-guide/configuration/use-winxp-with-proxy.html
+[nodejs]: https://nodejs.org/en/download/
