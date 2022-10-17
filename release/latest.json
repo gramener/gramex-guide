@@ -1,6 +1,28 @@
 {
   "releases": [
     {
+      "version": "v1.83.0",
+      "link": "https://gramener.com/gramex/guide/release/1.83/",
+      "title": "Named Entity Recognition, distributed OTPs, slim Docker build",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.83/#named-entity-recognition",
+          "title": "Named Entity Recognition",
+          "description": "Infer names, locations, etc from any given text as an API."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.83/#distributed-otp-and-api-keys",
+          "title": "Distributed OTP and API keys",
+          "description": "OTPs and API keys can be stored in a remote database and shared across Gramex servers"
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.83/#slim-docker-build",
+          "title": "Slim Docker build",
+          "description": "The gramener/gramex-base image provides a Python-only build at half the size"
+        }
+      ]
+    },
+    {
       "version": "v1.82.0",
       "link": "https://gramener.com/gramex/guide/release/1.82/",
       "title": "Revoke API keys, set session cookie paths, and Bootstrap 5 support",

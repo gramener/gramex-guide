@@ -164,7 +164,6 @@ In [gramex-guide][gramex-guide]:
 - In `release/1.xx/README.md` -- add guide release notes.
   - Run `bash task stats` for code size stats. Take coverage stats from Travis
 - In `release/latest.json` -- add latest release notes.
-- Run `npm run lint` and fix any Markdown issues
 - Run `python search/search.py` to update search index
 - Run `node search/searchindex.js` to update search index
 

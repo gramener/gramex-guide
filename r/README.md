@@ -207,7 +207,7 @@ def plot_async(handler):
 
 ## RMarkdown
 
-**RMarkdown is deprecated** since [Gramex 1.81](../release/1.81/) and will be removed in [Gramex 1.83](../release/1.83/).
+**RMarkdown is deprecated** since [Gramex 1.81](../release/1.81/) and removed in [Gramex 1.83](../release/1.83/).
 
 Gramex renders RMarkdown files as HTML outputs using
 [`FileHandler`](../filehandler/#transforming-content)

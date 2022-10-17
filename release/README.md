@@ -5,6 +5,7 @@ prefix: Release
 
 ## Release Notes
 
+- [v1.83.0: Named Entity Recognition, distributed OTPs, slim Docker build](1.83/) <small>19 Sep 2022</small>
 - [v1.82.0: Revoke API keys, set session cookie paths, and Bootstrap 5 support](1.82/) <small>2 Aug 2022</small>
 - [v1.81.0: Distributed logging, schema caching, computed variables](1.81/) <small>3 Jul 2022</small>
 - [v1.80.0: Sentiment analysis, pipelines, API documentation](1.80/) <small>7 Jun 2022</small>

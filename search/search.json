@@ -1495,9 +1495,13 @@
     "list-files": {
       "List files": -1
     },
-    "process-files": {
-      "Process files": -1
+    "post-process-uploads": {
+      "Post-process uploads": -1
     },
+    "pre-process-uploads": {
+      "Pre-process uploads": -1
+    },
+    "process-files": {},
     "tags": {
       "Tags": -1
     },
@@ -1594,6 +1598,9 @@
     "describe-the-session-management-approach": {
       "Describe the session management approach": -1
     },
+    "development": {
+      "Development": -1
+    },
     "does-gramex-enforce-enabling-ssl-on-landing-pages-that-have-authentication-function": {
       "Does Gramex enforce enabling SSL on landing pages that have authentication function?": -1
     },
@@ -1621,9 +1628,10 @@
     "gramex-deployment-manual-windows-server": {
       "Gramex Deployment Manual - Windows Server": -1
     },
-    "how-are-gramex-applications-audited-for-security-compliance": {
-      "How are Gramex applications audited for security compliance?": -1
+    "how-are-gramex-and-gramex-applications-audited-for-security-compliance": {
+      "How are Gramex and Gramex applications audited for security compliance?": -1
     },
+    "how-are-gramex-applications-audited-for-security-compliance": {},
     "how-are-gramex-applications-deployed": {
       "How are Gramex applications deployed?": -1
     },
@@ -1667,13 +1675,16 @@
       "How does Gramex manage Digital certificates and their authentication?": -1
     },
     "how-does-gramex-restrict-access-based-on-business-purpose-does-gramex-support-authorization-control-for-functions-or-services": {
-      "How does Gramex restrict access based on business purpose? Does Gramex support authorization control for functions or services?**": -1
+      "How does Gramex restrict access based on business purpose? Does Gramex support authorization control for functions or services?\u000242\u0003\u000242\u0003": -1
     },
     "how-does-gramex-transform-data": {
       "How does Gramex transform data?": -1
     },
     "how-is-data-backed-up": {
       "How is data backed up?": -1
+    },
+    "how-is-gramex-funded": {
+      "How is Gramex funded?": -1
     },
     "how-is-the-gramex-source-code-maintained-and-updated": {
       "How is the Gramex source code maintained and updated?": -1
@@ -1708,6 +1719,9 @@
     "what-does-the-gramener-architecture-look-like": {
       "What does the Gramener Architecture look like?": -1
     },
+    "what-does-the-gramex-team-work-on": {
+      "What does the Gramex team work on?": -1
+    },
     "what-environment-is-required-for-gramex-applications": {
       "What environment is required for Gramex applications?": -1
     },
@@ -1728,6 +1742,9 @@
     },
     "where-does-it-fit-in-my-enterprises-architecture": {
       "Where does it fit in my enterprise\u2019s architecture?": -1
+    },
+    "who-develops-gramex": {
+      "Who develops Gramex?": -1
     }
   },
   "filehandler": {
@@ -1888,6 +1905,9 @@
     "formhandler-query": {
       "FormHandler query": -1
     },
+    "formhandler-query-caching": {
+      "FormHandler query caching": -1
+    },
     "formhandler-queryfile": {
       "FormHandler queryfile": -1
     },
@@ -1915,8 +1935,12 @@
     "matrix-plots": {
       "Matrix plots": -1
     },
-    "my_modulepy": {
-      "my_module.py": -1
+    "my_modulepy": {},
+    "mymodulepy": {
+      "mymodule.py": -1
+    },
+    "mymodulepy_1": {
+      "mymodule.py": -1
     },
     "parameter-substitution": {
       "Parameter Substitution": -1
@@ -5002,6 +5026,35 @@
       "Statistics": -1
     }
   },
+  "release/1.83": {
+    "": {
+      "Gramex 1.83 release notes": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "distributed-otp-and-api-keys": {
+      "Distributed OTP and API keys": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "named-entity-recognition": {
+      "Named Entity Recognition": -1
+    },
+    "rmarkdown-is-removed": {
+      "RMarkdown is removed": -1
+    },
+    "slim-docker-build": {
+      "Slim Docker build": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    }
+  },
   "release/old": {
     "": {
       "Gramex Old Release Notes": -1
@@ -6340,9 +6393,7 @@
     "explore-the-data": {
       "Explore the data": -1
     },
-    "github-account": {
-      "GitHub account": -1
-    },
+    "github-account": {},
     "ide-tutorial": {
       "IDE Tutorial": -1
     },
@@ -6355,9 +6406,7 @@
     "overview": {
       "Overview": -1
     },
-    "publish-your-project-on-github": {
-      "Publish your project on GitHub": -1
-    },
+    "publish-your-project-on-github": {},
     "share-feedback": {
       "Share feedback": -1
     },
