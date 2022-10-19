@@ -607,12 +607,18 @@ url:
 
 [xsrf]: http://www.tornadoweb.org/en/stable/guide/security.html#cross-site-request-forgery-protection
 
-**When using AJAX**, no XSRF token is required. Add an `X-Requested-With: XMLHttpRequest` header to bypass the check.
+**When using AJAX**, **v1.85** onwards, no XSRF token is required, because Gramex checks for this automatically.
 
-- If you use XMLHttpRequest, modern browsers automatically send an `X-Requested-With: XMLHttpRequest` header for AJAX
-- If not (e.g. if you're [using fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)), add an `X-Requested-With: XMLHttpRequest` header
+1. XMLHttpRequest (e.g. via jQuery.post, jQuery.ajax, etc) automatically sends an `X-Requested-With: XMLHttpRequest` header for AJAX.
+2. [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)) automatically adds [Sec-Fetch-*](https://developer.mozilla.org/en-US/docs/Glossary/Fetch_metadata_request_header) headers
 
-**When submitting from a server**, add an `X-Requested-With: XMLHttpRequest` header to bypass the check.
+**When submitting from a server**, add an `Origin:` header to bypass the check, like this:
+
+```python
+import requests
+
+requests.post('http://example.org/page', headers={'Origin': 'https://my.example.org'})
+```
 
 You can disable XSRF for a specific handler like this:
 

@@ -43,12 +43,3 @@ To `get` the modified configuration from UI.
 var editor = document.getElementById('myeditor').editor
 var conf = editor.get()
 ```
-
-<!---
-TODO: Re-configure gramex config via UI.
-var conf = document.getElementById('myeditor').editor.get()
-$.ajax('configview/config/post?_xsrf='+_xsrf, {
-  method: 'POST',
-  data: {'data': JSON.stringify(conf)}
-})
---->

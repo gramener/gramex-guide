@@ -1506,9 +1506,8 @@ This PUT request updates an existing row in the data.
 
 ```js
 // flags.csv has ID, Name, Text and many other fields
-$.ajax('flags-edit', {
+fetch('flags-edit', {
   method: 'PUT',
-  headers: xsrf_token,      // See documentation on XSRF tokens
   data: {ID: 'XXX', Name: 'Country 1', Text: 'Text ' + Math.random()}
 })
 ```
@@ -1581,7 +1580,6 @@ These two approaches are the same:
 // Send using `application/www-url-form-encoded` or `multipart/form-data`
 $.ajax('flags-edit', {
   method: 'PUT',
-  headers: xsrf_token,      // See documentation on XSRF tokens
   data: {ID: 'XXX', Name: 'Country 1'}
 })
 
@@ -1590,7 +1588,6 @@ $.ajax('flags-edit', {
   method: 'PUT',
   contentType: 'application/json',
   dataType: 'json',
-  headers: xsrf_token,      // See documentation on XSRF tokens
   data: JSON.stringify({ID: ['XXX'], Name: ['Country 1']})    // Note: values are arrays
 })
 ```

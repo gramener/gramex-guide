@@ -199,7 +199,6 @@ The admin schedule component can be embdded in any page:
 <script>
   $('.schedule').schedule({           // Embed the scheduler
     url: 'admin/schedule-data',       // Assuming the admin page is at admin/
-    xsrf: '{{ handler.xsrf_token }}'  // Pass XSRF token. Requires FileHandler template
   })
 </script>
 ```
@@ -224,7 +223,6 @@ The admin alert component can be embedded in any page:
   $('.schedule').schedule({           // Alerts use the same component as schedulers
     alert: true,                      // ... but with the alert: true option
     url: 'admin/alert-data',          // Assuming the admin page is at admin/
-    xsrf: '{{ handler.xsrf_token }}'  // Pass XSRF token. Requires FileHandler template
   })
 </script>
 ```
