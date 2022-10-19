@@ -11,14 +11,14 @@
           "description": "Runs ML models on dynamic datasets and render a FormHandler-like interface."
         },
         {
-          "link": "https://gramener.com/gramex/guide/release/1.84/#distributed-otp-and-api-keys",
-          "title": "Distributed OTP and API keys",
-          "description": "OTPs and API keys can be stored in a remote database and shared across Gramex servers"
+          "link": "https://gramener.com/gramex/guide/release/1.84/#formhandler-date-comparison",
+          "title": "FormHandler date comparison",
+          "description": "FormHandler parses date columns irrespective of input format"
         },
         {
-          "link": "https://gramener.com/gramex/guide/release/1.84/#slim-docker-build",
-          "title": "Slim Docker build",
-          "description": "The gramener/gramex-base image provides a Python-only build at half the size"
+          "link": "https://gramener.com/gramex/guide/release/1.84/#deprecate-old-ui-libraries",
+          "title": "Deprecate old UI libraries",
+          "description": "Applications should avoid using UI libraries from /ui/ and npm install their own"
         }
       ]
     },
