@@ -1426,7 +1426,7 @@ We need to specify a primary key. This YAML config specifies `ID` as the primary
 When the HTML `form` is submitted, field names map to column names in the data.
 For example, `ID`, `Name` and `Text` are columns in the flags table.
 
-`POST` returns a JSON object like this:
+By defalt, `POST` returns a JSON object like this:
 
 ```json
 {
@@ -1447,11 +1447,36 @@ The keys of the `data` object returned by `POST` are:
 - `filters`: Applied filters as `[(col, op, val), ...]`. For `POST`, this will always be `[]`
 - `ignored`: Ignored columns as `[(col, vals), (col, vals), ...]`. Defaults to `[]`
 - `inserted`: **v1.66** List of inserted records, with the primary keys populated in each record.
-  Note: This works only if **one record is inserted** in the current release. Future releases will
-  support fetching IDs for multiple inserts.
+  Note: In SQLAlchemy < 1.4, this works only if one record is inserted. Use SQLAlchemy 1.4+
 
 When you insert multiple rows, the number of rows inserted is returned in the
 `Count-<dataset>` header.
+
+**v1.85**. To render a template, e.g. to acknowledge submitting a form, use [FormHandler templates](#formhandler-templates). For example:
+
+```yaml
+    handler: FormHandler
+    kwargs:
+      url: 'postgresql://$USER:$PASS@server/db'
+      table: sales
+      id: id
+      default:
+        _format: submit-template
+      formats:
+        submit-template:
+          format: template
+          template: $YAMLPATH/template-file.html
+          headers:
+              Content-Type: text/html
+```
+
+`template-file.html` can be any [Tornado template](../filehandler/#templates). It has access to the
+same variables as any [FormHandler template](#formhandler-templates). For example:
+
+```html
+<p>You entered name = {{ handler.get_arg('name', '') }}</p>
+<p>The inserted ID(s) are {{ meta['inserted'] }}</p>
+```
 
 If the table does not exist, Gramex automatically creates the table. It guesses the column types
 based on the values in the first POST. To specify column types explicitly, use
