@@ -115,6 +115,39 @@ and continues on schedule after that.
 For example, a function scheduled every 10 seconds but takes 15 seconds to run will actually run
 every 20 seconds.
 
+## Dynamic scheduling
+
+If you want different actions at different frequencies, use a single scheduler at the highest common frequency.
+
+For example, to send alerts to users daily or weekly based on their preference, use:
+
+```yaml
+schedule:
+  email-alerts:
+    # Check if email alerts need to be sent at 5 am UTC every day
+    function: mymodule.check_email_alerts()
+    hour: 5
+    utc: true
+```
+
+In your function, figure out whether to send the email. For example:
+
+```py
+def check_email_alerts():
+    # Load a database that has user preferences and last run details
+    users = gramex.data.filter(url=db_url, table=table)
+    now = datetime.datetime.now()
+    long_ago = datetime.datetime(2000, 1, 1)
+    # For each user, get the last run time and frequency
+    for index, user in users.iterrows():
+        next_run_time = (user['last_run'] or long_ago) + user['frequency_in_days'] * 24 * 60 * 60
+        # If it hasn't run yet, email the user and update the last run time
+        if now >= next_run_time:
+            mailer.mail(to=user['email'], ...),
+            gramex.data.update(url=db_url, table=table, id=['email'], args={
+                'email': [user['email']], 'last_run': [now]})
+```
+
 ## Scheduler preview
 
 You can run schedules manually using the
