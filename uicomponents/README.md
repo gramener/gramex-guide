@@ -104,12 +104,18 @@ similarly for `accent2`.
 
 ## Libraries
 
-**UI Libraries are deprecated** since [Gramex 1.84](../release/1.84/) and will be removed in [Gramex 1.86](../release/1.86/).
+**UI Libraries are deprecated** since [Gramex 1.84](../release/1.84/). Use [jsDelivr](https://www.jsdelivr.com/) instead.
 
-The UI component library ships with commonly used [UI libraries](https://www.npmjs.com/).
+The Gramex UI component library ships commonly used [UI libraries](https://www.npmjs.com/).
+These are accessible via `/ui/package@version/file.js`. For example, `/ui/d3@7/dist/d3.min.js`.
 
-::: example href="libraries" source="../ui/"
-    Explore the UI libraries
+Prior to Gramex 1.84, these libraries were `npm install`ed on Gramex.
+After Gramex 1.84, these URLs redirect to `cdn.jsdelivr.net`.
+
+For example, `/ui/d3@7/dist/d3.min.js` redirects to <https://cdn.jsdelivr.net/npm/ui/d3@7/dist/d3.min.js>.
+
+::: example href="libraries" source="https://jsdelivr.net/"
+    Explore UI libraries on CDN
 
 ## Typography
 
@@ -329,16 +335,16 @@ Here's an example combining the gradients with different `.bg-` classes:
 
 Add `class="round"` to add full rounded corners to any shape. For example:
 
-[`.btn.btn-primary`](#na){: class="btn btn-primary"}
-[`.round.btn.btn-primary`](#na){: class="btn btn-primary round"}
+[`.btn.btn-primary`](.#na){: class="btn btn-primary"}
+[`.round.btn.btn-primary`](.#na){: class="btn btn-primary round"}
 
 Add `class="border-radius-{size}` to control the size of the rounded corners.
 
-[`.border-radius-xl`](#na){: class="btn btn-primary border-radius-xl my-3"}
-[`.border-radius-lg`](#na){: class="btn btn-primary border-radius-lg my-3"}
-[`.border-radius`](#na){: class="btn btn-primary border-radius my-3"}
-[`.border-radius-sm`](#na){: class="btn btn-primary border-radius-sm my-3"}
-[`.no-border-radius`](#na){: class="btn btn-primary no-border-radius my-3"}
+[`.border-radius-xl`](.#na){: class="btn btn-primary border-radius-xl my-3"}
+[`.border-radius-lg`](.#na){: class="btn btn-primary border-radius-lg my-3"}
+[`.border-radius`](.#na){: class="btn btn-primary border-radius my-3"}
+[`.border-radius-sm`](.#na){: class="btn btn-primary border-radius-sm my-3"}
+[`.no-border-radius`](.#na){: class="btn btn-primary no-border-radius my-3"}
 
 ### Ripple
 
@@ -357,28 +363,28 @@ typically buttons and links. The classes are defined for each theme color.
 
 Hover color classes set the color when you hover over an element. **Hover to test**:
 
-- [Hover on `class="hover-bg-primary hover-fg-light"`](#na){: class="hover-bg-primary hover-fg-light"}
-- [Hover on `class="hover-bg-dark hover-fg-light"`](#na){: class="hover-bg-dark hover-fg-light"}
-- [Hover on `class="hover-bg-light hover-fg-danger"`](#na){: class="hover-bg-light hover-fg-danger"}
+- [Hover on `class="hover-bg-primary hover-fg-light"`](.#na){: class="hover-bg-primary hover-fg-light"}
+- [Hover on `class="hover-bg-dark hover-fg-light"`](.#na){: class="hover-bg-dark hover-fg-light"}
+- [Hover on `class="hover-bg-light hover-fg-danger"`](.#na){: class="hover-bg-light hover-fg-danger"}
 
 Focus color classes set the color when you focus on an element. **Click to test**:
 
-- [Click `class="focus-bg-primary focus-fg-light"`](#na){: class="focus-bg-primary focus-fg-light"}
-- [Click `class="focus-bg-dark focus-fg-light"`](#na){: class="focus-bg-dark focus-fg-light"}
-- [Click `class="focus-bg-light focus-fg-danger"`](#na){: class="focus-bg-light focus-fg-danger"}
+- [Click `class="focus-bg-primary focus-fg-light"`](.#na){: class="focus-bg-primary focus-fg-light"}
+- [Click `class="focus-bg-dark focus-fg-light"`](.#na){: class="focus-bg-dark focus-fg-light"}
+- [Click `class="focus-bg-light focus-fg-danger"`](.#na){: class="focus-bg-light focus-fg-danger"}
 
 Active color classes set the color when you're clicking on an element. **Click to test**:
 
-- [Click `class="active-bg-primary active-fg-light"`](#na){: class="active-bg-primary active-fg-light"}
-- [Click `class="active-bg-dark active-fg-light"`](#na){: class="active-bg-dark active-fg-light"}
-- [Click `class="active-bg-light active-fg-danger"`](#na){: class="active-bg-light active-fg-danger"}
+- [Click `class="active-bg-primary active-fg-light"`](.#na){: class="active-bg-primary active-fg-light"}
+- [Click `class="active-bg-dark active-fg-light"`](.#na){: class="active-bg-dark active-fg-light"}
+- [Click `class="active-bg-light active-fg-danger"`](.#na){: class="active-bg-light active-fg-danger"}
 
 ### Cursor styles
 
 - `class="cursor-pointer"`{: class="cursor-pointer"} adds a `cursor: pointer` to any element. Use
    non-clickable element made clickable using JavaScript.
-- [`class="cursor-default"`](#na){: class="cursor-default"} adds `cursor: default`.
-- [`class="pointer-events-none"`](#na){: class="pointer-events-none"} sets `pointer-events: none`.
+- [`class="cursor-default"`](.#na){: class="cursor-default"} adds `cursor: default`.
+- [`class="pointer-events-none"`](.#na){: class="pointer-events-none"} sets `pointer-events: none`.
   This disables click and hover events. It's useful on SVG `text` labels to pass clicks to the
   shape behind it.
 
