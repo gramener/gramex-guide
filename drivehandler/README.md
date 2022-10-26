@@ -281,9 +281,11 @@ $.ajax('drive', {
 })
 ```
 
-## Process files
+## Pre-process uploads
 
-`DriveHandler` accepts all the [FormHandler transform functions](../formhandler/#formhandler-transforms). To modify a file when uploading, use the `prepare:` function:
+`DriveHandler` accepts all the [FormHandler transform functions](../formhandler/#formhandler-transforms).
+
+To modify a file when uploading, use the `prepare:` function:
 
 ```yaml
 url:
@@ -292,22 +294,106 @@ url:
     handler: DriveHandler
     kwargs:
       path: $GRAMEXDATA/apps/guide/drive-data/  # ... save files here
-      user_fields: [id, role, hd]               # Capture user.id, user.role, user.hd
       prepare: mymodule.prepare(args, handler)
 ```
 
-This calls `mymodule.prepare(args, handler)` for every request. `args` is the same as [handler.args](../handlers/#basehandler-attributes). For example, this function
-will add a line at the end of each .txt file:
+This calls `mymodule.prepare(args, handler)` for every request. `args` is the same as [handler.args](../handlers/#basehandler-attributes).
+For example:
 
 ```python
-def func(meta, handler):
+def prepare(args, handler):
+    # Do this only when uploading files, not retrieving the file list
     if handler.request.method == 'POST':
         # Loop through every <input name="file"> file input
-        for upload in args.files.get('file', []):
+        for index, upload in enumerate(handler.request.files.get('file', [])):
+            # add a line at the end of each .txt file
             if upload['filename'].endswith('.txt'):
                 upload['body'] += b'\n\nThis is a new line after each text file'
+            # update the file size argument
+            args['size'][index] += len(b'\n\nThis is a new line after each text file')
 ```
 
+`args` has the `input`s passed from the form. DriveHandler adds specific keys for each upload (overriding whatever was passed), and ensures that the number of values for each key matches the number of uploads.
+
+For example, if `file1.txt` and `file2.txt` are uploaded, `args` looks like:
+
+```json
+{
+  "file": ["file1.txt", "file2.txt"],
+  "ext": [".txt", ".txt"],
+  "path": ["file1.txt", "file2.txt"],
+  "size": [100, 200],
+  "mime": ["text/plain", "text/plain"],
+  "date": [1662607845, 1662607845],
+  "_xsrf": ["2|fc47633f|...", "2|fc47633f|..."]
+}
+```
+
+The contents of the file are in `handler.request.files`, which looks like this:
+
+```json
+[
+  {"file": "file1.txt", "body": "Bytestring contents of file1.txt", "content_type": "text/plain"},
+  {"file": "file2.txt", "body": "Bytestring contents of file2.txt", "content_type": "text/plain"}
+]
+```
+
+You can update the contents of `handler.request.files[n]['body']` before DriveHandler saves it.
+
+## Post-process uploads
+
+**v1.85**. `DriveHandler` accepts all the [FormHandler transform functions](../formhandler/#formhandler-transforms).
+
+To process a file **after** uploading, use [`modify:`](../formhandler/#formhandler-modify):
+
+```yaml
+url:
+  drivehandler:
+    pattern: /$YAMLURL/drive
+    handler: DriveHandler
+    kwargs:
+      path: $GRAMEXDATA/apps/guide/drive-data/  # ... save files here
+      modify: mymodule.modify(handler)
+```
+
+In `mymodule.py`, you can iterate through the uploaded files as below:
+
+```python
+def modify(handler):
+    '''Return the file size on disk for each file'''
+    root = handler.kwargs.path
+    modify_data = {'filesize': {}}
+    for file in handler.args.get('path', []):
+        path = os.path.join(root, file)
+        # Process the files any way you want
+        modify_data['filesize'][file] = len(open(path).read())
+    return modify_data
+```
+
+The return value from such a `modify` function (if any) will be sent as output's `data.modify` value.
+
+```json
+{
+  "data": {
+    "filters": [],
+    "ignored": [],
+    "inserted": [
+      {
+        "id": null
+      },
+      {
+        "id": null
+      }
+    ],
+    "modify": {
+      "filesize": {
+        "offer-table7.csv": 1312,
+        "exportleads_marketplace_v1_6.csv": 2204
+      }
+    }
+  }
+}
+```
 
 ## Expose datasets
 
@@ -323,6 +409,3 @@ url:
 ```
 
 If you uploaded any CSV/XLSX into the DriveHandler above, see them at `data/your-file.csv`.
-
-
-[drivehandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.DriveHandler
