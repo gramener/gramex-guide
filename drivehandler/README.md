@@ -356,18 +356,35 @@ url:
       modify: mymodule.modify(handler)
 ```
 
-In `mymodule.py`, you can iterate through the uploaded files as below:
+When `modify:` is called, you can use `handler.files` to iterate through the updated files:
 
 ```python
 def modify(handler):
     '''Return the file size on disk for each file'''
     root = handler.kwargs.path
     modify_data = {'filesize': {}}
-    for file in handler.args.get('path', []):
-        path = os.path.join(root, file)
-        # Process the files any way you want
-        modify_data['filesize'][file] = len(open(path).read())
+    if handler.request.method in {'POST', 'PUT'}:
+        for file in handler.files['path']:
+            path = os.path.join(root, file)
+            # Process the files any way you want
+            modify_data['filesize'][file] = len(open(path).read())
     return modify_data
+```
+
+`handler.files` is a dict with keys from the [file list](#list-files) plus [tags](#tags), e.g.:
+
+```python
+{
+  'id': [1, 2, 3],
+  'file': ['a.jpg', 'b.txt', 'c.png'],
+  'ext': ['.jpg', '.txt', '.png'],
+  'path': ['a.jpg', 'b.txt', 'c.png'],
+  'size': [32238, 4270, 23519],
+  'mime': ['image/jpeg', 'text/plain', 'image/png'],
+  'date': [1625678317, 1629445710, 1633415479],
+  'user_id': [None, None, None, None, None, None, None],
+  'desc': ['', 'test', '', 'hgt', None, None, None]
+}
 ```
 
 The return value from such a `modify` function (if any) will be sent as output's `data.modify` value.
@@ -387,8 +404,8 @@ The return value from such a `modify` function (if any) will be sent as output's
     ],
     "modify": {
       "filesize": {
-        "offer-table7.csv": 1312,
-        "exportleads_marketplace_v1_6.csv": 2204
+        "file1.csv": 1312,
+        "file2": 2204
       }
     }
   }
