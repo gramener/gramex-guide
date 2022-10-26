@@ -369,6 +369,8 @@ RestartSec=10                           # ... after 10 seconds
 WantedBy=multi-user.target              # Start app on reboot, after network is up
 ```
 
+Then run `sudo systemctl daemon-reload` to reload the services.
+
 Now you can run:
 
 ```bash
@@ -377,6 +379,8 @@ sudo systemctl status your-app          # Check status of service
 sudo systemctl stop your-app            # Stop the service
 sudo systemctl restart your-app         # Restart the service
 sudo systemctl enable your-app          # Ensure service starts on reboot
+
+sudo journalctl -u your-app             # See the logs on your app
 ```
 
 ### Linux scheduled tasks
