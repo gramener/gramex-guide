@@ -313,8 +313,6 @@ python yourproject_service.py remove                # uninstall the service
 ... etc ...
 ```
 
-[anaconda]: http://continuum.io/downloads
-
 ### Windows administration
 
 Here are some common Windows administration actions when deploying on Windows server:
@@ -1087,7 +1085,7 @@ import:                                     # THIS IS WRONG!
         YAMLURL: $YAMLURL/app2/ui/          # at /app2/ui/
 ```
 
-Add the [namespace](#../config/#imports) key to avoid collision in specified
+Add the [namespace](../config/#imports) key to avoid collision in specified
 sections. A safe use is `namespace: [url, cache, schedule, watch]`
 
 ```yaml
@@ -1113,7 +1111,7 @@ of these is imported. Prefix the Python files with a unique name, e.g.
 Your app may depend on an external library -- e.g. a Python module, node module
 or R library.
 
-The quickest way is to set these up is to run [`gramex setup <folder>`](../apps/#setting-up-apps) method. This automtically installs:
+The quickest way is to set these up is to run [`gramex setup <folder>`](../apps/#setting-up-apps) method. This automatically installs:
 
 - Python modules in `requirements.txt` via `pip install`
 - Node modules in `package.json` via `npm install`
@@ -1150,7 +1148,7 @@ Or start Gramex on a different port using `gramex --listen.port=<new-port>`
 
 ### Cannot start Capture
 
-Here is a typical traceback:
+Here is a typical error message:
 
 ```text
 Traceback (most recent call last):
