@@ -19,12 +19,12 @@ For example, this page is rendered by a Markdown file using the following config
 ```yaml
 url:
   markdown:
-    pattern: /$YAMLURL/(.*)               # Any URL under the current gramex.yaml folder
-    handler: FileHandler                  # uses this handler
+    pattern: /$YAMLURL/(.*) # Any URL under the current gramex.yaml folder
+    handler: FileHandler # uses this handler
     kwargs:
-      path: $YAMLPATH                     # Serve files from this YAML file's directory
-      default_filename: README.md         # using README.md as default
-      index: true                         # List files if README.md is missing
+      path: $YAMLPATH # Serve files from this YAML file's directory
+      default_filename: README.md # using README.md as default
+      index: true # List files if README.md is missing
 ```
 
 Any file under the current folder is shown as is. If a directory has a
@@ -39,7 +39,7 @@ files from the home directory of your folder. To prevent that, override the
 
 ```yaml
 url:
-  default:        # This overrides the default URL handler
+  default: # This overrides the default URL handler
     pattern: ...
 ```
 
@@ -66,9 +66,9 @@ To override this, add a FileHandler called `default:` in your `gramex.yaml`. For
 url:
   default:
     kwargs:
-      index: false                  # Disable indices
+      index: false # Disable indices
       headers:
-        Cache-Control: max-age=0    # Disable browser caching
+        Cache-Control: max-age=0 # Disable browser caching
 ```
 
 ## Default filename
@@ -89,9 +89,9 @@ url:
     kwargs:
       path: $YAMLPATH/directory/
       default_filename:
-        - default.template.html     # Serve this as a template, if it exists
-        - index.html                # Else serve this as HTML
-        - README.md                 # Else serve this as Markdown to HTML
+        - default.template.html # Serve this as a template, if it exists
+        - index.html # Else serve this as HTML
+        - README.md # Else serve this as Markdown to HTML
 ```
 
 FileHandler checks the files in the order specified in the `default_filename:` The first file that exists is rendered.
@@ -110,32 +110,31 @@ For example,
 ```yaml
 url:
   static:
-    pattern: /$YAMLURL/static/(.*)        # Any URL starting with /static/
-    handler: FileHandler                  # uses this handler
+    pattern: /$YAMLURL/static/(.*) # Any URL starting with /static/
+    handler: FileHandler # uses this handler
     kwargs:
-      path: $YAMLPATH/static/             # Serve files from static/
-      default_filename: index.html        # using index.html as default
-      index: true                         # List files if index.html is missing
-      index_template: $YAMLPATH/template.html   # Use template.html to list directory
+      path: $YAMLPATH/static/ # Serve files from static/
+      default_filename: index.html # using index.html as default
+      index: true # List files if index.html is missing
+      index_template: $YAMLPATH/template.html # Use template.html to list directory
 ```
 
 Here is a trivial `template.html`:
 
 ```html
 <h1>$path</h1>
-$body
+<p>$body</p>
 ```
 
 `index: false` disables directory listing. To disable it for the **default** FileHandler, use:
 
 ```yaml
 url:
-  default:                    # This is a special name for the default Gramex FileHandler
+  default: # This is a special name for the default Gramex FileHandler
     handler: FileHandler
     kwargs:
-      index: false            # Disable directory listing here
+      index: false # Disable directory listing here
 ```
-
 
 ## File Patterns
 
@@ -145,10 +144,10 @@ You can map any URL for any file. For example, to map the file
 `filehandler/data.csv` to the URL `/filehandler/data`, use this configuration:
 
 ```yaml
-    pattern: /$YAMLURL/filehandler/data     # The URL /filehandler/data
-    handler: FileHandler                    # uses this handler
-    kwargs:
-      path: $YAMLPATH/filehandler/data.csv  # and maps to this file
+pattern: /$YAMLURL/filehandler/data # The URL /filehandler/data
+handler: FileHandler # uses this handler
+kwargs:
+  path: $YAMLPATH/filehandler/data.csv # and maps to this file
 ```
 
 You can also map regular expressions to file patterns. For example, to add a
@@ -157,10 +156,10 @@ You can also map regular expressions to file patterns. For example, to add a
 ```yaml
 url:
   yaml-extensions:
-    pattern: /$YAMLURL/yaml/(.*)  # yaml/anything
+    pattern: /$YAMLURL/yaml/(.*) # yaml/anything
     handler: FileHandler
     kwargs:
-      path: $YAMLPATH/*.yaml      # becomes anything.yaml, replacing the * here
+      path: $YAMLPATH/*.yaml # becomes anything.yaml, replacing the * here
 ```
 
 For example, [yaml/gramex](yaml/gramex) actually renders [gramex.yaml](gramex.yaml.source).
@@ -170,10 +169,10 @@ To replace `.html` extension with `.yaml`, use:
 ```yaml
 url:
   replace-html-with-yaml:
-    pattern: /$YAMLURL/(.*)\\.html  # Note the double backslash instead of single backslash
+    pattern: /$YAMLURL/(.*)\\.html # Note the double backslash instead of single backslash
     handler: FileHandler
     kwargs:
-      path: $YAMLPATH/*.yaml        # The part in brackets replaces the * here
+      path: $YAMLPATH/*.yaml # The part in brackets replaces the * here
 ```
 
 For more complex mappings, use a dictionary of regular expression mappings:
@@ -181,15 +180,15 @@ For more complex mappings, use a dictionary of regular expression mappings:
 ```yaml
 url:
   mapping:
-    pattern: /$YAMLURL/node/((foo|bar)/.*)  # match /node/foo/... and node//bar/...
+    pattern: /$YAMLURL/node/((foo|bar)/.*) # match /node/foo/... and node//bar/...
     handler: FileHandler
     kwargs:
-      path:                                 # If path: is a dict, it's treated as a mapping
-        'foo/': $YAMLPATH/foo.html                     # /node/foo/ -> foo.html
-        'bar/': $YAMLPATH/bar.html                     # /node/bar/  -> bar.html
-        'foo/(.*)': $YAMLPATH/foo/{0}.html             # /node/foo/x -> foo/x.html
-        'bar/(?P<file>.*)': $YAMLPATH/bar/{file}.html  # /node/bar/x  -> bar/x.html
-        '.*': $YAMLPATH/default.html                   # anything else -> default.html
+      path: # If path: is a dict, it's treated as a mapping
+        "foo/": $YAMLPATH/foo.html # /node/foo/ -> foo.html
+        "bar/": $YAMLPATH/bar.html # /node/bar/  -> bar.html
+        "foo/(.*)": $YAMLPATH/foo/{0}.html # /node/foo/x -> foo/x.html
+        "bar/(?P<file>.*)": $YAMLPATH/bar/{file}.html # /node/bar/x  -> bar/x.html
+        ".*": $YAMLPATH/default.html # anything else -> default.html
 ```
 
 The mapping has keys that are regular expressions. They must match the part of
@@ -209,17 +208,16 @@ request does not pass the parameter. You can do this using `default:`
 ```yaml
 url:
   mapping:
-    pattern: /$YAMLURL/                     # Home page
+    pattern: /$YAMLURL/ # Home page
     handler: FileHandler
     kwargs:
-      path:                                 # If path: is a dict, it's treated as a mapping
-        '': $YAMLPATH/{dir}/{file}.{ext}    #  /?dir=foo&file=bar&ext=txt -> foo/bar.txt
+      path: # If path: is a dict, it's treated as a mapping
+        "": $YAMLPATH/{dir}/{file}.{ext} #  /?dir=foo&file=bar&ext=txt -> foo/bar.txt
       default:
-        dir: ''             # ?dir= is the default
-        file: index         # ?file=index is the default
-        ext: html           # ?ext=html is the default
+        dir: "" # ?dir= is the default
+        file: index # ?file=index is the default
+        ext: html # ?ext=html is the default
 ```
-
 
 If you want to map a subset of files to a folder, you can mark them in the
 pattern. For example, this configuration maps `/style.css` and `/script.js` to
@@ -229,11 +227,11 @@ a higher value to the `priority` (which defaults to 0.)
 ```yaml
 url:
   assets:
-    pattern: /(style.css|script.js)             # Any of these to URLs
-    priority: 2                                 # Give it a higher priority
-    handler: FileHandler                        # uses this handler
+    pattern: /(style.css|script.js) # Any of these to URLs
+    priority: 2 # Give it a higher priority
+    handler: FileHandler # uses this handler
     kwargs:
-      path: .                                   # Serve files from /
+      path: . # Serve files from /
 ```
 
 This can work across directories as well. For example, this maps the `static`
@@ -247,11 +245,10 @@ url:
   pattern: /$YAMLURL/(bower_components/.*|static/.*)
   handler: FileHandler
   kwargs:
-    path: $YAMLPATH/                          # Base is the current directory
+    path: $YAMLPATH/ # Base is the current directory
     headers:
-      Cache-Control: public, max-age=86400    # Cache publicly for 1 day
+      Cache-Control: public, max-age=86400 # Cache publicly for 1 day
 ```
-
 
 ## Caching
 
@@ -270,8 +267,8 @@ To prevent certain files from ever being served, specify the
 handlers:
   FileHandler:
     ignore:
-      - gramex.yaml     # Always ignore gramex.yaml in Filehandlers
-      - ".*"            # Hide dotfiles
+      - gramex.yaml # Always ignore gramex.yaml in Filehandlers
+      - ".*" # Hide dotfiles
 ```
 
 The `gramex.yaml` file and all files beginning with `.` will be hidden by
@@ -281,10 +278,10 @@ default. You can change the above setting in your `gramex.yaml` file. For exampl
 handlers:
   FileHandler:
     ignore:
-      - '.*'          # Protect dot-files - they are usually meant to be hidden
-      - '*.git*'      # Protect .gitignore, .gitattributes, etc - they list filenames
-      - '*.git/*'     # Protect all files under the .git/ repo - they have code history
-      - '*.yaml'      # Protect YAML files - they list all URLs
+      - ".*" # Protect dot-files - they are usually meant to be hidden
+      - "*.git*" # Protect .gitignore, .gitattributes, etc - they list filenames
+      - "*.git/*" # Protect all files under the .git/ repo - they have code history
+      - "*.yaml" # Protect YAML files - they list all URLs
 ```
 
 You can customize this further for each handler via the `allow:` and `ignore:` configurations.
@@ -298,9 +295,9 @@ url:
     kwargs:
       path: .
       ignore:
-        - '*.xls*'          # Ignore all Excel files
+        - "*.xls*" # Ignore all Excel files
       allow:
-        - public.xlsx       # But allow public.xlsx
+        - public.xlsx # But allow public.xlsx
 ```
 
 Now `public.xlsx` is accessible. But `something-else.xlsx` will raise a HTTP 403 error.
@@ -318,25 +315,25 @@ type `text/csv` and a `Content-Disposition` set to download the file. You
 can override these headers:
 
 ```yaml
-    pattern: /filehandler/data
-    handler: FileHandler
-    kwargs:
-        path: filehandler/data.csv
-        headers:
-            Content-Type: text/plain      # Display as plain text
-            Content-Disposition: none     # Do not download the file
+pattern: /filehandler/data
+handler: FileHandler
+kwargs:
+  path: filehandler/data.csv
+  headers:
+    Content-Type: text/plain # Display as plain text
+    Content-Disposition: none # Do not download the file
 ```
 
 To convert a file type into an attachment, use:
 
 ```yaml
-    pattern: /filehandler/data
-    handler: FileHandler
-    kwargs:
-        path: filehandler/data.txt
-        headers:
-            Content-Type: text/plain
-            Content-Disposition: attachment; filename=data.txt    # Save as data.txt
+pattern: /filehandler/data
+handler: FileHandler
+kwargs:
+  path: filehandler/data.txt
+  headers:
+    Content-Type: text/plain
+    Content-Disposition: attachment; filename=data.txt # Save as data.txt
 ```
 
 From **v1.23.1**, to serve different files with different MIME types, use file patterns:
@@ -361,7 +358,7 @@ From **v1.23.1**, to serve different files with different MIME types, use file p
 FileHandler uses [Tornado templates][template] to generate content from data.
 For example, this `page.tmpl.html` renders 10 images:
 
-```html
+```text
 {% for id in range(1, 10) %}
   <img src="https://picsum.photos/id/{{ id }}/40">
 {% end %}
@@ -377,11 +374,11 @@ url:
     handler: FileHandler
     kwargs:
       path: ...
-      template: ['template*.html', '*.tmpl.html', '*.svg']
+      template: ["template*.html", "*.tmpl.html", "*.svg"]
 ```
 
 ::: example href=template source="https://github.com/gramener/gramex-guide/blob/master/filehandler/template.html"
-    Template example
+Template example
 
 ### Template syntax
 
@@ -399,18 +396,35 @@ Templates can use all variables in the [template syntax][template-syntax]. This 
 
 Templates import sub-templates using `{% include path/to/template.html %}`.
 
-- The path is relative to the parent template.
-- All parent template variables are available in the sub-template.
+- The path is **relative** to the parent template.
+- **Variables** from the template are available to the sub-template.
 
 For example:
 
-```html
-This imports navbar.html in-place as a template.
+```text
 {% set title, menu = 'App name', ['Home', 'Dashboard'] %}
 {% include path/relative/to/template/navbar.html %}
-
-navbar.html can use title and menu variables.
 ```
+
+### Dynamic sub-templates
+
+Use `{{ gramex.cache.open(file) }}` if `file` is a variable. For example:
+
+```text
+Insert {user}.txt:
+{% set user = handler.current_user.id %}
+{% raw gramex.cache.open(f'{user}.txt', rel=True) %}
+
+Insert {user}.md after converting to HTML:
+{% raw gramex.cache.open(f'{user}.md', rel=True) %}
+
+Render {user}.html as a Tornado template, passing a `user` variable:
+{% raw gramex.cache.open(f'{user}.html', rel=True).render(user=handler.current_user) %}
+```
+
+See [gramex.cache.open()](../api/cache/#gramex.cache.open) for more formats options.
+
+`rel=True` loads the file relative to the **template** path.
 
 ### UI Modules
 
@@ -419,8 +433,8 @@ using `{% module Template('path/to/template.html', **kwargs) %}`.
 
 For example:
 
-```html
-This import navbar.html in-place as a template.
+```text
+Import navbar.html in-place as a template.
 {% module Template('path/relative/to/filehandler/navbar.html',
       title='App name',
       menu=['Home', 'Dashboard'])
@@ -436,27 +450,13 @@ Note:
 
 Modules can add CSS and JS to the parent template. For example:
 
-```html
+```text
 {% set_resources(css_files='/ui/bootstrap/dist/bootstrap.min.css') %}
 {% set_resources(javascript_files='/ui/lodash/lodash.min.js') %}
 {% set_resources(embedded_css='th { padding: 4px; }') %}
 {% set_resources(embedded_js='alert("OK")') %}
 ```
 -->
-
-### Raw sub-templates
-
-You can also include other files using `{{ gramex.cache.open(...) }}`. For example:
-
-```html
-{% raw gramex.cache.open('README.txt', rel=True) %}   -- inserts README.txt in-place
-{% raw gramex.cache.open('README.md', rel=True) %}    -- inserts README.md as HTML
-```
-
-The second open statement converts README.md into HTML. See
-[data caching](../caching/#data-caching) for more formats.
-
-`rel=True` loads the file relative to the **template** path.
 
 ## SASS
 
@@ -467,17 +467,21 @@ FileHandler can compile [SCSS files](http://sass-lang.com/). The default FileHan
 
 ```scss
 $color: red !default;
-body { background-color: lighten($color, 40%); }
+body {
+  background-color: lighten($color, 40%);
+}
 ```
 
 ... [is rendered as](color.scss):
 
 ```css
-body{background-color:#fcc}
+body {
+  background-color: #fcc;
+}
 ```
 
 ::: example href=color.scss source="https://github.com/gramener/gramex-guide/blob/master/filehandler/color.scss"
-    See color.scss
+See color.scss
 
 To enable this in your FileHandler, add:
 
@@ -491,7 +495,7 @@ URL query parameters are automatically passed as variables to the SASS file. For
 `color.scss?color=green` sets `$color: green`.
 
 ::: example href=color.scss?color=blue source="https://github.com/gramener/gramex-guide/blob/master/filehandler/color.scss"
-    See `color.scss?color=blue`
+See `color.scss?color=blue`
 
 You can use this to allow users to customize your theme.
 
@@ -514,13 +518,13 @@ function getLength(obj: WindowStates | WindowStates[]) {
 
 ```js
 function getLength(obj) {
-    return obj.length;
+  return obj.length;
 }
 //# sourceMappingURL=typescript.ts?map
 ```
 
 ::: example href=typescript.ts source="https://github.com/gramener/gramex-guide/blob/master/filehandler/typescript.ts"
-    See typescript.ts
+See typescript.ts
 
 To enable this in your FileHandler, add:
 
@@ -529,7 +533,6 @@ kwargs:
     ...
     ts: '*.ts'      # Compile .ts files into JS
 ```
-
 
 ## Vue
 
@@ -542,20 +545,20 @@ The default FileHandler compiles any `.vue` file into CSS. For example, this `he
 </template>
 
 <script>
-module.exports = {
-  data: function () {
-    return {
-      greeting: 'Hello'
-    }
-  }
-}
+  module.exports = {
+    data: function () {
+      return {
+        greeting: "Hello",
+      };
+    },
+  };
 </script>
 
 <style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
+  p {
+    font-size: 2em;
+    text-align: center;
+  }
 </style>
 ```
 
@@ -566,7 +569,7 @@ p {
 ```
 
 ::: example href=hello-world.vue source="https://github.com/gramener/gramex-guide/blob/master/filehandler/hello-world.vue"
-    See hello-world.vue
+See hello-world.vue
 
 To enable this in your FileHandler, add:
 
@@ -576,20 +579,19 @@ kwargs:
     vue: '*.vue'    # Compile .vue files into JS
 ```
 
-
 ## XSRF
 
 [Video](https://youtu.be/2_rogB8UzXQ){.youtube}
 
 If you're submitting forms using the POST method, you need to submit an
-[_xsrf][xsrf] field that has the value of the `_xsrf` cookie.
+[\_xsrf][xsrf] field that has the value of the `_xsrf` cookie.
 
 **When using HTML forms**, you can include it in the template using handlers'
 built-in `xsrf_token` property:
 
 ```html
 <form method="POST">
-  <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
+  <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}" />
 </form>
 ```
 
@@ -598,11 +600,11 @@ To render a file as a template, use:
 ```yaml
 url:
   template:
-    pattern: /page                  # The URL /page
-    handler: FileHandler            # displays a file
+    pattern: /page # The URL /page
+    handler: FileHandler # displays a file
     kwargs:
-      path: page.html               # named page.html
-      template: true                # Render as a template
+      path: page.html # named page.html
+      template: true # Render as a template
 ```
 
 [xsrf]: http://www.tornadoweb.org/en/stable/guide/security.html#cross-site-request-forgery-protection
@@ -610,7 +612,8 @@ url:
 **When using AJAX**, **v1.85** onwards, no XSRF token is required, because Gramex checks for this automatically.
 
 1. XMLHttpRequest (e.g. via jQuery.post, jQuery.ajax, etc) automatically sends an `X-Requested-With: XMLHttpRequest` header for AJAX.
-2. [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)) automatically adds [Sec-Fetch-*](https://developer.mozilla.org/en-US/docs/Glossary/Fetch_metadata_request_header) headers
+2. [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)) automatically adds
+   [Sec-Fetch-\*](https://developer.mozilla.org/en-US/docs/Glossary/Fetch_metadata_request_header) headers
 
 **When submitting from a server**, add an `Origin:` header to bypass the check, like this:
 
@@ -625,13 +628,13 @@ You can disable XSRF for a specific handler like this:
 ```yaml
 url:
   name:
-    pattern: ...              # When this page is visited,
-    handler: ...              # no matter what the handler is,
+    pattern: ... # When this page is visited,
+    handler: ... # no matter what the handler is,
     kwargs:
-      xsrf_cookies: false   # Disable XSRF cookies
+      xsrf_cookies: false # Disable XSRF cookies
 ```
 
-You can disable XSRF for *all handlers* like this (but this is **not recommended**):
+You can disable XSRF for _all handlers_ like this (but this is **not recommended**):
 
 ```yaml
 app:
@@ -708,11 +711,9 @@ specified, the transforms are applied before concatenation.
 
 This is useful to pack multiple static files into one, as the example shows.
 
-
 [filehandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.FileHandler
 [template]: http://www.tornadoweb.org/en/stable/template.html
 [template-syntax]: http://www.tornadoweb.org/en/stable/guide/templates.html#template-syntax
-
 
 ## Transforming content
 
@@ -722,24 +723,26 @@ Use `transform:` to apply functions before rendering the content. [Templates](#t
 Any function can be used to transform. For example, this renders `.md` or `.markdown` files as HTML:
 
 ```yaml
-    # ... contd ...
-      transform:
-        "*.md, *.markdown":                     # Any file matching .md or .markdown
-          function: markdown.markdown(content, output_format='html5')
-          encoding: utf-8                       # Read input file as UTF-8
-          headers:                              #   Use these HTTP headers:
-            Content-Type: text/html             #     MIME type: text/html
+# ... contd ...
+transform:
+  "*.md, *.markdown": # Any file matching .md or .markdown
+    function: markdown.markdown(content, output_format='html5')
+    encoding: utf-8 # Read input file as UTF-8
+    headers: #   Use these HTTP headers:
+      Content-Type: text/html #     MIME type: text/html
 ```
 
 Transform keys matches one or more [glob patterns](https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob)
-separated by space/comma (e.g. ``'*.md, 'data/**'``.)
+separated by space/comma (e.g. `'*.md, 'data/**'`.)
 
 Transform values are dicts that accepts these keys:
 
-- **function**: The expression to return. Example: `function: mymodule.transform(content, handler)`. `content` has the file contents. `handler` has the FileHandler object
-- **encoding**: The encoding to read the file with, e.g. `utf-8`. If `None` (the default), the file is read as bytes, and the transform `function` MUST accept the content as bytes
+- **function**: The expression to return. Example: `function: mymodule.transform(content, handler)`.
+  - `content` has the file contents
+  - `handler` has the FileHandler object
+- **encoding**: The encoding to read the file with, e.g. `utf-8`.
+  If `None` (the default), the file is read as bytes, and the transform `function` MUST accept the content as bytes
 - **headers**: HTTP headers for the response
-
 
 ## Configure all FileHandlers
 
@@ -755,12 +758,12 @@ To modify this, update `handlers.FileHandler` in your `gramex.yaml`. For example
 handlers:
   FileHandler:
     ignore:
-      - gramex*.yaml    # Always ignore gramex config files
-      - ".*"            # Hide dotfiles
-      - "*.py*"         # Hide Python scripts
-      - "*secret*"      # Ignore all secret files
+      - gramex*.yaml # Always ignore gramex config files
+      - ".*" # Hide dotfiles
+      - "*.py*" # Hide Python scripts
+      - "*secret*" # Ignore all secret files
     allow:
-      - "README.*"      # Always allow README files, even README.secret
+      - "README.*" # Always allow README files, even README.secret
 ```
 
 [See the default FileHandler configuration](https://github.com/gramener/gramex/blob/master/gramex/gramex.yaml).

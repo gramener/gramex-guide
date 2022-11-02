@@ -247,7 +247,7 @@ Update the following and [commit to `master` branch](#committing):
 [Commit](#committing) and push the `master` branch to the server. **Ensure pipeline passes.**:
 
 ```bash
-git commit -m"DOC: Add v1.x.x release notes"
+git commit . -m"DOC: Add v1.x.x release notes"
 git push                    # Push the master branch
 ```
 
