@@ -20,6 +20,8 @@ log:
       level: INFO
     passlib:
       level: INFO
+    PIL:
+      level: INFO
 
 app:
   settings:

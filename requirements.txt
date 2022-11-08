@@ -1,0 +1,9 @@
+boto3
+gramex
+gramexenterprise
+markdown-customblocks
+mdx_truly_sane_lists
+nltk
+passlib
+pygments
+textblob
