@@ -56,8 +56,7 @@ A few common queries are documented:
 - [session data](https://learn.gramener.com/guide/auth/#session-data)
   features a guide on how to pick a session store --specifically, how
   to handle sessions with multiple Gramex instances (@pratam.vardhan)
-- [How XSRF
-  works](https://learn.gramener.com/guide/filehandler/#how-xsrf-works)
+- [XSRF](https://learn.gramener.com/guide/filehandler/#xsrf)
   explains the underlying workings of XSRF
 
 Stats:

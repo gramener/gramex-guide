@@ -1,6 +1,28 @@
 {
   "releases": [
     {
+      "version": "v1.85.0",
+      "link": "https://gramener.com/gramex/guide/release/1.85/",
+      "title": "DriveHandler post-processing, FilterHandler hierarchies, Secure Docker build",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.85/#drivehandler-post-processing",
+          "title": "DriveHandler post-processing",
+          "description": "DriveHandler can process a file after uploading, e.g. unzip it or test it"
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.85/#filterhandler-hierarchies",
+          "title": "FilterHandler hierarchies",
+          "description": "FilterHandler can return unique values across multiple columns like hierarchies"
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.85/#secure-docker-builds",
+          "title": "Secure Docker build",
+          "description": "Gramex Docker builds are built on Alpine Linux and are free of known vulnerabilities on release"
+        }
+      ]
+    },
+    {
       "version": "v1.84.0",
       "link": "https://gramener.com/gramex/guide/release/1.84/",
       "title": "ML Predictor, FormHandler date comparisons, Deprecate old UI libraries",

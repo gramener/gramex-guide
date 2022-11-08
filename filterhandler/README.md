@@ -9,40 +9,143 @@ type: microservice
 
 [TOC]
 
-[FilterHandler][filterhandler] lets you filter columns from files and databases.
+## Populate filter values
+
+FilterHandler lets you create dropdowns for filters from data.
+
+Creating filters is a non-trivial problem. Take this table:
+
+| city | product |
+| :--- | :------ |
+| Rome | Doll    |
+| Rome | Cap     |
+| Oslo | Doll    |
+| Oslo | Belt    |
+
+By default, filters should show:
+
+- `city: Rome | Oslo`
+- `product: Doll | Cap | Belt`
+
+But if the user **SELECTS** Rome, the filters should show:
+
+- `city: Rome | Oslo`. Though Olso is selected, Rome is visible. That's to allow **CHANGING** the city
+- `product: Doll | Belt`. Not Cap, since they are not sold in Oslo
+
+![FilterHandler values example](filterhandler-values.gif)
+
+FilterHandler returns the list of filter values to display **when a selection is made**.
+
+## FilterHandler usage
 
 Here is a sample configuration to filter data columns from a CSV file:
 
 ```yaml
 url:
   flags:
-    pattern: /$YAMLURL/flags
+    pattern: /filter
     handler: FilterHandler
     kwargs:
-      url: $YAMLPATH/flags.csv
+      url: $YAMLPATH/city-products.csv
 ```
 
-You can read from multiple file formats as well as databases. Please follow
-[FormHandler](../formhandler/).
+`/filter` returns `{}`, since we haven't specified any columns to return
 
-## Examples
+`/filter?_c=city` returns unique values for `city`:
 
-- Simple: [flags?_c=Name](flags?_c=Name)
-returns all unique values of `Name` column
+```json
+{
+  "city":[
+    { "city":"Oslo" },
+    { "city":"Rome" }
+  ]
+}
+```
 
-- Muliple Columns: [flags?_c=Name&_c=Continent](flags?_c=Name&_c=Continent)
-returns all unique values of `Name` and `continent` columns
+`/filter?_c=city&_c=product` returns unique values for `city` and `product`:
 
-- Multiple Columns with filter: [flags?_c=Name&_c=Continent&Name=Andorra](flags?_c=Name&_c=Continent&Name=Andorra)
-returns all unique values of `Name` without filtering `Name=Andorra` and `Continent` by filtering `Name=Andorra`
+```json
+{
+  "city": [
+    { "city": "Oslo" },
+    { "city": "Rome" }
+  ],
+  "product": [
+    { "product": "Belt" },
+    { "product": "Cap" },
+    { "product": "Doll" }
+  ]
+}
+```
 
-- Simple Sort Asc: [flags?_c=Name&_sort=Name](flags?_c=Name&_sort=Name) returns Unique values of `Name` sorted by `Name` column in ascending order
+`/filter?_c=city&_c=product&_sort=-city&_sort=-product` returns unique values for `city` and `product`,
+sorting both in descending order alphabetically:
 
-- Simple Sort Desc: [flags?_c=Name&_sort=c8](flags?_c=Name&_sort=-c8) returns Unique values of `Name` sorted by `c8` column in descending order
+```json
+{
+  "city": [
+    { "city": "Rome" },
+    { "city": "Oslo" }
+  ],
+  "product": [
+    { "product": "Doll" },
+    { "product": "Cap" },
+    { "product": "Belt" }
+  ]
+}
+```
 
-## FilterHandler Formats
 
-By default, FilterHandler renders data as JSON. Use `?_format=` to change that.
-To see supported formats please refer [FormHandler Formats](../formhandler/#formhandler-formats)
+`/filter?_c=city&_c=product&city=Oslo` returns unique values for `city` and `product` when `city=Oslo` is selected.
+Note that `Cap` is missing.
 
-[filterhandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.FilterHandler
+```json
+{
+  "city": [
+    { "city": "Oslo" },
+    { "city": "Rome" }
+  ],
+  "product": [
+    { "product": "Belt" },
+    { "product": "Doll" }
+  ]
+}
+```
+
+**v1.85**. `/filter?_c=city,product` returns unique values for the `city` and `product` combination:
+
+```json
+{
+  "city,product": [
+    { "city": "Oslo", "product": "Belt" },
+    { "city": "Oslo", "product": "Doll" },
+    { "city": "Rome", "product": "Cap" },
+    { "city": "Rome", "product": "Doll" }
+  ]
+}
+```
+
+::: example href=flags?_c=Name&_c=Continent&_format=html&_limit=5 source=https://github.com/gramener/gramex-guide/blob/master/filterhandler/gramex.yaml
+    FilterHandler example
+
+- Simple: [`flags?_c=Name`](flags?_c=Name&_format=html)
+  returns all unique values of `Name` column
+- Muliple Columns: [`flags?_c=Continent&_c=Name`](flags?_c=Continent&_c=Name&_format=html)
+  returns all unique values of `Name` and `continent` columns
+- Multiple Columns with filter: [`flags?_c=Continent&_c=Name&Name=Andorra`](flags?_c=Continent&_c=Name&Name=Andorra&_format=html)
+  returns all unique values of `Name` without filtering `Name=Andorra` and `Continent` by filtering `Name=Andorra`
+- Sort descending with limit: [`flags?_c=Name&_sort=-Name&_limit=10`](flags?_c=Name&_sort=-Name&_limit=10&_format=html) returns 10 `Name`s sorted descending
+
+## FilterHandler Features
+
+FilterHandler supports all files, databases and options supported by
+[FormHandler](../formhandler/). That includes:
+
+- Connecting to [files](../formhandler/#supported-files) and [databases](../formhandler/supported-databases)
+- Rendering different [formats](../formhandler/#formhandler-formats)
+- Support for [downloads](../formhandler/#formhandler-downloads)
+- [Transforms](../formhandler/#formhandler-transforms) using
+  [`prepare`](../formhandler/#formhandler-prepare),
+  [`function`](../formhandler/#formhandler-function), or
+  [`modify`](../formhandler/#formhandler-modify).
+- Rendering [templates](../formhandler/#formhandler-templates)

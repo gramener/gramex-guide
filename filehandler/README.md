@@ -419,7 +419,7 @@ Insert {user}.md after converting to HTML:
 {% raw gramex.cache.open(f'{user}.md', rel=True) %}
 
 Render {user}.html as a Tornado template, passing a `user` variable:
-{% raw gramex.cache.open(f'{user}.html', rel=True).render(user=handler.current_user) %}
+{% raw gramex.cache.open(f'{user}.html', rel=True).generate(user=handler.current_user) %}
 ```
 
 See [gramex.cache.open()](../api/cache/#gramex.cache.open) for more formats options.
@@ -613,14 +613,15 @@ url:
 
 1. XMLHttpRequest (e.g. via jQuery.post, jQuery.ajax, etc) automatically sends an `X-Requested-With: XMLHttpRequest` header for AJAX.
 2. [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)) automatically adds
-   [Sec-Fetch-\*](https://developer.mozilla.org/en-US/docs/Glossary/Fetch_metadata_request_header) headers
+   [Sec-Fetch-Mode: cors](https://developer.mozilla.org/en-US/docs/Glossary/Fetch_metadata_request_header) headers
 
-**When submitting from a server**, add an `Origin:` header to bypass the check, like this:
+**When submitting from a server**, add either of these headers to bypass the check, like this:
 
 ```python
 import requests
 
-requests.post('http://example.org/page', headers={'Origin': 'https://my.example.org'})
+requests.post('http://example.org/page', headers={'X-Requested-With': 'XMLHttpRequest'})
+requests.post('http://example.org/page', headers={'Sec-Fetch-Mode': 'cors'})
 ```
 
 You can disable XSRF for a specific handler like this:
@@ -658,11 +659,9 @@ url:
       set_xsrf: true        # set the xsrf cookie
 ```
 
-### How XSRF works
+How XSRF works:
 
-Tornado's XSRF:
-
-- Sets a random non-expiring `_xsrf` cookie when
+- Tornado sets a random non-expiring `_xsrf` cookie when
   `tornado.web.RequestHandler.xsrf_token()` is called. It is `httponly` by
   default in Gramex because of the default `xsrf_cookie_kwargs` setting, but not
   set to `secure` to allow HTTP sites to access it

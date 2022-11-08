@@ -108,11 +108,11 @@ Session data is stored in a session store that is configured as follows:
 ```yaml
 app:
   session:
-    type: json                      # Type of store to use: json, sqlite, memory
+    type: json                      # Type of store to use (see below)
     path: $GRAMEXDATA/session.json  # Path to the store (ignored for type: memory)
-    expiry: 31                      # Session cookies expiry in days
     flush: 5                        # Write store to disk periodically (in seconds)
     purge: 3600                     # Delete old sessions periodically (in seconds)
+    expiry: 31                      # Session cookies expiry in days
 ```
 
 Sessions can be stored in one of these `type:`

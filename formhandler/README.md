@@ -1512,11 +1512,27 @@ tables. For example:
           type: INTEGER           # You can also specify as a dict
           nullable: true          # Allows NULL values for this field
           default: 0              # that default to zero
+        timestamp:
+          type: TIMESTAMP
+          default:                # Defaults can also be SQLAlchemy functions
+            function: func.now()  # e.g. the current time
         id:
           type: INTEGER           # Define an integer ID column
           primary_key: true       # as a primary key
           autoincrement: true     # that auto-increments
 ```
+
+The supported keys are:
+
+- `type`: any SQL column type supported by the database
+- `nullable` (bool): whether column can have null values, e.g. `False`
+- `primary_key` (bool): whether column is a primary key, e.g. `True`
+- `autoincrement` (bool): whether column automatically increments, e.g. `True`
+- `default`:
+  - [Any scalar](https://docs.sqlalchemy.org/en/14/core/defaults.html#scalar-defaults) like `0` or `"NA"`
+  - [Any SQLAlchemy function](https://docs.sqlalchemy.org/en/14/core/functions.html) like
+    `{function: func.now()}`, `{function: func.random()}`, `{function: func.current_date()}`
+    ([Ref](https://docs.sqlalchemy.org/en/14/core/defaults.html#client-invoked-sql-expressions))
 
 If the `profile` table already has any of these columns, it is left unaltered. Else, the missing
 columns are *added*. No columns are removed.
