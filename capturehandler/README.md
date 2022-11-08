@@ -215,31 +215,8 @@ It accepts the following arguments:
     console.log messages on the Gramex console
   - `?debug=2` additionally logs all requests
 
-When constructing the `?url=`, `?selector=`, `?title=` or any other parameter,
-ensure that the URL is encoded. So a selector `#item` does not become
-`?id=#item` -- which makes it a URL hash -- and instead becomes `?id=%23item`.
-
-To encode URLs using a Python template:
-
-```html
-{% from urllib.parse import urlencode %}
-<a href="capture?{{ urlencode(url='...', header='header text') }}
-```
-
-To encode URLs using JavaScript:
-
-```js
-$('.screenshot').attr('href', 'capture' +
-    '?url=' + encodeURIComponent(url) +
-    '&header=' + encodeURIComponent(header))
-// Or use this:
-$('.some-button').on('click', function() {
-    location.href = 'capture?ext=png&url=' + encodeURIComponent(url)
-})
-```
-
 If the response HTTP status code is 200, the response is the screenshot.
-If the status code is 40x or 50x, the response text has the error message.
+If the status code is 4xx or 5xx, the response text has the error message.
 
 **Authentication is implicit**. The cookies passed to `capture` are passed to the
 `?url=` parameter. This is exactly as-if the user clicking the capture link were
@@ -259,6 +236,37 @@ Chrome (not PhantomJS), which passes it on to the target URL.
 If `capture.js` was not started, or it terminated, you can restart it by adding
 `?start` to the URL. It is safe to add `?start` even if the server is running. It
 restarts `capture.js` only if required.
+
+## Encode URLs
+
+When constructing the `?url=`, `?selector=`, `?title=` or any other parameter,
+ensure that the URL is encoded. So a selector `#item` does not become
+`?id=#item` -- which makes it a URL hash -- and instead becomes `?id=%23item`.
+
+Use [`urlencode`](https://docs.python.org/3/library/urllib.parse.html#urllib.parse.urlencode) to
+encode URLs in [templates](../filehandler/#templates) or in Python:
+
+```python
+from urllib.parse import urlencode
+
+query = urlencode({'url': ..., 'selector': [..., ...]}, doseq=True)
+```
+
+Use [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams)
+to encode URLs in JavaScript:
+
+```js
+const query = (new URLSearchParams({url: '...', selector: '...'})).toString()
+const query = (new URLSearchParams(['url', '...'], ['selector', '...'], ['selector', '...']])).toString()
+
+// Set a link HREF based on the query
+document.querySelector('a.capture').setAttribute('href', `capture?${query}`)
+// Or add an event listener based on the query
+document.querySelector('button.capture').on('click', function() {
+    location.href = `capture?${query}`
+})
+
+```
 
 ## Screenshot library
 
