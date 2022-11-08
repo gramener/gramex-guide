@@ -18,7 +18,7 @@ You also need `bash` to test. On Windows, this comes with [Git](https://git-scm.
 
 **Step 2**: Clone and install the [master branch](http://github.com/gramener/gramex/tree/master/).
 
-```shell
+```bash
 # Create a new Conda environment with Python 3.7+
 conda create -y --name gramex python=3.7
 conda activate gramex
@@ -46,25 +46,19 @@ sudo apt-get install -y git sqlite3 postgresql postgresql-contrib libpq-dev pyth
 DEBIAN_FRONTEND=noninteractive apt-get -y -q install mysql-server
 -->
 
-
 ## Test Gramex
 
-**Step 1**: [Install Gramex Enterprise](../install/#install-gramex-enterprise) to run tests.
+You must [install Gramex Enterprise](../install/#install-gramex-enterprise) to run tests.
 
-```shell
-pip install gramexenterprise    # Install Gramex Enterprise
-gramex license accept           # Accept the Gramex license
-```
+```bash
+# Install gramex & gramexenterprise
+pip install gramex gramexenterprise
+gramex license accept
 
-**Step 2**: Install dependencies.
+# Install dependencies
+pip install -r tests/requirements.txt
 
-```shell
-bash task testsetup
-```
-
-**Step 3**: Run tests
-
-```shell
+# Run tests
 bash task lint
 nosetests
 ```
@@ -93,42 +87,6 @@ You can also see the code coverage and how long each test takes
 NOSE_WITH_COVERAGE=1 nosetests      # Show code coverage. Store line-by-line results in htmlcov/
 NOSE_WITH_TIMER=1 nosetests         # Show time taken for each test
 ```
-
-## Update Gramex Community Edition
-
-In the gramex folder, create a branch for local development.
-
-```bash
-git checkout -b <branch-name>
-```
-
-Make your changes and check for build errors.
-
-```bash
-flake8                      # if you changed any .py files
-eslint gramex/apps          # if you changed any .js files
-python setup.py nosetests   # if you changed any functionality
-```
-
-On Windows, you may need to [enable Powershell scripts](http://stackoverflow.com/a/18533754/100904).
-
-The tests take a long time. To test a subset, use `nosetests tests.<module>:<ClassName>.<method>`.
-
-[Commit your changes](#committing) and push your branch:
-
-```bash
-git add .
-git commit -m"Your detailed description of your changes."
-git push --set-upstream origin <branch-name>
-```
-
-Submit a pull request to the [master branch](http://github.com/gramener/gramex/tree/master/).
-If possible:
-
-- Write unit tests
-- Document Python docstrings
-- Document the feature in the guide at [gramex-guide][gramex-guide]
-
 
 ## Release Gramex Community Edition
 
@@ -234,7 +192,6 @@ bash task conda                                   # Create conda
 anaconda upload /opt/conda/conda-bld/linux-64/gramex-*.tar.bz2    # Log in as gramener
 ```
 
-
 Gramener.com administrators: re-start Gramex after deployment.
 
 ## Release Gramex Enterprise Edition
@@ -322,7 +279,7 @@ For example, the [Function arguments from URL](../functionhandler/#function-argu
   - Be in a quiet place.
   - Use your headset, not the laptop mic.
   - Test your mic volume. Make sure it's loud enough. (Windows: Settings > Sound Settings > Input > Device properties > Additional device properties and increase the Volume Boost).
-  - Make sure your breathing is not audible. Make sure your sibilance ("sss") is not too loud. (Maybe keep the mic *above* your mouth, not below. Use microphone sponge).
+  - Make sure your breathing is not audible. Make sure your sibilance ("sss") is not too loud. (Maybe keep the mic _above_ your mouth, not below. Use microphone sponge).
   - Enable noise reduction plugins if any (e.g. RRNoise on OBS).
 - Planning tips
   - Turn off mobile and laptop alerts.

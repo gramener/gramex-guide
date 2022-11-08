@@ -16,46 +16,43 @@ You can try Gramex without installing using the [Gramex IDE](https://gramex.gram
 
 There are 4 ways to install the Gramex Community Edition.
 
-1. [**Docker**](#docker-install). Best to try out new versions, or to deploy apps
+1. [**Docker**](#docker-install). Best to try out new versions, or to deploy apps.
 2. [**Conda**](#conda-install) (**RECOMMENDED**). Best for beginners and Python developers
 3. [**Pip**](#pip-install). Best for people contributing to Gramex
 
 ## Docker install
 
-Install [Docker](https://docs.docker.com/engine/install/) first.
-
-Once Docker is running, to run [gramex](https://hub.docker.com/r/gramener/gramex/),
-type this in your Anaconda Prompt / Command Prompt / shell:
+Install [Docker](https://docs.docker.com/engine/install/). Then run:
 
 ```bash
-docker run -it --name gramexapp -p 9988:9988 gramener/gramex:latest /bin/bash
+docker run -it -p 9988:9988 gramener/gramex /bin/sh -l
 ```
 
-Inside the container, run `gramex --help` to verify that Gramex is installed.
+In the container, run `gramex --help` to verify the Gramex version. Now you can [Run your first app](#run-a-gramex-app).
 
 - `-it` runs Docker with an interactive terminal -- so you can type commands in it (e.g. `gramex`)
-- `--name gramexapp` names the instance `gramexapp`
 - `-p 9988:9988` maps host port 9988 (outside) to container port 9988 (inside)
 - `gramener/gramex:latest` runs the latest Gramex instance (pulling it if required)
-- `/bin/bash` runs bash (a shell) that you can run commands in
+- `/bin/sh -l` logs into `ash` (a shell) that you can run commands in
 
 <asciinema-player src="gramex-docker.json" cols="100" rows="20" idle-time-limit="0.5" font-size="medium" loop="1"></asciinema-player>
 
-Now you can [Run your first app](#run-a-gramex-app). You can also:
-
-- stop the instance by typing `exit` from the container
-- re-start Gramex via `docker start -ia gramexapp`
-- remove the instance `docker rm gramexapp`
-
-If you have a Gramex app on your host at `/app`, you can run it by adding `-v /app:/mnt/app`, like this:
+If you have a Gramex app on your host at `/proj`, you can run it by adding `-v /proj:/app`, like this:
 
 ```bash
-docker run -it --name gramexapp -p 9988:9988 -v /app:/mnt/app -w /mnt/app gramener/gramex:latest gramex
+docker run -it -p 9988:9988 -v /proj:/app gramener/gramex
 ```
 
-- `-v /app:/mnt/app` maps the directory `/app` on the host to `/mnt/app` inside the container
-- `-w /mnt/app` sets the working directory to `/mnt/app`
+- `-v /proj:/app` maps the directory `/proj` on the host to the container's `/app` (the working directory)
 - `gramex` runs Gramex from the working directory
+
+Note:
+
+- Gramex is built on [Alpine Linux](https://github.com/gramener/gramex/blob/master/pkg/docker-gramex-base/Dockerfile)
+- The default working directory is `/app`
+- The default user is `gramex`, without a password
+- Use `doas` instead of `sudo` to run as `root`
+- Use `sh -l` to run an interactive shell. If you don't use `-l`, run `source ~/.profile` to add Python and gramex to your path
 
 To upgrade Gramex, run:
 
