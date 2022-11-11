@@ -61,7 +61,7 @@ their access token.
 To use this via jQuery, use this snippet:
 
 ```js
-$.get('twitter-open/statuses/home_timeline.json?count=1')
+fetch('twitter-open/statuses/home_timeline.json?count=1')
 // OUTPUT
 ```
 
@@ -96,7 +96,7 @@ A typical Twitter app page will have the following flow:
 For example:
 
 ```js
-$.get('twitter/statuses/home_timeline.json')
+fetch('twitter/statuses/home_timeline.json')
  .done(function(data) { display(data) })
  .fail(function(xhr, status, msg) {
     if (msg == 'access token missing')
@@ -109,7 +109,7 @@ $.get('twitter/statuses/home_timeline.json')
 After the login, users can be redirected via the `redirect:` config
 documented the [redirection configuration](../config/#redirection).
 
-## Twitter Persist
+## Twitter persist
 
 If your app needs to persist the user's access token, add `access_key: persist`
 and `access_secret: persist` to the kwargs. The first time, the user is asked to
@@ -136,7 +136,7 @@ url:
 Here is a sample response:
 
 ```js
-$.get('persist/statuses/home_timeline.json?count=1')  // OUTPUT
+fetch('persist/statuses/home_timeline.json?count=1')  // OUTPUT
 ```
 
 The first time, you get an access_key error. Visit [/persist/](persist/) to log
@@ -149,17 +149,35 @@ future requests until it expires, or a user logs in again at
 The following request [searches](https://dev.twitter.com/rest/reference/get/search/tweets) for mentions of Gramener and fetches the first response:
 
 ```js
-$.get('twitter-open/search/tweets.json?q=gramener&count=1')  // OUTPUT
+fetch('twitter-open/search/tweets.json?q=gramener&count=1')  // OUTPUT
 ```
 
 The endpoint `/search/tweets.json` is the same as that in the Twitter API, which internally acts as an input to the `api` Gramex endpoint.
+
+Search results are paginated. Fetch `.search_metadata.next_results` to get the next page. For example:
+
+```js
+function twitter_search(query) {
+    fetch('twitter-open/search/tweets.json' + query)
+    .then(r => r.json())
+    .then(result => {
+        // Show the result
+        console.log(result.statuses)
+        // Fetch next results if any
+        if (result.search_metadata.next_results)
+            twitter_search(result.search_metadata.next_results)
+    })
+}
+// Keep searching for tweets by Gramener
+twitter_search('?q=gramener')
+```
 
 ## Twitter followers
 
 This script fetches the [list of followers](https://dev.twitter.com/rest/reference/get/followers/list) for Gramener:
 
 ```js
-$.get('twitter-open/followers/list.json?screen_name=gramener&count=1')  // OUTPUT
+fetch('twitter-open/followers/list.json?screen_name=gramener&count=1')  // OUTPUT
 ```
 
 ## Twitter transforms
@@ -193,7 +211,7 @@ def add_sentiment(result, handler):
 This transforms the tweets to add a `sentiment:` key measuring its sentiment.
 
 ```js
-$.get('sentiment?q=gramener&count=1')  // OUTPUT
+fetch('sentiment?q=gramener&count=1')  // OUTPUT
 ```
 
 The transform should either return a JSON-encodable object, or a string.
@@ -229,15 +247,15 @@ is being processed, it can process another as well.
 Here, we send two requests. The time taken for both requests is almost the same
 as the time taken for each individual request. They execute in parallel.
 
-We use jQuery's [$.when](http://api.jquery.com/jQuery.when/) to wait for all
+We use [Promise.all](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) to wait for all
 requests.
 
 ```js
 // Latest tweet for Gramener
-var q1 = $.get('twitter-open/search/tweets.json?q=gramener&count=1')
+var q1 = fetch('twitter-open/search/tweets.json?q=gramener&count=1')
 // Latest tweet for Richard Dawkins
-var q2 = $.get('twitter-open/search/tweets.json?q=RichardDawkins&count=1')
-$.when(q1, q2) // OUTPUT
+var q2 = fetch('twitter-open/search/tweets.json?q=RichardDawkins&count=1')
+Promise.all(q1, q2) // OUTPUT
 ```
 
 ## Twitter GET requests
