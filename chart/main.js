@@ -171,7 +171,7 @@ function chartDidRender() {
         templates: templates, data: template_data(model.vega_spec, view)
       }))
 
-      $('a[data-toggle="tab"]', $('#stages')).on('shown.bs.tab', function (e) {
+      $('a[data-bs-toggle="tab"]', $('#stages')).on('shown.bs.tab', function (e) {
         $('h6', $(e.relatedTarget)).removeClass('arrow-info').addClass('arrow-light')
         $(e.relatedTarget).closest('li').css('pointer-events', 'none')
         $('h6', $(e.target)).removeClass('arrow-light').addClass('arrow-info')

@@ -43,21 +43,9 @@
   overflow: hidden;
 }
 
-/* .pr-05, .px-05 {
-  padding-right: .25rem !important;
-}
-
-.pl-05, .px-05 {
-  padding-left: .25rem !important;
-} */
-
 .pt-025, .px-025 {
   padding-top: .125rem !important;
 }
-/*
-.pb-05, .px-05 {
-  padding-bottom: .25rem !important;
-} */
 
 .h-2 {
   height: 0.75rem !important;

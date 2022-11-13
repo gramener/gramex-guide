@@ -46,7 +46,7 @@ The JSON response consists of an object containing two keys:
 
 <form class="ltform form-inline">
   <input type="text" class="form-control" placeholder="Enter text">
-  <button class="btn btn-secondary ml-2">Check</button>
+  <button class="btn btn-secondary ms-2">Check</button>
 </form>
 <div class="alert alert-success collapse my-2" role="alert">
   <p class="correction"></p>

@@ -14,56 +14,45 @@
     gtag('js', new Date())
     gtag('config', 'UA-42126862-1')
     gtag('set', { 'user_id': '{% try %}{{ handler.current_user.email }}{% except %}{% end %}' })
-  </script>​
+  </script>
+  <script src="/{{ GUIDE_ROOT }}/ui/jquery/dist/jquery.min.js"></script>
+  <script src="/{{ GUIDE_ROOT }}/ui/bootstrap5/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/{{ GUIDE_ROOT }}/ui/lodash/lodash.min.js"></script>
+  <script src="/{{ GUIDE_ROOT }}/ui/g1/dist/g1.min.js"></script>
 </head>
-<body data-spy="scroll" data-target=".menu">
-
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+<body data-bs-spy="scroll" data-bs-target=".menu">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark main-navbar">
     <div class="container">
-      <button class="btn bg-dark navbar-toggler" type="button" data-toggle="collapse" data-target=".menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle sidebar">
+      <button class="btn bg-dark navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle sidebar">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand mr-auto" href="/{{ GUIDE_ROOT }}/">
+      <a class="navbar-brand me-auto" href="/{{ GUIDE_ROOT }}/">
         <img height="24" src="/{{ GUIDE_ROOT }}/gramex-logo.gif" alt="Gramex" class="mt-n2">
         <span class="h5 text-uppercase d-none d-md-inline">Guide</span>
       </a>
-      <form class="form-inline">
-        <input class="search form-control form-control-sm shadow-none my-2 mr-2 d-none d-sm-block" type="search" id="search" placeholder="Search topics" size="30" data-prefix="/{{ GUIDE_ROOT }}/" data-url="/{{ GUIDE_ROOT }}/search/searchindex.json" autocomplete="off">
+      <form class="form-inline me-2">
+        <input class="search form-control form-control-sm shadow-none my-2 me-2 d-none d-sm-block" type="search" id="search" placeholder="Search topics" size="30" data-prefix="/{{ GUIDE_ROOT }}/" data-url="/{{ GUIDE_ROOT }}/search/searchindex.json" autocomplete="off">
       </form>
       <div class="nav-item dropdown">
-        <a class="dropdown-toggle btn btn-success btn-sm d-none d-md-block font-weight-bold" href="#" id="help-dropdown"
-          role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Help</a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="help-dropdown">
+        <a class="dropdown-toggle btn btn-success d-none d-md-block font-weight-bold" href="#" id="help-dropdown"
+          role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Help</a>
+        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="help-dropdown">
           <a class="dropdown-item d-flex" href="https://stackoverflow.com/questions/tagged/gramex">
-            <i class="fab fa-fw fa-2x fa-stack-overflow mr-3 mt-2"></i>
+            <i class="fab fa-fw fa-2x fa-stack-overflow me-3 mt-2"></i>
             <div>
               <div>Browse Gramex questions</div>
               <div class="small">See what others have asked, or answer them.</div>
             </div>
           </a>
-          <a class="dropdown-item d-flex" href="https://stackoverflow.com/questions/ask?tags=gramex">
-            <i class="fab fa-fw fa-2x fa-stack-overflow mr-3 mt-2"></i>
-            <div>
-              <div>Ask a Gramex question</div>
-              <div class="small">We'll respond in 24 hrs.</div>
-            </div>
-          </a>
           <a class="dropdown-item d-flex" href="https://github.com/gramener/gramex/issues/new?labels=bug&title={{ title }}+issue">
-            <i class="fab fa-fw fa-2x fa-github mr-3 mt-2"></i>
+            <i class="fab fa-fw fa-2x fa-github me-3 mt-2"></i>
             <div>
               <div>Report a bug</div>
               <div class="small">We'll respond in 24 hrs.</div>
             </div>
           </a>
-          <a class="dropdown-item d-flex" href="https://github.com/gramener/gramex/issues/new?labels=bug&title={{ title }}+feature+request">
-            <i class="fab fa-fw fa-2x fa-github mr-3 mt-2"></i>
-            <div>
-              <div>Request features on Github</div>
-              <div class="small">We'll evaluate it and add to our roadmap.</div>
-            </div>
-          </a>
           <a class="dropdown-item d-flex" href="mailto:cto@gramener.com">
-            <i class="fas fa-fw fa-2x fa-at mr-3 mt-2"></i>
+            <i class="fas fa-fw fa-2x fa-at me-3 mt-2"></i>
             <div>
               <div>Email us for support</div>
               <div class="small">We're available cto@gramener.com.</div>
@@ -71,166 +60,225 @@
           </a>
         </div>
       </div>
-
     </div>
   </nav>
 
-  <div class="container">
-    <nav class="menu collapse sm1 py-4">
-      <a class="d-block" href="/{{ GUIDE_ROOT }}/search/"><i class="fas fa-search"></i> Search</a>
-      <ul class="p-0 nav">
-        <li><div class="menu-section">Gramex Guide</div>
-          <ul>
-            <li><a href="/{{ GUIDE_ROOT }}/">Overview</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/tutorials/quickstart/">Quickstart tutorial</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/tutorials/dashboards/">Dashboard tutorial</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/tutorials/charts/">Charts tutorial</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/tutorials/g1-dropdown/">Dropdown tutorial</a></li>
-            <li><a target="_blank" href="https://github.com/gramexrecipes/gramex-ml-workshop/">ML app tutorial</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/exercises/">Exercises</a></li>
-          </ul>
-        </li>
-        <li><div class="menu-section">Usage</div>
-          <ul>
-            <li><a href="/{{ GUIDE_ROOT }}/install/">Install Gramex</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/init/">Gramex init</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/config/">Configurations</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/deploy/">Deployment patterns</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/debug/">Debugging Gramex</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/security/">Security</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/test/">Testing Gramex</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/tips/">Tips</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/snippets/">VS Code Snippets</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/contributing/">Contributing</a></li>
-          </ul>
-        </li>
-        <li><div class="menu-section">Microservices</div>
-          <ul>
-            <li><a href="/{{ GUIDE_ROOT }}/filehandler/">FileHandler</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/formhandler/">FormHandler</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/functionhandler/">FunctionHandler</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/auth/">Auth handlers</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/drivehandler/">DriveHandler</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/capturehandler/">CaptureHandler</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/mlhandler/">MLHandler</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/mlpredictor/">MLPredictor</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/pptxhandler/">PPTXHandler</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/comichandler/">ComicHandler</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/openapihandler/">OpenAPIHandler</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/filterhandler/">FilterHandler</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/jsonhandler/">JSONHandler</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/proxyhandler/">ProxyHandler</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/processhandler/">ProcessHandler</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/websockethandler/">WebSocketHandler</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/twitterresthandler/">TwitterRESTHandler</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/facebookgraphhandler/">FacebookGraphHandler</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/handlers/">Write handlers</a></li>
-          </ul>
-        </li>
-        <li><div class="menu-section">Libraries</div>
-          <ul>
-            <li><a href="/{{ GUIDE_ROOT }}/topcause/">TopCause</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/cache/">Cache requests</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/email/">Send email</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/alert/">Smart alerts</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/logging/">Logging</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/scheduler/">Schedule tasks</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/watch/">Watch files</a></li>
-          </ul>
-        </li>
-        <li><div class="menu-section">Apps</div>
-          <ul>
-            <li><a href="/{{ GUIDE_ROOT }}/apps/">Run apps</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/admin/">Admin page</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/chart/">Charts</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/uicomponents/">UI Components</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/uifactory/">UIFactory</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/g1/">g1</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/mapviewer/">Mapviewer</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/logviewer/">View logs</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/languagetool/">Language Tool</a></li>
-          </ul>
-        </li>
-        <li><div class="menu-section">Product</div>
-          <ul>
-            <li><a href="/{{ GUIDE_ROOT }}/roadmap/">Gramex Roadmap</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/release/">Release notes</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/edition/">Editions</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/faq/">FAQ</a></li>
-          </ul>
-        </li>
-        <li><div class="menu-section">Reference</div>
-          <ul>
-            <li><a href="/{{ GUIDE_ROOT }}/license/">License</a></li>
-            <li><a target="_blank" href="https://gramener.com/gramex/guide/api/">API Reference</a></li>
-            <li><a href="/{{ GUIDE_ROOT }}/linkcheck/">Link check</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-
-    <script src="/{{ GUIDE_ROOT }}/ui/jquery/dist/jquery.min.js"></script>
-    <script src="/{{ GUIDE_ROOT }}/ui/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/{{ GUIDE_ROOT }}/ui/lodash/lodash.min.js"></script>
-    <script src="/{{ GUIDE_ROOT }}/ui/g1/dist/g1.min.js"></script>
-
-    <section class="content py-5">
-      {% if title %}
-        <h1>{{ title }}</h1>
-      {% end %}
-      {% raw body %}
-
-      <footer class="my-5">
-        <form class="border-top border-dark feedback text-center" data-url="/{{ GUIDE_ROOT }}/feedback">
-          <input type="hidden" name="page" value="{{ handler.request.path }}">
-          <div class="py-3">
-            <strong>Is this page helpful?</strong>
-            <div class="form-check d-inline">
-              <input class="form-check-input" type="radio" name="helpful" id="helpful-yes" value="y">
-              <label class="form-check-label" for="helpful-yes">
-                <i class="far fa-thumbs-up"></i> Yes
-              </label>
-            </div>
-            <div class="form-check d-inline">
-              <input class="form-check-input" type="radio" name="helpful" id="helpful-no" value="n">
-              <label class="form-check-label" for="helpful-no">
-                <i class="far fa-thumbs-down"></i> No
-              </label>
-            </div>
-          </div>
-          <div class="py-3 feedback-details d-none">
-            <textarea name="feedback" class="feedback-text form-control" placeholder="Any additional feedback?"></textarea>
-          </div>
-          <div class="py-3 feedback-details d-none">
-            <button type="submit" class="btn btn-sm btn-primary">Submit</button>
-            <button type="reset" class="feedback-skip btn btn-sm btn-light">Skip</button>
-          </div>
-          <div class="py-3 feedback-thanks d-none">
-            Thanks for your feedback.
-          </div>
-        </form>
-
-        <div class="text-center">
-          <a class="btn btn-sm btn-primary my-1" href="https://stackoverflow.com/questions/tagged/gramex">Ask a question on StackOverflow</a>
-          <a class="btn btn-sm btn-warning my-1" href="https://github.com/gramener/gramex/issues/new?labels=bug&title={{ title }}+issue">Report a bug on Github</a>
-        </div>
-
-        <div class="d-flex justify-content-between align-items-center py-4 border-top border-dark">
-          <a href="https://gramener.com/" target="_blank"><img height="40" src="https://gramener.com/img-2019/gramener_icon.png" alt="Gramener"></a>
-          <div class="sm1 text-uppercase">
-            <a href="/{{ GUIDE_ROOT }}/" class="text-dark">Gramex Guide</a>
-            |
-            <a href="https://gramener.com/platform/" class="text-dark">Powered by Gramex</a>
-          </div>
-          <div>
-            <a href="https://stackoverflow.com/questions/tagged/gramex" target="_blank" class="text-dark"><i class="fab fa-stack-overflow fa-2x ml-3" title="Gramex on StackOverflow"></i></a>
-            <a href="https://github.com/gramener/gramex/" target="_blank" class="text-dark"><i class="fab fa-github fa-2x ml-3" title="Gramex on Github"></i></a>
-          </div>
-        </div>
-      </footer>
+  {% if uri == '/' %}
+    <section class="bg-black text-white py-1 pb-4">
+      <div class="container text-center text-lg-start">
+        <h1 class="display-1">Gramex Guide</h1>
+        <p class="lead">Tutorials, e-books, white papers, online courses, certification, and more.</p>
+      </div>
     </section>
-  </div>
+    <section class="container px-4 my-4">
+      <div class="row">
+        <div class="col mb-4">
+          <input class="form-control search my-0" type="search" placeholder="Search topics" data-prefix="/{{ GUIDE_ROOT }}/" data-url="{{ GUIDE_ROOT }}/search/searchindex.json" autocomplete="off">
+        </div>
+      </div>
+      <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-1 g-4 justify-content-center text-center">
+        <div class="col">
+          <a class="btn btn-outline-dark h-100 w-100" href="overview/">
+            <h3 class="mb-4 mt-3">Getting Started</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z" />
+            </svg>
+            <div class="my-3">A step-by-guide guide on how to get started with Gramex.</div>
+          </a>
+        </div>
+        <div class="col">
+          <a class="btn btn-outline-dark h-100 w-100" href="https://www.youtube.com/watch?v=lkBqm6XoccI&list=PLrn2FHBzHtaMDFAkpJ1JDXbtfvcVvpsAJ">
+            <h3 class="mb-4 mt-3">Watch Tutorials</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-book-half" viewBox="0 0 16 16">
+              <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+            </svg>
+            <div class="my-3">What is Gramex? What are its applications? Watch video tutorials and never lose sleep over wasted efforts again.</div>
+          </a>
+        </div>
+        <div class="col">
+          <a class="btn btn-outline-dark h-100 w-100" href="https://gramex.gramener.com/">
+            <h3 class="mb-4 mt-3">Gramex IDE</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-menu-button-fill" viewBox="0 0 16 16">
+              <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v2A1.5 1.5 0 0 0 1.5 5h8A1.5 1.5 0 0 0 11 3.5v-2A1.5 1.5 0 0 0 9.5 0h-8zm5.927 2.427A.25.25 0 0 1 7.604 2h.792a.25.25 0 0 1 .177.427l-.396.396a.25.25 0 0 1-.354 0l-.396-.396zM0 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V8zm1 3v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2H1zm14-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v2h14zM2 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 4a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z" />
+            </svg>
+            <div class="my-3">Access the GRAMEX IDE and learn on-the-go. Start your own project or build a starter app.</div>
+          </a>
+        </div>
+        <div class="col">
+          <a class="btn btn-outline-dark h-100 w-100" href="https://elearn.nptel.ac.in/shop/partnering-courses/building-machine-learning-applications-rapidly-using-low-code-platforms/?tab=Relevance&pagesize=-1&q=gramex&searchOn=1">
+            <h3 class="mb-4 mt-3">NPTEL+ Course</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-mortarboard-fill" viewBox="0 0 16 16">
+              <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z" />
+              <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Z" />
+            </svg>
+            <div class="my-3">Building ML Applications Rapidly using Gramex is now available as a NPTEL+ Course. Enroll and earn credits!</div>
+          </a>
+        </div>
+        <div class="col">
+          <a class="btn btn-outline-dark h-100 w-100" href="https://stackoverflow.com/search?tab=Relevance&pagesize=-1&q=gramex&searchOn=1">
+            <h3 class="mb-4 mt-3">Gramex on StackOverflow</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-chat-left-dots" viewBox="0 0 16 16">
+              <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+              <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+            </svg>
+            <div class="my-3">Sync up with the Gramex community of developers and data enthusiasts. Learn fast from experts.</div>
+          </a>
+        </div>
+      </div>
+    </section>
+  {% else %}
+    <div class="container d-flex">
+      <nav class="menu collapse pt-3 pb-5 pe-5">
+        <a class="d-block pt-2" href="/{{ GUIDE_ROOT }}/search/"><i class="fas fa-search"></i> Search</a>
+        <ul class="p-0 nav">
+          <li><div class="menu-section">Gramex Guide</div>
+            <ul>
+              <li><a href="/{{ GUIDE_ROOT }}/overview/">Overview</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/tutorials/quickstart/">Quickstart tutorial</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/tutorials/dashboards/">Dashboard tutorial</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/tutorials/charts/">Charts tutorial</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/tutorials/g1-dropdown/">Dropdown tutorial</a></li>
+              <li><a target="_blank" href="https://github.com/gramexrecipes/gramex-ml-workshop/">ML app tutorial</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/exercises/">Exercises</a></li>
+            </ul>
+          </li>
+          <li><div class="menu-section">Usage</div>
+            <ul>
+              <li><a href="/{{ GUIDE_ROOT }}/install/">Install Gramex</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/init/">Gramex init</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/config/">Configurations</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/deploy/">Deployment patterns</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/debug/">Debugging Gramex</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/security/">Security</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/test/">Testing Gramex</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/tips/">Tips</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/snippets/">VS Code Snippets</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/contributing/">Contributing</a></li>
+            </ul>
+          </li>
+          <li><div class="menu-section">Microservices</div>
+            <ul>
+              <li><a href="/{{ GUIDE_ROOT }}/filehandler/">FileHandler</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/formhandler/">FormHandler</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/functionhandler/">FunctionHandler</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/auth/">Auth handlers</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/drivehandler/">DriveHandler</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/capturehandler/">CaptureHandler</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/mlhandler/">MLHandler</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/mlpredictor/">MLPredictor</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/pptxhandler/">PPTXHandler</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/comichandler/">ComicHandler</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/openapihandler/">OpenAPIHandler</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/filterhandler/">FilterHandler</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/jsonhandler/">JSONHandler</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/proxyhandler/">ProxyHandler</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/processhandler/">ProcessHandler</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/websockethandler/">WebSocketHandler</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/twitterresthandler/">TwitterRESTHandler</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/facebookgraphhandler/">FacebookGraphHandler</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/handlers/">Write handlers</a></li>
+            </ul>
+          </li>
+          <li><div class="menu-section">Libraries</div>
+            <ul>
+              <li><a href="/{{ GUIDE_ROOT }}/topcause/">TopCause</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/cache/">Cache requests</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/email/">Send email</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/alert/">Smart alerts</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/logging/">Logging</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/scheduler/">Schedule tasks</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/watch/">Watch files</a></li>
+            </ul>
+          </li>
+          <li><div class="menu-section">Apps</div>
+            <ul>
+              <li><a href="/{{ GUIDE_ROOT }}/apps/">Run apps</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/admin/">Admin page</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/chart/">Charts</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/uicomponents/">UI Components</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/uifactory/">UIFactory</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/g1/">g1</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/mapviewer/">Mapviewer</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/logviewer/">View logs</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/languagetool/">Language Tool</a></li>
+            </ul>
+          </li>
+          <li><div class="menu-section">Product</div>
+            <ul>
+              <li><a href="/{{ GUIDE_ROOT }}/roadmap/">Gramex Roadmap</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/release/">Release notes</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/edition/">Editions</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/faq/">FAQ</a></li>
+            </ul>
+          </li>
+          <li><div class="menu-section">Reference</div>
+            <ul>
+              <li><a href="/{{ GUIDE_ROOT }}/license/">License</a></li>
+              <li><a target="_blank" href="https://gramener.com/gramex/guide/api/">API Reference</a></li>
+              <li><a href="/{{ GUIDE_ROOT }}/linkcheck/">Link check</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <section class="content py-3 ms-4">
+        {% if title %}<h1>{{ title }}</h1>{% end %}
+        {% raw body %}
+      </section>
+    </div>
+  {% end %}
 
+  <footer class="bg-black text-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-md-8 col-12">
+          <a href="https://gramener.com/" target="_blank" class="d-flex text-decoration-none align-items-center">
+            <img height="40" src="https://gramener.com/img-2019/gramener_icon.png" alt="Gramener" class="d-block me-2">
+            <h2 class="fs-4 text-white my-0">Gramener</h2>
+          </a>
+          <div class="my-3 text-secondary">Gramener is a design-led data science company that helps solve complex business problems with compelling data stories using insights and a low-code analytics platform. </div>
+          <h2 class="fs-4 text-white my-4">Gramex on Social Media</h2>
+          <div>
+            <a href="https://stackoverflow.com/questions/tagged/gramex" target="_blank" class="text-light"><i class="fab fa-stack-overflow fa-2x ms-3" title="Gramex on StackOverflow"></i></a>
+            <a href="https://github.com/gramener/gramex/" target="_blank" class="text-light"><i class="fab fa-github fa-2x ms-3" title="Gramex on Github"></i></a>
+            <a href="https://www.youtube.com/watch?v=lkBqm6XoccI&list=PLrn2FHBzHtaMDFAkpJ1JDXbtfvcVvpsAJ" target="_blank" class="text-light"><i class="fab fa-youtube fa-2x ms-3" title="Gramex on YouTube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 col-12">
+          <h2 class="fs-4 text-white my-0">Quick links</h2>
+          <ul class="list-unstyled">
+            <li class="pt-3"><a class="link-secondary" href="https://gramener.com/companystory/">About us</a></li>
+            <li class="pt-3"><a class="link-secondary" href="https://gramener.com/news/">News</a></li>
+            <li class="pt-3"><a class="link-secondary" href="https://gramener.com/data-science-whiteboards/">Videos</a></li>
+            <li class="pt-3"><a class="link-secondary" href="https://blog.gramener.com/">Blog</a></li>
+            <li class="pt-3"><a class="link-secondary" href="https://gramener.com/careers/">Careers</a></li>
+            <li class="pt-3"><a class="link-secondary" href="https://gramener.com/cookie-policy">Cookie Policy</a></li>
+            <li class="pt-3"><a class="link-secondary" href="https://gramener.com/privacy-policy">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 col-12">
+          <h2 class="fs-4 text-white my-0">Products &amp; Offerings</h2>
+          <ul class="list-unstyled">
+            <li class="pt-3"><a class="link-secondary" href="https://gramener.com/gramex/">Gramex Low-code Platform</a></li>
+            <li class="pt-3"><a class="link-secondary" href="https://slidesense.ai/">SlideSense</a></li>
+            <li class="pt-3"><a class="link-secondary" href="https://gramener.com/clusters/">Clusters</a></li>
+            <li class="pt-3"><a class="link-secondary" href="https://gramener.com/data-explorer/">Data Explorer</a></li>
+            <li class="pt-3"><a class="link-secondary" href="https://gramener.com/comicgen/v1/">ComicGen</a></li>
+            <li class="pt-3"><a class="link-secondary" href="https://gramener.com/solutions/">Solutions</a></li>
+            <li class="pt-3"><a class="link-secondary" href="https://gramener.com/narrative/">Narrative</a></li>
+            <li class="pt-3"><a class="link-secondary" href="https://gramener.com/advisory-consulting">Data Science Advisory</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 col-12">
+          <h2 class="fs-4 text-white my-0">Contact Us</h2>
+          <ul class="list-unstyled">
+            <li class="pt-3"><a class="link-secondary" href="https://gramener.com/demorequest/">Request Demo</a></li>
+            <li class="pt-3"><a class="link-secondary" href="tel:+16094543669">+1 609 454 3669</a></li>
+            <li class="pt-3"><a class="link-secondary" href="mailto:reachus@gramener.com">reachus@gramener.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script src="/{{ GUIDE_ROOT }}/node_modules/clipboard/dist/clipboard.min.js"></script>
   <script src="/{{ GUIDE_ROOT }}/node_modules/anchor-js/anchor.min.js"></script>

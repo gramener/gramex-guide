@@ -7,7 +7,6 @@ import gramex
 import hashlib
 import markdown
 import re
-import time
 import tornado.template
 import yaml
 from customblocks import CustomBlocksExtension
@@ -30,27 +29,35 @@ def markdown_block(tag, **defaults):
     It loads `_template/example.html` and renders with all custom block attributes. Specified
     attrs (`href`, `source` and target in this example) are always passed, at least as `None`.
     '''
+
     def method(ctx, **kwargs):
         for key, val in defaults.items():
             kwargs.setdefault(key, val)
         return gramex.cache.open(f'_template/{tag}.html', 'template', rel=True).generate(
-            ctx=ctx, **kwargs)
+            ctx=ctx, **kwargs
+        )
+
     return method
 
 
-md = markdown.Markdown(extensions=[
-    'extra',
-    'meta',
-    'codehilite',
-    'smarty',
-    'mdx_truly_sane_lists',
-    'fenced_code',
-    'toc',
-    CustomBlocksExtension(generators={
-        'example': markdown_block('example', href='', source='', target=''),
-        'card': markdown_block('card', title='Getting Started Guide'),
-    }),
-], soutput_format='html5')
+md = markdown.Markdown(
+    extensions=[
+        'extra',
+        'meta',
+        'codehilite',
+        'smarty',
+        'mdx_truly_sane_lists',
+        'fenced_code',
+        'toc',
+        CustomBlocksExtension(
+            generators={
+                'example': markdown_block('example', href='', source='', target=''),
+                'card': markdown_block('card', title='Getting Started Guide'),
+            }
+        ),
+    ],
+    soutput_format='html5',
+)
 # Create a cache for guide markdown content
 md_cache = cachetools.LRUCache(maxsize=5000000, getsizeof=len)
 
@@ -59,10 +66,7 @@ def markdown_template(content, handler):
     # Cache the markdown contents locally, to avoid Markdown re-conversion
     hash = hashlib.md5(content.encode('utf-8')).hexdigest()
     if hash not in md_cache:
-        md_cache[hash] = {
-            'content': md.convert(content),
-            'meta': md.Meta
-        }
+        md_cache[hash] = {'content': md.convert(content), 'meta': md.Meta}
         if md.Meta.get('template', False):
             t = tornado.template.Template(content)
             md_cache[hash]['content'] = md.convert(t.generate(**md.Meta).decode('utf-8'))
@@ -76,7 +80,9 @@ def markdown_template(content, handler):
     uri = handler.request.headers.get('X-Request-URI', handler.request.path)
     match = re.match(r'.*/guide/', uri)
     if match:
-        root = match.group(0).strip('/')        # Strip slashes for consistency with $YAMLURL
+        root = match.group(0).strip('/')  # Strip slashes for consistency with $YAMLURL
+        lastpos = match.endpos - 1
+        uri = uri[lastpos:]  # Everything after guide/ is the uri
     # Set up template variable defaults
     kwargs = {
         'GUIDE_ROOT': root,
@@ -84,7 +90,7 @@ def markdown_template(content, handler):
         'body': content['content'],
         'title': '',
         'handler': handler,
-        'course_index': 'yes'
+        'uri': uri,
     }
     # ... which can be updated by the YAML frontmatter on the Markdown files
     for key, val in content['meta'].items():
@@ -94,16 +100,10 @@ def markdown_template(content, handler):
     # TODO: Use YAML frontmatter to do this in a more controlled way.
     if 'xsrf' in content:
         handler.xsrf_token
-    tmpl = gramex.cache.open('_template/home.html', 'template', rel=True)
+    tmpl = gramex.cache.open('_template/markdown.html', 'template', rel=True)
     return tmpl.generate(**kwargs).decode('utf-8')
 
 
 def config(handler):
     '''Dump the final resolved config'''
     return yaml.dump(gramex.conf, default_flow_style=False)
-
-
-def prepare_feedback(args, handler):
-    if handler.request.method == 'POST':
-        args['user'] = [handler.current_user.id if handler.current_user else '']
-        args['time'] = [time.time()]

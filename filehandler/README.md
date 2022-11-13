@@ -378,7 +378,7 @@ url:
 ```
 
 ::: example href=template source="https://github.com/gramener/gramex-guide/blob/master/filehandler/template.html"
-Template example
+    Template example
 
 ### Template syntax
 
@@ -451,7 +451,7 @@ Note:
 Modules can add CSS and JS to the parent template. For example:
 
 ```text
-{% set_resources(css_files='/ui/bootstrap/dist/bootstrap.min.css') %}
+{% set_resources(css_files='/ui/bootstrap5/dist/bootstrap.min.css') %}
 {% set_resources(javascript_files='/ui/lodash/lodash.min.js') %}
 {% set_resources(embedded_css='th { padding: 4px; }') %}
 {% set_resources(embedded_js='alert("OK")') %}
@@ -481,7 +481,7 @@ body {
 ```
 
 ::: example href=color.scss source="https://github.com/gramener/gramex-guide/blob/master/filehandler/color.scss"
-See color.scss
+    See color.scss
 
 To enable this in your FileHandler, add:
 
@@ -495,7 +495,7 @@ URL query parameters are automatically passed as variables to the SASS file. For
 `color.scss?color=green` sets `$color: green`.
 
 ::: example href=color.scss?color=blue source="https://github.com/gramener/gramex-guide/blob/master/filehandler/color.scss"
-See `color.scss?color=blue`
+    See `color.scss?color=blue`
 
 You can use this to allow users to customize your theme.
 
@@ -524,7 +524,7 @@ function getLength(obj) {
 ```
 
 ::: example href=typescript.ts source="https://github.com/gramener/gramex-guide/blob/master/filehandler/typescript.ts"
-See typescript.ts
+    See typescript.ts
 
 To enable this in your FileHandler, add:
 
@@ -569,7 +569,7 @@ The default FileHandler compiles any `.vue` file into CSS. For example, this `he
 ```
 
 ::: example href=hello-world.vue source="https://github.com/gramener/gramex-guide/blob/master/filehandler/hello-world.vue"
-See hello-world.vue
+    See hello-world.vue
 
 To enable this in your FileHandler, add:
 

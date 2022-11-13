@@ -25,7 +25,7 @@ url:
 ::: example href=cashflow source="https://github.com/gramener/gramex-guide/blob/master/formhandler/cashflow/"
     Try it with the FormHandler tutorial
 
-## Supported Files
+## Supported files
 
 [Video](https://youtu.be/bdMnvaETE48){.youtube}
 
@@ -87,7 +87,7 @@ This is cached permanently unless the URL is changed or the server is restarted.
     ext: csv          # Explicitly specify the extension for HTTP(S) urls
 ```
 
-## Supported Databases
+## Supported databases
 
 [Video](https://youtu.be/3Ds0x-xI_6E){.youtube}
 
@@ -236,6 +236,93 @@ With additional libraries, FormHandler can connect to
 - [Vertica](https://pypi.org/project/sqlalchemy-vertica-python/)
   - Install: `pip install sqlalchemy-vertica-python`
   - Use: `url: 'vertica+vertica_python://$USER:$PASS@$HOST/$DATABASE'`
+
+
+## FormHandler filters
+
+[Video](https://youtu.be/1DAcuxjW0FM){.youtube}
+
+The URL supports operators for filtering rows. The operators can be combined.
+
+- [?Continent=Europe](flags?Continent=Europe&_format=html) ► Continent = Europe
+- [?Continent=Europe&Continent=Asia](flags?Continent=Europe&Continent=Asia&_format=html)
+  ► Continent = Europe OR Asia. Multiple values are allowed
+- [?Continent!=Europe](flags?Continent!=Europe&_format=html) ► Continent is NOT Europe
+- [?Continent!=Europe&Continent!=Asia](flags?Continent!=Europe&Continent!=Asia&_format=html)
+  ► Continent is NEITHER Europe NOR Asia
+- [?Shapes](flags?Shapes&_format=html) ► Shapes is not NULL
+- [?Shapes!](flags?Shapes!&_format=html) ► Shapes is NULL
+- [?c1>=10](flags?c1>=10&_format=html) ► c1 > 10 (not >= 10)
+- [?c1>~=10](flags?c1>~=10&_format=html) ► c1 >= 10. The `~` acts like an `=`
+- [?c1<=10](flags?c1<=10&_format=html) ► c1 < 10 (not <= 10)
+- [?c1<~=10](flags?c1<~=10&_format=html) ► c1 <= 10. The `~` acts like an `=`
+- [?c1>=10&c1<=20](flags?c1>=10&c1<=20&_format=html) ► c1 > 10 AND c1 < 20
+- [?Name~=United](flags?Name~=United&_format=html) ► Name matches &_format=html
+- [?Name!~=United](flags?Name!~=United&_format=html) ► Name does NOT match United
+- [?Name~=United&Continent=Asia](flags?Name~=United&Continent=Asia&_format=html) ► Name matches United AND Continent is Asia
+
+To control the output, you can use these control arguments:
+
+- Limit rows: [?_limit=10](flags?_limit=10&_format=html) ► show only 10 rows
+- Offset rows: [?_offset=10&_limit=10](flags?_offset=10&_limit=10&_format=html) ► show only 10 rows starting, skipping the first 10 rows
+- Sort by columns: [?_sort=Continent&_sort=Name](flags?_sort=Continent&_sort=Name&_format=html) ► sort first by Continent (ascending) then Name (ascending)
+- Sort order: [?_sort=-Continent&_sort=-ID](flags?_sort=-Continent&_sort=-ID&_format=html) ► sort first by Continent (descending) then ID (descending)
+- Specific columns: [?_c=Continent&_c=Name](flags?_c=Continent&_c=Name&_format=html) ► show only the Continent and Names columns
+- Exclude columns: [?_c=-Continent&_c=-Name](flags?_c=-Continent&_c=-Name&_format=html) ► show all columns except the Continent and Names columns
+- Add metadata: [?_meta=y](flags?_c=-Continent&_offset=10&_limit=10&_format=html&_meta=y) ► return all available metadata as HTTP headers
+
+Note: You can use `FormHandler` to render specific columns in navbar filters using `?_c=`.
+
+
+## FormHandler groupby
+
+[Video](https://youtu.be/1DAcuxjW0FM?t=620){.youtube}
+
+**v1.38**. The URL supports grouping by columns using `?_by=col`. For example:
+
+- [?_by=Continent](flags?_by=Continent&_format=html): group by Continent, and sum all numeric columns.
+  ([Test on SQLite](db?_by=Continent&_format=html))
+- [?_by=Text](flags?_by=Text&_format=html): group by Text, and sum all numeric columns.
+  ([Test on SQLite](db?_by=Text&_format=html))
+- [?_by=Text&_by=Symbols](flags?_by=Text&_by=Symbols&_format=html): group by Text *and* by Symbols.
+  ([Test on SQLite](db?_by=Text&_by=Symbols&_format=html))
+
+You can specify custom aggregations using `?_c=col|aggregation`. For example:
+
+- [?_by=Continent&_c=Name|count](flags?_by=Continent&_c=Name|count&_format=html): group by Continent, count names of countries
+- [?_by=Continent&_c=Name|count&_c=c1|min&_c=c1|avg&_c=c1|max&_c=c1|sum](flags?_by=Continent&_c=Name|count&_c=c1|min&_c=c1|avg&_c=c1|max&_c=c1|sum&_format=html)
+  - `_by=Continent`: group by "Continent"
+  - `_c=Name|count`: count values in "Name"
+  - `_c=c1|min`: min value of "c1" in each continent
+  - `_c=c1|avg`: mean value of "c1" in each continent
+  - `_c=c1|max`: max value of "c1" in each continent
+  - `_c=c1|sum`: sum of "c1" in each continent
+
+Apart from `count`, `min`, `avg`, `max`, and `sum`, you can use any aggregation functions the database supports. For example:
+
+- [DB2](https://www.ibm.com/docs/en/db2-for-zos/11?topic=functions-aggregate): e.g. `corr`, `stddev`
+- [MySQL](https://dev.mysql.com/doc/refman/8.0/en/aggregate-functions.html), e.g. `stddev`, `variance`
+- [Oracle](https://docs.oracle.com/database/121/SQLRF/functions003.htm), e.g. `approx_count_distinct`, `corr`
+- [PostgreSQL](https://www.postgresql.org/docs/9.5/static/functions-aggregate.html), e.g. `corr`, `mode`
+- [SQL Server](https://learn.microsoft.com/en-us/sql/t-sql/functions/aggregate-functions-transact-sql?view=sql-server-2017), e.g. `approx_count_distinct`, `stdev`
+- [SQLite](https://www.sqlite.org/lang_aggfunc.html), e.g. `group_concat`
+
+To aggregate the entire table, use an empty `?by=`. For example:
+
+- Excel: [_by=&_c=c1|avg&_c=c2|count](flags?_by=&_c=c1|avg&_c=c2|count)
+- SQLite: [_by=&_c=c3|avg&_c=c2|count&c1>=90](db?_by=&_c=c3|avg&_c=c2|count&c1>=90)
+
+Filters apply BEFORE grouping. For example:
+
+- [?c1>=80&_by=Continent&_c=Name|count](flags?c1>=80&_by=Continent&_c=Name|count&_format=html): count of countries by continent where c1 > 80
+
+To filter AFTER grouping, filter by the AGGREGATE column names instead. For example:
+
+- [?_by=Continent&_c=Name|count&Name|count>=30](flags?_by=Continent&_c=Name|count&Name|count>=30&_format=html): count of countries by continent where count of countries is > 30
+
+Sorting (`?_sort=`) and pagination (`?_limit=` and `?_offset=`) apply *after* the group by.
+
+- [?_by=Continent&_sort=Continent&_offset=2&_limit=2](flags?_by=Continent&_sort=Continent&_offset=2&_limit=2&_format=html): count of countries by continent sorted by Continent, 2 per page
 
 
 ## FormHandler formats
@@ -595,83 +682,6 @@ You can specify `?_download=` to download any format as any filename.
 - Download as filename.xlsx: [flags?_format=xlsx&_download=filename.xlsx](flags?_format=xlsx&_download=filename.xlsx)
 - Download JSON as filename.json: [flags?_download=filename.json](flags?_download=filename.json)
 - Download HTML as filename.html: [flags?_format=html&_download=filename.html](flags?_format=html&_download=filename.html)
-
-## FormHandler filters
-
-[Video](https://youtu.be/1DAcuxjW0FM){.youtube}
-
-The URL supports operators for filtering rows. The operators can be combined.
-
-- [?Continent=Europe](flags?Continent=Europe&_format=html) ► Continent = Europe
-- [?Continent=Europe&Continent=Asia](flags?Continent=Europe&Continent=Asia&_format=html)
-  ► Continent = Europe OR Asia. Multiple values are allowed
-- [?Continent!=Europe](flags?Continent!=Europe&_format=html) ► Continent is NOT Europe
-- [?Continent!=Europe&Continent!=Asia](flags?Continent!=Europe&Continent!=Asia&_format=html)
-  ► Continent is NEITHER Europe NOR Asia
-- [?Shapes](flags?Shapes&_format=html) ► Shapes is not NULL
-- [?Shapes!](flags?Shapes!&_format=html) ► Shapes is NULL
-- [?c1>=10](flags?c1>=10&_format=html) ► c1 > 10 (not >= 10)
-- [?c1>~=10](flags?c1>~=10&_format=html) ► c1 >= 10. The `~` acts like an `=`
-- [?c1<=10](flags?c1<=10&_format=html) ► c1 < 10 (not <= 10)
-- [?c1<~=10](flags?c1<~=10&_format=html) ► c1 <= 10. The `~` acts like an `=`
-- [?c1>=10&c1<=20](flags?c1>=10&c1<=20&_format=html) ► c1 > 10 AND c1 < 20
-- [?Name~=United](flags?Name~=United&_format=html) ► Name matches &_format=html
-- [?Name!~=United](flags?Name!~=United&_format=html) ► Name does NOT match United
-- [?Name~=United&Continent=Asia](flags?Name~=United&Continent=Asia&_format=html) ► Name matches United AND Continent is Asia
-
-To control the output, you can use these control arguments:
-
-- Limit rows: [?_limit=10](flags?_limit=10&_format=html) ► show only 10 rows
-- Offset rows: [?_offset=10&_limit=10](flags?_offset=10&_limit=10&_format=html) ► show only 10 rows starting, skipping the first 10 rows
-- Sort by columns: [?_sort=Continent&_sort=Name](flags?_sort=Continent&_sort=Name&_format=html) ► sort first by Continent (ascending) then Name (ascending)
-- Sort order: [?_sort=-Continent&_sort=-ID](flags?_sort=-Continent&_sort=-ID&_format=html) ► sort first by Continent (descending) then ID (descending)
-- Specific columns: [?_c=Continent&_c=Name](flags?_c=Continent&_c=Name&_format=html) ► show only the Continent and Names columns
-- Exclude columns: [?_c=-Continent&_c=-Name](flags?_c=-Continent&_c=-Name&_format=html) ► show all columns except the Continent and Names columns
-- Add metadata: [?_meta=y](flags?_c=-Continent&_offset=10&_limit=10&_format=html&_meta=y) ► return all available metadata as HTTP headers
-
-Note: You can use `FormHandler` to render specific columns in navbar filters using `?_c=`.
-
-
-## FormHandler groupby
-
-[Video](https://youtu.be/1DAcuxjW0FM?t=620){.youtube}
-
-**v1.38**. The URL supports grouping by columns using `?_by=col`. For example:
-
-- [?_by=Continent](flags?_by=Continent&_format=html): group by Continent, and sum all numeric columns.
-  ([Test on SQLite](db?_by=Continent&_format=html))
-- [?_by=Text](flags?_by=Text&_format=html): group by Text, and sum all numeric columns.
-  ([Test on SQLite](db?_by=Text&_format=html))
-- [?_by=Text&_by=Symbols](flags?_by=Text&_by=Symbols&_format=html): group by Text *and* by Symbols.
-  ([Test on SQLite](db?_by=Text&_by=Symbols&_format=html))
-
-You can specify custom aggregations using `?_c=col|aggregation`. For example:
-
-- [?_by=Continent&_c=Name|count](flags?_by=Continent&_c=Name|count&_format=html): group by Continent, count names of countries
-- [?_by=Continent&_c=Name|count&_c=c1|min&_c=c1|avg&_c=c1|max](flags?_by=Continent&_c=Name|count&_c=c1|min&_c=c1|avg&_c=c1|max&_format=html)
-  - `_by=Continent`: group by "Continent"
-  - `_c=Name|count`: count values in "Name"
-  - `_c=c1|min`: min value of "c1" in each continent
-  - `_c=c1|avg`: mean value of "c1" in each continent
-  - `_c=c1|max`: max value of "c1" in each continent
-
-You can also aggregate on entire column using empty `?by=`. For example:
-
-- [_by=&_c=c1|avg&_c=c2|count](flags?_by=&_c=c1|avg&_c=c2|count)
-- [On SQLite _by=&_c=c3|avg&_c=c2|count&c1>=90](db?_by=&_c=c3|avg&_c=c2|count&c1>=90)
-
-Filters on columns apply BEFORE the grouping. For example:
-
-- [?c1>=80&_by=Continent&_c=Name|count](flags?c1>=80&_by=Continent&_c=Name|count&_format=html): count of countries by continent where c1 > 80
-
-You can also filter AFTER the grouping by filtering with the derived column names. For example:
-
-- [?_by=Continent&_c=Name|count&Name|count>=30](flags?_by=Continent&_c=Name|count&Name|count>=30&_format=html): count of countries by continent where count of countries is > 30
-
-Sorting (`?_sort=`) and pagination (`?_limit=` and `?_offset=`) apply *after* the group by.
-
-- [?_by=Continent&_sort=Continent&_offset=2&_limit=2](flags?_by=Continent&_sort=Continent&_offset=2&_limit=2&_format=html): count of countries by continent sorted by Continent, 2 per page
-
 
 ## FormHandler metadata
 

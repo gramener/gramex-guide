@@ -90,7 +90,7 @@ You can use sub-templates as follows:
 
 <!-- render:html -->
 ```html
-<template class="row" data-target="false">
+<template class="row" data-bs-target="false">
   <li class="<%- classes %>"><a href="<%- link  %>"><%- text %></a></li>
 </template>
 <template class="main-template" data-template-item=".row">
@@ -104,7 +104,7 @@ You can use sub-templates as follows:
 </script>
 ```
 
-`data-target="false"` ensures that the template `.row` is not rendered.
+`data-bs-target="false"` ensures that the template `.row` is not rendered.
 (This is typically used by sub-templates.)
 
 `data-template-item=".row"` creates a function `item()` inside `.main-template`.
@@ -122,7 +122,7 @@ Sub-templates can be from an [external source](#template-external-source) as
 well. For example, this sub-template is loaded from `heading.html`:
 
 ```html
-<template class="tmpl-head" src="heading.html" data-target="false"></template>
+<template class="tmpl-head" src="heading.html" data-bs-target="false"></template>
 <template class="main-template" data-template-header=".tmpl-head">
   <%= header({title: "Page title"}) %>
 </template>
@@ -187,12 +187,12 @@ $('.targeted')
 </script>
 ```
 
-The target can also be specified via a `data-target=".panel1"` on the script
+The target can also be specified via a `data-bs-target=".panel1"` on the script
 template. This is the same as specifying `{target: '.panel'}`. For example:
 
 ```html
-<script class="chart" data-target=".panel1">...</script>
-<script class="chart" data-target=".panel2">...</script>
+<script class="chart" data-bs-target=".panel1">...</script>
+<script class="chart" data-bs-target=".panel2">...</script>
 ```
 
 

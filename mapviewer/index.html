@@ -17,7 +17,7 @@
   <script src="../ui/d3-scale-chromatic/dist/d3-scale-chromatic.min.js"></script>
   <script src="../ui/g1/dist/mapviewer.min.js"></script>
 </head>
-<body class="show-source" data-spy="scroll" data-target="#toc-nav" data-offset="80">
+<body class="show-source" data-bs-spy="scroll" data-bs-target="#toc-nav" data-bs-offset="80">
   <nav class="navbar navbar-dark bg-dark position-fixed w-100 top-nav">
     <h1 class="h5 m-0 text-light" href=".">Gramex Mapviewer</h1>
   </nav>
@@ -29,7 +29,7 @@
         v-bind:data-level="entry.level"
         v-bind:href="entry.href">${ entry.name }</a>
     </nav>
-    <main role="main" class="ml-3">
+    <main role="main" class="ms-3">
       <h1 class="toc">Introduction</h1>
       <p>Mapviewer is an abstraction over <a href="http://leafletjs.com/" target="_blank">Leaflet</a> that can create common GIS applications using configurations.</p>
       {% from mapviewer_app import load_page %}
@@ -121,7 +121,7 @@
     </div>
   </div>
 
-  <script src="../ui/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../ui/bootstrap5/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../ui/g1/dist/g1.min.js"></script>
   <script src="../ui/url-search-params/build/url-search-params.js"></script>
   <script src="../node_modules/prismjs/prism.js"></script>
@@ -140,7 +140,7 @@
     var config = {}
     config.cssurl = '../ui/bootstraptheme.css' + location.search
     var app = new Vue({el: '#theme-picker', data: config, delimiters: ['${', '}']})
-    $('[data-spy="scroll"]').scrollspy('refresh')
+    $('[data-bs-spy="scroll"]').scrollspy('refresh')
 
     var toctree = $('.toc').map(function() {
       var text = $(this).text()

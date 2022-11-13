@@ -21,7 +21,7 @@
         <div class="list-group" role="tablist" id="chartsList">
           <script type="text/html">
             <% order.forEach(function(category) { %>
-              <a class="list-group-item list-group-item-action urlfilter" data-toggle="list" url="?category=<%= category.replace(/ /g,'_') %>" href="#<%= category.replace(/ /g,'_') %>" role="tab" ><%= category %></a>
+              <a class="list-group-item list-group-item-action urlfilter" data-bs-toggle="list" url="?category=<%= category.replace(/ /g,'_') %>" href="#<%= category.replace(/ /g,'_') %>" role="tab" ><%= category %></a>
             <% }) %>
           </script>
         </div>

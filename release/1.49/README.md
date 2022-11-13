@@ -81,7 +81,7 @@ setInterval(function() {
 ![Search demo](search.gif)
 
 ```html
-<input type="search" data-search="@text" data-target=".list li" data-hide-class="d-none">
+<input type="search" data-search="@text" data-bs-target=".list li" data-hide-class="d-none">
 <ul class="list">
   <li>First item</li>
   <li>Second item</li>

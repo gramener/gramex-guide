@@ -58,7 +58,7 @@ Add the formhandler table to the page as follows:
 <link rel="stylesheet" href="../ui/bootstraptheme.css">
 <div class="formhandler" data-src="../data?_c=-Ship Date&_c=-Order Date&_c=-Order ID&_c=-Ship Mode&_c=-Quantity&_c=-Discount"></div>
 <script src="../ui/jquery/dist/jquery.min.js"></script>
-<script src="../ui/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../ui/bootstrap5/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../ui/lodash/lodash.min.js"></script>
 <script src="../ui/g1/dist/g1.min.js"></script>
 <script>

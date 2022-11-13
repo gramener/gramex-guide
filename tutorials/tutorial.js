@@ -2,7 +2,7 @@
 $('a.source').each(function () {
   var $wrapper = $('<div>').addClass('mx-n3 mt-n3 mb-3 px-3 py-2 d-flex')
   $wrapper.insertBefore(this)
-  $wrapper.append(_buttonize($(this), 'See output', this.href, 'btn btn-primary btn-sm mr-2'))
+  $wrapper.append(_buttonize($(this), 'See output', this.href, 'btn btn-primary btn-sm me-2'))
   $wrapper.append(_buttonize($(this).clone(), 'View source', this.href + '.source', 'btn btn-warning btn-sm'))
 })
 

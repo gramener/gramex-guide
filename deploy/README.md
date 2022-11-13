@@ -305,12 +305,16 @@ if __name__ == '__main__':
     YourProjectGramexService.setup(sys.argv[1:])
 ```
 
-You can now run:
+Install the service via:
 
 ```powershell
-python yourproject_service.py install --cwd=...     # install the service
-python yourproject_service.py remove                # uninstall the service
-... etc ...
+python yourproject_service.py install --cwd=D:\path\to\app\
+```
+
+Remove the service via:
+
+```powershell
+python yourproject_service.py remove
 ```
 
 ### Windows administration

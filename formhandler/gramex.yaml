@@ -1,12 +1,3 @@
-import:
-  - path: $GRAMEXPATH/apps/formhandler/gramex.yaml
-    YAMLURL: $YAMLURL
-  - vega.yaml
-  - vega-lite.yaml
-  - vegam.yaml
-  - path: '*/gramex.yaml'              # Import gramex.yaml from immediate subdirs
-    namespace: [url, schedule, cache, import]
-
 url:
     formhandler-flags:
       pattern: /$YAMLURL/flags

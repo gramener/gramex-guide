@@ -17,7 +17,7 @@ Here's the preview of the data and the corresponding chart.
 <div id="chart"></div>
 <div class="formhandler" data-src="../data?_c=-City&_c=-State&_c=-Quantity&_c=-Discount&_c=-Profit&_c=-Order ID&_c=-Order Date&_c=-Ship Date"></div>
 <script src="../../ui/jquery/dist/jquery.min.js"></script>
-<script src="../../ui/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../ui/bootstrap5/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../../ui/lodash/lodash.min.js"></script>
 <script src="../../ui/g1/dist/g1.min.js"></script>
 <script src="../../ui/vega/build/vega.min.js"></script>

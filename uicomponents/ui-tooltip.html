@@ -4,12 +4,12 @@
   <thead><tr><th>Default</th><th>With HTML</th><th>With Chart</th><th>Custom positions</th></tr></thead>
   <tbody>
     <tr>
-      <td><a href="#" id="just-tooltip" data-toggle="tooltip" title="Tooltip title">Here</a> is a BS Tooltip</td>
-      <td><a href="#" id="tooltip-html" data-toggle="tooltip">Table in a BS Tooltip</a></td>
-      <td><a href="#" id="tooltip-chart" data-toggle="tooltip">Chart in a BS Tooltip</a></td>
+      <td><a href="#" id="just-tooltip" data-bs-toggle="tooltip" title="Tooltip title">Here</a> is a BS Tooltip</td>
+      <td><a href="#" id="tooltip-html" data-bs-toggle="tooltip">Table in a BS Tooltip</a></td>
+      <td><a href="#" id="tooltip-chart" data-bs-toggle="tooltip">Chart in a BS Tooltip</a></td>
       <td>
-        <span><a href="#" id="custom-right" data-toggle="tooltip">Table right</a></span>.
-        <span><a href="#" id="custom-household" data-toggle="tooltip">Household</a></span>
+        <span><a href="#" id="custom-right" data-bs-toggle="tooltip">Table right</a></span>.
+        <span><a href="#" id="custom-household" data-bs-toggle="tooltip">Household</a></span>
       </td>
     </tr>
   </tbody>
@@ -18,19 +18,19 @@
 
 <h2 class="toc">Popover</h2>
 {% apply view_source %}
-<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="I am a nice popover on the top. Toggle to dismiss.">
+<button type="button" class="btn btn-secondary" data-container="body" data-bs-toggle="popover" data-placement="top" data-content="I am a nice popover on the top. Toggle to dismiss.">
   Popover on top
 </button>
 
-<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="I am a nice popover to the right. Toggle to dismiss.">
+<button type="button" class="btn btn-secondary" data-container="body" data-bs-toggle="popover" data-placement="right" data-content="I am a nice popover to the right. Toggle to dismiss.">
   Popover on right
 </button>
 
-<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="I am a nice popover on the bottom. Toggle to dismiss.">
+<button type="button" class="btn btn-secondary" data-container="body" data-bs-toggle="popover" data-placement="bottom" data-content="I am a nice popover on the bottom. Toggle to dismiss.">
   Popover on bottom
 </button>
 
-<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="I am a nice popover to the left. Toggle to dismiss.">
+<button type="button" class="btn btn-secondary" data-container="body" data-bs-toggle="popover" data-placement="left" data-content="I am a nice popover to the left. Toggle to dismiss.">
   Popover on left
 </button>
 {% end %}

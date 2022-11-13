@@ -482,12 +482,12 @@ You can add any text inside the divider. For example:
 
 ```html
 <div class="divider">Text</div>
-<div class="divider border-dark"><i class="fab fa-2x fa-twitter mr-2"></i> Icons</div>
+<div class="divider border-dark"><i class="fab fa-2x fa-twitter me-2"></i> Icons</div>
 <div class="divider border-primary"><div class="btn btn-primary round">Buttons</div></div>
 ```
 
 <div class="divider">Text</div>
-<div class="divider border-dark"><i class="fab fa-2x fa-twitter mr-2"></i> Icons</div>
+<div class="divider border-dark"><i class="fab fa-2x fa-twitter me-2"></i> Icons</div>
 <div class="divider border-primary"><div class="btn btn-primary round">Buttons</div></div>
 
 

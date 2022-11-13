@@ -161,13 +161,13 @@ curl -X GET /model?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S
 <div class="divider">Embed in your app.</div>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="python-tab" data-toggle="tab" role="tab" aria-controls="pycode" href="#pycode" aria-selected="true">Python</a>
+    <a class="nav-link active" id="python-tab" data-bs-toggle="tab" role="tab" aria-controls="pycode" href="#pycode" aria-selected="true">Python</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="ajax-tab" data-toggle="tab" role="tab" aria-controls="ajaxcode" href="#ajaxcode" aria-selected="false">Ajax</a>
+    <a class="nav-link" id="ajax-tab" data-bs-toggle="tab" role="tab" aria-controls="ajaxcode" href="#ajaxcode" aria-selected="false">Ajax</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="curl-tab" data-toggle="tab" role="tab" aria-controls="curlcode" href="#curlcode" aria-selected="false">Curl</a>
+    <a class="nav-link" id="curl-tab" data-bs-toggle="tab" role="tab" aria-controls="curlcode" href="#curlcode" aria-selected="false">Curl</a>
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
@@ -218,13 +218,13 @@ curl -X POST -d @titanic_predict.json http://localhost:9988/mlhandler?_action=pr
 <div class="divider">Embed in your app.</div>
 <ul class="nav nav-tabs" id="bulkPredictTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="python-bulk-tab" data-toggle="tab" role="tab" aria-controls="pycode-bulk" href="#pycode-bulk" aria-selected="true">Python</a>
+    <a class="nav-link active" id="python-bulk-tab" data-bs-toggle="tab" role="tab" aria-controls="pycode-bulk" href="#pycode-bulk" aria-selected="true">Python</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="ajax-bulk-tab" data-toggle="tab" role="tab" aria-controls="ajaxcode-bulk" href="#ajaxcode-bulk" aria-selected="false">Ajax</a>
+    <a class="nav-link" id="ajax-bulk-tab" data-bs-toggle="tab" role="tab" aria-controls="ajaxcode-bulk" href="#ajaxcode-bulk" aria-selected="false">Ajax</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="curl-bulk-tab" data-toggle="tab" role="tab" aria-controls="curlcode-bulk" href="#curlcode-bulk" aria-selected="false">Curl</a>
+    <a class="nav-link" id="curl-bulk-tab" data-bs-toggle="tab" role="tab" aria-controls="curlcode-bulk" href="#curlcode-bulk" aria-selected="false">Curl</a>
   </li>
 </ul>
 <div class="tab-content" id="myBulkTabContent">
@@ -280,13 +280,13 @@ curl -X POST -d @titanic.json /mlhandler?_action=retrain&target_col=Survived
 <div class="divider">Embed in your app.</div>
 <ul class="nav nav-tabs" id="retrainTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="python-retrain-tab" data-toggle="tab" role="tab" aria-controls="pycode-retrain" href="#pycode-retrain" aria-selected="true">Python</a>
+    <a class="nav-link active" id="python-retrain-tab" data-bs-toggle="tab" role="tab" aria-controls="pycode-retrain" href="#pycode-retrain" aria-selected="true">Python</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="ajax-retrain-tab" data-toggle="tab" role="tab" aria-controls="ajaxcode-retrain" href="#ajaxcode-retrain" aria-selected="false">Ajax</a>
+    <a class="nav-link" id="ajax-retrain-tab" data-bs-toggle="tab" role="tab" aria-controls="ajaxcode-retrain" href="#ajaxcode-retrain" aria-selected="false">Ajax</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="curl-retrain-tab" data-toggle="tab" role="tab" aria-controls="curlcode-retrain" href="#curlcode-retrain" aria-selected="false">Curl</a>
+    <a class="nav-link" id="curl-retrain-tab" data-bs-toggle="tab" role="tab" aria-controls="curlcode-retrain" href="#curlcode-retrain" aria-selected="false">Curl</a>
   </li>
 </ul>
 <div class="tab-content" id="myRetrainTabContent">
@@ -353,13 +353,13 @@ curl -X GET /mlhandler?_model
 <div id="paramresult" class="overflow-auto" style="height: 100px"></div>
 <ul class="nav nav-tabs" id="paramsTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="python-params-tab" data-toggle="tab" role="tab" aria-controls="pycode-params" href="#pycode-params" aria-selected="true">Python</a>
+    <a class="nav-link active" id="python-params-tab" data-bs-toggle="tab" role="tab" aria-controls="pycode-params" href="#pycode-params" aria-selected="true">Python</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="ajax-params-tab" data-toggle="tab" role="tab" aria-controls="ajaxcode-params" href="#ajaxcode-params" aria-selected="false">Ajax</a>
+    <a class="nav-link" id="ajax-params-tab" data-bs-toggle="tab" role="tab" aria-controls="ajaxcode-params" href="#ajaxcode-params" aria-selected="false">Ajax</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="curl-params-tab" data-toggle="tab" role="tab" aria-controls="curlcode-params" href="#curlcode-params" aria-selected="false">Curl</a>
+    <a class="nav-link" id="curl-params-tab" data-bs-toggle="tab" role="tab" aria-controls="curlcode-params" href="#curlcode-params" aria-selected="false">Curl</a>
   </li>
 </ul>
 <div class="divider">Embed in your app.</div>

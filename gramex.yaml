@@ -1,7 +1,5 @@
 variables:
     GUIDE_ROOT: $YAMLURL                # Used by guide.py to pass to markdown.template
-    GUIDE_FEEDBACK: $GRAMEXDATA/gramex-guide-feedback.db  # Used by guide.py for feedback location
-
     # Created by root.node@gmail.com
     # https://console.developers.google.com/apis/api/customsearch.googleapis.com/overview?project=big-query-1009
     # This key is also used by https://code.gramener.com/s.anand/exceltranslate
@@ -82,14 +80,6 @@ url:
             path: $YAMLPATH/g1/*.md
             transform: *MARKDOWN_TO_HTML
             headers: *HEADERS
-    guide-feedback:
-        pattern: /$YAMLURL/feedback
-        handler: FormHandler
-        kwargs:
-            url: sqlite:///$GUIDE_FEEDBACK
-            table: feedback
-            id: [time, page]
-            prepare: guide.prepare_feedback(args, handler)
 
     # The final *computed* gramex.yaml configuration
     guide-final-config:

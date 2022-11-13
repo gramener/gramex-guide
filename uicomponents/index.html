@@ -19,12 +19,12 @@
   <script src="../ui/tether-shepherd/dist/js/tether.js"></script>
   <script src="../ui/tether-shepherd/dist/js/shepherd.min.js"></script>
 </head>
-<body class="show-source" data-spy="scroll" data-target="#toc-nav" data-offset="80">
+<body class="show-source" data-bs-spy="scroll" data-bs-target="#toc-nav" data-bs-offset="80">
   <nav class="navbar navbar-dark bg-dark fixed-top w-100 top-nav">
     <h1 class="h5 m-0 text-light" href=".">Gramex UI Components</h1>
     <form class="form-inline">
-      <button class="btn btn-sm btn-light ml-2 toggle-source" type="button">Toggle source</button>
-      <button class="btn btn-sm btn-light ml-2" type="button" data-toggle="modal" data-target="#change-theme" aria-expanded="false" aria-controls="change-theme">Change theme</button>
+      <button class="btn btn-sm btn-light ms-2 toggle-source" type="button">Toggle source</button>
+      <button class="btn btn-sm btn-light ms-2" type="button" data-bs-toggle="modal" data-bs-target="#change-theme" aria-expanded="false" aria-controls="change-theme">Change theme</button>
     </form>
   </nav>
 
@@ -72,7 +72,7 @@
                   <% console.log(toggle) %>
                   <% _.each(toggle, function (info, name) { %>
                     <tr>
-                      <td><label class="my-1 ml-n1" for="<%- name %>"><%- info.title %></label></td>
+                      <td><label class="my-1 ms-n1" for="<%- name %>"><%- info.title %></label></td>
                       <td>
                         <select class="form-control form-control-sm" name="<%- name %>">
                           <% _.each(['false', 'true'], function (val) { %>
@@ -111,7 +111,7 @@
         <% }) %>
       </nav>
     </template>
-    <main role="main" class="ml-3">
+    <main role="main" class="ms-3">
       <h1 class="toc">Introduction</h1>
       <p>The Gramex UI component library is a set of UI components that extend
         <a href="https://getbootstrap.com/" target="_blank">Bootstrap 4</a>.
@@ -201,7 +201,7 @@
     </div>
   </div>
 
-  <script src="../ui/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../ui/bootstrap5/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../ui/noty/lib/noty.min.js"></script>
   <script src="../ui/moment/min/moment-with-locales.min.js"></script>
   <script src="../ui/daterangepicker/daterangepicker.js"></script>
@@ -227,7 +227,7 @@
     _.each(config.theme, function(info) { info.href = '?' + $.param(info) })
     config.cssurl = '../ui/bootstraptheme.css' + location.search
     $('#change-theme-template').template(config)
-    $('[data-spy="scroll"]').scrollspy('refresh')
+    $('[data-bs-spy="scroll"]').scrollspy('refresh')
 
     // Toggle view source
     $('body').on('click', '.toggle-source', function() {

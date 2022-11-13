@@ -458,8 +458,7 @@ archived weekly by default. It stores these columns:
 
 The alert service takes four kinds of parameters:
 
-- schedule configuration determines when the schedule is run. It uses the same
-  keys as [scheduler timing](../scheduler/#scheduler-timing). (If no schedule is
+- **WHEN** to run. Same keys as [scheduler timing](../scheduler/#scheduler-timing). (If no schedule is
   specified, the alert will not run.)
   - `years`: which year(s) to run on, e.g. "2018, 2019". Default: `*`
   - `months`: which month(s) to run on, e.g. "Jan-Mar,May". Default: `*`
@@ -470,28 +469,27 @@ The alert service takes four kinds of parameters:
   - `startup`: set this to `true` to run the alert at startup. Set to `*` to run
     on startup *and* every time the configuration changes. Default: `false`
   - `thread`: set this to `true` to run in a separate thread. Default: `false`
-- email configuration determines whom to send the alert to.
+- **WHOM** to alert. At least one of `to`, `cc`, or `bcc` must be specified
   - `service`: name of the [email service](../email/) to use for sending emails.
     Required, but if only one [email service](../email/) is defined, it is used.
-  - `to`: a string with comma-separated emails. Optional
+  - `to`: a string with comma-separated emails or a list. Optional
   - `cc`: like `to:` but specifies the cc: addresses. Optional
   - `bcc`: like `to:` but specifies the bcc: addresses. Optional
   - `from`: email ID of sender. This overrides the `service:` from ID if possible. Optional
-- content configuration determines what to send. All values are strings interpolated as Tornado templates
+- **WHAT** to send. All values are strings interpolated as Tornado templates
   - `subject`: subject template for the email. Optional
   - `body`: string for email text template. Optional
   - `html`: string for email html template. Optional
-  - `bodyfile`: file for email body template. Optional
-  - `htmlfile`: file for email html template. Optional
-  - `attachments`: attachments as a list of files. Optional
-  - `images`: inline image attachments as a dictionary of key:path. These
-    can be linked from HTML emails using `<img src="cid:key">`. Optional
+  - `bodyfile`: path to email body template file. Optional
+  - `htmlfile`: path to email html template file. Optional
+  - `attachments`: attachments as a list of file paths or URLs. Optional
+  - `images`: inline image attachments as `{key: path}`. Link in HTML emails as `<img src="cid:key">`. Optional
   - For all the above, the variables available in the Tornado templates are:
     - All dataset keys loaded from the `data:` section are available as variables.
       If `data:` directly specifies a variable, it is stored in a `data` variable
     - `config` holds the alert configuration -- e.g. `config.to` is the recipient
     - `row` and `index` contain the row values and index if `each:` is used
-- data configuration uses data to drive the content and triggers.
+- **Data** to use
   - `data`: Optional data file or dict of datasets. All keys are available as
     variables in the content templates and to `condition`. Optional. Examples:
     - `data: {key: [...]}` -- loads data in-place

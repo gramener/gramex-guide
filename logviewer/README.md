@@ -401,13 +401,13 @@ layout:
     # Heading
     - _$: {'tpl': 'lv-header', 'values': {'title': 'Traffic Trend'}}
     - div:
-        '@class': container-fluid pr-lg-0
+        '@class': container-fluid pe-lg-0
         _$: {'tpl': 'lv-card-deck', 'values': [
               {'on': 'vegam-pageviewstrend', 'title': 'Page Views'},
               {'on': 'vegam-sessionstrend', 'title': 'Sessions'}]}
     - _$: {'tpl': 'lv-header', 'values': {'title': 'Top Metrics'}}
     - div:
-        '@class': container-fluid pr-lg-0
+        '@class': container-fluid pe-lg-0
         _$:
         - {'tpl': 'lv-card-deck', 'values': [
             {'on': 'vegam-toptenuri', 'title': 'Top URLs'},
@@ -417,13 +417,13 @@ layout:
             {'on': 'vegam-toptenip', 'title': 'Top IPs'}]}
     - _$: {'tpl': 'lv-header', 'values': {'title': 'Server Load'}}
     - div:
-        '@class': container-fluid pr-lg-0
+        '@class': container-fluid pe-lg-0
         _$: {'tpl': 'lv-card-deck', 'values': [
               {'on': 'vegam-loadtimetrend', 'title': 'Server Response Time'},
               {'on': 'vegam-loadtimerequeststrend', 'title': 'Response Time and Requests'}]}
     - _$: {'tpl': 'lv-header', 'values': {'title': 'Custom Metric'}}
     - div:
-        '@class': container-fluid pr-lg-0
+        '@class': container-fluid pe-lg-0
         _$: {'tpl': 'lv-card-deck', 'values': [
               {'on': 'vegam-custloadtimetrend', 'title': 'Custom Metric Time'},
               {'on': 'vegam-custloadtimerequeststrend', 'title': 'Custom Requests'}]}

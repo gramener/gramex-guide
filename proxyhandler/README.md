@@ -216,7 +216,7 @@ this JSON content analyzes the entities:
 }
 ```
 
-<button class="post-button btn btn-primary" data-href="googlelanguage/v1/documents:analyzeEntities" data-target="#entity-result" data-body='{
+<button class="post-button btn btn-primary" data-href="googlelanguage/v1/documents:analyzeEntities" data-bs-target="#entity-result" data-body='{
     "document": {
         "type": "PLAIN_TEXT",
         "language": "en",
@@ -241,7 +241,7 @@ To analyze the sentiment of text, send a POST request to
 }
 ```
 
-<button class="post-button btn btn-primary" data-href="googlelanguage/v1/documents:analyzeSentiment" data-target="#sentiment-result" data-body='{
+<button class="post-button btn btn-primary" data-href="googlelanguage/v1/documents:analyzeSentiment" data-bs-target="#sentiment-result" data-body='{
     "document": {
         "type": "PLAIN_TEXT",
         "language": "en",
