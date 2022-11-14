@@ -6,7 +6,6 @@ import cachetools
 import gramex
 import hashlib
 import markdown
-import re
 import tornado.template
 import yaml
 from customblocks import CustomBlocksExtension
@@ -74,15 +73,13 @@ def markdown_template(content, handler):
     # GUIDE_ROOT has the absolute root URL path of the Gramex guide.
     # Default to $YAMLURL when running locally, e.g. https://127.0.0.1/guide/
     root = gramex.config.variables.GUIDE_ROOT
-    # When running via a reverse proxy, use everything up to the first /guide/
+    # When running via a reverse proxy, root is everything up to the first /guide/
     # e.g. https://gramener.com/gramex/guide/ or https://learn.gramener.com/guide/
     # This requires an nginx config: proxy_set_header X-Request-URI $request_uri
-    uri = handler.request.headers.get('X-Request-URI', handler.request.path)
-    match = re.match(r'.*/guide/', uri)
-    if match:
-        root = match.group(0).strip('/')  # Strip slashes for consistency with $YAMLURL
-        lastpos = match.endpos - 1
-        uri = uri[lastpos:]  # Everything after guide/ is the uri
+    path = handler.request.headers.get('X-Request-URI', handler.request.uri).split('?')[0]
+    if '/guide/' in path:
+        prefix, path = path.split('/guide/')
+        root = prefix.strip('/') + '/guide'
     # Set up template variable defaults
     kwargs = {
         'GUIDE_ROOT': root,
@@ -90,16 +87,11 @@ def markdown_template(content, handler):
         'body': content['content'],
         'title': '',
         'handler': handler,
-        'uri': uri,
+        'is_homepage': path == '',
     }
     # ... which can be updated by the YAML frontmatter on the Markdown files
     for key, val in content['meta'].items():
         kwargs[key] = val[0]
-    # Some pages that use XSRF assume that the XSRF cookie is set.
-    # Set the XSRF cookie if the page mentions XSRF.
-    # TODO: Use YAML frontmatter to do this in a more controlled way.
-    if 'xsrf' in content:
-        handler.xsrf_token
     tmpl = gramex.cache.open('_template/markdown.html', 'template', rel=True)
     return tmpl.generate(**kwargs).decode('utf-8')
 
