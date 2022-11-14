@@ -87,7 +87,7 @@ def markdown_template(content, handler):
         'body': content['content'],
         'title': '',
         'handler': handler,
-        'is_homepage': path == '',
+        'is_homepage': path in {'', '/'},
     }
     # ... which can be updated by the YAML frontmatter on the Markdown files
     for key, val in content['meta'].items():

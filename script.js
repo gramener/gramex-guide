@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
       for (let h of document.querySelectorAll(".content h2, .content h3")) {
         submenu.push(`<li><a href="#${h.getAttribute("id")}">${h.textContent}</a></li>`);
       }
-      el.insertAdjacentHTML("beforeend", `<ul class="submenu">${submenu.join("")}</ul>`);
+      el.insertAdjacentHTML("afterend", `<ul class="submenu">${submenu.join("")}</ul>`);
       el.scrollIntoView();
     }
   }

@@ -30,7 +30,7 @@ body {
 
 /* Heading typography */
 h1, h2, h3 {
-  margin-top: 2em;
+  margin-top: 1em;
 }
 .content h1:first-child {
   margin-top: 0;
@@ -72,22 +72,12 @@ table tbody td {
   }
   .active {
     border-left: 2px solid black;
-    color: red;
-    font-weight: bold;
-    .submenu {
-      color: var(--bs-dark);
-      font-weight: normal;
-      .active {
-        color: red;
-        font-weight: bold;
-      }
-    }
+    color: red !important;
+    font-weight: bold !important;
   }
   a {
     text-decoration: none;
     display: block;
-    /* leave some gap above/below when scrolling into view */
-    scroll-margin: 2rem 0;
   }
   li {
     list-style: none;
@@ -97,17 +87,9 @@ table tbody td {
       margin-left: -1rem;
       color: var(--bs-dark);
       white-space: nowrap;
-      &:before {
-        content: "☰";
-        display: inline-block;
-        width: 1.4rem;
-      }
     }
     .submenu li a {
-      &:before {
-        content: "";
-        width: 0;
-      }
+      color: var(--bs-secondary);
     }
     ul {
       padding: 0.1rem 1.5rem;
@@ -180,12 +162,12 @@ table tbody td {
 
   a {
     border: none;
-    color: var(--bs-white);
     text-decoration: none;
 
     &.example-src {
       display: block;
       margin-left: auto;
+      color: var(--bs-white);
       background-color: var(--bs-success);
       padding: 0.5rem 1rem;
       font-size: 1rem;
