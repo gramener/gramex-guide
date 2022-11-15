@@ -272,9 +272,13 @@ In that case:
 1. Copy the following files under `...\Lib\site-packages\win32\` (same location as the error above).
    - `pythonXX.dll` from `...\` -- the root of your Conda environment. Replace XX with 37 for Python 3.7, etc.
    - `pywintypesXX.dll` from `...\Library\bin\`. Replace XX with 37 for Python 3.7, etc.
-2. Run `gramex service remove`
-3. Run `gramex service install` to re-install. Check that the're no warning now
-4. Run `gramex service start`. You should see a `service.log` file in the source folder with the Gramex console.logs
+   - Avoid `python Scripts/pywin32_postinstall.py -install` copies into `C:\Windows\system32`. It doesn't work well across Python versions
+2. If [psutil imports fails](https://github.com/giampaolo/psutil/issues/348),
+   download the relevant [psutil wheel](https://www.lfd.uci.edu/~gohlke/pythonlibs/#psutil) and `pip install` it
+   from your conda environment.
+3. Run `gramex service remove`
+4. Run `gramex service install` to re-install. Check that the're no warning now
+5. Run `gramex service start`. You should see a `service.log` file in the source folder with the Gramex console.logs
 
 **Check Permissions**. If you get an `Access is denied` error like this:
 
