@@ -176,6 +176,9 @@ With additional libraries, FormHandler can connect to
 - [Dremio](https://pypi.org/project/sqlalchemy_dremio/)
   - Install: `pip install sqlalchemy_dremio`
   - Use: `url: 'dremio://$USER:$PASS@$HOST:31010/'`
+- [DuckDB](https://pypi.org/project/duckdb-engine/)
+  - Install: `pip install duckdb duckdb-engine`
+  - Use: `url: 'duckdb:///D:/path/to/duck.db'`
 - [ElasticSearch](https://pypi.org/project/elasticsearch-dbapi/) - read-only
   - Install: `pip install elasticsearch-dbapi`
   - Use: `url: 'elasticsearch+http://$HOST:9200'`
