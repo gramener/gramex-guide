@@ -90,10 +90,10 @@ To allow users to interact with the API with a UI, use [Swagger UI](https://swag
 
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@3.51.1/swagger-ui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@4.15.5/swagger-ui.css">
 
 <div id="swagger-ui"></div>
-<script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@3.51.1/swagger-ui-bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@4.15.5/swagger-ui-bundle.js"></script>
 <script>
   const ui = SwaggerUIBundle({
     url: 'docs',    // OpenAPIHandler URL
