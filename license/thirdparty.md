@@ -19,9 +19,8 @@ Gramex uses open source third party libraries that use one of these licenses:
 - [node.js](https://github.com/nodejs/node/blob/master/LICENSE): [MIT license][MIT]
 
 ## Python libraries
-<!-- Keep this in sync with gramex/release.json -->
+<!-- Keep this in sync with gramex/pyproject.toml -->
 
-- [argh](https://pypi.python.org/pypi/argh/): [LGPL license][LGPL]
 - [astor](https://pypi.python.org/pypi/argh/): [LGPL license][LGPL]
 - [cachetools](https://pypi.python.org/pypi/cachetools/): [MIT license][MIT]
 - [colorama](https://pypi.python.org/pypi/colorama/): [BSD license][BSD]
@@ -38,11 +37,11 @@ Gramex uses open source third party libraries that use one of these licenses:
 - [oauthlib](https://pypi.python.org/pypi/oauthlib/): [BSD license][BSD]
 - [openpyxl](https://pypi.python.org/pypi/openpyxl/): [MIT license][MIT]
 - [orderedattrdict](https://pypi.python.org/pypi/orderedattrdict/): [MIT license][MIT]
+- [packaging](https://pypi.python.org/pypi/orderedattrdict/): [Apache license][Apache], [BSD license][BSD]
 - [pandas](https://pypi.python.org/pypi/pandas/): [BSD license][BSD]
-- [passlib](https://pypi.python.org/pypi/passlib/): [BSD license][BSD]
-- [pathtools](https://pypi.python.org/pypi/pathtools/): [MIT license][MIT]
+- [pillow](https://pypi.python.org/pypi/pillow/): [HPND license](https://github.com/python-pillow/Pillow/blob/main/LICENSE)
 - [psutil](https://pypi.python.org/pypi/psutil/): [BSD license][BSD]
-- [pymysql](https://pypi.python.org/pypi/pymysql/): [MIT license][MIT]
+- [python-dateutil](https://pypi.python.org/pypi/python-dateutil/): [Apache license][Apache], [BSD license][BSD]
 - [python-pptx](https://pypi.python.org/pypi/python-pptx/): [MIT license][MIT]
 - [python-slugify](https://pypi.python.org/pypi/python-slugify/): [MIT license][MIT]
 - [pyyaml](https://pypi.python.org/pypi/pyyaml/): [MIT license][MIT]
@@ -50,16 +49,13 @@ Gramex uses open source third party libraries that use one of these licenses:
 - [requests](https://pypi.org/project/requests/): [Apache license][Apache]
 - [scikit-learn](https://pypi.org/project/scikit-learn/): [BSD license][BSD]
 - [seaborn](https://pypi.org/project/seaborn/): [BSD license][BSD]
-- [setuptools](https://pypi.python.org/pypi/setuptools/): [MIT license][MIT]
-- [shutilwhich](https://pypi.python.org/pypi/shutilwhich/): [PSF license][PSF]
 - [six](https://pypi.python.org/pypi/six/): [MIT license][MIT]
 - [sqlalchemy](https://pypi.org/project/SQLAlchemy/): [MIT license][MIT]
 - [sqlitedict](https://pypi.org/project/sqlitedict/): [Apache license][Apache]
 - [tables](https://pypi.org/project/tables): [BSD license][BSD]
 - [tornado](https://pypi.python.org/pypi/tornado/): [Apache license][Apache]
-- [tzlocal](https://pypi.python.org/pypi/tzlocal/): [MIT license][MIT]
+- [typing_extensions](https://pypi.python.org/pypi/typing_extensions/): [PSF license][PSF]
 - [watchdog](https://pypi.python.org/pypi/watchdog/): [Apache license][Apache]
-- [xlrd](https://pypi.python.org/pypi/xlrd/): [BSD license][BSD]
 
 Optional libraries:
 <!-- Keep this in sync with libraries that we check ImportError for -->
@@ -70,6 +66,7 @@ Optional libraries:
 - [ldap3](https://pypi.python.org/pypi/ldap3/): [LGPL license][LGPL]
 - [line_profiler](https://pypi.python.org/pypi/line_profiler)
 - [psycopg2](https://pypi.python.org/pypi/psycopg2/): [LGPL license][LGPL]
+- [pymysql](https://pypi.python.org/pypi/pymysql/): [MIT license][MIT]
 - [pytest](https://pypi.org/project/pytest/): [MIT license][MIT]
 - [rpy2](https://pypi.python.org/pypi/rpy2)
 - [statsmodels](https://pypi.python.org/pypi/statsmodels)

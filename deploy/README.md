@@ -245,7 +245,7 @@ gramex service remove
 - For Service installation logs, use the Windows "Event Viewer" app under Windows Logs > System.
 - For Service execution logs, use the Windows "Event Viewer" app under Windows Logs > Application.
 - For Gramex console logs, see `service.log` in the application's source folder (where `gramex.yaml` is).
-- For Gramex logs are at `%LOCALAPPDATA%\Gramex Data\logs\` unless over-ridden by `gramex.yaml`.
+- For Gramex logs, see `%LOCALAPPDATA%\Gramex Data\logs\` unless over-ridden by `gramex.yaml`.
 
 **Check PyWin32 paths**.
 
@@ -273,7 +273,7 @@ In that case:
    - `pythonXX.dll` from `...\` -- the root of your Conda environment. Replace XX with 37 for Python 3.7, etc.
    - `pywintypesXX.dll` from `...\Library\bin\`. Replace XX with 37 for Python 3.7, etc.
    - Avoid `python Scripts/pywin32_postinstall.py -install` copies into `C:\Windows\system32`. It doesn't work well across Python versions
-2. If [psutil imports fails](https://github.com/giampaolo/psutil/issues/348),
+2. If [psutil imports fails](https://github.com/giampaolo/psutil/issues/693),
    download the relevant [psutil wheel](https://www.lfd.uci.edu/~gohlke/pythonlibs/#psutil) and `pip install` it
    from your conda environment.
 3. Run `gramex service remove`
@@ -300,7 +300,7 @@ class YourProjectGramexService(gramex.winservice.GramexService):
     _svc_name_ = 'YourServiceID'
     _svc_display_name_ = 'Your Service Display Name'
     _svc_description_ = 'Description of your service'
-    _svc_port_ = 8123               # optional custom port
+    _svc_port_ = 8123  # optional custom port
 
 if __name__ == '__main__':
     import sys
