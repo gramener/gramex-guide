@@ -1,21 +1,20 @@
-$('#index').each(function () {
-  var $index = $(this)
-  var prefix = $index.data('prefix') || ''
-  $.ajax($index.data('url'))
-    .done(function (data) {
-      var terms = []
-      for (var page in data)
-        for (var frag in data[page])
-          if (frag)
-            for (var term in data[page][frag])
-              terms.push([term, page, page + (frag ? '#' + frag : '')])
-      terms.sort(function (a, b) {
-        var x = a[0].toLowerCase(),
-          y = b[0].toLowerCase()
-        return x < y ? -1 : x > y ? +1 : 0
-      })
-      terms.forEach(function (row) {
-        $index.append(`<a href="${prefix}${row[2]}">${row[0]}<br><small>${row[1]}</small></a>`)
-      })
-    })
-})
+const index = document.querySelector("#index");
+const prefix = index.dataset["prefix"] || "";
+fetch(index.dataset["url"])
+  .then((r) => r.json())
+  .then((data) => {
+    const result = [];
+    for (let [page, frags] of Object.entries(data)) {
+      if (page == ".")
+        page = "Home"
+      result.push(`<a class="fw-bold text-uppercase" href="${prefix}${page}">${page}</a><ul>`);
+      for (let [frag, terms] of Object.entries(frags)) {
+        for (let term of Object.keys(terms))
+          result.push(
+            `<li><a class="small" href="${prefix}${page}#${frag}">${term}</a></li>`
+          );
+      }
+      result.push(`</ul>`);
+    }
+    index.insertAdjacentHTML("beforeend", result.join(""));
+  });

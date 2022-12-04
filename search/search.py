@@ -51,11 +51,18 @@ def markdown_index(folder):
     for root, file in readme_files(folder):
         dirpath = os.path.relpath(root, '.').replace(os.path.sep, '/')
         with io.open(os.path.join(root, file), encoding='utf-8') as handle:
-            md = markdown.Markdown(extensions=[
-                'markdown.extensions.toc',
-                'markdown.extensions.meta',
-                IndexerExtension(),
-            ])
+            md = markdown.Markdown(
+                extensions=[
+                    'markdown.extensions.toc',
+                    'markdown.extensions.meta',
+                    'markdown.extensions.codehilite',
+                    'smarty',
+                    'mdx_truly_sane_lists',
+                    'fenced_code',
+                    'toc',
+                    IndexerExtension(),
+                ]
+            )
             md.convert(handle.read())
             for frag, text in md.index:
                 result[dirpath, frag].add(text)
@@ -69,7 +76,7 @@ if __name__ == '__main__':
     result = {}
     index_file = os.path.join(folder, 'search.json')
     if os.path.exists(index_file):
-        with open(index_file, 'r') as handle:       # noqa: for Py2 & Py3 compatibility
+        with open(index_file, 'r') as handle:  # noqa: for Py2 & Py3 compatibility
             try:
                 result = json.load(handle)
             except ValueError:
@@ -79,10 +86,11 @@ if __name__ == '__main__':
     default_val = -1
     # Add items from the Markdown files
     for (path, frag), texts in markdown_index(os.path.join(folder, '..')).items():
+        dirpath = os.path.relpath(path, '.').replace(os.path.sep, '/')
         base = result.setdefault(path, {}).setdefault(frag, {})
         for text in texts:
             base.setdefault(text, default_val)
-            found.add((path, frag, text))
+            found.add((dirpath, frag, text))
 
     # Remove default items not found
     for path in list(result.keys()):

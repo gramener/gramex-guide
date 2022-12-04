@@ -1,544 +1,19 @@
 {
   ".": {
-    "": {},
-    "apps": {},
-    "demos": {},
-    "deprecated": {},
-    "libraries": {},
-    "micro-services": {},
-    "product": {},
-    "reference": {},
-    "usage": {},
-    "workshops": {}
-  },
-  "1.30": {
-    "": {},
-    "bugs": {},
-    "config-reload": {},
-    "documentation": {},
-    "log-viewer": {},
-    "multiple-logins": {},
-    "oauth2-login": {},
-    "others": {},
-    "proxy-apis": {},
-    "sms-notification": {},
-    "stats": {},
-    "upgrade": {}
-  },
-  "1.31": {
-    "": {},
-    "alert-preview": {},
-    "api-integration": {},
-    "charts": {},
-    "developer-updates": {},
-    "formhandler-directory-browsing": {},
-    "http-error-reporting": {},
-    "installation": {},
-    "lato-font": {},
-    "log-viewer": {},
-    "path-arguments": {},
-    "prevent-url-conflicts": {},
-    "repository-moved": {},
-    "stats": {},
-    "upgrade": {}
-  },
-  "1.32": {
-    "": {},
-    "capturehandler-proxy": {},
-    "gramex-init": {},
-    "internal-bugfixes": {},
-    "logviewer-configuration": {},
-    "stats": {},
-    "tornado-50": {},
-    "upgrade": {},
-    "yaml-merge-variables": {}
-  },
-  "1.33": {
-    "": {},
-    "add-roles-to-users": {},
-    "admin-module": {},
-    "formhandler-charts": {},
-    "multi-process-logging": {},
-    "other-enhancements": {},
-    "quickstart-tutorial": {},
-    "sanddance": {},
-    "screenshot-alerts-as-user": {},
-    "stats": {},
-    "upgrade": {}
-  },
-  "1.34": {
-    "": {},
-    "ajax-xsrf": {},
-    "anton-font": {},
-    "config-viewer": {},
-    "deprecations": {},
-    "developer-updates": {},
-    "formhandler-json": {},
-    "internal-bugfixes": {},
-    "others": {},
-    "server-traceback": {},
-    "stats": {},
-    "upgrade": {},
-    "vega-examples": {}
-  },
-  "1.35": {
-    "": {},
-    "admin-module": {},
-    "formhandler-tutorial": {},
-    "modelhandler": {},
-    "other-enhancements": {},
-    "others": {},
-    "pip10": {},
-    "stats": {},
-    "upgrade": {}
-  },
-  "1.36": {
-    "": {},
-    "bug-fixes": {},
-    "exotel-sms-service": {},
-    "mapviewer": {},
-    "other-enhancements": {},
-    "python-3-tests": {},
-    "redis-store": {},
-    "sms-auth": {},
-    "stats": {},
-    "upgrade": {}
-  },
-  "1.37": {
-    "": {},
-    "apache-reverse-proxy": {},
-    "bug-fixes": {},
-    "capturehandler-tutorial": {},
-    "developer-updates": {},
-    "r-interface": {},
-    "stats": {},
-    "upgrade": {}
-  },
-  "1.38": {
-    "": {},
-    "apache-load-balancing": {},
-    "bug-fixes": {},
-    "developer-updates": {},
-    "emailauth": {},
-    "formhandler-group-by": {},
-    "g1": {},
-    "quickstart": {},
-    "stats": {},
-    "upgrade": {},
-    "uploadhandler": {}
-  },
-  "1.39": {
-    "": {},
-    "bug-fixes": {},
-    "developer-updates": {},
-    "formhandler": {},
-    "logviewer": {},
-    "mapviewer": {},
-    "pynode": {},
-    "stats": {},
-    "ui-components": {},
-    "upgrade": {}
-  },
-  "1.40": {
-    "": {},
-    "bug-fixes": {},
-    "developer-updates": {},
-    "dropdown-events": {},
-    "filterhandler": {},
-    "formhandler-modify": {},
-    "g1": {},
-    "g1-dropdown": {},
-    "logviewer": {},
-    "mapviewer": {},
-    "password-encryption": {},
-    "smart-alerts": {},
-    "speech-demo": {},
-    "stats": {},
-    "upgrade": {}
-  },
-  "1.41": {
-    "": {},
-    "40x-reporting": {},
-    "ajax-uploads": {},
-    "bug-fixes": {},
-    "developer-updates": {},
-    "error-reporting": {},
-    "favicon": {},
-    "g1": {},
-    "g1-urlfilter": {},
-    "gramex-update": {},
-    "guide-link-checker": {},
-    "guide-search": {},
-    "install": {},
-    "logviewer": {},
-    "python-console": {},
-    "stats": {},
-    "ui-componenets": {},
-    "upgrade": {}
-  },
-  "1.42": {
-    "": {},
-    "admin-module": {},
-    "bug-fixes": {},
-    "developer-updates": {},
-    "offline-docker-install": {},
-    "stats": {},
-    "upgrade": {},
-    "webshell": {}
-  },
-  "1.43": {
-    "": {},
-    "bug-fixes": {},
-    "developer-updates": {},
-    "formhandler-edits-modify": {},
-    "stats": {},
-    "upgrade": {}
-  },
-  "1.44": {
-    "": {},
-    "admin-gramex-info": {},
-    "bug-fixes": {},
-    "eula": {},
-    "formhandler-supports-urls": {},
-    "g1": {},
-    "groupmeans": {},
-    "rmarkdown": {},
-    "stats": {},
-    "upgrade": {},
-    "vega-gallery": {}
-  },
-  "1.45": {
-    "": {},
-    "actions": {},
-    "admin": {},
-    "auth": {},
-    "bootstrap-select": {},
-    "developer-updates": {},
-    "dropzonejs": {},
-    "g1": {},
-    "stats": {},
-    "ui-components": {},
-    "upgrade": {},
-    "vega-gallery": {}
-  },
-  "1.46": {
-    "": {},
-    "admin": {},
-    "admin-console-webshell": {},
-    "admin-info": {},
-    "bootstrapbundlejs": {},
-    "developer-updates": {},
-    "gramex-init": {},
-    "modelhandler": {},
-    "other-updates": {},
-    "stats": {},
-    "upgrade": {},
-    "vega-gallery": {}
-  },
-  "1.47": {
-    "": {},
-    "ajaxchain": {},
-    "auth": {},
-    "g1": {},
-    "guide": {},
-    "stats": {},
-    "template": {},
-    "ui-components": {},
-    "upgrade": {},
-    "urlchange": {}
-  },
-  "1.48": {
-    "": {},
-    "admin-page-enhancements": {},
-    "auto-create-tables": {},
-    "automated-translations": {},
-    "better-gramex-init": {},
-    "bugfixes": {},
-    "documentation": {},
-    "sass-support": {},
-    "stats": {},
-    "template-components": {},
-    "upgrade": {}
-  },
-  "1.49": {
-    "": {},
-    "better-gramex-init": {},
-    "bootstrap-42": {},
-    "bugfixes": {},
-    "chart-gallery": {},
-    "g1-animated-templates": {},
-    "g1-search": {},
-    "stats": {},
-    "upgrade": {}
-  },
-  "1.50": {
-    "": {},
-    "bugfixes": {},
-    "cors-and-formhandler-validation-docs": {},
-    "encrypt-service-is-deprecated": {},
-    "g1-upgraded-to-013": {},
-    "gramex-has-a-new-test-framework": {},
-    "stats": {},
-    "translations-are-easier": {},
-    "ui-components-have-new-colors-utilities-and-libraries": {},
-    "upgrade": {}
-  },
-  "1.51": {
-    "": {},
-    "add-header-and-footer-to-pdf-screenshots": {},
-    "bugfixes": {},
-    "documentation-is-more-interactive": {},
-    "enhanced-security-protect-against-bots": {},
-    "gramex-is-open-source": {},
-    "protect-against-bot-attacks": {},
-    "stats": {},
-    "test-application-on-multiple-screen-resolutions": {},
-    "test-application-on-resolutions": {},
-    "upgrade": {}
-  },
-  "1.52": {
-    "": {},
-    "alerts-can-be-synchronized-across-time-zones": {},
-    "auto-complete-with-snippets-on-visual-studio-code": {},
-    "browsing-files-with-formhandler-is-simpler": {},
-    "formhandler-is-more-flexible": {},
-    "how-to-upgrade": {},
-    "load-balancing-with-authentication-across-domains": {},
-    "new-graphics-capability-with-d3-v5": {},
-    "search-engine-friendly-file-urls": {},
-    "smart-alerts-send-personalized-dashboards-as-attachments": {},
-    "statistics": {},
-    "templates-refresh-immediately-when-included-files-are-updated": {},
-    "test-pages-created-by-javascript": {}
-  },
-  "1.53": {
-    "": {},
-    "g1-features-fuzzy-search": {},
-    "gramextest-makes-testing-easier": {},
-    "how-to-upgrade": {},
-    "natural-language-generation": {},
-    "statistics": {},
-    "templates-support-ui-modules": {}
-  },
-  "1.54": {
-    "": {},
-    "admin-components-url-changed": {},
-    "admin-ui-features-alerts-and-schedules": {},
-    "admin-ui-for-alert": {},
-    "admin-ui-for-schedule": {},
-    "feather": {},
-    "formhandler-creates-tables-with-primary-keys": {},
-    "formhandler-parameters": {},
-    "how-to-upgrade": {},
-    "jsondata": {},
-    "languagetool-app": {},
-    "new-data-formats": {},
-    "parquet": {},
-    "statistics": {}
-  },
-  "1.55": {
-    "": {},
-    "bug-fixes": {},
-    "formhandler-summarizes-data": {},
-    "how-to-upgrade": {},
-    "other-enhancements": {},
-    "statistics": {},
-    "ui-component-upgrades": {}
-  },
-  "1.56": {
-    "": {},
-    "bug-fixes": {},
-    "chrome-device-emulation": {},
-    "how-to-upgrade": {},
-    "other-enhancements": {},
-    "statistics": {},
-    "ui-component-upgrades": {},
-    "url-driven-dashboards-tutorial": {},
-    "vega-parameter-substitution": {}
-  },
-  "1.57": {
-    "": {},
-    "bug-fixes": {},
-    "developer-updates": {},
-    "how-to-upgrade": {},
-    "other-enhancements": {},
-    "statistics": {},
-    "ui-component-upgrades": {}
-  },
-  "1.58": {
-    "": {},
-    "azure-active-directory": {},
-    "bug-fixes": {},
-    "developer-updates": {},
-    "how-to-upgrade": {},
-    "statistics": {},
-    "ui-component-upgrades": {}
-  },
-  "1.59": {
-    "": {},
-    "api-changes": {},
-    "bug-fixes": {},
-    "drivehandler-manages-files": {},
-    "how-to-upgrade": {},
-    "statistics": {},
-    "ui-component-upgrades": {}
-  },
-  "1.60": {
-    "": {},
-    "api-changes": {},
-    "bug-fixes": {},
-    "file-manager-is-a-ui-for-drivehandler": {},
-    "how-to-upgrade": {},
-    "statistics": {}
-  },
-  "1.61": {
-    "": {},
-    "bug-fixes": {},
-    "create-interactive-presentations": {},
-    "fast-persistent-distributed-cache": {},
-    "how-to-install": {},
-    "how-to-upgrade": {},
-    "improved-gramex-init": {},
-    "reduce-login-issues-on-shared-servers": {},
-    "statistics": {},
-    "use-python-expressions-in-yaml": {},
-    "what-next": {}
-  },
-  "1.61.1": {
-    "": {},
-    "how-to-upgrade": {},
-    "statistics": {}
-  },
-  "1.62": {
-    "": {},
-    "create-presentations-from-the-command-line": {},
-    "gramex-charts-preview": {},
-    "how-to-install": {},
-    "other-features": {},
-    "powerpoint-tables-and-charts": {},
-    "statistics": {},
-    "what-next": {}
-  },
-  "1.63": {
-    "": {},
-    "conda-install": {},
-    "docker-install": {},
-    "embedding-other-apps": {},
-    "how-to-install": {},
-    "new-gramex-guide": {},
-    "other-features": {},
-    "statistics": {},
-    "what-next": {}
-  },
-  "1.63.2": {
-    "": {},
-    "details": {}
-  },
-  "1.64": {
-    "": {},
-    "client-side-screen-capture": {},
-    "connect-to-more-databases": {},
-    "deploy-secrets-securely": {},
-    "etc": {},
-    "gramex-ide-is-in-beta": {},
-    "how-to-install": {},
-    "log-into-multiple-apps-simultaneously": {},
-    "multiple-logins-for-the-same-app": {},
-    "offline-installation": {},
-    "other-changes": {},
-    "protect-the-entire-app": {},
-    "run-multiple-apps-on-a-server": {},
-    "statistics": {},
-    "tutorial-on-building-an-ml-classifier": {},
-    "what-next": {}
-  },
-  "1.65": {
-    "": {},
-    "credits": {},
-    "excel-ranges-supported": {},
-    "flexible-logging": {},
-    "functions-as-rest-apis": {},
-    "functions-converted-to-json": {},
-    "how-to-install": {},
-    "old-code-no-longer-required-in-gramex-165": {},
-    "old-code-no-longer-required-in-gramex-165_1": {},
-    "other-improvements": {},
-    "statistics": {},
-    "what-next": {}
-  },
-  "1.66": {
-    "": {},
-    "auto-compile-sass-files": {},
-    "auto-create-table-schema": {},
-    "bootstrap-themes": {},
-    "bug-fixes": {},
-    "cache-database-queries": {},
-    "credits": {},
-    "fetch-inserted-rows": {},
-    "git-lfs-support": {},
-    "gramex-ui-components-in-sass": {},
-    "how-to-install": {},
-    "other-improvements": {},
-    "restrict-http-methods-on-any-handler": {},
-    "statistics": {},
-    "transform-multiple-file-types": {},
-    "what-next": {}
-  },
-  "1.67": {
-    "": {},
-    "append-the-data": {},
-    "bug-fixes": {},
-    "credits": {},
-    "how-to-install": {},
-    "other-improvements": {},
-    "re-train-the-model": {},
-    "simpler-handler-names": {},
-    "statistics": {},
-    "train-ml-models": {},
-    "what-next": {}
-  },
-  "1.68": {
-    "": {},
-    "add-fields": {},
-    "bug-fixes": {},
-    "collect-responses": {},
-    "edit-fields": {},
-    "embed-form": {},
-    "how-to-install": {},
-    "import-secrets": {},
-    "statistics": {},
-    "ui-factory-forms": {},
-    "what-next": {}
-  },
-  "1.69": {
-    "": {},
-    "auto-render-template-files": {},
-    "bug-fixes": {},
-    "donut-charts-in-pptxhandler": {},
-    "how-to-install": {},
-    "offline-access-to-google-data": {},
-    "other-improvements": {},
-    "statistics": {},
-    "what-next": {}
-  },
-  "about": {
-    "": {}
-  },
-  "add-position": {
-    "add-position-examples": {}
+    "gramex-guide": {
+      "Gramex Guide": -1
+    }
   },
   "admin": {
     "": {
       "Admin page": -1
     },
-    "admin-access": {},
     "admin-access-control": {
       "Admin access control": -1
     },
     "admin-alert": {
       "Admin: Alert": -1
     },
-    "admin-alerts": {},
     "admin-config": {
       "Admin: Config": -1
     },
@@ -569,13 +44,6 @@
     "sign-up-users-with-a-welcome-email": {
       "Sign Up Users with a Welcome Email": -1
     }
-  },
-  "albus-dumbledore-screen-time": {
-    "": {},
-    "create-the-data": {},
-    "create-the-rules": {},
-    "create-the-source-template": {},
-    "see-the-result": {}
   },
   "alert": {
     "": {
@@ -652,8 +120,7 @@
     },
     "use-multiple-services": {
       "Use multiple services": -1
-    },
-    "use-templates": {}
+    }
   },
   "apps": {
     "": {
@@ -721,7 +188,6 @@
     "database-auth": {
       "Database auth": -1
     },
-    "decrypt-the-user-key-the-decrypted-user-will-be-the-same-as-user": {},
     "direct-ldap-login": {
       "Direct LDAP login": -1
     },
@@ -746,7 +212,6 @@
     "forgot-password": {
       "Forgot password": -1
     },
-    "get-the-encrypted-user-key-as-a-long-string-eg-rx5nqv1lxaa0qi": {},
     "google-auth": {
       "Google auth": -1
     },
@@ -780,9 +245,6 @@
     "lookup-attributes": {
       "Lookup attributes": -1
     },
-    "loop-through-each-session-store-there-may-be-multiple-stores": {
-      "Loop through each session store -- there may be multiple stores": -1
-    },
     "multiple-logins": {
       "Multiple logins": -1
     },
@@ -800,9 +262,6 @@
     },
     "recaptcha": {
       "Recaptcha": -1
-    },
-    "replace-the-below-line-with-the-relevant-version-for-your-system": {
-      "Replace the below line with the relevant version for your system": -1
     },
     "roles": {
       "Roles": -1
@@ -837,7 +296,6 @@
     "templates-for-unauthorized": {
       "Templates for unauthorized": -1
     },
-    "this-is-the-user-object-we-want-to-mimic": {},
     "twitter-auth": {
       "Twitter auth": -1
     },
@@ -845,35 +303,9 @@
       "User attributes": -1
     }
   },
-  "bar-chart-race": {
-    "": {},
-    "create-the-data": {},
-    "create-the-rules": {},
-    "create-the-source-template": {},
-    "see-the-result": {}
-  },
-  "building-ml-apps-rapidly": {
-    "": {},
-    "a-quick-survey": {},
-    "build-a-model-to-predict-wholl-get-admitted": {},
-    "build-an-app-that-predicts-admission": {},
-    "explore-the-data": {},
-    "ide-tutorial": {},
-    "learning-more": {},
-    "objective": {},
-    "overview": {},
-    "publish-your-project-on-github": {},
-    "share-feedback": {},
-    "summarize-learnings": {},
-    "try-next-steps": {},
-    "what-if-you-need-help": {}
-  },
   "cache": {
     "": {
       "Caching requests": -1
-    },
-    "after-loading-return-lendata": {
-      "After loading, return len(data)": -1
     },
     "browser-caching": {
       "Browser caching": -1
@@ -896,29 +328,18 @@
     "data-caching": {
       "Data caching": -1
     },
-    "mixing-python-versions": {},
     "module-caching": {
       "Module caching": -1
     },
     "query-caching": {
       "Query caching": -1
     },
-    "read-excel-file-keyword-arguments-are-passed-to-pdread_excel": {
-      "Read Excel file. Keyword arguments are passed to pd.read_excel": -1
-    },
-    "return-file-size-if-it-has-changed": {
-      "Return file size if it has changed": -1
-    },
-    "return-multiple-calculations": {
-      "Return multiple calculations": -1
-    },
     "server-caching": {
       "Server caching": -1
     },
     "subprocess-streaming": {
       "Subprocess streaming": -1
-    },
-    "using-cache-stores": {}
+    }
   },
   "capturehandler": {
     "": {
@@ -943,30 +364,10 @@
       "Screenshot service": -1
     }
   },
-  "cashflow": {
-    "cash-flow": {},
-    "create-another-chart": {},
-    "create-the-chart": {},
-    "customize-the-chart": {},
-    "expose-excel-data": {},
-    "prepare-the-data": {},
-    "see-the-result": {}
-  },
-  "certificate": {
-    "certificates": {},
-    "create-the-data": {},
-    "create-the-rules": {},
-    "create-the-source-template": {},
-    "see-the-result": {}
-  },
   "chart": {
     "": {
       "Charts": -1
     },
-    "chart-example": {},
-    "create-the-data": {},
-    "create-the-rules": {},
-    "create-the-source-template": {},
     "d3": {
       "D3": -1
     },
@@ -976,28 +377,9 @@
     "gramex-charts": {
       "Gramex Charts": -1
     },
-    "see-the-result": {},
     "vega": {
       "Vega": -1
     }
-  },
-  "charts": {
-    "": {},
-    "charts-not-rendering-automatically": {},
-    "exercises": {},
-    "introduction": {},
-    "next-steps-faq": {},
-    "outcome": {},
-    "requirements": {},
-    "step-0-basic-layout-and-scaffolding": {},
-    "step-1-performing-the-cross-tabulation-with-formhandler": {},
-    "step-2-drawing-the-chart": {},
-    "step-3-redrawing-charts-on-url-changes": {},
-    "step-4-filtering-the-table-on-chart-interactions": {},
-    "troubleshooting": {}
-  },
-  "clone-shape": {
-    "copy-slide-example": {}
   },
   "comichandler": {
     "": {
@@ -1013,9 +395,6 @@
     },
     "app-configuration": {
       "App configuration": -1
-    },
-    "bad": {
-      "BAD": -1
     },
     "command-line-args": {
       "Command line args": -1
@@ -1050,32 +429,11 @@
     "exception-information": {
       "Exception information": -1
     },
-    "good": {
-      "GOOD": -1
-    },
     "handler-logging": {
       "Handler logging": -1
     },
     "http-methods": {
       "HTTP Methods": -1
-    },
-    "if-gramex-is-installed-in-a-certain-location-eg-c": {
-      "If Gramex is installed in a certain location, e.g. C:": -1
-    },
-    "if-gramex-is-running-from-a-specific-location-eg-tmp": {
-      "If Gramex is running from a specific location, e.g. /tmp/": -1
-    },
-    "if-gramex-is-running-on-a-certain-platform-eg-win32-linux-cygwin-darwin": {
-      "If Gramex is running on a certain platform, e.g. win32, linux, cygwin, darwin": -1
-    },
-    "if-gramex-is-running-on-a-specific-server-eg-uatgramenercom": {
-      "If Gramex is running on a specific server, e.g. uat.gramener.com:": -1
-    },
-    "if-gramex-was-started-at-a-specific-time-eg-on-sunday-7": {
-      "If Gramex was started at a specific time, e.g. on Sunday (7)": -1
-    },
-    "if-gramex-was-started-with-a-specific-command-line-eg-listenport8001": {
-      "If Gramex was started with a specific command line, e.g. --listen.port=8001": -1
     },
     "json-error-response": {
       "JSON error response": -1
@@ -1133,64 +491,17 @@
     "": {
       "Contributing to Gramex": -1
     },
-    "clone-and-install-gramex": {
-      "Clone and install Gramex": -1
-    },
     "committing": {
       "Committing": -1
-    },
-    "create-a-new-conda-environment-with-python-37": {
-      "Create a new Conda environment with Python 3.7+": -1
     },
     "decide-the-storyline": {
       "Decide the storyline": -1
     },
-    "deploy-docs-and-code-coverage-on-httpsgramenercomgramex-update": {},
-    "deploy-docs-on-httpsgramenercomgramexguideapi": {
-      "Deploy docs on https://gramener.com/gramex/guide/api/": -1
-    },
-    "deploy-docs-on-httpslearngramenercomgramex": {},
-    "deploy-on-conda-httpsanacondaorggramenergramex": {},
-    "deploy-on-conda-windows-httpsanacondaorggramenergramex": {
-      "Deploy on conda (Windows): https://anaconda.org/gramener/gramex": -1
-    },
-    "deploy-on-docker-httpshubdockercomrgramenergramex": {
-      "Deploy on docker: https://hub.docker.com/r/gramener/gramex/": -1
-    },
-    "deploy-on-pypi-httpspypipythonorgpypigramex": {
-      "Deploy on pypi: https://pypi.python.org/pypi/gramex": -1
-    },
-    "ensure-that-you-have-git-lfs-on-your-system": {
-      "Ensure that you have Git LFS on your system.": -1
-    },
-    "follow-instructions-to-upload-log-in-as-gramener": {
-      "Follow instructions to upload. Log in as gramener": -1
-    },
-    "if-this-fails-add-p-password": {
-      "If this fails, add '-p PASSWORD'": -1
-    },
     "insert-the-video": {
       "Insert the video": -1
     },
-    "install-dependencies": {
-      "Install dependencies": -1
-    },
-    "install-gramex-gramexenterprise": {
-      "Install gramex & gramexenterprise": -1
-    },
-    "master-branch-is-the-latest-working-version": {
-      "master branch is the latest working version.": -1
-    },
-    "now-you-can-delete-this-gramex-folder-and-restore-your-gramex-via-pip-install-gramex": {
-      "Now you can delete this Gramex folder and restore your Gramex via pip install gramex": -1
-    },
-    "push-docs-and-coverage-tests": {},
-    "push-to-pypi": {},
     "record-the-video": {
       "Record the video": -1
-    },
-    "release-branch-is-the-latest-released-version": {
-      "release branch is the latest released version.": -1
     },
     "release-gramex-community-edition": {
       "Release Gramex Community Edition": -1
@@ -1198,80 +509,25 @@
     "release-gramex-enterprise-edition": {
       "Release Gramex Enterprise Edition": -1
     },
-    "releasing-gramex": {},
-    "replace-the-path-to-the-gramex-tarball-below-it-will-by-under-anacondaconda-bld": {
-      "Replace the path to the Gramex tarball below. It will by under anaconda/conda-bld": -1
-    },
-    "run-tests": {
-      "Run tests": -1
-    },
-    "run-this-from-any-temporary-directory-on-a-windows-system": {
-      "Run this from any temporary directory on a Windows system.": -1
-    },
-    "run-this-on-windows-and-linux": {},
-    "set-up-gramex": {},
     "set-up-gramex-for-development": {
       "Set up Gramex for development": -1
     },
     "test-gramex": {
       "Test Gramex": -1
     },
-    "update-gramex": {},
-    "update-gramex-community-edition": {},
     "video-tutorials": {
       "Video tutorials": -1
-    },
-    "yarn-upgrade-cwd-gramexappsadmin": {}
-  },
-  "copy-slide": {
-    "copy-slide-example": {},
-    "create-the-data": {},
-    "create-the-rules": {},
-    "create-the-source-template": {},
-    "see-the-result": {}
+    }
   },
   "dashboard": {
     "": {
       "Templatize visualization dashboard creation": -1
     }
   },
-  "dashboards": {
-    "": {},
-    "charts-not-rendering-automatically": {},
-    "exercises": {},
-    "introduction": {},
-    "next-steps-faq": {},
-    "outcome": {},
-    "requirements": {},
-    "step-1-working-with-formhandler": {},
-    "step-2-detecting-changes-in-the-url": {},
-    "step-3-redrawing-charts-on-url-changes": {},
-    "troubleshooting": {}
-  },
   "datahandler": {
     "": {
       "DataHandler connects to data": -1
-    },
-    "database-edits": {},
-    "datahandler-defaults": {},
-    "datahandler-delete": {},
-    "datahandler-formats": {},
-    "datahandler-insert": {},
-    "datahandler-on-databases": {},
-    "datahandler-on-files": {},
-    "datahandler-on-sqlite3": {},
-    "datahandler-templates": {},
-    "datahandler-update": {},
-    "datahandler-usage": {}
-  },
-  "death": {
-    "automated-insights": {},
-    "create-the-data": {},
-    "create-the-rules": {},
-    "create-the-source-template": {},
-    "see-the-result": {},
-    "shifting-causes-of-death": {},
-    "try-it-yourself": {}
+    }
   },
   "debug": {
     "": {
@@ -1282,9 +538,6 @@
     },
     "debug-mode": {
       "Debug mode": -1
-    },
-    "line-hits-time-per-hit-time-line-contents": {
-      "Line #      Hits         Time  Per Hit   % Time  Line Contents": -1
     },
     "line-profile": {
       "Line profile": -1
@@ -1348,7 +601,6 @@
     "deployment-checklist": {
       "Deployment checklist": -1
     },
-    "deployment-variables": {},
     "deployyaml": {
       "deploy.yaml": -1
     },
@@ -1358,10 +610,6 @@
     "duplicate-key": {
       "Duplicate key": -1
     },
-    "etc": {
-      "... etc": -1
-    },
-    "goaccess-output": {},
     "gramexyaml-secrets": {
       "gramex.yaml secrets": -1
     },
@@ -1371,14 +619,8 @@
     "https-server": {
       "HTTPS Server": -1
     },
-    "immediate-subdirectories": {
-      "immediate subdirectories": -1
-    },
     "import-conflict": {
       "Import conflict": -1
-    },
-    "imports-all-variables-from-another-secret-fileyaml": {
-      "Imports all variables from another-secret-file.yaml": -1
     },
     "linux-scheduled-tasks": {
       "Linux scheduled tasks": -1
@@ -1389,26 +631,17 @@
     "log-file-order": {
       "Log file order": -1
     },
-    "make-sure-you-have-a-listen-80-in-your-configuration": {
-      "Make sure you have a \"Listen 80\" in your configuration.": -1
-    },
     "missing-dependency": {
       "Missing dependency": -1
     },
     "multiple-windows-services": {
       "Multiple Windows Services": -1
     },
-    "mymodulepy": {},
-    "nginx-log-analyzer": {},
     "nginx-reverse-proxy": {
       "nginx reverse proxy": -1
     },
     "nginx-security": {
       "nginx security": -1
-    },
-    "nginxconf": {},
-    "or-a-dict-of-imports-keys-are-ignored-values-are-used": {
-      "... or a dict of imports. Keys are ignored. Values are used.": -1
     },
     "other-common-errors": {
       "Other common errors": -1
@@ -1422,17 +655,8 @@
     "python-file-conflict": {
       "Python file conflict": -1
     },
-    "redirect-http-to-https": {
-      "Redirect HTTP to HTTPS": -1
-    },
-    "reference-httpdocgitlabcomceciyamlreadmehtml": {
-      "Reference: http://doc.gitlab.com/ce/ci/yaml/README.html": -1
-    },
     "relative-url-mapping": {
       "Relative URL mapping": -1
-    },
-    "required-modules": {
-      "Required modules": -1
     },
     "secrets": {
       "Secrets": -1
@@ -1475,12 +699,6 @@
     },
     "works-locally-but-not-on-server": {
       "Works locally but not on server": -1
-    },
-    "you-can-import-from-a-file-pattern-this-imports-secretsyaml-from-all": {
-      "You can import from a file pattern. This imports .secrets.yaml from all": -1
-    },
-    "you-can-specify-a-list-of-imports": {
-      "You can specify a list of imports": -1
     }
   },
   "drivehandler": {
@@ -1511,7 +729,6 @@
     "pre-process-uploads": {
       "Pre-process uploads": -1
     },
-    "process-files": {},
     "tags": {
       "Tags": -1
     },
@@ -1558,17 +775,8 @@
     "email-attachments": {
       "Email attachments": -1
     },
-    "from-gramexservices-import-smtpmailer": {
-      "from gramex.services import SMTPMailer": -1
-    },
     "html-email": {
       "HTML email": -1
-    },
-    "mailer-smtpmailertypegmail-emailgramexguidegmailcom-password": {
-      "mailer = SMTPMailer(type='gmail', email='gramex.guide@gmail.com', password='...')": -1
-    },
-    "or-to-construct-the-smtpmailer-when-using-gramex-as-a-library-use": {
-      "Or, to construct the SMTPMailer when using Gramex as a library, use:": -1
     },
     "send-email": {
       "Send email": -1
@@ -1576,14 +784,6 @@
     "test-email-service": {
       "Test email service": -1
     }
-  },
-  "entrepreneurship": {
-    "": {},
-    "create-the-data": {},
-    "create-the-rules": {},
-    "create-the-source-template": {},
-    "rate-of-new-entrepreneurs": {},
-    "see-the-result": {}
   },
   "exercises": {
     "": {
@@ -1641,7 +841,6 @@
     "how-are-gramex-and-gramex-applications-audited-for-security-compliance": {
       "How are Gramex and Gramex applications audited for security compliance?": -1
     },
-    "how-are-gramex-applications-audited-for-security-compliance": {},
     "how-are-gramex-applications-deployed": {
       "How are Gramex applications deployed?": -1
     },
@@ -1767,9 +966,6 @@
     "configure-all-filehandlers": {
       "Configure all FileHandlers": -1
     },
-    "contd": {
-      "... contd ...": -1
-    },
     "default-filehandler": {
       "Default FileHandler": -1
     },
@@ -1791,14 +987,12 @@
     "filehandler-http-methods": {
       "FileHandler HTTP methods": -1
     },
-    "how-xsrf-works": {},
     "ignore-files": {
       "Ignore files": -1
     },
     "mime-types": {
       "MIME types": -1
     },
-    "raw-sub-templates": {},
     "redirecting-files": {
       "Redirecting files": -1
     },
@@ -1834,11 +1028,9 @@
     "": {
       "FilterHandler": -1
     },
-    "examples": {},
     "filterhandler-features": {
       "FilterHandler Features": -1
     },
-    "filterhandler-formats": {},
     "filterhandler-usage": {
       "FilterHandler usage": -1
     },
@@ -1952,13 +1144,6 @@
     "matrix-plots": {
       "Matrix plots": -1
     },
-    "my_modulepy": {},
-    "mymodulepy": {
-      "mymodule.py": -1
-    },
-    "mymodulepy_1": {
-      "mymodule.py": -1
-    },
     "parameter-substitution": {
       "Parameter Substitution": -1
     },
@@ -1969,10 +1154,10 @@
       "Regression plots": -1
     },
     "supported-databases": {
-      "Supported Databases": -1
+      "Supported databases": -1
     },
     "supported-files": {
-      "Supported Files": -1
+      "Supported files": -1
     }
   },
   "formhandler/cashflow": {
@@ -1998,15 +1183,6 @@
       "See the result": -1
     }
   },
-  "formhandler\\cashflow": {
-    "cash-flow": {},
-    "create-another-chart": {},
-    "create-the-chart": {},
-    "customize-the-chart": {},
-    "expose-excel-data": {},
-    "prepare-the-data": {},
-    "see-the-result": {}
-  },
   "function": {
     "": {
       "Functions": -1
@@ -2031,8 +1207,6 @@
     "function-arguments-from-url": {
       "Function arguments from URL": -1
     },
-    "function-headers": {},
-    "function-methods": {},
     "function-output": {
       "Function output": -1
     },
@@ -2048,7 +1222,6 @@
     "parse-url-arguments": {
       "Parse URL arguments": -1
     },
-    "path-arguments": {},
     "streaming-output": {
       "Streaming output": -1
     },
@@ -2075,9 +1248,6 @@
     "libraries": {
       "Libraries": -1
     },
-    "or": {
-      "... OR ...": -1
-    },
     "parse-urls": {
       "Parse URLs": -1
     },
@@ -2097,20 +1267,6 @@
       "Virtual DOM": -1
     }
   },
-  "g1-dropdown": {
-    "": {},
-    "charts-not-rendering-automatically": {},
-    "exercises": {},
-    "introduction": {},
-    "next-steps-faq": {},
-    "outcome": {},
-    "step-0-laying-out-the-scaffolding": {},
-    "step-1-making-a-dropdown-menu": {},
-    "step-2-changing-the-url-on-selection-events": {},
-    "step-3-enabling-search": {},
-    "step-4-redrawing-the-chart-on-url-changes": {},
-    "troubleshooting": {}
-  },
   "groupmeans": {
     "": {
       "GroupMeans analyzes root causes": -1
@@ -2125,9 +1281,6 @@
       "Upload your data": -1
     }
   },
-  "groups": {
-    "groups-example": {}
-  },
   "handlers": {
     "": {
       "Writing handlers": -1
@@ -2135,7 +1288,6 @@
     "basehandler-attributes": {
       "BaseHandler Attributes": -1
     },
-    "initialisation": {},
     "initialization": {
       "Initialization": -1
     },
@@ -2147,8 +1299,6 @@
     "": {
       "Gramex init": -1
     },
-    "gramex-init-tracker": {},
-    "gramex-init-usage": {},
     "minimal-init": {
       "Minimal init": -1
     }
@@ -2157,68 +1307,33 @@
     "": {
       "Install Gramex": -1
     },
-    "add-gramex-to-the-path": {},
-    "alternate-installations": {},
     "conda-install": {
       "Conda install": -1
     },
     "docker-install": {
       "Docker install": -1
     },
-    "install-a-local-version-for-gramex-development": {},
-    "install-a-specific-branch-or-tag-from-the-gramex-source-code": {
-      "Install a specific branch or tag from the Gramex source code": -1
-    },
-    "install-a-specific-version-of-gramex": {
-      "Install a specific version of Gramex": -1
-    },
-    "install-gramex": {},
     "install-gramex-enterprise": {
       "Install Gramex Enterprise": -1
     },
-    "install-miniconda": {},
-    "install-nodejs-10-or-later": {},
-    "installation": {},
-    "now-restart-the-shell-to-activate-conda": {},
-    "offline-docker-install": {},
-    "offline-install": {},
-    "offline-linux-install": {},
-    "offline-windows-install": {},
-    "other-useful-commands": {},
     "pip-install": {
       "Pip install": -1
     },
-    "replace-app-anywhere-in-this-script-with-any-app-name-of-your-choice": {},
     "run-a-gramex-app": {
       "Run a Gramex app": -1
     },
-    "run-bash-inside-the-container": {},
-    "run-gramex": {},
-    "run-gramex-on-port-9988": {},
-    "save-the-container-as-a-new-image": {},
-    "then-install-gramex": {},
-    "to-re-connect-to-the-instance": {},
     "troubleshooting": {
       "Troubleshooting": -1
     },
-    "uninstall-gramex": {},
     "uninstall-gramex-enterprise": {
       "Uninstall Gramex Enterprise": -1
     },
-    "uninstall-gramex-via-conda": {},
-    "uninstall-gramex-via-docker": {},
-    "uninstall-gramex-via-pip": {},
     "upgrade-gramex-enterprise": {
       "Upgrade Gramex Enterprise": -1
     },
-    "upgrade-gramex-via-conda": {},
-    "upgrade-gramex-via-docker": {},
-    "upgrade-gramex-via-pip": {},
-    "upgrade-gramex-via-pip_1": {},
     "vscode-extension": {
       "VSCode Extension": -1
-    },
-    "zip-it": {}
+    }
   },
   "jsonhandler": {
     "": {
@@ -2278,9 +1393,6 @@
       "Using LanguageTool with Ajax": -1
     }
   },
-  "libraries": {
-    "": {}
-  },
   "license": {
     "": {
       "Gramex license": -1
@@ -2291,13 +1403,9 @@
     "gramex-enterprise-is-free-for-non-commercial-use": {
       "Gramex Enterprise is free for non-commercial use": -1
     },
-    "gramex-open-source-is-free-for-use": {},
     "third-party-libraries": {
       "Third party libraries": -1
     }
-  },
-  "link": {
-    "add-link-examples": {}
   },
   "linkcheck": {
     "": {
@@ -2322,11 +1430,9 @@
     "": {
       "Log viewer": -1
     },
-    "add-3rd-party-data": {},
     "add-custom-kpis": {
       "Add custom KPIs": -1
     },
-    "add-custom-visuals": {},
     "customizing-logviewer": {
       "Customizing Logviewer": -1
     },
@@ -2356,9 +1462,6 @@
     "change-the-model-and-modify-its-parameters": {
       "Change the model and modify its parameters": -1
     },
-    "check-the-score-of-a-dataset-testcsv-against-an-existing-model": {
-      "Check the score of a dataset - test.csv - against an existing model": -1
-    },
     "creating-new-models": {
       "Creating New Models": -1
     },
@@ -2383,9 +1486,6 @@
     "getting-predictions": {
       "Getting predictions": -1
     },
-    "having-embarked-in-southampton-is-likely-to-have-survived": {
-      "having embarked in Southampton is likely to have survived.": -1
-    },
     "how-to-append-to-the-training-data": {
       "How to append to the training data?": -1
     },
@@ -2404,9 +1504,6 @@
     "how-to-get-the-accuracy-score-of-my-model": {
       "How to get the accuracy score of my model?": -1
     },
-    "ignore-passengerid-and-name-consider-embarked-as-a-categorical-feature": {
-      "Ignore PassengerId and Name, consider Embarked as a categorical feature.": -1
-    },
     "mlhandler-templates": {
       "MLHandler Templates": -1
     },
@@ -2416,26 +1513,11 @@
     "named-entity-recognition": {
       "Named Entity Recognition": -1
     },
-    "output": {
-      "Output": -1
-    },
-    "output-0-1-0-0-1-whether-each-passenger-is-likely-to-have-survived": {
-      "Output: [0, 1, 0, 0, 1, ...] # whether each passenger is likely to have survived": -1
-    },
-    "output-0-passenger-did-not-survive": {
-      "output: [0] - passenger did not survive": -1
-    },
-    "output-score-080-the-model-has-80-accuracy-on-the-training-data": {
-      "Output: {'score': 0.80}  - the model has 80% accuracy on the training data.": -1
-    },
     "retraining-the-model": {
       "Retraining the model": -1
     },
     "see-model-parameters": {
       "See model parameters": -1
-    },
-    "see-whether-a-22-year-old-male-traveling-with-a-sibling-in-the-third-class": {
-      "See whether a 22 year old male, traveling with a sibling in the third class,": -1
     },
     "sentiment-analysis": {
       "Sentiment Analysis": -1
@@ -2459,10 +1541,6 @@
     "classifier": {
       "Classifier": -1
     },
-    "construct-the-model": {},
-    "construct-the-model-the-model-only-accepts-a-path-where-it-should-be-saved": {
-      "Construct the model. The model only accepts a path where it should be saved": -1
-    },
     "example-usage": {
       "Example Usage": -1
     },
@@ -2474,15 +1552,6 @@
     },
     "links-to-machine-learning-and-analytics-usecases": {
       "Links to Machine Learning and Analytics Usecases": -1
-    },
-    "read-the-data-into-a-pandas-dataframe": {
-      "Read the data into a Pandas DataFrame": -1
-    },
-    "result-should-be-setosa": {
-      "result should be ['setosa']": -1
-    },
-    "train-the-model": {
-      "Train the model": -1
     }
   },
   "newsletter": {
@@ -2501,41 +1570,6 @@
       "Run JavaScript": -1
     }
   },
-  "old": {
-    "": {},
-    "v100-2015-09-08": {},
-    "v101-2015-09-09": {},
-    "v102-2015-10-11": {},
-    "v103-2016-01-18": {},
-    "v104-2016-03-30": {},
-    "v105-2016-04-15": {},
-    "v106-2016-05-01": {},
-    "v107-2016-05-15": {},
-    "v108-2016-06-01": {},
-    "v109-2016-06-15": {},
-    "v110-2016-07-01": {},
-    "v111-2016-07-15": {},
-    "v112-2016-07-21": {},
-    "v113-2016-08-01": {},
-    "v114-2016-08-11": {},
-    "v115-2016-08-21": {},
-    "v116-2016-10-16": {},
-    "v117-2017-01-29": {},
-    "v1171-2017-04-23": {},
-    "v1180-2017-06-29": {},
-    "v1190-2017-07-09": {},
-    "v1200-2017-07-31": {},
-    "v1210-2017-08-29": {},
-    "v1220-2017-09-28": {},
-    "v1230-2017-10-31": {},
-    "v1231-2017-11-13": {},
-    "v1240-2017-11-30": {},
-    "v1250-2017-12-15": {},
-    "v1260-2017-12-31": {},
-    "v1270-2018-01-20": {},
-    "v1280-2018-01-31": {},
-    "v1290-2018-02-15": {}
-  },
   "openapihandler": {
     "": {
       "OpenAPIHandler documents APIs": -1
@@ -2553,11 +1587,37 @@
       "OpenAPIHandler Configuration": -1
     }
   },
-  "pipelines": {
-    "": {}
-  },
-  "position": {
-    "position-example": {}
+  "overview": {
+    "": {
+      "Gramex Guide": -1
+    },
+    "apps": {
+      "Apps": -1
+    },
+    "demos": {
+      "Demos": -1
+    },
+    "deprecated": {
+      "Deprecated": -1
+    },
+    "libraries": {
+      "Libraries": -1
+    },
+    "micro-services": {
+      "Micro-services": -1
+    },
+    "product": {
+      "Product": -1
+    },
+    "reference": {
+      "Reference": -1
+    },
+    "usage": {
+      "Usage": -1
+    },
+    "workshops": {
+      "Workshops": -1
+    }
   },
   "pptxhandler": {
     "": {
@@ -2575,8 +1635,6 @@
     "bestselling-pharmaceutical-drugs": {
       "Bestselling Pharmaceutical Drugs": -1
     },
-    "bullet": {},
-    "calendarmap": {},
     "causes-of-death": {
       "Causes of death": -1
     },
@@ -2586,7 +1644,6 @@
     "clone-shapes": {
       "Clone shapes": -1
     },
-    "color-scales": {},
     "color-scales-on-maps": {
       "Color scales on maps": -1
     },
@@ -2602,26 +1659,21 @@
     "copy-slides": {
       "Copy slides": -1
     },
-    "css": {},
-    "custom-charts": {},
     "data": {
       "Data": -1
     },
     "debug": {
       "Debug": -1
     },
-    "deprecated-commands": {},
     "expressions": {
       "Expressions": -1
     },
     "groups": {
       "Groups": -1
     },
-    "heatgrid": {},
     "image": {
       "Image": -1
     },
-    "index": {},
     "length-units": {
       "Length units": -1
     },
@@ -2631,45 +1683,33 @@
     "literals": {
       "Literals": -1
     },
-    "native-charts": {},
     "position": {
       "Position": -1
     },
-    "pptgen": {},
-    "pptgen-command-line": {},
-    "pptgen-configuration": {},
     "pptgen-library": {
       "PPTGen Library": -1
     },
     "pptx-to-images": {
       "PPTX to images": -1
     },
-    "pptx-url-arguments": {},
     "rate-of-entrepreneurship": {
       "Rate of Entrepreneurship": -1
     },
     "reference": {
       "Reference": -1
     },
-    "reference_1": {},
     "register": {
       "Register": -1
     },
-    "register-register-a-new-command-to-pptgen": {},
-    "replace": {},
-    "replicate": {},
     "rules": {
       "Rules": -1
     },
-    "sankey": {},
     "shapes": {
       "Shapes": -1
     },
     "slide-filters": {
       "Slide filters": -1
     },
-    "slides": {},
-    "stack": {},
     "style": {
       "Style": -1
     },
@@ -2679,7 +1719,6 @@
     "table": {
       "Table": -1
     },
-    "templates": {},
     "text": {
       "Text": -1
     },
@@ -2689,11 +1728,9 @@
     "transition": {
       "Transition": -1
     },
-    "treemap": {},
     "tutorials": {
       "Tutorials": -1
     },
-    "units": {},
     "usage": {
       "Usage": -1
     }
@@ -2980,117 +2017,6 @@
       "Treemap": -1
     }
   },
-  "pptxhandler\\add-position": {
-    "add-position-examples": {}
-  },
-  "pptxhandler\\albus-dumbledore-screen-time": {
-    "": {},
-    "create-the-data": {},
-    "create-the-rules": {},
-    "create-the-source-template": {},
-    "see-the-result": {}
-  },
-  "pptxhandler\\bar-chart-race": {
-    "": {},
-    "create-the-data": {},
-    "create-the-rules": {},
-    "create-the-source-template": {},
-    "see-the-result": {}
-  },
-  "pptxhandler\\certificate": {
-    "certificates": {},
-    "create-the-data": {},
-    "create-the-rules": {},
-    "create-the-source-template": {},
-    "see-the-result": {}
-  },
-  "pptxhandler\\chart": {
-    "chart-example": {},
-    "create-the-data": {},
-    "create-the-rules": {},
-    "create-the-source-template": {},
-    "see-the-result": {}
-  },
-  "pptxhandler\\clone-shape": {
-    "copy-slide-example": {}
-  },
-  "pptxhandler\\death": {
-    "automated-insights": {},
-    "create-the-data": {},
-    "create-the-rules": {},
-    "create-the-source-template": {},
-    "see-the-result": {},
-    "shifting-causes-of-death": {},
-    "try-it-yourself": {}
-  },
-  "pptxhandler\\entrepreneurship": {
-    "": {},
-    "create-the-data": {},
-    "create-the-rules": {},
-    "create-the-source-template": {},
-    "see-the-result": {}
-  },
-  "pptxhandler\\groups": {
-    "groups-example": {}
-  },
-  "pptxhandler\\link": {
-    "add-link-examples": {}
-  },
-  "pptxhandler\\position": {
-    "position-example": {}
-  },
-  "pptxhandler\\sales-funnel": {
-    "sales-funnel": {}
-  },
-  "pptxhandler\\table": {
-    "": {},
-    "create-the-data": {},
-    "create-the-rules": {},
-    "create-the-source-template": {},
-    "see-the-result": {}
-  },
-  "pptxhandler\\text": {
-    "text-example": {}
-  },
-  "pptxhandler\\text-format": {
-    "text-format-example": {}
-  },
-  "pptxhandler\\transition": {
-    "transition-example": {}
-  },
-  "pptxhandler\\v1": {
-    "": {},
-    "bullet": {},
-    "calendarmap": {},
-    "chart": {},
-    "commands": {},
-    "css": {},
-    "custom-charts": {},
-    "data": {},
-    "deprecated-commands": {},
-    "expressions": {},
-    "groups": {},
-    "heatgrid": {},
-    "image": {},
-    "native-charts": {},
-    "pptgen": {},
-    "pptgen-command-line": {},
-    "pptgen-configuration": {},
-    "pptgen-library": {},
-    "pptx-url-arguments": {},
-    "register-register-a-new-command-to-pptgen": {},
-    "replace": {},
-    "replicate": {},
-    "rules": {},
-    "sankey": {},
-    "shapes": {},
-    "slides": {},
-    "stack": {},
-    "table": {},
-    "templates": {},
-    "text": {},
-    "treemap": {}
-  },
   "privacy": {
     "": {
       "Privacy policy": -1
@@ -3137,64 +2063,16 @@
     },
     "proxyhandler-prepare": {
       "ProxyHandler prepare": -1
-    },
-    "reverse-proxyhandler": {}
+    }
   },
   "queryhandler": {
     "": {
       "QueryHandler runs SQL queries": -1
-    },
-    "multiple-sql-queries": {},
-    "queryhandler-post": {},
-    "queryhandler-templates": {}
-  },
-  "quickstart": {
-    "": {},
-    "authentication": {},
-    "backend-data-transformation": {},
-    "business-case": {},
-    "charting": {},
-    "configuration-and-handlers": {},
-    "editorconfig": {},
-    "eslintrcjs": {},
-    "flake8": {},
-    "folder-structure-of-a-simple-gramex-dashboard": {},
-    "g1-mapviewer": {},
-    "gitignore": {},
-    "gitlab-ciyml": {},
-    "gramex-init": {},
-    "gramex-installation-on-windowslinux": {},
-    "gramexyaml": {},
-    "htmllintrc": {},
-    "indexhtml": {},
-    "installing-gramex": {},
-    "interactivitydrilldowns-and-filtering": {},
-    "introduction": {},
-    "next-steps": {},
-    "outcome": {},
-    "readmemd": {},
-    "requirements": {},
-    "scaffolding": {},
-    "screenshots-via-capturehandler": {},
-    "step-0-create-the-project": {},
-    "step-1-expose-the-data-through-a-rest-api": {},
-    "step-2-lay-out-some-scaffolding": {},
-    "step-2-laying-out-some-scaffolding": {},
-    "step-3-fill-in-the-data": {},
-    "step-3-filling-in-the-data": {},
-    "step-4-adding-a-chart": {},
-    "step-5-appearance-and-final-touches": {},
-    "troubleshooting": {}
+    }
   },
   "r": {
     "": {
       "R": -1
-    },
-    "etc": {
-      "... etc": -1
-    },
-    "loads-datacsv-from-same-directory-as-the-r-script": {
-      "Loads data.csv from same directory as the R script": -1
     },
     "r-arguments": {
       "R arguments": -1
@@ -3214,11 +2092,19 @@
     "r-scripts": {
       "R scripts": -1
     },
-    "rest-of-your-script-can-use-the-packages-above": {
-      "Rest of your script can use the packages above.": -1
-    },
     "rmarkdown": {
       "RMarkdown": -1
+    }
+  },
+  "ratelimit": {
+    "": {
+      "Rate Limit APIs": -1
+    },
+    "rate-limit": {
+      "Rate Limit": -1
+    },
+    "rate-limit-store": {
+      "Rate Limit store": -1
     }
   },
   "release": {
@@ -3230,8 +2116,7 @@
     },
     "release-notes": {
       "Release Notes": -1
-    },
-    "release-process": {}
+    }
   },
   "release/1.30": {
     "": {
@@ -3673,7 +2558,6 @@
     "stats": {
       "Stats": -1
     },
-    "ui-componenets": {},
     "ui-components": {
       "UI Components": -1
     },
@@ -3754,9 +2638,6 @@
     },
     "stats": {
       "Stats": -1
-    },
-    "text": {
-      "```text": -1
     },
     "upgrade": {
       "Upgrade": -1
@@ -4363,9 +3244,6 @@
     "deploy-secrets-securely": {
       "Deploy secrets securely": -1
     },
-    "etc": {
-      "... etc": -1
-    },
     "gramex-ide-is-in-beta": {
       "Gramex IDE is in beta": -1
     },
@@ -4421,12 +3299,6 @@
     },
     "how-to-install": {
       "How to install": -1
-    },
-    "old-code-no-longer-required-in-gramex-165": {
-      "Old code -- no longer required in Gramex 1.65+": -1
-    },
-    "old-code-no-longer-required-in-gramex-165_1": {
-      "Old code -- no longer required in Gramex 1.65+": -1
     },
     "other-improvements": {
       "Other improvements": -1
@@ -4492,9 +3364,6 @@
     "": {
       "Gramex 1.67 release notes": -1
     },
-    "append-the-data": {
-      "Append the data": -1
-    },
     "bug-fixes": {
       "Bug fixes": -1
     },
@@ -4506,9 +3375,6 @@
     },
     "other-improvements": {
       "Other improvements": -1
-    },
-    "re-train-the-model": {
-      "Re-train the model": -1
     },
     "simpler-handler-names": {
       "Simpler handler names": -1
@@ -4679,20 +3545,8 @@
     "release-process": {
       "Release process": -1
     },
-    "search-for-records-where-date-year-2020-month-12": {
-      "Search for records where ": -1
-    },
-    "search-for-records-where-parent-child-value": {
-      "Search for records where `{\"parent\": {\"child\": \"value\"}}": -1
-    },
     "statistics": {
       "Statistics": -1
-    },
-    "to-insert-date-year-2020-month-12": {
-      "To insert ": -1
-    },
-    "to-insert-parent-child-value": {
-      "To insert ": -1
     },
     "topcause-analysis": {
       "TopCause analysis": -1
@@ -5206,547 +4060,6 @@
       "v1.29.0 (2018-02-15)": -1
     }
   },
-  "release\\1.30": {
-    "": {},
-    "bugs": {},
-    "config-reload": {},
-    "documentation": {},
-    "log-viewer": {},
-    "multiple-logins": {},
-    "oauth2-login": {},
-    "others": {},
-    "proxy-apis": {},
-    "sms-notification": {},
-    "stats": {},
-    "upgrade": {}
-  },
-  "release\\1.31": {
-    "": {},
-    "alert-preview": {},
-    "api-integration": {},
-    "charts": {},
-    "developer-updates": {},
-    "formhandler-directory-browsing": {},
-    "http-error-reporting": {},
-    "installation": {},
-    "lato-font": {},
-    "log-viewer": {},
-    "path-arguments": {},
-    "prevent-url-conflicts": {},
-    "repository-moved": {},
-    "stats": {},
-    "upgrade": {}
-  },
-  "release\\1.32": {
-    "": {},
-    "capturehandler-proxy": {},
-    "gramex-init": {},
-    "internal-bugfixes": {},
-    "logviewer-configuration": {},
-    "stats": {},
-    "tornado-50": {},
-    "upgrade": {},
-    "yaml-merge-variables": {}
-  },
-  "release\\1.33": {
-    "": {},
-    "add-roles-to-users": {},
-    "admin-module": {},
-    "formhandler-charts": {},
-    "multi-process-logging": {},
-    "other-enhancements": {},
-    "quickstart-tutorial": {},
-    "sanddance": {},
-    "screenshot-alerts-as-user": {},
-    "stats": {},
-    "upgrade": {}
-  },
-  "release\\1.34": {
-    "": {},
-    "ajax-xsrf": {},
-    "anton-font": {},
-    "config-viewer": {},
-    "deprecations": {},
-    "developer-updates": {},
-    "formhandler-json": {},
-    "internal-bugfixes": {},
-    "others": {},
-    "server-traceback": {},
-    "stats": {},
-    "upgrade": {},
-    "vega-examples": {}
-  },
-  "release\\1.35": {
-    "": {},
-    "admin-module": {},
-    "formhandler-tutorial": {},
-    "modelhandler": {},
-    "other-enhancements": {},
-    "others": {},
-    "pip10": {},
-    "stats": {},
-    "upgrade": {}
-  },
-  "release\\1.36": {
-    "": {},
-    "bug-fixes": {},
-    "exotel-sms-service": {},
-    "mapviewer": {},
-    "other-enhancements": {},
-    "python-3-tests": {},
-    "redis-store": {},
-    "sms-auth": {},
-    "stats": {},
-    "upgrade": {}
-  },
-  "release\\1.37": {
-    "": {},
-    "apache-reverse-proxy": {},
-    "bug-fixes": {},
-    "capturehandler-tutorial": {},
-    "developer-updates": {},
-    "r-interface": {},
-    "stats": {},
-    "upgrade": {}
-  },
-  "release\\1.38": {
-    "": {},
-    "apache-load-balancing": {},
-    "bug-fixes": {},
-    "developer-updates": {},
-    "emailauth": {},
-    "formhandler-group-by": {},
-    "g1": {},
-    "quickstart": {},
-    "stats": {},
-    "upgrade": {},
-    "uploadhandler": {}
-  },
-  "release\\1.39": {
-    "": {},
-    "bug-fixes": {},
-    "developer-updates": {},
-    "formhandler": {},
-    "logviewer": {},
-    "mapviewer": {},
-    "pynode": {},
-    "stats": {},
-    "ui-components": {},
-    "upgrade": {}
-  },
-  "release\\1.40": {
-    "": {},
-    "bug-fixes": {},
-    "developer-updates": {},
-    "dropdown-events": {},
-    "filterhandler": {},
-    "formhandler-modify": {},
-    "g1": {},
-    "g1-dropdown": {},
-    "logviewer": {},
-    "mapviewer": {},
-    "password-encryption": {},
-    "smart-alerts": {},
-    "speech-demo": {},
-    "stats": {},
-    "upgrade": {}
-  },
-  "release\\1.41": {
-    "": {},
-    "40x-reporting": {},
-    "ajax-uploads": {},
-    "bug-fixes": {},
-    "developer-updates": {},
-    "error-reporting": {},
-    "favicon": {},
-    "g1": {},
-    "g1-urlfilter": {},
-    "gramex-update": {},
-    "guide-link-checker": {},
-    "guide-search": {},
-    "install": {},
-    "logviewer": {},
-    "python-console": {},
-    "stats": {},
-    "ui-componenets": {},
-    "upgrade": {}
-  },
-  "release\\1.42": {
-    "": {},
-    "admin-module": {},
-    "bug-fixes": {},
-    "developer-updates": {},
-    "offline-docker-install": {},
-    "stats": {},
-    "upgrade": {},
-    "webshell": {}
-  },
-  "release\\1.43": {
-    "": {},
-    "bug-fixes": {},
-    "developer-updates": {},
-    "formhandler-edits-modify": {},
-    "stats": {},
-    "upgrade": {}
-  },
-  "release\\1.44": {
-    "": {},
-    "admin-gramex-info": {},
-    "bug-fixes": {},
-    "eula": {},
-    "formhandler-supports-urls": {},
-    "g1": {},
-    "groupmeans": {},
-    "rmarkdown": {},
-    "stats": {},
-    "upgrade": {},
-    "vega-gallery": {}
-  },
-  "release\\1.45": {
-    "": {},
-    "actions": {},
-    "admin": {},
-    "auth": {},
-    "bootstrap-select": {},
-    "developer-updates": {},
-    "dropzonejs": {},
-    "g1": {},
-    "stats": {},
-    "ui-components": {},
-    "upgrade": {},
-    "vega-gallery": {}
-  },
-  "release\\1.46": {
-    "": {},
-    "admin": {},
-    "admin-console-webshell": {},
-    "admin-info": {},
-    "bootstrapbundlejs": {},
-    "developer-updates": {},
-    "gramex-init": {},
-    "modelhandler": {},
-    "other-updates": {},
-    "stats": {},
-    "upgrade": {},
-    "vega-gallery": {}
-  },
-  "release\\1.47": {
-    "": {},
-    "ajaxchain": {},
-    "auth": {},
-    "g1": {},
-    "guide": {},
-    "stats": {},
-    "template": {},
-    "ui-components": {},
-    "upgrade": {},
-    "urlchange": {}
-  },
-  "release\\1.48": {
-    "": {},
-    "admin-page-enhancements": {},
-    "auto-create-tables": {},
-    "automated-translations": {},
-    "better-gramex-init": {},
-    "bugfixes": {},
-    "documentation": {},
-    "sass-support": {},
-    "stats": {},
-    "template-components": {},
-    "upgrade": {}
-  },
-  "release\\1.49": {
-    "": {},
-    "better-gramex-init": {},
-    "bootstrap-42": {},
-    "bugfixes": {},
-    "chart-gallery": {},
-    "g1-animated-templates": {},
-    "g1-search": {},
-    "stats": {},
-    "upgrade": {}
-  },
-  "release\\1.50": {
-    "": {},
-    "bugfixes": {},
-    "cors-and-formhandler-validation-docs": {},
-    "encrypt-service-is-deprecated": {},
-    "g1-upgraded-to-013": {},
-    "gramex-has-a-new-test-framework": {},
-    "stats": {},
-    "translations-are-easier": {},
-    "ui-components-have-new-colors-utilities-and-libraries": {},
-    "upgrade": {}
-  },
-  "release\\1.51": {
-    "": {},
-    "add-header-and-footer-to-pdf-screenshots": {},
-    "bugfixes": {},
-    "documentation-is-more-interactive": {},
-    "enhanced-security-protect-against-bots": {},
-    "gramex-is-open-source": {},
-    "stats": {},
-    "test-application-on-multiple-screen-resolutions": {},
-    "upgrade": {}
-  },
-  "release\\1.52": {
-    "": {},
-    "alerts-can-be-synchronized-across-time-zones": {},
-    "auto-complete-with-snippets-on-visual-studio-code": {},
-    "browsing-files-with-formhandler-is-simpler": {},
-    "formhandler-is-more-flexible": {},
-    "how-to-upgrade": {},
-    "load-balancing-with-authentication-across-domains": {},
-    "new-graphics-capability-with-d3-v5": {},
-    "search-engine-friendly-file-urls": {},
-    "smart-alerts-send-personalized-dashboards-as-attachments": {},
-    "statistics": {},
-    "templates-refresh-immediately-when-included-files-are-updated": {},
-    "test-pages-created-by-javascript": {}
-  },
-  "release\\1.53": {
-    "": {},
-    "g1-features-fuzzy-search": {},
-    "gramextest-makes-testing-easier": {},
-    "how-to-upgrade": {},
-    "natural-language-generation": {},
-    "statistics": {},
-    "templates-support-ui-modules": {}
-  },
-  "release\\1.54": {
-    "": {},
-    "admin-components-url-changed": {},
-    "admin-ui-features-alerts-and-schedules": {},
-    "admin-ui-for-alert": {},
-    "admin-ui-for-schedule": {},
-    "feather": {},
-    "formhandler-creates-tables-with-primary-keys": {},
-    "formhandler-parameters": {},
-    "how-to-upgrade": {},
-    "jsondata": {},
-    "languagetool-app": {},
-    "new-data-formats": {},
-    "parquet": {},
-    "statistics": {}
-  },
-  "release\\1.55": {
-    "": {},
-    "bug-fixes": {},
-    "formhandler-summarizes-data": {},
-    "how-to-upgrade": {},
-    "other-enhancements": {},
-    "statistics": {},
-    "ui-component-upgrades": {}
-  },
-  "release\\1.56": {
-    "": {},
-    "bug-fixes": {},
-    "chrome-device-emulation": {},
-    "how-to-upgrade": {},
-    "other-enhancements": {},
-    "statistics": {},
-    "ui-component-upgrades": {},
-    "url-driven-dashboards-tutorial": {},
-    "vega-parameter-substitution": {}
-  },
-  "release\\1.57": {
-    "": {},
-    "bug-fixes": {},
-    "developer-updates": {},
-    "how-to-upgrade": {},
-    "other-enhancements": {},
-    "statistics": {},
-    "ui-component-upgrades": {}
-  },
-  "release\\1.58": {
-    "": {},
-    "azure-active-directory": {},
-    "bug-fixes": {},
-    "developer-updates": {},
-    "how-to-upgrade": {},
-    "statistics": {},
-    "ui-component-upgrades": {}
-  },
-  "release\\1.59": {
-    "": {},
-    "api-changes": {},
-    "bug-fixes": {},
-    "drivehandler-manages-files": {},
-    "how-to-upgrade": {},
-    "statistics": {},
-    "ui-component-upgrades": {}
-  },
-  "release\\1.60": {
-    "": {},
-    "api-changes": {},
-    "bug-fixes": {},
-    "file-manager-is-a-ui-for-drivehandler": {},
-    "how-to-upgrade": {},
-    "statistics": {}
-  },
-  "release\\1.61": {
-    "": {},
-    "bug-fixes": {},
-    "create-interactive-presentations": {},
-    "fast-persistent-distributed-cache": {},
-    "how-to-install": {},
-    "improved-gramex-init": {},
-    "statistics": {},
-    "use-python-expressions-in-yaml": {},
-    "what-next": {}
-  },
-  "release\\1.61.1": {
-    "": {},
-    "how-to-upgrade": {},
-    "statistics": {}
-  },
-  "release\\1.62": {
-    "": {},
-    "create-presentations-from-the-command-line": {},
-    "gramex-charts-preview": {},
-    "how-to-install": {},
-    "other-features": {},
-    "powerpoint-tables-and-charts": {},
-    "statistics": {},
-    "what-next": {}
-  },
-  "release\\1.63": {
-    "": {},
-    "conda-install": {},
-    "docker-install": {},
-    "embedding-other-apps": {},
-    "how-to-install": {},
-    "new-gramex-guide": {},
-    "other-features": {},
-    "statistics": {},
-    "what-next": {}
-  },
-  "release\\1.63.2": {
-    "": {},
-    "details": {}
-  },
-  "release\\1.64": {
-    "": {},
-    "client-side-screen-capture": {},
-    "connect-to-more-databases": {},
-    "deploy-secrets-securely": {},
-    "etc": {},
-    "gramex-ide-is-in-beta": {},
-    "how-to-install": {},
-    "log-into-multiple-apps-simultaneously": {},
-    "multiple-logins-for-the-same-app": {},
-    "offline-installation": {},
-    "other-changes": {},
-    "protect-the-entire-app": {},
-    "run-multiple-apps-on-a-server": {},
-    "statistics": {},
-    "tutorial-on-building-an-ml-classifier": {},
-    "what-next": {}
-  },
-  "release\\1.65": {
-    "": {},
-    "credits": {},
-    "excel-ranges-supported": {},
-    "flexible-logging": {},
-    "functions-as-rest-apis": {},
-    "functions-converted-to-json": {},
-    "how-to-install": {},
-    "old-code-no-longer-required-in-gramex-165": {},
-    "old-code-no-longer-required-in-gramex-165_1": {},
-    "other-improvements": {},
-    "statistics": {},
-    "what-next": {}
-  },
-  "release\\1.66": {
-    "": {},
-    "auto-compile-sass-files": {},
-    "auto-create-table-schema": {},
-    "bootstrap-themes": {},
-    "bug-fixes": {},
-    "cache-database-queries": {},
-    "credits": {},
-    "fetch-inserted-rows": {},
-    "git-lfs-support": {},
-    "gramex-ui-components-in-sass": {},
-    "how-to-install": {},
-    "other-improvements": {},
-    "restrict-http-methods-on-any-handler": {},
-    "statistics": {},
-    "transform-multiple-file-types": {},
-    "what-next": {}
-  },
-  "release\\1.67": {
-    "": {},
-    "append-the-data": {},
-    "bug-fixes": {},
-    "credits": {},
-    "how-to-install": {},
-    "other-improvements": {},
-    "re-train-the-model": {},
-    "simpler-handler-names": {},
-    "statistics": {},
-    "train-ml-models": {},
-    "what-next": {}
-  },
-  "release\\1.68": {
-    "": {},
-    "add-fields": {},
-    "bug-fixes": {},
-    "collect-responses": {},
-    "edit-fields": {},
-    "embed-form": {},
-    "how-to-install": {},
-    "import-secrets": {},
-    "statistics": {},
-    "ui-factory-forms": {},
-    "what-next": {}
-  },
-  "release\\1.69": {
-    "": {},
-    "auto-render-template-files": {},
-    "bug-fixes": {},
-    "donut-charts-in-pptxhandler": {},
-    "how-to-install": {},
-    "offline-access-to-google-data": {},
-    "other-improvements": {},
-    "statistics": {},
-    "what-next": {}
-  },
-  "release\\old": {
-    "": {},
-    "v100-2015-09-08": {},
-    "v101-2015-09-09": {},
-    "v102-2015-10-11": {},
-    "v103-2016-01-18": {},
-    "v104-2016-03-30": {},
-    "v105-2016-04-15": {},
-    "v106-2016-05-01": {},
-    "v107-2016-05-15": {},
-    "v108-2016-06-01": {},
-    "v109-2016-06-15": {},
-    "v110-2016-07-01": {},
-    "v111-2016-07-15": {},
-    "v112-2016-07-21": {},
-    "v113-2016-08-01": {},
-    "v114-2016-08-11": {},
-    "v115-2016-08-21": {},
-    "v116-2016-10-16": {},
-    "v117-2017-01-29": {},
-    "v1171-2017-04-23": {},
-    "v1180-2017-06-29": {},
-    "v1190-2017-07-09": {},
-    "v1200-2017-07-31": {},
-    "v1210-2017-08-29": {},
-    "v1220-2017-09-28": {},
-    "v1230-2017-10-31": {},
-    "v1231-2017-11-13": {},
-    "v1240-2017-11-30": {},
-    "v1250-2017-12-15": {},
-    "v1260-2017-12-31": {},
-    "v1270-2018-01-20": {},
-    "v1280-2018-01-31": {},
-    "v1290-2018-02-15": {}
-  },
   "roadmap": {
     "": {
       "Gramex Roadmap": -1
@@ -5755,9 +4068,6 @@
       "Releases": -1
     }
   },
-  "sales-funnel": {
-    "sales-funnel": {}
-  },
   "scheduler": {
     "": {
       "Schedule tasks": -1
@@ -5765,46 +4075,6 @@
     "dynamic-scheduling": {
       "Dynamic scheduling": -1
     },
-    "if-its-a-weekday-in-2016-2025": {
-      "(if it's a weekday) in 2016-2025.": -1
-    },
-    "run-at-530-am-utc-not-local-time-zone-daily": {
-      "Run at 5:30 am UTC (not local time zone) daily": -1
-    },
-    "run-at-8-am-10-am-12-noon-2-pm-6-pm-daily-local-time-and-on-startup": {
-      "Run at 8 am, 10 am, 12 noon, 2 pm, 6 pm daily (local time), and on startup": -1
-    },
-    "run-at-the-15th-and-45th-minute-every-4-hours-on-the-first-and-last-day-of-the-month": {
-      "Run at the 15th and 45th minute every 4 hours on the first and last day of the month": -1
-    },
-    "run-every-2-hours-on-the-hour-from-9-am-to-5-pm-and-on-startup": {
-      "Run every 2 hours, on the hour, from 9 am to 5 pm, and on startup": -1
-    },
-    "run-every-25-hours": {
-      "Run every 2.5 hours": -1
-    },
-    "run-every-90-seconds": {
-      "Run every 90 seconds": -1
-    },
-    "run-every-hour-on-the-hour-ie-minutesseconds0-in-a-separate-thread": {
-      "Run every hour, on the hour (i.e. minutes=seconds=0), in a separate thread:": -1
-    },
-    "run-every-minute-and-a-half-same-as-90-seconds": {
-      "Run every minute and a half (same as 90 seconds)": -1
-    },
-    "run-every-saturday-at-2-am-utc": {
-      "Run every Saturday at 2 am UTC": -1
-    },
-    "run-on-startup-and-re-runs-every-time-the-yaml-file-changes": {
-      "Run on startup, and re-runs every time the YAML file changes:": -1
-    },
-    "run-on-the-first-and-15th-of-every-month-at-1030-am-utc": {
-      "Run on the first and 15th of every month at 10:30 am UTC": -1
-    },
-    "run-only-on-startup-and-never-run-again": {
-      "Run only on startup, and never run again": -1
-    },
-    "schedule-examples": {},
     "schedule-timing": {
       "Schedule timing": -1
     },
@@ -5828,11 +4098,6 @@
       "Gramex security tests": -1
     }
   },
-  "server": {
-    "": {},
-    "creating-gramex-apps": {},
-    "gramex-0x-changes": {}
-  },
   "sms": {
     "": {
       "Send SMS": -1
@@ -5842,15 +4107,6 @@
     },
     "exotel": {
       "Exotel": -1
-    },
-    "from-gramexservices-import-amazonsns": {
-      "from gramex.services import AmazonSNS": -1
-    },
-    "notifier-amazonsnsaws_access_key_id-aws_access_secret_key-region_name": {
-      "notifier = AmazonSNS(aws_access_key_id, aws_access_secret_key, region_name)": -1
-    },
-    "or-to-construct-the-notifier-when-using-gramex-as-a-library-use": {
-      "Or, to construct the Notifier when using Gramex as a library, use:": -1
     },
     "send-sms": {
       "Send SMS": -1
@@ -5870,20 +4126,10 @@
       "Installation": -1
     }
   },
-  "table": {
-    "": {},
-    "bestselling-pharmaceutical-drugs": {},
-    "create-the-data": {},
-    "create-the-rules": {},
-    "create-the-source-template": {},
-    "see-the-result": {},
-    "table-example": {}
-  },
   "test": {
     "": {
       "Automate tests": -1
     },
-    "browsers": {},
     "check-content-on-page": {
       "Check content on page": -1
     },
@@ -5905,10 +4151,6 @@
     "debugging": {
       "Debugging": -1
     },
-    "enable-only-the-browsers-you-need-and-install-the-drivers": {
-      "Enable only the browsers you need, and install the drivers": -1
-    },
-    "examples": {},
     "execute-code": {
       "Execute code": -1
     },
@@ -5948,7 +4190,6 @@
     "skipping": {
       "Skipping": -1
     },
-    "structure": {},
     "test-reporting": {
       "Test reporting": -1
     },
@@ -5964,12 +4205,6 @@
     "waiting": {
       "Waiting": -1
     }
-  },
-  "text": {
-    "text-example": {}
-  },
-  "text-format": {
-    "text-format-example": {}
   },
   "tips": {
     "": {
@@ -5992,9 +4227,6 @@
     "topcause-results": {
       "TopCause results": -1
     }
-  },
-  "transition": {
-    "transition-example": {}
   },
   "translate": {
     "": {
@@ -6151,49 +4383,6 @@
       "Troubleshooting": -1
     }
   },
-  "tutorials\\charts": {
-    "": {},
-    "introduction": {},
-    "outcome": {},
-    "requirements": {},
-    "step-0-basic-layout-and-scaffolding": {},
-    "step-1-performing-the-cross-tabulation-with-formhandler": {},
-    "step-2-drawing-the-chart": {},
-    "step-3-redrawing-charts-on-url-changes": {},
-    "step-4-filtering-the-table-on-chart-interactions": {}
-  },
-  "tutorials\\dashboards": {
-    "": {},
-    "introduction": {},
-    "outcome": {},
-    "requirements": {},
-    "step-1-working-with-formhandler": {},
-    "step-2-detecting-changes-in-the-url": {},
-    "step-3-redrawing-charts-on-url-changes": {}
-  },
-  "tutorials\\g1-dropdown": {
-    "": {},
-    "introduction": {},
-    "outcome": {},
-    "step-0-laying-out-the-scaffolding": {},
-    "step-1-making-a-dropdown-menu": {},
-    "step-2-changing-the-url-on-selection-events": {},
-    "step-3-enabling-search": {},
-    "step-4-redrawing-the-chart-on-url-changes": {}
-  },
-  "tutorials\\quickstart": {
-    "": {},
-    "introduction": {},
-    "next-steps": {},
-    "requirements": {},
-    "step-0-create-the-project": {},
-    "step-1-expose-the-data-through-a-rest-api": {},
-    "step-2-lay-out-some-scaffolding": {},
-    "step-3-fill-in-the-data": {},
-    "step-4-adding-a-chart": {},
-    "step-5-appearance-and-final-touches": {},
-    "troubleshooting": {}
-  },
   "twitterresthandler": {
     "": {
       "TwitterRESTHandler": -1
@@ -6214,7 +4403,7 @@
       "Twitter Paths": -1
     },
     "twitter-persist": {
-      "Twitter Persist": -1
+      "Twitter persist": -1
     },
     "twitter-pre-auth": {
       "Twitter Pre-auth": -1
@@ -6229,35 +4418,37 @@
       "Twitter transforms": -1
     }
   },
-  "uiapp": {
-    "": {},
-    "import": {},
-    "styles": {}
-  },
   "uicomponents": {
     "": {
       "UI Components": -1
     },
-    "arrow": {},
+    "arrow": {
+      "Arrow": -1
+    },
     "backgrounds": {
       "Backgrounds": -1
     },
     "borders": {
       "Borders": -1
     },
-    "carousels": {},
     "color-states": {
       "Color states": -1
     },
-    "components": {},
+    "components": {
+      "Components": -1
+    },
     "cursor-styles": {
       "Cursor styles": -1
     },
     "custom-themes": {
       "Custom themes": -1
     },
-    "deprecated": {},
-    "divider": {},
+    "deprecated": {
+      "Deprecated": -1
+    },
+    "divider": {
+      "Divider": -1
+    },
     "effects": {
       "Effects": -1
     },
@@ -6282,7 +4473,6 @@
     "line-height": {
       "Line height": -1
     },
-    "maps": {},
     "overlay": {
       "Overlay": -1
     },
@@ -6298,8 +4488,9 @@
     "shadow": {
       "Shadow": -1
     },
-    "tables": {},
-    "tail": {},
+    "tail": {
+      "Tail": -1
+    },
     "text-alignment": {
       "Text alignment": -1
     },
@@ -6318,15 +4509,14 @@
     "typography": {
       "Typography": -1
     },
-    "z-index": {}
+    "z-index": {
+      "Z-Index": -1
+    }
   },
   "uicomponents/libraries": {
     "": {
       "UI Libraries": -1
     }
-  },
-  "uicomponents\\libraries": {
-    "": {}
   },
   "uifactory": {
     "": {
@@ -6343,7 +4533,6 @@
     "overwriting-uploads": {
       "Overwriting uploads": -1
     },
-    "process-uploads": {},
     "saving-uploads": {
       "Saving uploads": -1
     },
@@ -6360,63 +4549,12 @@
       "Upload listing": -1
     }
   },
-  "v1": {
-    "": {},
-    "bullet": {},
-    "calendarmap": {},
-    "chart": {},
-    "commands": {},
-    "css": {},
-    "custom-charts": {},
-    "data": {},
-    "deprecated-commands": {},
-    "expressions": {},
-    "groups": {},
-    "heatgrid": {},
-    "image": {},
-    "native-charts": {},
-    "pptgen": {},
-    "pptgen-command-line": {},
-    "pptgen-configuration": {},
-    "pptgen-library": {},
-    "pptx-url-arguments": {},
-    "register-register-a-new-command-to-pptgen": {},
-    "replace": {},
-    "replicate": {},
-    "rules": {},
-    "sankey": {},
-    "shapes": {},
-    "slides": {},
-    "stack": {},
-    "table": {},
-    "templates": {},
-    "text": {},
-    "treemap": {}
-  },
   "watch": {
     "": {
       "Watch files": -1
     },
-    "check-max-watches": {
-      "Check max watches": -1
-    },
     "inotify-limit": {
       "inotify limit": -1
-    },
-    "list-file-descriptors-used-by-a-process": {
-      "List file descriptors used by a process": -1
-    },
-    "lists-inotify-usage": {
-      "Lists inotify usage:": -1
-    },
-    "now-when-any-changes-are-made-to-filenametxt-on_modified-is-called": {
-      "Now, when any changes are made to filename.txt, on_modified is called": -1
-    },
-    "to-get-the-list-of-processes-consuming-inotify-resources-run": {
-      "To get the list of processes consuming inotify resources, run:": -1
-    },
-    "to-stop-watching-use-this": {
-      "To stop watching, use this:": -1
     },
     "watching-files": {
       "Watching files": -1
@@ -6446,7 +4584,6 @@
     "explore-the-data": {
       "Explore the data": -1
     },
-    "github-account": {},
     "ide-tutorial": {
       "IDE Tutorial": -1
     },
@@ -6459,7 +4596,6 @@
     "overview": {
       "Overview": -1
     },
-    "publish-your-project-on-github": {},
     "share-feedback": {
       "Share feedback": -1
     },
@@ -6509,21 +4645,5 @@
     "step-3-plotting-the-data-on-the-map": {
       "Step 3: Plotting the Data on the Map": -1
     }
-  },
-  "workshop\\building-ml-apps-rapidly": {
-    "": {},
-    "a-quick-survey": {},
-    "build-a-model-to-predict-wholl-get-admitted": {},
-    "build-an-app-that-predicts-admission": {},
-    "explore-the-data": {},
-    "ide-tutorial": {},
-    "learning-more": {},
-    "objective": {},
-    "overview": {},
-    "publish-your-project-on-github": {},
-    "share-feedback": {},
-    "summarize-learnings": {},
-    "try-next-steps": {},
-    "what-if-you-need-help": {}
   }
 }
