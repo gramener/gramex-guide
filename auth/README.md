@@ -101,18 +101,18 @@ app:
     cookie_secret: your-cookie-secret
 ```
 
-## Session data
+## Session store
 
-Session data is stored in a session store that is configured as follows:
+Sessions are stored in a session store that is configured as follows:
 
 ```yaml
 app:
   session:
     type: json                      # Type of store to use (see below)
     path: $GRAMEXDATA/session.json  # Path to the store (ignored for type: memory)
+    expiry: 31                      # Session cookies expiry in days
     flush: 5                        # Write store to disk periodically (in seconds)
     purge: 3600                     # Delete old sessions periodically (in seconds)
-    expiry: 31                      # Session cookies expiry in days
 ```
 
 Sessions can be stored in one of these `type:`
@@ -141,7 +141,7 @@ app:
     # by adding :key=value:key=value:... to path. For example:
     # path: localhost:6379:0:password=your-password
     expiry: 31          # Session cookies expiry in days
-    flush: 5            # Not relevant for redis stores these are live
+    # flush: 5          # Redis stores are live. No flush required
     purge: 86400        # Delete old sessions periodically (in seconds)
 ```
 
