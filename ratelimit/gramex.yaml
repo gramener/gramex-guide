@@ -1,0 +1,15 @@
+url:
+  ratelimit/api:
+    pattern: /$YAMLURL/api
+    handler: FunctionHandler
+    kwargs:
+      function: random.randint(0, 1000)
+      ratelimit:
+        keys: [hourly, user]
+        limit: 10
+
+  ratelimit/example:
+    pattern: /$YAMLURL/example
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/example.html

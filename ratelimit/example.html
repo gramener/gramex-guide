@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rate limit example</title>
+  <link rel="stylesheet" href="../style.scss">
+</head>
+<body class="container">
+
+  <nav class="py-4">
+    <a href=".">&laquo; Back to Ratelimit</a>
+  </nav>
+
+  <section>
+    <h1>Rate Limit Check</h1>
+    <p>Here are the HTTP headers and response when fetching <a href="api"><code>api</code></a>. Note the <code>x-ratelimit-*</code> headers.</p>
+    <h2 class="h5">Headers</h2>
+    <pre id="headers" class="bg-black text-white p-3"></pre>
+    <p>When you reload the page, <code>x-ratelimit-remaining</code> will reduce by 1, and <code>x-ratelimit-reset</code> will reflect the number of seconds to reset.</p>
+    <h2 class="h5">Response</h2>
+    <pre id="response" class="bg-black text-white p-3"></pre>
+
+    <script>
+      fetch('api')
+        .then(r => {
+          const html = [`${r.status} ${r.statusText}`]
+          for (const [key, val] of r.headers.entries()) {
+            html.push(`${key}: ${val}`)
+          }
+          document.querySelector('#headers').innerHTML = html.join('\n')
+          return r.text()
+        }).then(text => {
+          document.querySelector('#response').innerHTML = text
+        })
+    </script>
+  </section>
+
+</body>
+</html>

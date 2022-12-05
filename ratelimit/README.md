@@ -16,7 +16,7 @@ For example, this allows **50** hits per **user** per **day**:
 
 ```yaml
 url:
-  page:
+  api:
     pattern: /api
     handler: FormHandler # or any handler
     kwargs:
@@ -25,6 +25,10 @@ url:
         keys: [daily, user]
         limit: 50
 ```
+
+::: example href=example source=https://github.com/gramener/gramex-guide/blob/master/ratelimit/gramex.yaml
+    Rate limit example
+
 
 `keys` define how to rate-limit. It's an array of strings, or a comma-separated list of strings:
 
@@ -59,11 +63,11 @@ url:
 `keys` can also be defined with functions. For example:
 
 ```yaml
-# Restrict by user's email domain name
+# Restrict by user's email domain name, daily
         keys:
           - daily
           - function: handler.current_user.email.split('@')[-1]
-# Refresh every 10 days. Divide seconds since epoch by 10 days. Round down
+# Refresh every 10 days per user. Divide seconds since epoch by 10 days. Round down
         keys:
           - user
           - function: int(pd.Timestamp.utcnow().timestamp() / 24 / 60 / 60 / 10)
