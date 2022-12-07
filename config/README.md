@@ -43,8 +43,7 @@ The `app:` section controls Gramex's startup. It has these sub-sections.
    to [HTTPServer()](http://www.tornadoweb.org/en/stable/_modules/tornado/httpserver.html#HTTPServer).
 3. `settings:` holds the Tornado
    [application settings](http://www.tornadoweb.org/en/stable/web.html#tornado.web.Application.settings).
-4. `debug:` holds the [debug settings](../debug/)
-5. `session:` holds [session settings](../auth/)
+4. `session:` holds [session settings](../auth/)
 
 ## Command line args
 

@@ -92,27 +92,18 @@ NOSE_WITH_TIMER=1 nosetests         # Show time taken for each test
 
 Run tests:
 
-1. Check [Travis build errors](https://travis-ci.com/gramener/gramex).
-2. Test the `master` branch locally on Python >= 3.7:
+1. Update Gramex version number in `pyproject.toml`, `gramex/__init__.py`, and `gramex/apps.yaml`
+2. Test the `master` branch locally on Python >= 3.7
 
 ```bash
-nosetests
+bash task test
 ```
 
-Upgrade npm packages and audit security:
+Upgrade npm packages and audit security. Ensure `reports/*` don't report errors:
 
 ```bash
-bash task update
-bash task security
+bash task reformat update security
 ```
-
-If there are any security errors reported in `reports/*`, fix them and run `make security` again
-until there are no security errors.
-
-Update the following and [commit to `master` branch](#committing):
-
-- In `gramex/release.json` -- update the version number
-- In `gramex/apps.yaml` -- update the version number on the guide
 
 In [gramex-guide][gramex-guide]:
 
@@ -140,8 +131,8 @@ git checkout release
 git merge master
 git tag -a v1.x.x -m"One-line summary of features"  # Replace x.x
 git push --follow-tags
-git push gitlab release      # To deploy into Gramener servers. See one-time setup below
-git checkout master          # Switch back to master
+git push gitlab release master  # Deploy into Gramener servers. See one-time setup below
+git checkout master
 ```
 
 Note: `git push gitlab release` requires this one-time setup:
@@ -160,36 +151,8 @@ bash task docs pushdocs
 # Deploy on pypi: https://pypi.python.org/pypi/gramex
 bash task pushpypi    # Log in as gramener
 
-# Deploy on conda (Windows): https://anaconda.org/gramener/gramex
-# Run this from any temporary directory on a Windows system.
-# Ensure that you have Git LFS on your system.
-git clone https://github.com/gramener/gramex.git -b release
-cd gramex
-pip install -e .
-
-# Follow instructions to upload. Log in as gramener
-# Replace the path to the Gramex tarball below. It will by under anaconda/conda-bld
-bash task conda
-anaconda upload D:/path/to/conda-bld/win-64/gramex-1.<version>.tar.bz2
-
-# Now you can delete this Gramex folder and restore your Gramex via pip install gramex
-
 # Deploy on docker: https://hub.docker.com/r/gramener/gramex/
-VERSION=1.x.x bash task pushdocker    # Log in as sanand0 / pratapvardhan
-```
-
-Note: to run `make conda` on Linux, create a new Docker instance via
-`docker run -it continuumio/miniconda3 /bin/bash` and run:
-
-```bash
-apt-get update                                    # Update packages
-apt-get install -y make gcc                       # make and gcc are the sole dependencies
-conda install -y conda-build anaconda             # Required for build
-git clone https://github.com/gramener/gramex/ -b release    # Clone Gramex release branch
-cd gramex                                         # Change into gramex dir
-pip install -e .                                  # Test gramex, and get orderedattrdict
-bash task conda                                   # Create conda
-anaconda upload /opt/conda/conda-bld/linux-64/gramex-*.tar.bz2    # Log in as gramener
+VERSION=1.x.x bash task builddocker pushdocker    # Log in as sanand0 / pratapvardhan
 ```
 
 Gramener.com administrators: re-start Gramex after deployment.

@@ -21,8 +21,22 @@
     <h2 class="h5">Response</h2>
     <pre id="response" class="bg-black text-white p-3"></pre>
 
+    <h2 class="h3">Try with a different key</h2>
+    <p>In this example, every "key" parameter has an independent rate limit. Type a random string and submit. You'll see a new rate limit queue set up.</p>
+    <form class="row gy-2 gx-3 align-items-center mb-5">
+      <div class="col-auto">
+        <label class="visually-hidden" for="key">Key</label>
+        <input type="text" class="form-control" id="key" name="key" value="" placeholder="Key">
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+
     <script>
-      fetch('api')
+      const key = (new URLSearchParams(location.search)).get('key')
+      document.querySelector('#key').value = key
+      fetch(`api?key=${key}`)
         .then(r => {
           const html = [`${r.status} ${r.statusText}`]
           for (const [key, val] of r.headers.entries()) {

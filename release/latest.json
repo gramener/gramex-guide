@@ -1,6 +1,28 @@
 {
   "releases": [
     {
+      "version": "v1.86.0",
+      "link": "https://gramener.com/gramex/guide/release/1.86/",
+      "title": "API rate limiting, improved FilterHandler, non-root Docker usage",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.86/#api-rate-limits",
+          "title": "API rate limits",
+          "description": "Every handler supports rate-limiting via the ratelimit config"
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.86/#improved-filterhandler",
+          "title": "Improved FilterHandler",
+          "description": "FilterHandler can numerical column ranges and process filters in-memory"
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.86/#non-root-docker-usage",
+          "title": "Non-root Docker usage",
+          "description": "Gramex Docker builds allow installing npm packages as a non-root user"
+        }
+      ]
+    },
+    {
       "version": "v1.85.0",
       "link": "https://gramener.com/gramex/guide/release/1.85/",
       "title": "DriveHandler post-processing, FilterHandler hierarchies, Secure Docker build",

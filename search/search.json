@@ -269,14 +269,15 @@
     "saml-auth": {
       "SAML Auth": -1
     },
-    "session-data": {
-      "Session data": -1
-    },
+    "session-data": {},
     "session-expiry": {
       "Session expiry": -1
     },
     "session-security": {
       "Session security": -1
+    },
+    "session-store": {
+      "Session store": -1
     },
     "sessions": {
       "Sessions": -1
@@ -1030,6 +1031,15 @@
     },
     "filterhandler-features": {
       "FilterHandler Features": -1
+    },
+    "filterhandler-hierarchies": {
+      "FilterHandler hierarchies": -1
+    },
+    "filterhandler-in-memory": {
+      "FilterHandler in memory": -1
+    },
+    "filterhandler-ranges": {
+      "FilterHandler Ranges": -1
     },
     "filterhandler-usage": {
       "FilterHandler usage": -1
@@ -3954,6 +3964,35 @@
     },
     "secure-docker-builds": {
       "Secure Docker builds": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    }
+  },
+  "release/1.86": {
+    "": {
+      "Gramex 1.86 release notes": -1
+    },
+    "api-rate-limits": {
+      "API rate limits": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "improved-filterhandler": {
+      "Improved FilterHandler": -1
+    },
+    "modern-python-packaging": {
+      "Modern Python packaging": -1
+    },
+    "non-root-docker-usage": {
+      "Non-root Docker usage": -1
     },
     "statistics": {
       "Statistics": -1

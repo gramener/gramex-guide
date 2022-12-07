@@ -112,31 +112,26 @@ Note that `Cap` is missing.
 }
 ```
 
-**v1.85**. `/filter?_c=city,product` returns unique values for the `city` and `product` combination:
-
-```json
-{
-  "city,product": [
-    { "city": "Oslo", "product": "Belt" },
-    { "city": "Oslo", "product": "Doll" },
-    { "city": "Rome", "product": "Cap" },
-    { "city": "Rome", "product": "Doll" }
-  ]
-}
-```
-
 ::: example href=flags?_c=Name&_c=Continent&_format=html&_limit=5 source=https://github.com/gramener/gramex-guide/blob/master/filterhandler/gramex.yaml
     FilterHandler example
 
-- Simple: [`flags?_c=Name`](flags?_c=Name&_format=html)
-  returns all unique values of `Name` column
-- Muliple Columns: [`flags?_c=Continent&_c=Name`](flags?_c=Continent&_c=Name&_format=html)
-  returns all unique values of `Name` and `continent` columns
-- Multiple Columns with filter: [`flags?_c=Continent&_c=Name&Name=Andorra`](flags?_c=Continent&_c=Name&Name=Andorra&_format=html)
-  returns all unique values of `Name` without filtering `Name=Andorra` and `Continent` by filtering `Name=Andorra`
-- Sort descending with limit: [`flags?_c=Name&_sort=-Name&_limit=10`](flags?_c=Name&_sort=-Name&_limit=10&_format=html) returns 10 `Name`s sorted descending
-
 ## FilterHandler Features
+
+FilterHandler supports most [FormHandler filters](../formhandler/#formhandler-filters)
+
+- [`?_c=Name`](flags?_c=Name&_format=html) ► unique values of `Name` column
+- [`?_c=Continent&_c=Name`](flags?_c=Continent&_c=Name&_format=html) ► unique values of `Continent` and `Name`
+- [`?_c=Continent&_c=Name&Name=Andorra`](flags?_c=Continent&_c=Name&Name=Andorra&_format=html) ► unique `Continent` by filtering `Name=Andorra`, and unique `Name` **without** filtering `Name=Andorra`
+- [`?_c=Name&_sort=-Name&_limit=10`](flags?_c=Name&_sort=-Name&_limit=10&_format=html) ► 10 `Name`s sorted descending
+- [`?_c=c1|min`](flags?_c=c1|min&_format=html) ► minimum of `c1`
+- [`?_c=c1|max`](flags?_c=c1|max&_format=html) ► maximum of `c1`
+- [`?_c=c1|sum`](flags?_c=c1|sum&_format=html) ► sum of `c1`
+- [`?_c=c1|avg`](flags?_c=c1|avg&_format=html) ► average of `c1`
+
+To control the output, you can use these control arguments:
+
+- Limit rows: [?_c=Name&_limit=10](flags?_c=Name&_limit=10&_format=html) ► show only 10 rows
+- Sort order: [?_c=Continent&_sort=-Continent](flags?_c=Continent&_sort=-Continent&_format=html) ► sort Continents (descending)
 
 FilterHandler supports all files, databases and options supported by
 [FormHandler](../formhandler/). That includes:
@@ -149,3 +144,91 @@ FilterHandler supports all files, databases and options supported by
   [`function`](../formhandler/#formhandler-function), or
   [`modify`](../formhandler/#formhandler-modify).
 - Rendering [templates](../formhandler/#formhandler-templates)
+
+
+## FilterHandler hierarchies
+
+**v1.85**. You can create a single filters for multiple columns.
+`/filter?_c=city,product` returns unique values for the `city` and `product` combination:
+
+```json
+{
+  "city,product": [
+    { "city": "Oslo", "product": "Belt" },
+    { "city": "Oslo", "product": "Doll" },
+    { "city": "Rome", "product": "Cap" },
+    { "city": "Rome", "product": "Doll" }
+  ]
+}
+```
+
+This is particularly useful to create a filter with hierarchies like:
+
+<details open>
+  <summary>Oslo</summary>
+  <ul><li>Doll</li><li>Belt</li></ul>
+</details>
+<details open>
+  <summary>Rome</summary>
+  <ul><li>Cap</li><li>Doll</li></ul>
+</details>
+
+::: example href=flags?_c=Name,Continent&_format=html&_limit=5 source=https://github.com/gramener/gramex-guide/blob/master/filterhandler/gramex.yaml
+    FilterHandler hierarchies example
+
+
+## FilterHandler Ranges
+
+**v1.86**. FilterHandler can return ranges of values for a column using the `_c=<col>|range` syntax.
+
+::: example href=flags?_c=c1|range&_c=c2|range&_format=html source=https://github.com/gramener/gramex-guide/blob/master/filterhandler/gramex.yaml
+    FilterHandler range example
+
+For example, `?_c=c1|range&_c=c2|range` returns the min and max values of columns `c1` and `c2`:
+
+```json
+{
+  "c1|range": [
+    {
+      "c1|min": 0,
+      "c1|max": 97
+    }
+  ],
+  "c2|range": [
+    {
+      "c2|min": 0,
+      "c2|max": 50
+    }
+  ]
+}
+```
+
+This is useful for [range filters](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range) like:
+
+```html
+<input type="range"
+    min="${filter['c1|range'][0]['c1|min']}"
+    max="${filter['c1|range'][0]['c1|max']}">
+```
+
+
+## FilterHandler in memory
+
+**v1.86**. FilterHandler runs a database query for *each* column that you request.
+
+For slow database connections, you can speed this up with `in_memory: true`. For example:
+
+```yaml
+url:
+  flags:
+    pattern: /filter
+    handler: FilterHandler
+    kwargs:
+      url: $YAMLPATH/city-products.csv
+      in_memory: true
+```
+
+When you request `?_c=city&_c=product`, FilterHandler fetches all unique combinations of `city` and
+`product` into memory. **Then** it further creates combinations.
+
+This only runs a single query, but uses a bit more memory.

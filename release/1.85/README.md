@@ -198,7 +198,7 @@ Every Gramex release is tested for security vulnerabilities using the following 
 
 The Gramex code base has:
 
-- 21786 lines of Python (1,019 more than 1.84)
+- 21,786 lines of Python (1,019 more than 1.84)
 - 3,859 lines of JavaScript (535 more than 1.84)
 - 14,627 lines of test code (1,334 more than 1.84)
 - 89% test coverage (same as 1.84)

@@ -5,8 +5,8 @@ url:
     kwargs:
       function: random.randint(0, 1000)
       ratelimit:
-        keys: [hourly, user]
-        limit: 10
+        keys: [hourly, args.key]
+        limit: 5
 
   ratelimit/example:
     pattern: /$YAMLURL/example
