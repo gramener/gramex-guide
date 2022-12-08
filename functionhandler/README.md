@@ -79,7 +79,7 @@ items from 10 ignoring order)
 ::: example href="combinations?n=10&k=4" source="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py"
     Try `combinations?n=10&k=4`
 
-`gramex.transforms.handler` calculates exposes all function arguments into a REST API. If you
+[`gramex.transforms.handler`](../api/transforms/#gramex.transforms.handler) calculates exposes all function arguments into a REST API. If you
 provide a type hint (e.g. `n: int`), it converts the argument to the correct type.
 
 Apart from `int`, `float`, `str` and `bool`, you can specify **lists** of a specific type as well.

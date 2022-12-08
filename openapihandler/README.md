@@ -153,6 +153,10 @@ In addition, the handlers it exposes (e.g. [FunctionHandler](../functionhandler/
                 example: Bad request
 ```
 
+Note that this **overrides** any configurations OpenAPIHandler generates.
+So if you have a [FunctionHandler with `@handler`](#functionhandler-openapi), any parameters
+it generates will be over-written by your `kwargs.openapi:` configuration.
+
 ## FunctionHandler OpenAPI
 
 If you expose a [FunctionHandler](../functionhandler/) via OpenAPIHandler, it's best to use it with
