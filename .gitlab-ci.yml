@@ -1,3 +1,7 @@
+validate:
+  image: gramener/builderrors
+  script: builderrors
+
 # Deploy the master / release branches on gramener.com
 deploy-gramener:
   only: [master, release, /^master-.*$/, /^release-.*$/]
