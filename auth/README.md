@@ -1028,6 +1028,8 @@ The [user attributes](#user-attributes) in `handler.current_user` look like this
 
 ## SAML Auth
 
+<!-- TODO: Document SAMLAuth2 -->
+
 **Available in Gramex Enterprise**.
 SAML auth uses a [SAML](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language)
 auth provided to log in. For example ADFS (Active Directory Federation Services)
@@ -1124,7 +1126,16 @@ It accepts the following configuration:
 - `authorize`: Authorization endpoint configuration:
   - `url`: Authorization endpoint URL
   - `scope`: an optional a list of scopes that determine what you can access
-  - `extra_params`: an optional dict of OAuth2 parameters
+  - `extra_params`: an optional dict of [OAuth2 parameters](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest) like
+    - `prompt`: space delimited list specifying how to log in. This can be:
+      - `none`: No login prompt. Automatically log the user in if required
+      - `login`: Force user to log in again
+      - `consent`: Force user to consent before returning to the app
+      - `select_account`: Force user to select account
+    - `login_hint`: recommended email / user ID to log in with
+    - `display`: how to display the login page. This can be `page`, `popup`, `touch`, `wap`
+    - `max_age`: seconds after last login to force a login prompt
+    - [... and more](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest)
 - `access_token`: Access token endpoint configuration
   - `url`: Access token endpoint URL
   - `session_key`: optional key in session to store access token information. default: `access_token`
@@ -1146,7 +1157,9 @@ It accepts the following configuration:
 
 ### Azure Active Directory
 
-Here is a sample configuration for Azure Active Directory:
+[Create an OpenID application on Azure Active Directory](https://learn.microsoft.com/en-us/azure/active-directory/saas-apps/openidoauth-tutorial).
+
+Here is a sample configuration that uses the credentials from the above app:
 
 ```yaml
 url:
@@ -1154,10 +1167,12 @@ url:
     pattern: /$YAMLURL/login
     handler: OAuth2
     kwargs:
-      client_id: '1239bdca-----------------------------'
-      client_secret: 'Pyum-----------------------------'
+      client_id: $AZURE_CLIENT_ID
+      client_secret: $AZURE_CLIENT_SECRET
       authorize:
         url: 'https://login.microsoftonline.com/{TENANT_ID}/oauth2/authorize'
+        scope:
+          - https://graph.microsoft.com/User.Read
       access_token:
         url: 'https://login.microsoftonline.com/{TENANT_ID}/oauth2/token'
         body:
@@ -1169,6 +1184,8 @@ url:
           Authorization: 'Bearer {access_token}'
           Accept: 'application/json'
           Content-Type: 'application/json'
+      action:
+        function: myapp.store_info_in_session(handler)
 ```
 
 ## Email Auth
@@ -1401,6 +1418,21 @@ auth/logout:
 After logging in, users are re-directed to the `?next=` URL. You can change this
 using the [redirection configuration](../config/#redirection).
 
+In single sign-on mechanisms like [Google Auth](#google-auth), [Azure AD](#azure-active-directory),
+[SAML](#saml-auth), etc., the user will be logged back in immediately. To avoid this, force a login prompt.
+
+- [Google Auth](#google-auth): In `kwargs.extra_params`, add `prompt: select_account` or `prompt: login`.
+  [Reference](https://developers.google.com/identity/protocols/oauth2/web-server#creatingclient)
+- [Azure Active Directory](#azure-active-directory): In `kwargs.authorize.extra_params`, add `prompt: select_account` or `prompt: login`.
+  [Reference](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow#request-an-authorization-code)
+
+<!-- TODO:
+
+- SAMLAuth: https://stackoverflow.com/questions/58749469/force-re-authentication-using-onelogin-as-sp-and-idp
+- FacebookAuth: need to add extra_params in FacebookAuthHandler
+- TwitterAuth: need to add extra_params in TwitterAuthHandler
+
+-->
 
 # Authentication features
 
