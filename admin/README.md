@@ -311,21 +311,21 @@ The result is stored in the `value` column. If the value is not available, the `
 
 ## Admin: Config
 
-WIP: Shows the Gramex configuration, and allows users to edit it.
+<!-- TODO: Shows the Gramex configuration, and allows users to edit it. -->
 
 ## Admin: Logs
 
-WIP: Shows the Gramex logs.
+<!-- TODO: Shows the Gramex logs. -->
 
 
 ## Admin access control
 
-TODO: explain how to restrict admin access
+<!-- TODO: explain how to restrict admin access -->
 
 
 ## Admin page (old)
 
-From v1.33, Gramex used a beta version of the admin page. This is **deprecated**.
+From v1.33, Gramex used a beta version of the admin page. This was **REMOVED** in Gramex 1.87.0.
 
 To use it, add this to your `gramex.yaml`:
 
@@ -338,10 +338,6 @@ import:
       url: $YAMLPATH/lookup.xlsx          # DB / file with user information
       id: user                            # Column name that has the user ID
 ```
-
-::: example href=admin1/ source=https://github.com/gramener/gramex-guide/blob/master/admin/gramex.yaml
-    Admin page (old)
-
 
 Use `ADMIN_*` variables to configure your app.
 
