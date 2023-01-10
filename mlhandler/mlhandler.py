@@ -13,7 +13,7 @@ def init():
     out = op.join(op.dirname(__file__), 'circles.png')
     plt.savefig(out)
     plt.close('all')
-    X = np.exp(-X ** 2)  # NOQA: N806
+    X = np.exp(-(X**2))  # NOQA: N806
     plt.scatter(*X.T, c=y)
     out = op.join(op.dirname(__file__), 'circles-transformed.png')
     plt.savefig(out)

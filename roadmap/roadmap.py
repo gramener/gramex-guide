@@ -20,7 +20,7 @@ issues_file = os.path.join(folder, 'issues.json')
 
 def get_issues(refresh: bool = False):
     now = time.time()
-    delay = 24 * 60 * 60      # Refresh once a day
+    delay = 24 * 60 * 60  # Refresh once a day
     if not refresh and os.path.exists(issues_file) and now - os.stat(issues_file).st_mtime < delay:
         return json.load(open(issues_file, encoding='utf-8'))
 
@@ -34,8 +34,7 @@ def get_issues(refresh: bool = False):
         url = f'https://gramenertech.atlassian.net/rest/agile/1.0/board/{board}/issue'
         params = {'startAt': 0}
         while True:
-            result = requests.get(url, params=params,
-                                  auth=HTTPBasicAuth(*api_key)).json()
+            result = requests.get(url, params=params, auth=HTTPBasicAuth(*api_key)).json()
             count = len(result['issues'])
             if count == 0:
                 break
@@ -66,12 +65,7 @@ def get_roadmap(refresh: bool = False):
                     'description': issue['fields']['description'],
                     'duedate': issue['fields']['duedate'],
                     "status": issue['fields']['status']['name'],
-                    'features': {
-                        'Component': [],
-                        'Microservice': [],
-                        'App': [],
-                        'Other': []
-                    }
+                    'features': {'Component': [], 'Microservice': [], 'App': [], 'Other': []},
                 }
 
     # Add stories below them
@@ -83,7 +77,7 @@ def get_roadmap(refresh: bool = False):
         if not issue['fields']['epic']:
             continue
         # ... that are in the roadmap
-        epic_id = str(issue['fields']['epic']['id'])    # noqa
+        epic_id = str(issue['fields']['epic']['id'])  # noqa
         epic = roadmap.get(epicname.get(epic_id, None), None)
         if epic is None:
             continue
@@ -93,13 +87,15 @@ def get_roadmap(refresh: bool = False):
             if issue['fields']['summary'].lower().startswith(type.lower()):
                 summary = summary.split(':', 1)[-1].strip()
                 break
-        epic['features'][type].append({
-            'key': issue['key'],
-            'summary': summary,
-            'description': issue['fields']['description'],
-            'status': issue['fields']['status']['name'],
-            'board': issue['board'],
-        })
+        epic['features'][type].append(
+            {
+                'key': issue['key'],
+                'summary': summary,
+                'description': issue['fields']['description'],
+                'status': issue['fields']['status']['name'],
+                'board': issue['board'],
+            }
+        )
 
     result = {}
     for id, epic in roadmap.items():

@@ -65,4 +65,5 @@ def idler(handler):
             handler.write_message(choice(idle_phrases))
             chat['time'] = now
             chat['delay'] = chat['delay'] * 2
+
     return method

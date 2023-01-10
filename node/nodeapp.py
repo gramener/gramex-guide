@@ -4,7 +4,7 @@ from tornado.gen import coroutine, Return
 
 @coroutine
 def total(handler):
-    result = yield node.js('return Math.abs(x + y)', x=5, y=-10)    # Run code in JS
+    result = yield node.js('return Math.abs(x + y)', x=5, y=-10)  # Run code in JS
     raise Return(result)
 
 
@@ -21,9 +21,7 @@ def inline_styles(handler):
       </style>
       <h1 class="heading">Heading</h1>
     '''
-    result = yield node.js(                   # Call node.js
-        code,                                 # Run the JavaScript code
-        html=html,                            # Pass html as a global variable
-        lib='juice'
+    result = yield node.js(  # Call node.js
+        code, html=html, lib='juice'  # Run the JavaScript code  # Pass html as a global variable
     )
     raise Return(result['result'])

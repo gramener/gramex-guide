@@ -31,14 +31,17 @@ def create_user_database(url, table, user, password, salt, excel):
     # We're using sha256_crypt as the password hash.
     # Email IDs used are gramex.guide+alpha@gmail.com, gramex.guide+beta@gmail.com, etc
     email = 'gramex.guide+%s@gmail.com'
-    data = pd.DataFrame([
-        ['alpha', sha256_crypt.encrypt('alpha', salt=salt), email % 'alpha', 'admin manager'],
-        ['beta', sha256_crypt.encrypt('beta', salt=salt), email % 'beta', 'manager employee'],
-        ['gamma', sha256_crypt.encrypt('gamma', salt=salt), email % 'gamma', 'employee'],
-        ['delta', sha256_crypt.encrypt('delta', salt=salt), email % 'delta', None],
-    ], columns=[user, password, 'email', 'role'])
+    data = pd.DataFrame(
+        [
+            ['alpha', sha256_crypt.encrypt('alpha', salt=salt), email % 'alpha', 'admin manager'],
+            ['beta', sha256_crypt.encrypt('beta', salt=salt), email % 'beta', 'manager employee'],
+            ['gamma', sha256_crypt.encrypt('gamma', salt=salt), email % 'gamma', 'employee'],
+            ['delta', sha256_crypt.encrypt('delta', salt=salt), email % 'delta', None],
+        ],
+        columns=[user, password, 'email', 'role'],
+    )
     data.to_sql(table, engine, index=False, if_exists='replace')
-    data.to_excel(excel, index=False)   # noqa - encoding not required
+    data.to_excel(excel, index=False)  # noqa - encoding not required
 
 
 def store_value(handler):
@@ -52,13 +55,16 @@ async_http_client = tornado.httpclient.AsyncHTTPClient()
 @tornado.gen.coroutine
 def contacts(handler):
     days = int(handler.get_argument('days', '30'))
-    start = (datetime.datetime.today() - datetime.timedelta(days=days))
+    start = datetime.datetime.today() - datetime.timedelta(days=days)
     result = yield async_http_client.fetch(
-        'https://www.google.com/m8/feeds/contacts/default/full?' + urlencode({
-            'updated-min': start.strftime('%Y-%m-%dT%H:%M:%S'),
-            'max-results': 500,
-            'alt': 'json',
-        }),
+        'https://www.google.com/m8/feeds/contacts/default/full?'
+        + urlencode(
+            {
+                'updated-min': start.strftime('%Y-%m-%dT%H:%M:%S'),
+                'max-results': 500,
+                'alt': 'json',
+            }
+        ),
         headers={'Authorization': 'Bearer ' + handler.session.get('google_access_token', '')},
     )
     try:

@@ -12,9 +12,11 @@ def autolyse(data, handler):
     args = handler.argparse(
         groups={'nargs': '*', 'default': []},
         numbers={'nargs': '*', 'default': []},
-        cutoff={'type': float, 'default': .01},
-        quantile={'type': float, 'default': .95},
+        cutoff={'type': float, 'default': 0.01},
+        quantile={'type': float, 'default': 0.95},
         minsize={'type': float, 'default': None},
-        weight={'type': float, 'default': None})
-    return gramex.ml.groupmeans(data, args.groups, args.numbers,
-                                args.cutoff, args.quantile, args.weight)
+        weight={'type': float, 'default': None},
+    )
+    return gramex.ml.groupmeans(
+        data, args.groups, args.numbers, args.cutoff, args.quantile, args.weight
+    )

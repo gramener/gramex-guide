@@ -119,14 +119,14 @@ In [gramex-guide][gramex-guide]:
 **Ensure pipeline passes.**:
 
 ```bash
-git commit . -m"DOC: Add v1.x.x release changes"    # Replace x.x
+export VERSION=1.x.x
+git commit . -m"DOC: Add v$VERSION release changes"
 git push
 ```
 
 Merge `master` branch with `release` on both repos:
 
 ```bash
-export VERSION=1.x.x
 git checkout release
 git merge master
 git tag -a v$VERSION -m"Release v$VERSION"

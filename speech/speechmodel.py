@@ -15,7 +15,7 @@ def suggestion(handler):
 
 
 def get_answer(handler):
-    '''getting answer '''
+    '''getting answer'''
     text = handler.get_arg('q', '')
     df = cache.open(file_path)
     tfidf = vectorizer.fit_transform(stem(s) for s in [text] + df['Question'].values.tolist())
@@ -24,7 +24,7 @@ def get_answer(handler):
     return {
         'similarity': similarity[top_index],
         'question': df['Question'][top_index],
-        'answer': df['Answer'][top_index]
+        'answer': df['Answer'][top_index],
     }
 
 
