@@ -1,6 +1,28 @@
 {
   "releases": [
     {
+      "version": "v1.87.0",
+      "link": "https://gramener.com/gramex/guide/release/1.87/",
+      "title": "FormHandler argument typing, distributed user stores, flexible deletions",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.87/#formhandler-argument-type",
+          "title": "FormHandler argument type",
+          "description": "Specify type conversions for URL query parameters"
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.87/#distributed-user-stores",
+          "title": "Distributed user stores",
+          "description": "Save user data in remote databases to use across multiple instances"
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.87/#flexible-delete",
+          "title": "Flexible Delete",
+          "description": "FormHandler deletes rows exactly like filtering, without requiring primary keys"
+        }
+      ]
+    },
+    {
       "version": "v1.86.0",
       "link": "https://gramener.com/gramex/guide/release/1.86/",
       "title": "API rate limiting, improved FilterHandler, non-root Docker usage",

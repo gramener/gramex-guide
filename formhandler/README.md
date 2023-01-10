@@ -276,6 +276,35 @@ To control the output, you can use these control arguments:
 
 Note: You can use `FormHandler` to render specific columns in navbar filters using `?_c=`.
 
+## FormHandler argument type
+
+[Formhandler filter](#formhandler-filters) values are converted from strings to the column type, where possible.
+To explicitly set the type, use `argstype`:
+
+```yaml
+url:
+  flags:
+    pattern: /people
+    handler: FormHandler
+    kwargs:
+      url: people.csv
+      argstype:
+        age: { type: int }
+        weight: { type: float }
+        is_married: { type: bool }
+        date_of_birth: { type: pd.to_datetime }
+        date_of_death: { type: pd.to_datetime(_val) if _val else None }
+```
+
+`argstype` is a dictionary of column names and their types. The type can be:
+
+- any Python type, e.g. `int`, `float`, `bool`, `datetime.date`, `datetime.datetime`
+- any Python expression that takes a string called `_val` and returns a value, e.g. `pd.to_datetime(_val)`
+
+Note: `argstype` values can also include an `{expanding: true}` to treat values as lists.
+This is used in [FormHandler queries](#formhandler-query) to
+[prevent SQL injection](#preventing-sql-injection) in the `IN` operator.
+
 
 ## FormHandler groupby
 
@@ -1075,23 +1104,57 @@ Gramex cannot ensure that the returned query is safe to execute. To avoid this:
 Use a database account with **read-only access**, and only to only the
 data that it needs.
 
-Use SQL **parameter substitution** for values wherever possible. For example:
+Use SQL **parameter substitution** for values. For example:
 
 ```python
 def bad_query_function(args):
-    return 'SELECT * FROM table WHERE col={val}'.format(val=args['v'])
+    return f'SELECT * FROM table WHERE col={args["v"]}')
 
 def good_query_function(args):
     return 'SELECT * FROM table WHERE col=:v'
-    # FormHandler will replace the :v with args['v'] if it is a value
+    # FormHandler will replace the :v with args['v']
 ```
 
-If you *must* use args as values, sanitize them. For example, `pymysql.escape_string(var)`:
+If the query depends on calculations, **add them to `args`**. For example:
+
+```python
+def bad_query_function(args):
+    calc_val = calculate(args)
+    return f'SELECT * FROM table WHERE col > {calc_val}'
+
+def good_query_function(args):
+    args['calc_val'] = calculate(args)
+    return 'SELECT * FROM table WHERE col > :calc_val'
+    # FormHandler will replace the :calc_val with args['calc_val']
+```
+
+Note: Keep calculated args names different from column names.
+Else it will [filter](#formhandler-filters) results by those values, which you may not want.
+
+Use `argstype` to ensure that the arguments are of the correct type. Use `type`: for conversion
+and `expanding: true` for lists in the `IN` clause. For example:
+
+```yaml
+url:
+  flags:
+    pattern: /sales-city
+    handler: FormHandler
+    kwargs:
+      url: sales.csv
+      query: SELECT * FROM sales WHERE city IN :cities AND sales > :min_sales
+      argstype:
+        # Use exanding: true when using a URL query parameter with an IN clause
+        cities: { type: str, expanding: true }
+        # Use type: to convert the argument to the right type
+        min_sales: { type: float }
+```
+
+If you *must* use args as values, sanitize them, e.g. with `pymysql.escape_string(var)`:
 
 ```python
 def safe_query_function(args):
-    vals = ', '.join("'%s'" % pymysql.escape_string(v) for v in args['city'])
-    return 'SELECT * FROM sales WHERE city IN (%s)' % vals
+    calc_val = pymysql.escape_string(str(calculate(args)))
+    return f'SELECT * FROM table WHERE col > {calc_val}'
 ```
 
 **Never use args outside quotes**, e.g. when referring to column names. Ensure
@@ -1099,12 +1162,12 @@ that the column names are always specified by you. For example:
 
 ```python
 def bad_query_function(args):
-    return 'SELECT {col} FROM table'.format(args['col'][0])
+    return f'SELECT {args["col"][0]} FROM table'
 
 def good_query_function(args):
     # Ensure that only these 2 columns we specify can be included.
     columns = {'sales': 'sales', 'growth': 'growth'}
-    return 'SELECT {col} FROM table'.format(columns[args['col'][0]])
+    return f'SELECT {columns[args["col"][0]]} FROM table'
 ```
 
 ## FormHandler parameters
@@ -1329,25 +1392,6 @@ POST, PUT and GET HTTP operators. For example:
     DELETE ?id=10               # Delete the record with id=10
 ```
 
-This requires primary keys to be defined in the FormHandler as follows:
-
-```yaml
-    pattern: /flags
-    handler: FormHandler
-    kwargs:
-      url: /path/to/flags.csv
-      id: ID                  # Primary key column is "ID"
-```
-
-You may specify multiple primary keys using a list. For example:
-
-```yaml
-      id: [state, city]     # "state" + "city" is the primary key
-```
-
-If the `id` columns do not exist in the data, or are not passed in the URL,
-it raises 400 Bad Request HTTP Error.
-
 A POST, PUT or DELETE operation immediately writes back to the underlying `url`.
 For example, this writes back to an Excel file:
 
@@ -1371,25 +1415,8 @@ This writes back to an Oracle Database:
 To add or delete multiple values, repeat the keys. For example:
 
 ```text
-POST ?id=10&x=1&y=2 & id=11&x=3&y=4   # Inserts {id:10, x:1, y:2} & {id:11, x:3, y:4}
-DELETE ?id=10 & id=11                 # Delete id=10 & id=11
-```
-
-Note: PUT currently works with single values. In the future, it may update
-multiple rows based on multiple ID selections.
-
-If you are using [multiple datasets](#formhandler-multiple-datasets), add an
-`id:` list to each dataset. For example:
-
-```yaml
-  excel:
-      url: /path/to/file.xlsx
-      sheet_name: Sheet1
-      id: [plant, machine id]
-  oracle:
-      url: 'oracle://$USER:$PASS@server/db'
-      table: sales
-      id: [month, product, city]
+POST ?id=10&x=1&y=2&id=11&x=3&y=4   # Inserts {id:10, x:1, y:2} & {id:11, x:3, y:4}
+DELETE ?id=10&id=11                 # Delete id=10 & id=11
 ```
 
 In the URL query, prefix by the relevant dataset name. For example this updates
@@ -1430,12 +1457,6 @@ This form adds a row to the data.
 </form>
 ```
 
-We need to specify a primary key. This YAML config specifies `ID` as the primary key.
-
-```yaml
-      id: ID        # Make ID the primary key
-```
-
 When the HTML `form` is submitted, field names map to column names in the data.
 For example, `ID`, `Name` and `Text` are columns in the flags table.
 
@@ -1472,7 +1493,6 @@ When you insert multiple rows, the number of rows inserted is returned in the
     kwargs:
       url: 'postgresql://$USER:$PASS@server/db'
       table: sales
-      id: id
       default:
         _format: submit-template
       formats:
@@ -1566,23 +1586,49 @@ fetch('flags-edit', {
 })
 ```
 
-We need to specify a primary key. This YAML config specifies `ID` as the primary key.
+This requires primary keys to be defined in the FormHandler as follows:
 
 ```yaml
-      id: ID        # Make ID the primary key
+    pattern: /flags
+    handler: FormHandler
+    kwargs:
+      url: /path/to/flags.csv
+      id: ID                  # Primary key column is "ID"
 ```
 
-When the HTML `form` is submitted, existing rows with ID `XXX` will be updated.
+You may specify multiple primary keys using a list. For example:
+
+```yaml
+      id: [state, city]     # "state" + "city" is the primary key
+```
+
+If the `id` columns do not exist in the data, or are not passed in the URL,
+it raises 400 Bad Request HTTP Error.
 
 The number of rows changed is returned in the `Count-<dataset>` header.
 
 If the key is missing, PUT currently returns a `Count-<dataset>: 0` and does not
 insert a row. This behaviour may be configurable in future releases.
 
-When the HTML `form` is submitted, field names map to column names in the data.
-For example, `ID`, `Name` and `Text` are columns in the flags table.
+Note: PUT currently works with single values. In the future, it may update
+multiple rows based on multiple ID selections.
 
-The form can also be submitted directly via a HTML form.
+If you are using [multiple datasets](#formhandler-multiple-datasets), add an
+`id:` list to each dataset. For example:
+
+```yaml
+  excel:
+      url: /path/to/file.xlsx
+      sheet_name: Sheet1
+      id: [plant, machine id]
+  oracle:
+      url: 'oracle://$USER:$PASS@server/db'
+      table: sales
+      id: [month, product, city]
+```
+
+The PUT request can also be made by subbmitting a HTML form.
+Form field names map to column names in the data.
 See [FormHandler POST](#formhandler-post) for a HTML example.
 The `?x-http-method-override=PUT` overrides the method to use PUT. You can
 also use the HTTP header `X-HTTP-Method-Override: PUT`.
@@ -1616,6 +1662,7 @@ Note:
 - If the filters do not match any rows, it does not throw any error.
 - `?x-http-method-override=DELETE` overrides the method to use DELETE. You can
   also use the HTTP header `X-HTTP-Method-Override: DELETE`.
+- From Gramex 1.87 onwards, a primary key or `id` is no longer required to DELETE rows
 
 ## FormHandler JSON body
 

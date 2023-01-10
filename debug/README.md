@@ -99,25 +99,23 @@ You can learn more from this
 
 There are many ways to start the debugger:
 
-1. Add this line: `import ipdb; ipdb.set_trace()` to your code. Python will
+1. Add this line: `breakpoint()` to your code. Python will
    run until this line and start the debugger.
-1. When Gramex is running, you press `Ctrl+D` on the console at any time. Python
+2. When Gramex is running, you press `Ctrl+D` on the console at any time. Python
    will start the debugger.
-1. Run `gramex --settings.debug`. When there's an exception, Python will start
+3. Run `gramex --settings.debug`. When there's an exception, Python will start
    the debugger at the line before the error. (This was called `debug_exception`
    in Gramex 1.0.7 and `debug.exception` in Gramex 1.0.8. It is not merged into
    `settings.debug`.)
-1. Run Gramex via `python -m pdb /path/to/gramex/__main__.py`.
+4. Run Gramex via `python -m pdb /path/to/gramex/__main__.py`.
 
-You can use [WinPDB](http://winpdb.org/docs/) -- a cross-platform GUI for
-pdb -- on Gramex using:
+You can replace the default Python debugger `pdb` by setting the [`PYTHONBREAKPOINT`](https://peps.python.org/pep-0553/) environment variable:
 
-```bash
-conda install -c jacob-barhak -c anaconda winpdb
-winpdb.bat /path/to/gramex/__main__.py
-```
-
-(On Linux / Mac, use `winpdb` instead of `winpdb.bat`.)
+- [`PYTHONBREAKPOINT=ipdb.set_trace`](https://github.com/gotcha/ipdb) - IPython-enabled pdb
+- [`PYTHONBREAKPOINT=pdbpp.set_trace`](https://github.com/pdbpp/pdbpp) - a drop-in replacement for pdb
+- [`PYTHONBREAKPOINT=pudb.set_trace`](https://documen.tician.de/pudb/) - a full-screen console-based debugger
+- [`PYTHONBREAKPOINT=wdb.set_trace`](https://github.com/Kozea/wdb) - a web debugger
+- [`PYTHONBREAKPOINT=webpdb.set_trace`](https://github.com/romanvm/python-web-pdb) - a web UI for pdb
 
 Here are some useful things you can do on the debugger:
 

@@ -109,3 +109,16 @@ gramexlog:
     host: server.com
     http_auth: user:pass        # ... using the specified user ID and password
 ```
+
+<!-- TODO:
+  - How to modify the existing Gramex logs if there are multiple instances
+  - Handle TimedRotatingCSVHandler
+
+# Instead of using gramex --listen.port=xxx
+#   SET GRAMEX_PORT=xxxx
+#   gramex
+# In gramex.yaml, replace 9988 / port with $GRAMEX_PORT
+# Test like crazy
+
+- [] Add a note in /config/ that you can't access port or command line arguments but can set the env variable and use it. Point to deployment patterns for multiple instances
+-->

@@ -102,7 +102,7 @@ bash task test
 Upgrade npm packages and audit security. Ensure `reports/*` don't report errors:
 
 ```bash
-bash task reformat update security
+bash task reformat update security stats
 ```
 
 In [gramex-guide][gramex-guide]:
@@ -111,7 +111,6 @@ In [gramex-guide][gramex-guide]:
 - In `release/README.md` -- add release entry
 - Add [video tutorial](#video-tutorials) for all new features
 - In `release/1.xx/README.md` -- add guide release notes.
-  - Run `bash task stats` for code size stats. Take coverage stats from Travis
 - In `release/latest.json` -- add latest release notes.
 - Run `python search/search.py` to update search index
 - Run `node search/searchindex.js` to update search index
@@ -127,9 +126,10 @@ git push
 Merge `master` branch with `release` on both repos:
 
 ```bash
+export VERSION=1.x.x
 git checkout release
 git merge master
-git tag -a v1.x.x -m"One-line summary of features"  # Replace x.x
+git tag -a v$VERSION -m"Release v$VERSION"
 git push --follow-tags
 git push gitlab release master  # Deploy into Gramener servers. See one-time setup below
 git checkout master
@@ -182,7 +182,7 @@ git checkout master         # Switch back to master
 git merge release
 ```
 
-Deploy on [pypi](https://pypi.python.org/pypi/gramexenterprise):
+Deploy on [PyPi](https://pypi.python.org/pypi/gramexenterprise):
 
 ```bash
 rm -rf dist/

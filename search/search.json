@@ -302,6 +302,9 @@
     },
     "user-attributes": {
       "User attributes": -1
+    },
+    "user-store": {
+      "User store": -1
     }
   },
   "cache": {
@@ -1060,6 +1063,9 @@
     },
     "date-parsing": {
       "Date parsing": -1
+    },
+    "formhandler-argument-type": {
+      "FormHandler argument type": -1
     },
     "formhandler-charts": {
       "FormHandler charts": -1
@@ -3993,6 +3999,44 @@
     },
     "non-root-docker-usage": {
       "Non-root Docker usage": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    }
+  },
+  "release/1.87": {
+    "": {
+      "Gramex 1.87 release notes": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "build-improvements": {
+      "Build improvements": -1
+    },
+    "debugging": {
+      "Debugging": -1
+    },
+    "distributed-user-stores": {
+      "Distributed user stores": -1
+    },
+    "flexible-delete": {
+      "Flexible Delete": -1
+    },
+    "formhandler-argument-type": {
+      "FormHandler argument type": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "ms-sql-ordering": {
+      "MS SQL ordering": -1
+    },
+    "old-admin-app-deprecated": {
+      "Old Admin App deprecated": -1
     },
     "statistics": {
       "Statistics": -1

@@ -1569,6 +1569,43 @@ dictionary. This is also available, by default, as `handler.session['user']`.
 The contents of `handler.current_user` varies across auth handlers. But you are guaranteed that
 `handler.current_user['id']` is a unique user ID for that handler.
 
+## User store
+
+User information (including [attributes](#user-attributes)) is stored in a user store that is configured as follows:
+
+```yaml
+storelocations:
+  user:
+    url: sqlite:///$GRAMEXDATA/auth.user.db
+    table: user
+    columns:
+      key: { type: TEXT, primary_key: true }
+      value: { type: TEXT }
+```
+
+If you use Gramex on multiple servers, change this to a remote database with the same syntax as
+[FormHandler](../formhandler/). For example, add this in your `gramex.yaml`:
+
+```yaml
+storelocations:
+  user:
+    url: postgresql://$USER:$PASS@server/db
+    # url: mysql+pymysql://$USER:$PASS@server/db
+    # ...
+    table: user
+```
+
+You can access the user data directly from the database, or via Gramex as follows:
+
+```python
+import  gramex.data
+
+def function(handler):
+    # Access user data directly from the database
+    user_data = gramex.data.filter(gramex.service.storelocations.user, table='user')
+```
+
+
 ## Multiple logins
 
 Typically, users log into only one AuthHandler, like DBAuth or GoogleAuth.
@@ -1996,13 +2033,13 @@ You can mimic a user by passing a `X-Gramex-User` HTTP header. This fetches a
 `url` as if `user@example.org` with `manager` role was logged in:
 
 ```python
-user = {'id': 'user@example.org', 'role': 'manager')
+user = {'id': 'user@example.org', 'role': 'manager'}
 r = requests.get(url, headers={
     'X-Gramex-User': tornado.web.create_signed_value(cookie_secret, 'user', json.dumps(user))
 })
 ```
 
-`cookie` must be the value of `app.settings.cookie_secret` in `gramex.yaml`.
+`cookie_secret` must be the value of `app.settings.cookie_secret` in `gramex.yaml`.
 You can fetch this in gramex as `gramex.service.app.settings['cookie_secret']`.
 
 ## Distributed OTP and API keys
