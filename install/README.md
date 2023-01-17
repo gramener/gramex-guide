@@ -35,7 +35,7 @@ In the container, run `gramex --help` to verify the Gramex version. Now you can 
 - `gramener/gramex:latest` runs the latest Gramex instance (pulling it if required)
 - `/bin/sh -l` logs into `ash` (a shell) that you can run commands in
 
-<asciinema-player src="gramex-docker.json" cols="100" rows="20" idle-time-limit="0.5" font-size="medium" loop="1"></asciinema-player>
+<asciinema-player src="gramex-docker.json" cols="100" rows="20" idle-time-limit="0.5" font-size="small" loop="1"></asciinema-player>
 
 If you have a Gramex app on your host at `/proj`, you can run it by adding `-v /proj:/app`, like this:
 
@@ -82,7 +82,7 @@ gramex setup --all
 
 This is what your screen might look like when installing:
 
-<asciinema-player src="gramex-conda.json" cols="100" rows="20" idle-time-limit="0.5" font-size="" loop="1"></asciinema-player>
+<asciinema-player src="gramex-conda.json" cols="100" rows="20" idle-time-limit="0.5" font-size="small" small="1"></asciinema-player>
 
 Now you can [Run your first app](#run-a-gramex-app).
 
@@ -186,7 +186,7 @@ If you inslled via [Docker](#docker-install):
 
 In this terminal, run `gramex --help` to verify that Gramex is installed properly. You should see this.
 
-<asciinema-player src="gramex-help.json" cols="100" rows="22" idle-time-limit="0.5" font-size=""></asciinema-player>
+<asciinema-player src="gramex-help.json" cols="100" rows="22" idle-time-limit="0.5"small small-size=""></asciinema-player>
 
 If you see an error, see the [Troubleshooting](#troubleshooting) section.
 
@@ -200,11 +200,11 @@ gramex init
 
 You should see an output like this:
 
-<asciinema-player src="../init/gramex-init.rec" cols="100" rows="20" idle-time-limit="0.5" font-size=""></asciinema-player>
+<asciinema-player src="../init/gramex-init.rec" cols="100" rows="20" idle-time-limit="0.5"small small-size=""></asciinema-player>
 
 Run `gramex`. This will start Gramex and show an output like this:
 
-<asciinema-player src="../init/gramex-run.rec" cols="100" rows="20" idle-time-limit="0.5" font-size=""></asciinema-player>
+<asciinema-player src="../init/gramex-run.rec" cols="100" rows="20" idle-time-limit="0.5"small small-size=""></asciinema-player>
 
 Open <http://localhost:9988/> in your browser, and you should see the sample app.
 
