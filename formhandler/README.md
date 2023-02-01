@@ -1149,12 +1149,29 @@ url:
         min_sales: { type: float }
 ```
 
+Parameters can only be used for values, **not for column names**.
+[Use `CASE` instead](https://stackoverflow.com/a/25949885/100904). For example:
+
+```python
+def bad_query_function(args):
+    return f'SELECT * FROM table ORDER BY {args["col"]}'
+
+def good_query_function(args):
+    return '''
+      SELECT * table
+      ORDER BY
+          (CASE WHEN :col = 'city' THEN city END) ASC,
+          (CASE WHEN :col = 'country' THEN country END) DESC
+    '''
+```
+
 If you *must* use args as values, sanitize them, e.g. with `pymysql.escape_string(var)`:
 
 ```python
 def safe_query_function(args):
     calc_val = pymysql.escape_string(str(calculate(args)))
-    return f'SELECT * FROM table WHERE col > {calc_val}'
+    # nosec: This is SQL-injection safe because we've sanitized the value
+    return f'SELECT * FROM table WHERE col > {calc_val}'  # nosec B608
 ```
 
 **Never use args outside quotes**, e.g. when referring to column names. Ensure
