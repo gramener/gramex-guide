@@ -109,7 +109,8 @@ There are many ways to start the debugger:
    `settings.debug`.)
 4. Run Gramex via `python -m pdb /path/to/gramex/__main__.py`.
 
-You can replace the default Python debugger `pdb` by setting the [`PYTHONBREAKPOINT`](https://peps.python.org/pep-0553/) environment variable:
+**v1.88**. You can replace the default Python debugger `pdb` by setting the
+[`PYTHONBREAKPOINT`](https://peps.python.org/pep-0553/) environment variable:
 
 - [`PYTHONBREAKPOINT=ipdb.set_trace`](https://github.com/gotcha/ipdb) - IPython-enabled pdb
 - [`PYTHONBREAKPOINT=pdbpp.set_trace`](https://github.com/pdbpp/pdbpp) - a drop-in replacement for pdb
