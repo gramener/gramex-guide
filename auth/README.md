@@ -993,6 +993,10 @@ signup:
 
 [signup-template]: http://github.com/gramener/gramex/blob/master/gramex/handlers/signup.template.html
 
+### Validated login
+
+To allow
+
 
 ## Integrated auth
 
@@ -1737,7 +1741,7 @@ modify the inputs passed by the user. For example:
 
 - If the username is encrypted and you want to decrypt it
 - To add the domain name before the user, e.g. user types USERNAME, you change it to DOMAIN\USERNAME
-- To restrict the login to specific IP addresses
+- To validate or restrict the login to specific IP addresses
 
 The YAML configuration is:
 
@@ -1751,7 +1755,7 @@ url:
       prepare: module.function(args, handler)
 ```
 
-You can create a `module.py` with a `function(args, handler)` that modifies the
+You can create a `module.py` with a `function(args, handler)` that modifies or validates the
 arguments as required. For example:
 
 ```python
@@ -1759,7 +1763,8 @@ def function(args, handler):
     if handler.request.method == 'POST':
         args['user'][0] = 'DOMAIN\\' + args['user'][0]
         args['password'][0] = decrypt(args['password'][0])
-        # ... etc
+        if handler.request.remote_ip not in valid_list:
+            raise HTTPError(403, 'Invalid IP address')
 ```
 
 The changes to the arguments will be saved in `handler.args`, which all auth
