@@ -13,7 +13,7 @@ Gramex 1.80 includes sentiment analysis, function pipelines, and API documentati
 
 To set it up, install:
 
-```shell
+```bash
 pip install spacy transformers torch datasets
 ```
 

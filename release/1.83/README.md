@@ -11,7 +11,7 @@ Gramex 1.83 supports Named Entity Recognition, distributed OTPs, a slim Docker b
 
 To set it up, install:
 
-```shell
+```bash
 pip install spacy transformers torch datasets
 ```
 

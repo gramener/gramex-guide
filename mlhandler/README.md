@@ -608,7 +608,7 @@ corresponding timestamps to the `/forecast` URL.
 
 **v1.80.0** supports sentiment analysis. To set it up, install:
 
-```shell
+```bash
 pip install spacy transformers torch datasets
 ```
 
@@ -639,7 +639,7 @@ Now visit `/sentiment?text=wrong&text=right` to see the following output:
 
 **v1.83.0** supports named entity recognition. To set it up, install:
 
-```shell
+```bash
 pip install spacy transformers torch datasets
 ```
 

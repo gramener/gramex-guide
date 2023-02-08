@@ -190,6 +190,29 @@ script:
   # Continue with your deployment script
 ```
 
+## Docker image
+
+To create a Docker image from an app, add this `Dockerfile` to your app:
+
+```dockerfile
+FROM gramener/gramex:latest
+COPY . .
+RUN "$CONDA_DIR/bin/gramex" setup .
+```
+
+Build the image using:
+
+```bash
+docker build --pull -t my-app:latest .
+```
+
+Run the image using:
+
+```bash
+docker run -p 9988:9988 my-app:latest
+```
+
+
 ## Windows Service
 
 [Video](https://youtu.be/xKlcTo7IX6Q){.youtube}
@@ -515,6 +538,25 @@ To let nginx cache responses, use:
 To delete specific entries from the nginx cache, use
 [nginx-cache-purge](https://github.com/perusio/nginx-cache-purge).
 
+### nginx load balancing
+
+To distribute load, run multiple Gramex instances on different ports on one or more servers.
+Add this to your nginx configuration:
+
+```nginx
+upstream balancer-name {
+  ip_hash;  // Same IP address goes to same port
+  server 127.0.0.1:9988;
+  server 127.0.0.1:9989;
+}
+
+server {
+  // Instead of http://127.0.0.1:9988/ use the upstream balancer
+  location / {
+    proxy_pass http://balancer-name/;
+  }
+}
+```
 
 ### Apache reverse proxy
 
@@ -589,10 +631,8 @@ ProxyPassReverse /app2/ http://127.0.0.1:8002/
 
 ### Apache load balancing
 
-To distribute load you can run multiple Gramex instances on different ports on a single server or
-on multiple servers. You could configure Apache server to serve requests from multiple instances.
-
-Here is a minimal configuration to use the Apache server for proxy load balancing:
+To distribute load, run multiple Gramex instances on different ports on one or more servers.
+Here is a minimal Apache configuration:
 
 ```apache
 LoadModule proxy_module                modules/mod_proxy.so
