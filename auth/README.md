@@ -56,7 +56,7 @@ The session cookie can have the following configurations:
   restricts the cookie to the host of the current document URL, not including subdomains.
 - [`cookiepath`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie): `/app/path`
   restricts the cookie to `/app/path` and its subdirectories. Default: `/`
-  - Note that `path:` specifies the [session data path](#session-data), not cookie path
+  - Note that `path:` specifies the [session data path](#session-store), not cookie path
 
 You can change these defaults to a more secure setting as follows:
 

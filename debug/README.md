@@ -71,9 +71,6 @@ auto-reloads files if they have changed.
 [gramex.cache.query](../cache/#query-caching). This re-runs the query if state
 has changed.
 
-[restart]: http://www.tornadoweb.org/en/stable/autoreload.html
-
-
 ## Debug mode
 
 Press `Ctrl+D` on the console to start the [Python debugger](#python-debugger)
