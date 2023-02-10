@@ -102,7 +102,7 @@ bash task test
 Upgrade npm packages and audit security. Ensure `reports/*` don't report errors:
 
 ```bash
-bash task reformat update security stats
+bash task clean reformat update security stats
 ```
 
 In [gramex-guide][gramex-guide]:

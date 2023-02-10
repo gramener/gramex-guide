@@ -299,13 +299,64 @@ You can use any of the following as keys for logging:
 - `uri`: The full URL requested (after the host name)
 - `error`: Any error raised while processing the request
 - `session`: The unique session ID object
+- `browser`: User agent string (**v1.89** onwards)
 - `args.<key>`: A specific argument. E.g. `args.x` returns the value of `?x=...`
+- `request.<key>`: A HTTP request property. E.g. `request.method` is the HTTP method used
 - `headers.<key>`: A request HTTP header. E.g. `headers.User-Agent` is the browser's user agent
-- `session.<key>`: A HTTP session key. E.g. `session.user` is the user object
 - `cookies.<key>`: Logs a specific cookie. E.g. `cookie.sid` is the session ID cookie
+- `user.<key>`: Logs a user attribute. E.g. `user.id` is the user ID
 - `env.<key>`: Logs an environment variable. E.g. `env.HOME` logs the user's home directory
 
 ### User logging
+
+Gramex's [auth handlers](../auth/) log all login and logout events to a user log store configured as:
+
+```yaml
+storelocations:
+  userlog:
+    url: sqlite:///$GRAMEXDATA/auth.user.db
+    table: userlog
+    columns:
+      event: TEXT     # Type of event: login/logout/fail
+      # Except event, these values must be keys for transforms.build_log_info()
+      port: INTEGER   # Port on which Gramex is running
+      uri: TEXT       # URL where the user logged in
+      name: TEXT      # Name of the handler
+      class: TEXT     # Class of the handler (e.g. SimpleAuth, GoogleAuth, etc)
+      datetime: TEXT  # Time of event, ISO8601 encoded (YYYY-MM-DD HH:MM:SSZ)
+      user: TEXT      # User ID (e.g. user name or email address, depending on handler)
+      ip: TEXT        # IP address of the client
+      browser: TEXT   # Browser name
+```
+
+If you use Gramex on multiple servers, change this to a remote database with the same syntax as
+[FormHandler](../formhandler/). For example, add this in your `gramex.yaml`:
+
+```yaml
+storelocations:
+  userlog:
+    url: postgresql://$USER:$PASS@server/db
+    # url: mysql+pymysql://$USER:$PASS@server/db
+    # ...
+    table: userlog
+```
+
+To change the columns that are logged, add this in your `gramex.yaml`.
+You can use any key from the list of columns in [request logging](#request-logging).
+
+```yaml
+storelocations:
+  userlog:
+    columns:
+      event: TEXT   # required
+      datetime: TEXT
+      user: TEXT
+      # Add any additional columns here
+```
+
+---
+
+**v1.89**: The user log files below are deprecated and will be removed in 2024.
 
 Gramex's [auth handlers](../auth/) log all login and logout events to
 `logs/user.csv` under [$GRAMEXDATA](../config/#predefined-variables). It logs:
