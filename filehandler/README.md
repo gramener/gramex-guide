@@ -719,13 +719,14 @@ This is useful to pack multiple static files into one, as the example shows.
 Use `transform:` to apply functions before rendering the content. [Templates](#templates),
 [SASS](#sass), [Vue](#vue) and [TypeScript](#typescript) use this feature behind the scenes.
 
-Any function can be used to transform. For example, this renders `.md` or `.markdown` files as HTML:
+Any function can be used to transform. For example, this renders `.md` or `.markdown` files as HTML
+using [python-markdown](https://python-markdown.github.io/reference/):
 
 ```yaml
 # ... contd ...
 transform:
   "*.md, *.markdown": # Any file matching .md or .markdown
-    function: markdown.markdown(content, output_format='html5')
+    function: markdown.markdown(content, output_format='html5', extensions=['extra'])
     encoding: utf-8 # Read input file as UTF-8
     headers: #   Use these HTTP headers:
       Content-Type: text/html #     MIME type: text/html
