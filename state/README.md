@@ -76,11 +76,19 @@ const state = Object.fromEntries(new URLSearchParams(query))
 Use [`window.location.hash`](https://developer.mozilla.org/en-US/docs/Web/API/Location/hash) to update the page without reloading:
 
 ```js
-window.addEventListener('hashchange', function() {
+window.addEventListener('hashchange', renderPage)
+
+function renderPage() {
   const query = window.location.hash.slice(2)
   const state = Object.fromEntries(new URLSearchParams(query))
   // Now do what you want with the state, e.g. update the page filters
-})
+}
+render()
+
 const query = (new URLSearchParams({city: 'Rome', top: 10})).toString()
 window.location.hash = '?' + query
 ```
+
+When listening to filter changes or button clicks, **NEVER** update the page directly.
+Instead, update the hash. The `hashchange` listener updates the page.
+(Otherwise, the user state and page go out-of-sync.)
