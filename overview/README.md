@@ -31,6 +31,7 @@ Then learn from these tutorials:
 - [Install Gramex](../install/)
 - [Start apps using gramex init](../init/)
 - [Configurations control Gramex](../config/)
+- [Capture state in URLs](../state/)
 - [Deployment patterns](../deploy/)
 - [Debug Gramex](../debug/)
 - [Testing Gramex apps](../test/)
