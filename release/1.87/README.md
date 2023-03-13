@@ -90,29 +90,11 @@ If we use OFFSET or LIMIT with MS SQL, we must specify an ORDER BY clause. Other
 Gramex now does this automatically. If the query is not sorted, Gramex sorts by the first
 column in the table. [#626](https://github.com/gramener/gramex/issues/626)
 
-# Debugging
-
-Gramex used to prefer `ipdb` as the default [debugger](../../debug/#python-debugger).
-
-Now, Gramex uses the default breakpoint mechanism.
-You can replace the default Python debugger `pdb` by setting the [`PYTHONBREAKPOINT`](https://peps.python.org/pep-0553/) environment variable:
-
-- [`PYTHONBREAKPOINT=ipdb.set_trace`](https://github.com/gotcha/ipdb) - IPython-enabled pdb
-- [`PYTHONBREAKPOINT=pdbpp.set_trace`](https://github.com/pdbpp/pdbpp) - a drop-in replacement for pdb
-- [`PYTHONBREAKPOINT=pudb.set_trace`](https://documen.tician.de/pudb/) - a full-screen console-based debugger
-- [`PYTHONBREAKPOINT=wdb.set_trace`](https://github.com/Kozea/wdb) - a web debugger
-- [`PYTHONBREAKPOINT=webpdb.set_trace`](https://github.com/romanvm/python-web-pdb) - a web UI for pdb
-
 ## Old Admin App deprecated
 
 The [first version of the Admin app](../../admin/#admin-page-old) (imported from `$GRAMEXAPPS/admin/gramex.yaml`) was deprecated in Gramex 1.33.
 
 This version of Gramex removes it.
-
-## Build improvements
-
-The Gramex Docker build is now based on [Alpine 3.17](https://hub.docker.com/layers/frolvlad/alpine-glibc/alpine-3.17/images/sha256-3bdc51a29c1ffb44cd866c489f0d64feb65dea5380775c88909d6c855917d3f6?context=explore)
-(from [3.16](https://hub.docker.com/layers/frolvlad/alpine-glibc/alpine-3.16/images/sha256-a3e7c6fa4bc1d99bff330273a7cde972190a363f591c3bd0ad79564eb019092e?context=explore)). This is a security update.
 
 ## Bug fixes
 

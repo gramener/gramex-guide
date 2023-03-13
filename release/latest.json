@@ -1,6 +1,23 @@
 {
   "releases": [
     {
+      "version": "v1.88.0",
+      "link": "https://gramener.com/gramex/guide/release/1.88/",
+      "title": "FormHandler argument typing, distributed user stores, flexible deletions",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.88/#breakpoint-debugging",
+          "title": "Breakpoint debugging",
+          "description": "Use any debugger via breakpoint() function"
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.88/#ide-templates",
+          "title": "IDE templates",
+          "description": "Generate new project with minimal template for IDE"
+        }
+      ]
+    },
+    {
       "version": "v1.87.0",
       "link": "https://gramener.com/gramex/guide/release/1.87/",
       "title": "FormHandler argument typing, distributed user stores, flexible deletions",

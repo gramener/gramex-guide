@@ -305,6 +305,9 @@
     },
     "user-store": {
       "User store": -1
+    },
+    "validated-login": {
+      "Validated login": -1
     }
   },
   "cache": {
@@ -611,6 +614,9 @@
     "direct-https-server": {
       "Direct HTTPS server": -1
     },
+    "docker-image": {
+      "Docker image": -1
+    },
     "duplicate-key": {
       "Duplicate key": -1
     },
@@ -640,6 +646,9 @@
     },
     "multiple-windows-services": {
       "Multiple Windows Services": -1
+    },
+    "nginx-load-balancing": {
+      "nginx load balancing": -1
     },
     "nginx-reverse-proxy": {
       "nginx reverse proxy": -1
@@ -4014,12 +4023,8 @@
     "bug-fixes": {
       "Bug fixes": -1
     },
-    "build-improvements": {
-      "Build improvements": -1
-    },
-    "debugging": {
-      "Debugging": -1
-    },
+    "build-improvements": {},
+    "debugging": {},
     "distributed-user-stores": {
       "Distributed user stores": -1
     },
@@ -4037,6 +4042,32 @@
     },
     "old-admin-app-deprecated": {
       "Old Admin App deprecated": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    }
+  },
+  "release/1.88": {
+    "": {
+      "Gramex 1.88 release notes": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "breakpoint-debugging": {
+      "Breakpoint Debugging": -1
+    },
+    "bug-fixes": {
+      "Bug fixes": -1
+    },
+    "build-improvements": {
+      "Build improvements": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "ide-templates": {
+      "IDE templates": -1
     },
     "statistics": {
       "Statistics": -1
@@ -4207,6 +4238,20 @@
     },
     "installation": {
       "Installation": -1
+    }
+  },
+  "state": {
+    "": {
+      "Capturing State": -1
+    },
+    "store-state-as-a-hash": {
+      "Store state as a hash": -1
+    },
+    "store-state-as-a-search-string": {
+      "Store state as a search string": -1
+    },
+    "use-form-encoding-to-capture-state": {
+      "Use form-encoding to capture state": -1
     }
   },
   "test": {

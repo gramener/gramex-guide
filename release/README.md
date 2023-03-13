@@ -5,6 +5,7 @@ prefix: Release
 
 ## Release Notes
 
+- [v1.88.0: Breakpoint debugging, IDE templates](1.88/) <small>9 Feb 2023</small>
 - [v1.87.0: FormHandler argument typing, distributed user stores, flexible deletions](1.87/) <small>4 Jan 2023</small>
 - [v1.86.0: API rate limiting, improved FilterHandler, non-root Docker usage](1.86/) <small>3 Dec 2022</small>
 - [v1.85.0: DriveHandler post-processing, FilterHandler hierarchies, Secure Docker build](1.85/) <small>2 Nov 2022</small>
