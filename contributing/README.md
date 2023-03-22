@@ -33,6 +33,8 @@ pip install -e .
 gramex setup --all
 ```
 
+Note: You can use `pip install -e . --config-settings editable_mode=strict` to mimic the production environment closely, but any edits you make won't be reflected in the installed package.
+
 **Step 3 (OPTIONAL)**: Install databases.
 
 - [Redis](https://redis.io/download/) (on [Windows](https://github.com/microsoftarchive/redis))
