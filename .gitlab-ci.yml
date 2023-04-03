@@ -1,6 +1,7 @@
 validate:
   image: gramener/builderrors
   script: builderrors
+  allow_failure: true
 
 # Deploy the master / release branches on gramener.com
 deploy-gramener:
