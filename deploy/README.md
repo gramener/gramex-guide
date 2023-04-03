@@ -881,6 +881,20 @@ location /project/ {
 
 Restart nginx.
 
+### Content Security Policy
+
+To generate a [Content Security Policy nonce value](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src#unsafe_inline_script)
+in your template, use this code in your [template](../filehandler/#templates):
+
+```html
+{% from gramex.config import random_string %}
+{% set nonce = random_string(size=10) %}
+{% set handler.set_header('Content-Security-Policy', f"object-src 'self'; script-src 'self' 'nonce-{nonce}'") %}
+<script nonce="{{ nonce }}">
+  // ...
+</script>
+```
+
 ### Testing
 
 To check for application vulnerabilities, run tools such as:
