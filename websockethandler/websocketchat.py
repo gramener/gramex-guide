@@ -1,6 +1,6 @@
 import time
 from random import choice
-from tornado.ioloop import PeriodicCallback
+from tornado.io op import PeriodicCallback
 from nltk.chat.util import Chat, reflections
 from nltk.chat.eliza import pairs
 

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Websocket chatbot</title>
+  <title>WebsocketHandler Messages</title>
   <link rel="stylesheet" href="../style.scss">
 </head>
 
@@ -14,10 +14,13 @@
     <a href=".">Back to WebSocketHandler</a>
   </nav>
 
-  <section>
-    <h1>Chatbot</h1>
+  <section class="content">
+    <h1>Messages</h1>
 
-    <div id="chats"></div>
+    <p><a href="messages.html" target="_blank">Open this page in multiple windows</a> and type something.
+      All pages will see all messages.</p>
+
+    <ol id="chats"></ol>
     <form class="my-3">
       <input class="form-control" id="message" placeholder="Type your message and press Enter">
     </form>
@@ -25,32 +28,21 @@
 
   <script>
     // Set up websockets. When we receive a message, add it to the screen
-    var url = location.href.replace(/^http/, 'ws').replace(/\/[^/]*$/, '/chat')
+    var url = location.href.replace(/^http/, 'ws').replace(/\/[^/]*$/, '/messages')
     var ws = new WebSocket(url)
+    var chats = document.querySelector('#chats')
     ws.onmessage = function (event) {
-      add_message(event.data, 'text-start', 1000)
+      chats.insertAdjacentHTML("beforeend", `<li>${event.data}</li>`);
     }
 
-    // When the user types a message, add it to the screen and send it to the server
+    // When the user types a message, send it to the server
     var input = document.querySelector('#message')
     input.focus()
     document.querySelector('form').addEventListener('submit', function (e) {
       e.preventDefault()
-      add_message(input.value, 'text-end', 0)
       ws.send(input.value)
       input.value = ''
     }, false)
-
-    // Add a message to the screen
-    var chats = document.querySelector('#chats')
-    function add_message(msg, source, delay) {
-      chats.insertAdjacentHTML("beforeend", `<div class="${source}">
-        <div class="d-inline-block text-bg-primary rounded-1 my-2 p-2">...</div>
-      </div>`);
-      const text = chats.lastElementChild.lastElementChild;
-      setTimeout(() => text.innerText = msg, delay)
-    }
-
   </script>
 </body>
 

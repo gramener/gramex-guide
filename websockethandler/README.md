@@ -12,10 +12,6 @@ type: microservice
 [WebSocketHandler][websockethandler] is used for persistent connections and
 server-side push.
 
-[See this chatbot demo](chat.html). The chatbot has a single connection to the
-server that is kept open. This reduces latency. It also allows the server to send
-a message back to the client when required.
-
 Here is a sample configuration:
 
 ```yaml
@@ -53,7 +49,8 @@ def on_close(handler):
     print('Chatbot closed for', handler.session['id'])
 ```
 
-Now we can use JavaScript to open and interact with the websocket.
+Now we can use [WebSockets in JavaScript][websocket-clients] to open and interact with the websocket.
+Paste this in a browser's JavaScript console. You should see the message returned by the server.
 
 ```js
 // Open the websocket
@@ -73,12 +70,70 @@ setTimeout(function() {
 // ws.close()
 ```
 
-Now open this browser's JavaScript console. You should see the message returned by the server.
+## Websocket chat messages
 
-To learn more about websockets:
+This simple server [`messages.py`](https://github.com/gramener/gramex-guide/blob/master/websockethandler/messages.py)
+uses [blinker](https://blinker.readthedocs.io/en/stable/) to send a message to all connected clients,
+creating a sort of chat room.
 
-- Try this [Gramex chatbot](chat.html) and [view its source][chatbot-source]
-- Learn how to write [WebSockets in JS][websocket-clients]
+```python
+from blinker import signal
+
+
+def open(handler):
+    signal('msg-queue').connect(handler.write_message)
+
+
+def on_message(handler, message):
+    signal('msg-queue').send(message)
+```
+
+Using this [gramex.yaml](https://github.com/gramener/gramex-guide/blob/master/websockethandler/gramex.yaml):
+
+```yaml
+url:
+  websockethandler/messages:
+    pattern: /$YAMLURL/messages
+    handler: WebSocketHandler
+    kwargs:
+      open:
+        function: messages.open
+      on_message:
+        function: messages.on_message
+```
+
+... and this JavaScript in [messages.html](https://github.com/gramener/gramex-guide/blob/master/websockethandler/messages.html):
+
+```js
+    // Set up websockets. When we receive a message, add it to the screen
+    var url = location.href.replace(/^http/, 'ws').replace(/\/[^/]*$/, '/messages')
+    var ws = new WebSocket(url)
+    var chats = document.querySelector('#chats')
+    ws.onmessage = function (event) {
+      chats.insertAdjacentHTML("beforeend", `<li>${event.data}</li>`);
+    }
+
+    // When the user types a message, send it to the server
+    var input = document.querySelector('#message')
+    input.focus()
+    document.querySelector('form').addEventListener('submit', function (e) {
+      e.preventDefault()
+      ws.send(input.value)
+      input.value = ''
+    }, false)
+```
+
+::: example href=messages.html source=https://github.com/gramener/gramex-guide/blob/master/websockethandler/messages.py
+    Messages example
+
+
+You can also have the server trigger scheduled messages using Tornado's
+[PeriodicCallback](https://www.tornadoweb.org/en/stable/ioloop.html#tornado.ioloop.PeriodicCallback).
+The example below shows how to send an idle message at random intervals.
+
+::: example href=chat.html source=https://github.com/gramener/gramex-guide/blob/master/websockethandler/websocketchat.py
+    Chatbot example
+
 
 ## Websockets via nginx
 
