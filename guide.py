@@ -63,8 +63,8 @@ md_cache = cachetools.LRUCache(maxsize=5000000, getsizeof=len)
 
 def markdown_template(content, handler):
     # Cache the markdown contents locally, to avoid Markdown re-conversion
-    # B303: OK to use a weak hash like MD5 since content collision is unlikely
-    hash = hashlib.md5(content.encode('utf-8')).hexdigest()  # nosec B303
+    # B303 B324: OK to use a weak hash like MD5 since content collision is unlikely
+    hash = hashlib.md5(content.encode('utf-8')).hexdigest()  # nosec B303 B324
     if hash not in md_cache:
         md_cache[hash] = {'content': md.convert(content), 'meta': md.Meta}
         if md.Meta.get('template', False):
