@@ -115,7 +115,7 @@ In [gramex-guide][gramex-guide]:
 - In `release/1.xx/README.md` -- add guide release notes.
 - In `release/latest.json` -- add latest release notes.
 - Run `python search/search.py` to update search index
-- Run `node search/searchindex.js` to update search index
+- Run `node search/search-index.js` to update search index
 
 [Commit](#committing) and push the `master` branch of both repos to the server.
 **Ensure pipeline passes.**:

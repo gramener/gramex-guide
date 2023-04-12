@@ -1,5 +1,5 @@
-// Creates searchindex.json as a lunr index
-// Usage: node searchindex.js
+// Creates search-index.json as a lunr index
+// Usage: node search-index.js
 var fs = require('fs')
 var path = require('path')
 var lunr = require('lunr')
@@ -54,7 +54,7 @@ glob("*/*.md", { cwd: root, ignore: ['**/api/**'] }, function (err, files) {
     });
   });
   fs.writeFileSync(
-    path.join(__dirname, "searchindex.json"),
+    path.join(__dirname, "search-index.json"),
     JSON.stringify({
       docs: docs,
       index: idx.toJSON(),

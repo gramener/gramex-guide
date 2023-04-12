@@ -28,3 +28,4 @@ workshop/influxdb/*.png filter=lfs diff=lfs merge=lfs -text
 workshop/influxdb/*.json filter=lfs diff=lfs merge=lfs -text
 workshop/influxdb/*.gif filter=lfs diff=lfs merge=lfs -text
 groupmeans/nas.csv filter=lfs diff=lfs merge=lfs -text
+search/search-index.json filter=lfs diff=lfs merge=lfs -text
