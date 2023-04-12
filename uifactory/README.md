@@ -5,7 +5,6 @@ icon: uifactory.png
 desc: UIFactory is a small easy-to-learn HTML component library.
 by: TeamGramener
 type: component
-template: true
 ...
 
 [UIFactory](https://uifactory.gramener.com/) is a small, easy-to-learn web component framework.
