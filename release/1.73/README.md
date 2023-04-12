@@ -117,7 +117,7 @@ logviewer:
     slow: df['duration'] > 100
 ```
 
-[![Custom KPIs for LogViewer](logviewer-custom-kpi.png){:.img-fluid}](../../logviewer/#add-custom-kpis)
+[![Custom KPIs for LogViewer](../../logviewer/img/Custom-Logviewer.png){:.img-fluid}](../../logviewer/#add-custom-kpis)
 
 ## Gramex Roadmap
 

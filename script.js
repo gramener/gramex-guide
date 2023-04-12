@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
 $('#mlhandler-single').on('submit', function (e) {
   e.preventDefault();
   var url = g1.url.parse('model')
-  $(this).serializeArray().forEach(function (item, index) {
+  $(this).serializeArray().forEach(function (item) {
     var obj = {}
     obj[item.name] = item.value
     url.update(obj)

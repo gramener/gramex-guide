@@ -1,4 +1,4 @@
-
+/* exported portraitData, portraitRules */
 var portraitData = {
   glass: '',
   continentLiving: '',

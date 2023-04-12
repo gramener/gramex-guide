@@ -18,6 +18,9 @@
   "devDependencies": {
     "bootstrap-select": "1.13",
     "bootstrap-select-dropdown": "0.14",
+    "eslint": "^8.38.0",
+    "eslint-plugin-html": "^7.1.0",
+    "eslint-plugin-template": "^0.7.0",
     "front-matter": "3",
     "glob": "7",
     "marked": "4"

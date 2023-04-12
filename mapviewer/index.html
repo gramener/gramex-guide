@@ -130,13 +130,12 @@
     /* globals Vue */
     /* exported app, toc */
     var q = {},
-        _q = (new URLSearchParams(location.search)).entries()
-    while (true) {
+        _q = (new URLSearchParams(location.search)).entries();
+    for (;;) {
       var _entry = _q.next()
       if (_entry.done) break
       q[_entry.value[0]] = _entry.value[1]
     }
-    var has_query = Object.keys(q).length > 0
     var config = {}
     config.cssurl = '../ui/bootstraptheme.css' + location.search
     var app = new Vue({el: '#theme-picker', data: config, delimiters: ['${', '}']})

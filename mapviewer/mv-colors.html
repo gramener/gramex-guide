@@ -34,7 +34,8 @@ for (var i = 0; i < 5; i++) {
 {% apply only_source %}
 <div id="map-controls"></div>
 <script>
-var map = g1.mapviewer({
+/* globals range, domain_values, scale, composite_index */
+g1.mapviewer({
   id: 'map-controls',
   map: {
   },

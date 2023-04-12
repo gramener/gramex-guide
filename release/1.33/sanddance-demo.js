@@ -1,5 +1,5 @@
 
-/* globals d3, g1 */
+/* globals d3 */
 
 // Set up data
 for (var i = 0, data = []; i < 111; i++) {

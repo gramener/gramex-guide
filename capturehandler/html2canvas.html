@@ -33,6 +33,7 @@
   <script src="../ui/html2canvas/dist/html2canvas.min.js"></script>
   <script src="../ui/file-saver/dist/FileSaver.min.js"></script>
   <script>
+    /* globals saveAs, html2canvas */
     $('.screenshot').on('click', function () {
       html2canvas(document.querySelector('.chart'))     // Pick the element to download
         .then(canvas => {

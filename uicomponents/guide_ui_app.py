@@ -23,9 +23,5 @@ def view_source(html):
 
 def only_source(html):
     '''Return only the escaped view source block'''
-    s = html.decode('utf-8')
-    return (
-        '<pre class="viewsource"><code class="language-html">'
-        + xhtml_escape(s.strip())
-        + '</code></pre>'
-    )
+    s = xhtml_escape(html.decode('utf-8').strip())
+    return f'<pre class="viewsource"><code class="language-html">{s}</code></pre>'

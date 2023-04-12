@@ -44,17 +44,17 @@
 </body>
 <script>
   const url = g1.url.parse(window.location)
-  $('#traincol').change(function(e) {
+  $('#traincol').change(function() {
     $('#retrain').attr('action', `../model?_retrain=1&target_col=${$(this).val()}`)
   })
-  $(document).ready(function(e) {
+  $(document).ready(function() {
     $.ajax({
       url: '../model?_cache=true',
       method: 'DELETE',
       success: console.log
     })
   })
-  $('.btn-primary').on('click', (e) => {
+  $('.btn-primary').on('click', () => {
     // e.preventDefault()
     if (url.pathname.match(/single$/)) {
       $.getJSON('../model?' + $('#single').text()).done((t) => $('.result').html(JSON.stringify(t)))

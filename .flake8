@@ -1,4 +1,4 @@
 [flake8]
 exclude=build,dist
 max-line-length=99
-ignore=B902,W504,F722
+extend-ignore=E203,E501

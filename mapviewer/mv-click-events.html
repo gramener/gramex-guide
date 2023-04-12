@@ -17,9 +17,10 @@ var map = g1.mapviewer({
       url: 'static/data/bihar-districts.json',
     }
   }
-  ..
+  // ...
 })
 
+/* globals url, toCamelCase */
 // once the layer is loaded, we can write functionality within 'biharGeojsonLoaded' event
 map.on('biharGeojsonloaded', function() {
   // iterate through each sublayer

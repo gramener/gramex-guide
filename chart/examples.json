@@ -33,7 +33,7 @@
       "column_3": "parent",
       "column_4": "size"
     },
-    "dataset_url": "<%= absolute_url %>data/sunburst-4.json"
+    "dataset_url": "<%= absolute_url %>data/sunburst-3.json"
   },
   {
     "category": "Sunburst charts",
@@ -45,7 +45,7 @@
       "column_3": "parent",
       "column_4": "size"
     },
-    "dataset_url": "<%= absolute_url %>data/sunburst-4.json"
+    "dataset_url": "<%= absolute_url %>data/sunburst-3.json"
   },
   {
     "category": "Infographics",
@@ -386,7 +386,7 @@
       "column_3": "parent",
       "column_4": "size"
     },
-    "dataset_url": "<%= absolute_url %>data/treemap-2.json"
+    "dataset_url": "<%= absolute_url %>data/treemap-1.json"
   },
   {
     "category": "Treemap",
@@ -398,7 +398,7 @@
       "column_3": "parent",
       "column_4": "size"
     },
-    "dataset_url": "<%= absolute_url %>data/treemap-2.json"
+    "dataset_url": "<%= absolute_url %>data/treemap-1.json"
   },
   {
     "category": "Treemap",
@@ -410,7 +410,7 @@
       "column_3": "parent",
       "column_4": "size"
     },
-    "dataset_url": "<%= absolute_url %>data/treemap-2.json"
+    "dataset_url": "<%= absolute_url %>data/treemap-1.json"
   },
   {
     "category": "Treemap",
@@ -422,7 +422,7 @@
       "column_3": "parent",
       "column_4": "size"
     },
-    "dataset_url": "<%= absolute_url %>data/treemap-2.json"
+    "dataset_url": "<%= absolute_url %>data/treemap-1.json"
   },
   {
     "category": "Trellis charts",

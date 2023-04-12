@@ -62,7 +62,8 @@ def idler(handler):
         now = time.time()
         chat = chat_info[handler.session['id']]
         if chat['time'] < now - chat['delay']:
-            handler.write_message(choice(idle_phrases))
+            # B311: choice is not for cryptographic use - just to send an idle message
+            handler.write_message(choice(idle_phrases))  # nosec B311
             chat['time'] = now
             chat['delay'] = chat['delay'] * 2
 

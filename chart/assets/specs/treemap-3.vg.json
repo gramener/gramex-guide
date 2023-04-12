@@ -23,7 +23,7 @@
   "data": [
     {
       "name": "tree",
-      "url": "<%= absolute_url %>data/treemap-2.json",
+      "url": "<%= absolute_url %>data/treemap-1.json",
       "transform": [
         {
           "type": "stratify",

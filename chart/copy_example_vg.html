@@ -4,12 +4,12 @@
   <script src="ui/vega/build/vega.min.js"></script>
 
   <script>
-  var spec = <%= spec %>
-  var view = new vega.View(vega.parse(spec))
-    .renderer('svg')
-    .logLevel(vega.Warn)
-    .initialize('#chart')
-    .hover()
-    .run()
+    var spec = <%= spec %>
+    var view = new vega.View(vega.parse(spec))
+      .renderer('svg')
+      .logLevel(vega.Warn)
+      .initialize('#chart')
+      .hover()
+      .run()
   </script>
 </xmp>

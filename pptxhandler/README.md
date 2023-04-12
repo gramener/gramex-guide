@@ -238,7 +238,7 @@ Each rule in `rules:` is a dictionary of shape names.
 All shapes in PowerPoint have names. To see them in PowerPoint, select
 Home tab > Drawing group > Arrange drop-down > Selection pane. Or press <kbd>Alt + F10</kbd>.
 
-![Selection pane](selection-pane.png)
+![Selection pane](v1/selection-pane.png)
 
 To change shape names, double-click on the name in the selection pane.
 

@@ -1,6 +1,7 @@
 validate:
   image: gramener/builderrors
-  script: builderrors
+  # We format YAML with aligned comments. Prettier destroys that. Avoid prettier
+  script: builderrors --skip=prettier
   allow_failure: true
 
 # Deploy the master / release branches on gramener.com

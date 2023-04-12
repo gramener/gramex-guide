@@ -29,7 +29,7 @@
       {% if handler.get_argument('generate-key', None) %}
         {% set key = handler.apikey() %}
         <h2>Test API key</h2>
-        <p>Your API key is <code>{{ key }}</code>
+        <p>Your API key is <code>{{ key }}</code></p>
         <p>Open this link <code><a href="?gramex-key={{ key }}">?gramex-key={{ key }}</a></code>
           in a new browser or private window. You will be logged in
           as the same user.</p>

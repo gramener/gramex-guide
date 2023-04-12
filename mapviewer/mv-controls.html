@@ -6,7 +6,7 @@
 {% apply only_source %}
 <div id="map-controls"></div>
 <script>
-var map = g1.mapviewer({
+g1.mapviewer({
   id: 'map-controls',
   map: {
     // disable leaflet attribution
@@ -21,7 +21,7 @@ var map = g1.mapviewer({
     // disable keyboard controls
     keyboard: false
   },
-  ...
+  // ...
 })
 </script>
 {% end %}

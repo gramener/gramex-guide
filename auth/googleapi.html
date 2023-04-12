@@ -54,7 +54,7 @@
           contacts.forEach(function(contact) { contact.date = new Date(contact.updated.$t) })
           contacts = contacts.sort(function(a, b) { return a.date < b.date ? +1 : a.date > b.date ? -1 : 0 })
           var today = new Date()
-          for (var i=0, contact; contact=contacts[i]; i++)
+          for (var contact of contacts)
             if (contact.title.$t && contact.gd$email)
               html.push('<tr>',
                 '<td>', contact.title.$t, '</td>',
