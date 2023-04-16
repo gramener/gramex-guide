@@ -59,14 +59,14 @@ Pass multiple folders, e.g. `gramex features /project1/ /project2/`, to sum feat
 ## Services
 
 {% for index, feature in features[features['type'] == 'SVC'].sort_values('name').iterrows() %}
-1. `{{ feature['name'] }}`: [{{ feature['feature'] }}]({{ feature['link'] }}){% end %}
+1. `{{ feature['name'] }}`: [{{ feature['feature'] }}]({{ feature.get('link', '..') }}){% end %}
 
 ## Handlers
 
 {% for index, feature in features[features['type'] == 'MS'].sort_values('name').iterrows() %}
-1. `{{ feature['name'] }}`: [{{ feature['feature'] }}]({{ feature['link'] }}){% end %}
+1. `{{ feature['name'] }}`: [{{ feature['feature'] }}]({{ feature.get('link', '..') }}){% end %}
 
 ## Configurations
 
 {% for index, feature in features[features['type'] == 'KWARG'].sort_values('name').iterrows() %}
-1. `{{ feature['name'] }}`: [{{ feature['feature'] }}]({{ feature['link'] }}){% end %}
+1. `{{ feature['name'] }}`: [{{ feature['feature'] }}]({{ feature.get('link', '..') }}){% end %}
