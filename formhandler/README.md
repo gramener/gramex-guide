@@ -262,10 +262,8 @@ The URL supports operators for filtering rows. The operators can be combined.
 - [?c1>=10&c1<=20](flags?c1>=10&c1<=20&_format=html) ► c1 > 10 AND c1 < 20
 - [?Name~=United](flags?Name~=United&_format=html) ► Name matches &_format=html
 - [?Name!~=United](flags?Name!~=United&_format=html) ► Name does NOT match United
-- [?Name*=United](flags?Name*=United&_format=html) ► Name matches case insensitive &_format=html
-- [?Name*=United](flags?Name*=united&_format=html) ► Name matches case insensitive &_format=html
-- [?Name!*=United](flags?Name!*=United&_format=html) ► Name does NOT match case insensitive United
-- [?Name!*=United](flags?Name!*=united&_format=html) ► Name does NOT match case insensitive united
+- [?Name*=united](flags?Name*=united&_format=html) ► Name matches case INSENSITIVE &_format=html
+- [?Name!*=united](flags?Name!*=united&_format=html) ► Name does NOT match case INSENSITIVE united
 - [?Name~=United&Continent=Asia](flags?Name~=United&Continent=Asia&_format=html) ► Name matches United AND Continent is Asia
 
 To control the output, you can use these control arguments:

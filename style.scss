@@ -36,7 +36,11 @@ h1, h2, h3 {
   margin-top: 0;
 }
 
-/* Tables should have borders */
+/* Tables should have spacing and borders */
+table {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 table thead th {
   padding: 0 0.3rem;
   border-bottom: 1px solid #000;

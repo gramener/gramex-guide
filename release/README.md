@@ -5,6 +5,8 @@ prefix: Release
 
 ## Release Notes
 
+- [v1.89.0: Case-insensitive search, distributed user logs, feature usage reports](1.89/) <small>10 Apr 2023</small>
+- No release in March due to lack of team.
 - [v1.88.0: Breakpoint debugging, IDE templates](1.88/) <small>9 Feb 2023</small>
 - [v1.87.0: FormHandler argument typing, distributed user stores, flexible deletions](1.87/) <small>4 Jan 2023</small>
 - [v1.86.0: API rate limiting, improved FilterHandler, non-root Docker usage](1.86/) <small>3 Dec 2022</small>
@@ -19,7 +21,7 @@ prefix: Release
 - [v1.77.0: API keys, secure MongoDB access, session cookies](1.77/) <small>1 Mar 2022</small>
 - [v1.76.0: Python 3.9 support, Faster scheduler, Tutorial videos](1.76/) <small>1 Feb 2022</small>
 - [v1.75.0: ServiceNow connector, MongoDB write-back](1.75/) <small>4 Jan 2022</small>
-- [v1.74.0: Admin signup, user management rules, UIFactory scripts](1.74/) <small>2 Nov 2021</small>
+- [v1.74.0: Admin sign-up, user management rules, UIFactory scripts](1.74/) <small>2 Nov 2021</small>
 - [v1.73.0: UIFactory events, InfluxDB support, Comicgen icons](1.73/) <small>4 Oct 2021</small>
 - [v1.72.0: OpenAPI support, a root cause algorithm, charts in UIFactory](1.72/) <small>1 Sep 2021</small>
 - [v1.71.0: ComicHandler, security updates](1.71/) <small>1 Aug 2021</small>

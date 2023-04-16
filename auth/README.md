@@ -1575,20 +1575,23 @@ The contents of `handler.current_user` varies across auth handlers. But you are 
 
 ## User store
 
-User information (including [attributes](#user-attributes)) is stored in a user store that is configured as follows:
+No matter which auth handler is used, Gramex stores information about all users who ever logged in
+(with [attributes](#user-attributes)) in `storelocations.user` configured as follows. The syntax is
+the same as for [FormHandler](../formhandler/):
 
 ```yaml
 storelocations:
   user:
     url: sqlite:///$GRAMEXDATA/auth.user.db
     table: user
+    # Don't change these columns. Gramex needs exactly these columns.
     columns:
       key: { type: TEXT, primary_key: true }
       value: { type: TEXT }
 ```
 
-If you use Gramex on multiple servers, change this to a remote database with the same syntax as
-[FormHandler](../formhandler/). For example, add this in your `gramex.yaml`:
+To share user information with Gramex running on multiple servers, use a remote database with.
+For example, add this in your `gramex.yaml`:
 
 ```yaml
 storelocations:
@@ -1599,16 +1602,16 @@ storelocations:
     table: user
 ```
 
-You can access the user data directly from the database, or via Gramex as follows:
+To query user data in a function when Gramex is running, use:
 
 ```python
-import  gramex.data
+import gramex.data
 
 def function(handler):
+    import gramex.service
     # Access user data directly from the database
-    user_data = gramex.data.filter(gramex.service.storelocations.user, table='user')
+    user_data = gramex.data.filter(**gramex.service.storelocations.user, table='user')
 ```
-
 
 ## Multiple logins
 

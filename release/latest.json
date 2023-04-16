@@ -1,6 +1,33 @@
 {
   "releases": [
     {
+      "version": "v1.89.0",
+      "link": "https://gramener.com/gramex/guide/release/1.89/",
+      "title": "Case-insensitive search, distributed user logs, feature usage reports, and complexity reports",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.89/#case-insensitive-search",
+          "title": "Case-insensitive search",
+          "description": "FormHandler filters has 2 new operators `*=` and `!*=` that match case-insensitively."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.89/#distributed-user-logs",
+          "title": "Distributed user logs",
+          "description": "Access and store user login/logout information in a single database for distributed access"
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.89/#measure-gramex-usage",
+          "title": "Measure Gramex usage",
+          "description": "Run `gramex features` on any Gramex app to list the features used"
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.89/#measure-code-complexity",
+          "title": "Measure code complexity",
+          "description": "Run gramex complexity on any Gramex app to measure the Cyclomatic Complexity of the code."
+        }
+      ]
+    },
+    {
       "version": "v1.88.0",
       "link": "https://gramener.com/gramex/guide/release/1.88/",
       "title": "FormHandler argument typing, distributed user stores, flexible deletions",

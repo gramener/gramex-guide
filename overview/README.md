@@ -36,6 +36,7 @@ Then learn from these tutorials:
 - [Debug Gramex](../debug/)
 - [Testing Gramex apps](../test/)
 - [Measure Gramex usage](../features/)
+- [Measure code complexity](../complexity/)
 - [Tips & Tricks](../tips/)
 - [Snippets (Visual Studio Code Extension)](../snippets/)
 - [Contributing to Gramex](../contributing/)

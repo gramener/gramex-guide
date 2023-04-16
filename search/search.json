@@ -393,6 +393,11 @@
       "ComicHandler serves comics": -1
     }
   },
+  "complexity": {
+    "": {
+      "Gramex Code Complexity": -1
+    }
+  },
   "config": {
     "": {
       "Configurations control Gramex": -1
@@ -592,6 +597,9 @@
     },
     "common-errors": {
       "Common errors": -1
+    },
+    "content-security-policy": {
+      "Content Security Policy": -1
     },
     "cors": {
       "CORS": -1
@@ -969,6 +977,23 @@
       "Who develops Gramex?": -1
     }
   },
+  "features": {
+    "": {
+      "Gramex Features": -1
+    },
+    "configurations": {
+      "Configurations": -1
+    },
+    "feature-usage": {
+      "Feature usage": -1
+    },
+    "handlers": {
+      "Handlers": -1
+    },
+    "services": {
+      "Services": -1
+    }
+  },
   "filehandler": {
     "": {
       "FileHandler renders files": -1
@@ -1073,6 +1098,9 @@
     "date-parsing": {
       "Date parsing": -1
     },
+    "exporting-the-entire-table": {
+      "Exporting the entire table": -1
+    },
     "formhandler-argument-type": {
       "FormHandler argument type": -1
     },
@@ -1171,6 +1199,9 @@
     },
     "parameter-substitution": {
       "Parameter Substitution": -1
+    },
+    "plotting-entire-data": {
+      "Plotting entire data": -1
     },
     "preventing-sql-injection": {
       "Preventing SQL injection": -1
@@ -1580,9 +1611,7 @@
     }
   },
   "newsletter": {
-    "": {
-      "Gramex Newsletters": -1
-    }
+    "": {}
   },
   "node": {
     "": {
@@ -4073,6 +4102,32 @@
       "Statistics": -1
     }
   },
+  "release/1.89": {
+    "": {
+      "Gramex 1.89 release notes": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "case-insensitive-search": {
+      "Case insensitive search": -1
+    },
+    "distributed-user-logs": {
+      "Distributed user logs": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "measure-code-complexity": {
+      "Measure code complexity": -1
+    },
+    "measure-gramex-usage": {
+      "Measure Gramex usage": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    }
+  },
   "release/old": {
     "": {
       "Gramex Old Release Notes": -1
@@ -4691,6 +4746,9 @@
   "websockethandler": {
     "": {
       "WebSocketHandler": -1
+    },
+    "websocket-chat-messages": {
+      "Websocket chat messages": -1
     },
     "websockets-via-nginx": {
       "Websockets via nginx": -1

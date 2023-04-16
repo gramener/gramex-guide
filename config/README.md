@@ -351,7 +351,9 @@ storelocations:
       event: TEXT   # required
       datetime: TEXT
       user: TEXT
-      # Add any additional columns here
+      # Add any additional columns here, e.g.
+      # request.method: TEXT
+      # env.HOME: TEXT
 ```
 
 ---
