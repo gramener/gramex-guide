@@ -74,7 +74,7 @@ docker rmi gramener/gramex
 On the Anaconda prompt, run:
 
 ```bash
-conda create -y --name gramex python=3.7            # Create a new environment
+conda create -y --name gramex python=3.9            # Create a new environment
 conda activate gramex                               # Activate it
 pip install --upgrade gramex
 gramex setup --all
@@ -102,7 +102,7 @@ conda env remove -n gramex
 ## Pip install
 
 1. Install [Python 3.7+](https://www.python.org/downloads/).
-2. Install [node.js][nodejs] 12 or later from the [node.js download page][nodejs].
+2. Install [node.js][nodejs] 12 or above from the [node.js download page][nodejs].
 
 To install or upgrade Gramex, run this on a terminal:
 
@@ -219,8 +219,8 @@ If Gramex does not install:
 
 If Gramex does not run:
 
-- Gramex works only on Python 3.7 currently. Type `python --version`. If you don't see "Python
-  3.7", re-install Python 3.7 and Gramex.
+- Gramex works only on Python 3.7 and above. Type `python --version`. If you don't see "Python
+  3.7" (or higher), upgrade Python and re-install Gramex.
 - Try uninstalling and re-installing Gramex. Stop Gramex and all other Python applications when
   re-installing.
 - Make sure that typing `gramex` runs the Gramex executable, and is not aliased to a different
