@@ -54,6 +54,8 @@ deploy:
     URL: app-name                         # Change this to your app-name
     SETUP: gramex setup .                 # You can use any setup script here
     VERSION: py3v1                        # py3v1 or static
+    WEBSOCKET: enabled                    # Optional: websocket support
+    CORS: enabled                         # Optional: open CORS access
 ```
 
 You may change the following keys:
@@ -73,10 +75,12 @@ You may change the following keys:
 - `variables.VERSION` specifies the Gramex version to deploy. Options:
   - `VERSION: py3v1` Python 3, Gramex v1.x. Use this for all Gramex apps
   - `VERSION: static` just hosts the files. Use for plain HTML hosting (static sites)
-- `variables: PORT` is the deployment port. This is **automatically** chosen. But see
+- `variables.PORT` is the deployment port. This is **automatically** chosen. But see
   [gramener.com/monitor/apps](https://gramener.com/monitor/apps) or
   [uat.gramener.com/monitor/apps](https://uat.gramener.com/monitor/apps)
   for a list of available ports and who has access.
+- `variables.WEBSOCKET` can be set to any truth-y value to enable websocket support
+- `variables.CORS` can be set to any truth-y value to enable CORS access
 
 ## Secrets
 
