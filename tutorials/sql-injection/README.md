@@ -67,18 +67,39 @@ Use SQL **parameter substitution** for values. For example, instead of:
 
 ```python
 def bad_query_function(args):
-    return f'SELECT * FROM table WHERE col={args["v"]}')
+    return f'SELECT * FROM table WHERE updated >= {args["date"]}')
 ```
 
 ... use:
 
 ```python
 def good_query_function(args):
-    return 'SELECT * FROM table WHERE col=:v'
-    # FormHandler will replace the :v with args['v'][0]
+    return 'SELECT * FROM table WHERE updated >= :date'
+    # FormHandler will replace the :date with args['date'][0]
 ```
 
 Whenever Gramex encounters a value `:something`, it passes the first `args['something']` instead as a SQL-injection-safe parameter.
+
+## Use SQL parameters outside FormHandler
+
+If you're using [gramex.cache.query](../../api/cache/#gramex.cache.query) to run queries, use:
+
+```python
+gramex.cache.query('SELECT * FROM table WHERE updated >= :date', params={'date': ...}, state=...)
+```
+
+If you're using [pandas.read_sql](https://pandas.pydata.org/docs/reference/api/pandas.read_sql.html), use:
+
+```python
+pd.read_sql('SELECT * FROM table WHERE updated >= :date', connection, params={'date': ...})
+```
+
+If you're using SQLAlchemy, use:
+
+```python
+connection.execute(sa.text('SELECT * FROM table WHERE updated >= :date'), date=...)
+```
+
 
 ## Use computed SQL parameters
 
@@ -87,7 +108,7 @@ If the query depends on calculations, **add them to `args`**. For example, inste
 ```python
 def bad_query_function(args):
     date = datetime.strptime(args['date'], '%b %Y').strftime('%Y-%m-%d')
-    return f'SELECT * FROM table WHERE updated > "{date}"'
+    return f'SELECT * FROM table WHERE updated >= "{date}"'
 ```
 
 ... use:
@@ -95,7 +116,7 @@ def bad_query_function(args):
 ```python
 def good_query_function(args):
     args['date'] = [datetime.strptime(args['date'], '%b %Y').strftime('%Y-%m-%d')]
-    return 'SELECT * FROM table WHERE updated > :date'
+    return 'SELECT * FROM table WHERE updated >= :date'
     # FormHandler will replace the :date with args['date'][0]
 ```
 
