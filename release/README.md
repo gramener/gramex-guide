@@ -5,6 +5,7 @@ prefix: Release
 
 ## Release Notes
 
+- [v1.90.0: MessageHandler, Websocket arguments, lighter gramex init](1.90/) <small>8 May 2023</small>
 - [v1.89.0: Case-insensitive search, distributed user logs, feature usage reports](1.89/) <small>10 Apr 2023</small>
 - No release in March due to lack of team.
 - [v1.88.0: Breakpoint debugging, IDE templates](1.88/) <small>9 Feb 2023</small>

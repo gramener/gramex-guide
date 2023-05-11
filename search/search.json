@@ -1511,6 +1511,32 @@
       "Using Variables": -1
     }
   },
+  "messagehandler": {
+    "": {
+      "MessageHandler": -1
+    },
+    "messagehandler-alert": {
+      "MessageHandler alert": -1
+    },
+    "messagehandler-configuration": {
+      "MessageHandler configuration": -1
+    },
+    "messagehandler-defaults": {
+      "MessageHandler defaults": -1
+    },
+    "messagehandler-filters": {
+      "MessageHandler filters": -1
+    },
+    "messagehandler-modify": {
+      "MessageHandler modify": -1
+    },
+    "messagehandler-open": {
+      "MessageHandler open": -1
+    },
+    "messagehandler-prepare": {
+      "MessageHandler prepare": -1
+    }
+  },
   "mlhandler": {
     "": {
       "MLHandler provides ML APIs": -1
@@ -4128,6 +4154,38 @@
       "Statistics": -1
     }
   },
+  "release/1.90": {
+    "": {
+      "Gramex 1.90 release notes": -1
+    },
+    "backward-compatibility-security": {
+      "Backward compatibility & security": -1
+    },
+    "backward-incompatible-changes": {
+      "Backward-incompatible changes": -1
+    },
+    "gramex-features-formatting": {
+      "Gramex features formatting": -1
+    },
+    "how-to-install": {
+      "How to install": -1
+    },
+    "lighter-gramex-init": {
+      "Lighter gramex init": -1
+    },
+    "messagehandler-for-live-communication": {
+      "MessageHandler for live communication": -1
+    },
+    "statistics": {
+      "Statistics": -1
+    },
+    "web-crypto-for-hashing": {
+      "Web Crypto for hashing": -1
+    },
+    "websockethandler-arguments": {
+      "WebsocketHandler arguments": -1
+    }
+  },
   "release/old": {
     "": {
       "Gramex Old Release Notes": -1
@@ -4564,6 +4622,38 @@
     },
     "troubleshooting": {
       "Troubleshooting": -1
+    }
+  },
+  "tutorials/sql-injection": {
+    "": {
+      "Fixing SQL injection errors": -1
+    },
+    "eliminate-queryfunction": {
+      "Eliminate queryfunction": -1
+    },
+    "how-to-check-for-sql-injection": {
+      "How to check for SQL injection": -1
+    },
+    "manually-sanitize-values": {
+      "Manually sanitize values": -1
+    },
+    "other-approaches": {
+      "Other approaches": -1
+    },
+    "use-argstype-to-convert-values": {
+      "Use argstype to convert values": -1
+    },
+    "use-computed-sql-parameters": {
+      "Use computed SQL parameters": -1
+    },
+    "use-lookups-or-case-to-pick-column-names": {
+      "Use lookups or ": -1
+    },
+    "use-sql-parameters": {
+      "Use SQL parameters": -1
+    },
+    "use-sql-parameters-outside-formhandler": {
+      "Use SQL parameters outside FormHandler": -1
     }
   },
   "twitterresthandler": {

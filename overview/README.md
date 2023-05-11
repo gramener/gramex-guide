@@ -55,6 +55,7 @@ Then learn from these tutorials:
 - [PPTXHandler generates PPTX](../pptxhandler/)
 - [ComicHandler serves comics](../comichandler/)
 - [OpenAPIHandler documents APIs](../openapihandler/)
+- [MessageHandler subscribes to messages](../messagehandler/)
 - [FilterHandler filters columns](../filterhandler/)
 - [JSONHandler writes JSON data](../jsonhandler/)
 - [ProxyHandler proxies APIs](../proxyhandler/)

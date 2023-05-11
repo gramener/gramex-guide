@@ -22,26 +22,25 @@
 
     <ol id="chats"></ol>
     <form class="my-3">
-      <input class="form-control" id="message" placeholder="Type your message and press Enter">
+      <input class="form-control" id="message" placeholder="Type your message and press Enter" autofocus>
     </form>
   </section>
 
   <script>
     // Set up websockets. When we receive a message, add it to the screen
-    var url = location.href.replace(/^http/, 'ws').replace(/\/[^/]*$/, '/messages')
-    var ws = new WebSocket(url)
-    var chats = document.querySelector('#chats')
+    var url = location.href.replace(/^http/, 'ws').replace(/\/[^/]*$/, '/messages');
+    var ws = new WebSocket(url);
+    var chats = document.querySelector('#chats');
     ws.onmessage = function (event) {
       chats.insertAdjacentHTML("beforeend", `<li>${event.data}</li>`);
     }
 
     // When the user types a message, send it to the server
-    var input = document.querySelector('#message')
-    input.focus()
+    var input = document.querySelector('#message');
     document.querySelector('form').addEventListener('submit', function (e) {
-      e.preventDefault()
-      ws.send(input.value)
-      input.value = ''
+      e.preventDefault();
+      ws.send(input.value);
+      input.value = '';
     }, false)
   </script>
 </body>

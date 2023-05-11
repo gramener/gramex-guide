@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MessageHandler demo</title>
+  <link rel="stylesheet" href="../style.scss">
+  <style>
+    td[contenteditable] {
+      background-color: #eef;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body class="container">
+
+  <nav class="py-4">
+    <a href=".">Back to MessageHandler</a>
+  </nav>
+
+  <section>
+    <h1>Messages</h1>
+
+    <p><a href="messages.html" target="_blank">Open this page in multiple windows</a> and type something.
+      All pages will see all messages.</p>
+
+    <table class="table table-sm w-auto">
+      <thead><th>Time</th><th>To (edit)</th><th>Length</th><th>Message (edit)</th><th></th></thead>
+      <tbody id="messages"></tbody>
+    </table>
+
+    <form class="row row-cols-lg-auto g-3 align-items-center">
+      <div class="col-12">
+        <label class="visually-hidden" for="to">Recipient</label>
+        <div class="input-group">
+          <div class="input-group-text">@</div>
+          <input type="email" class="form-control" id="to" name="to" placeholder="Email ID of recipient" autofocus>
+        </div>
+      </div>
+      <div class="col-12">
+        <label class="visually-hidden" for="body">Body</label>
+        <input class="form-control" id="body" name="body" placeholder="Message body">
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </section>
+
+  <script>
+    const yesterday = +new Date() / 1000 - 60 * 60 * 24;
+    // Set up websockets. When we receive a message, add it to the screen
+    var url = location.href.replace(/^http/, 'ws').replace(/\/[^/]*$/, `/messages?timestamp>~=${yesterday}`);
+    var ws = new WebSocket(url);
+    // When the user types a message, send it to the server
+    document.querySelector('form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      ws.send(JSON.stringify(Object.fromEntries((new FormData(e.target)).entries())));
+      e.target.reset()
+    }, false);
+
+    // When we receive a new message, process it
+    const messages = document.querySelector('#messages');
+    const fmt = new Intl.DateTimeFormat('en-GB', { dateStyle: 'short', timeStyle: 'short' });
+    ws.onmessage = function (response) {
+      const msg = JSON.parse(response.data);
+      // Delete specified messages
+      if (msg._method == 'DELETE') {
+        messages.querySelector(`[data-msg-id="${msg.id}"]`).remove()
+      }
+      // Update specified messages
+      else if (msg._method == 'PUT') {
+        const row = messages.querySelector(`[data-msg-id="${msg.id}"]`);
+        for (const el of row.querySelectorAll('[data-msg-key]'))
+          if (el.dataset.msgKey in msg)
+            el.innerHTML = msg[el.dataset.msgKey];
+      }
+      // Add new messages. _type is 'post' for new messages and empty for past messages
+      else {
+        messages.insertAdjacentHTML("afterBegin", /* html */ `<tr data-msg-id="${msg.id}">
+          <td data-msg-key="timestamp">${fmt.format(Date.parse(msg.timestamp))}</td>
+          <td data-msg-key="to" contenteditable>${msg.to}</td>
+          <td data-msg-key="length" class="text-end">${msg.length}</td>
+          <td data-msg-key="body" contenteditable>${msg.body}</td>
+          <td>
+            <button class="btn btn-xs btn-info update">Update</button>
+            <button class="btn btn-xs btn-danger delete">Delete</button>
+          </td>
+        </tr>`);
+      }
+    }
+
+    messages.addEventListener('click', function (e) {
+      // Update button updates messages on server
+      if (e.target.closest('.update')) {
+        const row = e.target.closest('[data-msg-id]');
+        const data = { _method: 'PUT', id: row.dataset.msgId };
+        for (const el of row.querySelectorAll('[contenteditable]'))
+          data[el.dataset.msgKey] = el.textContent;
+        ws.send(JSON.stringify(data));
+      }
+      // Delete button deletes messages on server
+      else if (e.target.closest('.delete')) {
+        const id = e.target.closest('[data-msg-id]').dataset.msgId;
+        ws.send(JSON.stringify({_method: 'DELETE', id: id}));
+      }
+    }, false)
+  </script>
+</body>
+
+</html>

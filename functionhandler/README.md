@@ -116,8 +116,8 @@ String and byte outputs are rendered as-is. Other types (int, float, bool, datet
 - `datetime.datetime` and `np.datetime`: rendered as ISO date, e.g. `1997-07-16T19:20:30+01:00`
 - `list`, `tuple`, `np.ndarray`: rendered as JSON arrays, e.g. `[1, "abc", true]`
 - `dict`: rendered as JSON, e.g. `{"x": 1, "y": "abc"}`. Keys *must* be strings
-- `pd.DataFrame`: rendered as JSON via `.to_json(orient="records", date_format="iso")`
-
+- `pd.DataFrame`: rendered as JSON as an array of objects (index dropped). Individual values are converted as above
+- `pd.Series`: rendered as JSON as an `{index: value}` object. Individual values are converted as above
 
 ## HTTP methods
 

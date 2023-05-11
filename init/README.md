@@ -10,20 +10,21 @@ To start a Gramex project, run `gramex init` on your terminal. You should see an
 
 It initializes a `git` repository and creates these files:
 
+- `README.md`: project documentation
 - `gramex.yaml`: Gramex [configuration](../config/)
 - `index.html`: default home page
+- `login.html`: default login page
 - `style.scss`: custom SCSS styles page
-- `README.md`: project documentation
+- `template-navbar.html`: default navigation bar
+- `package.json`: [npm](https://www.npmjs.com/) package file with recommended dependencies
 
 ... and a set of configurations that help development.
 
-- `.editorconfig` [info](http://editorconfig.org/)
-- `.eslintrc.js` [info](https://eslint.org/docs/user-guide/configuring)
+- `.eslintrc.yml` [info](https://eslint.org/docs/user-guide/configuring)
 - `.flake8` [info](http://flake8.pycqa.org/en/latest/user/configuration.html)
 - `.gitignore` [info](https://git-scm.com/docs/gitignore)
 - `.gitlab-ci.yml` [info](https://docs.gitlab.com/ce/ci/yaml/)
-- `.htmllintrc` [info](https://github.com/htmllint/htmllint)
-- `.stylelintrc.js` [info](https://stylelint.io/user-guide/configuration/)
+- `.secrets.yml` [info](../deploy/#secretsyaml)
 
 Note: `gramex init` is **optional**. You can create a Gramex project from scratch by just creating
 an empty `gramex.yaml`.

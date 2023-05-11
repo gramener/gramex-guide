@@ -1,6 +1,33 @@
 {
   "releases": [
     {
+      "version": "v1.90.0",
+      "link": "https://gramener.com/gramex/guide/release/1.90/",
+      "title": "MessageHandler, WebsocketHandler arguments, and lighter gramex init",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.90/#messagehandler-for-live-communication",
+          "title": "MessageHandler for live communication",
+          "description": "MessageHandler is a publish-subscribe queue for secure, live communication between users."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.90/#websockethandler-arguments",
+          "title": "WebsocketHandler arguments",
+          "description": "WebsocketHandler now supports all BaseHandler attributes, including `handler.args`."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.90/#lighter-gramex-init",
+          "title": "Lighter gramex init",
+          "description": "gramex init is now lighter and more modern, with Bootstrap 5 support."
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.90/#gramex-features-formatting",
+          "title": "Gramex features formatting",
+          "description": "`gramex feature` now accepts a `--format=table|json|csv` argument."
+        }
+      ]
+    },
+    {
       "version": "v1.89.0",
       "link": "https://gramener.com/gramex/guide/release/1.89/",
       "title": "Case-insensitive search, distributed user logs, feature usage reports, and complexity reports",
@@ -13,12 +40,12 @@
         {
           "link": "https://gramener.com/gramex/guide/release/1.89/#distributed-user-logs",
           "title": "Distributed user logs",
-          "description": "Access and store user login/logout information in a single database for distributed access"
+          "description": "Access and store user login/logout information in a single database for distributed access."
         },
         {
           "link": "https://gramener.com/gramex/guide/release/1.89/#measure-gramex-usage",
           "title": "Measure Gramex usage",
-          "description": "Run `gramex features` on any Gramex app to list the features used"
+          "description": "Run `gramex features` on any Gramex app to list the features used."
         },
         {
           "link": "https://gramener.com/gramex/guide/release/1.89/#measure-code-complexity",
@@ -35,12 +62,12 @@
         {
           "link": "https://gramener.com/gramex/guide/release/1.88/#breakpoint-debugging",
           "title": "Breakpoint debugging",
-          "description": "Use any debugger via breakpoint() function"
+          "description": "Use any debugger via breakpoint() function."
         },
         {
           "link": "https://gramener.com/gramex/guide/release/1.88/#ide-templates",
           "title": "IDE templates",
-          "description": "Generate new project with minimal template for IDE"
+          "description": "Generate new project with minimal template for IDE."
         }
       ]
     },
@@ -52,17 +79,17 @@
         {
           "link": "https://gramener.com/gramex/guide/release/1.87/#formhandler-argument-type",
           "title": "FormHandler argument type",
-          "description": "Specify type conversions for URL query parameters"
+          "description": "Specify type conversions for URL query parameters."
         },
         {
           "link": "https://gramener.com/gramex/guide/release/1.87/#distributed-user-stores",
           "title": "Distributed user stores",
-          "description": "Save user data in remote databases to use across multiple instances"
+          "description": "Save user data in remote databases to use across multiple instances."
         },
         {
           "link": "https://gramener.com/gramex/guide/release/1.87/#flexible-delete",
           "title": "Flexible Delete",
-          "description": "FormHandler deletes rows exactly like filtering, without requiring primary keys"
+          "description": "FormHandler deletes rows exactly like filtering, without requiring primary keys."
         }
       ]
     },
@@ -74,17 +101,17 @@
         {
           "link": "https://gramener.com/gramex/guide/release/1.86/#api-rate-limits",
           "title": "API rate limits",
-          "description": "Every handler supports rate-limiting via the ratelimit config"
+          "description": "Every handler supports rate-limiting via the `ratelimit:` config."
         },
         {
           "link": "https://gramener.com/gramex/guide/release/1.86/#improved-filterhandler",
           "title": "Improved FilterHandler",
-          "description": "FilterHandler can numerical column ranges and process filters in-memory"
+          "description": "FilterHandler can numerical column ranges and process filters in-memory."
         },
         {
           "link": "https://gramener.com/gramex/guide/release/1.86/#non-root-docker-usage",
           "title": "Non-root Docker usage",
-          "description": "Gramex Docker builds allow installing npm packages as a non-root user"
+          "description": "Gramex Docker builds allow installing npm packages as a non-root user."
         }
       ]
     },
@@ -96,17 +123,17 @@
         {
           "link": "https://gramener.com/gramex/guide/release/1.85/#drivehandler-post-processing",
           "title": "DriveHandler post-processing",
-          "description": "DriveHandler can process a file after uploading, e.g. unzip it or test it"
+          "description": "DriveHandler can process a file after uploading, e.g. unzip it or test it."
         },
         {
           "link": "https://gramener.com/gramex/guide/release/1.85/#filterhandler-hierarchies",
           "title": "FilterHandler hierarchies",
-          "description": "FilterHandler can return unique values across multiple columns like hierarchies"
+          "description": "FilterHandler can return unique values across multiple columns like hierarchies."
         },
         {
           "link": "https://gramener.com/gramex/guide/release/1.85/#secure-docker-builds",
           "title": "Secure Docker build",
-          "description": "Gramex Docker builds are built on Alpine Linux and are free of known vulnerabilities on release"
+          "description": "Gramex Docker builds are built on Alpine Linux and are free of known vulnerabilities on release."
         }
       ]
     },
@@ -123,12 +150,12 @@
         {
           "link": "https://gramener.com/gramex/guide/release/1.84/#formhandler-date-comparison",
           "title": "FormHandler date comparison",
-          "description": "FormHandler parses date columns irrespective of input format"
+          "description": "FormHandler parses date columns irrespective of input format."
         },
         {
           "link": "https://gramener.com/gramex/guide/release/1.84/#deprecate-old-ui-libraries",
           "title": "Deprecate old UI libraries",
-          "description": "Applications should avoid using UI libraries from /ui/ and npm install their own"
+          "description": "Applications should avoid using UI libraries from /ui/ and npm install their own."
         }
       ]
     },
@@ -145,12 +172,12 @@
         {
           "link": "https://gramener.com/gramex/guide/release/1.83/#distributed-otp-and-api-keys",
           "title": "Distributed OTP and API keys",
-          "description": "OTPs and API keys can be stored in a remote database and shared across Gramex servers"
+          "description": "OTPs and API keys can be stored in a remote database and shared across Gramex servers."
         },
         {
           "link": "https://gramener.com/gramex/guide/release/1.83/#slim-docker-build",
           "title": "Slim Docker build",
-          "description": "The gramener/gramex-base image provides a Python-only build at half the size"
+          "description": "The gramener/gramex-base image provides a Python-only build at half the size."
         }
       ]
     },
@@ -260,7 +287,7 @@
         {
           "link": "https://gramener.com/gramex/guide/release/1.77/#session-cookies",
           "title": "Session cookies",
-          "description": "Gramex allows setting session cookies (that expire when the browser is closed, normally)"
+          "description": "Gramex allows setting session cookies (that expire when the browser is closed, normally)."
         }
       ]
     },
@@ -272,12 +299,12 @@
         {
           "link": "https://gramener.com/gramex/guide/release/1.76/#gramex-is-ready-for-python-3-9",
           "title": "Python 3.9 support",
-          "description": "Gramex runs on Python 3.7, 3.8, 3.9"
+          "description": "Gramex runs on Python 3.7, 3.8, 3.9."
         },
         {
           "link": "https://gramener.com/gramex/guide/scheduler/",
           "title": "Second-level scheduler",
-          "description": "Scheduler runs at a 1-second granularity"
+          "description": "Scheduler runs at a 1-second granularity."
         }
       ]
     },

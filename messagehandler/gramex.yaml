@@ -1,0 +1,29 @@
+email:
+  gramex-guide-messages:
+    type: gmail
+    email: gramex.guide@gmail.com       # Generic email ID used to test e-mails
+    password: tlpmupxnhucitpte          # App-specific password created for Gramex guide
+
+url:
+  messagehandler/comments:
+    pattern: /$YAMLURL/messages
+    handler: MessageHandler
+    kwargs:
+      url: sqlite:///$YAMLPATH/messages.db
+      table: messages
+      columns:
+        scope: TEXT
+        body: TEXT
+        length: INTEGER
+        to: TEXT
+      alert:
+        service: gramex-guide-messages
+        to: '{{ to }}'
+        subject: 'Message: {{ body }}'
+        html: >
+          {% import pandas as pd %}
+          {% import time %}
+          <p>Message from {{ user }} at {{ pd.to_datetime(time.time() * 1E9).strftime('%d %b %Y %H:%M') }}.</p>
+          <p>{{ body }}</p>
+      prepare: msg.setdefault('length', len(msg.get('body', '')))
+      modify: json.dump(msg, open(r"$YAMLPATH/last-message.log", "w"))
