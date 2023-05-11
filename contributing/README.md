@@ -94,7 +94,7 @@ NOSE_WITH_TIMER=1 nosetests         # Show time taken for each test
 
 Run tests:
 
-1. Update Gramex version number in `pyproject.toml`, `gramex/__init__.py`, and `gramex/apps.yaml`
+1. Update Gramex version number in `pyproject.toml` and `gramex/__init__.py`.
 2. Test the `master` branch locally on Python >= 3.7
 
 ```bash
