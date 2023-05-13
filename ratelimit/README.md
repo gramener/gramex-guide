@@ -9,9 +9,9 @@ type: component
 
 [TOC]
 
-## Rate Limit
+## Rate limit
 
-Every handler supports rate-limiting via the `ratelimit` config.
+**v1.86**. Every handler supports rate-limiting via the `ratelimit` config.
 For example, this allows **50** hits per **user** per **day**:
 
 ```yaml
@@ -29,6 +29,8 @@ url:
 ::: example href=example source=https://github.com/gramener/gramex-guide/blob/master/ratelimit/gramex.yaml
     Rate limit example
 
+
+## Rate limit keys
 
 `keys` define how to rate-limit. It's an array of strings, or a comma-separated list of strings:
 
@@ -73,6 +75,8 @@ url:
           - function: int(pd.Timestamp.utcnow().timestamp() / 24 / 60 / 60 / 10)
 ```
 
+## Rate limit limit
+
 `limit` is the maximum number of successful requests to the page. This can be a number, or a function that returns a number. For example:
 
 ```yaml
@@ -81,6 +85,8 @@ url:
 # Limit to 50 for logged-in users, 10 for others
         limit: {function: 50 if handler.current_user else 10}
 ```
+
+## Rate limit headers
 
 On each request, Gramex computes the `keys` and `limit`, looks up usage for that key, and sets these HTTP headers:
 
@@ -92,6 +98,8 @@ On each request, Gramex computes the `keys` and `limit`, looks up usage for that
 If the usage exceeds the limit, Gramex raises a [HTTP 429 Too Many Requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) response. This can be formatted via a custom error page.
 
 If the response is successful, the usage increments by 1. If the response is a HTTP 5xx or HTTP 4xx, usage stays the same.
+
+## Rate limit pools
 
 If a single API has multiple URLs (e.g. `/api1`, `/api2`, etc), add the same `ratelimit.pool:` to all. This combines their usage. For example:
 
@@ -117,6 +125,8 @@ url:
 
 Calling `/api1` and `api2` increase the SAME usage counter by 1.
 
+## Rate limit reset
+
 To reset the API usage for any key, call `handler.ratelimit_reset(pool, keys)` from any
 [FunctionHandler](../functionhandler/).
 For example, this sets the usage of `x@example.com` on `2022-01-01` to zero.
@@ -125,7 +135,7 @@ For example, this sets the usage of `x@example.com` on `2022-01-01` to zero.
 handler.ratelimit_reset('my-api-pool', ['2022-01-01', 'x@example.com'])
 ```
 
-## Rate Limit store
+## Rate limit store
 
 Rate limit usage data is stored in a cache.
 It's location is defined in `app.ratelimit` in Gramex's own `gramex.yaml`:
@@ -152,3 +162,33 @@ app:
     # flush: 30   # Redis stores are live. No flush required
     purge: 3600
 ```
+
+## Multiple rate limits
+
+**v1.91**. `ratelimit` can be an array of rate limit configurations. For example, to set 2 limit:
+
+- 10 requests / user / day
+- 100 requests / day globally
+
+```yaml
+      ratelimit:
+        - pool: daily-user-pool
+          keys: [daily, user]
+          limit: 30
+        - pool: daily-pool
+          keys: [daily]
+          limit: 100
+```
+
+1. When Alice visits, her `daily-user-pool` becomes 9, and the `daily-pool` becomes 99
+2. When Bob visits, his `daily-user-pool` becomes 9, and the `daily-pool` becomes 98
+3. When Alice visits again, her `daily-user-pool` becomes 8, and the `daily-pool` becomes 97
+4. ...
+
+The [Rate limit headers](#rate-limit-headers) are computed from the smallest remaining pool.
+
+- In Step 3 above, `daily-user-pool` has 8 remaining (less than `daily-pool` with 97). So `daily-user-pool` is used and `X-RateLimit-Remaining` header is 8, not 97.
+- But if `daily-user-pool` has 8 remaining but `daily-pool` as only 5, the `X-RateLimit-Remaining` header would be 7.
+  `X-Ratelimit-Limit` and `X-Ratelimit-Reset` are computed from the `daily-pool`.
+
+You can [reset rate limits](#rate-limit-reset) for each pool independently.
