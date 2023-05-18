@@ -2275,3 +2275,67 @@ url:
           donkey: king                          # This condition will usually be false
         template: $YAMLPATH/403-template.html   # Render template for forbidden users
 ```
+
+## Roles and Permissions
+
+You can use `auth:` to restrict access to specific roles or permissions using the condition in auth.
+For example,
+
+```yaml
+url:
+  auth/secret1:
+    pattern: /$YAMLURL/secret1
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/secret1.html
+      auth:
+        condition:
+          function: "ADMIN" in handler.current_user.roles 
+  auth/secret2:
+    pattern: /$YAMLURL/secret2
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/secret2.html
+      auth:
+        condition:
+          function: "VIEW_SECRETS" in handler.current_user.permissions
+```
+
+This roles and permissions model uses a new database specified by storelocations.roles.
+This database can be overriden by specifying a new storelocation in gramex.yaml, as follows.
+
+```yaml
+variables:
+  AUTHDB: sqlite:///$YAMLPATH/auth.db
+
+storelocations:
+  permissions:
+    url: $AUTHDB
+    table: permissions
+    columns:
+      app: TEXT
+      namespace: TEXT
+      project: TEXT
+      role: TEXT
+      permission: TEXT
+  roles:
+    url: $AUTHDB
+    table: roles
+    columns:
+      app: TEXT
+      namespace: TEXT
+      project: TEXT
+      role: TEXT
+      user: TEXT
+  user_permissions:
+    url: $AUTHDB
+    table: user_permissions
+    columns:
+      app: TEXT
+      namespace: TEXT
+      project: TEXT
+      user: TEXT
+      permission: TEXT
+```
+
+This database supports multitenant multiapplication roles and permissions.
