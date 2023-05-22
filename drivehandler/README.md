@@ -255,7 +255,7 @@ To rename a file or update any other attributes, submit a PUT HTTP request with 
 
 ```js
 $.ajax('drive', {
-  type: 'DELETE',
+  type: 'PUT',
   data: {
     id: existing_file_id,
     file: 'new-file-name.ext',
