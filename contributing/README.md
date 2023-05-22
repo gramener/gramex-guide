@@ -260,3 +260,12 @@ Select "Share" on the YouTube video and copy the link, e.g. `https://youtu.be/hS
 ```markdown
 [Video](https://youtu.be/hSwQQ2wOmIk){.youtube}
 ```
+
+
+## Docstrings
+
+Docstrings are written in Markdown and compiled using [MkDocs](https://www.mkdocs.org/).
+
+- Compile by running `bash task docs`
+- Write docstrings in the [Google Style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html)
+- Write cross-references as [Python paths](https://mkdocstrings.github.io/usage/#cross-references)
