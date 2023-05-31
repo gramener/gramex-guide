@@ -163,6 +163,23 @@ app:
     purge: 3600
 ```
 
+## Access rate limits
+
+**v1.91**. You can access rate limits for the current request via `handler.get_ratelimit()`. This
+returns a rate limit object like this:
+
+```python
+{
+  "limit": 3,     # the limit on the rate limit
+  "usage": 2,     # the usage so far  (BEFORE current request, e.g. 0, 1, 2, 3, ...)
+  "remaining": 0, # remaining requests (AFTER current request, e.g. 2, 1, 0, 0, ...)
+  "expiry": 103,  # seconds to expiry for this rate limit
+}
+```
+
+If there are [multiple rate limits](#multiple-rate-limits), it picks the one with least remaining usage.
+
+
 ## Multiple rate limits
 
 **v1.91**. `ratelimit` can be an array of rate limit configurations. For example, to set 2 limit:
