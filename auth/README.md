@@ -2022,15 +2022,14 @@ url:
           function: handler.current_user.id.endswith('@example.com')
 ```
 
-When the user visits `/api/v1?gramex-key=<key>`,
-`handler.current_user` becomes the `user` object (i.e. `{id: 'user@example.com'}`).
+You can pass the API key in 2 ways:
 
-Note: `?gramex-key=` is a special key Gramex uses across all URLs. Instead of `?gramex-key=<key>`, users can also send the HTTP header `X-Gramex-Key: <key>`.
+1. Add the URL parameter `?gramex-key=<key>`, e.g. `/api/v1?gramex-key=<key>`
+2. Send the HTTP header `X-Gramex-Key: <key>` with the URL `/api/v1`
 
-You can restrict API usage with the [`auth:` kwarg](#roles).
+In either case, `handler.current_user` becomes the `user` object (i.e. `{id: 'user@example.com'}`).
 
-You can restrict API usage or take actions based on `handler.current_user` in your
-code `my_api.get_users(handler)`
+Gramex now behaves exactly as if that user had logged in. E.g. [roles](#roles) work as expected.
 
 ::: example href=apikey source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
     Try the API key example
