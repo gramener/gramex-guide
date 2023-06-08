@@ -1,6 +1,23 @@
 {
   "releases": [
     {
+      "version": "v1.91.0",
+      "link": "https://gramener.com/gramex/guide/release/1.91/",
+      "title": "Multiple rate limits, Better test cases",
+      "features": [
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.90/#messagehandler-for-live-communication",
+          "title": "Multiple rate limits",
+          "description": ""
+        },
+        {
+          "link": "https://gramener.com/gramex/guide/release/1.91/#better-test-cases",
+          "title": "Better test cases",
+          "description": ""
+        }
+      ]
+    },
+    {
       "version": "v1.90.0",
       "link": "https://gramener.com/gramex/guide/release/1.90/",
       "title": "MessageHandler, WebsocketHandler arguments, and lighter gramex init",
