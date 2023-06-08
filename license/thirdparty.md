@@ -22,6 +22,7 @@ Gramex uses open source third party libraries that use one of these licenses:
 <!-- Keep this in sync with gramex/pyproject.toml -->
 
 - [astor](https://pypi.python.org/pypi/argh/): [LGPL license][LGPL]
+- [blinker](https://pypi.python.org/pypi/blinker/): [MIT license][MIT]
 - [cachetools](https://pypi.python.org/pypi/cachetools/): [MIT license][MIT]
 - [colorama](https://pypi.python.org/pypi/colorama/): [BSD license][BSD]
 - [colorlog](https://pypi.python.org/pypi/colorlog/): [MIT license][MIT]
