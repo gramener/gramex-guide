@@ -8,17 +8,39 @@ prefix: 1.91
 Gramex 1.91 adds multiple rate limits and better test cases.
 
 ## Multiple rate limits
+Rate limit now supports multiple configuration values.
 
+`ratelimit` can be an array of rate limit configurations. For example, to set 2 limit:
 
+- 10 requests / user / day
+- 100 requests / day globally
 
+```yaml
+      ratelimit:
+        - pool: daily-user-pool
+          keys: [daily, user]
+          limit: 30
+        - pool: daily-pool
+          keys: [daily]
+          limit: 100
+```
 
-## Better test cases
+To get ratelimit info use `handler.get_ratelimit()`
+
+More details about `ratelimit` can be found [here](../../ratelimit/)
+
+## Pytest based testing
+
+Earlier we used [nosetests](https://nose.readthedocs.io/en/latest/) to run gramex test cases. We are migrating to use [pytest](https://docs.pytest.org/). 
+
+`nosetests` used to run `gramex`. Now, we run `gramex` and THEN run `pytest`. 
+
+Advantage: clean shutdown of the tests. (nosetests sometimes doesn't cleanly shutdown)
 
 
 ## Bug fixes
 
-FIX: HTTP 403 template works with any user object. Fixes #731
-
+- HTTP 403 template now works with any user object [#731](https://github.com/gramener/gramex/issues/731)
 
 ## Backward compatibility & security
 
