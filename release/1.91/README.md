@@ -5,7 +5,7 @@ prefix: 1.91
 
 [TOC]
 
-Gramex 1.91 adds multiple rate limits and better test cases.
+Gramex 1.91 adds multiple rate limits and Pytest based testing.
 
 ## Multiple rate limits
 Rate limit now supports multiple configuration values.
