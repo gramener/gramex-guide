@@ -8,6 +8,7 @@ prefix: 1.91
 Gramex 1.91 adds multiple rate limits and Pytest based testing.
 
 ## Multiple rate limits
+
 Rate limit now supports multiple configuration values.
 
 `ratelimit` can be an array of rate limit configurations. For example, to set 2 limit:
@@ -25,15 +26,16 @@ Rate limit now supports multiple configuration values.
           limit: 100
 ```
 
-To get ratelimit info use `handler.get_ratelimit()`
+You can now use [`handler.get_ratelimit()`](../../ratelimit/#access-rate-limits) to access the rate limit for the current request.
 
-More details about `ratelimit` can be found [here](../../ratelimit/)
+More details about `ratelimit` can be found [here](../../ratelimit/#multiple-rate-limits)
 
 ## Pytest based testing
 
-Earlier we used [nosetests](https://nose.readthedocs.io/en/latest/) to run gramex test cases. We are migrating to use [pytest](https://docs.pytest.org/). 
+As we migrate from the [unmaintained nosetests](https://nose.readthedocs.io/en/latest/) to [pytest](https://docs.pytest.org/),
+we were running only pure Python tests with `pytest`.
 
-`nosetests` used to run `gramex`. Now, we run `gramex` and THEN run `pytest`. 
+Now, we run Gramex tests with `pytest` too. We first run `gramex` to start the server, then run `pytest`, then shut down the server.
 
 Advantage: clean shutdown of the tests. (nosetests sometimes doesn't cleanly shutdown)
 
