@@ -2074,6 +2074,41 @@ can point to any existing table with these columns too:
 - `token`: TEXT
 - `expire`: REAL
 
+## OTP custom keys
+
+OTPs and API keys store a user object as JSON. You can add additional keys to this object with this configuration.
+
+```yaml
+storelocations:
+  otp:
+    columns:
+      role: TEXT
+      group: TEXT
+```
+
+The `columns:` are specified like [FormHandler columns](https://gramener.com/gramex/guide/formhandler/#formhandler-columns).
+
+You can populate these columns using keyword arguments to `handler.otp()` and `handler.api_key()`
+
+```python
+handler.otp(user={"id": "alpha"}, role="admin", group="all")
+# OR...
+handler.api_key(user={"id": "alpha"}, role="admin", group="all")
+```
+
+When the user logs in with the OTP or API key, the user object will be
+
+```json
+{"id": "alpha", "role": "admin", "group": "all"`}
+```
+
+Of course, this could also be written as
+
+```python
+handler.otp(user={"id": "alpha", "role": "admin", "group": "all"`})
+```
+But using columns like this makes it easy to query fields, e.g. to delete OTPs for all `role="admin"`.
+
 
 # Authorization
 
