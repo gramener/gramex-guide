@@ -131,7 +131,7 @@ Once you import the File Manager, the File Manager component can be embedded in 
 <div class="filemanager" data-src="drive"></div>
 <script>
   Dropzone.autodiscover = false
-  var options = {}
+  const options = {}
   $('.filemanager').filemanager(options)
 </script>
 ```
@@ -139,7 +139,7 @@ Once you import the File Manager, the File Manager component can be embedded in 
 `$().filemanager()` accepts the same parameters as [FormHandler](../g1/formhandler). For example:
 
 ```js
-var options = {
+const options = {
   pageSize: 10,           // Show 10 files at most
   columns: [              // Choose the columns, order of display and title
     { name: "file", title: 'File name' },
@@ -241,9 +241,13 @@ You can use [FormHandler filters](../formhandler/#formhandler-filters) to filter
 To delete a file, submit a DELETE HTTP request with an `id:` key. For example:
 
 ```js
-$.ajax('delete', {
-  type: 'DELETE',
-  data: {id: existing_file_id}
+fetch('delete', {
+  method: 'DELETE',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    // Note: values MUST be arrays
+    id: [existing_file_id],
+  })
 })
 ```
 
@@ -254,14 +258,16 @@ This is exactly how [FormHandler DELETE](../formhandler/#formhandler-delete) wor
 To rename a file or update any other attributes, submit a PUT HTTP request with an `id:` key. For example:
 
 ```js
-$.ajax('drive', {
-  type: 'PUT',
-  data: {
-    id: existing_file_id,
-    file: 'new-file-name.ext',
-    ext: '.ext',
-    desc: 'new desc'
-  }
+fetch('drive', {
+  method: 'PUT',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    // Note: values MUST be arrays
+    id: [existing_file_id],
+    file: ['new-file-name.ext'],
+    ext: ['.ext'],
+    desc: ['new description'],
+  })
 })
 ```
 
@@ -270,14 +276,12 @@ Note: You cannot change a file's `id`, `path`, `size` and `date`, nor the `user_
 You can **overwrite a file** with a PUT request. For example:
 
 ```js
-var formData = new FormData()
+const formData = new FormData()
 formData.append('id', existing_file_id)
 formData.append('file', document.querySelector('input#file').files[0], 'filename.ext')
-$.ajax('drive', {
-    type: 'PUT',
-    data: formData,
-    contentType: false,
-    processData: false,
+fetch('drive', {
+  method: 'PUT',
+  body: formData,
 })
 ```
 

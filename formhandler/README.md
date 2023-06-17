@@ -645,9 +645,10 @@ To redraw the chart with new data (e.g. `vega-1?_format=barchart&Continent!=Afri
 
 ```js
 var url = 'vega-1?_format=json&Continent!=Africa'
-$.getJSON(url)
-  .done(function(new_data) {
-    var view = document.querySelector('#chart1').vega
+fetch(url)
+  .then(r => r.json())
+  .then(function(new_data) {
+    const view = document.querySelector('#chart1').vega
     // Suppose, Vega spec in above example uses `data` as (name)[https://vega.github.io/vega/docs/data/]
 
     // Remove old data from namespace `data`
@@ -1627,17 +1628,15 @@ These two approaches are the same:
 
 ```js
 // Send using `application/www-url-form-encoded` or `multipart/form-data`
-$.ajax('flags-edit', {
+fetch('flags-edit?ID=XXX&Name=Country 1', {
   method: 'PUT',
-  data: {ID: 'XXX', Name: 'Country 1'}
 })
 
 // Send using `application/json`
-$.ajax('flags-edit', {
+fetch('flags-edit', {
   method: 'PUT',
-  contentType: 'application/json',
-  dataType: 'json',
-  data: JSON.stringify({ID: ['XXX'], Name: ['Country 1']})    // Note: values are arrays
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ID: ['XXX'], Name: ['Country 1']})    // Note: values are arrays
 })
 ```
 
