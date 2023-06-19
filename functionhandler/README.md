@@ -410,7 +410,7 @@ resolved. (Yielded Futures will be rendered in the same order as they are
 yielded.)
 
 ::: example href="slow?x=1&x=2&x=3" source="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py"
-    Trye `slow?x=1&x=2&x=3`
+    Try `slow?x=1&x=2&x=3`
 
 ## Asynchronous functions
 

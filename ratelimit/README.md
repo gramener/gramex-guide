@@ -35,10 +35,11 @@ url:
 `keys` define how to rate-limit. It's an array of strings, or a comma-separated list of strings:
 
 ```yaml
-# Set a weekly limit by user
+        # Set a weekly limit by user
         keys: [weekly, user]
-        keys: weekly, user  # same as above
-# Set a daily limit globally
+        # Another way to set weekly limit by user
+        keys: weekly, user
+        # Set a daily limit globally
         keys: [daily]
 ```
 
@@ -62,17 +63,31 @@ url:
   - `cookies.<key>`: A specific cookie. E.g. `cookie.sid` is the session ID cookie
   - `env.<key>`: An environment variable. E.g. `env.HOME` logs the user’s home directory
 
+## Ratelimit key functions
+
 `keys` can also be defined with functions. For example:
 
 ```yaml
-# Restrict by user's email domain name, daily
         keys:
-          - daily
+          # Restrict by user's email domain name
           - function: handler.current_user.email.split('@')[-1]
-# Refresh every 10 days per user. Divide seconds since epoch by 10 days. Round down
+          # Refresh every 10 days
+          - function: pd.Timestamp.utcnow().ceil(freq='10D').isoformat()
+            expiry: int((pd.Timestamp.utcnow().ceil(freq='10D') - pd.Timestamp.utcnow()).total_seconds())
+          # Refresh every 30 minutes
+          - function: pd.Timestamp.utcnow().ceil(freq='30T').isoformat()
+            expiry: int((pd.Timestamp.utcnow().ceil(freq='30T') - pd.Timestamp.utcnow()).total_seconds())
+```
+
+- `function` returns the key
+- `expiry` returns the seconds to expiry. If this is not set, the key never expires.
+
+**v1.92**. Use `key: expression` to define a time-based keys like `hourly`, `daily`, `weekly`, `monthly` or `yearly`:
+
+```yaml
         keys:
-          - user
-          - function: int(pd.Timestamp.utcnow().timestamp() / 24 / 60 / 60 / 10)
+          # Set different frequencies for different users
+          - key: 'daily' if handler.current_user['role'] == 'admin' else 'monthly'
 ```
 
 ## Rate limit limit
