@@ -154,8 +154,29 @@ For example, Pandas DataFrames are converted into JSON as an array of objects.
 
 The behavior for Pandas Series was not documented, but it was returned as a list of values.
 
+For example, this FunctionHandler:
+
+```yaml
+url:
+  series:
+    pattern: /series
+    handler: FunctionHandler
+    kwargs:
+      function: 'pd.Series({"x": 1, "y": 2, "z": 3}'
+```
+
+... would return:
+
+```json
+[1, 2, 3]
+```
+
 Now, FunctionHandler returns Pandas Series as an `{index: value}` object. This preserves the
 index, which is often useful for a series. (The index remains ignored for DataFrames.)
+
+```json
+{"x": 1, "y": 2, "z": 3}
+```
 
 ## Backward compatibility & security
 

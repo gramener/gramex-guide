@@ -39,6 +39,17 @@ Now, we run Gramex tests with `pytest` too. We first run `gramex` to start the s
 
 Advantage: clean shutdown of the tests. (nosetests sometimes doesn't cleanly shutdown)
 
+```text
+================ test session starts ======================
+platform win32 -- Python 3.9.13, pytest-7.2.0, pluggy-1.0.0
+rootdir: C:\site\gramener.com\viz\async-gramex, configfile: pyproject.toml, testpaths: pytest
+plugins: anyio-3.6.2, typeguard-4.0.0, yamlns-0.11.0
+collected 53 items
+
+pytest\test_chatgpthandler.py ..........      [ 18%]
+pytest\test_cli.py .....                      [ 28%]
+pytest\test_data.py .....................     [ 67%]
+```
 
 ## Bug fixes
 
