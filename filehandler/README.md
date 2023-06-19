@@ -534,7 +534,24 @@ kwargs:
     ts: '*.ts'      # Compile .ts files into JS
 ```
 
+Gramex uses [esbuild](https://esbuild.github.io/api/) to compile TypeScript. The following options are supported:
+
+- [`?format=`](https://esbuild.github.io/api/#format): `iife` (default) or `esm`
+  - `<script type="module" src="file.ts?format=esm">` imports the script as ESM
+  - `<script src="file.ts?global-name=myname">` imports the script with exported functions under `myname`
+- [`?global-name=`](https://esbuild.github.io/api/#global-name): name of the global variable to export (for `?format=iife`)
+- [`?bundle=`](https://esbuild.github.io/api/#bundle): `true` (default) inlines all dependencies. `false` does not
+- [`?minify=`](https://esbuild.github.io/api/#minify): `true` (default) minifies the output. `false` does not
+- [`?target=`](https://esbuild.github.io/api/#target): `esnext` (default). Can also be `es2020`, `chrome58`, `edge15`, etc.
+- [`?charset=`](https://esbuild.github.io/api/#charset): `utf8` (default)
+- [`?keep-names=`](https://esbuild.github.io/api/#keep-names): `false` (default) does not preserve function names when minified. `true` does
+- [`?drop:debugger=`](https://esbuild.github.io/api/#drop): `false` (default) does not drop debugger statements. `true` does
+- [`?drop:console=`](https://esbuild.github.io/api/#drop): `false` (default) does not drop console statements. `true` does
+
 ## Vue
+
+**v1.92** Vue compilation is deprecated and removed.
+[Import Vue 3 SFCs directly](https://vuejs.org/guide/extras/web-components.html#building-custom-elements-with-vue).
 
 FileHandler can compile [Vue single-file components](https://vuejs.org/v2/guide/single-file-components.html).
 The default FileHandler compiles any `.vue` file into CSS. For example, this `hello-world.vue` file:
