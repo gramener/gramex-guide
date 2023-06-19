@@ -1,5 +1,7 @@
+# Ignore conda dependencies. These take too long to re-run on production
+# conda install -y -q -c r rpy2 r-ggplot2
+
 # Add guide-specific dependencies
-conda install -y -q -c r rpy2 r-ggplot2
 pip install -r requirements.txt
 
 # Set up apps
