@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatGPTHandler demo</title>
+  <link rel="stylesheet" href="../style.scss">
+  <style>
+    #output { white-space: pre-wrap; }
+  </style>
+</head>
+
+<body class="container">
+
+  <nav class="py-4">
+    <a href=".">Back to ChatGPTHandler</a>
+  </nav>
+
+  <section>
+    <h1>Chat</h1>
+
+    <div id="modelname"></div>
+    <pre id="output"></pre>
+
+    <form class="row row-cols-lg-auto g-3 align-items-center mb-3" id="model-picker">
+      <div class="col-12">
+        <label class="visually-hidden" for="key">OpenAI API key</label>
+        <input type="text" class="form-control" id="key" placeholder="Type your API key">
+      </div>
+      <div class="col-12">
+        <label class="visually-hidden" for="model">Model</label>
+        <select class="form-select" id="model">
+          <option>gpt-3.5-turbo</option>
+          <option>gpt-3.5-turbo-16k</option>
+          <option>gpt-4</option>
+          <option>gpt-4-32k</option>
+        </select>
+      </div>
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="stream">
+          <label class="form-check-label" for="stream">
+            Streaming
+          </label>
+        </div>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Connect</button>
+      </div>
+    </form>
+
+    <form class="row row-cols-lg-auto g-3 align-items-center d-none" id="chat">
+      <div class="col-12">
+        <label class="visually-hidden" for="input">Chat</label>
+        <input type="text" class="form-control" id="input" value="What rhymes with milk?" placeholder="Say something">
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Send</button>
+      </div>
+    </form>
+
+    <script type="module">
+      let ws;
+
+      // When user submits their API key
+      document.querySelector('#model-picker').addEventListener("submit", e => {
+        e.preventDefault();
+        // Set up the ChatGPTHandler websocket
+        const key = e.target.querySelector("#key").value;
+        const model = e.target.querySelector("#model").value;
+        const stream = e.target.querySelector("#stream").checked;
+        const url = location.href.replace(/^http/, 'ws').replace(/\/[^/]*$/, '/chat');
+        const params = `?key=${encodeURIComponent(key)}&model=${encodeURIComponent(model)}` + (stream ? '&stream' : '');
+        ws = new WebSocket(url + params);
+        ws.onmessage = (event) => output.insertAdjacentHTML('beforeend', event.data || '\n\n');
+
+        // Hide the form and show the chat interface
+        document.querySelector("#modelname").textContent = `Model: ${model}`
+        e.target.classList.toggle("d-none", true);
+        document.querySelector("#chat").classList.toggle("d-none", false);
+      })
+
+      const input = document.querySelector('#input');
+      const output = document.querySelector('#output');
+      // When the user types a chat message, render the message and send it to the server
+      document.querySelector('#chat').addEventListener('submit', e => {
+        e.preventDefault()
+        ws.send(input.value)
+        output.insertAdjacentHTML('beforeend', `\nYOU SAID: ${input.value}\n\n`);
+        input.value = "";
+        input.focus();
+      }, false);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+url:
+  chatgpthandler/chat:
+    pattern: /$YAMLURL/chat
+    handler: ChatGPTHandler
+    kwargs:
+      key:
+        function: "handler.get_arg('key', '')"
+      model:
+        function: "handler.get_arg('model', 'gpt-3.5-turbo')"
+      stream:
+        function: "'stream' in handler.args"
