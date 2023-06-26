@@ -7,7 +7,9 @@
   <title>ChatGPTHandler demo</title>
   <link rel="stylesheet" href="../style.scss">
   <style>
-    #output { white-space: pre-wrap; }
+    #output {
+      white-space: pre-wrap;
+    }
   </style>
 </head>
 
@@ -59,39 +61,40 @@
         <button type="submit" class="btn btn-primary">Send</button>
       </div>
     </form>
+  </section>
 
-    <script type="module">
-      let ws;
+  <script type="module">
+    let ws;
 
-      // When user submits their API key
-      document.querySelector('#model-picker').addEventListener("submit", e => {
-        e.preventDefault();
-        // Set up the ChatGPTHandler websocket
-        const key = e.target.querySelector("#key").value;
-        const model = e.target.querySelector("#model").value;
-        const stream = e.target.querySelector("#stream").checked;
-        const url = location.href.replace(/^http/, 'ws').replace(/\/[^/]*$/, '/chat');
-        const params = `?key=${encodeURIComponent(key)}&model=${encodeURIComponent(model)}` + (stream ? '&stream' : '');
-        ws = new WebSocket(url + params);
-        ws.onmessage = (event) => output.insertAdjacentHTML('beforeend', event.data || '\n\n');
+    // When user submits their API key
+    document.querySelector('#model-picker').addEventListener("submit", e => {
+      e.preventDefault();
+      // Set up the ChatGPTHandler websocket
+      const key = e.target.querySelector("#key").value;
+      const model = e.target.querySelector("#model").value;
+      const stream = e.target.querySelector("#stream").checked;
+      const url = location.href.replace(/^http/, 'ws').replace(/\/[^/]*$/, '/chat');
+      const params = `?key=${encodeURIComponent(key)}&model=${encodeURIComponent(model)}` + (stream ? '&stream' : '');
+      ws = new WebSocket(url + params);
+      ws.onmessage = (event) => output.insertAdjacentHTML('beforeend', event.data || '\n\n');
 
-        // Hide the form and show the chat interface
-        document.querySelector("#modelname").textContent = `Model: ${model}`
-        e.target.classList.toggle("d-none", true);
-        document.querySelector("#chat").classList.toggle("d-none", false);
-      })
+      // Hide the form and show the chat interface
+      document.querySelector("#modelname").textContent = `Model: ${model}`
+      e.target.classList.toggle("d-none", true);
+      document.querySelector("#chat").classList.toggle("d-none", false);
+    })
 
-      const input = document.querySelector('#input');
-      const output = document.querySelector('#output');
-      // When the user types a chat message, render the message and send it to the server
-      document.querySelector('#chat').addEventListener('submit', e => {
-        e.preventDefault()
-        ws.send(input.value)
-        output.insertAdjacentHTML('beforeend', `\nYOU SAID: ${input.value}\n\n`);
-        input.value = "";
-        input.focus();
-      }, false);
-    </script>
+    const input = document.querySelector('#input');
+    const output = document.querySelector('#output');
+    // When the user types a chat message, render the message and send it to the server
+    document.querySelector('#chat').addEventListener('submit', e => {
+      e.preventDefault()
+      ws.send(input.value)
+      output.insertAdjacentHTML('beforeend', `\nYOU SAID: ${input.value}\n\n`);
+      input.value = "";
+      input.focus();
+    }, false);
+  </script>
 
 </body>
 
