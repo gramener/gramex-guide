@@ -16,6 +16,7 @@ globals:
   ClipboardJS: readonly
   g1: readonly
   moment: readonly
+  Sentry: readonly
   SwaggerUIBundle: readonly
 # Check JS inside HTML files. Strips Tornado templates {{ ... }}, {% ... %}, etc
 plugins: [html, template]
