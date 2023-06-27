@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }}</title>
   <link rel="stylesheet" href="/{{ GUIDE_ROOT }}/style.scss">
+  {# https://gramex.sentry.io/projects/cto-gramex-guide/ -- log in with @gramener.com ID #}
+  <script src="https://js.sentry-cdn.com/9b92af3f0aa84f21b30adbde0aee6371.min.js" crossorigin="anonymous"></script>
+  {% set user_email = handler.current_user.get('email', '') if handler.current_user else '' %}
+  <script>
+    Sentry.onLoad(function() {
+      Sentry.init({
+        integrations: [new Sentry.Replay({ maskAllText: false, blockAllMedia: true })],
+      });
+      Sentry.setUser({ email: '{{ user_email }}' });
+    });
+  </script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-42126862-1"></script>
   <script>
@@ -13,7 +24,7 @@
     function gtag() { dataLayer.push(arguments) }
     gtag('js', new Date())
     gtag('config', 'UA-42126862-1')
-    gtag('set', { 'user_id': '{% try %}{{ handler.current_user.email }}{% except %}{% end %}' })
+    gtag('set', { 'user_id': '{{ user_email }}' })
   </script>
   <script src="/{{ GUIDE_ROOT }}/ui/jquery/dist/jquery.min.js"></script>
   <script src="/{{ GUIDE_ROOT }}/ui/bootstrap5/dist/js/bootstrap.bundle.min.js"></script>
