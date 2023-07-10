@@ -5,6 +5,7 @@ prefix: Release
 
 ## Release Notes
 
+- [v1.92.0: ChatGPT Handler, OTP Custom Keys, Excel Huperlink Support](1.92/) <small>5 Jul 2023</small>
 - [v1.91.0: Multiple rate limits, Pytest based testing](1.91/) <small>8 Jun 2023</small>
 - [v1.90.0: MessageHandler, Websocket arguments, lighter gramex init](1.90/) <small>8 May 2023</small>
 - [v1.89.0: Case-insensitive search, distributed user logs, feature usage reports](1.89/) <small>10 Apr 2023</small>
