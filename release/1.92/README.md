@@ -26,9 +26,7 @@ This opens a WebSocket connection to `/chat`. You can read more about how to sen
 
 ## OTP custom keys
 
-OTPs and API keys store a user object as JSON. 
-You can add additional keys to this object with this configuration.
-
+OTPs and API keys store a user JSON object. You can pass additional keys to this object using the `columns` configuration.
 
 ```yaml
 storelocations:
@@ -42,18 +40,38 @@ You can populate these columns using keyword arguments to `handler.otp()` and `h
 
 ## Excel hyperlink support in gramex.cache.open()
 
-`gramex.cache.open()` now offers support to extract hyperlinks from an excel column
+`gramex.cache.open()` now extracts hyperlinks from an Excel column. For example, this Excel file `city-sales.xlsx` has a "City" column with hyperlinks.
 
+| Country | City                                                      | Sales |
+|---------|-----------------------------------------------------------|-------|
+| Italy   | <a href="https://en.wikipedia.org/wiki/Rome">Rome</a>     | 10    |
+| Norway  | <a href="https://en.wikipedia.org/wiki/Oslo">Oslo</a>     | 20    |
+| UK      | <a href="https://en.wikipedia.org/wiki/London">London</a> | 30    |
+| France  | <a href="https://en.wikipedia.org/wiki/Paris">Paris</a>   | 40    |
 
-For example, `gramex.cache.open('file.xlsx', extractLink={'issue': 'issue_url', 'website': 'website_url'})` will add 2 new columns to the output
+Using `gramex.cache.open('city-sales.xlsx', links=True)` will read it as a DataFrame with a new `City_links` column with the hyperlinks.
 
-`issue_url` will contain the hyperlinks from the issue column (or None)
+| Country | City   | Sales | City_link                            |
+|---------|--------|-------|--------------------------------------|
+| Italy   | Rome   | 10    | https://en.wikipedia.org/wiki/Rome   |
+| Norway  | Oslo   | 20    | https://en.wikipedia.org/wiki/Oslo   |
+| UK      | London | 30    | https://en.wikipedia.org/wiki/London |
+| France  | Paris  | 40    | https://en.wikipedia.org/wiki/Paris  |
 
-`website_url` will contain the hyperlinks from the website column (or None)
+You can specify column names to extract from explicitly as a dictionary. For example:
 
+```python
+gramex.cache.open('city-sales.xlsx', links={
+   'City': 'city_url',
+   'Country': 'country_url'
+})
+```
 
-## FileHandler TypeScript allows ESM/IIFE via esbuild - does this qualify??
-## FileHandler no longer compiles .vue SFCs  - does this qualify??
+This extracts the hyperlink from `City` into `city_url` and `Country` into `country_url`. Empty hyperlinks are stored as `NaN`.
+
+## Backward incompatible changes
+
+- [FileHandler .vue compilation is removed](../../filehandler/#vue).
 
 ## Bug fixes
 

@@ -1221,6 +1221,7 @@ url:
     kwargs:
       # Required configuration
       service: gramex-guide-gmail     # Send messages using this provider
+      from: user@example.org          # Sends messages as this user
       # Send the strings below as subject and body. You can use variables
       # user=email ID, password=OTP, link=one-time login link
       subject: 'OTP for Gramex'
@@ -2076,7 +2077,7 @@ can point to any existing table with these columns too:
 
 ## OTP custom keys
 
-OTPs and API keys store a user object as JSON. You can add additional keys to this object with this configuration.
+OTPs and API keys store a user JSON object. You can pass additional keys to this object using the `columns` configuration.
 
 ```yaml
 storelocations:
