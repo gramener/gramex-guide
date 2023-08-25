@@ -28,10 +28,19 @@ url:
     handler: CaptureHandler
     kwargs:
       engine: chrome
+      pattern: ^http
 ```
 
 When Gramex runs, it starts `node chromecapture.js --port 9900` running a
 node.js based web application (chromecapture.js) at port 9900.
+
+The `pattern: ^http` only allows URLs that start with `http`, disallowing `file://` and other such URLs. (Relative URLs like `../` are converted to absolute HTTP URLs before checking the pattern, so they will work fine.)
+
+To only allow specific domains, e.g. `gramener.com` and `gramener.co`, use:
+
+```yaml
+    pattern: ^https?://(www\.)?(gramener\.com|gramener\.co)/
+```
 
 To change the port, use:
 
@@ -40,6 +49,7 @@ To change the port, use:
     handler: CaptureHandler
     kwargs:
       engine: chrome
+      pattern: ^http
       port: 9901              # Use a different port
 ```
 
@@ -50,6 +60,7 @@ To use an existing instance of chromecapture.js running on a different port, use
     handler: CaptureHandler
     kwargs:
       engine: chrome
+      pattern: ^http
       url: http://server:port/capture/    # Use chromecapture.js from this URL
 ```
 
@@ -63,6 +74,7 @@ By default, requests timeout within 10 seconds. To change this, use `timeout:`.
     pattern: /$YAMLURL/capture
     handler: CaptureHandler
     kwargs:
+      pattern: ^http
       timeout: 20     # Wait for max 20 seconds for server to respond
 ```
 
