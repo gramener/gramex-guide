@@ -189,8 +189,9 @@ Deploy on [PyPi](https://pypi.python.org/pypi/gramexenterprise):
 ```bash
 rm -rf dist/
 python setup.py sdist
-# If this fails, add '-p PASSWORD'
-twine upload -u gramener dist/*
+# Set up ~/.pypirc with the API token for "gramener" account
+# https://pypi.org/help/#apitoken
+twine upload dist/*
 ```
 
 Re-start gramex on deployed servers.
