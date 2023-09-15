@@ -39,6 +39,23 @@ This sends a question "What rhymes with silk?" to OpenAI, and logs the response 
 milk, bilk, ilk, wilk, filk
 ```
 
+```html
+<!DOCTYPE html>
+<form><input id="input" value="What rhymes with milk?"> <button>Send</button></form>
+<pre id="output"></pre>
+<script type="module">
+  const ws = new WebSocket(location.href.replace(/^http/, 'ws') + 'chatgpt?stream');
+  const input = document.querySelector('#input');
+  const output = document.querySelector('#output');
+  ws.onmessage = (event) => output.insertAdjacentHTML('beforeend', event.data || '\n\n');
+  document.querySelector('form').addEventListener('submit', e => {
+    e.preventDefault();
+    ws.send(input.value);
+    output.insertAdjacentHTML('beforeend', `\n${input.value}\n\n`);
+  }, false);
+</script>
+```
+
 ## ChatGPTHandler configuration
 
 You can use the following parameters:
