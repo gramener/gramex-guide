@@ -2269,6 +2269,46 @@ You can specify any function of your choice. The function must return (or yield)
 
 To repeat auth conditions across multiple handlers, see [Reusing Configurations](../config/#reusing-configurations).
 
+## Header validation
+
+**v1.94**. To protect pages based on HTTP headers, use `validate:`. For example:
+
+```yaml
+url:
+  auth/validate:
+    pattern: /$YAMLURL/validate
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/secret.html
+      validate: handler.request.headers['Host'] == 'example.org'
+```
+
+This allows access only if the `Host` header is `example.org`.
+
+You can use any Python expression. If the expression returns a falsy value or raises an Exception, Gramex raises a HTTP 400 error.
+
+**Specify multiple conditions** with a list. Gramex allows the request only if ALL conditions match. For example:
+
+```yaml
+      validate:
+        - handler.request.headers['Host'] == 'example.org'
+        - handler.request.headers['User-Agent'].startswith('Mozilla')
+        - handler.current_user['id'] == 'alpha'
+```
+
+**Customize the HTTP code and reason** by specifing a dictionary with `function`, `code`, and `reason`. For example:
+
+```yaml
+      validate:
+        - function: handler.request.headers['Host'] == 'example.org'
+          code: 403
+          reason: This app should only be hosted on example.org
+        - function: handler.request.headers['User-Agent'].startswith('Mozilla')
+          code: 400
+          reason: Only Chrome, Edge, Firefox, and Safari are supported
+```
+
+
 ## Protect all pages
 
 To add access control to the entire application, use:
