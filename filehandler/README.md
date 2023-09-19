@@ -458,6 +458,20 @@ Modules can add CSS and JS to the parent template. For example:
 ```
 -->
 
+### Redirecting templates
+
+To redirect to a page (e.g. `new_url`) from a template, add this code:
+
+```html
+{% set handler.redirect(new_url) %}
+{% set handler.include_body = False %}
+{% set return b'' %}
+```
+
+1. `handler.redirect(new_url)` redirects to `new_url`
+2. `handler.include_body = False` prevents FileHandler from rendering any returned text
+3. `return b''` returns immediately with an empty bytestring -- avoiding rendering the rest of the template
+
 ## SASS
 
 [Video](https://youtu.be/ryYjE5R9yX4){.youtube}
