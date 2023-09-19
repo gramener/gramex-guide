@@ -472,6 +472,24 @@ To redirect to a page (e.g. `new_url`) from a template, add this code:
 2. `handler.include_body = False` prevents FileHandler from rendering any returned text
 3. `return b''` returns immediately with an empty bytestring -- avoiding rendering the rest of the template
 
+Or you can create a `utils.py` that has a `redirect_template() like this:
+
+```python
+import tornado.gen
+
+def redirect_template(handler, new_url):
+    handler.redirect(new_url)
+    handler.include_body = False
+    raise tornado.gen.Return(b'')
+```
+
+... and call it in your template:
+
+```html
+{% import utils %}
+{% set utils.redirect_template(handler, new_url) %}
+```
+
 ## SASS
 
 [Video](https://youtu.be/ryYjE5R9yX4){.youtube}
