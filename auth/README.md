@@ -1797,7 +1797,13 @@ url:
         secret: YOUR-RECAPTCHA-SECRET
 ```
 
-If you use your own login `template:`, add this code at the bottom of the page:
+If you use your own login `template:`, add an input named `recaptcha` inside your `<form>`
+
+```html
+<input type="hidden" name="recaptcha">
+```
+
+... and this at the bottom of the page:
 
 ```html
 {% if 'recaptcha' in handler.kwargs %}
