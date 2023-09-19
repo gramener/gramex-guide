@@ -99,6 +99,7 @@ with `_`. Here are some commonly used ones:
 - `sender`: email id of sender. Defaults to the email ID of the account you've
   logged into. The `From:` field is also set to this unless you explicitly
   specify a different value.
+  - Note: [In Gmail, you need to add the sender as an alias](https://support.google.com/mail/answer/22370?hl=en)
 - `cc`, `bcc`: a string with comma-separated emails, or a list of strings with emails
 - `reply_to`: email ID that appears when the recipient replies
 - `on_behalf_of`: email ID on behalf of whom you are sending this email

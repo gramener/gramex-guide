@@ -19,8 +19,8 @@ You also need `bash` to test. On Windows, this comes with [Git](https://git-scm.
 **Step 2**: Clone and install the [master branch](http://github.com/gramener/gramex/tree/master/).
 
 ```bash
-# Create a new Conda environment with Python 3.7+
-conda create -y --name gramex python=3.7
+# Create a new Conda environment with Python 3.11+
+conda create -y --name gramex python=3.11
 conda activate gramex
 
 # Clone and install Gramex
@@ -140,8 +140,8 @@ git checkout master
 Note: `git push gitlab release` requires this one-time setup:
 
 ```bash
-git remote add gitlab git@code.gramener.com:cto/gramex.git        # For Gramex
-git remote add gitlab git@code.gramener.com:cto/gramex-guide.git  # For Guide
+git remote add gitlab https://code.gramener.com/cto/gramex.git        # For Gramex
+git remote add gitlab https://code.gramener.com/cto/gramex-guide.git  # For Guide
 ```
 
 Then run these deployment steps on the Gramex repo:
