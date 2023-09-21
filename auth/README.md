@@ -993,10 +993,6 @@ signup:
 
 [signup-template]: http://github.com/gramener/gramex/blob/master/gramex/handlers/signup.template.html
 
-### Validated login
-
-To allow
-
 
 ## Integrated auth
 
