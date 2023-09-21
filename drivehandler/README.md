@@ -430,3 +430,72 @@ url:
 ```
 
 If you uploaded any CSV/XLSX into the DriveHandler above, see them at `data/your-file.csv`.
+
+## File storage path
+
+DriveHandler stores files and [metadata](#distributed-metadata) in the specified `path:` folder/directory, creating it if required.
+
+`path:` defaults to `$GRAMEXDATA/drivehandler/<drivehandler-url-name>`.
+`$GRAMEXDATA` is a [predefined variable](../config/#predefined-variables). In this example:
+
+```yaml
+url:
+  default-drive:
+    pattern: /$YAMLURL/data/(.*)
+    handler: FormHandler
+```
+
+... the default `path:` is `$GRAMEXDATA/drivehandler/default-drive`.
+
+## Distributed storage
+
+### S3 storage
+
+**v1.94** To store files in S3, use the `storage:` configuration. For example:
+
+```yaml
+url:
+  s3drive:
+    pattern: /$YAMLURL/s3drive
+    handler: DriveHandler
+    kwargs:
+      path: $YAMLPATH/files/
+      storage:
+        type: s3
+        bucket: path/to/my-bucket
+```
+
+Set up the [AWS Credentials in environment variables](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/credentials.html#environment-variables)
+
+```bash
+export AWS_ACCESS_KEY_ID=...
+export AWS_SECRET_ACCESS_KEY=...
+export AWS_SESSION_TOKEN=...  # Optional
+```
+
+This stores all files in your S3 `path/to/my-bucket` bucket. Metadata is still stored under the `path` as `.meta.db`.
+
+<!--
+## Azure Blob storage
+
+## Google Cloud Storage
+-->
+
+## Distributed metadata
+
+By default, DriveHandler stores metadata in a SQLite database called `.meta.db` in the `path:` folder.
+
+**v1.94** If you have multiple servers and use [distributed file storage](#distributed-storage),
+you can store metadata in a shared database by adding `url:` and `table:`. For example:
+
+```yaml
+url:
+  drivedemo:
+    pattern: /$YAMLURL/drivedemo
+    handler: DriveHandler
+    kwargs:
+      url: 'postgresql://$USER:$PASS@server/db'
+      table: drive  # Optional. Defaults to "drive"
+```
+
+Any [FormHandler supported database](../formhandler/#supported-databases) will work.
