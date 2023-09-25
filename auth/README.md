@@ -1173,6 +1173,8 @@ url:
         url: 'https://login.microsoftonline.com/{TENANT_ID}/oauth2/authorize'
         scope:
           - https://graph.microsoft.com/User.Read
+        extra_params:   # Optional: Lets users switch account
+          prompt: select_account
       access_token:
         url: 'https://login.microsoftonline.com/{TENANT_ID}/oauth2/token'
         body:
@@ -1182,10 +1184,11 @@ url:
         url: 'https://graph.microsoft.com/v1.0/me/'
         headers:
           Authorization: 'Bearer {access_token}'
-          Accept: 'application/json'
-          Content-Type: 'application/json'
       action:
         function: myapp.store_info_in_session(handler)
+      redirect:
+        query: next
+        url: /$YAMLURL/
 ```
 
 ## Email Auth
