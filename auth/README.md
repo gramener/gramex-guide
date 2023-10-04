@@ -1179,7 +1179,6 @@ url:
         url: 'https://login.microsoftonline.com/{TENANT_ID}/oauth2/token'
         body:
           grant_type: 'authorization_code'
-          resource: https://graph.microsoft.com/
       user_info:
         url: 'https://graph.microsoft.com/v1.0/me/'
         headers:
