@@ -80,6 +80,10 @@ def good_query_function(args):
 
 Whenever Gramex encounters a value `:something`, it passes the first `args['something']` instead as a SQL-injection-safe parameter.
 
+Different database drivers use different parameter styles like `:param`, `%(param)`, `?`, etc. Gramex uses
+[SQLAlchemy's `TextClause.bindparams()`](https://docs.sqlalchemy.org/en/20/core/sqlelement.html#sqlalchemy.sql.expression.TextClause.bindparams)
+to ensure `:param` always works.
+
 ## Use SQL parameters outside FormHandler
 
 If you're using [gramex.cache.query](../../api/cache/#gramex.cache.query) to run queries, use:
@@ -99,6 +103,10 @@ If you're using SQLAlchemy, use:
 ```python
 connection.execute(sa.text('SELECT * FROM table WHERE updated >= :date'), date=...)
 ```
+
+Different database drivers use different parameter styles like `:param`, `%(param)`, `?`, etc. Use
+[`sa.text()`](https://docs.sqlalchemy.org/en/20/core/sqlelement.html#sqlalchemy.sql.expression.TextClause) to ensure
+`:param` always works.
 
 
 ## Use computed SQL parameters
