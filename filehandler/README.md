@@ -661,7 +661,7 @@ url:
 **When using AJAX**, **v1.85** onwards, no XSRF token is required, because Gramex checks for this automatically.
 
 1. XMLHttpRequest (e.g. via jQuery.post, jQuery.ajax, etc) automatically sends an `X-Requested-With: XMLHttpRequest` header for AJAX.
-2. [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)) automatically adds
+2. [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) automatically adds
    [Sec-Fetch-Mode: cors](https://developer.mozilla.org/en-US/docs/Glossary/Fetch_metadata_request_header) headers
 
 **When submitting from a server**, add either of these headers to bypass the check, like this:
