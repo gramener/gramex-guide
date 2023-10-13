@@ -1582,6 +1582,15 @@ See [FormHandler POST](#formhandler-post) for a HTML example.
 The `?x-http-method-override=PUT` overrides the method to use PUT. You can
 also use the HTTP header `X-HTTP-Method-Override: PUT`.
 
+### FormHandler Upsert
+
+UPSERT inserts a row if it does not exist, else updates it.
+
+FormHandler does not support UPSERT currently. But
+[each database has different kinds of UPSERT support](https://antonz.org/sql-upsert/) and
+[SQLAlchemy has partial UPSERT support](https://docs.sqlalchemy.org/en/20/dialects/postgresql.html#insert-on-conflict-upsert).
+Use these.
+
 ### FormHandler DELETE
 
 This DELETE request deletes existing rows in the data.
