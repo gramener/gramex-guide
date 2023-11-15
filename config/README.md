@@ -891,6 +891,17 @@ second:                     # The result of first: is the same as second:
   key: value
 ```
 
+You can have multiple `import.merge`s like this:
+
+```yaml
+first:
+  key: default-value
+  import.merge.first: $var1   # Anything under import.merge.*: is merged
+  import.merge.next: $var2    # Merges happen in order, overriding previous
+  import.merge.last: $var3    # The key text after "import.merge" (e.g. .first, .last) is ignored
+```
+
+
 A practical use is when write apps. If you write a FormHandler that will be
 imported by a project:
 
