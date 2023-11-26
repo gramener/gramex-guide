@@ -9,11 +9,25 @@ type: app
 
 You can use any charting library with Gramex. We recommend the following.
 
-## Gramex Charts
+## @gramex charts
 
-[Gramex Charts](https://gramener.com/gramexcharts/) is a
-gallery of user-contributed configurable charts. This features charts from
-multiple libraries. You can embed the relevant one based on your needs.
+@gramex charts are configurable charts built on D3 under the `@gramex/` namespace.
+
+- [@gramex/cartogram](https://gramener.com/gramex-cartogram/)
+- [@gramex/documap](https://gramener.com/gramex-documap/)
+- [@gramex/insighttree](https://gramener.com/insighttree/)
+- [@gramex/network](https://gramener.com/gramex-network/)
+- [@gramex/treemap](https://gramener.com/gramex-treemap/)
+
+These are supported by a set of base layers:
+
+- [@gramex/ui](https://gramener.com/gramex-ui/)
+
+... and a set of internal utilities:
+
+- [@gramex/chartbase](https://www.npmjs.com/package/@gramex/chartbase)
+- [@gramex/chartvalidate](https://npmjs.com/package/@gramex/chartvalidate)
+
 
 ## Vega
 
@@ -30,5 +44,6 @@ visual features to data, allowing creation of custom charts.
 
 ## Deprecations
 
+- [Gramex Charts](https://gramener.com/gramexcharts/) is a gallery of configurable charts.
 - [Chartogram](gallery.html) is a deprecated gallery of Vega charts
 - [Gramex Charts](https://learn.gramener.com/gc) (old) is a deprecated library to create charts.
