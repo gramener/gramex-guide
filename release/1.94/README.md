@@ -5,7 +5,20 @@ prefix: 1.94
 
 [TOC]
 
-Gramex 1.94 features ChatGPTHandler upgrade, DriveHandler S3 support, and header validation.
+Gramex 1.94 features @gramex charts, ChatGPTHandler upgrade, DriveHandler S3 support, and more.
+
+## @gramex charts
+
+[@gramex charts](../../charts/) are configurable charts built on D3 under the `@gramex/` namespace.
+These may be used as standalone libraries in any application.
+
+This release includes:
+
+- [@gramex/cartogram](https://gramener.com/gramex-cartogram/)
+- [@gramex/documap](https://gramener.com/gramex-documap/)
+- [@gramex/insighttree](https://gramener.com/insighttree/)
+- [@gramex/network](https://gramener.com/gramex-network/)
+- [@gramex/treemap](https://gramener.com/gramex-treemap/)
 
 ## ChatGPTHandler upgrade
 

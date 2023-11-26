@@ -5,7 +5,7 @@ prefix: Release
 
 ## Release Notes
 
-- [v1.94.0: ChatGPTHandler upgrade, DriveHandler S3 support, and header validation](1.94/) <small>14 Nov 2023</small>
+- [v1.94.0: @gramex charts, ChatGPTHandler upgrade, DriveHandler S3 support](1.94/) <small>14 Nov 2023</small>
 - [v1.93.0: Bug-fixes for FormHandler, error handlers, and OTP keys](1.93/) <small>11 Sep 2023</small>
 - [v1.92.0: ChatGPT Handler, OTP Custom Keys, Excel Hyperlink Support](1.92/) <small>5 Jul 2023</small>
 - [v1.91.0: Multiple rate limits, Pytest based testing](1.91/) <small>8 Jun 2023</small>
