@@ -34,7 +34,7 @@ url:
 When Gramex runs, it starts `node chromecapture.js --port 9900` running a
 node.js based web application (chromecapture.js) at port 9900.
 
-The `pattern: ^http` only allows URLs that start with `http`, disallowing `file://` and other such URLs. (Relative URLs like `../` are converted to absolute HTTP URLs before checking the pattern, so they will work fine.)
+**v1.94** The `pattern: ^http` only allows URLs that start with `http`, disallowing `file://` and other such URLs. (Relative URLs like `../` are converted to absolute HTTP URLs before checking the pattern, so they will work fine.)
 
 To only allow specific domains, e.g. `gramener.com` and `gramener.co`, use:
 

@@ -913,6 +913,7 @@ kwargs:
     key: forgot                       # ?forgot= is used as the forgot password parameter
     arg: email                        # ?email= is used to submit the email ID of the user
     minutes_to_expiry: 15             # Minutes after which the link will expire
+    otp_reset: false                  # true clears all previous OTPs for this email
     email_column: email               # The database column that contains the email ID
     email_subject: Gramex forgot password       # Subject of the email
     email_as: "S Anand <root.node@gmail.com>"   # Emails will be sent as if from this ID
@@ -1232,6 +1233,7 @@ url:
           <p><a href="{link}">Click here to log in</a></p>
 
       # Optional configuration. The values shown below are the defaults
+      otp_reset: false          # true clears all previous OTPs for this email ID
       minutes_to_expiry: 15     # Minutes after which the OTP will expire
       size: 6                   # Number of characters in the OTP
       instantlogin: false       # Fetching login link instantly logs user in
@@ -1360,6 +1362,7 @@ url:
       # Optional configuration. The values shown below are the defaults
       minutes_to_expiry: 15     # Minutes after which the OTP will expire
       size: 6                   # Number of characters in the OTP
+      otp_reset: false          # true clears all previous OTPs for this phone number
       sender: gramex            # Sender ID. Works in some countries
       template: $YAMLPATH/auth.sms.template.html    # Login template
       user:
