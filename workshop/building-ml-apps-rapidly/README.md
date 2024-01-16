@@ -7,7 +7,7 @@ prefix: workshop
 - Guide link: [https://bit.ly/mlappworkshop](https://bit.ly/mlappworkshop)
 - Opening survey link: [https://bit.ly/mlappsurvey](https://bit.ly/mlappsurvey)
 - Project template: [https://github.com/gramener/building-ml-apps-rapidly](https://github.com/gramener/building-ml-apps-rapidly)
-- Dataset link: [https://www.dropbox.com/s/9p0510n3bpdn09w/admission.csv?dl=0](https://www.dropbox.com/s/9p0510n3bpdn09w/admission.csv?dl=0)
+- Dataset link: [admission.csv](admission.csv)
 - IDE link: [https://gramex.gramener.com](https://gramex.gramener.com)
 - Final survey link: [https://bit.ly/mlworkshopresponse](https://bit.ly/mlworkshopresponse)
 
@@ -45,7 +45,7 @@ In this workshop, we’ll predict whether or not a student will get admitted int
 
 ## Explore the data
 
-The dataset [admission.csv](https://www.dropbox.com/s/9p0510n3bpdn09w/admission.csv?dl=0) looks like this:
+The dataset [admission.csv](admission.csv) looks like this:
 
 ![Screenshot](table.png){.img-fluid}
 
