@@ -29,11 +29,9 @@ cd gramex
 # master branch is the latest working version.
 # release branch is the latest released version.
 git checkout master
-pip install -e .
+pip install -e . --config-settings editable_mode=strict
 gramex setup --all
 ```
-
-Note: You can use `pip install -e . --config-settings editable_mode=strict` to mimic the production environment closely, but any edits you make won't be reflected in the installed package.
 
 **Step 3 (OPTIONAL)**: Install databases.
 
