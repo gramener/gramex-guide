@@ -49,6 +49,8 @@ The `ADMIN_KWARGS` section accepts the following parameters:
 - `title`: Title displayed on the navbar. Defaults to "Admin"
 - `theme`: The [UI theme](../uicomponents/) for the page. For example,
   `?font-family-base=Roboto` makes the font Roboto.
+- `signup`: See [Sign Up Users with a Welcome Email](#sign-up-users-with-a-welcome-email)
+- `userdata`: See [Filter User Data](#filter-user-data)
 - `components`: List of admin components. Choose from:
   - `user`: [User management component](#admin-user-management)
   - `schedule`: [Schedule component](#admin-schedule)
@@ -158,6 +160,29 @@ import:
 sends emails to new users with the subject and body as specified, where `user`,
 `org` and `location` are user attributes contained in the `login` authhandler.
 The templates work for any user attributes.
+
+
+### Filter User Data
+
+You can filter user data, e.g. to clear the password column to avoid exposing it over a network,
+add a `userdata:` key to `ADMIN_KWARGS`. For example:
+
+```yaml
+import:
+  admin/admin-user:
+    path: $GRAMEXAPPS/admin2/gramex.yaml
+    YAMLURL: /$YAMLURL/admin-user/
+    ADMIN_KWARGS:
+      authhandler: login        # Manages users via the url: key named "login"
+      userdata:
+        # Only on GET (not POST/PUT, when we are adding/updating user info),
+        # clear the password column if it exists.
+        # Note: Check the name of the password column in your authhandler
+        # Note: Always check if the column exists. This modify is used for multiple FormHandlers
+        modify: data.assign(password='') if handler.request.method == 'GET' and 'password' in data.columns else data
+```
+
+You can use any `modify` function here, e.g. to clear more columns or add/transform columns.
 
 
 ### Edit User Attribute Rules
