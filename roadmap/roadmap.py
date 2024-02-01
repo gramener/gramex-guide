@@ -98,7 +98,7 @@ def get_roadmap(refresh: bool = False):
         )
 
     result = {}
-    for id, epic in roadmap.items():
+    for epic in roadmap.values():
         entry = result.setdefault(epic['summary'], {})
         entry['duedate'] = epic['duedate']
     return roadmap

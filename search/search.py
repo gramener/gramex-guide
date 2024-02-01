@@ -39,7 +39,7 @@ class IndexerExtension(Extension):
 
 def readme_files(folder):
     os.chdir(folder)
-    for root, dirs, files in os.walk('.'):
+    for root, _dirs, files in os.walk('.'):
         if '__pycache__' not in root and 'node_modules' not in root:
             for file in files:
                 if file.lower() == 'readme.md':
