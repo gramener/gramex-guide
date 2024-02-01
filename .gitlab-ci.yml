@@ -20,3 +20,6 @@ deploy-gramener:
     # Deploy secrets
     - secrets JIRA_AUTH > .secrets.yaml
     - rsync -tvz .secrets.yaml ubuntu@gramener.com:/mnt/gramener/apps/guide/
+  environment:
+    name: production
+    url: https://gramener.com/gramex/guide/
