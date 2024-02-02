@@ -20,16 +20,16 @@ url:
       url: $YAMLPATH/flags.csv
 ```
 
-- Simple: [flags?_c=Name](../../filterhandler/flags?_c=Name)
-returns all unique values of `Name` column
-- Muliple Columns: [flags?_c=Name&_c=Continent](../../filterhandler/flags?_c=Name&_c=Continent)
-returns all unique values of `Name` and `continent` columns
-- Multiple Columns with filter: [flags?_c=Name&_c=Continent&Name=Andorra](../../filterhandler/flags?_c=Name&_c=Continent&Name=Andorra)
-returns all unique values of `Name` without filtering `Name=Andorra` and `Continent` by filtering `Name=Andorra`
-- Simple Sort Asc: [flags?_c=Name&_sort=Name](../../filterhandler/flags?_c=Name&_sort=Name)
-returns Unique values of `Name` sorted by `Name` column in ascending order
-- Simple Sort Desc: [flags?_c=Name&_sort=c8](../../filterhandler/flags?_c=Name&_sort=-c8)
-returns Unique values of `Name` sorted by `c8` column in descending order
+- Simple: [flags?\_c=Name](../../filterhandler/flags?_c=Name)
+  returns all unique values of `Name` column
+- Muliple Columns: [flags?\_c=Name&\_c=Continent](../../filterhandler/flags?_c=Name&_c=Continent)
+  returns all unique values of `Name` and `continent` columns
+- Multiple Columns with filter: [flags?\_c=Name&\_c=Continent&Name=Andorra](../../filterhandler/flags?_c=Name&_c=Continent&Name=Andorra)
+  returns all unique values of `Name` without filtering `Name=Andorra` and `Continent` by filtering `Name=Andorra`
+- Simple Sort Asc: [flags?\_c=Name&\_sort=Name](../../filterhandler/flags?_c=Name&_sort=Name)
+  returns Unique values of `Name` sorted by `Name` column in ascending order
+- Simple Sort Desc: [flags?\_c=Name&\_sort=c8](../../filterhandler/flags?_c=Name&_sort=-c8)
+  returns Unique values of `Name` sorted by `c8` column in descending order
 
 **Credits** to [@nikhil.kabbin](https://code.gramener.com/nikhil.kabbin) for the contribution.
 
@@ -54,7 +54,7 @@ url:
       symbols:
         url: sqlite:///$YAMLPATH/../datahandler/database.sqlite3
         table: flags
-        query: 'SELECT Continent, COUNT(DISTINCT Symbols) AS dsymbols FROM flags GROUP BY Continent'
+        query: "SELECT Continent, COUNT(DISTINCT Symbols) AS dsymbols FROM flags GROUP BY Continent"
         # Modify ONLY this query. Adds rank column to symbols dataset
         modify: data.assign(rank=data['dsymbols'].rank())
       colors:
@@ -81,7 +81,7 @@ Dropdown component that integrates well with [`g1.urlfilter`](https://code.grame
 ```html
 <div class="container1"></div>
 <script>
-  $('.container1').dropdown({data: ['Red', 'Green', 'Blue'] })
+  $(".container1").dropdown({ data: ["Red", "Green", "Blue"] });
 </script>
 ```
 
@@ -91,7 +91,7 @@ The above code snippet renders a dropdown with 3 options Red, Green, Blue using
 ```html
 <div class="container2"></div>
 <script>
-  $('.container2').dropdown({ key: 'colors', data: ['Red', 'Green', 'Blue'] })
+  $(".container2").dropdown({ key: "colors", data: ["Red", "Green", "Blue"] });
 </script>
 ```
 
@@ -104,11 +104,11 @@ To append to the hash instead, use `target: '#'`.
 ```html
 <div class="container3"></div>
 <script>
-  $('.container3').dropdown(
-    { key: 'colors',
-      data: ['Red', 'Green', 'Blue'],
-      target: '#'
-    })
+  $(".container3").dropdown({
+    key: "colors",
+    data: ["Red", "Green", "Blue"],
+    target: "#",
+  });
 </script>
 ```
 
@@ -119,13 +119,14 @@ To use `bootstrap-select` options, use `options:`
 ```html
 <div class="container5"></div>
 <script>
-  $('.container5').dropdown({
-    data: ['Red', 'Green', 'Blue'], key: 'colors',
+  $(".container5").dropdown({
+    data: ["Red", "Green", "Blue"],
+    key: "colors",
     options: {
-      style: 'btn-primary',
-      liveSearch: true
-    }
-  })
+      style: "btn-primary",
+      liveSearch: true,
+    },
+  });
 </script>
 ```
 
@@ -137,19 +138,18 @@ To use `bootstrap-select` options, use `options:`
 ```html
 <div class="container5"></div>
 <script>
-  $('.container5')
-  .on('load', function() {
-    // Your code here
-  })
-  .on('change', function() {
-    // Your code here
-  })
-  .dropdown({
-    key: 'colors',
-    data: ['Red', 'Green', 'Blue']
-  })
+  $(".container5")
+    .on("load", function () {
+      // Your code here
+    })
+    .on("change", function () {
+      // Your code here
+    })
+    .dropdown({
+      key: "colors",
+      data: ["Red", "Green", "Blue"],
+    });
 </script>
-
 ```
 
 **Credits** to [@pragnya.reddy](https://code.gramener.com/pragnya.reddy) for the contribution.
@@ -189,7 +189,7 @@ Logviewer Usage options and example(s) are updated.
 
 ## Speech Demo
 
-[Speech recognition](../../speech/) demo now has a speech player (talks insights to you!) using  speech synthesis API. Contributed by [@dhiraj.eadara](https://code.gramener.com/dhiraj.eadara)
+[Speech recognition](../../speech/) demo now has a speech player (talks insights to you!) using speech synthesis API. Contributed by [@dhiraj.eadara](https://code.gramener.com/dhiraj.eadara)
 
 ## Developer Updates
 
@@ -203,11 +203,11 @@ Logviewer Usage options and example(s) are updated.
 ## Bug fixes
 
 - `gramex.cache.query` used to cache result every time same query is called with `state=None`,
-thereby, leaking memory. This is now plugged. [#444](https://code.gramener.com/cto/gramex/issues/444)
+  thereby, leaking memory. This is now plugged. [#444](https://code.gramener.com/cto/gramex/issues/444)
 - `gramex init` fails if `git` was not configured. Error reporting is now improved.
-[#469](https://code.gramener.com/cto/gramex/issues/469)
+  [#469](https://code.gramener.com/cto/gramex/issues/469)
 - [Dynamic emails from data](../../alert/#dynamic-emails-from-data) documentation is updated.
-Fixes [#476](https://code.gramener.com/cto/gramex/issues/476)
+  Fixes [#476](https://code.gramener.com/cto/gramex/issues/476)
 - Email service fails on Unicode characters. This is fixed [#481](https://code.gramener.com/cto/gramex/issues/481)
 
 ## Stats

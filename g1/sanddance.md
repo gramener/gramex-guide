@@ -23,32 +23,43 @@ Examples:
 
 ```js
 // smoothly changes the fill color to blue in 100 ms
-var turn_to_blue = g1.sanddance({ fill: 'blue' }, { duration: 100 })
-selection.call(turn_to_blue)
+var turn_to_blue = g1.sanddance({ fill: "blue" }, { duration: 100 });
+selection.call(turn_to_blue);
 
 // g1.sanddance moves elements to the x, y specified in 100ms
-var move = g1.sanddance({}, { x: 200, y: 200, duration: 100 })
-selection.call(move)
+var move = g1.sanddance({}, { x: 200, y: 200, duration: 100 });
+selection.call(move);
 
 // transitions at 1000 pixels/sec.
-var move_at_constant_speed = g1.sanddance({}, {x: 300, y: 300, speed: 1000})
-selection.call(move_at_constant_speed)
+var move_at_constant_speed = g1.sanddance({}, { x: 300, y: 300, speed: 1000 });
+selection.call(move_at_constant_speed);
 
 // transitions in 100ms duration.
-var move_in_duration = g1.sanddance({}, {x: 400, y: 400, duration: 100})
-selection.call(move_in_duration)
+var move_in_duration = g1.sanddance({}, { x: 400, y: 400, duration: 100 });
+selection.call(move_in_duration);
 
 // transitions after 100ms delay.
-var move_after_delay = g1.sanddance({}, {x: 300, y: 300, delay: 100})
-selection.call(move_after_delay)
+var move_after_delay = g1.sanddance({}, { x: 300, y: 300, delay: 100 });
+selection.call(move_after_delay);
 
 // transitions at ease of d3.easeBounce
-var move_easing = g1.sanddance({}, {x: 300, y: 300, duration: 100, easing: d3.easeBounce})
-selection.call(move_easing)
+var move_easing = g1.sanddance(
+  {},
+  { x: 300, y: 300, duration: 100, easing: d3.easeBounce },
+);
+selection.call(move_easing);
 
 // filters the selection
-var selection_filtered = g1.sanddance({fill: 'red'}, {duration: 100, filter: function(d) { return d.age > 30}})
-selection.call(selection_filtered)
+var selection_filtered = g1.sanddance(
+  { fill: "red" },
+  {
+    duration: 100,
+    filter: function (d) {
+      return d.age > 30;
+    },
+  },
+);
+selection.call(selection_filtered);
 ```
 
 ## g1.sanddance.chain
@@ -59,10 +70,10 @@ To apply a sequence of sanddances one after another, use `g1.sanddance.chain`. F
 // chain sanddances. First, fill everything red, then move x to 200 and y to 100
 selection.call(
   g1.sanddance.chain(
-    g1.sanddance({fill: 'red'}, {duration: 100}),
-    g1.sanddance({}, {x: 200, y: 100, duration: 100})
-  )
-)
+    g1.sanddance({ fill: "red" }, { duration: 100 }),
+    g1.sanddance({}, { x: 200, y: 100, duration: 100 }),
+  ),
+);
 ```
 
 ## g1.sanddance layouts
@@ -74,16 +85,20 @@ Returns a sanddance that moves elements into a grid. Usage:
 ```js
 // Lay out the elements in a grid
 selection.call(
-  g1.sanddance({}, {        // Create a layout based on the data array
-    layout: 'grid',         // lay out as a grid
-    width: 400,             // with width 400
-    height: 300,            // and height 300
-    data: data,             // using the specified data
-    sort: 'age',            // sorted by the 'age' column
-    ascending: false,       // in descending order
-    duration: 100           // in 100ms
-  })
-)
+  g1.sanddance(
+    {},
+    {
+      // Create a layout based on the data array
+      layout: "grid", // lay out as a grid
+      width: 400, // with width 400
+      height: 300, // and height 300
+      data: data, // using the specified data
+      sort: "age", // sorted by the 'age' column
+      ascending: false, // in descending order
+      duration: 100, // in 100ms
+    },
+  ),
+);
 ```
 
 Options:
@@ -121,37 +136,47 @@ Scales are dictionaries with the following keys:
 ```js
 // fill as scale config with linear scale
 selection.call(
-  g1.sanddance({
-    fill: {
-      metric: function(d) { return d.age },
-      scale: 'linear',
-      domain: [0, 100],
-      range: ['red', 'blue'],
-    }
-  }, {
-    layout: 'grid',
-    data: data,
-    width: 400,
-    height: 300,
-    duration: 100
-  })
-)
+  g1.sanddance(
+    {
+      fill: {
+        metric: function (d) {
+          return d.age;
+        },
+        scale: "linear",
+        domain: [0, 100],
+        range: ["red", "blue"],
+      },
+    },
+    {
+      layout: "grid",
+      data: data,
+      width: 400,
+      height: 300,
+      duration: 100,
+    },
+  ),
+);
 
 // fill as scale config with scheme
 selection.call(
-  g1.sanddance({
-    fill: {
-      metric: function(d) { return d.age },
-      scheme: 'RdYlGn'
-    }
-  }, {
-    layout: 'grid',
-    data: data,
-    width: 400,
-    height: 300,
-    duration: 100
- })
-)
+  g1.sanddance(
+    {
+      fill: {
+        metric: function (d) {
+          return d.age;
+        },
+        scheme: "RdYlGn",
+      },
+    },
+    {
+      layout: "grid",
+      data: data,
+      width: 400,
+      height: 300,
+      duration: 100,
+    },
+  ),
+);
 ```
 
 ### hexpack
@@ -161,16 +186,20 @@ Returns a sanddance that moves elements into a hexpack. Usage:
 ```js
 // Lay out the elements in a hexpack
 selection.call(
-  g1.sanddance({}, {        // Create a layout based on the data array
-    layout: 'hexpack',      // lay out as hexpack
-    width: 400,             // with width 400
-    height: 300,            // and height 300
-    data: data,             // using the specified data
-    sort: 'age',            // sorted by the 'age' column
-    ascending: false,       // in descending order
-    duration: 100           // in 100ms
-  })
-)
+  g1.sanddance(
+    {},
+    {
+      // Create a layout based on the data array
+      layout: "hexpack", // lay out as hexpack
+      width: 400, // with width 400
+      height: 300, // and height 300
+      data: data, // using the specified data
+      sort: "age", // sorted by the 'age' column
+      ascending: false, // in descending order
+      duration: 100, // in 100ms
+    },
+  ),
+);
 ```
 
 The values can also be specified as a scale config and the options definitions are same as grid.
@@ -182,12 +211,12 @@ the old `attrs` with `new_attrs` and the old `options` with `new_options`.
 
 ```js
 // The two lines below are the same:
-g1.sanddance({ stroke: 'blue' }).update({ fill: 'red' })
-g1.sanddance({ stroke: 'blue', fill: 'red' })
+g1.sanddance({ stroke: "blue" }).update({ fill: "red" });
+g1.sanddance({ stroke: "blue", fill: "red" });
 
 // Update the options
 g1.sanddance({}, { delay: 100 }).update({}, { duration: 100 }),
-g1.sanddance({}, { duration: 100, delay: 100 })
+  g1.sanddance({}, { duration: 100, delay: 100 });
 ```
 
 ## g1.sanddance events
@@ -203,9 +232,16 @@ All events set the d3 selection as `this`. For example:
 ```js
 // sanddance events
 selection.call(
-  g1.sanddance({ fill: 'red' })
-    .on('init.log', function() { console.log('init', this) })
-    .on('start.log', function() { console.log('start', this) })
-    .on('end.log', function() { console.log('end', this) })
-)
+  g1
+    .sanddance({ fill: "red" })
+    .on("init.log", function () {
+      console.log("init", this);
+    })
+    .on("start.log", function () {
+      console.log("start", this);
+    })
+    .on("end.log", function () {
+      console.log("end", this);
+    }),
+);
 ```

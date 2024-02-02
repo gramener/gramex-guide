@@ -10,26 +10,23 @@ table and a few charts. Often, that is not enough. We need an interactive
 way to filter through data. This tutorials deals with adding such
 interactivity with Gramex.
 
-
 ## Introduction
 
 The chart in the quickstart displayed a single view for the complete dataset - with no way to filter the
 data or change the chart dynamically.
-
 
 ### Outcome
 
 By the end of this tutorial, you will have learnt to:
 
 1. detect events like:
-    * clicks on chart or table elements
-    * filters applied to the table
-    * selection or drag interactions with the chart.
+   - clicks on chart or table elements
+   - filters applied to the table
+   - selection or drag interactions with the chart.
 2. ensure that every element in our dashboard reponds to these events.
 
 The application you have at the end of the quickstart should look like
 [this](../quickstart/output/3/index.html).
-
 
 ### Requirements
 
@@ -37,10 +34,9 @@ This tutorial assumes that you have gone through the
 [quickstart](../quickstart) and have successfully built the Gramex
 application and created these files:
 
-* [gramex.yaml](../quickstart/output/gramex.yaml.source)
-* [store-sales.csv](../store-sales.csv)
-* [index.html](../quickstart/output/3/index.html.source)
-
+- [gramex.yaml](../quickstart/output/gramex.yaml.source)
+- [store-sales.csv](../store-sales.csv)
+- [index.html](../quickstart/output/3/index.html.source)
 
 ## Step 1: Working with [FormHandler](../../formhandler/)
 
@@ -54,20 +50,23 @@ Check out the list of possible operations in the
 Add the formhandler table to the page as follows:
 
 <!-- render:html -->
+
 ```html
-<link rel="stylesheet" href="../ui/bootstraptheme.css">
-<div class="formhandler" data-src="../data?_c=-Ship Date&_c=-Order Date&_c=-Order ID&_c=-Ship Mode&_c=-Quantity&_c=-Discount"></div>
+<link rel="stylesheet" href="../ui/bootstraptheme.css" />
+<div
+  class="formhandler"
+  data-src="../data?_c=-Ship Date&_c=-Order Date&_c=-Order ID&_c=-Ship Mode&_c=-Quantity&_c=-Discount"
+></div>
 <script src="../ui/jquery/dist/jquery.min.js"></script>
 <script src="../ui/bootstrap5/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../ui/lodash/lodash.min.js"></script>
 <script src="../ui/g1/dist/g1.min.js"></script>
 <script>
-  $('.formhandler').formhandler({pageSize: 5})
+  $(".formhandler").formhandler({ pageSize: 5 });
 </script>
 ```
 
 [View Source](../dashboards/output/1/index.html){: class="source"}
-
 
 ## Step 2: Detecting Changes in the URL
 
@@ -77,13 +76,15 @@ g1 provides a way to listen to URL changes via [urlchange](https://learn.gramene
 
 ```html
 <script>
-  $(window).on('#?', function(e) { console.log(e.change) })
-    .urlchange()
+  $(window)
+    .on("#?", function (e) {
+      console.log(e.change);
+    })
+    .urlchange();
 </script>
 ```
 
 [View Source](../dashboards/output/2/index.html){: class="source"}
-
 
 Here, we are logging URL hash changes in the console whenever they happen.
 Generally, any function can be run when the url change event is triggered.
@@ -91,7 +92,6 @@ Generally, any function can be run when the url change event is triggered.
 After you save the file and refresh the browser, open up the browser console.
 Now, whenever you interact with the g1 table, you should see the URL hash printed in the
 console.
-
 
 ## Step 3: Redrawing Charts on URL Changes
 
@@ -102,41 +102,41 @@ followed by a function to render them.
 
 ```html
 <script>
-var spec = {
-  "$schema": "https://vega.github.io/schema/vega-lite/v3.json",
-  "description": "A bar chart that sorts the y-values by the x-values.",
-  "width": 360,
-  "height": 200,
-  "data": { "url": "data?_by=Segment" },
-  "mark": "bar",
-  "encoding": {
-    "y": {
-      "field": "Segment",
-      "type": "nominal",
-      "sort": { "encoding": "x" },
-      "axis": { "title": "Segment" }
+  var spec = {
+    $schema: "https://vega.github.io/schema/vega-lite/v3.json",
+    description: "A bar chart that sorts the y-values by the x-values.",
+    width: 360,
+    height: 200,
+    data: { url: "data?_by=Segment" },
+    mark: "bar",
+    encoding: {
+      y: {
+        field: "Segment",
+        type: "nominal",
+        sort: { encoding: "x" },
+        axis: { title: "Segment" },
+      },
+      x: {
+        field: "Sales|sum",
+        type: "quantitative",
+      },
     },
-    "x": {
-      "field": "Sales|sum",
-      "type": "quantitative",
-    }
+  };
+  function render_charts(chartid, xfield) {
+    spec.encoding.x.field = xfield;
+    var view = new vega.View(vega.parse(vl.compile(spec).spec))
+      .renderer("svg")
+      .initialize(chartid)
+      .hover()
+      .run();
   }
-}
-function render_charts(chartid, xfield){
-  spec.encoding.x.field = xfield
-  var view = new vega.View(vega.parse(vl.compile(spec).spec))
-  .renderer('svg')
-  .initialize(chartid)
-  .hover()
-  .run()
-}
 </script>
 ```
 
 Note that the chart gets its data from the `data.url` attribute enclosed in the spec:
 
 ```json
-{"data": { "url": "data?_by=Segment" }}
+{ "data": { "url": "data?_by=Segment" } }
 ```
 
 Therefore, we need to grab the changed URL hash, and set `spec.data.url` to the changed
@@ -145,9 +145,9 @@ attribute of the spect to the new URL, and redraws the charts.
 
 ```js
 function draw_charts(e) {
-  spec.data.url = "data?" + e.hash.search + "&_by=Segment"
-  render_charts('#chart1', 'Sales|sum')
-  render_charts('#chart2', 'Quantity|sum')
+  spec.data.url = "data?" + e.hash.search + "&_by=Segment";
+  render_charts("#chart1", "Sales|sum");
+  render_charts("#chart2", "Quantity|sum");
 }
 ```
 
@@ -157,7 +157,7 @@ to the console), and add our new function as the listener.
 The changed event listener should look like:
 
 ```javascript
-$(window).on('#?', draw_charts).urlchange()
+$(window).on("#?", draw_charts).urlchange();
 ```
 
 [View Source](../dashboards/output/3/index.html){: class="source"}

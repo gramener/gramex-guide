@@ -54,16 +54,16 @@ url:
     kwargs:
       version: 2
       source: $YAMLPATH/template.pptx
-      data: {url: $YAMLPATH/data.csv}
+      data: { url: $YAMLPATH/data.csv }
 ```
 
 Now, we'll set up a rule that copies the slide for each year.
 
 ```yaml
-      rules:
-        - copy-slide: data.groupby('year')
-          data:
-            rne: copy.val.groupby('code')['rne'].first().fillna(0)
+rules:
+  - copy-slide: data.groupby('year')
+    data:
+      rne: copy.val.groupby('code')['rne'].first().fillna(0)
 ```
 
 This copies the slide for each year. The variable `copy.key` holds the year. `copy.val` has the data for the year.
@@ -71,24 +71,24 @@ This copies the slide for each year. The variable `copy.key` holds the year. `co
 To conveniently access the `rne` column, we created a dataset called `rne`. It picks the first (and
 only) `rne` field for each state code that year. So, `rne["CA"]` has the RNE for California.
 
-Next, let's change the *color* of each `Rectangle *` shape. This matches all shape names starting
+Next, let's change the _color_ of each `Rectangle *` shape. This matches all shape names starting
 with Rectangle.
 
 ```yaml
-          'Rectangle *':
-            fill: >
-              "ACCENT_1+40%" if rne[shape.text] < 0.002 else
-              "ACCENT_1" if rne[shape.text] < 0.003 else
-              "ACCENT_1-25%" if rne[shape.text] < 0.004 else
-              "ACCENT_1-50%"
+"Rectangle *":
+  fill: >
+    "ACCENT_1+40%" if rne[shape.text] < 0.002 else
+    "ACCENT_1" if rne[shape.text] < 0.003 else
+    "ACCENT_1-25%" if rne[shape.text] < 0.004 else
+    "ACCENT_1-50%"
 ```
 
 The fill color is set in line with the legend we created on [template.pptx](template.pptx).
 
-Next, let's change the *text* of each `Rectangle *` shape.
+Next, let's change the _text_ of each `Rectangle *` shape.
 
 ```yaml
-            text: f'<p>{shape.text}</p><p><a bold="n" font-size="8 pt">{rne[shape.text]:.2%}</a></p>'
+text: f'<p>{shape.text}</p><p><a bold="n" font-size="8 pt">{rne[shape.text]:.2%}</a></p>'
 ```
 
 - `<p>{shape.text}</p>` creates the first line with the state name. (The source rectangles are bold. So is this.)
@@ -102,12 +102,11 @@ This creates a result like this for each state:
 Finally, change the caption every slide. `{copy.key}` is the year.
 
 ```yaml
-          Caption:
-            text: f'BY STATE, {copy.key}'
+Caption:
+  text: f'BY STATE, {copy.key}'
 ```
 
 [This is the final configuration](gramex.yaml.source){.source}
-
 
 [data]: https://indicators.kauffman.org/wp-content/uploads/sites/2/2020/05/Kauffman-Indicators-of-Early-stage-Entrepreneurship-%E2%80%93-Data-2019.csv
 [downloads]: https://indicators.kauffman.org/data-downloads

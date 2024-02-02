@@ -21,7 +21,7 @@ This currently shows the
 - server response time
 - etc
 
-Users can *select any period* over which to view this data, and filter for
+Users can _select any period_ over which to view this data, and filter for
 specific users, statuses, etc.
 
 Deploying the application just required adding this configuration:
@@ -29,12 +29,11 @@ Deploying the application just required adding this configuration:
 ```yaml
 import:
   logviewer:
-    path: $GRAMEXAPPS/logviewer/gramex.yaml   # Source of the app
-    YAMLURL: $YAMLURL/log/                    # Location to mount at
-    namespace: [url, schedule]                # Avoid name space conflicts
-    auth: ...                                 # Restrict access as required
+    path: $GRAMEXAPPS/logviewer/gramex.yaml # Source of the app
+    YAMLURL: $YAMLURL/log/ # Location to mount at
+    namespace: [url, schedule] # Avoid name space conflicts
+    auth: ... # Restrict access as required
 ```
-
 
 ## Proxy APIs
 
@@ -42,8 +41,8 @@ import:
 lets you access REST APIs from the browser. We can connect to most web
 applications:
 
-- *Enterprise apps*: SalesForce, SAP, JIRA, Trello, Github, etc
-- *Social apps*: LinkedIn, Google, Facebook, Twitter, etc
+- _Enterprise apps_: SalesForce, SAP, JIRA, Trello, Github, etc
+- _Social apps_: LinkedIn, Google, Facebook, Twitter, etc
 
 This has 2 advantages:
 
@@ -59,7 +58,7 @@ For example, a simple configuration exposes the Google Translation API to Gramex
 
 ProxyHandler is more powerful with the [OAuth2](../../auth/#oauth2) handler -
 which is new in v1.30. This lets users log into all the above applications, and
-allows ProxyHandler to access *the logged in user's data*.
+allows ProxyHandler to access _the logged in user's data_.
 
 This also lets us build secure applications where Gramex does not store data,
 but shows users their own data, like:
@@ -70,7 +69,7 @@ but shows users their own data, like:
 ## Multiple logins
 
 Users can now into multiple auth engines at the same time. For example, you can
-log in with *both* [DBAuth](../../auth/#database-auth) *and*
+log in with _both_ [DBAuth](../../auth/#database-auth) _and_
 [LDAP](../../auth/#ldap-auth). This lets you link users' DBAuth login to an
 LDAP login ID dynamically.
 
@@ -107,10 +106,10 @@ Here is the output:
 
 This lets you send mobile alerts if there's any **unusual business scenario**, like:
 
-- Large order *entered* in the system
-- Device, server or service is *down*
-- Highly suitable candidate has *applied* for a job
-- Unusual *increase* in website traffic
+- Large order _entered_ in the system
+- Device, server or service is _down_
+- Highly suitable candidate has _applied_ for a job
+- Unusual _increase_ in website traffic
 
 You can also send mobile alerts as summaries. For example:
 
@@ -129,7 +128,7 @@ Earlier, if `gramex.yaml` changed, Gramex would reload the entire application.
 Re-launching ChromeCapture, PhantomJS, and every single one of your handlers,
 schedulers, etc.
 
-Now Gramex is faster. It reloads a handler or scheduler *only if* its
+Now Gramex is faster. It reloads a handler or scheduler _only if_ its
 configuration has changed.
 
 Gramex can also be [dynamically reconfigured](../../config/#dynamic-configuration).
@@ -139,7 +138,7 @@ Gramex can also be [dynamically reconfigured](../../config/#dynamic-configuratio
 - Generate multiple URLs, one for each table on a Database
 
 **NOTE**: Since these URLs are constructed dynamically, it makes the application
-more complex that it is worth. *Use with caution.*
+more complex that it is worth. _Use with caution._
 
 ## Documentation
 
@@ -175,7 +174,7 @@ is that the app runs locally, but not on the server. And it's simple to fix.
 ## Stats
 
 - Code base: 23,896 lines (python: 14,744, javascript: 1,148, tests: 8,004)
-  (*Note*: We used to report without JavaScript until last version.)
+  (_Note_: We used to report without JavaScript until last version.)
 - Test coverage: 79%
 
 ## Upgrade

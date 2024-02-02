@@ -8,6 +8,7 @@ type: microservice
 ---
 
 Your session data is:
+
 <iframe class="w-100" frameborder="0" src="session"></iframe>
 
 [TOC]
@@ -38,7 +39,7 @@ with the others. To avoid this, change the cookie name to something unique for e
 ```yaml
 app:
   session:
-    cookie: my-app-sid        # Instead of 'sid', use 'my-app-sid' as the cookie name for this app
+    cookie: my-app-sid # Instead of 'sid', use 'my-app-sid' as the cookie name for this app
 ```
 
 ## Session security
@@ -63,11 +64,12 @@ You can change these defaults to a more secure setting as follows:
 ```yaml
 app:
   session:
-    httponly: true        # Allow JavaScript access via document.cookie
-    secure: true          # Cookies can be accessed only via HTTPS (not HTTP)
-    samesite: Strict      # Browser sends the cookie only for same-site requests.
-                          # Values can be Strict, Lax or None. (Case-sensitive)
-    domain: example.org   # All subdomains in *.example.org can access session
+    httponly: true # Allow JavaScript access via document.cookie
+    secure: true # Cookies can be accessed only via HTTPS (not HTTP)
+    samesite:
+      Strict # Browser sends the cookie only for same-site requests.
+      # Values can be Strict, Lax or None. (Case-sensitive)
+    domain: example.org # All subdomains in *.example.org can access session
 ```
 
 The cookie is stored for `app.session.expiry` days. Here is the default configuration:
@@ -75,7 +77,7 @@ The cookie is stored for `app.session.expiry` days. Here is the default configur
 ```yaml
 app:
   session:
-    expiry: 31              # Sessions expire after 31 days by default
+    expiry: 31 # Sessions expire after 31 days by default
 ```
 
 Set `session_expiry: false` to create **session cookies**. Session cookies expire when the browser
@@ -85,7 +87,7 @@ the browser is open for longer.)
 ```yaml
 app:
   session:
-    expiry: false           # Sessions expire when browser closes
+    expiry: false # Sessions expire when browser closes
 ```
 
 You can override session expiry for individual auth handlers with a `session_expiry: <days>` kwarg.
@@ -108,21 +110,21 @@ Sessions are stored in a session store that is configured as follows:
 ```yaml
 app:
   session:
-    type: json                      # Type of store to use (see below)
-    path: $GRAMEXDATA/session.json  # Path to the store (ignored for type: memory)
-    expiry: 31                      # Session cookies expiry in days
-    flush: 5                        # Write store to disk periodically (in seconds)
-    purge: 3600                     # Delete old sessions periodically (in seconds)
+    type: json # Type of store to use (see below)
+    path: $GRAMEXDATA/session.json # Path to the store (ignored for type: memory)
+    expiry: 31 # Session cookies expiry in days
+    flush: 5 # Write store to disk periodically (in seconds)
+    purge: 3600 # Delete old sessions periodically (in seconds)
 ```
 
 Sessions can be stored in one of these `type:`
 
-| `type`    | Speed     | Persistent | Distributed | Version     |
-|:---------:|:---------:|:----------:|:-----------:|:-----------:|
-| `memory`  | faster    | no         | no          | all         |
-| `json`    | fast      | yes        | no          | all         |
-| `sqlite`  | slow      | yes        | yes         | 1.27        |
-| `redis`   | fast      | yes        | yes         | 1.36        |
+|  `type`  | Speed  | Persistent | Distributed | Version |
+| :------: | :----: | :--------: | :---------: | :-----: |
+| `memory` | faster |     no     |     no      |   all   |
+|  `json`  |  fast  |    yes     |     no      |   all   |
+| `sqlite` |  slow  |    yes     |     yes     |  1.27   |
+| `redis`  |  fast  |    yes     |     yes     |  1.36   |
 
 Note: `type: hdf5` is deprecated from **v1.34**. It is very slow and not distributed.
 
@@ -135,14 +137,14 @@ instances, use `type: redis`. Here is a sample configuration:
 ```yaml
 app:
   session:
-    type: redis         # Persistent multi-instance data store
-    path: localhost:6379:0  # Redis server:port:db (default: localhost:6379:0)
+    type: redis # Persistent multi-instance data store
+    path: localhost:6379:0 # Redis server:port:db (default: localhost:6379:0)
     # You can pass more parameters to https://redis-py.readthedocs.io/en/latest/
     # by adding :key=value:key=value:... to path. For example:
     # path: localhost:6379:0:password=your-password
-    expiry: 31          # Session cookies expiry in days
+    expiry: 31 # Session cookies expiry in days
     # flush: 5          # Redis stores are live. No flush required
-    purge: 86400        # Delete old sessions periodically (in seconds)
+    purge: 86400 # Delete old sessions periodically (in seconds)
 ```
 
 Before running this, you need to run the [Redis](https://redis.io/) database.
@@ -189,18 +191,18 @@ url:
     pattern: /$YAMLURL/login/
     handler: SimpleAuth
     kwargs:
-      credentials: {alpha: alpha}
+      credentials: { alpha: alpha }
       redirect:
-        query: later                  # ?later= is used for redirection
-        header: Referer               # else, the Referer header
-        url: ../                      # else redirect to parent page
+        query: later # ?later= is used for redirection
+        header: Referer # else, the Referer header
+        url: ../ # else redirect to parent page
   app/home:
     pattern: /$YAMLURL/
     handler: ...
     kwargs:
       auth:
-        login_url: /$YAMLURL/login/   # Use this as the login URL
-        query: later                  # Send ?later= to the login URL
+        login_url: /$YAMLURL/login/ # Use this as the login URL
+        query: later # Send ?later= to the login URL
 ```
 
 To force the user to a fixed URL after logging in, use:
@@ -211,14 +213,13 @@ url:
     pattern: /$YAMLURL/login/
     handler: SimpleAuth
     kwargs:
-      credentials: {alpha: alpha}
+      credentials: { alpha: alpha }
       redirect:
-        url: ../              # Always redirect to this page after login
+        url: ../ # Always redirect to this page after login
 ```
 
 Every time the user logs in, the session ID is changed to prevent
 [session fixation](https://www.owasp.org/index.php/Session_fixation).
-
 
 ## Simple auth
 
@@ -227,16 +228,16 @@ This configuration creates a [simple auth page](simple?next=.):
 ```yaml
 url:
   login/simple:
-    pattern: /$YAMLURL/simple   # Map this URL
-    handler: SimpleAuth         # to the SimpleAuth handler
+    pattern: /$YAMLURL/simple # Map this URL
+    handler: SimpleAuth # to the SimpleAuth handler
     kwargs:
-      credentials:              # Specify the user IDs and passwords
-        alpha: alpha            # User: alpha has password: alpha
-        beta: beta              # Similarly for beta
-        gamma:                  # The user gamma is defined as a mapping
-          password: pwd         # One of the keys MUST be "password"
-          role: user            # Additional keys can be defined
-      template: $YAMLPATH/simple.html   # Optional login template
+      credentials: # Specify the user IDs and passwords
+        alpha: alpha # User: alpha has password: alpha
+        beta: beta # Similarly for beta
+        gamma: # The user gamma is defined as a mapping
+          password: pwd # One of the keys MUST be "password"
+          role: user # Additional keys can be defined
+      template: $YAMLPATH/simple.html # Optional login template
 ```
 
 This setup is useful only for testing. It stores passwords in plain text.
@@ -268,8 +269,7 @@ The `template:` key is optional, but you should generally associate it with a
 create one.
 
 ::: example href=simple source=https://github.com/gramener/gramex-guide/blob/master/auth/simple.html
-    Simple Auth example
-
+Simple Auth example
 
 ## Google auth
 
@@ -278,15 +278,15 @@ This configuration creates a [Google login page](google?next=.):
 ```yaml
 url:
   login/google:
-    pattern: /$YAMLURL/google   # Map this URL
-    handler: GoogleAuth         # to the GoogleAuth handler
+    pattern: /$YAMLURL/google # Map this URL
+    handler: GoogleAuth # to the GoogleAuth handler
     kwargs:
-      key: YOURKEY              # Set your app key
-      secret: YOURSECRET        # Set your app secret
+      key: YOURKEY # Set your app key
+      secret: YOURSECRET # Set your app secret
       # Any Google OAuth2 parmeters are passed under extra_params. See:
       # https://developers.google.com/identity/protocols/oauth2/web-server#creatingclient
       extra_params:
-        prompt: select_account  # Prompt to pick account every time
+        prompt: select_account # Prompt to pick account every time
 ```
 
 To get the application key and secret:
@@ -299,22 +299,22 @@ To get the application key and secret:
 - Copy the "Client secret" and "Client ID" to the application settings
 
 ::: example href=gmail/ source=https://github.com/gramener/gramex-guide/blob/master/auth/gmail/
-    Google Auth example
+Google Auth example
 
 You can get access to Google APIs by specifying a scope. For example, this [accesses your contacts and mails](googleapi.html):
 
 ```yaml
 url:
   login/google:
-    pattern: /$YAMLURL/google   # Map this URL
-    handler: GoogleAuth         # to the GoogleAuth handler
+    pattern: /$YAMLURL/google # Map this URL
+    handler: GoogleAuth # to the GoogleAuth handler
     kwargs:
-      key: YOURKEY              # Set your app key
-      secret: YOURSECRET        # Set your app secret
+      key: YOURKEY # Set your app key
+      secret: YOURSECRET # Set your app secret
       # Any Google OAuth2 parmeters are passed under extra_params. See:
       # https://developers.google.com/identity/protocols/oauth2/web-server#creatingclient
       extra_params:
-        prompt: select_account  # Prompt to pick account every time
+        prompt: select_account # Prompt to pick account every time
       # Scope list: https://developers.google.com/identity/protocols/googlescopes
       scope:
         - https://www.googleapis.com/auth/contacts.readonly
@@ -370,16 +370,16 @@ need to request offline access by adding `access_type: offline` under `extra_par
 ```yaml
 url:
   login/google:
-    pattern: /$YAMLURL/google   # Map this URL
-    handler: GoogleAuth         # to the GoogleAuth handler
+    pattern: /$YAMLURL/google # Map this URL
+    handler: GoogleAuth # to the GoogleAuth handler
     kwargs:
-      key: YOURKEY              # Set your app key
-      secret: YOURSECRET        # Set your app secret
+      key: YOURKEY # Set your app key
+      secret: YOURSECRET # Set your app secret
       # Any Google OAuth2 parmeters are passed under extra_params. See:
       # https://developers.google.com/identity/protocols/oauth2/web-server#creatingclient
       extra_params:
-        prompt: select_account  # Prompt to pick account every time
-        access_type: offline    # Get a token that works offline
+        prompt: select_account # Prompt to pick account every time
+        access_type: offline # Get a token that works offline
       # Scope list: https://developers.google.com/identity/protocols/googlescopes
       scope:
         - https://www.googleapis.com/auth/contacts.readonly
@@ -421,7 +421,6 @@ def get_contacts(handler):
     return r.text
 ```
 
-
 ### SSL certificate error
 
 Google auth and connections to HTTPS sites may fail with a
@@ -429,7 +428,6 @@ Google auth and connections to HTTPS sites may fail with a
 
 1. Run `conda update python` to upgrade to the latest version of Python, which will use the latest `ssl` module.
 2. Run `conda install certifi==2015.04.28` to downgrade to an older version of `certifi`. See this [Tornado issue](https://github.com/tornadoweb/tornado/issues/1534#issuecomment-183962419)
-
 
 ## Facebook auth
 
@@ -440,10 +438,10 @@ This configuration creates a [Facebook login page](facebook?next=.):
 url:
   login/facebook:
     pattern: /$YAMLURL/facebook # Map this URL
-    handler: FacebookAuth       # to the FacebookAuth handler
+    handler: FacebookAuth # to the FacebookAuth handler
     kwargs:
-      key: YOURKEY            # Set your app key
-      secret: YOURSECRET      # Set your app secret
+      key: YOURKEY # Set your app key
+      secret: YOURSECRET # Set your app secret
 ```
 
 - Go to the [Facebook apps page](https://developers.facebook.com/apps/)
@@ -485,11 +483,11 @@ This configuration creates a [Twitter login page](twitter?next=.):
 ```yaml
 url:
   login/twitter:
-    pattern: /$YAMLURL/twitter  # Map this URL
-    handler: TwitterAuth        # to the TwitterAuth handler
+    pattern: /$YAMLURL/twitter # Map this URL
+    handler: TwitterAuth # to the TwitterAuth handler
     kwargs:
-      key: YOURKEY            # Set your app key
-      secret: YOURSECRET      # Set your app secret
+      key: YOURKEY # Set your app key
+      secret: YOURSECRET # Set your app secret
 ```
 
 - Go to the [Twitter app page](https://apps.twitter.com/)
@@ -570,14 +568,14 @@ This configuration creates a [direct LDAP login page](ldap?next=.):
 
 ```yaml
 auth/ldap:
-  pattern: /$YAMLURL/ldap             # Map this URL
-  handler: LDAPAuth                   # to the LDAP auth handler
+  pattern: /$YAMLURL/ldap # Map this URL
+  handler: LDAPAuth # to the LDAP auth handler
   kwargs:
-    template: $YAMLPATH/ldap.html   # Optional login template
-    host: 10.20.30.40               # Server to connect to
-    use_ssl: true                   # Whether to use SSL (LDAPS) or not
-    user: 'DOMAIN\{user}'           # Check LDAP domain name with client IT team
-    password: '{password}'          # This is the field name, NOT the actual password
+    template: $YAMLPATH/ldap.html # Optional login template
+    host: 10.20.30.40 # Server to connect to
+    use_ssl: true # Whether to use SSL (LDAPS) or not
+    user: 'DOMAIN\{user}' # Check LDAP domain name with client IT team
+    password: "{password}" # This is the field name, NOT the actual password
 ```
 
 The `user:` and `password:` configuration in `gramex.yaml` maps form fields to
@@ -613,16 +611,16 @@ like:
 To fetch these, add a `search:` section. Below is a real-life example:
 
 ```yaml
-  kwargs:
-    template: $YAMLPATH/ldap.html
-    host: 10.20.30.40                       # Provided by client IT team
-    use_ssl: true
-    user: 'ICICIBANKLTD\{user}'             # Provided by client IT team
-    password: '{password}'                  # This is the field name, not the actual passsword
-    search:                                 # Look up user attributes by searching
-        base: 'dc=ICICIBANKLTD,dc=com'      # Provided by client IT team
-        filter: '(sAMAccountName={user})'   # Provided by client IT team
-        user: 'ICICIBANKLTD\{sAMAccountName}'   # How the username is displayed
+kwargs:
+  template: $YAMLPATH/ldap.html
+  host: 10.20.30.40 # Provided by client IT team
+  use_ssl: true
+  user: 'ICICIBANKLTD\{user}' # Provided by client IT team
+  password: "{password}" # This is the field name, not the actual passsword
+  search: # Look up user attributes by searching
+    base: "dc=ICICIBANKLTD,dc=com" # Provided by client IT team
+    filter: "(sAMAccountName={user})" # Provided by client IT team
+    user: 'ICICIBANKLTD\{sAMAccountName}' # How the username is displayed
 ```
 
 - `base:` where to search. Typically `dc=DOMAIN,dc=com` for ActiveDirectory
@@ -637,19 +635,19 @@ This configuration creates a [bind LDAP login page](ldap-bind?next=.):
 
 ```yaml
 auth/ldap-bind:
-  pattern: /$YAMLURL/ldap-bind            # Map this URL
-  handler: LDAPAuth                       # to the LDAP auth handler
+  pattern: /$YAMLURL/ldap-bind # Map this URL
+  handler: LDAPAuth # to the LDAP auth handler
   kwargs:
-    template: $YAMLPATH/ldap.html       # This has the login form
-    host: ipa.demo1.freeipa.org         # Server to connect to
-    use_ssl: true                       # Whether to use SSL or not
-    bind:                               # Bind to the server with this ID/password
-      user: 'uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org'
-      password: $LDAP_PASSWORD        # Stored in a Gramex / environment variable
+    template: $YAMLPATH/ldap.html # This has the login form
+    host: ipa.demo1.freeipa.org # Server to connect to
+    use_ssl: true # Whether to use SSL or not
+    bind: # Bind to the server with this ID/password
+      user: "uid=admin,cn=users,cn=accounts,dc=demo1,dc=freeipa,dc=org"
+      password: $LDAP_PASSWORD # Stored in a Gramex / environment variable
     search:
-      base: 'dc=demo1,dc=freeipa,dc=org'  # Search within this domain
-      filter: '(mail={user})'             # by email ID, rather than uid
-      password: '{password}'              # Use the password field as password
+      base: "dc=demo1,dc=freeipa,dc=org" # Search within this domain
+      filter: "(mail={user})" # by email ID, rather than uid
+      password: "{password}" # Use the password field as password
 ```
 
 This is similar to [direct LDAP login](#direct-ldap-login), but the sequence followed is:
@@ -698,7 +696,6 @@ The [user attributes](#user-attributes) in `handler.current_user` look like this
 
 [xsrf]: ../filehandler/#xsrf
 
-
 ## Database auth
 
 **Available in Gramex Enterprise**.
@@ -710,18 +707,18 @@ This is the minimal configuration that lets you log in from an **Excel file**:
 ```yaml
 url:
   auth/db:
-    pattern: /db                      # Map this URL
-    handler: DBAuth                   # to the DBAuth handler
+    pattern: /db # Map this URL
+    handler: DBAuth # to the DBAuth handler
     kwargs:
-      url: $YAMLPATH/auth.xlsx        # Pick up list of users from this XLSX (or CSV) file
+      url: $YAMLPATH/auth.xlsx # Pick up list of users from this XLSX (or CSV) file
       user:
-        column: user                  # The user column in users table has the user ID
+        column: user # The user column in users table has the user ID
       password:
-        column: password              # The users.password column has the password
-      redirect:                       # After logging in, redirect the user to:
-        query: next                   #      the ?next= URL
-        header: Referer               # else the Referer: header (i.e. page before login)
-        url: .                        # else the home page of current directory
+        column: password # The users.password column has the password
+      redirect: # After logging in, redirect the user to:
+        query: next #      the ?next= URL
+        header: Referer # else the Referer: header (i.e. page before login)
+        url: . # else the home page of current directory
 ```
 
 Now create an `auth.xlsx` with the first sheet like this:
@@ -741,7 +738,7 @@ matches it with the `auth.xlsx` database.
 **Note** - Do not name user column as `_user_id` as it's an internal variable.
 
 ::: example href=dbsimple source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    DBAuth example
+DBAuth example
 
 [auth-template]: http://github.com/gramener/gramex/blob/master/gramex/handlers/auth.template.html
 
@@ -750,19 +747,19 @@ Here is a more complete example using a **SQLite database**:
 ```yaml
 url:
   auth/db:
-    pattern: /$YAMLURL/db                 # Map this URL
-    handler: DBAuth                       # to the DBAuth handler
+    pattern: /$YAMLURL/db # Map this URL
+    handler: DBAuth # to the DBAuth handler
     kwargs:
-      url: sqlite:///$YAMLPATH/auth.db  # Pick up list of users from this sqlalchemy URL
-      table: users                      # ... and this table (may be prefixed as schema.users)
-      template: $YAMLPATH/dbauth.html   # Optional login template
+      url: sqlite:///$YAMLPATH/auth.db # Pick up list of users from this sqlalchemy URL
+      table: users # ... and this table (may be prefixed as schema.users)
+      template: $YAMLPATH/dbauth.html # Optional login template
       user:
-        column: user                  # The users.user column is matched with
-        arg: user                     # ... the ?user= argument from the form
-      delay: [1, 2, 5, 10]              # Delay for failed logins
+        column: user # The users.user column is matched with
+        arg: user # ... the ?user= argument from the form
+      delay: [1, 2, 5, 10] # Delay for failed logins
       password:
-        column: password              # The users.password column is matched with
-        arg: password                 # ... the ?password= argument from the form
+        column: password # The users.password column is matched with
+        arg: password # ... the ?password= argument from the form
         # You should encrypt passwords when storing them.
         # The function below specifies the encryption method.
         # Remember to change secret-key to something unique
@@ -771,7 +768,7 @@ url:
 ```
 
 ::: example href=db source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    DBAuth example
+DBAuth example
 
 Other `kwargs` are passed to [`gramex.data.filter`](https://gramener.com/gramex/guide/api/data/#gramex.data.filter), which passes it to
 [`sqlalchemy.create_engine()`](https://docs.sqlalchemy.org/en/14/core/engines.html#sqlalchemy.create_engine) for databases,
@@ -781,16 +778,16 @@ the respective plugin filters.
 For example, adding:
 
 ```yaml
-    kwargs:
-      url: mysql+pymysql://localhost/test
-      pool_recycle: 3600
-      # ...
+kwargs:
+  url: mysql+pymysql://localhost/test
+  pool_recycle: 3600
+  # ...
 ```
 
 ... is the same as [setting `pool_recycle=3600`](https://docs.sqlalchemy.org/en/14/core/pooling.html#setting-pool-recycle),
 i.e. `sqlalchemy.create_engine('mysql+pymysql://localhost/test', pool_recycle=3600, ...)`
 
-You can configure several aspects of this flow. You can (and *should*) use:
+You can configure several aspects of this flow. You can (and _should_) use:
 
 - `template:` to customize the appearance of the login page
 - `url:` to a SQLAlchemy database (with `table:`) instead of using CSV / Excel files
@@ -857,14 +854,14 @@ url:
     pattern: /db
     handler: DBAuth
     kwargs:
-        url: sqlite:///$YAMLPATH/auth.db
-        table: users
-        user:
-            column: user
-        password:
-            column: password
-        forgot:
-            email_from: gramex-guide-gmail    # Name of the email service to use for sending emails
+      url: sqlite:///$YAMLPATH/auth.db
+      table: users
+      user:
+        column: user
+      password:
+        column: password
+      forgot:
+        email_from: gramex-guide-gmail # Name of the email service to use for sending emails
 ```
 
 Just add a `forgot:` section with an `email_from:` parameter that points to the
@@ -909,26 +906,26 @@ Here is a more complete example:
 ```yaml
 kwargs:
   forgot:
-    email_from: gramex-guide-auth     # Name of the email service to use for sending emails
-    key: forgot                       # ?forgot= is used as the forgot password parameter
-    arg: email                        # ?email= is used to submit the email ID of the user
-    minutes_to_expiry: 15             # Minutes after which the link will expire
-    otp_reset: false                  # true clears all previous OTPs for this email
-    email_column: email               # The database column that contains the email ID
-    email_subject: Gramex forgot password       # Subject of the email
-    email_as: "S Anand <root.node@gmail.com>"   # Emails will be sent as if from this ID
+    email_from: gramex-guide-auth # Name of the email service to use for sending emails
+    key: forgot # ?forgot= is used as the forgot password parameter
+    arg: email # ?email= is used to submit the email ID of the user
+    minutes_to_expiry: 15 # Minutes after which the link will expire
+    otp_reset: false # true clears all previous OTPs for this email
+    email_column: email # The database column that contains the email ID
+    email_subject: Gramex forgot password # Subject of the email
+    email_as: "S Anand <root.node@gmail.com>" # Emails will be sent as if from this ID
     email_body: |
-        This is an email from Gramex guide.
-        You clicked on the forgot password like for user {user}.
-        Visit this link to reset the password: {reset_url}
+      This is an email from Gramex guide.
+      You clicked on the forgot password like for user {user}.
+      Visit this link to reset the password: {reset_url}
     email_html: |
-        <p>Hi from <a href="https://gramener.com/gramex/guide/">Gramex Guide</a>.</p>
-        <p>You clicked on the forgot password like for user {user}.</p>
-        <p><a href="{reset_url}">Click here</a> to reset the password.</p>
+      <p>Hi from <a href="https://gramener.com/gramex/guide/">Gramex Guide</a>.</p>
+      <p>You clicked on the forgot password like for user {user}.</p>
+      <p><a href="{reset_url}">Click here</a> to reset the password.</p>
 ```
 
 ::: example href=db source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    Forgot password example
+Forgot password example
 
 [forgot-template]: http://github.com/gramener/gramex/blob/master/gramex/handlers/forgot.template.html
 [send-as]: https://support.google.com/mail/answer/22370?hl=en
@@ -955,24 +952,26 @@ url:
         column: password
       forgot:
         email_from: gramex-guide-gmail
-      signup: true            # Enable signup
+      signup: true # Enable signup
 ```
 
 ::: example href=db?signup source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    Sign-up example
+Sign-up example
 
 You can pass additional configurations to sign-up. For example:
 
 ```yaml
 signup:
-  key: signup                     # ?signup= is used as the signup parameter
+  key: signup # ?signup= is used as the signup parameter
   template: $YAMLPATH/signup.html # Use this signup template
-  columns:                        # Mapping of URL query parameters to database columns
-    name: user_name               # ?name= is saved in the user_name column
-    gender: user_gender           # ?gender= is saved in the user_gender column
-                                  # Other than email, all other columns are ignored
-  validate: app.validate(args)    # Optional validation method is passed handler.args
-                                  # This may raise an Exception or return False to stop.
+  columns: # Mapping of URL query parameters to database columns
+    name: user_name # ?name= is saved in the user_name column
+    gender:
+      user_gender # ?gender= is saved in the user_gender column
+      # Other than email, all other columns are ignored
+  validate:
+    app.validate(args) # Optional validation method is passed handler.args
+    # This may raise an Exception or return False to stop.
 ```
 
 - `key: signup` shows the signup form when the URL has a `?signup`. `key: signup`
@@ -994,7 +993,6 @@ signup:
 
 [signup-template]: http://github.com/gramener/gramex/blob/master/gramex/handlers/signup.template.html
 
-
 ## Integrated auth
 
 **Available in Gramex Enterprise**.
@@ -1007,8 +1005,8 @@ Then use this configuration:
 
 ```yaml
 auth/integrated:
-    pattern: /$YAMLURL/integrated
-    handler: IntegratedAuth
+  pattern: /$YAMLURL/integrated
+  handler: IntegratedAuth
 ```
 
 The user must first trust this server by enabling
@@ -1079,7 +1077,6 @@ service provider metadata. In the above example, this would be
 along with required claims (i.e. fields to be returned, such as `email_id`,
 `username`, etc.)
 
-
 ## OAuth2
 
 **Available in Gramex Enterprise**.
@@ -1103,22 +1100,22 @@ url:
     handler: OAuth2
     kwargs:
       # Create app at https://code.gramener.com/admin/applications/
-      client_id: 'YOUR_APP_CLIENT_ID'
-      client_secret: 'YOUR_APP_SECRET_ID'
+      client_id: "YOUR_APP_CLIENT_ID"
+      client_secret: "YOUR_APP_SECRET_ID"
       authorize:
-        url: 'https://code.gramener.com/oauth/authorize'
+        url: "https://code.gramener.com/oauth/authorize"
       access_token:
-        url: 'https://code.gramener.com/oauth/token'
+        url: "https://code.gramener.com/oauth/token"
         body:
-          grant_type: 'authorization_code'
+          grant_type: "authorization_code"
       user_info:
-        url: 'https://code.gramener.com/api/v4/user'
+        url: "https://code.gramener.com/api/v4/user"
         headers:
-          Authorization: 'Bearer {access_token}'
+          Authorization: "Bearer {access_token}"
 ```
 
 ::: example href=gitlab source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    Gitlab OAuth2 example
+Gitlab OAuth2 example
 
 It accepts the following configuration:
 
@@ -1151,10 +1148,10 @@ It accepts the following configuration:
 - `user_key`: optional key in session to store user information. default: `user`
 
 ::: example href=github source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    Gitlab OAuth2 example
+Gitlab OAuth2 example
 
 ::: example href=googleoauth2 source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    Google OAuth2 example
+Google OAuth2 example
 
 ### Azure Active Directory
 
@@ -1171,19 +1168,19 @@ url:
       client_id: $AZURE_CLIENT_ID
       client_secret: $AZURE_CLIENT_SECRET
       authorize:
-        url: 'https://login.microsoftonline.com/{TENANT_ID}/oauth2/authorize'
+        url: "https://login.microsoftonline.com/{TENANT_ID}/oauth2/authorize"
         scope:
           - https://graph.microsoft.com/User.Read
-        extra_params:   # Optional: Lets users switch account
+        extra_params: # Optional: Lets users switch account
           prompt: select_account
       access_token:
-        url: 'https://login.microsoftonline.com/{TENANT_ID}/oauth2/token'
+        url: "https://login.microsoftonline.com/{TENANT_ID}/oauth2/token"
         body:
-          grant_type: 'authorization_code'
+          grant_type: "authorization_code"
       user_info:
-        url: 'https://graph.microsoft.com/v1.0/me/'
+        url: "https://graph.microsoft.com/v1.0/me/"
         headers:
-          Authorization: 'Bearer {access_token}'
+          Authorization: "Bearer {access_token}"
       action:
         function: myapp.store_info_in_session(handler)
       redirect:
@@ -1209,47 +1206,48 @@ This requires an [email service](../email/). Here is a sample configuration:
 ```yaml
 email:
   gramex-guide-gmail:
-    type: gmail                     # Type of email used is GMail
-    email: gramex.guide@gmail.com   # Generic email ID used to test e-mails
-    password: tlpmupxnhucitpte      # App-specific password created for Gramex guide
+    type: gmail # Type of email used is GMail
+    email: gramex.guide@gmail.com # Generic email ID used to test e-mails
+    password: tlpmupxnhucitpte # App-specific password created for Gramex guide
 
 url:
   login:
     pattern: /$YAMLURL/login
-    handler: EmailAuth                # Use email based authentication
+    handler: EmailAuth # Use email based authentication
     kwargs:
       # Required configuration
-      service: gramex-guide-gmail     # Send messages using this provider
-      from: user@example.org          # Sends messages as this user
+      service: gramex-guide-gmail # Send messages using this provider
+      from: user@example.org # Sends messages as this user
       # Send the strings below as subject and body. You can use variables
       # user=email ID, password=OTP, link=one-time login link
-      subject: 'OTP for Gramex'
+      subject: "OTP for Gramex"
       body: |
         The OTP for {user} is {password}
 
         Visit {link}
       html: |
-          <p>The OTP for {user} is {password}.</p>
-          <p><a href="{link}">Click here to log in</a></p>
+        <p>The OTP for {user} is {password}.</p>
+        <p><a href="{link}">Click here to log in</a></p>
 
       # Optional configuration. The values shown below are the defaults
-      otp_reset: false          # true clears all previous OTPs for this email ID
-      minutes_to_expiry: 15     # Minutes after which the OTP will expire
-      size: 6                   # Number of characters in the OTP
-      instantlogin: false       # Fetching login link instantly logs user in
-                                # False is best for clients like Outlook that pre-fetch links
+      otp_reset: false # true clears all previous OTPs for this email ID
+      minutes_to_expiry: 15 # Minutes after which the OTP will expire
+      size: 6 # Number of characters in the OTP
+      instantlogin:
+        false # Fetching login link instantly logs user in
+        # False is best for clients like Outlook that pre-fetch links
       user:
-          arg: user             # ?user= contains the user email
+        arg: user # ?user= contains the user email
       password:
-          arg: password         # ?password= contains the OTP
-      redirect:                 # After logging in, redirect the user to:
-          query: next           #      the ?next= URL
-          header: Referer       # else the Referer header (i.e. page before login)
-          url: .                # else the home page of current directory
+        arg: password # ?password= contains the OTP
+      redirect: # After logging in, redirect the user to:
+        query: next #      the ?next= URL
+        header: Referer # else the Referer header (i.e. page before login)
+        url: . # else the home page of current directory
 ```
 
 ::: example href=email source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    Email auth example
+Email auth example
 
 The [user attributes](#user-attributes) in `handler.current_user` look like this:
 
@@ -1264,7 +1262,7 @@ The [user attributes](#user-attributes) in `handler.current_user` look like this
 Specific users can also be authorized. For example, this allows
 all users from `@ibm.com` and `@pwc.com`, as well as `admin@example.org`.
 
-**Note** membership roles are added to  **other** consuming endpoints in `gramex.yaml`,
+**Note** membership roles are added to **other** consuming endpoints in `gramex.yaml`,
 and **not** the `EmailAuth` endpoint. For more information see [roles](#roles)
 
 ```yaml
@@ -1327,7 +1325,7 @@ You can use these variables in the template:
   - `redirect['value']` is the URL to redirect the user to
 
 ::: example href=emailtemplate source=https://github.com/gramener/gramex-guide/blob/master/auth/emailauth.template.html
-    Email auth template example
+Email auth template example
 
 ## SMS Auth
 
@@ -1339,40 +1337,40 @@ This requires a working [SMS service](../sms/). Here is a sample configuration:
 
 ```yaml
 sms:
-  exotel-sms:               # Create an SMS service
-    type: exotel            # using Exotel
-    sid: ...                # Enter your Exotel SID
-    token: ...              # and your Exotel Token
+  exotel-sms: # Create an SMS service
+    type: exotel # using Exotel
+    sid: ... # Enter your Exotel SID
+    token: ... # and your Exotel Token
 
 url:
   login:
     pattern: /$YAMLURL/login
-    handler: SMSAuth            # Use SMS based authentication
+    handler: SMSAuth # Use SMS based authentication
     kwargs:
       # Required configuration
-      service: exotel-sms       # Send messages using this provider
+      service: exotel-sms # Send messages using this provider
       # Send this string with the %s replaced with the OTP.
       # The string should only contain one %s
-      message: 'Your OTP is %s. Visit https://bit.ly/sms2auth'
-      redirect:                 # After logging in, redirect the user to:
-          query: next           #      the ?next= URL
-          header: Referer       # else the Referer: header (i.e. page before login)
-          url: .                # else the home page of current directory
+      message: "Your OTP is %s. Visit https://bit.ly/sms2auth"
+      redirect: # After logging in, redirect the user to:
+        query: next #      the ?next= URL
+        header: Referer # else the Referer: header (i.e. page before login)
+        url: . # else the home page of current directory
 
       # Optional configuration. The values shown below are the defaults
-      minutes_to_expiry: 15     # Minutes after which the OTP will expire
-      size: 6                   # Number of characters in the OTP
-      otp_reset: false          # true clears all previous OTPs for this phone number
-      sender: gramex            # Sender ID. Works in some countries
-      template: $YAMLPATH/auth.sms.template.html    # Login template
+      minutes_to_expiry: 15 # Minutes after which the OTP will expire
+      size: 6 # Number of characters in the OTP
+      otp_reset: false # true clears all previous OTPs for this phone number
+      sender: gramex # Sender ID. Works in some countries
+      template: $YAMLPATH/auth.sms.template.html # Login template
       user:
-          arg: user             # ?user= contains the mobile number
+        arg: user # ?user= contains the mobile number
       password:
-          arg: password         # ?password= contains the OTP
+        arg: password # ?password= contains the OTP
 ```
 
 ::: example href=sms source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    SMS auth example
+SMS auth example
 
 **Note**: the example above relies on free credits available from Exotel. These
 may have run out.
@@ -1392,7 +1390,7 @@ The login flow is:
 2. User submits phone number. Browser posts `?user=<phone>` to `/login`
 3. App generates a new OTP (valid for `minutes_to_expiry` minutes)
 4. App SMSs the OTP to the user phone number. On fail, ask for phone again
-5. App shows form template with blank OTP (``password``) field
+5. App shows form template with blank OTP (`password`) field
 6. User submits OTP. Browser posts `?user=<phone>&password=<otp>` to `/login`
 7. App checks if OTP is valid. If yes, logs user in and redirects
 8. If OTP is invalid, shows form template with error
@@ -1407,9 +1405,7 @@ When you write your own login template form, you can use these Python variables:
   - `'wrong-pw'` if the OTP is wrong. `msg` has a string error
 - `msg`: sent only if `error` is not `None`. See `error`
 
-
 [sms-auth-template]: https://github.com/gramener/gramex/blob/master/gramex/handlers/auth.sms.template.html
-
 
 ## Log out
 
@@ -1417,8 +1413,8 @@ This configuration creates a [logout page](logout?next=.):
 
 ```yaml
 auth/logout:
-  pattern: /$YAMLURL/logout   # Map this URL
-  handler: LogoutHandler      # to the logout handler
+  pattern: /$YAMLURL/logout # Map this URL
+  handler: LogoutHandler # to the logout handler
 ```
 
 After logging in, users are re-directed to the `?next=` URL. You can change this
@@ -1450,11 +1446,13 @@ user ID and password. This is a minimal template:
 
 ```html
 <form method="POST">
-    {% if error %}<p>error code: {{ error['code'] }}, message: {{ error['error'] }}</p>{% end %}
-    <input name="user">
-    <input name="password" type="password">
-    <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
-    <button type="submit">Submit</button>
+  {% if error %}
+  <p>error code: {{ error['code'] }}, message: {{ error['error'] }}</p>
+  {% end %}
+  <input name="user" />
+  <input name="password" type="password" />
+  <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}" />
+  <button type="submit">Submit</button>
 </form>
 ```
 
@@ -1470,18 +1468,20 @@ Otherwise, we have 3 input fields:
 To using an AJAX request to log in, use this approach:
 
 ```js
-$('form').on('submit', function(e) {
-  e.preventDefault()
-  $('#message').append('<div>Submitting form</div>')
-  $.ajax('simple', {
-    method: 'POST',
-    data: $('form').serialize()
-  }).done(function () {
-    $('#message').append('<div>Successful login</div>')
-  }).fail(function (xhr, status, message) {
-    $('#message').append('<div>Failed login: ' + message + '</div>')
+$("form").on("submit", function (e) {
+  e.preventDefault();
+  $("#message").append("<div>Submitting form</div>");
+  $.ajax("simple", {
+    method: "POST",
+    data: $("form").serialize(),
   })
-})
+    .done(function () {
+      $("#message").append("<div>Successful login</div>");
+    })
+    .fail(function (xhr, status, message) {
+      $("#message").append("<div>Failed login: " + message + "</div>");
+    });
+});
 ```
 
 **Note**: when using AJAX, `redirect:` does not change the main page. The
@@ -1489,7 +1489,7 @@ $('form').on('submit', function(e) {
 To redirect on success, change `window.location` in `.done()`.
 
 ::: example href=ajax.html source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    AJAX auth example
+AJAX auth example
 
 ## Login actions
 
@@ -1504,8 +1504,8 @@ url:
     handler: GoogleAuth
     kwargs:
       # ...
-      action:                                       # After login,
-        - function: admin.send_alert_mail(handler)  # Run custom functions
+      action: # After login,
+        - function: admin.send_alert_mail(handler) # Run custom functions
         - function: print(handler.current_user, 'logged in via Google')
 ```
 
@@ -1517,7 +1517,6 @@ You can write your own custom functions. By default, the function will be passed
 object. `handler.current_user` will have the current user (even in `LogoutHandler`). You can define
 any other `args` or `kwargs` to pass instead. The actions will be executed in order.
 
-
 ## Failed login delay
 
 To slow down hackers guessing passwords, add a `delay:` parameter under `kwargs:`. For example:
@@ -1528,14 +1527,14 @@ url:
     pattern: /$YAMLURL/simple
     handler: SimpleAuth
     kwargs:
-      delay: 5        # Wait 5 seconds before reporting wrong password
+      delay: 5 # Wait 5 seconds before reporting wrong password
       credentials:
         alpha: alpha
         beta: beta
 ```
 
 ::: example href=delay source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    Failed login delay example
+Failed login delay example
 
 In the above example, you can log in as `alpha` / `alpha` instantaneously. But if you enter an
 incorrect password, it takes 5 seconds to report that.
@@ -1561,11 +1560,10 @@ url:
     kwargs:
       # ...
       action:
-        - function: ensure_single_session   # Logs user out of all other sessions
+        - function: ensure_single_session # Logs user out of all other sessions
 ```
 
 You can add the `action:` section under the `kwargs:` of any Auth handler.
-
 
 ## User attributes
 
@@ -1629,14 +1627,14 @@ url:
     pattern: /multi-google
     handler: GoogleAuth
     kwargs:
-      user_key: google_user     # Store in handler.session['google_user']
+      user_key: google_user # Store in handler.session['google_user']
       # ...
 
   multi-simple:
     pattern: /multi-simple
     handler: SimpleAuth
     kwargs:
-      user_key: simple_user     # Store in handler.session['simple_user']
+      user_key: simple_user # Store in handler.session['simple_user']
       # ...
 ```
 
@@ -1645,7 +1643,7 @@ You can access the [Google](#google-auth) user info using `handler.session['goog
 
 **YOU CANNOT USE THIS FOR [AUTHORIZATION](#authorization)**. You're just linking the account -- not
 logging in with the account. Permissions are based on `handler.session['user']` only. This is only
-to link and capture *additional information* about the user.
+to link and capture _additional information_ about the user.
 
 To remove this link, write Python code anywhere (e.g. [FunctionHandler](../functionhandler/)) to
 `del handler.session['google_user']` or `del handler.session['simple_user']`. For example:
@@ -1662,8 +1660,7 @@ url:
 ```
 
 ::: example href=multi source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    Multiple login example
-
+Multiple login example
 
 ## Logging logins
 
@@ -1678,14 +1675,14 @@ auth handler. For example:
 url:
   auth/expiry:
     pattern: /$YAMLURL/expiry
-    handler: SimpleAuth               # session_expiry works on DBAuth, GoogleAuth, etc too
+    handler: SimpleAuth # session_expiry works on DBAuth, GoogleAuth, etc too
     kwargs:
-      session_expiry: 0.0003          # Session expires in 26 seconds
+      session_expiry: 0.0003 # Session expires in 26 seconds
       # ...
 ```
 
 ::: example href=expiry source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    Session expiry example
+Session expiry example
 
 This can be used to configure sessions that have a long expiry (e.g. for mobile
 applications) or short expiry (e.g. for secure data applications.)
@@ -1699,17 +1696,17 @@ url:
     handler: SimpleAuth
     kwargs:
       session_expiry:
-        default: 4      # The default session expiry is set to 4 days
-        key: remember   # When user logs in, check the value of ?remember=
-        values:         # Set session expiry based on the value of ?remember=
-          day: 1          # If ?remember=day, session expires in 1 day
-          week: 7         # If ?remember=week, session expires in 7 days
-          month: 31       # If ?remember=month, session expires in 31 days
-          session: false  # If ?remember=session, session expires when browser closes
+        default: 4 # The default session expiry is set to 4 days
+        key: remember # When user logs in, check the value of ?remember=
+        values: # Set session expiry based on the value of ?remember=
+          day: 1 # If ?remember=day, session expires in 1 day
+          week: 7 # If ?remember=week, session expires in 7 days
+          month: 31 # If ?remember=month, session expires in 31 days
+          session: false # If ?remember=session, session expires when browser closes
 ```
 
 ::: example href=customexpiry source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    Remember me example
+Remember me example
 
 ## Inactive expiry
 
@@ -1726,18 +1723,17 @@ url:
     pattern: /$YAMLURL/expiry
     handler: SimpleAuth
     kwargs:
-      session_inactive: 0.01        # Must visit every 0.01 days, i.e. 864 seconds, or 14.4 min
+      session_inactive: 0.01 # Must visit every 0.01 days, i.e. 864 seconds, or 14.4 min
       # ...
   other/pages:
     # NOTE: You must ensure that other authenticated pages are not cached beyond that duration
     kwargs:
       headers:
-        Cache-Control: private, max-age=864   # 864 seconds = 0.01 days
+        Cache-Control: private, max-age=864 # 864 seconds = 0.01 days
 ```
 
 ::: example href=inactive source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    Inactive expiry example
-
+Inactive expiry example
 
 ## Change inputs
 
@@ -1775,7 +1771,6 @@ def function(args, handler):
 The changes to the arguments will be saved in `handler.args`, which all auth
 handlers use. (NOTE: These changes need not affect `handler.get_argument()`.)
 
-
 ## Recaptcha
 
 Auth handlers support a `recaptcha:` configuration that checks CAPTCHA
@@ -1801,29 +1796,31 @@ url:
 If you use your own login `template:`, add an input named `recaptcha` inside your `<form>`
 
 ```html
-<input type="hidden" name="recaptcha">
+<input type="hidden" name="recaptcha" />
 ```
 
 ... and this at the bottom of the page:
 
 ```html
-{% if 'recaptcha' in handler.kwargs %}
-  {% set recaptcha = handler.kwargs.recaptcha %}
-  <script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha.key }}"></script>
-  <script>
-    grecaptcha.ready(function () {
-      grecaptcha.execute('{{ recaptcha.key }}', { action: '{{ recaptcha.action }}' }).then(function (token) {
-        document.querySelector('input[name="recaptcha"]').value = token
-      })
-    })
-  </script>
+{% if 'recaptcha' in handler.kwargs %} {% set recaptcha =
+handler.kwargs.recaptcha %}
+<script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha.key }}"></script>
+<script>
+  grecaptcha.ready(function () {
+    grecaptcha
+      .execute("{{ recaptcha.key }}", { action: "{{ recaptcha.action }}" })
+      .then(function (token) {
+        document.querySelector('input[name="recaptcha"]').value = token;
+      });
+  });
+</script>
 {% end %}
 ```
 
 Try this example, and observe the reCAPTCHA logo at the bottom-right of the screen:
 
 ::: example href=recaptcha source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    Recaptcha example
+Recaptcha example
 
 ## Lookup attributes
 
@@ -1832,7 +1829,7 @@ object can be extended from any data source. For example, create a `lookup.xlsx`
 file with this data:
 
 | user  | gender | role     |
-|-------|--------|----------|
+| ----- | ------ | -------- |
 | alpha | male   | manager  |
 | beta  | female | employee |
 
@@ -1849,9 +1846,9 @@ url:
         alpha: alpha
         beta: beta
       lookup:
-        url: $YAMLPATH/lookup.xlsx      # Look for the attribute in this file
-        sheet_name: Sheet1              # under this sheet
-        id: user                        # under this column
+        url: $YAMLPATH/lookup.xlsx # Look for the attribute in this file
+        sheet_name: Sheet1 # under this sheet
+        id: user # under this column
 ```
 
 Now, when the user logs in as `alpha`, the `handler.current_user` object has the `gender` and `role` attributes:
@@ -1881,24 +1878,23 @@ By default, this looks up the first sheet. You can specify an alternate sheet
 using `sheet_name: ...`. For example:
 
 ```yaml
-        lookup:
-            url: $YAMLPATH/lookup.xlsx
-            sheet_name: userinfo            # Specify an alternate sheet name
-            id: user
+lookup:
+  url: $YAMLPATH/lookup.xlsx
+  sheet_name: userinfo # Specify an alternate sheet name
+  id: user
 ```
 
 Instead of Excel files, you can use databases by specifying a SQLAlchemy URL
 just like for [FormHandler](../formhandler/).
 
 ```yaml
-    lookup:
-        url: sqlite:///$YAMLPATH/database.sqlite3
-        table: lookup
+lookup:
+  url: sqlite:///$YAMLPATH/database.sqlite3
+  table: lookup
 ```
 
 ::: example href=lookup-attributes source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    Lookup attributes example
-
+Lookup attributes example
 
 ## Add Attribute Rules
 
@@ -1930,10 +1926,10 @@ declares two users, with three attributes each - email, role and location. The
 rules for modifying these attributes can be composed in a file named `rules.csv`
 as follows:
 
-| selector  |   pattern   | field    | value |
-|-----------|-------------|----------|-------|
-| email     | *@gmail.com | role     | guest |
-| role      | admin       | location | NYC   |
+| selector | pattern      | field    | value |
+| -------- | ------------ | -------- | ----- |
+| email    | \*@gmail.com | role     | guest |
+| role     | admin        | location | NYC   |
 
 These rules can be read as follows:
 
@@ -1951,7 +1947,7 @@ Generally, for any auth handler, any existing user attribute can be used in the
 then the attribute mentioned in the "field" is modified to the "value".
 
 ::: example href=attr-rules source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    User attributes rules Example
+User attributes rules Example
 
 # Automated logins
 
@@ -1987,10 +1983,10 @@ otp = handler.otp(expire=expiry, user=user)   # Create OTP as specified user
 ```
 
 When a user visits any page with `?gramex-otp=<otp>` added, or with a `X-Gramex-OTP: <otp>` header,
-the user is logged in *for that session*. `handler.current_user` is set to the user object.
+the user is logged in _for that session_. `handler.current_user` is set to the user object.
 
 ::: example href=otp source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    OTP example
+OTP example
 
 ## API key
 
@@ -2040,7 +2036,7 @@ In either case, `handler.current_user` becomes the `user` object (i.e. `{id: 'us
 Gramex now behaves exactly as if that user had logged in. E.g. [roles](#roles) work as expected.
 
 ::: example href=apikey source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    Try the API key example
+Try the API key example
 
 ## Encrypted user
 
@@ -2115,8 +2111,8 @@ Of course, this could also be written as
 ```python
 handler.otp(user={"id": "alpha", "role": "admin", "group": "all"`})
 ```
-But using columns like this makes it easy to query fields, e.g. to delete OTPs for all `role="admin"`.
 
+But using columns like this makes it easy to query fields, e.g. to delete OTPs for all `role="admin"`.
 
 # Authorization
 
@@ -2142,10 +2138,10 @@ this sample page "[must-login](must-login)" only if you are logged in.
 
 ```yaml
 app:
-  auth: true    # All pages require login -- including CSS/images on login page!
+  auth: true # All pages require login -- including CSS/images on login page!
 ```
 
-**Use with caution**. This will be used as the default auth on *every* handler.
+**Use with caution**. This will be used as the default auth on _every_ handler.
 The CSS/JS/images on your login page won't appear unless you set `auth: false` on those URLs.
 
 Note: Any `auth:` on an `AuthHandler` is ignored. (That's asking users to log into a login page!)
@@ -2172,7 +2168,7 @@ Any `GET`, `OPTIONS` or other HTTP requests to `/public-read` can be made by any
 `PUT`, `DELETE` can only be made by logged-in users.
 
 ::: example href=methods source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    HTTP methods example
+HTTP methods example
 
 ## Login URLs
 
@@ -2181,7 +2177,7 @@ By default, this will redirect users to `/login/`. This is configured in the `ap
 ```yaml
 app:
   settings:
-    login_url: /$YAMLURL/login/   # This is the default login URL
+    login_url: /$YAMLURL/login/ # This is the default login URL
 ```
 
 You need to either map `/login/` to an auth handler, or change the `login_url`
@@ -2199,7 +2195,7 @@ url:
     kwargs:
       path: $YAMLPATH/protected-page.html
       auth:
-        login_url: /$YAMLURL/login  # Redirect users to this login page
+        login_url: /$YAMLURL/login # Redirect users to this login page
 ```
 
 For AJAX requests (that send an [X-Requested-With header](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Common_non-standard_request_fields))
@@ -2220,12 +2216,12 @@ only if your gender is `male` and your locale is `en` or `es`. (To test it,
 [logout](logout?next=.) and [log in via Google](google?next=.).)
 
 ```yaml
-    # Add this under the kwargs: of ALL pages you want to restrict access to
-    auth:
-      membership:           # The following user object keys must match
-        gender: male      # user.gender must be male
-        locale: [en, es]  # user.locale must be en or es
-        email: [..., ...] # user.email must be in in this list
+# Add this under the kwargs: of ALL pages you want to restrict access to
+auth:
+  membership: # The following user object keys must match
+    gender: male # user.gender must be male
+    locale: [en, es] # user.locale must be en or es
+    email: [..., ...] # user.email must be in in this list
 ```
 
 If the `user` object has nested attributes, you can access them via `.`. For
@@ -2234,17 +2230,17 @@ example, `attributes.cn` refers to `handlers.current_user.attributes.cn`.
 You can specify multiple memberships that can be combined with AND or OR. This example allows (Females from @gramener.com) OR (Males with locale=en) OR (beta@example.org):
 
 ```yaml
-    # Add this under the kwargs: of ALL pages you want to restrict access to
-    auth:
-      membership:
-        -                           # First rule
-          gender: female                # Allow all women
-          hd: [ibm.com, pwc.com]        # AND from ibm.com or pwc.com
-        -                           # OR Second rule
-          gender: male                  # Allow all men
-          locale: [en, es]              # with user.locale as "en" or "es"
-        -                           # OR Third rule
-          email: beta@example.org       # Allow this user
+# Add this under the kwargs: of ALL pages you want to restrict access to
+auth:
+  membership:
+    - # First rule
+      gender: female # Allow all women
+      hd: [ibm.com, pwc.com] # AND from ibm.com or pwc.com
+    - # OR Second rule
+      gender: male # Allow all men
+      locale: [en, es] # with user.locale as "en" or "es"
+    - # OR Third rule
+      email: beta@example.org # Allow this user
 ```
 
 `auth:` lets you define conditions. For example, you can access [dotcom](dotcom)
@@ -2259,7 +2255,7 @@ url:
     kwargs:
       path: $YAMLPATH/secret.html
       auth:
-        condition:                          # Allow only if condition is true
+        condition: # Allow only if condition is true
           function: handler.current_user.email.endswith('.com')
   auth/dotorg:
     pattern: /$YAMLURL/dotorg
@@ -2267,7 +2263,7 @@ url:
     kwargs:
       path: $YAMLPATH/secret.html
       auth:
-        condition:                          # Allow only if condition is true
+        condition: # Allow only if condition is true
           function: handler.current_user.email.endswith('.org')
 ```
 
@@ -2297,24 +2293,23 @@ You can use any Python expression. If the expression returns a falsy value or ra
 **Specify multiple conditions** with a list. Gramex allows the request only if ALL conditions match. For example:
 
 ```yaml
-      validate:
-        - handler.request.headers['Host'] == 'example.org'
-        - handler.request.headers['User-Agent'].startswith('Mozilla')
-        - handler.current_user['id'] == 'alpha'
+validate:
+  - handler.request.headers['Host'] == 'example.org'
+  - handler.request.headers['User-Agent'].startswith('Mozilla')
+  - handler.current_user['id'] == 'alpha'
 ```
 
 **Customize the HTTP code and reason** by specifing a dictionary with `function`, `code`, and `reason`. For example:
 
 ```yaml
-      validate:
-        - function: handler.request.headers['Host'] == 'example.org'
-          code: 403
-          reason: This app should only be hosted on example.org
-        - function: handler.request.headers['User-Agent'].startswith('Mozilla')
-          code: 400
-          reason: Only Chrome, Edge, Firefox, and Safari are supported
+validate:
+  - function: handler.request.headers['Host'] == 'example.org'
+    code: 403
+    reason: This app should only be hosted on example.org
+  - function: handler.request.headers['User-Agent'].startswith('Mozilla')
+    code: 400
+    reason: Only Chrome, Edge, Firefox, and Safari are supported
 ```
-
 
 ## Protect all pages
 
@@ -2337,8 +2332,8 @@ You can also apply this to specific handlers. For example, this protects all
 
 ```yaml
 handlers:
-  FormHandler: {auth: true}
-  FileHandler: {auth: true}
+  FormHandler: { auth: true }
+  FileHandler: { auth: true }
 ```
 
 ## Templates for unauthorized
@@ -2356,7 +2351,7 @@ url:
     kwargs:
       path: $YAMLPATH/secret.html
       auth:
-        membership:                             # Pick an unlikely condition to test template
-          donkey: king                          # This condition will usually be false
-        template: $YAMLPATH/403-template.html   # Render template for forbidden users
+        membership: # Pick an unlikely condition to test template
+          donkey: king # This condition will usually be false
+        template: $YAMLPATH/403-template.html # Render template for forbidden users
 ```

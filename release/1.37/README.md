@@ -39,23 +39,23 @@ Gramex guide also documents how to setup [Apache reverse proxy](../../deploy/#ap
 ## Developer Updates
 
 - The Google Font [Montserrat](https://fonts.google.com/specimen/Montserrat)
-is now available on the Gramex [UI components](../../uicomponents/).
+  is now available on the Gramex [UI components](../../uicomponents/).
 
 - [Goaccess](https://goaccess.io/) is useful for server monitoring based on logs.
-Nearly all web log formats (Apache, Nginx, Amazon S3, CloudFront, etc) are supported.
-Simply set the log format and run it against your log.
-[Read deploy](../../deploy/#nginx-log-analyzer) notes to set it up for Gramex Apps.
+  Nearly all web log formats (Apache, Nginx, Amazon S3, CloudFront, etc) are supported.
+  Simply set the log format and run it against your log.
+  [Read deploy](../../deploy/#nginx-log-analyzer) notes to set it up for Gramex Apps.
 
 ## Bug fixes
 
 - FormHandler vega charts used to overwrite kwargs, therby failing on second loads.
-This is now fixed.
-[#415](https://code.gramener.com/cto/gramex/issues/415)
+  This is now fixed.
+  [#415](https://code.gramener.com/cto/gramex/issues/415)
 
 - DBAuth used to allow user to login by making POST request with empty username
-or/and password. This is now plugged.
-[#399](https://code.gramener.com/cto/gramex/issues/399)
-[#413](https://code.gramener.com/cto/gramex/issues/413)
+  or/and password. This is now plugged.
+  [#399](https://code.gramener.com/cto/gramex/issues/399)
+  [#413](https://code.gramener.com/cto/gramex/issues/413)
 
 ## Stats
 

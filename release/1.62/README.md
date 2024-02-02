@@ -22,7 +22,6 @@ makes it easy to copy charts and create multiple variations for different slices
 
 ![Chart example](../../pptxhandler/chart/output.png){:.img-fluid}
 
-
 ## Create presentations from the command line
 
 When you [install Gramex](../../install/), you now have a new [command called
@@ -30,7 +29,6 @@ When you [install Gramex](../../install/), you now have a new [command called
 create the target presentations specified by your `gramex.yaml` file and open them.
 
 ![SlideSense command line usage](../../pptxhandler/slidesense-command-line.gif){.img-fluid}
-
 
 ## Gramex Charts preview
 
@@ -44,13 +42,11 @@ create the target presentations specified by your `gramex.yaml` file and open th
 
 This will be included as part of the Gramex code base once it's ready. For now, try the beta version at <https://gramener.com/gramexcharts/>.
 
-
 ## Other features
 
 - The [SMS Service](../../sms/) supports the [new API from Exotel](https://developer.exotel.com/) to send SMS messages.
 - [Gramex init](../../init/) no longer adds quotes to the URL keys in `gramex.yaml`. So an app named "My App" will have URL keys like `my-app-home:` rather than the less pretty `"My App-home":`.
 - [Gramex test cases on Travis](https://travis-ci.com/github/gramener/gramex/builds) no longer fail. The coverage is significantly higher (89%). Local tests on Windows are also a lot more robust now.
-
 
 ## What next
 
@@ -65,7 +61,6 @@ In addition, the September 2020 release (1.63) will:
 - Extend [**PPTXHandler**](../../pptxhandler/) with color gradients and custom charts
 - Extend [**ProxyHandler**](../../proxyhandler/) to proxy websockets as well
 - Add a 1-year **roadmap** for Gramex
-
 
 ## How to install
 

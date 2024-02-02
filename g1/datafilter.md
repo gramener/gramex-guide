@@ -6,19 +6,19 @@ For example:
 
 ```js
 var data = [
-  {"ID": "1", "product": "Fan", "sales": "100", "city": "NY"},
-  {"ID": "2", "product": "Fan", "sales": "80", "city": "London"},
-  {"ID": "3", "product": "Fan", "sales": "120", "city": "NJ"},
-  {"ID": "4", "product": "Fan", "sales": "130", "city": "London"},
-  {"ID": "5", "product": "Light", "sales": "500", "city": "NY"},
-  {"ID": "5", "product": "Light", "sales": "100", "city": "London"}
-]
+  { ID: "1", product: "Fan", sales: "100", city: "NY" },
+  { ID: "2", product: "Fan", sales: "80", city: "London" },
+  { ID: "3", product: "Fan", sales: "120", city: "NJ" },
+  { ID: "4", product: "Fan", sales: "130", city: "London" },
+  { ID: "5", product: "Light", sales: "500", city: "NY" },
+  { ID: "5", product: "Light", sales: "100", city: "London" },
+];
 
 g1.datafilter(data, {
-  'sales>': ['100'],
-  'city': ['London', 'NJ'],
-  'product': ['Fan']
-})
+  "sales>": ["100"],
+  city: ["London", "NJ"],
+  product: ["Fan"],
+});
 // Returns [{"ID": "3", "product": "Fan", "sales": "120", "city": "NJ"}, {"ID": "4", "product": "Fan", "sales": "130", "city": "London"}]
 ```
 

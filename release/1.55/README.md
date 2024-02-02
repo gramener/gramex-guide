@@ -13,13 +13,13 @@ To get totals for any dataset, add `?by=` to the URL. For example,
 ![FormHandler summary](formhandler-summary.png)
 
 Instead of sum, you can use average, count, min, or max for each columns. For example,
-[?_by=&_c=c1|avg&_c=c2|count](../../formhandler/flags?_format=html&_by=&_c=c1|avg&_c=c2|count)
+[?\_by=&\_c=c1|avg&\_c=c2|count](../../formhandler/flags?_format=html&_by=&_c=c1|avg&_c=c2|count)
 averages `c1` and counts `c2`.
 
 ![FormHandler summary aggregations](formhandler-summary-aggs.png)
 
 You can also apply aggregations for subsets of data. For example,
-[?_by=&continent=Europe](../../formhandler/flags?_format=html&_by=&continent=Europe)
+[?\_by=&continent=Europe](../../formhandler/flags?_format=html&_by=&continent=Europe)
 shows the totals only for `continent=Europe`.
 
 ![FormHandler summary filters](formhandler-summary-filters.png)

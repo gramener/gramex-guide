@@ -25,14 +25,14 @@ url:
 ```
 
 ::: example href=../../ratelimit/example source=https://github.com/gramener/gramex-guide/blob/master/ratelimit/gramex.yaml
-    Rate limit example
+Rate limit example
 
 ## Improved FilterHandler
 
 [FilterHandler](../../filterhandler/) can return ranges of values for a column using the `_c=<col>|range` syntax.
 
-::: example href=../../filterhandler/flags?_c=c1|range&_c=c2|range&_format=html source=https://github.com/gramener/gramex-guide/blob/master/filterhandler/gramex.yaml
-    FilterHandler range example
+::: example href=../../filterhandler/flags?\_c=c1|range&\_c=c2|range&\_format=html source=https://github.com/gramener/gramex-guide/blob/master/filterhandler/gramex.yaml
+FilterHandler range example
 
 For example, `?_c=c1|range&_c=c2|range` returns the min and max values of columns `c1` and `c2`:
 
@@ -56,12 +56,14 @@ For example, `?_c=c1|range&_c=c2|range` returns the min and max values of column
 This is useful for [range filters](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range) like:
 
 ```html
-<input type="range"
-    min="${filter['c1|range'][0]['c1|min']}"
-    max="${filter['c1|range'][0]['c1|max']}">
+<input
+  type="range"
+  min="${filter['c1|range'][0]['c1|min']}"
+  max="${filter['c1|range'][0]['c1|max']}"
+/>
 ```
 
-[FilterHandler](../../filterhandler/) runs a database query for *each* column that you request.
+[FilterHandler](../../filterhandler/) runs a database query for _each_ column that you request.
 
 For slow database connections, you can speed this up with `in_memory: true`. For example:
 

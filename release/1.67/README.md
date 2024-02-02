@@ -23,9 +23,8 @@ url:
     handler: MLHandler
     kwargs:
       model:
-        class: SVC          # Embed sklearn.svm.SVC
-        target_col: ans     # Predict the "ans" column
-
+        class: SVC # Embed sklearn.svm.SVC
+        target_col: ans # Predict the "ans" column
 ```
 
 You can send HTTP requests to `/rugby` to teach it that tall heavy boys make the male rugby team.
@@ -64,7 +63,6 @@ $ curl '/rugby?sex=m&height=150&weight=80'    # 150cm 80kg boy
 
 As the users keep adding data and re-training the model, it keeps improving.
 
-
 ## Simpler handler names
 
 [Handlers](../../handlers/) are now called micro-services, and identified in `gramex.yaml` via
@@ -73,7 +71,7 @@ As the users keep adding data and re-training the model, it keeps improving.
 The names of these handlers is also simplified. So you can now use:
 
 | New version           | instead of old version          |
-|-----------------------|---------------------------------|
+| --------------------- | ------------------------------- |
 | `service: Command`    | `handler: ProcessHandler`       |
 | `service: Data`       | `handler: FormHandler`          |
 | `service: Facebook`   | `handler: FacebookGraphHandler` |
@@ -109,7 +107,6 @@ version will continue to work until deprecated.
 
 Gramex 1.68 will be released on 1 Feb 2021 and will feature a new "Forms" app. It's like an
 embeddable Google Forms that you can use in any app.
-
 
 ## Statistics
 

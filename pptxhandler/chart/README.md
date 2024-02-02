@@ -45,21 +45,20 @@ url:
     kwargs:
       version: 2
       source: $YAMLPATH/template.pptx
-      data: {url: $YAMLPATH/social-media-platform.csv}
+      data: { url: $YAMLPATH/social-media-platform.csv }
 ```
 
 Now, let's update the `Column Chart` with the data:
 
 ```yaml
-      rules:
-        - Column Chart:
-            chart-data: data.set_index('Platform')
+rules:
+  - Column Chart:
+      chart-data: data.set_index('Platform')
 ```
 
 PowerPoint charts need eac category to have the same color. To re-create the colors in the original, we need 4 charts. But we will skip that for this tutorial (and leave that as an exercise for you.)
 
 [This is the final configuration](gramex.yaml.source){.source}
-
 
 ## See the result
 

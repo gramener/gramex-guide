@@ -11,11 +11,11 @@ deploy-gramener:
     # Refresh code by pulling the branch deployed on the server,
     # NOT the pushed branch!
     - 'ssh ubuntu@gramener.com "
-        cd /mnt/gramener/apps/guide;
-        git checkout -- .;
-        git pull;
-        export PATH=/mnt/gramener/anaconda3/bin:$PATH;
-        gramex setup .;
+      cd /mnt/gramener/apps/guide;
+      git checkout -- .;
+      git pull;
+      export PATH=/mnt/gramener/anaconda3/bin:$PATH;
+      gramex setup .;
       "'
     # Deploy secrets
     - secrets JIRA_AUTH > .secrets.yaml

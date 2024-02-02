@@ -57,12 +57,12 @@ Let's create a bar chart to show the `CashOnHand` table. For this, we need to pr
 Add this to `gramex.yaml`:
 
 ```yaml
-  formhandler/cashflow/chart:
-    pattern: /$YAMLURL/chart
-    handler: FormHandler
-    kwargs:
-      url: $YAMLPATH/cashflow.xlsx
-      name: CashChart
+formhandler/cashflow/chart:
+  pattern: /$YAMLURL/chart
+  handler: FormHandler
+  kwargs:
+    url: $YAMLPATH/cashflow.xlsx
+    name: CashChart
 ```
 
 [Visit the `/chart` page](chart1). You should see the `CashChart` named range data as JSON:
@@ -78,7 +78,7 @@ Add this to `gramex.yaml`:
 Let's convert this into a format that we can use for charts. Add this function to transform the data:
 
 ```yaml
-      function: "data.T.reset_index().rename(columns={'index': 'date', 0: 'cash'})"
+function: "data.T.reset_index().rename(columns={'index': 'date', 0: 'cash'})"
 ```
 
 This does the following:
@@ -96,18 +96,18 @@ This does the following:
 Add this to your `gramex.yaml`:
 
 ```yaml
-        barchart:                       # Define a format called barchart
-          format: seaborn               # This uses seaborn as the format
-          chart: barplot                # Chart can be any standard seaborn chart
-          x: date                       # Use 'date' column for the bars
-          y: cash                       # Use 'cash' column for height of the bars
-          color: '#2A9DF4'              # Bar chart color is a light blue
-          width: 800                    # Width in pixels. Default: 640
-          height: 600                   # Height in pixels. Default: 480
-          dpi: 96                       # Zoom (dots per inch)
-          ext: png                      # Use a matplot backend (svg, pdf, png)
-          headers:
-            Content-Type: image/png     # Set the corresponding MIME type
+barchart: # Define a format called barchart
+  format: seaborn # This uses seaborn as the format
+  chart: barplot # Chart can be any standard seaborn chart
+  x: date # Use 'date' column for the bars
+  y: cash # Use 'cash' column for height of the bars
+  color: "#2A9DF4" # Bar chart color is a light blue
+  width: 800 # Width in pixels. Default: 640
+  height: 600 # Height in pixels. Default: 480
+  dpi: 96 # Zoom (dots per inch)
+  ext: png # Use a matplot backend (svg, pdf, png)
+  headers:
+    Content-Type: image/png # Set the corresponding MIME type
 ```
 
 [Now, visit `chart?_format=barchart` to see this bar chart](chart?_format=barchart)
@@ -121,29 +121,29 @@ You can now embed [this chart URL `chart?_format=barchart`](chart?_format=barcha
 To customize its appearance using URL query parameters, change the `color`, `width`, and `height` lines in `gramex.yaml` from:
 
 ```yaml
-          color: '#2A9DF4'              # Bar chart color is a light blue
-          width: 800                    # Width in pixels. Default: 640
-          height: 600                   # Height in pixels. Default: 480
-          dpi: 96                       # Zoom (dots per inch)
+color: "#2A9DF4" # Bar chart color is a light blue
+width: 800 # Width in pixels. Default: 640
+height: 600 # Height in pixels. Default: 480
+dpi: 96 # Zoom (dots per inch)
 ```
 
 ... to ...
 
 ```yaml
-          color: '{color}'              # Bar chart color is a light blue
-          width: '{width}'              # Width in pixels. Default: 640
-          height: '{height}'            # Height in pixels. Default: 480
-          dpi: '{dpi}'                  # Zoom (dots per inch)
+color: "{color}" # Bar chart color is a light blue
+width: "{width}" # Width in pixels. Default: 640
+height: "{height}" # Height in pixels. Default: 480
+dpi: "{dpi}" # Zoom (dots per inch)
 ```
 
 Then, add this to your `gramex.yaml`:
 
 ```yaml
-      default:
-        color: '#2A9DF4'
-        width: 800
-        height: 600
-        dpi: 96
+default:
+  color: "#2A9DF4"
+  width: 800
+  height: 600
+  dpi: 96
 ```
 
 This picks up the color, width and height from the URL query parameters. For example, [`chart?_format=barchart&color=red&width=600&height=400&dpi=72`](chart?_format=barchart&color=red&width=600&height=400&dpi=72) looks like this:
@@ -157,35 +157,35 @@ When embedding this into another application, you can change the URL to control 
 Using the same cash flow data, let's create another chart that shows operational data.
 
 ```yaml
-  formhandler/cashflow/operational:
-    pattern: /$YAMLURL/operational
-    handler: FormHandler
-    kwargs:
-      url: $YAMLPATH/cashflow.xlsx
-      table: OtherOperationalData
-      function: |
-        (data                                   # Take the data
-        .drop(columns=['Beginning', 'Total'])   # Remove these columns
-        .melt(                                  # "Unpivot" the table
-          id_vars=['OTHER OPERATING DATA'],     # using OTHER OPERATING DATA
-          var_name='Month'))                    # ... and Month
-      formats:
-        linechart:                      # Define a format called linechart
-          format: seaborn               # This uses seaborn as the format
-          chart: lineplot               # Pick the lineplot chart type
-          x: Month                      # Use 'Month' column for the X-axis
-          y: value                      # Use 'value' column for the Y-axis
-          hue: OTHER OPERATING DATA     # Color by the OTHER OPERATING DATA col
-          width: '{width}'              # Width in pixels. Default: 640
-          height: '{height}'            # Height in pixels. Default: 480
-          dpi: '{dpi}'                  # Zoom (dots per inch)
-          ext: png                      # Use a matplot backend (svg, pdf, png)
-          headers:
-            Content-Type: image/png     # Set the corresponding MIME type
-      default:
-        width: 800
-        height: 600
-        dpi: 96
+formhandler/cashflow/operational:
+  pattern: /$YAMLURL/operational
+  handler: FormHandler
+  kwargs:
+    url: $YAMLPATH/cashflow.xlsx
+    table: OtherOperationalData
+    function: |
+      (data                                   # Take the data
+      .drop(columns=['Beginning', 'Total'])   # Remove these columns
+      .melt(                                  # "Unpivot" the table
+        id_vars=['OTHER OPERATING DATA'],     # using OTHER OPERATING DATA
+        var_name='Month'))                    # ... and Month
+    formats:
+      linechart: # Define a format called linechart
+        format: seaborn # This uses seaborn as the format
+        chart: lineplot # Pick the lineplot chart type
+        x: Month # Use 'Month' column for the X-axis
+        y: value # Use 'value' column for the Y-axis
+        hue: OTHER OPERATING DATA # Color by the OTHER OPERATING DATA col
+        width: "{width}" # Width in pixels. Default: 640
+        height: "{height}" # Height in pixels. Default: 480
+        dpi: "{dpi}" # Zoom (dots per inch)
+        ext: png # Use a matplot backend (svg, pdf, png)
+        headers:
+          Content-Type: image/png # Set the corresponding MIME type
+    default:
+      width: 800
+      height: 600
+      dpi: 96
 ```
 
 [This creates a chart at `operational?_format=linechart`](operational?_format=linechart)
@@ -194,11 +194,11 @@ Using the same cash flow data, let's create another chart that shows operational
 
 You can use [FormHandler filters](../#formhandler-filters) to restrict the data to specific rows. You can also use `?width=`, `?height=` and `?dpi=` to control the size. For example:
 
-[operational?_format=linechart&OTHER OPERATING DATA=Depreciation&height=250](operational?_format=linechart&OTHER%20OPERATING%20DATA=Depreciation&height=250)
+[operational?\_format=linechart&OTHER OPERATING DATA=Depreciation&height=250](operational?_format=linechart&OTHER%20OPERATING%20DATA=Depreciation&height=250)
 
 [![Depreciation line chart](operational1.png)](operational?_format=linechart&OTHER%20OPERATING%20DATA=Depreciation&height=250)
 
-[operational?_format=linechart&OTHER OPERATING DATA=Accounts payable balance&OTHER OPERATING DATA=Accounts receivable balance&height=250](operational?_format=linechart&OTHER%20OPERATING%20DATA=Accounts%20payable%20balance&OTHER%20OPERATING%20DATA=Accounts%20receivable%20balance&height=250)
+[operational?\_format=linechart&OTHER OPERATING DATA=Accounts payable balance&OTHER OPERATING DATA=Accounts receivable balance&height=250](operational?_format=linechart&OTHER%20OPERATING%20DATA=Accounts%20payable%20balance&OTHER%20OPERATING%20DATA=Accounts%20receivable%20balance&height=250)
 
 [![Receiables and payables chart](operational2.png)](operational?_format=linechart&OTHER%20OPERATING%20DATA=Accounts%20payable%20balance&OTHER%20OPERATING%20DATA=Accounts%20receivable%20balance&height=250)
 

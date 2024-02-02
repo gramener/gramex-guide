@@ -37,7 +37,7 @@ url:
 
 [FormHandler](../../formhandler/#formhandler-groupby) supports grouping by
 columns and custom aggregations. For example:
-[?_by=Continent&_c=Name|count&_c=c1|min&_c=c1|avg&_c=c1|max](../../formhandler/flags?_by=Continent&_c=Name|count&_c=c1|min&_c=c1|avg&_c=c1|max&_format=table) does:
+[?\_by=Continent&\_c=Name|count&\_c=c1|min&\_c=c1|avg&\_c=c1|max](../../formhandler/flags?_by=Continent&_c=Name|count&_c=c1|min&_c=c1|avg&_c=c1|max&_format=table) does:
 
 - `_by=Continent`: group by "Continent"
 - `_c=Name|count`: count values in "Name"
@@ -80,11 +80,11 @@ approach, through a more generalized version of creating a dashboard/app in Gram
 ## Bug fixes
 
 - gramex.cache `KeyStore` different stores stored keys differently, This caused unicode keys to be
-stored inconsistently. This is now fixed.
-[#442](https://code.gramener.com/cto/gramex/issues/442)
+  stored inconsistently. This is now fixed.
+  [#442](https://code.gramener.com/cto/gramex/issues/442)
 
 - FormHandler query request `?col=` as NOT-NULL for int/float rows used to fail. This is now plugged.
-[#432](https://code.gramener.com/cto/gramex/issues/432)
+  [#432](https://code.gramener.com/cto/gramex/issues/432)
 
 ## Stats
 

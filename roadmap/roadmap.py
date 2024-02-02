@@ -22,7 +22,8 @@ def get_issues(refresh: bool = False):
     now = time.time()
     delay = 24 * 60 * 60  # Refresh once a day
     if not refresh and os.path.exists(issues_file) and now - os.stat(issues_file).st_mtime < delay:
-        return json.load(open(issues_file, encoding='utf-8'))
+        with open(issues_file, encoding='utf-8') as handle:
+            return json.load(handle)
 
     # Get the API key. TODO: Move this into .secrets.yaml. Document an error here
     api_key = variables['JIRA_AUTH'].split(':', 1)
@@ -34,7 +35,9 @@ def get_issues(refresh: bool = False):
         url = f'https://gramenertech.atlassian.net/rest/agile/1.0/board/{board}/issue'
         params = {'startAt': 0}
         while True:
-            result = requests.get(url, params=params, auth=HTTPBasicAuth(*api_key)).json()
+            result = requests.get(
+                url, params=params, auth=HTTPBasicAuth(*api_key), timeout=5
+            ).json()
             count = len(result['issues'])
             if count == 0:
                 break
@@ -57,28 +60,30 @@ def get_roadmap(refresh: bool = False):
     today = datetime.today().strftime('%Y-%m-%d')
     epicname, roadmap = {}, {}
     for issue in issues:
-        if issue['fields']['issuetype']['hierarchyLevel'] == 1:
-            if (issue['fields']['duedate'] or '') >= today:
-                epicname[issue['id']] = issue['fields']['summary']
-                roadmap[issue['fields']['summary']] = {
-                    'summary': issue['fields']['summary'],
-                    'description': issue['fields']['description'],
-                    'duedate': issue['fields']['duedate'],
-                    "status": issue['fields']['status']['name'],
-                    'features': {'Component': [], 'Microservice': [], 'App': [], 'Other': []},
-                }
+        if (
+            issue['fields']['issuetype']['hierarchyLevel'] == 1
+            and (issue['fields']['duedate'] or '') >= today
+        ):
+            epicname[issue['id']] = issue['fields']['summary']
+            roadmap[issue['fields']['summary']] = {
+                'summary': issue['fields']['summary'],
+                'description': issue['fields']['description'],
+                'duedate': issue['fields']['duedate'],
+                "status": issue['fields']['status']['name'],
+                'features': {'Component': [], 'Microservice': [], 'App': [], 'Other': []},
+            }
 
     # Add stories below them
     for issue in issues:
         # Only pick stories
-        if not issue['fields']['issuetype']['hierarchyLevel'] == 0:
+        if issue['fields']['issuetype']['hierarchyLevel'] != 0:
             continue
         # ... that have epics
         if not issue['fields']['epic']:
             continue
         # ... that are in the roadmap
         epic_id = str(issue['fields']['epic']['id'])  # noqa
-        epic = roadmap.get(epicname.get(epic_id, None), None)
+        epic = roadmap.get(epicname.get(epic_id))
         if epic is None:
             continue
         # Add the features

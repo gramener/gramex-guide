@@ -6,10 +6,10 @@ url:
       version: 2
       source: $YAMLPATH/template.pptx
       data:
-        products: {url: $YAMLPATH/products.yaml}
+        products: { url: $YAMLPATH/products.yaml }
       rules:
-        - Visitors:                         # Find all shapes named 'Visitors'
-            text: products['visitors']      # Replace text from data
+        - Visitors: # Find all shapes named 'Visitors'
+            text: products['visitors'] # Replace text from data
           Leads:
             text: products['leads']
           Cart:

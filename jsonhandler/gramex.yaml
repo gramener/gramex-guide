@@ -4,7 +4,7 @@ url:
     handler: JSONHandler
     kwargs:
       data:
-        y: {a: 1, b: 2}
+        y: { a: 1, b: 2 }
         z: [1, 2, 3]
 
   jsonhandler-update2:
@@ -12,6 +12,6 @@ url:
     handler: JSONHandler
     kwargs:
       data:
-        y: {a: 1, b: 2}
+        y: { a: 1, b: 2 }
         z: [1, 2, 3]
       xsrf_cookies: false

@@ -56,7 +56,7 @@ Additional [vega-lite](../../formhandler/vegam-examples) and
 ### Deprecations
 
 - [Session store](../../auth/#session-data) `type: hdf5` is deprecated.
-It is very slow and not distributed.
+  It is very slow and not distributed.
 
 ### Others
 
@@ -65,11 +65,10 @@ It is very slow and not distributed.
 ## Internal bugfixes
 
 - Session purge should have a different schedule than flush. This will improve performance.
-This is resolved.
+  This is resolved.
 - [download.vega.js](https://code.gramener.com/cto/gramex/issues/396) should be
- included in package published to [pypi](https://pypi.org/project/gramex/).
-This is resolved.
-
+  included in package published to [pypi](https://pypi.org/project/gramex/).
+  This is resolved.
 
 ## Stats
 

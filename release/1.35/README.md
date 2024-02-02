@@ -31,15 +31,15 @@ Gramex 1.35 onwards now supports installation via pip 10.x.
 ## Other enhancements
 
 - g1 [$.formhandler](https://code.gramener.com/cto/g1#formhandler) supports
-grids via `table: 'grid'`.
+  grids via `table: 'grid'`.
 - g1 [$.formhandler](https://code.gramener.com/cto/g1#formhandler) tables can be
-edited by the user via `edit: true`
+  edited by the user via `edit: true`
 
 ## Others
 
 - Gramex is not free for commercial use. Please read the
-[LICENSE](https://github.com/gramener/gramex/blob/master/LICENSE.rst) and
-terms for non-commercial use.
+  [LICENSE](https://github.com/gramener/gramex/blob/master/LICENSE.rst) and
+  terms for non-commercial use.
 
 ## Stats
 

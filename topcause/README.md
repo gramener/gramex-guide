@@ -9,7 +9,7 @@ type: component
 
 [TOC]
 
-**v1.72.0** TopCause is an algorithm that answers the question ***What's the single biggest change I can make to improve my outcome?***.
+**v1.72.0** TopCause is an algorithm that answers the question **_What's the single biggest change I can make to improve my outcome?_**.
 
 <div class="ratio ratio-16x9">
   <iframe src="https://www.youtube.com/embed/5JfSryDrSVY" allowfullscreen></iframe>
@@ -22,16 +22,16 @@ TopCause takes two inputs:
 
 Say a Rugby team is recruiting for heavy people, and have [weight data](weight.csv) like this.
 
-| male  |  age  | height | weight |
-| :---: | :---: | :----: | :----: |
-|   1   | 90.0  | 151.7  |  47.8  |
-|   0   | 90.0  | 139.7  |  36.4  |
-|   0   | 90.0  | 136.5  |  31.8  |
-|   1   | 20.0  | 156.8  |  53.0  |
-|   0   | 10.0  | 145.4  |  41.2  |
+| male | age  | height | weight |
+| :--: | :--: | :----: | :----: |
+|  1   | 90.0 | 151.7  |  47.8  |
+|  0   | 90.0 | 139.7  |  36.4  |
+|  0   | 90.0 | 136.5  |  31.8  |
+|  1   | 20.0 | 156.8  |  53.0  |
+|  0   | 10.0 | 145.4  |  41.2  |
 
-::: example href=data?_format=html source=https://github.com/gramener/gramex-guide/blob/master/topcause/weight.csv
-    See the data
+::: example href=data?\_format=html source=https://github.com/gramener/gramex-guide/blob/master/topcause/weight.csv
+See the data
 
 If they want to know **What's the single biggest driver of weight?**, TopCause can answer that.
 Here is `topcausecalc.py` which has a [FunctionHandler](../functionhandler/) that returns the drivers.
@@ -61,8 +61,7 @@ url:
 ```
 
 ::: example href=drivers source=https://github.com/gramener/gramex-guide/blob/master/topcause/topcausecalc.py
-    See the drivers
-
+See the drivers
 
 ## TopCause results
 
@@ -71,9 +70,9 @@ the result that shows the impact of that feature.
 
 Here is a sample row
 
-|        | value | gain  |    p     | type  |
-| :----: | :---: | :---: | :------: | :---: |
-| height | 164.5 | 12.7  | 8.4e-13  |  num  |
+|        | value | gain |    p    | type |
+| :----: | :---: | :--: | :-----: | :--: |
+| height | 164.5 | 12.7 | 8.4e-13 | num  |
 
 The columns show:
 
@@ -84,12 +83,12 @@ The columns show:
 
 The above example returns:
 
-|        | value | gain  |    p     | type  |
-| :----: | :---: | :---: | :------: | :---: |
-| weight | 55.0  | 16.9  | 1.8e-267 |  num  |
-| height | 164.5 | 12.7  | 8.4e-13  |  num  |
-|  male  |  NaN  |  NaN  |  0.057   |  num  |
-|  age   |  NaN  |  NaN  |  0.453   |  num  |
+|        | value | gain |    p     | type |
+| :----: | :---: | :--: | :------: | :--: |
+| weight | 55.0  | 16.9 | 1.8e-267 | num  |
+| height | 164.5 | 12.7 | 8.4e-13  | num  |
+|  male  |  NaN  | NaN  |  0.057   | num  |
+|  age   |  NaN  | NaN  |  0.453   | num  |
 
 This example says that:
 
@@ -117,7 +116,6 @@ The constructor `gramex.ml.TopCause()` accepts these parameters:
 - `min_weight`: int - minimum samples in a group. Drop groups with fewer (default: `3`)
   - If average performance of small groups (e.g. less than 5) could be outliers, ignore them with `min_weight=5`
   - If you want to evaluate the performance of every group, set `min_weight=0`
-
 
 <script>
   for (tag of document.querySelectorAll('.content table'))

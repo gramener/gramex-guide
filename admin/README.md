@@ -16,13 +16,12 @@ From v1.42, Gramex ships with an admin page. To include it in your page, use:
 ```yaml
 import:
   admin/admin:
-    path: $GRAMEXAPPS/admin2/gramex.yaml    # Note the "admin2" instead of "admin"
-    YAMLURL: /$YAMLURL/admin/               # URL to show the admin page at
+    path: $GRAMEXAPPS/admin2/gramex.yaml # Note the "admin2" instead of "admin"
+    YAMLURL: /$YAMLURL/admin/ # URL to show the admin page at
 ```
 
-
 ::: example href=admin/ source=https://github.com/gramener/gramex-guide/blob/master/admin/gramex.yaml
-    Admin page example
+Admin page example
 
 You can configure the admin page as follows:
 
@@ -30,16 +29,16 @@ You can configure the admin page as follows:
 import:
   admin/admin-kwargs:
     path: $GRAMEXAPPS/admin2/gramex.yaml
-    YAMLURL: /$YAMLURL/admin-kwargs/        # URL to show the admin page at
+    YAMLURL: /$YAMLURL/admin-kwargs/ # URL to show the admin page at
     ADMIN_KWARGS:
-      logo: https://gramener.com/uistatic/gramener.png  # Logo URL
-      home: /$YAMLURL/                                  # URL that logo links to
-      title: Admin  Page Options                        # Navbar title
-      components: [info, users, shell]                  # Components to show
-      theme: '?font-family-base=roboto'                 # UI component theme query
+      logo: https://gramener.com/uistatic/gramener.png # Logo URL
+      home: /$YAMLURL/ # URL that logo links to
+      title: Admin  Page Options # Navbar title
+      components: [info, users, shell] # Components to show
+      theme: "?font-family-base=roboto" # UI component theme query
     ADMIN_AUTH:
       membership:
-        email: [admin1@example.org, admin2@example.org]     # Only allow these users
+        email: [admin1@example.org, admin2@example.org] # Only allow these users
 ```
 
 The `ADMIN_KWARGS` section accepts the following parameters:
@@ -64,23 +63,23 @@ The `ADMIN_AUTH` section is the same as specifying the `auth:`
 [authorization](../auth/#authorization) on all admin pages. For example:
 
 ```yaml
-    ADMIN_AUTH:
-      login_url: /$YAMLURL/login/
-      membership:
-        email: [admin1@example.org, admin2@example.org]     # Only allow these users
+ADMIN_AUTH:
+  login_url: /$YAMLURL/login/
+  membership:
+    email: [admin1@example.org, admin2@example.org] # Only allow these users
 ```
 
 ... is the same as specifying this on every admin page:
 
 ```yaml
-    auth:
-      login_url: /$YAMLURL/login/
-      membership:
-        email: [admin1@example.org, admin2@example.org]     # Only allow these users
+auth:
+  login_url: /$YAMLURL/login/
+  membership:
+    email: [admin1@example.org, admin2@example.org] # Only allow these users
 ```
 
 ::: example href=admin-kwargs/ source=https://github.com/gramener/gramex-guide/blob/master/admin/gramex.yaml
-    Admin page options example
+Admin page options example
 
 ## Admin: User management
 
@@ -113,7 +112,7 @@ url:
 ```
 
 ::: example href=admin-user/ source=https://github.com/gramener/gramex-guide/blob/master/admin/gramex.yaml
-    User management example
+User management example
 
 User management is available as a component. To embed it in your page, add a
 FormHandler table component:
@@ -121,16 +120,16 @@ FormHandler table component:
 ```html
 <div class="users"></div>
 <script>
-  $('.users').formhandler({
-    src: 'admin/users-data',    // Assuming the admin page is at admin/
-    edit: true,                 // Allow editing users
-    add: true                   // Allow adding users
-  })
+  $(".users").formhandler({
+    src: "admin/users-data", // Assuming the admin page is at admin/
+    edit: true, // Allow editing users
+    add: true, // Allow adding users
+  });
 </script>
 ```
 
 ::: example href=users.html source=https://github.com/gramener/gramex-guide/blob/master/admin/users.html
-    User management component example
+User management component example
 
 You can specify custom actions & formats using FormHandler table. See the [admin page source code](https://github.com/gramener/gramex/blob/master/gramex/apps/admin2/index.html) for examples of custom actions.
 
@@ -149,7 +148,7 @@ import:
     path: $GRAMEXAPPS/admin2/gramex.yaml
     YAMLURL: /$YAMLURL/admin-user/
     ADMIN_KWARGS:
-      authhandler: login        # Manages users via the url: key named "login"
+      authhandler: login # Manages users via the url: key named "login"
       signup:
         email_subject: Welcome {user} to {org}
         email_body: |
@@ -160,7 +159,6 @@ import:
 sends emails to new users with the subject and body as specified, where `user`,
 `org` and `location` are user attributes contained in the `login` authhandler.
 The templates work for any user attributes.
-
 
 ### Filter User Data
 
@@ -173,7 +171,7 @@ import:
     path: $GRAMEXAPPS/admin2/gramex.yaml
     YAMLURL: /$YAMLURL/admin-user/
     ADMIN_KWARGS:
-      authhandler: login        # Manages users via the url: key named "login"
+      authhandler: login # Manages users via the url: key named "login"
       userdata:
         # Only on GET (not POST/PUT, when we are adding/updating user info),
         # clear the password column if it exists.
@@ -183,7 +181,6 @@ import:
 ```
 
 You can use any `modify` function here, e.g. to clear more columns or add/transform columns.
-
 
 ### Edit User Attribute Rules
 
@@ -198,12 +195,12 @@ This table can also be embedded anywhere else as follows:
 ```html
 <div class="user-rules"></div>
 <script>
-  $('.user-rules').formhandler({
-    src: 'admin/auth-rules',    // Assuming the admin page is at admin/
-                                // and the corresponding `authhandler` contains `rules`
-    edit: true,                 // Allow editing rules
-    add: true                   // Allow adding rules
-  })
+  $(".user-rules").formhandler({
+    src: "admin/auth-rules", // Assuming the admin page is at admin/
+    // and the corresponding `authhandler` contains `rules`
+    edit: true, // Allow editing rules
+    add: true, // Allow adding rules
+  });
 </script>
 ```
 
@@ -213,8 +210,7 @@ The schedule component lets you see all [scheduler tasks](../scheduler/) defined
 under the `schedule:` section, and run them.
 
 ::: example href=admin/schedule source=https://github.com/gramener/gramex-guide/blob/master/admin/
-    Schedule example
-
+Schedule example
 
 The admin schedule component can be embdded in any page:
 
@@ -222,14 +218,15 @@ The admin schedule component can be embdded in any page:
 <div class="schedule"></div>
 <script src="schedule.js"></script>
 <script>
-  $('.schedule').schedule({           // Embed the scheduler
-    url: 'admin/schedule-data',       // Assuming the admin page is at admin/
-  })
+  $(".schedule").schedule({
+    // Embed the scheduler
+    url: "admin/schedule-data", // Assuming the admin page is at admin/
+  });
 </script>
 ```
 
 ::: example href=schedule.html source=https://github.com/gramener/gramex-guide/blob/master/admin/schedule.html
-    Schedule component example
+Schedule component example
 
 ## Admin: Alert
 
@@ -237,7 +234,7 @@ The alert component lets you see all [alerts](../alert/) defined under the
 `alert:` section, and preview or run them.
 
 ::: example href=admin/alert source=https://github.com/gramener/gramex-guide/blob/master/admin/
-    Alert example
+Alert example
 
 The admin alert component can be embedded in any page:
 
@@ -245,10 +242,11 @@ The admin alert component can be embedded in any page:
 <div class="schedule"></div>
 <script src="schedule.js"></script>
 <script>
-  $('.schedule').schedule({           // Alerts use the same component as schedulers
-    alert: true,                      // ... but with the alert: true option
-    url: 'admin/alert-data',          // Assuming the admin page is at admin/
-  })
+  $(".schedule").schedule({
+    // Alerts use the same component as schedulers
+    alert: true, // ... but with the alert: true option
+    url: "admin/alert-data", // Assuming the admin page is at admin/
+  });
 </script>
 ```
 
@@ -275,19 +273,21 @@ The web shell is available as a component. To embed it in your page, add:
 <div class="webshell"></div>
 <script src="admin/webshell.js"></script>
 <script>
-  $('.webshell').webshell({           // Embed the web shell here
-    url: 'admin/webshell-data',       // Assuming the admin page is at admin/
-    prompt: '>>> ',                   // Prompt to display at the start of each page
-    welcome: [                        // Welcome message as a list of lines.
-      'Welcome to the Gramex shell',
-      '>>> '
-    ]
-  })
+  $(".webshell").webshell({
+    // Embed the web shell here
+    url: "admin/webshell-data", // Assuming the admin page is at admin/
+    prompt: ">>> ", // Prompt to display at the start of each page
+    welcome: [
+      // Welcome message as a list of lines.
+      "Welcome to the Gramex shell",
+      ">>> ",
+    ],
+  });
 </script>
 ```
 
 ::: example href=shell.html source=https://github.com/gramener/gramex-guide/blob/master/admin/shell.html
-    Web shell component example
+Web shell component example
 
 ## Admin: Info
 
@@ -332,7 +332,7 @@ The information provided includes (in a `<section>.<key>` notation):
 The result is stored in the `value` column. If the value is not available, the `error` is stored in the `error` column.
 
 ::: example href=admin-kwargs/?tab=info source=https://github.com/gramener/gramex-guide/blob/master/admin/gramex.yaml
-    Info page example
+Info page example
 
 ## Admin: Config
 
@@ -342,11 +342,9 @@ The result is stored in the `value` column. If the value is not available, the `
 
 <!-- TODO: Shows the Gramex logs. -->
 
-
 ## Admin access control
 
 <!-- TODO: explain how to restrict admin access -->
-
 
 ## Admin page (old)
 
@@ -357,11 +355,11 @@ To use it, add this to your `gramex.yaml`:
 ```yaml
 import:
   admin1:
-    path: $GRAMEXAPPS/admin/gramex.yaml   # Source of the app
-    YAMLURL: /$YAMLURL/admin1/       # Location to mount at
+    path: $GRAMEXAPPS/admin/gramex.yaml # Source of the app
+    YAMLURL: /$YAMLURL/admin1/ # Location to mount at
     ADMIN_LOOKUP:
-      url: $YAMLPATH/lookup.xlsx          # DB / file with user information
-      id: user                            # Column name that has the user ID
+      url: $YAMLPATH/lookup.xlsx # DB / file with user information
+      id: user # Column name that has the user ID
 ```
 
 Use `ADMIN_*` variables to configure your app.
@@ -385,11 +383,11 @@ import:
     YAMLURL: /$YAMLURL/admin/
     ADMIN_LOOKUP:
       url: $YAMLPATH/lookup.xlsx
-      id: user                   # user column in Excel sheet has the user name
-    ADMIN_USER: ['alpha']        # Always allow user `alpha`
-    ADMIN_ROLE: ['admin']        # Also allow anyone with role as admin
-    LOGIN_URL: /admin/           # URL to show login page for admin page
-    LOGOUT_URL: /logout/         # URL to logout
+      id: user # user column in Excel sheet has the user name
+    ADMIN_USER: ["alpha"] # Always allow user `alpha`
+    ADMIN_ROLE: ["admin"] # Also allow anyone with role as admin
+    LOGIN_URL: /admin/ # URL to show login page for admin page
+    LOGOUT_URL: /logout/ # URL to logout
 ```
 
 By default, admin site can be accessed by any user when using `127.0.0.1`.

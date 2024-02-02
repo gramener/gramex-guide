@@ -13,16 +13,16 @@ type: microservice
 
 ```yaml
 url:
-    twitter:
-        pattern: /twitter/(.*)
-        handler: TwitterRESTHandler
-        kwargs:
-            # Visit https://apps.twitter.com/ to get these keys
-            key: '...'
-            secret: '...'
-        redirect:
-            header: Referer
-            url: /$YAMLURL/
+  twitter:
+    pattern: /twitter/(.*)
+    handler: TwitterRESTHandler
+    kwargs:
+      # Visit https://apps.twitter.com/ to get these keys
+      key: "..."
+      secret: "..."
+    redirect:
+      header: Referer
+      url: /$YAMLURL/
 ```
 
 Follow the steps for [Twitter auth](../auth/#twitter-auth) to get the keys above.
@@ -42,15 +42,15 @@ the following to the `kwargs:` section:
 
 ```yaml
 url:
-    twitter-open:
-        pattern: /twitter-open/(.*)
-        handler: TwitterRESTHandler
-        kwargs:
-            # Visit https://apps.twitter.com/ to get these keys
-            key: '...'
-            secret: '...'
-            access_key: '...'
-            access_secret: '...'
+  twitter-open:
+    pattern: /twitter-open/(.*)
+    handler: TwitterRESTHandler
+    kwargs:
+      # Visit https://apps.twitter.com/ to get these keys
+      key: "..."
+      secret: "..."
+      access_key: "..."
+      access_secret: "..."
 ```
 
 Now
@@ -61,7 +61,7 @@ their access token.
 To use this via jQuery, use this snippet:
 
 ```js
-fetch('twitter-open/statuses/home_timeline.json?count=1')
+fetch("twitter-open/statuses/home_timeline.json?count=1");
 // OUTPUT
 ```
 
@@ -91,19 +91,20 @@ A typical Twitter app page will have the following flow:
 1. Fetch the response via an AJAX query to the TwitterHandler
 2. If there's no error, display the response
 3. If there's an error,
-    - if the access token is missing, ask the user to log in
+   - if the access token is missing, ask the user to log in
 
 For example:
 
 ```js
-fetch('twitter/statuses/home_timeline.json')
- .done(function(data) { display(data) })
- .fail(function(xhr, status, msg) {
-    if (msg == 'access token missing')
-      location.href = 'twitter/'          // Redirect the user to log in
-    else
-      alert(msg)                          // Alert if it's some other error
+fetch("twitter/statuses/home_timeline.json")
+  .done(function (data) {
+    display(data);
   })
+  .fail(function (xhr, status, msg) {
+    if (msg == "access token missing")
+      location.href = "twitter/"; // Redirect the user to log in
+    else alert(msg); // Alert if it's some other error
+  });
 ```
 
 After the login, users can be redirected via the `redirect:` config
@@ -125,18 +126,18 @@ url:
     pattern: /persist/(.*)
     handler: TwitterRESTHandler
     kwargs:
-        key: '...'
-        secret: '...'
-        access_key: persist       # Persist the access token after first login
-        access_secret: persist    # Persist the access token after first login
+      key: "..."
+      secret: "..."
+      access_key: persist # Persist the access token after first login
+      access_secret: persist # Persist the access token after first login
     cache:
-        duration: 300             # Cache requests for 5 seconds
+      duration: 300 # Cache requests for 5 seconds
 ```
 
 Here is a sample response:
 
 ```js
-fetch('persist/statuses/home_timeline.json?count=1')  // OUTPUT
+fetch("persist/statuses/home_timeline.json?count=1"); // OUTPUT
 ```
 
 The first time, you get an access_key error. Visit [/persist/](persist/) to log
@@ -149,7 +150,7 @@ future requests until it expires, or a user logs in again at
 The following request [searches](https://dev.twitter.com/rest/reference/get/search/tweets) for mentions of Gramener and fetches the first response:
 
 ```js
-fetch('twitter-open/search/tweets.json?q=gramener&count=1')  // OUTPUT
+fetch("twitter-open/search/tweets.json?q=gramener&count=1"); // OUTPUT
 ```
 
 The endpoint `/search/tweets.json` is the same as that in the Twitter API, which internally acts as an input to the `api` Gramex endpoint.
@@ -158,18 +159,18 @@ Search results are paginated. Fetch `.search_metadata.next_results` to get the n
 
 ```js
 function twitter_search(query) {
-    fetch('twitter-open/search/tweets.json' + query)
-    .then(r => r.json())
-    .then(result => {
-        // Show the result
-        console.log(result.statuses)
-        // Fetch next results if any
-        if (result.search_metadata.next_results)
-            twitter_search(result.search_metadata.next_results)
-    })
+  fetch("twitter-open/search/tweets.json" + query)
+    .then((r) => r.json())
+    .then((result) => {
+      // Show the result
+      console.log(result.statuses);
+      // Fetch next results if any
+      if (result.search_metadata.next_results)
+        twitter_search(result.search_metadata.next_results);
+    });
 }
 // Keep searching for tweets by Gramener
-twitter_search('?q=gramener')
+twitter_search("?q=gramener");
 ```
 
 ## Twitter followers
@@ -177,7 +178,7 @@ twitter_search('?q=gramener')
 This script fetches the [list of followers](https://dev.twitter.com/rest/reference/get/followers/list) for Gramener:
 
 ```js
-fetch('twitter-open/followers/list.json?screen_name=gramener&count=1')  // OUTPUT
+fetch("twitter-open/followers/list.json?screen_name=gramener&count=1"); // OUTPUT
 ```
 
 ## Twitter transforms
@@ -211,7 +212,7 @@ def add_sentiment(result, handler):
 This transforms the tweets to add a `sentiment:` key measuring its sentiment.
 
 ```js
-fetch('sentiment?q=gramener&count=1')  // OUTPUT
+fetch("sentiment?q=gramener&count=1"); // OUTPUT
 ```
 
 The transform should either return a JSON-encodable object, or a string.
@@ -238,7 +239,6 @@ You can then include this in the TwitterHandler transform section as follows:
               function: module.save_tweet_transform
 ```
 
-
 ## Parallel AJAX requests
 
 The `TwitterRESTHandler` processes results asynchronously. So when one request
@@ -252,10 +252,10 @@ requests.
 
 ```js
 // Latest tweet for Gramener
-var q1 = fetch('twitter-open/search/tweets.json?q=gramener&count=1')
+var q1 = fetch("twitter-open/search/tweets.json?q=gramener&count=1");
 // Latest tweet for Richard Dawkins
-var q2 = fetch('twitter-open/search/tweets.json?q=RichardDawkins&count=1')
-Promise.all(q1, q2) // OUTPUT
+var q2 = fetch("twitter-open/search/tweets.json?q=RichardDawkins&count=1");
+Promise.all(q1, q2); // OUTPUT
 ```
 
 ## Twitter GET requests
@@ -282,20 +282,20 @@ a live source of tweets. This can be set up as a schedule:
 
 ```yaml
 schedule:
-    twitter-stream:
-        function: TwitterStream
-        kwargs:
-            track: beer,wine                # Track these keywords
-            follow: Starbucks,Microsoft     # OR follow these users' tweets
-            path: tweets.{:%Y-%m-%d}.jsonl  # Save the results in this file
-            # Visit https://apps.twitter.com/ to get these keys
-            key: ...
-            secret: ...
-            access_key: ...
-            access_secret: ...
-            flush: 60                       # Flush data every 60 seconds
-        startup: true                       # Run on startup
-        thread: true                        # in a separate thread (REQUIRED)
+  twitter-stream:
+    function: TwitterStream
+    kwargs:
+      track: beer,wine # Track these keywords
+      follow: Starbucks,Microsoft # OR follow these users' tweets
+      path: tweets.{:%Y-%m-%d}.jsonl # Save the results in this file
+      # Visit https://apps.twitter.com/ to get these keys
+      key: ...
+      secret: ...
+      access_key: ...
+      access_secret: ...
+      flush: 60 # Flush data every 60 seconds
+    startup: true # Run on startup
+    thread: true # in a separate thread (REQUIRED)
 ```
 
 This runs the `TwitterStream` class on startup in a separate thread.
@@ -312,7 +312,6 @@ you won't lose data.)
 
 Note: You can run multiple Twitter streams, but you need different access keys
 for each.
-
 
 <script src="script.js"></script>
 

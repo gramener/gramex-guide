@@ -81,7 +81,7 @@ Any valid `SQLAlchemy` URL is Formhandler to read from SQL databases.
 ### Safe practices with Databases
 
 - Do not directly define usernames and passwords in YAML configuration.
-Use environment variables.
+  Use environment variables.
 - Cache your data requests via cache-control headers. [Documentation](../cache/).
 - Prepare the arguments
 - URL parameters are not always in the required format that the data source expects.
@@ -167,7 +167,6 @@ app/data/queryfile:
 
 This result will contain first `10000` rows by default.
 To increase/decrease this limit, specify `_limit` parameter using `?_limit=15000`
-
 
 ## Modify the result
 

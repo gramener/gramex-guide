@@ -14,7 +14,7 @@ lighter gramex init, and gramex features formatting.
 It is used for chat, live commenting, and message queues via WebSockets.
 
 ::: example href=../../messagehandler/messages.html source=https://github.com/gramener/gramex-guide/blob/master/messagehandler/messages.html
-    MessageHandler example
+MessageHandler example
 
 The configuration is similar to [FormHandler databases](../../formhandler/#supported-databases):
 
@@ -33,15 +33,15 @@ url:
 This opens a WebSocket connection to `/messages`. You can send messages to it using:
 
 ```js
-var url = location.href.replace(/^http/, 'ws').replace(/\/[^/]*$/, '/messages');
+var url = location.href.replace(/^http/, "ws").replace(/\/[^/]*$/, "/messages");
 var ws = new WebSocket(url);
-ws.send(JSON.stringify({_method: 'POST', body: 'Hello'}));
+ws.send(JSON.stringify({ _method: "POST", body: "Hello" }));
 ```
 
 This will insert a message into the `simple` table with these columns:
 
 | id    | user             | timestamp           | body  |
-|-------|------------------|---------------------|-------|
+| ----- | ---------------- | ------------------- | ----- |
 | Xjs3k | user@example.org | 2023-01-02T03:04:05 | Hello |
 
 `id`, `user`, `timestamp` are **always** present in the table. The rest are specified by `columns:`
@@ -57,11 +57,10 @@ It also broadcasts the messages to all clients, which you can listen to on the w
 ws.onmessage = function (response) {
   const msg = JSON.parse(response.data);
   console.log(msg);
-}
+};
 ```
 
 When opened, the websocket sends **all** past message. You can limit it with [MessageHandler filters](../../messagehandler/#messagehandler-filters).
-
 
 ## WebsocketHandler arguments
 
@@ -84,7 +83,6 @@ url:
         function: handler.write(handler.args['prefix'] + message)
 ```
 
-
 ## Lighter gramex init
 
 [`gramex init`](../../init/) is now lighter and more modern. Specifically:
@@ -106,7 +104,6 @@ url:
 - Removed package.json libraries like
   [lodash](https://www.npmjs.com/package/lodash) and
   [uifactory](https://www.npmjs.com/package/uifactory).
-
 
 ## Gramex features formatting
 
@@ -175,7 +172,7 @@ Now, FunctionHandler returns Pandas Series as an `{index: value}` object. This p
 index, which is often useful for a series. (The index remains ignored for DataFrames.)
 
 ```json
-{"x": 1, "y": 2, "z": 3}
+{ "x": 1, "y": 2, "z": 3 }
 ```
 
 ## Backward compatibility & security
@@ -207,7 +204,7 @@ Tests,15382
 
 - 22,608 lines of Python (217 more than 1.89)
 - 3,552 lines of JavaScript (74 less than 1.89)
-- 15,382  lines of test code (79 more than 1.89)
+- 15,382 lines of test code (79 more than 1.89)
 - We are migrating to pytest from nose. Code coverage will be reported post migration.
 
 ## How to install

@@ -44,7 +44,7 @@ $ gramex features
 The columns are:
 
 - `type`: The type of feature. One of `MS` (microservice), `KWARG` (configuration), `SVC` (service).
-   `ERR-MS` indicates a custom or missing microservice
+  `ERR-MS` indicates a custom or missing microservice
 - `feature`: The name of the feature
 - `count`: The number of times the feature is used
 
@@ -59,14 +59,17 @@ Pass multiple folders, e.g. `gramex features /project1/ /project2/`, to sum feat
 ## Services
 
 {% for index, feature in features[features['type'] == 'SVC'].sort_values('name').iterrows() %}
+
 1. `{{ feature['name'] }}`: [{{ feature['feature'] }}]({{ feature.get('link', '..') }}){% end %}
 
 ## Handlers
 
 {% for index, feature in features[features['type'] == 'MS'].sort_values('name').iterrows() %}
+
 1. `{{ feature['name'] }}`: [{{ feature['feature'] }}]({{ feature.get('link', '..') }}){% end %}
 
 ## Configurations
 
 {% for index, feature in features[features['type'] == 'KWARG'].sort_values('name').iterrows() %}
+
 1. `{{ feature['name'] }}`: [{{ feature['feature'] }}]({{ feature.get('link', '..') }}){% end %}

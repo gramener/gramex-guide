@@ -5,8 +5,8 @@ url:
     pattern: /$YAMLURL/index.html
     handler: FileHandler
     kwargs:
-        path: $YAMLPATH/index.html
-        template: true
+      path: $YAMLPATH/index.html
+      template: true
 
   guide/uicomponents/config:
     pattern: /$YAMLURL/config

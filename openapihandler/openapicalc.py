@@ -11,4 +11,4 @@ def compare(
     '''
     Return True if the first list (x) is larger than the second list (y)
     '''
-    return True if sum(x) > sum(y) else False
+    return sum(x) > sum(y)

@@ -55,10 +55,7 @@ url:
 
 ```json
 {
-  "city":[
-    { "city":"Oslo" },
-    { "city":"Rome" }
-  ]
+  "city": [{ "city": "Oslo" }, { "city": "Rome" }]
 }
 ```
 
@@ -66,10 +63,7 @@ url:
 
 ```json
 {
-  "city": [
-    { "city": "Oslo" },
-    { "city": "Rome" }
-  ],
+  "city": [{ "city": "Oslo" }, { "city": "Rome" }],
   "product": [
     { "product": "Belt" },
     { "product": "Cap" },
@@ -83,10 +77,7 @@ sorting both in descending order alphabetically:
 
 ```json
 {
-  "city": [
-    { "city": "Rome" },
-    { "city": "Oslo" }
-  ],
+  "city": [{ "city": "Rome" }, { "city": "Oslo" }],
   "product": [
     { "product": "Doll" },
     { "product": "Cap" },
@@ -95,25 +86,18 @@ sorting both in descending order alphabetically:
 }
 ```
 
-
 `/filter?_c=city&_c=product&city=Oslo` returns unique values for `city` and `product` when `city=Oslo` is selected.
 Note that `Cap` is missing.
 
 ```json
 {
-  "city": [
-    { "city": "Oslo" },
-    { "city": "Rome" }
-  ],
-  "product": [
-    { "product": "Belt" },
-    { "product": "Doll" }
-  ]
+  "city": [{ "city": "Oslo" }, { "city": "Rome" }],
+  "product": [{ "product": "Belt" }, { "product": "Doll" }]
 }
 ```
 
-::: example href=flags?_c=Name&_c=Continent&_format=html&_limit=5 source=https://github.com/gramener/gramex-guide/blob/master/filterhandler/gramex.yaml
-    FilterHandler example
+::: example href=flags?\_c=Name&\_c=Continent&\_format=html&\_limit=5 source=https://github.com/gramener/gramex-guide/blob/master/filterhandler/gramex.yaml
+FilterHandler example
 
 ## FilterHandler Features
 
@@ -130,8 +114,8 @@ FilterHandler supports most [FormHandler filters](../formhandler/#formhandler-fi
 
 To control the output, you can use these control arguments:
 
-- Limit rows: [?_c=Name&_limit=10](flags?_c=Name&_limit=10&_format=html) ► show only 10 rows
-- Sort order: [?_c=Continent&_sort=-Continent](flags?_c=Continent&_sort=-Continent&_format=html) ► sort Continents (descending)
+- Limit rows: [?\_c=Name&\_limit=10](flags?_c=Name&_limit=10&_format=html) ► show only 10 rows
+- Sort order: [?\_c=Continent&\_sort=-Continent](flags?_c=Continent&_sort=-Continent&_format=html) ► sort Continents (descending)
 
 FilterHandler supports all files, databases and options supported by
 [FormHandler](../formhandler/). That includes:
@@ -144,7 +128,6 @@ FilterHandler supports all files, databases and options supported by
   [`function`](../formhandler/#formhandler-function), or
   [`modify`](../formhandler/#formhandler-modify).
 - Rendering [templates](../formhandler/#formhandler-templates)
-
 
 ## FilterHandler hierarchies
 
@@ -173,16 +156,15 @@ This is particularly useful to create a filter with hierarchies like:
   <ul><li>Cap</li><li>Doll</li></ul>
 </details>
 
-::: example href=flags?_c=Name,Continent&_format=html&_limit=5 source=https://github.com/gramener/gramex-guide/blob/master/filterhandler/gramex.yaml
-    FilterHandler hierarchies example
-
+::: example href=flags?\_c=Name,Continent&\_format=html&\_limit=5 source=https://github.com/gramener/gramex-guide/blob/master/filterhandler/gramex.yaml
+FilterHandler hierarchies example
 
 ## FilterHandler Ranges
 
 **v1.86**. FilterHandler can return ranges of values for a column using the `_c=<col>|range` syntax.
 
-::: example href=flags?_c=c1|range&_c=c2|range&_format=html source=https://github.com/gramener/gramex-guide/blob/master/filterhandler/gramex.yaml
-    FilterHandler range example
+::: example href=flags?\_c=c1|range&\_c=c2|range&\_format=html source=https://github.com/gramener/gramex-guide/blob/master/filterhandler/gramex.yaml
+FilterHandler range example
 
 For example, `?_c=c1|range&_c=c2|range` returns the min and max values of columns `c1` and `c2`:
 
@@ -206,15 +188,16 @@ For example, `?_c=c1|range&_c=c2|range` returns the min and max values of column
 This is useful for [range filters](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range) like:
 
 ```html
-<input type="range"
-    min="${filter['c1|range'][0]['c1|min']}"
-    max="${filter['c1|range'][0]['c1|max']}">
+<input
+  type="range"
+  min="${filter['c1|range'][0]['c1|min']}"
+  max="${filter['c1|range'][0]['c1|max']}"
+/>
 ```
-
 
 ## FilterHandler in memory
 
-**v1.86**. FilterHandler runs a database query for *each* column that you request.
+**v1.86**. FilterHandler runs a database query for _each_ column that you request.
 
 For slow database connections, you can speed this up with `in_memory: true`. For example:
 

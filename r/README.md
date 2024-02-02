@@ -117,7 +117,7 @@ R DataFrames are automatically converted into Pandas DataFrames and vice versa.
 ```
 
 It's OK to pass small data this way. Avoid converting large data though.
-Instead, pass the *path* to the data. For example:
+Instead, pass the _path_ to the data. For example:
 
 ```python
 gramex.ml.r('data <- read.csv(csv_file)', csv_file='../formhandler/flags.csv')
@@ -220,21 +220,21 @@ Also saves the HTML file to the directory where `.Rmd` files are located.
 Use below configuration to renders all `*.Rmd` files as HTML:
 
 ```yaml
-  r/rmarkdown:
-    pattern: /$YAMLURL/(.*Rmd)
-    handler: FileHandler
-    kwargs:
-      path: $YAMLPATH     # path at which Rmd files (.*Rmd) are located
-      transform:
-        "*.Rmd":          # Any file matching .Rmd
-          function: rmarkdown(content, handler)
-          headers:
-            Content-Type: text/html
-            Cache-Control: max-age=3600
+r/rmarkdown:
+  pattern: /$YAMLURL/(.*Rmd)
+  handler: FileHandler
+  kwargs:
+    path: $YAMLPATH # path at which Rmd files (.*Rmd) are located
+    transform:
+      "*.Rmd": # Any file matching .Rmd
+        function: rmarkdown(content, handler)
+        headers:
+          Content-Type: text/html
+          Cache-Control: max-age=3600
 ```
 
 ::: example href=RMarkdown-story.Rmd source=https://github.com/gramener/gramex-guide/blob/master/r/RMarkdown-story.Rmd
-    RMarkdown example
+RMarkdown example
 
 <iframe class="w-100" src="RMarkdown-story.Rmd" style="height: 600px !important"></iframe>
 

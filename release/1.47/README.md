@@ -25,7 +25,7 @@ DOM events should change the URL like this:
 <button href="?_sort=City" class="urlfilter" target="#">City</button>
 <button href="?_sort=Sales" class="urlfilter" target="#">Sales</button>
 <script>
-  $('body').urlfilter()
+  $("body").urlfilter();
 </script>
 ```
 
@@ -33,8 +33,10 @@ Now, changes in the URL should trigger actions:
 
 ```javascript
 $(window)
-  .urlchange()    // URL changes trigger '#?city' events
-  .on('#?city', function(e, city) { action(city) })
+  .urlchange() // URL changes trigger '#?city' events
+  .on("#?city", function (e, city) {
+    action(city);
+  });
 ```
 
 [Read documentation](https://code.gramener.com/cto/g1#urlchange)

@@ -13,16 +13,16 @@ type: microservice
 
 ```yaml
 url:
-    facebook:
-        pattern: /facebook/(.*)
-        handler: FacebookGraphHandler
-        kwargs:
-            # Visit https://developers.facebook.com/apps/ to get these keys
-            key: ...      # App ID
-            secret: ...   # App Secret
-        redirect:
-            header: Referer
-            url: /$YAMLURL/
+  facebook:
+    pattern: /facebook/(.*)
+    handler: FacebookGraphHandler
+    kwargs:
+      # Visit https://developers.facebook.com/apps/ to get these keys
+      key: ... # App ID
+      secret: ... # App Secret
+    redirect:
+      header: Referer
+      url: /$YAMLURL/
 ```
 
 Follow the steps for [Facebook auth](../auth/#facebook-auth) to get the keys above.
@@ -39,7 +39,7 @@ The request below will show your name once you log in. To log in, visit
 [/facebook/](facebook/):
 
 ```js
-$.get('facebook/me')  // OUTPUT
+$.get("facebook/me"); // OUTPUT
 ```
 
 After the OAuth login, users can be redirected via the `redirect:` config
@@ -75,17 +75,17 @@ url:
     pattern: /persist/(.*)
     handler: FacebookGraphHandler
     kwargs:
-        key: '...'
-        secret: '...'
-        access_token: persist     # Persist the access token after first login
+      key: "..."
+      secret: "..."
+      access_token: persist # Persist the access token after first login
     cache:
-        duration: 300             # Cache requests for 5 seconds
+      duration: 300 # Cache requests for 5 seconds
 ```
 
 Here is a sample response:
 
 ```js
-$.get('persist/me')  // OUTPUT
+$.get("persist/me"); // OUTPUT
 ```
 
 The first time, you get an access_token error. Visit [/persist/](persist/) to log

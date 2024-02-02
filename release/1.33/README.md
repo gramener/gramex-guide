@@ -19,6 +19,7 @@ elements smoothly based on pre-defined and custom layouts.
 Here's a [sample script](sanddance-demo.js):
 
 <svg id="sanddance-demo"></svg>
+
 <script src="../../ui/d3/build/d3.min.js"></script>
 <script src="../../ui/g1/dist/g1.min.js"></script>
 <script src="sanddance-demo.js?v8"></script>
@@ -36,8 +37,6 @@ Here's an example:
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vega@3.2.1/build/vega.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-lite@2.3.1/build/vega-lite.min.js"></script>
-
-
 
 ## Add roles to users
 
@@ -58,7 +57,7 @@ Gramex alerts sends a request to CaptureHandler, which passes the request to the
 dashboard.
 
 By specifying a `user:` object in the configuration, alerts can now take a
-screenshot *logging in as a specific user*. (Currently, there are a few
+screenshot _logging in as a specific user_. (Currently, there are a few
 limitations. Only one user is supported per alert. This requires two Gramex
 instances. Both problems will be addressed soon.)
 

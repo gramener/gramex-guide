@@ -67,8 +67,7 @@ The `kwargs:` MLPredictor accepts are:
 - `columns`: List of input columns from `data` to pass to the model. If the model was created with [MLHandler](../../mlhandler/), this is optional.
 - `target_col`: Optional name of the predicted column. If the model was created with [MLHandler](../../mlhandler/), it picks it from the training dataset. Else defaults to `prediction`.
 
-
-All [FormHandler filters](../../formhandler/#formhandler-filters) are applicable, making MLPredictor an good way to predict for different  subsets. For example:
+All [FormHandler filters](../../formhandler/#formhandler-filters) are applicable, making MLPredictor an good way to predict for different subsets. For example:
 
 - `/mlpredictor?date=2022-22-02` -- predict all results for a specific date
 - `/mlpredictor?sort=-date&_limit=30` -- predict the 30 most recent results
@@ -84,7 +83,6 @@ work well for `?date=2020-12-31` on all databases. Nor does `?date=12/31/2020` o
 
 Now FormHandler [parses all date columns](https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html)
 sensibly (defaulting to MM/DD/YY -- for example, `10/11/12` is Oct 11, 2012).
-
 
 ## Deprecate old UI libraries
 

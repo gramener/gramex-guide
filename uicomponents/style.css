@@ -5,7 +5,9 @@
 }
 
 /* Table of contents. (Manually adding it to every file is not elegant.) */
-.toc { margin-top: 1em; }
+.toc {
+  margin-top: 1em;
+}
 /* Sidebar is sticky */
 #toc-nav {
   position: sticky;
@@ -37,13 +39,23 @@
 }
 
 /* The main contents section may go beyond the page. Don't extend page width for this. */
-.show-source main { overflow-x: auto; }
-.viewsource-wrapper pre { display: none; }
-.show-source .viewsource-wrapper pre { display: block; }
+.show-source main {
+  overflow-x: auto;
+}
+.viewsource-wrapper pre {
+  display: none;
+}
+.show-source .viewsource-wrapper pre {
+  display: block;
+}
 
 /* Predefined background URL image */
-.bg-img { background-image: url('bg.png'); }
-.bg-img-sm { background-image: url('bg-small.png'); }
+.bg-img {
+  background-image: url("bg.png");
+}
+.bg-img-sm {
+  background-image: url("bg-small.png");
+}
 
 /* Container to demo overflows */
 .o-box {

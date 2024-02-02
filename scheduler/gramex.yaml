@@ -1,11 +1,11 @@
 schedule:
-    run-on-startup:
-        function: logging.info(msg="Scheduled msg (on startup)")
-        startup: true
-    run-every-hour:
-        function: schedule_utils.log_time() # Log the current time
-        minutes: 0            # when the minute strikes zero
-        hours: '*'            # every hour
-    run-at-specific-interval:
-        function: schedule_utils.log_time() # Log the current time
-        every: 4h 10m 30s     # Every 4 hours, 10 min, 30 seconds
+  run-on-startup:
+    function: logging.info(msg="Scheduled msg (on startup)")
+    startup: true
+  run-every-hour:
+    function: schedule_utils.log_time() # Log the current time
+    minutes: 0 # when the minute strikes zero
+    hours: "*" # every hour
+  run-at-specific-interval:
+    function: schedule_utils.log_time() # Log the current time
+    every: 4h 10m 30s # Every 4 hours, 10 min, 30 seconds

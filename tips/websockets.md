@@ -17,13 +17,13 @@ url:
     pattern: /$YAMLURL/ws
     handler: WebSocketHandler
     kwargs:
-        open:
-            function: app.ws_open
-        on_message:
-            function: app.ws_on_message
-        on_close:
-            function: app.close
-        auth: true
+      open:
+        function: app.ws_open
+      on_message:
+        function: app.ws_on_message
+      on_close:
+        function: app.close
+      auth: true
 ```
 
 ## Send a websocket request

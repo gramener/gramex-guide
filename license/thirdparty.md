@@ -19,6 +19,7 @@ Gramex uses open source third party libraries that use one of these licenses:
 - [node.js](https://github.com/nodejs/node/blob/master/LICENSE): [MIT license][MIT]
 
 ## Python libraries
+
 <!-- Keep this in sync with gramex/pyproject.toml -->
 
 - [astor](https://pypi.python.org/pypi/argh/): [LGPL license][LGPL]
@@ -59,6 +60,7 @@ Gramex uses open source third party libraries that use one of these licenses:
 - [watchdog](https://pypi.python.org/pypi/watchdog/): [Apache license][Apache]
 
 Optional libraries:
+
 <!-- Keep this in sync with libraries that we check ImportError for -->
 
 - [conda](https://pypi.python.org/pypi/conda)
@@ -73,6 +75,7 @@ Optional libraries:
 - [transformers](https://pypi.python.org/pypi/transformers)
 
 ## JavaScript libraries
+
 <!-- find gramex -name package.json | grep -v node_modules | xargs jq '.dependencies, .devDependencies' -->
 
 - [NodeJS](https://nodejs.org/): [Node][Node]
@@ -105,7 +108,6 @@ Optional libraries:
 ## UI libraries
 
 - [Bootstrap themes guide](https://github.com/ThemesGuide/bootstrap-themes): [MIT license][MIT]
-
 
 [MIT]: https://opensource.org/licenses/MIT
 [BSD]: https://opensource.org/licenses/BSD-3-Clause

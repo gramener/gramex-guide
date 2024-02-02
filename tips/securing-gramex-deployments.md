@@ -15,7 +15,7 @@ has commonly used security configurations and is bundled as part of Gramex.
 
 For example, it:
 
-1. Disables [cross-site scripting](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS))
+1. Disables [cross-site scripting](<https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)>)
 2. Prevents [content-sniffing](https://dunnesec.com/category/attacks-defence/content-sniffing/)
 3. Prevents [clickjacking](https://www.owasp.org/index.php/Clickjacking)
 4. Hides the server name

@@ -1,21 +1,21 @@
 email:
-    alert-gmail:
-        type: gmail
-        email: gramex.guide@gmail.com       # Generic email ID used to test e-mails
-        password: tlpmupxnhucitpte          # App-specific password created for Gramex guide
+  alert-gmail:
+    type: gmail
+    email: gramex.guide@gmail.com # Generic email ID used to test e-mails
+    password: tlpmupxnhucitpte # App-specific password created for Gramex guide
 
 url:
-    alert/sendmail:
-        pattern: /$YAMLURL/sendmail
-        handler: FunctionHandler
-        kwargs:
-            function: alertapp.sendmail
-    alert/alert:
-        pattern: /$YAMLURL/alert
-        handler: FileHandler
-        kwargs:
-            path: $YAMLPATH/alert.html
-            template: true
+  alert/sendmail:
+    pattern: /$YAMLURL/sendmail
+    handler: FunctionHandler
+    kwargs:
+      function: alertapp.sendmail
+  alert/alert:
+    pattern: /$YAMLURL/alert
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/alert.html
+      template: true
 
 alert:
   alert-email:
@@ -46,9 +46,9 @@ alert:
   alert-content-file:
     to: admin@example.org
     subject: HTML email from file
-    bodyfile: $YAMLPATH/email.txt       # Use email.txt in current directory
-    htmlfile: $YAMLPATH/email.html      # Use email.html in current directory
-    markdownfile: $YAMLPATH/email.md    # Use email.md in current directory
+    bodyfile: $YAMLPATH/email.txt # Use email.txt in current directory
+    htmlfile: $YAMLPATH/email.html # Use email.html in current directory
+    markdownfile: $YAMLPATH/email.md # Use email.md in current directory
 
   alert-images:
     to: admin@example.org
@@ -66,8 +66,8 @@ alert:
     subject: Email with attachments
     html: This email contains attachments.
     attachments:
-        - $YAMLPATH/doc1.docx
-        - https://example.org/sample.pptx
+      - $YAMLPATH/doc1.docx
+      - https://example.org/sample.pptx
 
   alert-notify:
     to: user@example.org
@@ -98,17 +98,16 @@ alert:
   alert-capture:
     to: admin@example.org
     subject: Dashboard attachment
-    html:
-      <h1>Sample dashboard</p>
+    html: <h1>Sample dashboard</p>
       <p><img src="cid:img"></p>
     images:
       # TODO: avoid hard-coding the port
-      img: 'http://localhost:9900/?url=http://localhost:9988/&ext=png'
+      img: "http://localhost:9900/?url=http://localhost:9988/&ext=png"
     attachments:
-      - 'http://localhost:9900/?url=http://localhost:9988/&ext=pdf'
+      - "http://localhost:9900/?url=http://localhost:9988/&ext=pdf"
     user:
-      id: 'sample@example.org'
-      role: 'custom-role'
+      id: "sample@example.org"
+      role: "custom-role"
 
 encrypt:
   public_key: $HOME/.ssh/id_rsa.pub

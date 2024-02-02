@@ -17,13 +17,13 @@ Rate limit now supports multiple configuration values.
 - 100 requests / day globally
 
 ```yaml
-      ratelimit:
-        - pool: daily-user-pool
-          keys: [daily, user]
-          limit: 30
-        - pool: daily-pool
-          keys: [daily]
-          limit: 100
+ratelimit:
+  - pool: daily-user-pool
+    keys: [daily, user]
+    limit: 30
+  - pool: daily-pool
+    keys: [daily]
+    limit: 100
 ```
 
 You can now use [`handler.get_ratelimit()`](../../ratelimit/#access-rate-limits) to access the rate limit for the current request.

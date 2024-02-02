@@ -20,17 +20,17 @@ Here is a sample configuration:
 
 ```yaml
 schedule:
-    run-on-startup:
-        function: logging.info(msg="Scheduled msg (on startup)")
-        startup: true
-    run-every-hour:
-        function: schedule_utils.log_time() # Log the current time
-        minutes: 0            # when the minute strikes zero
-        hours: '*'            # every hour
-        utc: true             # in the UTC (not local) time zone
-    run-at-specific-interval:
-        function: schedule_utils.log_time() # Log the current time
-        every: 4h 10m 30s     # Every 4 hours, 10 min, 30 seconds
+  run-on-startup:
+    function: logging.info(msg="Scheduled msg (on startup)")
+    startup: true
+  run-every-hour:
+    function: schedule_utils.log_time() # Log the current time
+    minutes: 0 # when the minute strikes zero
+    hours: "*" # every hour
+    utc: true # in the UTC (not local) time zone
+  run-at-specific-interval:
+    function: schedule_utils.log_time() # Log the current time
+    every: 4h 10m 30s # Every 4 hours, 10 min, 30 seconds
 ```
 
 Each named schedule section may the following keys:
@@ -42,7 +42,6 @@ Each named schedule section may the following keys:
   - `False` to only run on schedule (Default: `False`).
 - `thread`: `True` to run in a separate thread, without blocking Gramex (Default: `False`)
 - In addition, you can use the [Schedule timing](#schedule-timing) keys to schedule the run.
-
 
 ## Schedule timing
 
@@ -153,7 +152,6 @@ def check_email_alerts():
 You can run schedules manually using the
 [Admin Schedule](../admin/#admin-schedule) component at
 [/admin/schedule](../admin/admin/schedule).
-
 
 ## Scheduler API
 

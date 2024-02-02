@@ -3,7 +3,6 @@ title: Building Machine Learning Apps Rapidly
 prefix: workshop
 ...
 
-
 - Guide link: [https://bit.ly/mlappworkshop](https://bit.ly/mlappworkshop)
 - Opening survey link: [https://bit.ly/mlappsurvey](https://bit.ly/mlappsurvey)
 - Project template: [https://github.com/gramener/building-ml-apps-rapidly](https://github.com/gramener/building-ml-apps-rapidly)
@@ -23,7 +22,6 @@ prefix: workshop
 
 Before we start, could you please fill in this 15-second survey? [https://bit.ly/mlappsurvey](https://bit.ly/mlappsurvey)
 
-
 ## Objective
 
 This workshop aims to teach you how:
@@ -41,7 +39,6 @@ In this workshop, we’ll predict whether or not a student will get admitted int
 - [Build an app that predicts admission](#build-an-app-that-predicts-admission)
 - [Publish your project on GitHub](#publish-your-project-on-github)
 - [Summarize Learnings](#summarize-learnings)
-
 
 ## Explore the data
 
@@ -113,19 +110,19 @@ Choose "DecisionTreeClassifier" as the final model and click on "Train".
 NOTE: You can do the same steps via configuration. Open the "Editor", edit `gramex.yaml` and add this configuration:
 
 ```yaml
-  building-ml-apps-predict:
-    pattern: /$YAMLURL/predict
-    handler: MLHandler
-    kwargs:
-      data:
-        url: $YAMLPATH/admission.csv
-      config_dir: $YAMLPATH
-      model:
-        class: LogisticRegression
-        target_col: Admitted
-        exclude: [Name]
-        cats: [Research]
-        nums: [GREScore, TOEFLScore, UniversityRating, SOP, LOR, CGPA]
+building-ml-apps-predict:
+  pattern: /$YAMLURL/predict
+  handler: MLHandler
+  kwargs:
+    data:
+      url: $YAMLPATH/admission.csv
+    config_dir: $YAMLPATH
+    model:
+      class: LogisticRegression
+      target_col: Admitted
+      exclude: [Name]
+      cats: [Research]
+      nums: [GREScore, TOEFLScore, UniversityRating, SOP, LOR, CGPA]
 ```
 
 Let’s predict the admissions of a few people. Add these query parameters to your URL and see if the "Admitted" field is correct.
@@ -158,84 +155,132 @@ Let’s now build a web app that uses this data like an API.
 ```html
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>admission</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="ui/theme/default.scss">
-  <style>
-    #result { font-weight: normal; }
-  </style>
-</head>
-<body>
-  <div class="container py-4">
-    <div class="row">
-      <div class="col-sm-6">
-        <form class="admission">
-          <div class="form-group row">
-            <label for="GREScore" class="col-md-4">GRE Score</label>
-            <input type="number" class="form-control col-md-8" name="GREScore" min="280" max="340">
-          </div>
-          <div class="form-group row">
-            <label for="TOEFLScore" class="col-md-4">TOEFL Score</label>
-            <input type="number" class="form-control col-md-8" name="TOEFLScore" min="90" max="120">
-          </div>
-          <div class="form-group row">
-            <label for="UniversityRating" class="col-md-4">University Rating</label>
-            <input type="number" class="form-control col-md-8" name="UniversityRating" min="1" max="5">
-          </div>
-          <div class="form-group row">
-            <label for="SOP" class="col-md-4">SOP</label>
-            <input type="number" class="form-control col-md-8" name="SOP" step="0.5" min="1" max="5">
-          </div>
-          <div class="form-group row">
-            <label for="LOR" class="col-md-4">LOR</label>
-            <input type="number" class="form-control col-md-8" name="LOR" step="0.5" min="1" max="5">
-          </div>
-          <div class="form-group row">
-            <label for="CGPA" class="col-md-4">CGPA</label>
-            <input type="number" class="form-control col-md-8" name="CGPA" step="0.01" min="6" max="10">
-          </div>
-          <div class="form-group row">
-            <label for="Research" class="col-md-4">Research</label>
-            <select class="form-control col-md-8" name="Research">
-              <option value="0">0: No</option>
-              <option value="1">1: Yes</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
-      <div class="col-sm-6 text-center text-middle">
-        <h1 id="result"></h1>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>admission</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="ui/theme/default.scss" />
+    <style>
+      #result {
+        font-weight: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-sm-6">
+          <form class="admission">
+            <div class="form-group row">
+              <label for="GREScore" class="col-md-4">GRE Score</label>
+              <input
+                type="number"
+                class="form-control col-md-8"
+                name="GREScore"
+                min="280"
+                max="340"
+              />
+            </div>
+            <div class="form-group row">
+              <label for="TOEFLScore" class="col-md-4">TOEFL Score</label>
+              <input
+                type="number"
+                class="form-control col-md-8"
+                name="TOEFLScore"
+                min="90"
+                max="120"
+              />
+            </div>
+            <div class="form-group row">
+              <label for="UniversityRating" class="col-md-4"
+                >University Rating</label
+              >
+              <input
+                type="number"
+                class="form-control col-md-8"
+                name="UniversityRating"
+                min="1"
+                max="5"
+              />
+            </div>
+            <div class="form-group row">
+              <label for="SOP" class="col-md-4">SOP</label>
+              <input
+                type="number"
+                class="form-control col-md-8"
+                name="SOP"
+                step="0.5"
+                min="1"
+                max="5"
+              />
+            </div>
+            <div class="form-group row">
+              <label for="LOR" class="col-md-4">LOR</label>
+              <input
+                type="number"
+                class="form-control col-md-8"
+                name="LOR"
+                step="0.5"
+                min="1"
+                max="5"
+              />
+            </div>
+            <div class="form-group row">
+              <label for="CGPA" class="col-md-4">CGPA</label>
+              <input
+                type="number"
+                class="form-control col-md-8"
+                name="CGPA"
+                step="0.01"
+                min="6"
+                max="10"
+              />
+            </div>
+            <div class="form-group row">
+              <label for="Research" class="col-md-4">Research</label>
+              <select class="form-control col-md-8" name="Research">
+                <option value="0">0: No</option>
+                <option value="1">1: Yes</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <div class="col-sm-6 text-center text-middle">
+          <h1 id="result"></h1>
+        </div>
       </div>
     </div>
-  </div><!-- .container-fluid -->
-  <script src="ui/jquery/dist/jquery.min.js"></script>
-  <script src="ui/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="ui/lodash/lodash.min.js"></script>
-  <script src="ui/g1/dist/g1.min.js"></script>
-  <script>
-    $('.admission').on('submit', function (e) {
-      e.preventDefault()
-      $.getJSON('predict?' + $(this).serialize())
-        .then(function (results) {
-          console.log('Results', results)
-          $('#result').html(
-            results[0].Admitted ? 'You will <strong class="text-success">be admitted</strong>' : 'You will <strong class="text-danger">not be admitted</strong>'
-          )
-        })
-        .fail(function (xhr) {
-          console.error(xhr)
-          $('#result').html('<strong class="text-danger">Error</strong>. Please enter values correctly')
-        })
-    })
-    $('.admission :input').on('change', function () {
-      $('#result').html('')
-    })
-  </script>
-</body>
+    <!-- .container-fluid -->
+    <script src="ui/jquery/dist/jquery.min.js"></script>
+    <script src="ui/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="ui/lodash/lodash.min.js"></script>
+    <script src="ui/g1/dist/g1.min.js"></script>
+    <script>
+      $(".admission").on("submit", function (e) {
+        e.preventDefault();
+        $.getJSON("predict?" + $(this).serialize())
+          .then(function (results) {
+            console.log("Results", results);
+            $("#result").html(
+              results[0].Admitted
+                ? 'You will <strong class="text-success">be admitted</strong>'
+                : 'You will <strong class="text-danger">not be admitted</strong>',
+            );
+          })
+          .fail(function (xhr) {
+            console.error(xhr);
+            $("#result").html(
+              '<strong class="text-danger">Error</strong>. Please enter values correctly',
+            );
+          });
+      });
+      $(".admission :input").on("change", function () {
+        $("#result").html("");
+      });
+    </script>
+  </body>
 </html>
 ```
 
@@ -296,7 +341,6 @@ Now, this project is is available on your Github repository. To clone it, anyone
 
 ## Summarize Learnings
 
-
 - Low-code platforms make it easy to create applications quickly
 - They can be extended in any way using custom code
 - This makes them a powerful combination of speed and flexibility
@@ -313,7 +357,6 @@ Now, this project is is available on your Github repository. To clone it, anyone
 ### What if you need help?
 
 First, let’s set up your StackOverflow accounts.
-
 
 - If you don’t have a StackOverflow account, sign up: <https://stackoverflow.com/users/signup>
 - If you have a StackOverflow account, log in: <https://stackoverflow.com/users/login>

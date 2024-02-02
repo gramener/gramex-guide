@@ -7,4 +7,4 @@ url:
       source: $YAMLPATH/template.pptx
       rules:
         - Text format:
-            text: shape.text    # Take the text from the template's shape text itself :-)
+            text: shape.text # Take the text from the template's shape text itself :-)

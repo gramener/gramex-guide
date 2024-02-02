@@ -7,8 +7,8 @@ Store data in data files, not Python files.
 
 This lets other people (analysts, client IT teams, administrators) edit the data - especially if they cannot program.
 
-You're a good programmer when you stop thinking *How to write code* and begin
-thinking *How will people use my code*.
+You're a good programmer when you stop thinking _How to write code_ and begin
+thinking _How will people use my code_.
 
 ## Data in JSON
 
@@ -26,9 +26,9 @@ lookup = {
 
 ```json
 {
-    "l1": {"file": "PSU_l1.csv", "row": -1},
-    "l2": {"file": "PSU_l2.csv", "row": -1},
-    "l3": {"file": "PSU_Personnel.csv", "row": 0}
+  "l1": { "file": "PSU_l1.csv", "row": -1 },
+  "l2": { "file": "PSU_l2.csv", "row": -1 },
+  "l3": { "file": "PSU_Personnel.csv", "row": 0 }
 }
 ```
 
@@ -46,14 +46,14 @@ braces to get wrong. It also supports data re-use via [anchors][anchors].
 
 ```yaml
 l1:
-    file: PSU_l1.csv
-    row: -1
+  file: PSU_l1.csv
+  row: -1
 l2:
-    file: PSU_l1.csv
-    row: -1
+  file: PSU_l1.csv
+  row: -1
 l3:
-    file: PSU_Personnel.csv
-    row: 0
+  file: PSU_Personnel.csv
+  row: 0
 ```
 
 You can read these via:

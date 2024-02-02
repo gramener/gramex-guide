@@ -7,21 +7,21 @@ For example:
 
 ```js
 var data = [
-  {"product": "Cider Apple Vinegar"},
-  {"product": "JBL In-Ear Headphones"},
-  {"product": "Vaseline Body Lotion"},
-  {"product": "Redux Men's Watch"},
-  {"product": "Omega3 Fish Oil"},
-]
+  { product: "Cider Apple Vinegar" },
+  { product: "JBL In-Ear Headphones" },
+  { product: "Vaseline Body Lotion" },
+  { product: "Redux Men's Watch" },
+  { product: "Omega3 Fish Oil" },
+];
 
 var search = g1.fuzzysearch(data, {
-  keys: ['product'],      // Search within these keys
-  limit: 2,               //  Return only the top 2 results
-})
+  keys: ["product"], // Search within these keys
+  limit: 2, //  Return only the top 2 results
+});
 
-search('omega')
+search("omega");
 // Returns {product: "Omega3 Fish Oil", ...} since it's the only one
-search('red')
+search("red");
 // Returns {product: "Redux Men's Watch"} and {product: "JBL In-Ear Headphones"}
 // The second matches r (in "Ear"), followed by e then d in "Headphones"
 ```

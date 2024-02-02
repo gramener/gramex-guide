@@ -5,7 +5,7 @@ url:
     kwargs:
       version: 2
       source: $YAMLPATH/template.pptx
-      rules:                      # Take in rect shapes, move them using postion commands
+      rules: # Take in rect shapes, move them using postion commands
         - Spring:
             add-width: f'4.46 cm'
           Referral:

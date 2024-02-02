@@ -30,11 +30,16 @@ Here's a step-by-step guide on how you can create a simple data portrait using a
 4. Copy this code to the HTML pane:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/uifactory@1.22.0/src/uifactory.js" import="@svg-chart"></script>
-<svg-chart src:urltext="https://raw.githubusercontent.com/gramener/gramex-guide/master/workshop/data-portraits/phone.svg"
-     data:js="{phone: 'iPhone', hours: 2.3}"
-     rules:js="{
-     }"></svg-chart>
+<script
+  src="https://cdn.jsdelivr.net/npm/uifactory@1.22.0/src/uifactory.js"
+  import="@svg-chart"
+></script>
+<svg-chart
+  src:urltext="https://raw.githubusercontent.com/gramener/gramex-guide/master/workshop/data-portraits/phone.svg"
+  data:js="{phone: 'iPhone', hours: 2.3}"
+  rules:js="{
+     }"
+></svg-chart>
 ```
 
 Inside `rules:js`, set the phone color based on the phone. (The phone should turn yellow.)
@@ -72,4 +77,4 @@ Inside `data:js`, change the phone from `iPhone` to `Android`, and hours from `2
 - [Service process flow](https://gramener.com/servicerequests/)
 - [Store layout monitoring](https://gramener.com/store/retail_store_layout)
 - [Supply chain flows](https://gramener.com/store/retail_supply_chain)
-{"mode":"full","isActive":false}
+  {"mode":"full","isActive":false}

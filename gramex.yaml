@@ -1,10 +1,10 @@
 variables:
-    GUIDE_ROOT: $YAMLURL                # Used by guide.py to pass to markdown.template
-    # Created by root.node@gmail.com
-    # https://console.developers.google.com/apis/api/customsearch.googleapis.com/overview?project=big-query-1009
-    # This key is also used by https://code.gramener.com/s.anand/exceltranslate
-    # Used by proxyhandler/ and translate/
-    GOOGLE_API_KEY: AIzaSyBsSkZb3hxciFp0ZB3KLqO1-aQW-K-hqSw
+  GUIDE_ROOT: $YAMLURL # Used by guide.py to pass to markdown.template
+  # Created by root.node@gmail.com
+  # https://console.developers.google.com/apis/api/customsearch.googleapis.com/overview?project=big-query-1009
+  # This key is also used by https://code.gramener.com/s.anand/exceltranslate
+  # Used by proxyhandler/ and translate/
+  GOOGLE_API_KEY: AIzaSyBsSkZb3hxciFp0ZB3KLqO1-aQW-K-hqSw
 
 log:
   loggers:
@@ -23,99 +23,99 @@ log:
 
 app:
   settings:
-    login_url: /$YAMLURL/auth/db        # Use DB Auth by default -- it works offline
+    login_url: /$YAMLURL/auth/db # Use DB Auth by default -- it works offline
     autoreload: False
     debug: False
     xsrf_cookie_kwargs:
-        httponly: false                 # Allow JavaScript access to cookies
+      httponly: false # Allow JavaScript access to cookies
 
 import:
   subdirs:
-    path: '*/gramex.yaml'              # Import gramex.yaml from immediate subdirs
+    path: "*/gramex.yaml" # Import gramex.yaml from immediate subdirs
     namespace: [url, schedule, cache, import]
   ui:
-    path: $GRAMEXAPPS/ui/gramex.yaml    # Import UI app
+    path: $GRAMEXAPPS/ui/gramex.yaml # Import UI app
     YAMLURL: $YAMLURL/ui/
 
 handlers:
-    FileHandler:
-        ignore:
-            - ".*"                      # Hide only dotfiles, allow gramex.yaml
+  FileHandler:
+    ignore:
+      - ".*" # Hide only dotfiles, allow gramex.yaml
 
 url:
-    # Default FileHandler. Serve all .md files as Markdown
-    guide-markdown:
-        pattern: /$YAMLURL/(.*)
-        handler: FileHandler
-        priority: -0.5          # Lower than new handlers (0), higher than default (-1)
-        kwargs:
-            path: $YAMLPATH
-            default_filename: README.md
-            index: true
-            transform: &MARKDOWN_TO_HTML
-                "*.md":
-                    function: guide.markdown_template(content, handler)
-                    encoding: utf-8
-                    headers:
-                        Content-Type: text/html
-            headers: &HEADERS
-                Cache-Control: public, max-age=300
-                Access-Control-Allow-Origin: '*'        # Allow CORS from any domain
-    guide-home:
-        pattern: /$YAMLURL/home
-        handler: FileHandler
-        kwargs:
-            path: $YAMLPATH/home.md
-            transform: *MARKDOWN_TO_HTML
-    guide-api:
-        pattern: /$YAMLURL/api/(.*)
-        handler: FileHandler
-        kwargs:
-            path: $YAMLPATH/api/
-            default_filename: index.html
-    guide-markdown-g1:
-        pattern: /$YAMLURL/g1/([a-z0-9]+)
-        handler: FileHandler
-        kwargs:
-            path: $YAMLPATH/g1/*.md
-            transform: *MARKDOWN_TO_HTML
-            headers: *HEADERS
+  # Default FileHandler. Serve all .md files as Markdown
+  guide-markdown:
+    pattern: /$YAMLURL/(.*)
+    handler: FileHandler
+    priority: -0.5 # Lower than new handlers (0), higher than default (-1)
+    kwargs:
+      path: $YAMLPATH
+      default_filename: README.md
+      index: true
+      transform: &MARKDOWN_TO_HTML
+        "*.md":
+          function: guide.markdown_template(content, handler)
+          encoding: utf-8
+          headers:
+            Content-Type: text/html
+      headers: &HEADERS
+        Cache-Control: public, max-age=300
+        Access-Control-Allow-Origin: "*" # Allow CORS from any domain
+  guide-home:
+    pattern: /$YAMLURL/home
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/home.md
+      transform: *MARKDOWN_TO_HTML
+  guide-api:
+    pattern: /$YAMLURL/api/(.*)
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/api/
+      default_filename: index.html
+  guide-markdown-g1:
+    pattern: /$YAMLURL/g1/([a-z0-9]+)
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/g1/*.md
+      transform: *MARKDOWN_TO_HTML
+      headers: *HEADERS
 
-    # The final *computed* gramex.yaml configuration
-    guide-final-config:
-        pattern: /$YAMLURL/final-config
-        handler: FunctionHandler
-        kwargs:
-            function: guide.config
-            headers: *HEADERS
-    # Just serve the root gramex.yaml file
-    guide-root-config:
-        pattern: /$YAMLURL/root.gramex.yaml
-        handler: FileHandler
-        kwargs:
-            path: $GRAMEXPATH/gramex.yaml
-            headers:
-                Content-Type: text/plain
-                <<: *HEADERS
+  # The final *computed* gramex.yaml configuration
+  guide-final-config:
+    pattern: /$YAMLURL/final-config
+    handler: FunctionHandler
+    kwargs:
+      function: guide.config
+      headers: *HEADERS
+  # Just serve the root gramex.yaml file
+  guide-root-config:
+    pattern: /$YAMLURL/root.gramex.yaml
+    handler: FileHandler
+    kwargs:
+      path: $GRAMEXPATH/gramex.yaml
+      headers:
+        Content-Type: text/plain
+        <<: *HEADERS
 
-    # Static files are cached on the browser
-    guide-static:
-        pattern: /$YAMLURL/(.*\.s?css|.*\.js|.*\.vue|.*\.ts)
-        handler: FileHandler
-        kwargs:
-            path: $YAMLPATH/*
-            sass: '*.scss'
-            vue: '*.vue'
-            ts: '*.ts'
-            headers:
-                Cache-Control: public, max-age=300
+  # Static files are cached on the browser
+  guide-static:
+    pattern: /$YAMLURL/(.*\.s?css|.*\.js|.*\.vue|.*\.ts)
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/*
+      sass: "*.scss"
+      vue: "*.vue"
+      ts: "*.ts"
+      headers:
+        Cache-Control: public, max-age=300
 
-    # /path.source shows the raw file as plain text
-    guide-source:
-        pattern: /$YAMLURL/(.*)\.source
-        handler: FileHandler
-        kwargs:
-            path: $YAMLPATH
-            headers:
-                Content-Type: text/plain
-                headers: *HEADERS
+  # /path.source shows the raw file as plain text
+  guide-source:
+    pattern: /$YAMLURL/(.*)\.source
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH
+      headers:
+        Content-Type: text/plain
+        headers: *HEADERS

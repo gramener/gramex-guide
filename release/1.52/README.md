@@ -8,13 +8,12 @@ prefix: 1.52
 ## Auto-complete with snippets on Visual Studio Code
 
 The
-[gramexsnippets]((https://marketplace.visualstudio.com/items?itemName=gramener.gramexsnippets))
+[gramexsnippets](<(https://marketplace.visualstudio.com/items?itemName=gramener.gramexsnippets)>)
 [Visual Studio Code](https://code.visualstudio.com/) extension lets you build
 Gramex applications much faster. Just start typing `grx-` in any `gramex.yaml`
 file to see the handler configurations.
 
 ![Gramex snippets example](../../snippets/gramex-snippets.gif)
-
 
 ## Search-engine friendly file URLs
 
@@ -40,7 +39,6 @@ url:
       auth: true                            # All of these pages have auth
 ```
 
-
 ## Smart alerts send personalized dashboards as attachments
 
 [Smart alerts](../../alert/) sent attachments capturing dashboards as seen by
@@ -61,7 +59,6 @@ alert:
 
 ![Smart alerts to multiple users](smart-alerts.png)
 
-
 ## Test pages created by JavaScript
 
 If we use JavaScript to dynamically load data and create a page, the contents
@@ -73,26 +70,25 @@ Rather than wait for a fixed number of seconds, the
 
 ```yaml
 uitest:
-  - fetch: 'http://example.org/javascript-page'
+  - fetch: "http://example.org/javascript-page"
   - wait:
-      selector: '.chart'  # Wait until chart is created
-      timeout: 20         # ... but not for longer than 20 seconds
+      selector: ".chart" # Wait until chart is created
+      timeout: 20 # ... but not for longer than 20 seconds
 ```
 
 You can also wait for any JavaScript expression. For example:
 
 ```yaml
 uitest:
-  - fetch: 'http://example.org/javascript-page'
+  - fetch: "http://example.org/javascript-page"
   - wait:
-      script: 'window.renderComplete === true'  # Wait for this JS expression
+      script: "window.renderComplete === true" # Wait for this JS expression
 ```
 
 It also now supports:
 
 - `hover:` to simulate hovering on any element
 - `clear:` to clear the value in any input
-
 
 ## Load balancing with authentication across domains
 
@@ -102,13 +98,12 @@ domains:
 ```yaml
 app:
   session:
-    domain: .acme.com     # Note the "." in front of the domain
+    domain: .acme.com # Note the "." in front of the domain
 ```
 
 ... then you can run Gramex on multiple servers within the same domain and share
 cookies. For example, a user who is logged in on `app1.acme.com` is also logged
 in as the same user in `app2.acme.com`.
-
 
 ## Templates refresh immediately when included files are updated
 
@@ -119,7 +114,6 @@ include `{% include template.html %}`, then the output is refreshed if
 (Earlier, there was a bug. The output refreshed if `page.html` is modified, but
 not if `template.html` is modified.)
 
-
 ## Alerts can be synchronized across time-zones
 
 [Schedulers](../../scheduler/) and [alerts](../alert/) support a `utc: true`.
@@ -129,14 +123,13 @@ instead of the local time.
 
 ```yaml
 schedule:
-    hours: 6    # Run daily at 6am
-    utc: true   # GMT (or UTC). Set false for local server time
+  hours: 6 # Run daily at 6am
+  utc: true # GMT (or UTC). Set false for local server time
 ```
 
 This helps when you have servers on multiple domains. For example, if developers
 are in Israel and the server is in Japan, using `utc: true` runs the alerts
 at the same time in both servers. `utc: false` runs them at 6 am local time.
-
 
 ## Browsing files with FormHandler is simpler
 
@@ -169,14 +162,12 @@ FormHandler also reports errors in a more friendly way. Instead of this:
 
 [FormHandler tables](../../g1/docs/formhandler.md) now allow sorting by multiple columns.
 
-
 # New graphics capability with d3 v5
 
 Gramex bundles d3 v5 under [ui/d3v5/](../../ui/d3v5/). This features new charts such as contours and equalEarth projections
 
 ![Contours{@width=600}](https://raw.githubusercontent.com/d3/d3-contour/master/img/volcano.gif)
 ![Equal Earth projection{@width=600}](https://raw.githubusercontent.com/d3/d3-geo/master/img/equalEarth.png)
-
 
 ## Statistics
 

@@ -24,11 +24,11 @@ def total(handler):
 This returns the result:
 
 ```json
-{"error":null,"result":5}
+{ "error": null, "result": 5 }
 ```
 
 ::: example href=total source=https://github.com/gramener/gramex-guide/blob/master/node/nodeapp.py
-    Run the Total example
+Run the Total example
 
 ## JavaScript conversion
 
@@ -44,12 +44,12 @@ Here is how `node.js()` works:
   [asynchronous functions](../functionhandler/#asynchronous-functions).
 - **Returns an object**. The result of `yield node.js()` is an object with 2
   keys:
-    1. `result:` which contains the returned JavaScript value
-    2. `error:` which is null if there is no error, otherwise the error object
-       with 3 keys:
-        1. `name` of the error
-        2. `message` of the error
-        3. `stack` has the full stack trace in JavaScript
+  1. `result:` which contains the returned JavaScript value
+  2. `error:` which is null if there is no error, otherwise the error object
+     with 3 keys:
+     1. `name` of the error
+     2. `message` of the error
+     3. `stack` has the full stack trace in JavaScript
 - **Only JSON**. The input variables AND the output variable are in JSON.
   Anything that cannot be converted to JSON raises an error.
 - **Callback support**. Instead of returning a value, you can call
@@ -87,4 +87,4 @@ This returns
 ```
 
 ::: example href=inline_styles source=https://github.com/gramener/gramex-guide/blob/master/node/nodeapp.py
-    Run inline_styles
+Run inline_styles

@@ -38,7 +38,6 @@ This is used in [FormHandler queries](../../formhandler/#formhandler-query) to
 
 [Reference](../../formhandler/#formahandler-argument-type)
 
-
 ## Distributed user stores
 
 User information (including [attributes](../../auth/#user-attributes)) is stored in a user store that is configured as follows:

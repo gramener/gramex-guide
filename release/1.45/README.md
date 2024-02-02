@@ -27,15 +27,15 @@ You can configure the admin page as follows:
 import:
   admin/admin-kwargs:
     path: $GRAMEXAPPS/admin2/gramex.yaml
-    YAMLURL: /$YAMLURL/admin-kwargs/        # URL to show the admin page at
+    YAMLURL: /$YAMLURL/admin-kwargs/ # URL to show the admin page at
     ADMIN_KWARGS:
-      logo: https://gramener.com/uistatic/gramener.png      # Logo URL
-      title: Admin  Page Options                            # Navbar title
-      components: [info, users, shell]                      # Components to show
-      theme: '?primary=%2320186f&dark=%2320186f&font-family-base=roboto&body-bg=%23f8f8f8'  # Bootstrap theme query
+      logo: https://gramener.com/uistatic/gramener.png # Logo URL
+      title: Admin  Page Options # Navbar title
+      components: [info, users, shell] # Components to show
+      theme: "?primary=%2320186f&dark=%2320186f&font-family-base=roboto&body-bg=%23f8f8f8" # Bootstrap theme query
     ADMIN_AUTH:
       membership:
-        email: [admin1@example.org, admin2@example.org]     # Only allow these users
+        email: [admin1@example.org, admin2@example.org] # Only allow these users
 ```
 
 The `ADMIN_AUTH` section is the same as specifying the `auth:`
@@ -67,17 +67,17 @@ Using [UploadHandler](../../uploadhandler/#ajax-uploads) you can upload files an
 Here is a sample configuration:
 
 ```yaml
- # ... import uicomponents
+# ... import uicomponents
 url:
   uploadhandler:
     pattern: /$YAMLURL/upload
     handler: UploadHandler
     kwargs:
-      path: $GRAMEXDATA/apps/guide/upload/    # ... save files here
+      path: $GRAMEXDATA/apps/guide/upload/ # ... save files here
 ```
 
 ```html
-<link rel="stylesheet" href="ui/dropzone/dist/min/dropzone.min.css">
+<link rel="stylesheet" href="ui/dropzone/dist/min/dropzone.min.css" />
 <form action="upload" class="dropzone"></form>
 <script src="ui/dropzone/dist/min/dropzone.min.js"></script>
 ```

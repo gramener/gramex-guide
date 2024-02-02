@@ -16,18 +16,23 @@ Now `configview/ has a configuration viewer.
 To embed the viewer in a page, include this in your HTML:
 
 ```html
-<link rel="stylesheet" href="configview/node_modules/jsoneditor/dist/jsoneditor.min.css">
+<link
+  rel="stylesheet"
+  href="configview/node_modules/jsoneditor/dist/jsoneditor.min.css"
+/>
 <script src="configview/ui/jquery/dist/jquery.min.js"></script>
 <script src="configview/node_modules/jsoneditor/dist/jsoneditor.min.js"></script>
 
-<script src="configview/app.js"
-    data-id="myeditor"
-    data-url="configview/config/"
-    data-style="height:600px;"></script>
+<script
+  src="configview/app.js"
+  data-id="myeditor"
+  data-url="configview/config/"
+  data-style="height:600px;"
+></script>
 ```
 
 This script adds JSON editor UI from `configview/config/` URL to `<div id="myeditor"></div>`.
- If `data-id` is missing, `editor` ID is created. Use `data-style` to set in-line styles.
+If `data-id` is missing, `editor` ID is created. Use `data-style` to set in-line styles.
 
 <link rel="stylesheet" href="configview/node_modules/jsoneditor/dist/jsoneditor.min.css">
 <script src="configview/ui/jquery/dist/jquery.min.js"></script>
@@ -40,6 +45,6 @@ This script adds JSON editor UI from `configview/config/` URL to `<div id="myedi
 To `get` the modified configuration from UI.
 
 ```javascript
-var editor = document.getElementById('myeditor').editor
-var conf = editor.get()
+var editor = document.getElementById("myeditor").editor;
+var conf = editor.get();
 ```

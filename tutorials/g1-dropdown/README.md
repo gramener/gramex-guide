@@ -103,8 +103,8 @@ see that value in the table - but in this case, it is not possible to see all
 possible subcategories in the preview. In such cases, we might want to add some
 element to the page which allows us to:
 
-* see all unique values within a column as a dropdown
-* search for values within columns
+- see all unique values within a column as a dropdown
+- search for values within columns
 
 In this tutorial we will walk through the search and dropdown functionality
 provided by [g1](https://www.npmjs.com/package/g1), the Gramex interaction
@@ -128,9 +128,9 @@ The dashboard should look like this:
 This tutorial builds upon the previous one. To get started, simply save the
 following files into your project folder:
 
-* [`index.html`](../charts/output/4/index.html.source)
-* [`gramex.yaml`](../../gramex.yaml)
-* [`store-sales.csv`](../store-sales.csv)
+- [`index.html`](../charts/output/4/index.html.source)
+- [`gramex.yaml`](../../gramex.yaml)
+- [`store-sales.csv`](../store-sales.csv)
 
 At this stage, the output should look like this:
 
@@ -196,7 +196,6 @@ At this stage, the output should look like this:
 Notice that we now have a dropdown menu which contains the unique subcategories
 found in the dataset.
 
-
 ## Step 2: Changing the URL on Selection Events
 
 Note that every time we click on something in the dropdown menu, the page
@@ -224,7 +223,6 @@ At this stage, the output should look like this:
 By setting the `"target"` option of the `dropdown` function to `"#"`, we
 are ensuring that the selected option is added to the hash of the URL.
 
-
 ## Step 3: Enabling Search
 
 A dropdown menu has limited utility. If the number of menu items is too large, a
@@ -251,7 +249,6 @@ At this stage, the output should look like this:
 
 Notice that a textbox has appeared at the top of the dropdown menu, allowing
 search-as-you-type.
-
 
 ## Step 4: Redrawing the Chart on URL Changes
 

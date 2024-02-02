@@ -28,7 +28,7 @@ url:
     handler: FileHandler
     kwargs:
       path: ...
-      template: ['report*.html', 'template*.html']
+      template: ["report*.html", "template*.html"]
 ```
 
 ## Donut Charts in PPTXHandler
@@ -36,7 +36,6 @@ url:
 You can update the data for a Donut Chart in [PPTXHandler](../../pptxhandler/#chart), like any chart.
 
 ![Donut chart](donut.png)
-
 
 ## Offline access to Google data
 
@@ -49,11 +48,11 @@ need to request offline access by adding `access_type: offline` under `extra_par
 ```yaml
 url:
   login/google:
-    pattern: /$YAMLURL/google   # Map this URL
-    handler: GoogleAuth         # to the GoogleAuth handler
+    pattern: /$YAMLURL/google # Map this URL
+    handler: GoogleAuth # to the GoogleAuth handler
     kwargs:
-      key: YOURKEY              # Set your app key
-      secret: YOURSECRET        # Set your app secret
+      key: YOURKEY # Set your app key
+      secret: YOURSECRET # Set your app secret
       # Scope list: https://developers.google.com/identity/protocols/googlescopes
       scope:
         - https://www.googleapis.com/auth/contacts.readonly

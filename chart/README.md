@@ -28,7 +28,6 @@ These are supported by a set of base layers:
 - [@gramex/chartbase](https://www.npmjs.com/package/@gramex/chartbase)
 - [@gramex/chartvalidate](https://npmjs.com/package/@gramex/chartvalidate)
 
-
 ## Vega
 
 [Vega](http://vega.github.io/vega/) is a high-level implementation of the grammar

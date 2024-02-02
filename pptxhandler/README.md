@@ -33,11 +33,11 @@ Learn using the [SlideSense/PPTXHandler Tutorial videos](https://www.youtube.com
   <iframe src="https://www.youtube.com/embed/videoseries?list=PLrn2FHBzHtaOoMWOW8biS2gsY0jjnwuRG" allowfullscreen></iframe>
 </div>
 
-------
+---
 
 [TOC]
 
-------
+---
 
 ## Tutorials
 
@@ -81,7 +81,6 @@ Visualize the [Bestselling Pharmaceutical Drugs of 2017-18][pharma-drugs] data i
 
 [pharma-drugs]: https://en.wikipedia.org/wiki/List_of_largest_selling_pharmaceutical_products#Best_selling_pharmaceuticals_of_2017/18
 
-
 ## About
 
 [Video](https://youtu.be/c230GZeh9Sc){.youtube}
@@ -99,17 +98,17 @@ url:
     pattern: /$YAMLURL/output.pptx
     handler: PPTXHandler
     kwargs:
-      version: 2                                  # Use PPTXHandler v2 instead of v1
-      source: $YAMLPATH/template.pptx             # Template to use
+      version: 2 # Use PPTXHandler v2 instead of v1
+      source: $YAMLPATH/template.pptx # Template to use
       data:
-        products: {url: $YAMLPATH/products.yaml}  # Load products data from products.yaml
+        products: { url: $YAMLPATH/products.yaml } # Load products data from products.yaml
       rules:
-        - Visitors:                               # Find all shapes named 'Visitors'
-            text: products['visitors']            # Replace text with value from data
+        - Visitors: # Find all shapes named 'Visitors'
+            text: products['visitors'] # Replace text with value from data
           Leads:
-            text: products['leads']               # Same for leads
+            text: products['leads'] # Same for leads
           Cart:
-            text: products['cart']                # ... and cart
+            text: products['cart'] # ... and cart
       headers:
         Content-Disposition: attachment; filename=output.pptx
 ```
@@ -131,8 +130,7 @@ cart: 142
 [![Output PPTX](sales-funnel/output.png)](sales-funnel/output.pptx)
 
 ::: example href=sales-funnel/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/sales-funnel/
-    Run the Sales Funnel example
-
+Run the Sales Funnel example
 
 ## Usage
 
@@ -176,8 +174,7 @@ The second command above will render the 2nd PPTXHandler in this configuration:
 
 ```yaml
 url:
-  first-pattern:
-    ...
+  first-pattern: ...
   my-url-pattern:
     pattern: ...
     handler: PPTXHandler
@@ -192,7 +189,7 @@ contains the `kwargs` of a PPTXHandler. Here is a sample `config.yaml`:
 ```yaml
 source: $YAMLPATH/template.pptx
 rules:
-  - Title 1: {text: New title}
+  - Title 1: { text: New title }
 ```
 
 You can override configurations by adding these options at the end:
@@ -219,12 +216,12 @@ slidesense gramex.yaml my-url --data=my-data.xlsx
 A rule defines how to modify the source presentation. For example:
 
 ```yaml
-rules:                              # Apply these rules
-  - Title 1:                        # Take the shape named "Title 1"
-      text: f'Total sales is {sales["sales"].sum()}'  # Replace text with data template
-      fill-opacity: 0.5             # Make shape 50% transparent
-  - Rectangle 1:                    # Take the shape named "Rectangle 1"
-      fill: f'#ffff00'              # Make its background yellow
+rules: # Apply these rules
+  - Title 1: # Take the shape named "Title 1"
+      text: f'Total sales is {sales["sales"].sum()}' # Replace text with data template
+      fill-opacity: 0.5 # Make shape 50% transparent
+  - Rectangle 1: # Take the shape named "Rectangle 1"
+      fill: f'#ffff00' # Make its background yellow
 ```
 
 A rule can pick one or more shape names, and apply one or more [commands](#commands) to each shape.
@@ -250,11 +247,11 @@ anything. For example:
 
 ```yaml
 rules:
-  - 'TextBox ?':      # Select TextBox 1, TextBox 2, ... but not TextBox 10, ...
-      color: f'red'  #     ... and set font color to red
-  - 'Text *':         # Select ALL shapes starting with Text (case-sensitive)
+  - "TextBox ?": # Select TextBox 1, TextBox 2, ... but not TextBox 10, ...
+      color: f'red' #     ... and set font color to red
+  - "Text *": # Select ALL shapes starting with Text (case-sensitive)
       color: f'red'
-  - '*box*':          # Select ALL shapes with "box" anywhere in the text (case-sensitive)
+  - "*box*": # Select ALL shapes with "box" anywhere in the text (case-sensitive)
       color: f'red'
 ```
 
@@ -265,13 +262,12 @@ beginning with `!!`. For example:
 ```yaml
 rules:
   - Bar:
-      name: f'!!Bar'    # Renames the shape "Bar" to "!!Bar"
+      name: f'!!Bar' # Renames the shape "Bar" to "!!Bar"
       text: f'New text'
 ```
 
 This ensures that the morph will match the shape even if it's text changes.
 [Source](https://support.microsoft.com/en-us/office/morph-transition-tips-and-tricks-bc7f48ff-f152-4ee8-9081-d3121788024f)
-
 
 ## Groups
 
@@ -281,16 +277,16 @@ Groups are shapes that contain other shapes. You can apply commands to the group
 
 ```yaml
 rules:
-  - Group 1:                            # Take the shape named "Group 1"
-      left: 5                           # Set the group's left position to 5 (inches)
-      Caption:                          # Find the shape named "Caption" inside it
-        text: f'New caption'            #   Change its text to "New caption"
-      Picture:                          # Find the shape named "Picture" inside it
-        image: f'$YAMLPATH/sample.png'  #   Replace the image with sample.png
+  - Group 1: # Take the shape named "Group 1"
+      left: 5 # Set the group's left position to 5 (inches)
+      Caption: # Find the shape named "Caption" inside it
+        text: f'New caption' #   Change its text to "New caption"
+      Picture: # Find the shape named "Picture" inside it
+        image: f'$YAMLPATH/sample.png' #   Replace the image with sample.png
 ```
 
 ::: example href=groups/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/groups/
-    Run the Groups example
+Run the Groups example
 
 ## Slide filters
 
@@ -302,7 +298,7 @@ By default, rules are applied to all slides. You can restrict changes to specifi
   - e.g. `slide-number: 1` picks only the 1st slide
   - e.g. `slide-number: [2, 4]` picks the 2nd and 4th slide (not the 3rd)
 - `slide-title`: apply rule to specific slide titles
-  - e.g. `slide-title: f'Business Update'` picks all slides with the *exact* title "Business Update" (case-insensitive)
+  - e.g. `slide-title: f'Business Update'` picks all slides with the _exact_ title "Business Update" (case-insensitive)
   - e.g. `slide-title: f'*Update*'` picks all slides with "Update" anywhere in the title (case-insensitive)
   - e.g. `slide-title: f'Day ?'` picks Day 1, Day 2, ... but not Day 10, ...
   - Use `?` to match a single char, and `*` to match anything
@@ -310,15 +306,15 @@ By default, rules are applied to all slides. You can restrict changes to specifi
 For example:
 
 ```yaml
-source: input.pptx        # optional path to source. Default to blank PPT with 1 slide
-target: output.pptx       # required path to save output as
+source: input.pptx # optional path to source. Default to blank PPT with 1 slide
+target: output.pptx # required path to save output as
 rules:
-  - slide-number: [2, 4]            # Pick the 2nd and 4th slide (not the 3rd)
-    Title: {text: f'X'}
+  - slide-number: [2, 4] # Pick the 2nd and 4th slide (not the 3rd)
+    Title: { text: f'X' }
   - slide-title: f'Business Update' # Pick the slide titled "Business Update" (case-insensitive)
-    Title: {text: f'X'}
-  - slide-title: f'Day ?'           # Picks the slide titled "Day 1" or "Day 2", etc, not "Day 10"
-    Title: {text: f'X'}
+    Title: { text: f'X' }
+  - slide-title: f'Day ?' # Picks the slide titled "Day 1" or "Day 2", etc, not "Day 10"
+    Title: { text: f'X' }
 ```
 
 ## Transition
@@ -331,16 +327,16 @@ For example:
 
 ```yaml
 rules:
-  - transition: f'fade'   # All slides have fade transition (0.3 seconds duration)
-  - slide-number: 1       # Slide 1: Morph transition for 1.5s
+  - transition: f'fade' # All slides have fade transition (0.3 seconds duration)
+  - slide-number: 1 # Slide 1: Morph transition for 1.5s
     transition:
       type: f'morph'
       duration: 1.5
-  - slide-number: 3       # Slide 3: Glitter - Diamonds from Left transition for 3s
+  - slide-number: 3 # Slide 3: Glitter - Diamonds from Left transition for 3s
     transition:
       type: f'glitter diamond left'
       duration: 3
-  - slide-number: 4       # Remove all transitions from slide 4. Auto-advance in 2s
+  - slide-number: 4 # Remove all transitions from slide 4. Auto-advance in 2s
     transition:
       type: f'none'
       advance: 2
@@ -427,10 +423,10 @@ You can also specify transitions as a dict with 3 keys:
 
 - `type`: transition name, followed by options, e.g. `type: f'morph'`
 - `duration`: length of the transition in seconds (default: `0.3` seconds), e.g. `duration: 3`
-- `advance`: auto-advance timeto the next slide, in seconds  (default: `f'none'`), e.g. `advance: 3`
+- `advance`: auto-advance timeto the next slide, in seconds (default: `f'none'`), e.g. `advance: 3`
 
 ::: example href=transition/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/transition/
-    Run the Transition example
+Run the Transition example
 
 ## Copy slides
 
@@ -474,7 +470,7 @@ For each copied slide, the [data variable `copy`](#data) is set. It has these at
 - `copy.slides`: Currently copied [PPTX slides list](https://python-pptx.readthedocs.io/en/latest/api/slides.html#slides-objects), e.g. `copy.slides[0].shapes`
 
 ::: example href=bar-chart-race/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/bar-chart-race/
-    Run the Bar Chart Race (copy-slide) example
+Run the Bar Chart Race (copy-slide) example
 
 # Commands
 
@@ -491,7 +487,7 @@ content, or add new content (like charts). Here are some common commands:
 - `height`: sets height in [length units](#length-units), e.g. `height: f'3 inches'`
 
 ::: example href=position/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/position/
-    Run the Position example
+Run the Position example
 
 - `add-top`: moves top (Y) position +/- in `[length units](#length-units)`, e.g. `add-top: f'-3 inches'`
 - `add-left`: moves left (X) position +/- in `[length units](#length-units)`, e.g. `add-left: f'+3 inches'`
@@ -499,7 +495,7 @@ content, or add new content (like charts). Here are some common commands:
 - `add-height`: adds width +/- in `[length units](#length-units)`, e.g. `f'add-height: +3 inches'`
 
 ::: example href=add-position/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/add-position/
-    Run the Add Position example
+Run the Add Position example
 
 - `rotation`: sets the rotation in angles, e.g. `rotation: 30`
 - `add-rotation`: adds the rotation in angles, e.g. `rotation: -30`
@@ -517,11 +513,11 @@ content, or add new content (like charts). Here are some common commands:
 - `fill`: sets fill (background) [color](#color-units), e.g. `fill: f'red'`
 - `stroke`: sets line [color](#color-units), e.g. `stroke: f'red'`
 - `fill-opacity`: sets fill transparency on solid color fills. 0 is transparent, 1 is opaque, e.g. `fill-opacity: 0.5` is half transparent
-- `stroke-opacity`: sets line transparency on solid color strokes.  0 is transparent, 1 is opaque, e.g. `stroke-opacity: 0.5` is half transparent
+- `stroke-opacity`: sets line transparency on solid color strokes. 0 is transparent, 1 is opaque, e.g. `stroke-opacity: 0.5` is half transparent
 - `stroke-width`: sets width of the line in [length units](#length-units), e.g. `stroke-width: f'0.5 pt'`
 
 ::: example href=groups/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/groups/
-    Run the Groups example to understand styles
+Run the Groups example to understand styles
 
 ## Image
 
@@ -532,7 +528,7 @@ content, or add new content (like charts). Here are some common commands:
 - `image-height`: sets height in [length units](#length-units), e.g. `image-height: 3 inches`. Retains aspect ratio and position (top and left). May change the width
 
 ::: example href=clone-shape/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/clone-shape/
-    Run the Clone Shape example to understand images
+Run the Clone Shape example to understand images
 
 ## Link
 
@@ -552,7 +548,7 @@ content, or add new content (like charts). Here are some common commands:
 - `noaction`. This removes any prior link or hover on the shape
 
 ::: example href=link/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/link/
-    Run the Link example
+Run the Link example
 
 ## Text
 
@@ -571,10 +567,9 @@ content, or add new content (like charts). Here are some common commands:
 - `underline`: underlines the text or makes it normal. It can be true/yes/y/1 or false/no/n/0/"", e.g. `underline: true`
 
 ::: example href=text/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/text/
-    Run the Text example
+Run the Text example
 ::: example href=certificate/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/certificate/
-    Run the Certificate example
-
+Run the Certificate example
 
 ## Text format
 
@@ -612,7 +607,7 @@ are over-ridden by run attributes. E.g. If your source PPTX had a bold run, sett
 the para has no visible effect, since the bold run overrides it.
 
 ::: example href=text-format/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/text-format/
-    Run the Text Format example
+Run the Text Format example
 
 ## Table
 
@@ -687,8 +682,7 @@ For each cell, the [data variable `cell`](#data) is set. It has these attributes
 - `cell.cell`: currently rendered [PPTX cell object](https://python-pptx.readthedocs.io/en/latest/api/table.html#cell-objects), e.g. `cell.cell.text`
 
 ::: example href=table/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/table/
-    Run the Table example
-
+Run the Table example
 
 ## Chart
 
@@ -696,7 +690,7 @@ To update a chart's data, use the `chart-data:` command. Example:
 
 ```yaml
 data:
-  products: {url: $YAMLPATH/products.csv}
+  products: { url: $YAMLPATH/products.csv }
 rules:
   - Chart 1:
       chart:
@@ -734,9 +728,7 @@ data = pd.DataFrame({
 Note: The first column name "Categories" is not used. It's just a placeholder for the index name.
 
 ::: example href=chart/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/chart/
-    Run the Chart example
-
-
+Run the Chart example
 
 ## Clone shapes
 
@@ -771,7 +763,7 @@ For each cloned shape, the [data variable `clone`](#data) is set. It has these a
 - `clone.shape`: Currently cloned [PPTX shape](https://python-pptx.readthedocs.io/en/latest/api/shapes.html#shape-objects-autoshapes), e.g. `clone.shape.width`
 
 ::: example href=clone-shape/ source=https://github.com/gramener/gramex-guide/tree/master/pptxhandler/clone-shape/
-    Run the Clone Shape example
+Run the Clone Shape example
 
 ## Debug
 
@@ -781,7 +773,6 @@ If PPTXHandler fails, a good way to debug is to
 
 - `print:` prints the result of an expression using [data](#data), e.g. `print: shape.name` prints
   the current shape name. Print multiple values as a list, e.g. `print: [shape.name, clone.key]`
-
 
 ## Register
 
@@ -795,16 +786,15 @@ For example, here are some custom commands:
 
 ```yaml
 register:
-  rename: setattr(shape, "name", spec)      # Add a "rename" command that changes the shape's name
-  turn: setattr(shape, "rotation", spec)    # Add a "turn:" command that changes the shape's angle
-  custom: my_method(shape, spec, data)      # my_method can do anything with the shape and val
+  rename: setattr(shape, "name", spec) # Add a "rename" command that changes the shape's name
+  turn: setattr(shape, "rotation", spec) # Add a "turn:" command that changes the shape's angle
+  custom: my_method(shape, spec, data) # my_method can do anything with the shape and val
 rules:
-  - Shape 1:                                # Take the shape named Shape 1
-      rotate: 45                            # Rotate clockwise 45
-      rename: New Shape 1                   # Change the shape name to New Shape 1
-      my_method: ...                        # Any object can be passed to my_method
+  - Shape 1: # Take the shape named Shape 1
+      rotate: 45 # Rotate clockwise 45
+      rename: New Shape 1 # Change the shape name to New Shape 1
+      my_method: ... # Any object can be passed to my_method
 ```
-
 
 # Reference
 
@@ -822,10 +812,10 @@ data:
 rules:
   - Rectangle 1:
       # Type in YAML strings almost like you would type it in Python
-      width: sum(widths)      # Python expression using "widths" as a variable. Returns 1+2+3=6
-      fill: colors[0]         # Python expression using "colors" as a variable. Returns "red"
-      left: 10                # Numbers in YAML are numbers in Python too. This sets left: 10 inches
-      stroke: [255, 0, 0]     # Lists in YAML are lists in Python too. This sets the stroke to red
+      width: sum(widths) # Python expression using "widths" as a variable. Returns 1+2+3=6
+      fill: colors[0] # Python expression using "colors" as a variable. Returns "red"
+      left: 10 # Numbers in YAML are numbers in Python too. This sets left: 10 inches
+      stroke: [255, 0, 0] # Lists in YAML are lists in Python too. This sets the stroke to red
 ```
 
 What won't work are literal strings. Instead, use `f'...'` -- a Python format-string. For example:
@@ -854,9 +844,8 @@ To fully switch to [literal values](#literals) instead of expressions, use `mode
 ```yaml
 mode: literal
 rules:
-  - color: red              # This sets the color to the string "red"
+  - color: red # This sets the color to the string "red"
 ```
-
 
 ## Literals
 
@@ -919,21 +908,21 @@ Example:
 
 ```yaml
 data:
-  cities: {url: cities.csv}                         # Load cities.csv into "cities" key
-  sales: {url: sales.xlsx, sheet: Sheet1}           # Load Sheet1 from sales.xlsx into "sales" key
-  tweets: {url: tweets.json}                        # Load JSON data into "tweets" key
-  sample: {url: mysql://server/db, table: sample}   # Load sample data from MySQL
+  cities: { url: cities.csv } # Load cities.csv into "cities" key
+  sales: { url: sales.xlsx, sheet: Sheet1 } # Load Sheet1 from sales.xlsx into "sales" key
+  tweets: { url: tweets.json } # Load JSON data into "tweets" key
+  sample: { url: mysql://server/db, table: sample } # Load sample data from MySQL
   filter:
-    url: cities.csv                                 # Load cities.csv
-    args:                                           # Filter results
-      city: [Oslo, Kiev]                            # WHERE column "city" is Oslo or Kiev
-      population>~: 100000                          # AND column population is 100,000+
+    url: cities.csv # Load cities.csv
+    args: # Filter results
+      city: [Oslo, Kiev] # WHERE column "city" is Oslo or Kiev
+      population>~: 100000 # AND column population is 100,000+
   custom1:
-    function: gramex.cache.open('data.xlsx')        # Run a custom function
+    function: gramex.cache.open('data.xlsx') # Run a custom function
   custom2:
-    function: gramex.cache.open(handler.get_arg('file'))  # Functions can accept handler as argument
+    function: gramex.cache.open(handler.get_arg('file')) # Functions can accept handler as argument
   big_cities:
-    function: cities[cities.population > 100000]    # You can also access loaded datasets
+    function: cities[cities.population > 100000] # You can also access loaded datasets
 ```
 
 These datasets are available in [expressions](#expressions) as variables. For example, you can use:
@@ -1019,7 +1008,6 @@ target = pptgen(
 )
 target.save('slide1.pptx')  # Save the target
 ```
-
 
 The Python library does not treat strings as [expressions](#expressions). So `'red'` means the
 string "red", not the variable `red`. You can specify string values as-is. (If you want to use the

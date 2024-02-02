@@ -35,7 +35,6 @@ This feature in [CaptureHandler](../../capturehandler/) lets you:
 - Use a flexible layout with content in the left, middle, or right.
   You may split this further into any number of sections.
 
-
 ## Enhanced security: Protect against bots
 
 [Gramex auth](../../auth/#recaptcha) prevents againt bot attacks using
@@ -54,7 +53,6 @@ url:
 The CAPTCHA is invisible. Human users do not need to do anything different.
 Bots will not be able to log in.
 
-
 ## Test application on multiple screen resolutions
 
 The [Gramex pytest plugin](../../test/) supports 3 new commands:
@@ -65,7 +63,6 @@ The [Gramex pytest plugin](../../test/) supports 3 new commands:
 - `title: ...` checks whether the page title matches a value
 
 DOC: upgrade g1 from 0.13 to 0.14 [S Anand]
-
 
 ## Documentation is more interactive
 

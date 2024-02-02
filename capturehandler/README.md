@@ -39,29 +39,29 @@ node.js based web application (chromecapture.js) at port 9900.
 To only allow specific domains, e.g. `gramener.com` and `gramener.co`, use:
 
 ```yaml
-    pattern: ^https?://(www\.)?(gramener\.com|gramener\.co)/
+pattern: ^https?://(www\.)?(gramener\.com|gramener\.co)/
 ```
 
 To change the port, use:
 
 ```yaml
-    pattern: /$YAMLURL/capture
-    handler: CaptureHandler
-    kwargs:
-      engine: chrome
-      pattern: ^http
-      port: 9901              # Use a different port
+pattern: /$YAMLURL/capture
+handler: CaptureHandler
+kwargs:
+  engine: chrome
+  pattern: ^http
+  port: 9901 # Use a different port
 ```
 
 To use an existing instance of chromecapture.js running on a different port, use:
 
 ```yaml
-    pattern: /$YAMLURL/capture
-    handler: CaptureHandler
-    kwargs:
-      engine: chrome
-      pattern: ^http
-      url: http://server:port/capture/    # Use chromecapture.js from this URL
+pattern: /$YAMLURL/capture
+handler: CaptureHandler
+kwargs:
+  engine: chrome
+  pattern: ^http
+  url: http://server:port/capture/ # Use chromecapture.js from this URL
 ```
 
 The default viewport size is 1200x768. To set a custom viewport for images or
@@ -71,11 +71,11 @@ changes the viewport to 1920x1080.
 By default, requests timeout within 10 seconds. To change this, use `timeout:`.
 
 ```yaml
-    pattern: /$YAMLURL/capture
-    handler: CaptureHandler
-    kwargs:
-      pattern: ^http
-      timeout: 20     # Wait for max 20 seconds for server to respond
+pattern: /$YAMLURL/capture
+handler: CaptureHandler
+kwargs:
+  pattern: ^http
+  timeout: 20 # Wait for max 20 seconds for server to respond
 ```
 
 The default chromecapture.js is at `$GRAMEXPATH/apps/capture/chromecapture.js`.
@@ -83,12 +83,12 @@ To use your own chromecapture.js, run it using `cmd:` on any port and point
 `url:` to that port:
 
 ```yaml
-    pattern: /$YAMLURL/capture
-    handler: CaptureHandler
-    kwargs:
-      engine: chrome
-      cmd: node /path/to/chromecapture.js --port=9902
-      url: http://localhost:9902/
+pattern: /$YAMLURL/capture
+handler: CaptureHandler
+kwargs:
+  engine: chrome
+  cmd: node /path/to/chromecapture.js --port=9902
+  url: http://localhost:9902/
 ```
 
 To use a HTTP proxy, set the `ALL_PROXY` environment variable. If your proxy IP
@@ -96,7 +96,6 @@ is `10.20.30.40` on port `8000`, then set `ALL_PROXY` to `10.20.30.40:8000`. See
 [how to set environment variables](https://superuser.com/a/284351). (You can
 also use the `HTTPS_PROXY` or `HTTP_PROXY` environment variables. These
 supercede `ALL_PROXY`.)
-
 
 **NOTE**: If you're running CaptureHandler with Chrome on a Docker instance (or any other headless
 Linux), you may get an `error while loading shared libraries`. This is because Chrome needs
@@ -110,7 +109,6 @@ sudo apt-get -y install xvfb libnss3 libatk1.0-0 libatk-bridge2.0-0 libxcomposit
 
 For other systems, check this [issue](https://github.com/puppeteer/puppeteer/issues/3443).
 
-
 ## PhantomJS
 
 [PhantomJS](http://phantomjs.org/) is **deprecated** but is the default for
@@ -120,7 +118,7 @@ it to your PATH. Then add this to `gramex.yaml`:
 ```yaml
 url:
   capture:
-    engine: phantomjs             # Optional.
+    engine: phantomjs # Optional.
     pattern: /$YAMLURL/capture
     handler: CaptureHandler
 ```
@@ -155,7 +153,7 @@ It accepts the following arguments:
 - `?ext=`: format of output. Can be pdf, png, jpg or pptx. Default: `pdf`.
   <br>**Example**: [?ext=png](capture?ext=png&url=.). (`ext=pptx` available only in `engine: chrome` from **v1.23.1**)
 - `?domain=`: set cookies on specified domain. Use this if sending CORS (cross-origin requests) and CaptureHandler must [set cookie domains](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#domaindomain-value).
-  <br>**Example**: [?domain=.example.org](capture?domain=.example.org&url=.) passes cookies to *.example.org, over and above the `url`
+  <br>**Example**: [?domain=.example.org](capture?domain=.example.org&url=.) passes cookies to \*.example.org, over and above the `url`
 - `?delay=`: wait for before taking a screenshot.
   - If this is a number, waits for this many milliseconds.
     <br>**Example**: [?delay=1000](capture?url=timer.html&delay=1000)
@@ -300,7 +298,6 @@ with open('screenshot.png', 'wb') as f:     # Save screenshot as PNG
 The [Capture](capture?url=.) class has convenience methods called `.pdf()`, `.png()`,
 `.jpg()` that accept the same parameters as the [handler](#screenshot-service).
 
-
 ## Client-side capture
 
 CaptureHandler reloads a page to take a screenshot. This can be slow. To avoid this, you can:
@@ -318,19 +315,19 @@ Add the libraries from the [UI component library](../uicomponents/):
 Trigger the download as follows:
 
 ```js
-html2canvas(document.querySelector('.chart'))     // Pick the element to download
-  .then(canvas => {
-    canvas.toBlob(blob => {
-      saveAs(blob, 'chart.png')                   // Pick your filename
-    })
-  })
+html2canvas(document.querySelector(".chart")) // Pick the element to download
+  .then((canvas) => {
+    canvas.toBlob((blob) => {
+      saveAs(blob, "chart.png"); // Pick your filename
+    });
+  });
 ```
 
 **WARNING**: This requires inline styles. Styles from classes (e.g. Bootstrap's `border`) are not
 applied. Add styles inline, via `style="..."`.
 
 ::: example href=html2canvas.html source=https://github.com/gramener/gramex-guide/blob/tree/capturehandler/html2canvas.html
-    Client-side capture example
+Client-side capture example
 
 [capturehandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.CaptureHandler
 [capture]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.Capture

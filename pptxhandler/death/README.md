@@ -54,8 +54,8 @@ url:
 Now, we'll set up a rule that copies the slide for each year.
 
 ```yaml
-      rules:
-        - copy-slide: data.groupby('year')
+rules:
+  - copy-slide: data.groupby('year')
 ```
 
 This copies the slide for each year. The variable `copy.key` holds the year. `copy.val` has the data for the year.
@@ -63,8 +63,8 @@ This copies the slide for each year. The variable `copy.key` holds the year. `co
 Next, let's set the year on each slide:
 
 ```yaml
-          'Year':
-            text: copy.key
+"Year":
+  text: copy.key
 ```
 
 ![Year displayed on slide](year.png){.img-fluid}
@@ -72,10 +72,10 @@ Next, let's set the year on each slide:
 Now, we'll clone the `Rank` shape for each rank from 1 to 10.
 
 ```yaml
-          Rank:
-            clone-shape: '["#1", 2, 3, 4, 5, 6, 7, 8, 9, 10]'
-            add-top: clone.pos * 0.5
-            text: clone.val
+Rank:
+  clone-shape: '["#1", 2, 3, 4, 5, 6, 7, 8, 9, 10]'
+  add-top: clone.pos * 0.5
+  text: clone.val
 ```
 
 We explicitly set the ranks as an array. The first rank is shown as `#1`. The rest are 2, 3, ...
@@ -90,10 +90,10 @@ The text shown is the value in our `clone-shape:` array.
 Now, we'll clone the `Age` shape for each age in the dataset.
 
 ```yaml
-          Age:
-            clone-shape: copy.val.groupby('age', sort=False)
-            add-left: clone.pos * 1
-            text: clone.key if clone.pos else f'Age {clone.key}'
+Age:
+  clone-shape: copy.val.groupby('age', sort=False)
+  add-left: clone.pos * 1
+  text: clone.key if clone.pos else f'Age {clone.key}'
 ```
 
 We clone based on the current slide's value (`copy.val`), grouped by age. This creates one clone
@@ -111,18 +111,18 @@ The `text:` is set up to show `Age 1-4` in the first column, `5-9` on the second
 Now, we'll clone the `Cause` shape for each row in the dataset.
 
 ```yaml
-          Cause:
-            clone-shape: copy.val
-            add-top: clone.pos % 10 * 0.5
-            add-left: clone.pos // 10 * 1
-            text: clone.val.cause
-            fill: >
-              '#f0f0f0' if clone.val.rate < 10 else
-              '#d4d4dd' if clone.val.rate < 50 else
-              '#c6b9c9' if clone.val.rate < 100 else
-              '#ba9cb3' if clone.val.rate < 500 else
-              '#b67b9a' if clone.val.rate < 1000 else
-              '#ca4471'
+Cause:
+  clone-shape: copy.val
+  add-top: clone.pos % 10 * 0.5
+  add-left: clone.pos // 10 * 1
+  text: clone.val.cause
+  fill: >
+    '#f0f0f0' if clone.val.rate < 10 else
+    '#d4d4dd' if clone.val.rate < 50 else
+    '#c6b9c9' if clone.val.rate < 100 else
+    '#ba9cb3' if clone.val.rate < 500 else
+    '#b67b9a' if clone.val.rate < 1000 else
+    '#ca4471'
 ```
 
 `copy.val` has every row of data for the current year. There are 120 entries -- for 12 age groups
@@ -167,15 +167,15 @@ Let's go a step beyond, and add simple automated insights to this. The `rankchan
 First, let's find the row that has the maximum change -- positive or negative -- and store it in a variable `maxrow`.
 
 ```yaml
-          data:
-            maxrow: copy.val.rankchange.abs().idxmax()
+data:
+  maxrow: copy.val.rankchange.abs().idxmax()
 ```
 
 Next, let's change the Subtitle shape.
 
 ```yaml
-          Subtitle:
-            text: f'{copy.val.cause[maxrow]} changed {copy.val.rankchange[maxrow]:+0.0f} ranks for age {copy.val.age[maxrow]}' if maxrow == maxrow else None
+Subtitle:
+  text: f'{copy.val.cause[maxrow]} changed {copy.val.rankchange[maxrow]:+0.0f} ranks for age {copy.val.age[maxrow]}' if maxrow == maxrow else None
 ```
 
 - `copy.val.cause[maxrow]` shows the cause name, e.g. "Metabolic disorders"

@@ -22,9 +22,9 @@ First, set up an [email service](../email/). Here is a sample:
 ```yaml
 email:
   gramex-guide-gmail:
-    type: gmail                     # Type of email used is GMail
-    email: gramex.guide@gmail.com   # Generic email ID used to test e-mails
-    password: tlpmupxnhucitpte      # App-specific password created for Gramex guide
+    type: gmail # Type of email used is GMail
+    email: gramex.guide@gmail.com # Generic email ID used to test e-mails
+    password: tlpmupxnhucitpte # App-specific password created for Gramex guide
 ```
 
 ## Alert examples
@@ -37,10 +37,10 @@ Email scheduling uses the same keys as [scheduler](../scheduler/): `minutes`,
 ```yaml
 alert:
   alert-schedule:
-    days: '*'                     # Send email every day
-    hours: '6, 12'                # at 6am and 12noon
-    minutes: 0                    # at the 0th minute, i.e. 6:00am and 12:00pm
-    utc: true                     # GMT (or UTC). Set false for local server time
+    days: "*" # Send email every day
+    hours: "6, 12" # at 6am and 12noon
+    minutes: 0 # at the 0th minute, i.e. 6:00am and 12:00pm
+    utc: true # GMT (or UTC). Set false for local server time
     to: admin@example.org
     subject: Scheduled alert
     body: This email will be scheduled and sent as long as Gramex is running.
@@ -166,13 +166,12 @@ alert:
   alert-content-file:
     to: admin@example.org
     subject: HTML email from file
-    bodyfile: $YAMLPATH/email.txt       # Use email.txt in current directory
-    htmlfile: $YAMLPATH/email.html      # Use email.html in current directory
-    markdownfile: $YAMLPATH/email.md    # Use email.md in current directory
+    bodyfile: $YAMLPATH/email.txt # Use email.txt in current directory
+    htmlfile: $YAMLPATH/email.html # Use email.html in current directory
+    markdownfile: $YAMLPATH/email.md # Use email.md in current directory
 ```
 
 [Preview `alert-content-file` in Admin > Alerts](../admin/admin/alert)..
-
 
 ### Send inline images
 
@@ -196,7 +195,6 @@ alert:
 
 [Preview `alert-images` in Admin > Alerts](../admin/admin/alert).
 
-
 ### Send attachments
 
 `attachments:` specifies one or more `<key>: <url>` entries. Each entry is added
@@ -209,12 +207,11 @@ alert:
     subject: Email with attachments
     html: This email contains attachments.
     attachments:
-        - $YAMLPATH/doc1.docx
-        - https://example.org/sample.pptx
+      - $YAMLPATH/doc1.docx
+      - https://example.org/sample.pptx
 ```
 
 [Preview `alert-attachments` in Admin > Alerts](../admin/admin/alert).
-
 
 ### Alert templates
 
@@ -264,8 +261,7 @@ alert:
   alert-capture:
     to: admin@example.org
     subject: Dashboard attachment
-    html:
-      <h1>Sample dashboard</p>
+    html: <h1>Sample dashboard</p>
       <p><img src="cid:img"></p>
     images:
       img: http://server/capturehandler/?url=http://server/dashboard&ext=png
@@ -285,7 +281,6 @@ The `user:` section sends an [X-Gramex-User](../auth/#encrypted-user) header to
 take a screenshot of a dashboard as the user would have seen it. Specify the
 entire `user` object here. Values in `user:` can be [templates](#alert-templates).
 
-
 ### Dynamic emails from data
 
 `data:` specifies one or more datasets. You can use these in templates to create
@@ -304,11 +299,11 @@ The data is available to templates in a variable called `data`.
 alert:
   alert-templates:
     data:
-      - {month: Jan, sales: 100}
-      - {month: Feb, sales: 110}
-      - {month: Mar, sales:  90}
+      - { month: Jan, sales: 100 }
+      - { month: Feb, sales: 110 }
+      - { month: Mar, sales: 90 }
     to: admin@example.org
-    subject: 'Email generated from data'
+    subject: "Email generated from data"
     html: 'Total sales was {{ sum(row["sales"] for row in data) }}'
 ```
 
@@ -319,9 +314,9 @@ example that covers all variations:
 alert:
   data:
     plainlist:
-      - {month: Jan, sales: 100}
-      - {month: Feb, sales: 110}
-      - {month: Mar, sales:  90}
+      - { month: Jan, sales: 100 }
+      - { month: Feb, sales: 110 }
+      - { month: Mar, sales: 90 }
     sales: $YAMLPATH/sales.xlsx
     employees:
       url: mysql://root@localhost/hr
@@ -376,8 +371,8 @@ alert:
 
 ### Send notification on alert
 
-To send a notification alert *after* your alert(s) are done, use `notify:`.
-`notify:`  is a list of alerts to trigger after this alert runs.
+To send a notification alert _after_ your alert(s) are done, use `notify:`.
+`notify:` is a list of alerts to trigger after this alert runs.
 
 The notification alerts get an `args` data variable. This holds the history of
 notification successes and failures. For example:
@@ -385,21 +380,21 @@ notification successes and failures. For example:
 ```yaml
 alert:
   alert-mail:
-    to: 'user@example.org'
+    to: "user@example.org"
     data: ...
     each: ...
     subject: ...
     notify: [alert-notify, alert-success, alert-failure]
-  alert-notify:                   # Send notification after alert
-    to: 'admin@example.org'
+  alert-notify: # Send notification after alert
+    to: "admin@example.org"
     subject: 'Sent {{ len(args["done"]) }} alerts, failed {{ len(args["fail"]) }} alerts'
   alert-failure:
-    condition: args["fail"]       # Send notification only if there's a failure
-    to: 'admin@example.org'
+    condition: args["fail"] # Send notification only if there's a failure
+    to: "admin@example.org"
     subject: 'Failed on {{ len(args["fail"]) }} alerts. Sent {{ len(args["done"]) }}'
   alert-success:
-    condition: not args["fail"]   # Send notification only if all alerts were successful
-    to: 'admin@example.org'
+    condition: not args["fail"] # Send notification only if all alerts were successful
+    to: "admin@example.org"
     subject: 'Sent all {{ len(args["done"]) }} alerts'
 ```
 
@@ -419,7 +414,6 @@ alert:
 - `args['fail]` is a list of dicts for failed emails. This is identical to
   `args['done']` but has an additional key:
   - `error`: the Exception object that caused the failure
-
 
 ### Use multiple datasets
 
@@ -453,7 +447,6 @@ archived weekly by default. It stores these columns:
 - subject: email subject
 - attachments (comma-separated list of filenames)
 
-
 ## Alert configuration
 
 The alert service takes four kinds of parameters:
@@ -464,10 +457,10 @@ The alert service takes four kinds of parameters:
   - `months`: which month(s) to run on, e.g. "Jan-Mar,May". Default: `*`
   - `weekdays`: which weekdays(s) to run on, e.g. "Mon-Wed,Sat". Default: `*`
   - `dates`: which date(s) to run on, e.g. "10, 20, 30". Default: `*`
-  - `hours`: which hour(s) to run at, e.g. "*/3" for every 3rd hour. Default: `*`
-  - `minutes`: which minute(s) to run at, e.g. "*" for every minute. Default: `*`
+  - `hours`: which hour(s) to run at, e.g. "_/3" for every 3rd hour. Default: `_`
+  - `minutes`: which minute(s) to run at, e.g. "_" for every minute. Default: `_`
   - `startup`: set this to `true` to run the alert at startup. Set to `*` to run
-    on startup *and* every time the configuration changes. Default: `false`
+    on startup _and_ every time the configuration changes. Default: `false`
   - `thread`: set this to `true` to run in a separate thread. Default: `false`
 - **WHOM** to alert. At least one of `to`, `cc`, or `bcc` must be specified
   - `service`: name of the [email service](../email/) to use for sending emails.
@@ -541,7 +534,6 @@ alert:
 `gramex.service.alert(...).run(args={'to': 'hi@example.org'})`, it will email
 `hi@example.org`.
 
-
 To **create** an alert programmatically use
 `gramex.services.create_alert(config)`.
 This returns a function that sends an alert based on the configuration.
@@ -561,7 +553,6 @@ kwargs = alert()
 ```
 
 The returned `kwargs` are the computed email contents.
-
 
 ## Alert command line
 

@@ -4,8 +4,8 @@ url:
     handler: FunctionHandler
     kwargs:
       function: openapicalc.compare
-      methods: GET      # Only allow GET, not PUT/POST/...
-      openapi:          # Optional OpenAPI info
+      methods: GET # Only allow GET, not PUT/POST/...
+      openapi: # Optional OpenAPI info
         summary: List Comparison FunctionHandler
 
   flagdata:
@@ -27,6 +27,6 @@ url:
       servers:
         - url: ..
           description: Gramex OpenAPIHandler demo
-      urls:         # List of url: keys to expose.
-        - compare   # Use '*' to match any string
+      urls: # List of url: keys to expose.
+        - compare # Use '*' to match any string
         - flagdata

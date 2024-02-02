@@ -27,11 +27,11 @@ For example, this [cash flow projection sheet](../../formhandler/cashflow/cashfl
 To read a specific table from this sheet, e.g. the `OtherOperationalData` table, use this FormHandler configuration:
 
 ```yaml
-    pattern: /data                  # The URL /data
-    handler: FormHandler
-    kwargs:
-      url: cashflow.xlsx            # Reads from cashflow.xlsx
-      table: OtherOperationalData   # and shows a specific table
+pattern: /data # The URL /data
+handler: FormHandler
+kwargs:
+  url: cashflow.xlsx # Reads from cashflow.xlsx
+  table: OtherOperationalData # and shows a specific table
 ```
 
 ... and render it as data or charts.
@@ -45,18 +45,18 @@ To read from a
 [cell range](https://support.microsoft.com/en-us/office/select-specific-cells-or-ranges-3a0c91c5-8a64-4cd2-8625-7f5b7f1eed87):
 
 ```yaml
-      url: cashflow.xlsx            # Reads from cashflow.xlsx
-      range: B55:P61                # cells B55 to P61
-      sheet_name: Cash Flow         # from the sheet named Cash Flow
+url: cashflow.xlsx # Reads from cashflow.xlsx
+range: B55:P61 # cells B55 to P61
+sheet_name: Cash Flow # from the sheet named Cash Flow
 ```
 
 To read from a
 [defined name](https://support.microsoft.com/en-us/office/define-and-use-names-in-formulas-4d0f13ac-53b7-422e-afd2-abd7ff379c64):
 
 ```yaml
-      url: cashflow.xlsx            # Reads from cashflow.xlsx
-      name: CashChart               # all cells in the name "CashChart"
-      sheet_name: Cash Flow         # from the sheet named Cash Flow
+url: cashflow.xlsx # Reads from cashflow.xlsx
+name: CashChart # all cells in the name "CashChart"
+sheet_name: Cash Flow # from the sheet named Cash Flow
 ```
 
 ## Functions converted to JSON
@@ -69,7 +69,7 @@ Now you may return any of these types. They are converted to JSON as follows:
 - `int`, `float`, `np.integer`, `np.float`: rendered as JSON, e.g. `3`, `1.5`
 - `datetime.datetime` and `np.datetime`: rendered as ISO date, e.g. `1997-07-16T19:20:30+01:00`
 - `list`, `tuple`, `np.ndarray`: rendered as JSON arrays, e.g. `[1, "abc", true]`
-- `dict`: rendered as JSON, e.g. `{"x": 1, "y": "abc"}`. Keys *must* be strings
+- `dict`: rendered as JSON, e.g. `{"x": 1, "y": "abc"}`. Keys _must_ be strings
 - `pd.DataFrame`: rendered as JSON via `.to_json(orient="records", date_format="iso")`
 
 This means you don't have to explicitly convert return values into strings. They are automatically
@@ -92,7 +92,6 @@ def myfunction(handler):
     # ... you can return it directly
     return mylist
 ```
-
 
 ## Functions as REST APIs
 
@@ -148,12 +147,12 @@ and configure `gramex.yaml`:
 
 ```yaml
 gramexlog:
-  gramexguide:              # Log name. We'll call this via gramex.log('gramexguide')
-    host: hostname          # OPTIONAL: ElasticSearch server name. default: localhost
-    port: 9200              # OPTIONAL: port to connect to. default: 9200
-    index: gramexguide      # OPTIONAL: index to connect to. default: same as log name
-    http_auth: user:pass    # OPTIONAL: user name and password. default: None
-    keys: [datetime, user.id, headers.User-Agent]   # OPTIONAL: additional keys. default: None
+  gramexguide: # Log name. We'll call this via gramex.log('gramexguide')
+    host: hostname # OPTIONAL: ElasticSearch server name. default: localhost
+    port: 9200 # OPTIONAL: port to connect to. default: 9200
+    index: gramexguide # OPTIONAL: index to connect to. default: same as log name
+    http_auth: user:pass # OPTIONAL: user name and password. default: None
+    keys: [datetime, user.id, headers.User-Agent] # OPTIONAL: additional keys. default: None
 ```
 
 Then, call `gramex.log(x=1, y=2)` (or use any other keyword arguments.)
@@ -185,11 +184,10 @@ Since [FormHandler](../../formhandler/) supports ElasticSearch (after running
 `pip install elasticsearch-dbapi`), you can view the logs via this FormHandler configuration:
 
 ```yaml
-    kwargs:
-      url: elasticsearch+http://localhost:9200
-      table: gramexguide
+kwargs:
+  url: elasticsearch+http://localhost:9200
+  table: gramexguide
 ```
-
 
 ## Other improvements
 
@@ -217,7 +215,6 @@ Since [FormHandler](../../formhandler/) supports ElasticSearch (after running
 
 1. [Extend PPTXHandler with custom charts](https://github.com/gramener/gramex/issues/243)
 2. [Logviewer components that you can embed in any page to track usage](https://github.com/gramener/gramex/issues/288)
-
 
 ## Statistics
 

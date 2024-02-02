@@ -3,7 +3,7 @@ title: Group common code into functions
 prefix: Tip
 ...
 
-When the same code is repeated *across different functions* like this:
+When the same code is repeated _across different functions_ like this:
 
 ```python
 def insert_l1_file(new_lst):
@@ -82,8 +82,8 @@ This lets you define arbitrary transformations for each dataset.
 ## But variable names are a given
 
 If you cannot control the variable names (e.g. someone else has written that
-code), and you *must* use the given variables `data_l1`, `data_l2`, etc., you
-*could* use `locals()` like this:
+code), and you _must_ use the given variables `data_l1`, `data_l2`, etc., you
+_could_ use `locals()` like this:
 
 ```python
     result = locals().get('data_' + form_type)[:-1]

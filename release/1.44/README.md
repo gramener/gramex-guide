@@ -85,9 +85,9 @@ url:
     pattern: /$YAMLURL/(.*Rmd)
     handler: FileHandler
     kwargs:
-      path: $YAMLPATH     # path at which Rmd files (.*Rmd) are located
+      path: $YAMLPATH # path at which Rmd files (.*Rmd) are located
       transform:
-        "*.Rmd":          # Any file matching .Rmd
+        "*.Rmd": # Any file matching .Rmd
           function: rmarkdown(content, handler)
           headers:
             Content-Type: text/html

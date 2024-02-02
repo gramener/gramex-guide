@@ -21,14 +21,14 @@ Gramex has a pytest plugin that simplifies automated testing.
 Create a `gramextest.yaml` in your app directory that looks like this:
 
 ```yaml
-urltest:                            # Run tests on URLs without a browser
+urltest: # Run tests on URLs without a browser
   - fetch: https://httpbin.org/get?x=1&y=abc
-  - code: 200                       # HTTP status should be 200
-  - headers:                        # Check the response HTTP headers
-      Date: [endswith, GMT, UTC]    #   Date header ends with GMT or UTC
-  - json:                           # Check the response as JSON
-      args: {x: '1', y: abc}        #   {args: ...} matches this object
-      args.x: '1'                   #   {args: {x: ...}} is '1'
+  - code: 200 # HTTP status should be 200
+  - headers: # Check the response HTTP headers
+      Date: [endswith, GMT, UTC] #   Date header ends with GMT or UTC
+  - json: # Check the response as JSON
+      args: { x: "1", y: abc } #   {args: ...} matches this object
+      args.x: "1" #   {args: {x: ...}} is '1'
 ```
 
 Run `pytest -s -v`. This runs tests mentioned in `gramextest.yaml`.
@@ -52,8 +52,8 @@ Here are a few examples:
 
 ```yaml
 uitest:
-  - fetch: https://httpbin.org/get    # Fetch this page
-    code: 200                         # If it returns a status code 200, it's OK
+  - fetch: https://httpbin.org/get # Fetch this page
+    code: 200 # If it returns a status code 200, it's OK
 ```
 
 `fetch`: fetch a URL. It accepts either a string URL or a dict of options:
@@ -79,10 +79,10 @@ uitest:
 
 ```yaml
 uitest:
-  - fetch: https://httpbin.org/get  # Fetch this page
-  - text:                           # Check the response text
-      - [has, args, headers]        #   Has at least one of these words
-      - [has no, hello, world]      #   Has none of these words
+  - fetch: https://httpbin.org/get # Fetch this page
+  - text: # Check the response text
+      - [has, args, headers] #   Has at least one of these words
+      - [has no, hello, world] #   Has none of these words
 ```
 
 `text:` matches the response as text. It supports [match operators](#matches).
@@ -91,16 +91,15 @@ For example:
 - `text: [[has, hello], [not, world]]`: response must have "hello", not "world"
 - `text: [match, year 20\d\d]`: response has "year 2000", "year 2001", ...
 
-
 ### Check JSON response
 
 ```yaml
 uitest:
-  - fetch: https://httpbin.org/get  # Fetch this page
-  - json:                           # Check the response as JSON
-      args: {x: '1', y: abc}        #   {args: ...} matches this object
-      args.x: '1'                   #   {args: {x: ...}} is '1'
-      args.y: [has, abc]            #   {args: {y: ...}} has the word 'abc'
+  - fetch: https://httpbin.org/get # Fetch this page
+  - json: # Check the response as JSON
+      args: { x: "1", y: abc } #   {args: ...} matches this object
+      args.x: "1" #   {args: {x: ...}} is '1'
+      args.y: [has, abc] #   {args: {y: ...}} has the word 'abc'
 ```
 
 `json:` matches the response as JSON. The value are a dict with keys as
@@ -119,12 +118,12 @@ The values may be any [match operator](#matches).
 ```yaml
 uitest:
   - fetch: https://httpbin.org/html # Fetch this page
-  - html:                           # Check the response as HTML
-      h1: [has, Herman]             #   All <h1> have "Herman" in the text
-      p:first-child: [has, cool]    #   First <p> has the word "cool"
-      p:                            #   All <p> elements
-        class: null                 #     have no class
-        .text: [has, cool]          #     and have "cool" in the text
+  - html: # Check the response as HTML
+      h1: [has, Herman] #   All <h1> have "Herman" in the text
+      p:first-child: [has, cool] #   First <p> has the word "cool"
+      p: #   All <p> elements
+        class: null #     have no class
+        .text: [has, cool] #     and have "cool" in the text
 ```
 
 `html:` matches the response as HTML. The values are a dict with keys as
@@ -142,11 +141,11 @@ uitest:
 
 ```yaml
 uitest:
-  - fetch: https://httpbin.org/get  # Fetch this page
-  - headers:                        # Check the response HTTP headers
-      Server: true                  #   Server header is present
-      Nonexistent: null             #   Nonexistent header is missing
-      Date: [endswith, GMT, UTC]    #   Date header ends with GMT or UTC
+  - fetch: https://httpbin.org/get # Fetch this page
+  - headers: # Check the response HTTP headers
+      Server: true #   Server header is present
+      Nonexistent: null #   Nonexistent header is missing
+      Date: [endswith, GMT, UTC] #   Date header ends with GMT or UTC
 ```
 
 The keys under `header:` match the HTTP header name. The values may be any
@@ -185,24 +184,24 @@ Some browsers support additional options. Here is the complete list of options:
 ```yaml
 browsers:
   Chrome:
-    headless: true    # Run without displaying browser, in headless mode
-    mobile:           # Enable mobileEmulation option
+    headless: true # Run without displaying browser, in headless mode
+    mobile: # Enable mobileEmulation option
       deviceName: iPhone 6/7/8
   Firefox:
-    headless: true    # Run without displaying browser, in headless mode
+    headless: true # Run without displaying browser, in headless mode
 ```
 
 ### Check content on page
 
 ```yaml
 uitest:
-  - fetch: https://www.google.com/  # Fetch this URL in the browser
-  - title: Google                   # Title should match Google
-  - title: [starts with, Goo]       # Title should start with "Goo"
-  - find a[href*=privacy]:          # Find the first matching CSS selector
-      .text: Privacy                #   The text should match "Privacy"
-  - find xpath //input[@title]:     # Find the first matching XPath selector
-      name: 'q'                     #   The attribute name= should be "q"
+  - fetch: https://www.google.com/ # Fetch this URL in the browser
+  - title: Google # Title should match Google
+  - title: [starts with, Goo] # Title should start with "Goo"
+  - find a[href*=privacy]: # Find the first matching CSS selector
+      .text: Privacy #   The text should match "Privacy"
+  - find xpath //input[@title]: # Find the first matching XPath selector
+      name: "q" #   The attribute name= should be "q"
 ```
 
 `fetch`: fetches the URL via a GET request
@@ -257,24 +256,23 @@ If the value is `true` or `false`, it checks if the element is present or absent
 
 ```yaml
 uitest:
-  - print: .item            # Print the outer HTML of all `.item`s
-  - print: xpath //h1       # Print the outer HTML of all H1s
+  - print: .item # Print the outer HTML of all `.item`s
+  - print: xpath //h1 # Print the outer HTML of all H1s
 ```
 
 `print: <selector>` prints the outer HTML of all matching selectors. This is
 useful if the `find:` does not match, and you don't know why, or just want to
 see what elements are available.
 
-
 ### Interact with the page
 
 ```yaml
 uitest:
-  - fetch: https://www.google.com/                  # Fetch this URL in the browser
-  - clear: xpath //input[@title]                    # Clear existing input text
-  - type xpath //input[@title]: gramener            # Type "gramener" in the input
-  - hover: xpath //input[@value='Google Search']    # Hover over the Google Search button
-  - click: xpath //input[@value='Google Search']    # Click on the Google Search button
+  - fetch: https://www.google.com/ # Fetch this URL in the browser
+  - clear: xpath //input[@title] # Clear existing input text
+  - type xpath //input[@title]: gramener # Type "gramener" in the input
+  - hover: xpath //input[@value='Google Search'] # Hover over the Google Search button
+  - click: xpath //input[@value='Google Search'] # Click on the Google Search button
 ```
 
 `click: <selector>`: clicks a [CSS/XPath selector](#selectors).
@@ -299,11 +297,11 @@ uitest:
 
 ```yaml
 uitest:
-  - fetch: https://www.google.com/    # Fetch this URL in the browser
-  - resize: [800, 600]                # Resize to 800x600
-  - fetch: https://gramener.com/      # Fetch another page
-  - back: 1                           # Go back 1 page
-  - forward: 1                        # Go forward 1 page
+  - fetch: https://www.google.com/ # Fetch this URL in the browser
+  - resize: [800, 600] # Resize to 800x600
+  - fetch: https://gramener.com/ # Fetch another page
+  - back: 1 # Go back 1 page
+  - forward: 1 # Go forward 1 page
 ```
 
 `resize: [width, height]` resizes the browser window. `width` and `height` are set in pixels.
@@ -342,7 +340,6 @@ uitest:
 - `script: {"return document.title": [has, Gramener]}` checks if `document.title`
   has "Gramener"
 
-
 ## Running tests
 
 To run a test suite, just run `pytest -s -v`. It looks for `gramextest.yaml`
@@ -374,21 +371,20 @@ Actions may take time to perform -- e.g. JavaScript rendering in
 
 ```yaml
 uitest:
-  - wait: 10                # Wait for 10 seconds
+  - wait: 10 # Wait for 10 seconds
   - wait:
-      selector: .chart      # Wait until .chart selector is visible on screen
+      selector: .chart # Wait until .chart selector is visible on screen
   - wait:
-      script: window.done   # Wait until the page sets window.done to true
+      script: window.done # Wait until the page sets window.done to true
   - wait:
-      selector: xpath //h3  # Wait for <h3> element
-      timeout: 30             #   for a maximum of 30 seconds (default: 10s)
+      selector: xpath //h3 # Wait for <h3> element
+      timeout: 30 #   for a maximum of 30 seconds (default: 10s)
   - wait:
-      script: window.done   # Wait until window.done is true
-      timeout: 30           #   for a maximum of 30 seconds (default: 10s)
+      script: window.done # Wait until window.done is true
+      timeout: 30 #   for a maximum of 30 seconds (default: 10s)
 ```
 
 The selector may be a [CSS/XPath selector](#selectors).
-
 
 ### Skipping
 
@@ -397,15 +393,14 @@ stops skipping tests. For example:
 
 ```yaml
 uitest:
-  - ...             #   Run this
-  - skip: true      # Start skipping
-  - ...             #   Skip this
-  - ...             #   Skip this
-  - skip: false     # Stop skipping
-  - ...             #   Run this
-  - ...             #   Run this
+  - ... #   Run this
+  - skip: true # Start skipping
+  - ... #   Skip this
+  - ... #   Skip this
+  - skip: false # Stop skipping
+  - ... #   Run this
+  - ... #   Run this
 ```
-
 
 ### Debugging
 
@@ -415,18 +410,18 @@ variables in the browser or server, and see why test cases fail.
 ```yaml
 uitest:
   - fetch: ...
-  - debug           # Debug the next command
-  - ...             #   pytest will pause the 1st action
-  - ...             #   pytest WON'T pause the 2nd action
-  - debug: true     # Debug EVERY future action
-  - ...             #   pytest will pause every action
-  - ...             #   pytest will pause every action
-  - debug: false    # Stop debug mode
-  - ...             #   pytest WON'T pause
-  - debug: 2        # Debug the next 2 actions
-  - ...             #   pytest will pause the 1st action
-  - ...             #   pytest will pause the 2nd action
-  - ...             #   pytest WON'T pause after that
+  - debug # Debug the next command
+  - ... #   pytest will pause the 1st action
+  - ... #   pytest WON'T pause the 2nd action
+  - debug: true # Debug EVERY future action
+  - ... #   pytest will pause every action
+  - ... #   pytest will pause every action
+  - debug: false # Stop debug mode
+  - ... #   pytest WON'T pause
+  - debug: 2 # Debug the next 2 actions
+  - ... #   pytest will pause the 1st action
+  - ... #   pytest will pause the 2nd action
+  - ... #   pytest WON'T pause after that
 ```
 
 If you want to stop debugging mid-way, type `mode.debug = 0` in the debugger.
@@ -435,7 +430,6 @@ This is the same as `debug: false`.
 Run `pytest --pdb` to enter debug mode on the first error. This is useful when
 you want to explore the browser state when an error occurs, and to correct your
 test cases.
-
 
 ### Naming
 
@@ -471,11 +465,11 @@ tests. For example:
 ```yaml
 uitest:
   - mark: group1
-  - ...             # This test belongs to group1
-  - ...             # This test belongs to group1
+  - ... # This test belongs to group1
+  - ... # This test belongs to group1
   - mark: group2
-  - ...             # This test belongs to group2
-  - ...             # This test belongs to group2
+  - ... # This test belongs to group2
+  - ... # This test belongs to group2
 ```
 
 - `pytest -m group1` to only run group1 tests.
@@ -493,7 +487,6 @@ You can run [groups of tests](#grouping) using marks:
 
 - `pytest -m group1` to only run group1 tests.
 - `pytest -m 'group1 or group2'` runs group1 or group2 tests, no others
-
 
 ### Test reporting
 
@@ -515,10 +508,10 @@ An action can be defined as a dict of `{command: options}`. For example, the
 
 ```yaml
 urltest:
-  - fetch: https://httpbin.org/get?x=1      # fetch: <url>
-  - fetch:                                  # fetch: {url: <url>, options}
+  - fetch: https://httpbin.org/get?x=1 # fetch: <url>
+  - fetch: # fetch: {url: <url>, options}
       url: https://httpbin.org/get
-      params: {x: 1}
+      params: { x: 1 }
 ```
 
 ### Selectors
@@ -532,7 +525,6 @@ CSS selector.
 
 Note: <strong>XPath SVG selectors are tricky</strong>. You need to provide a
 namespace. Use CSS selectors instead.
-
 
 ### Matches
 
@@ -548,7 +540,7 @@ example, when testing the `text:` of a response, you can use:
 
 - `text: [is, value]`: text is exactly equal to "value1"
 - `text: [has, value]`: text has the string "value"
-- `text: [match, v.*e]`: text matches the regular expression "v.*e"
+- `text: [match, v.*e]`: text matches the regular expression "v.\*e"
 - `text: [starts with, val]`: text starts with "val"
 - `text: [ends with, ue]`: text ends with "ue"
 - `text: [is not, abc]`: text is not exactly equal to "abc"
@@ -563,7 +555,7 @@ example, when testing the `text:` of a response, you can use:
 - `text: [ends with, ue, lue]`: text ends with "ue" or "lue"
 - `text: [is not, abc, def]`: text is not exactly equal to "abc" nor "def"
 - `text: [does not have, abc, def]`: text does not have the string "abc" nor "def"
-- `text: [does not match, a.*, b.*]`: text does not match regex "a.*" nor "b.*"
+- `text: [does not match, a.*, b.*]`: text does not match regex "a._" nor "b._"
 
 These matches are **case-insenstive** and **ignore whitespace**. To use
 case-sensitive and exact matches, use operators in CAPS. For example:
@@ -577,22 +569,21 @@ pass. For example:
 
 ```yaml
 text: [
-  [has, username],                    # The word Username must be present
-  [has, password],                    # Password must also be present
-  [has no, forbidden, unauthorized],  # Neither forbidden nor unauthorized must match
-  [match, login.*button],             # "login" followed by "button" should be present
-]
+    [has, username], # The word Username must be present
+    [has, password], # Password must also be present
+    [has no, forbidden, unauthorized], # Neither forbidden nor unauthorized must match
+    [match, login.*button], # "login" followed by "button" should be present
+  ]
 ```
 
-These matches can be used in *any* value that we test for, such as `code:`,
+These matches can be used in _any_ value that we test for, such as `code:`,
 `text:`, `headers:` keys, `json:` keys, etc.
 
 For numbers, you can also use `>`, `>=`, `<`, `<=` as operators. For example:
 
 ```yaml
 json:
-  args.count: [['>', 30], ['<=', 50]]    # args.count > 30, and args.count <= 50
+  args.count: [[">", 30], ["<=", 50]] # args.count > 30, and args.count <= 50
 ```
-
 
 <script src="../node_modules/asciinema-player/resources/public/js/asciinema-player.js"></script>

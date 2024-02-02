@@ -26,7 +26,6 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
 ## Gramex Enterprise is free for non-commercial use
 
 The Gramex Enterprise Edition is offered under a non-commercial license for:
@@ -37,7 +36,6 @@ The Gramex Enterprise Edition is offered under a non-commercial license for:
 
 Gramex Enterprise Edition is not free for commercial use.
 To discuss commercial use of Gramex Enterprise, reach out to <contact@gramener.com>.
-
 
 ## Third party libraries
 

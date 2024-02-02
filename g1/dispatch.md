@@ -3,7 +3,7 @@
 Triggers a native JavaScript event. For example:
 
 ```js
-$('a.action').dispatch('click')
+$("a.action").dispatch("click");
 ```
 
 sends a click to `a.action`. Like [$.trigger](https://api.jquery.com/trigger/),
@@ -16,7 +16,7 @@ You can add an optional dict as the second parameter. It can have any
 as attributes. For example:
 
 ```js
-$('a.action').dispatch('click', {bubbles: true, cancelable: false})
+$("a.action").dispatch("click", { bubbles: true, cancelable: false });
 ```
 
 - bubbles: whether the event bubbles or not. default: true

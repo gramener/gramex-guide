@@ -18,7 +18,7 @@ url:
     pattern: /$YAMLURL/servicenow
     handler: FormHandler
     kwargs:
-      url: 'servicenow://user:password@hostname.com/table/incident'
+      url: "servicenow://user:password@hostname.com/table/incident"
 ```
 
 To use this, [get REST API access](https://docs.servicenow.com/bundle/rome-application-development/page/integrate/inbound-rest/concept/c_RESTAPI.html)
@@ -27,7 +27,6 @@ ServiceNow account and [query the tables](https://developer.servicenow.com/dev.d
 Note: Only read access is provided. Write-back is not supported.
 
 Thanks [@radheyakale](https://github.com/radheyakale)
-
 
 ## FormHandler writes data to MongoDB
 
@@ -45,7 +44,7 @@ url:
       database: testdatabase
       collection: testcollection
       id: name
-      xsrf_cookies: false   # Optional
+      xsrf_cookies: false # Optional
 ```
 
 Now, the following operations work:
@@ -75,7 +74,6 @@ This particularly helps identify:
 - Which directory Gramex is running from (if developers have multiple versions installed)
 - Which directory Python is running from (if developers have multiple Python environments)
 
-
 ## Users are not logged out unexpectedly
 
 All auth handlers support an [`ensure_single_session`](../../auth/#ensure-single-login-session)
@@ -87,18 +85,16 @@ This bug went undetected due to poor test coverage
 
 Now, Gramex only logs out the user who logged in from other sessions.
 
-
 ## Gramex reloads after invalid configurations
 
 Gramex auto-reloads the `gramex.yaml` configuration whenever it's changed. This is useful for fast
 debugging -- you don't need to manually restart Gramex. This works even if the YAML is invalid.
 
-But if the *configuration* is invalid (e.g. you specified `handler: NonexistentHandler`),
+But if the _configuration_ is invalid (e.g. you specified `handler: NonexistentHandler`),
 [Gramex would never reload `gramex.yaml` configurations again](https://github.com/gramener/gramex/issues/485)
 
 Now, even if there's any incorrect configuration, Gramex reports an error and reloads on the next
 change.
-
 
 ## FileHandler reloads index templates
 
@@ -111,7 +107,6 @@ to [restart Gramex every time `index_template` changed](https://github.com/grame
 Now, if the `index_template` file changes, Gramex automatically reloads it. It's much faster to
 iterate and create new index templates.
 
-
 ## Page redirection works after restart
 
 Gramex stores [session data](../../auth/#session-data) in a JSON file store, by default. This is
@@ -120,8 +115,7 @@ fast and persistent (though it doesn't share session data across multiple Gramex
 When a user logs in, the page they should be redirected back to is stored along with the session.
 But [if Gramex restarts, this information is lost](https://github.com/gramener/gramex/issues/483).
 
-This is now resolved. Gramex keeps track of *all* changes in session information and saves it.
-
+This is now resolved. Gramex keeps track of _all_ changes in session information and saves it.
 
 ## Allow computing variables from functions on first load
 
@@ -157,7 +151,6 @@ which was used in the Windows Service.
 
 Now, the Windows Service shuts down gracefully.
 
-
 ## Backward compatibility & security
 
 Gramex 1.75 is backward compatible with [previous releases](../) unless the release notes say otherwise.
@@ -182,7 +175,6 @@ The Gramex code base has:
 - 3,359 lines of JavaScript (same as 1.74)
 - 12,782 lines of test code (217 more than 1.74)
 - 89% test coverage (same as 1.74)
-
 
 ## How to install
 

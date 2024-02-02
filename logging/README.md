@@ -19,12 +19,12 @@ on any server, or get a [cloud](https://www.elastic.co/cloud/) instance.
 
 ```yaml
 gramexlog:
-  gramexguide:              # Log name. We'll call this via gramex.log('gramexguide')
-    host: hostname          # OPTIONAL: ElasticSearch server name. default: localhost
-    port: 9200              # OPTIONAL: port to connect to. default: 9200
-    index: gramexguide      # OPTIONAL: index to connect to. default: same as log name
-    http_auth: user:pass    # OPTIONAL: user name and password. default: None
-    keys: [datetime, user.id, headers.User-Agent]   # OPTIONAL: additional keys. default: None
+  gramexguide: # Log name. We'll call this via gramex.log('gramexguide')
+    host: hostname # OPTIONAL: ElasticSearch server name. default: localhost
+    port: 9200 # OPTIONAL: port to connect to. default: 9200
+    index: gramexguide # OPTIONAL: index to connect to. default: same as log name
+    http_auth: user:pass # OPTIONAL: user name and password. default: None
+    keys: [datetime, user.id, headers.User-Agent] # OPTIONAL: additional keys. default: None
 ```
 
 In the `keys:` section, you can use any key supported by the `log:` service
@@ -59,7 +59,7 @@ When a user visit `/log?x=1&y=2`, it logs into `gramexguide` an object with thes
 - `"header.User-Agent": ...` from the `gramexguide` index configuration
 
 ::: example href=log source=https://github.com/gramener/gramex-guide/blob/master/logging/gramex.yaml
-    Log an event (result should be null)
+Log an event (result should be null)
 
 ## Viewing logs
 
@@ -67,19 +67,19 @@ To access an index in ElasticSearch, use [FormHandler](../formhandler/) after ru
 `pip install elasticsearch-dbapi`. Use this config:
 
 ```yaml
-    kwargs:
-      url: elasticsearch+http://localhost:9200
-      table: gramexguide
+kwargs:
+  url: elasticsearch+http://localhost:9200
+  table: gramexguide
 ```
 
-::: example href="view?_format=html&amp;_sort=-datetime" source=https://github.com/gramener/gramex-guide/blob/master/logging/gramex.yaml
-    View ElasticSearch log
+::: example href="view?\_format=html&amp;\_sort=-datetime" source=https://github.com/gramener/gramex-guide/blob/master/logging/gramex.yaml
+View ElasticSearch log
 
 Apart from FormHandler, you can also use:
 
 - `gramex.data.filter('elasticsearch+http://localhost:9200', table='...', args={...})`.
 - [`elasticsearch`](https://elasticsearch-py.readthedocs.io/en/master/) Python client via
-`pip install elasticsearch`, and use:
+  `pip install elasticsearch`, and use:
 
 ```python
 from elasticsearch import Elasticsearch
@@ -93,21 +93,20 @@ ElasticSearch also supports a REST API. You can visit
 - `/_cat/indices` lists indices
 - `/<index>/search` gets records from index
 
-
 ## Multiple logs
 
 You can create multiple logs -- to the same or different server. For example:
 
 ```yaml
 gramexlog:
-  log1:               # gramex.log('log1') logs to localhost:9200 'log1' index
-    keys: [time]                # ... with time always added as a key
-  log2:               # gramex.log(handler, 'log2') also logs to localhost:9200
-    index: log1                 # ... and the same 'log1' index
-    keys: [datetime, user.id]   # ... but with datetime and user.id as keys
-  log3:               # gramex.log('log3') logs to server.com:9200
+  log1: # gramex.log('log1') logs to localhost:9200 'log1' index
+    keys: [time] # ... with time always added as a key
+  log2: # gramex.log(handler, 'log2') also logs to localhost:9200
+    index: log1 # ... and the same 'log1' index
+    keys: [datetime, user.id] # ... but with datetime and user.id as keys
+  log3: # gramex.log('log3') logs to server.com:9200
     host: server.com
-    http_auth: user:pass        # ... using the specified user ID and password
+    http_auth: user:pass # ... using the specified user ID and password
 ```
 
 <!-- TODO:

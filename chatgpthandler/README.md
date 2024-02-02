@@ -27,10 +27,10 @@ url:
 This opens a WebSocket connection to `/chat`. You can send messages to it using:
 
 ```js
-const url = location.href.replace(/^http/, 'ws').replace(/\/[^/]*$/, '/chat');
+const url = location.href.replace(/^http/, "ws").replace(/\/[^/]*$/, "/chat");
 const ws = new WebSocket(url);
-ws.onopen = () => ws.send('What rhymes with silk?');
-ws.onmessage = message => console.log(message.data);
+ws.onopen = () => ws.send("What rhymes with silk?");
+ws.onmessage = (message) => console.log(message.data);
 ```
 
 This sends a question "What rhymes with silk?" to OpenAI, and logs the response to the console.
@@ -40,19 +40,28 @@ milk, bilk, ilk, wilk, filk
 ```
 
 ```html
-<!DOCTYPE html>
-<form><input id="input" value="What rhymes with milk?"> <button>Send</button></form>
+<!doctype html>
+<form>
+  <input id="input" value="What rhymes with milk?" /> <button>Send</button>
+</form>
 <pre id="output"></pre>
 <script type="module">
-  const ws = new WebSocket(location.href.replace(/^http/, 'ws') + 'chatgpt?stream');
-  const input = document.querySelector('#input');
-  const output = document.querySelector('#output');
-  ws.onmessage = (event) => output.insertAdjacentHTML('beforeend', event.data || '\n\n');
-  document.querySelector('form').addEventListener('submit', e => {
-    e.preventDefault();
-    ws.send(input.value);
-    output.insertAdjacentHTML('beforeend', `\n${input.value}\n\n`);
-  }, false);
+  const ws = new WebSocket(
+    location.href.replace(/^http/, "ws") + "chatgpt?stream",
+  );
+  const input = document.querySelector("#input");
+  const output = document.querySelector("#output");
+  ws.onmessage = (event) =>
+    output.insertAdjacentHTML("beforeend", event.data || "\n\n");
+  document.querySelector("form").addEventListener(
+    "submit",
+    (e) => {
+      e.preventDefault();
+      ws.send(input.value);
+      output.insertAdjacentHTML("beforeend", `\n${input.value}\n\n`);
+    },
+    false,
+  );
 </script>
 ```
 
@@ -73,7 +82,6 @@ You can use the following parameters:
 - [`presence_penalty`](https://platform.openai.com/docs/api-reference/chat/create#chat/create-presence_penalty): higher values increase novelty. Ranges from -2.0 to +2.0. Default: 0
 - [`user`](https://platform.openai.com/docs/api-reference/chat/create#chat/create-model): unique identifier of the user. Default: None
 
-
 ## ChatGPTHandler parameter substitution
 
 Any of the [configurations](#chatgpthandler-configuration) can be a Python expression that uses `handler`. For example:
@@ -92,7 +100,6 @@ This lets the front-end pass the key and model to use. For example:
 
 - `/chat?key=sz-...` uses the key `sz-...` and the default model `gpt-3.5-turbo`
 - `/chat?key=sz-...&model=gpt-4` uses the key `sz-...` and model `gpt-4`
-
 
 ## ChatGPTHandler history
 
@@ -113,9 +120,6 @@ url:
 
 This stores and sends only the last 5 messages to OpenAI.
 
-
 ## ChatGPTHandler streaming
-
-
 
 ## ChatGPTHandler transforms

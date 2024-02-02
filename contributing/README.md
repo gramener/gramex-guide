@@ -260,7 +260,6 @@ Select "Share" on the YouTube video and copy the link, e.g. `https://youtu.be/hS
 [Video](https://youtu.be/hSwQQ2wOmIk){.youtube}
 ```
 
-
 ## Docstrings
 
 Docstrings are written in Markdown and compiled using [MkDocs](https://www.mkdocs.org/).

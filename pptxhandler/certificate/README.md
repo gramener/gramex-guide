@@ -32,7 +32,6 @@ The [data](people.csv) has 3 columns that correspond to the shape names on the t
 
 [![Data](data.png){.img-fluid}](people.csv)
 
-
 ## Create the rules
 
 Let's set up a basic `gramex.yaml` file that loads the template and the data.
@@ -56,17 +55,17 @@ This copies the slide for each year. The variable `copy.val` has the data for ea
 Next, let's set the name of the person on each slide:
 
 ```yaml
-    Name:
-      text: copy.val.Name
+Name:
+  text: copy.val.Name
 ```
 
 Let's do the same thing for Date and Course.
 
 ```yaml
-    Course:
-      text: copy.val.Course
-    Date:
-      text: copy.val.Date
+Course:
+  text: copy.val.Course
+Date:
+  text: copy.val.Date
 ```
 
 That's all it takes to update every field.

@@ -33,10 +33,10 @@ key = handler.apikey(expire=expiry, user=user)  # Create key as specified user
 ```
 
 When a user visits any page with `?gramex-key=<key>` added, or with a `X-Gramex-Key: <key>` header,
-the user is logged in *for that session*. `handler.current_user` is set to the user object.
+the user is logged in _for that session_. `handler.current_user` is set to the user object.
 
 ::: example href=../../auth/apikey source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    API key example
+API key example
 
 ## Secure MongoDB access
 
@@ -48,15 +48,15 @@ An example of a secure MongoDB access configuration is:
 ```yaml
 url:
   mongodb:
-   pattern: /mongodb/
-   handler: FormHandler
-   kwargs:
-     url: 'mongodb://$USER:$PASS@mongodb.example.com:27017'
-     database: db_name
-     collection: collection_name
-     tls: true
-     tlsCAFile: /path/to/ca.pem                 # OPTIONAL path to CA certificate
-     tlsCertificateKeyFile: /path/to/client.pem # OPTIONAL path to Client certificate
+    pattern: /mongodb/
+    handler: FormHandler
+    kwargs:
+      url: "mongodb://$USER:$PASS@mongodb.example.com:27017"
+      database: db_name
+      collection: collection_name
+      tls: true
+      tlsCAFile: /path/to/ca.pem # OPTIONAL path to CA certificate
+      tlsCertificateKeyFile: /path/to/client.pem # OPTIONAL path to Client certificate
 ```
 
 [Here are tips on troubleshooting errors](https://pymongo.readthedocs.io/en/stable/examples/tls.html#troubleshooting-tls-errors)
@@ -68,7 +68,7 @@ Gramex allows setting session cookies (that expire when the browser is closed, n
 ```yaml
 app:
   session:
-    expiry: false           # Sessions expire when browser closes
+    expiry: false # Sessions expire when browser closes
 ```
 
 You can specify it just for a single login handler rather than the entire app:
@@ -77,9 +77,9 @@ You can specify it just for a single login handler rather than the entire app:
 url:
   auth/expiry:
     pattern: /$YAMLURL/expiry
-    handler: SimpleAuth       # session_expiry works on DBAuth, GoogleAuth, etc too
+    handler: SimpleAuth # session_expiry works on DBAuth, GoogleAuth, etc too
     kwargs:
-      session_expiry: false   # Sessions expire when browser closes
+      session_expiry: false # Sessions expire when browser closes
       # ...
 ```
 
@@ -94,11 +94,12 @@ An example of a secure cookie configuration is:
 ```yaml
 app:
   session:
-    httponly: true        # Allow JavaScript access via document.cookie
-    secure: true          # Cookies can be accessed only via HTTPS (not HTTP)
-    samesite: Strict      # Browser sends the cookie only for same-site requests.
-                          # Values can be Strict, Lax or None. (Case-sensitive)
-    domain: example.org   # All subdomains in *.example.org can access session
+    httponly: true # Allow JavaScript access via document.cookie
+    secure: true # Cookies can be accessed only via HTTPS (not HTTP)
+    samesite:
+      Strict # Browser sends the cookie only for same-site requests.
+      # Values can be Strict, Lax or None. (Case-sensitive)
+    domain: example.org # All subdomains in *.example.org can access session
 ```
 
 ## Bug fixes
@@ -134,7 +135,6 @@ The Gramex code base has:
 - 3,360 lines of JavaScript (same as 1.76)
 - 12,817 lines of test code (43 more than 1.76)
 - 89% test coverage (same as 1.76)
-
 
 ## How to install
 

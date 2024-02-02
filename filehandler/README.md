@@ -378,7 +378,7 @@ url:
 ```
 
 ::: example href=template source="https://github.com/gramener/gramex-guide/blob/master/filehandler/template.html"
-    Template example
+Template example
 
 ### Template syntax
 
@@ -463,9 +463,8 @@ Modules can add CSS and JS to the parent template. For example:
 To redirect to a page (e.g. `new_url`) from a template, add this code:
 
 ```html
-{% set handler.redirect(new_url) %}
-{% set handler.include_body = False %}
-{% set return b'' %}
+{% set handler.redirect(new_url) %} {% set handler.include_body = False %} {%
+set return b'' %}
 ```
 
 1. `handler.redirect(new_url)` redirects to `new_url`
@@ -486,8 +485,7 @@ def redirect_template(handler, new_url):
 ... and call it in your template:
 
 ```html
-{% import utils %}
-{% set utils.redirect_template(handler, new_url) %}
+{% import utils %} {% set utils.redirect_template(handler, new_url) %}
 ```
 
 ## SASS
@@ -513,7 +511,7 @@ body {
 ```
 
 ::: example href=color.scss source="https://github.com/gramener/gramex-guide/blob/master/filehandler/color.scss"
-    See color.scss
+See color.scss
 
 To enable this in your FileHandler, add:
 
@@ -527,7 +525,7 @@ URL query parameters are automatically passed as variables to the SASS file. For
 `color.scss?color=green` sets `$color: green`.
 
 ::: example href=color.scss?color=blue source="https://github.com/gramener/gramex-guide/blob/master/filehandler/color.scss"
-    See `color.scss?color=blue`
+See `color.scss?color=blue`
 
 You can use this to allow users to customize your theme.
 
@@ -556,7 +554,7 @@ function getLength(obj) {
 ```
 
 ::: example href=typescript.ts source="https://github.com/gramener/gramex-guide/blob/master/filehandler/typescript.ts"
-    See typescript.ts
+See typescript.ts
 
 To enable this in your FileHandler, add:
 
@@ -618,7 +616,7 @@ The default FileHandler compiles any `.vue` file into CSS. For example, this `he
 ```
 
 ::: example href=hello-world.vue source="https://github.com/gramener/gramex-guide/blob/master/filehandler/hello-world.vue"
-    See hello-world.vue
+See hello-world.vue
 
 To enable this in your FileHandler, add:
 

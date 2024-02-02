@@ -22,8 +22,8 @@ url:
     handler: FunctionHandler
     kwargs:
       function: openapicalc.compare
-      methods: GET      # Only allow GET, not PUT/POST/...
-      openapi:          # Optional OpenAPI info
+      methods: GET # Only allow GET, not PUT/POST/...
+      openapi: # Optional OpenAPI info
         summary: List Comparison FunctionHandler
 ```
 
@@ -48,8 +48,7 @@ def compare(
 ```
 
 ::: example href=compare?x=2&x=3&y=4 source=https://github.com/gramener/gramex-guide/tree/master/openapihandler/gramex.yaml
-    Compare sum(2, 3) > sum(4)
-
+Compare sum(2, 3) > sum(4)
 
 You can now add an OpenAPIHandler that generates an [OpenAPI JSON][openapi]
 for this FunctionHandler.
@@ -73,13 +72,13 @@ url:
       servers:
         - url: ..
           description: Gramex OpenAPIHandler demo
-      urls:         # List of url: keys (not pattern) to expose.
-        - compare   # "compare" is the key under url:, not the pattern
-        - '*'       # Use '*' to match any string
+      urls: # List of url: keys (not pattern) to expose.
+        - compare # "compare" is the key under url:, not the pattern
+        - "*" # Use '*' to match any string
 ```
 
 ::: example href=docs?indent=2 source=https://github.com/gramener/gramex-guide/tree/master/openapihandler/gramex.yaml
-    See the OpenAPI output
+See the OpenAPI output
 
 You can control the indentation by passing `?indent=` to the OpenAPIHandler.
 
@@ -88,27 +87,28 @@ You can control the indentation by passing `?indent=` to the OpenAPIHandler.
 
 To allow users to interact with the API with a UI, use [Swagger UI](https://swagger.io/tools/swagger-ui/).
 
-
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@4.15.5/swagger-ui.css">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@4.15.5/swagger-ui.css"
+/>
 
 <div id="swagger-ui"></div>
 <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@4.15.5/swagger-ui-bundle.js"></script>
 <script>
   const ui = SwaggerUIBundle({
-    url: 'docs',    // OpenAPIHandler URL
-    dom_id: '#swagger-ui',
+    url: "docs", // OpenAPIHandler URL
+    dom_id: "#swagger-ui",
     presets: [
       SwaggerUIBundle.presets.apis,
-      SwaggerUIBundle.SwaggerUIStandalonePreset
-    ]
-  })
+      SwaggerUIBundle.SwaggerUIStandalonePreset,
+    ],
+  });
 </script>
 ```
 
 ::: example href=example.html source=https://github.com/gramener/gramex-guide/tree/master/openapihandler/example.html
-    See the API UI for `compare`
-
+See the API UI for `compare`
 
 ## OpenAPIHandler Configuration
 
@@ -139,18 +139,18 @@ In addition, the handlers it exposes (e.g. [FunctionHandler](../functionhandler/
   - `get:` sets the GET request parameters. Specifically, under `get:`, you can add [responses:](https://swagger.io/specification/#responses-object)
 
 ```yaml
-    openapi:
-      get:
-        responses:
-          '200':
-            description: Successful Response
-            content:
-              application/json: {}
-          '400':
-            description: Bad request
-            content:
-              text/html:
-                example: Bad request
+openapi:
+  get:
+    responses:
+      "200":
+        description: Successful Response
+        content:
+          application/json: {}
+      "400":
+        description: Bad request
+        content:
+          text/html:
+            example: Bad request
 ```
 
 Note that this **overrides** any configurations OpenAPIHandler generates.
@@ -199,4 +199,4 @@ url:
 ```
 
 ::: example href=example.html source=https://github.com/gramener/gramex-guide/tree/master/openapihandler/example.html
-    See the API UI for `flagdata`
+See the API UI for `flagdata`

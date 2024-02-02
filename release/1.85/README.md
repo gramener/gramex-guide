@@ -19,7 +19,7 @@ url:
     pattern: /$YAMLURL/drive
     handler: DriveHandler
     kwargs:
-      path: $GRAMEXDATA/apps/guide/drive-data/  # ... save files here
+      path: $GRAMEXDATA/apps/guide/drive-data/ # ... save files here
       modify: mymodule.modify(handler)
 ```
 
@@ -48,15 +48,15 @@ Earlier, FilterHandler only returned unique values for each column, assuming all
 
 But sometimes, columns have hierarchies. For example, Country and City. You don't want to filter independently for country and city.
 
-FilterHandler now returns unique values across *multiple* columns. Use `/filter?_c=country,city` to get unique values for the `country,city` combination, like this:
+FilterHandler now returns unique values across _multiple_ columns. Use `/filter?_c=country,city` to get unique values for the `country,city` combination, like this:
 
 ```json
 {
   "country,city": [
-    { "country": "Norway", "city": "Oslo", },
-    { "country": "Norway", "city": "Bergen", },
-    { "country": "Italy", "city": "Rome", },
-    { "country": "Italy", "city": "Venice", }
+    { "country": "Norway", "city": "Oslo" },
+    { "country": "Norway", "city": "Bergen" },
+    { "country": "Italy", "city": "Rome" },
+    { "country": "Italy", "city": "Venice" }
   ]
 }
 ```
@@ -70,19 +70,19 @@ Now, Gramex lets you render the response as any template, e.g. to acknowledge su
 using [FormHandler templates](../../formhandler/#formhandler-templates). For example:
 
 ```yaml
-    handler: FormHandler
-    kwargs:
-      url: 'postgresql://$USER:$PASS@server/db'
-      table: sales
-      id: id
-      default:
-        _format: submit-template
-      formats:
-        submit-template:
-          format: template
-          template: $YAMLPATH/template-file.html
-          headers:
-              Content-Type: text/html
+handler: FormHandler
+kwargs:
+  url: "postgresql://$USER:$PASS@server/db"
+  table: sales
+  id: id
+  default:
+    _format: submit-template
+  formats:
+    submit-template:
+      format: template
+      template: $YAMLPATH/template-file.html
+      headers:
+        Content-Type: text/html
 ```
 
 `template-file.html` can be any [Tornado template](../../filehandler/#templates). It has access to the
@@ -92,7 +92,6 @@ same variables as any [FormHandler template](../../formhandler/#formhandler-temp
 <p>You entered name = {{ handler.get_arg('name', '') }}</p>
 <p>The inserted ID(s) are {{ meta['inserted'] }}</p>
 ```
-
 
 ## FormHandler columns support default functions
 
@@ -104,13 +103,13 @@ Now, the `default` value for a column can be a
 like the current time, date, a random number, etc. For example:
 
 ```yaml
-    handler: FormHandler
-    kwargs:
-      # ...
-      columns:
-        timestamp:
-          type: TIMESTAMP
-          default: { function: func.now() }
+handler: FormHandler
+kwargs:
+  # ...
+  columns:
+    timestamp:
+      type: TIMESTAMP
+      default: { function: func.now() }
 ```
 
 ## Fetch no longer requires XSRF

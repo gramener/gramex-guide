@@ -44,7 +44,6 @@ does not leak to other applications on the same server.
 
 [g1 0.18.0](https://www.npmjs.com/package/g1/v/0.18.0) enhances such components to work both with Bootstrap 4 and Bootstrap 5.
 
-
 ## Bug fixes
 
 - SASS [sourcemaps](https://sourcemaps.info/spec.html) are now enabled. When SASS files are served (e.g. `/style.scss`), the source map is linked to and served at `/style.scss?_map`
@@ -52,7 +51,6 @@ does not leak to other applications on the same server.
 - [MLHandler](../../mlhandler/) stored its model files under `<model-name>/<model-name>.pkl`. This made the models less portable. When renaming the model, the file has to be renamed too. Now, MLHandler stores models as `<model-name>/model.pkl`. Renaming the model is the same as renaming the directory.
 - The Gramex README was written in reST, which works well with [PyPi](https://pypi.org/project/gramex/) but not on [Github](https://github.com/gramener/gramex/). This is now written in Markdown, which works well in both.
 - Gramex Docker builds are now a bit smaller. Earlier, the "FileManager" app used the bulky Puppetteer library for tests. Now they've been moved to the tests folder and are not included in the Docker builds.
-
 
 ## Backward compatibility & security
 

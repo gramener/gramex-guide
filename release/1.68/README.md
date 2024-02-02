@@ -35,7 +35,6 @@ These forms act as mini applications by themselves, and can collect user respons
 
 ![Responses](responses.png)
 
-
 ### Embed form
 
 Users can embed this form in the app using JavaScript.
@@ -45,7 +44,10 @@ Users can embed this form in the app using JavaScript.
 Here's a sample embed code:
 
 ```html
-<link rel="stylesheet" href=".../forms/ui/bootstrap5/dist/css/bootstrap.min.css">
+<link
+  rel="stylesheet"
+  href=".../forms/ui/bootstrap5/dist/css/bootstrap.min.css"
+/>
 <script src=".../forms/ui/jquery/dist/jquery.min.js"></script>
 <div class="form-container">
   <script src=".../forms/embed/73.js"></script>

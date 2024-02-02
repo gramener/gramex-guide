@@ -7,14 +7,14 @@ Download a File using FileHandler
 
 ```yaml
 url:
-    project/file-download:
-        pattern: /$YAMLURL/data
-        handler: FileHandler
-        kwargs:
-        path: data.csv
-        headers:
-            Content-Type: text/csv
-            Content-Disposition: attachment;filename=data.csv
+  project/file-download:
+    pattern: /$YAMLURL/data
+    handler: FileHandler
+    kwargs:
+    path: data.csv
+    headers:
+      Content-Type: text/csv
+      Content-Disposition: attachment;filename=data.csv
 ```
 
 `MIME` type `text/csv` sets the type for CSV files.

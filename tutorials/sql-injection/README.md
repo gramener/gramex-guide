@@ -9,7 +9,7 @@ This tutorial shows how to fix common SQL injection errors in Gramex.
 
 ## How to check for SQL injection
 
-If you are *constructing* an SQL query by concatenating or formatting strings,
+If you are _constructing_ an SQL query by concatenating or formatting strings,
 you are probably vulnerable to SQL injection.
 
 Use [Bandit](https://bandit.readthedocs.io/en/latest/). It catches most SQL injection attacks.
@@ -60,7 +60,6 @@ url:
         _c: role
 ```
 
-
 ## Use SQL parameters
 
 Use SQL **parameter substitution** for values. For example, instead of:
@@ -107,7 +106,6 @@ connection.execute(sa.text('SELECT * FROM table WHERE updated >= :date'), date=.
 Different database drivers use different parameter styles like `:param`, `%(param)`, `?`, etc. Use
 [`sa.text()`](https://docs.sqlalchemy.org/en/20/core/sqlelement.html#sqlalchemy.sql.expression.TextClause) to ensure
 `:param` always works.
-
 
 ## Use computed SQL parameters
 
@@ -186,10 +184,9 @@ def good_query_function(args):
         return f'SELECT {args["col"][0]} FROM table'
 ```
 
-
 ## Manually sanitize values
 
-If you *must* use args as values, sanitize them, e.g. with `pymysql.escape_string(var)`:
+If you _must_ use args as values, sanitize them, e.g. with `pymysql.escape_string(var)`:
 
 ```python
 def safe_query_function(args):

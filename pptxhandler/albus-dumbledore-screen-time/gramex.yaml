@@ -8,8 +8,7 @@ url:
       data:
         url: screen-time.xlsx
       rules:
-        -
-          copy-slide: data.groupby('Movie', sort=False)
+        - copy-slide: data.groupby('Movie', sort=False)
           transition:
             type: f'morph'
             duration: 1

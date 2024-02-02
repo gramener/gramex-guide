@@ -10,10 +10,12 @@ It is now easy to update or modify data sources via FormHandler. FormHandler now
 ```html
 <!-- flags.csv has ID, Name, Text and many other fields -->
 <form action="flags-add" method="POST" enctype="multipart/form-data">
-  <label for="ID">ID</label>     <input type="text" name="ID" value="XXX">
-  <label for="Name">Name</label> <input type="text" name="Name" value="New country">
-  <label for="Text">Text</label> <input type="text" name="Text" value="New text">
-  <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
+  <label for="ID">ID</label> <input type="text" name="ID" value="XXX" />
+  <label for="Name">Name</label>
+  <input type="text" name="Name" value="New country" />
+  <label for="Text">Text</label>
+  <input type="text" name="Text" value="New text" />
+  <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}" />
   <button type="submit" class="btn btn-submit">Submit</button>
 </form>
 ```
@@ -24,11 +26,11 @@ This saves a new record in flags.csv. FormHandler picks the input field name and
 
 ```js
 // flags.csv has ID, Name, Text and many other fields
-$.ajax('flags-edit', {
-  method: 'PUT',
-  headers: xsrf_token,      // See documentation on XSRF tokens
-  data: {ID: 'XXX', Name: 'Country 1', Text: 'Text ' + Math.random()}
-})
+$.ajax("flags-edit", {
+  method: "PUT",
+  headers: xsrf_token, // See documentation on XSRF tokens
+  data: { ID: "XXX", Name: "Country 1", Text: "Text " + Math.random() },
+});
 ```
 
 Delete works similarly.
@@ -40,7 +42,7 @@ Delete works similarly.
 In the `kwargs` section, mention the primary key on which you would like to perform the edit. It can also be a list of values.
 
 ```yaml
-id: ID        # Make ID the primary key
+id: ID # Make ID the primary key
 ```
 
 ## Editing DataFrames

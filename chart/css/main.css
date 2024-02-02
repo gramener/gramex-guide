@@ -43,8 +43,9 @@
   overflow: hidden;
 }
 
-.pt-025, .px-025 {
-  padding-top: .125rem !important;
+.pt-025,
+.px-025 {
+  padding-top: 0.125rem !important;
 }
 
 .h-2 {
@@ -54,11 +55,11 @@
 .h-3 {
   height: 1.25rem !important;
 }
-.h-6{
-  height:8%!important ;
+.h-6 {
+  height: 8% !important ;
 }
-.h-94{
-height:91%!important ;
+.h-94 {
+  height: 91% !important ;
 }
 
 .bg-transparent {
@@ -66,25 +67,26 @@ height:91%!important ;
 }
 
 .bg-blue-light-hover:hover {
-  background-color:#000000 !important;
+  background-color: #000000 !important;
 }
-.bg-blue-light-hover:hover .color-gray-dark{
+.bg-blue-light-hover:hover .color-gray-dark {
   color: #fff !important;
 }
-
 
 .active > .btn {
   background-color: #000000 !important;
 }
 
-.nav-tabs .horizontal-tab.nav-link.active, .nav-tabs .nav-item.show .horizontal-tab.nav-link {
+.nav-tabs .horizontal-tab.nav-link.active,
+.nav-tabs .nav-item.show .horizontal-tab.nav-link {
   background-color: #c6d2e1 !important;
-  color: #00894A !important;
+  color: #00894a !important;
 }
 
-.nav-tabs .horizontal-tab.nav-link.active div, .nav-tabs .nav-item.show .horizontal-tab.nav-link div {
+.nav-tabs .horizontal-tab.nav-link.active div,
+.nav-tabs .nav-item.show .horizontal-tab.nav-link div {
   background-color: #c6d2e1 !important;
-  color: #00894A !important;
+  color: #00894a !important;
 }
 
 .active > .btn.remove-bg {
@@ -92,23 +94,25 @@ height:91%!important ;
   border: 1px solid #dee2e6 !important;
 }
 
-.upload:focus+label, .upload:hover+label, .upload:active+label {
+.upload:focus + label,
+.upload:hover + label,
+.upload:active + label {
   box-shadow: 0 0 0 0.2rem transparent !important;
 }
 
 .color-gray-dark {
-  color: #D1EFDD !important;
+  color: #d1efdd !important;
 }
 
 .color-text {
-  color: #00BC66 !important;
+  color: #00bc66 !important;
 }
 
 .color-blue-on-hover:hover {
   color: #ffffff !important;
 }
 
-.active > .btn .color-gray-dark{
+.active > .btn .color-gray-dark {
   color: #ffffff !important;
 }
 
@@ -121,23 +125,23 @@ height:91%!important ;
 }
 
 /* Remove controls from Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   border: solid 1px darkgray;
   margin: 0;
 }
 
 input[type="color"] {
-    -webkit-appearance: none;
-    padding: 0 !important;
+  -webkit-appearance: none;
+  padding: 0 !important;
 }
 input[type="color"]::-webkit-color-swatch-wrapper {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 
 textarea#upload-data-text {
@@ -154,7 +158,7 @@ textarea#upload-data-text {
 
 .scrollbar::-webkit-scrollbar {
   width: 4px;
-  height:4px;
+  height: 4px;
 }
 
 /* Track */
@@ -174,12 +178,12 @@ textarea#upload-data-text {
   background: #c6d2e1;
 }
 
-.scrollbar::-moz-scrollbar{
+.scrollbar::-moz-scrollbar {
   width: 6px;
 }
 
 /* Track */
-.scrollbar::-moz-scrollbar-track{
+.scrollbar::-moz-scrollbar-track {
   box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
@@ -194,7 +198,6 @@ textarea#upload-data-text {
 .scrollbar::-moz-scrollbar-thumb:hover {
   background: #b5b6b7;
 }
-
 
 /* color brewer swatches */
 
@@ -224,9 +227,8 @@ textarea#upload-data-text {
   min-width: 0rem;
   background-color: transparent;
   background-clip: padding-box;
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.175);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
 }
-
 
 /* Rangeinput slider [type="range"] */
 
@@ -238,8 +240,8 @@ input[type="range"] {
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -248,7 +250,7 @@ input[type="range"]::-webkit-slider-thumb {
   width: 18px !important;
   height: 18px !important;
   border-radius: 50%;
-  background: #00894A;
+  background: #00894a;
   cursor: pointer;
 }
 
@@ -256,6 +258,6 @@ input[type="range"]::-moz-range-thumb {
   width: 18px !important;
   height: 18px !important;
   border-radius: 50%;
-  background: #00894A;
+  background: #00894a;
   cursor: pointer;
 }

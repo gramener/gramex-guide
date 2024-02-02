@@ -1,7 +1,7 @@
 import:
   ui:
-    path: $GRAMEXAPPS/ui/gramex.yaml    # Import the UI components
-    YAMLURL: $YAMLURL/ui/               # ... at this URL
+    path: $GRAMEXAPPS/ui/gramex.yaml # Import the UI components
+    YAMLURL: $YAMLURL/ui/ # ... at this URL
 
 url:
   dataset-sales-serve-data-file:

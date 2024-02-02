@@ -59,23 +59,23 @@ We add these columns with the Pandas `transform:` key. This needs a single expre
 combine the transforms using `or`.
 
 ```yaml
-          transform: >
-            data.insert(3, 'Bar 2018', data['FY2018']) or
-            data.insert(5, 'Bar 2017', data['FY2017']) or
-            data.insert(6, 'Growth', data['FY2018'] / data['FY2017'] - 1) or
-            data
+transform: >
+  data.insert(3, 'Bar 2018', data['FY2018']) or
+  data.insert(5, 'Bar 2017', data['FY2017']) or
+  data.insert(6, 'Growth', data['FY2018'] / data['FY2017'] - 1) or
+  data
 ```
 
 We now set up the basic formatting for the table, using `sales` data. This also sets the font size
 and vertical alignment for the entire table.
 
 ```yaml
-      rules:
-        - Sales Table:
-            table:
-              data: sales
-              vertical-align: f'middle'
-              font-size: f'11 pt'
+rules:
+  - Sales Table:
+      table:
+        data: sales
+        vertical-align: f'middle'
+        font-size: f'11 pt'
 ```
 
 That gives us this result.
@@ -85,33 +85,32 @@ That gives us this result.
 Let's start by adjusting the table headers, and aligning the numeric columns to the right.
 
 ```yaml
-              header-row:
-                - Name
-                - Indication
-                - '<p align="right">FY2018</p>'
-                - ''
-                - '<p align="right">FY2017</p>'
-                - ''
-                - '<p align="right">Growth</p>'
+header-row:
+  - Name
+  - Indication
+  - '<p align="right">FY2018</p>'
+  - ""
+  - '<p align="right">FY2017</p>'
+  - ""
+  - '<p align="right">Growth</p>'
 ```
 
 Now, let's look at the text. The first two columns are straight-forward.
 
 ```yaml
-              text:
-                Name: cell.val
-                Indication: cell.val
+text:
+  Name: cell.val
+  Indication: cell.val
 ```
 
 For the numbers, we just need to right align them and add a comma separator (e.g. "10,000" instead of "10000"). We use Python string formatting for this.
 
 ```yaml
-                FY2018: f'<p align="right">{cell.val:,}</p>'
-                FY2017: f'<p align="right">{cell.val:,}</p>'
+FY2018: f'<p align="right">{cell.val:,}</p>'
+FY2017: f'<p align="right">{cell.val:,}</p>'
 ```
 
 ![Numbers with commas](comma.png){.img-fluid}
-
 
 For the bars, we repeat the same "█" character multiple times, using
 
@@ -122,8 +121,8 @@ For the bars, we repeat the same "█" character multiple times, using
 For every $1,000 million (or a billion) of sales, we show one "█".
 
 ```yaml
-                Bar 2018: f'<a color="accent_1" font-name="Arial" font-size="6pt">' + ('█' * int(cell.val / 1000)) + '</a>'
-                Bar 2017: f'<a color="accent_1" font-name="Arial" font-size="6pt">' + ('█' * int(cell.val / 1000)) + '</a>'
+Bar 2018: f'<a color="accent_1" font-name="Arial" font-size="6pt">' + ('█' * int(cell.val / 1000)) + '</a>'
+Bar 2017: f'<a color="accent_1" font-name="Arial" font-size="6pt">' + ('█' * int(cell.val / 1000)) + '</a>'
 ```
 
 ![Bars using repeated characters](bars.png){.img-fluid}
@@ -133,25 +132,24 @@ We've manually added spaces between character to give you an idea of character w
 Finally, the Growth column has a red ▼ or a green ▲ depending on whether growth was positive or negative.
 
 ```yaml
-                Growth: f'<p align="right">{cell.val:.1%} ' +
-                  ('<a color="red">▼</a>' if cell.val < 0 else '<a color="green">▲</a>') +
-                  '</p>'
+Growth: f'<p align="right">{cell.val:.1%} ' +
+  ('<a color="red">▼</a>' if cell.val < 0 else '<a color="green">▲</a>') +
+  '</p>'
 ```
 
 ![Growth value](growth.png){.img-fluid}
 
-
 Finally, let's adjust the width of these columns (determined by trial and error).
 
 ```yaml
-              width:
-                Name: 1
-                Indication: 2.5
-                FY2018: 1
-                Bar 2018: 1.5
-                FY2017: 1
-                Bar 2017: 1.5
-                Growth: 1
+width:
+  Name: 1
+  Indication: 2.5
+  FY2018: 1
+  Bar 2018: 1.5
+  FY2017: 1
+  Bar 2017: 1.5
+  Growth: 1
 ```
 
 [This is the final configuration](gramex.yaml.source){.source}

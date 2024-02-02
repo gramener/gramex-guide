@@ -5,17 +5,21 @@
 In this example, searching in the text box highlights the matching elements in the list.
 
 ```html
-<input type="search" data-search="@text" data-target=".list .item" data-hide-class="d-none">
+<input
+  type="search"
+  data-search="@text"
+  data-target=".list .item"
+  data-hide-class="d-none"
+/>
 <ul class="list">
   <li class="item">First item</li>
   <li class="item">Second item</li>
   <li class="item">Third item</li>
 </ul>
 <script>
-  $('body').search()
+  $("body").search();
 </script>
 ```
-
 
 ## $.search attributes
 

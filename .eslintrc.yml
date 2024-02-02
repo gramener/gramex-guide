@@ -1,7 +1,7 @@
 # See https:#eslint.org/docs/user-guide/configuring
 parserOptions:
-    # Parse with latest JavaScript version
-    ecmaVersion: "latest"
+  # Parse with latest JavaScript version
+  ecmaVersion: "latest"
 # Ignore files that can't be parsed as valid JS
 ignorePatterns:
   - chart/copy_example_vg.html

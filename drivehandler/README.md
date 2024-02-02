@@ -17,25 +17,25 @@ url:
     pattern: /$YAMLURL/drivedemo
     handler: DriveHandler
     kwargs:
-      path: $GRAMEXDATA/apps/guide/drive-data/  # ... save files here
-      xsrf_cookies: false     # TODO: Remove this in production.
+      path: $GRAMEXDATA/apps/guide/drive-data/ # ... save files here
+      xsrf_cookies: false # TODO: Remove this in production.
 ```
 
 Now, to upload a file into `/drive`, create this `form.html`.
 
 ```html
-  <!-- POST files into /drive -->
-  <form action="drivedemo" method="POST" enctype="multipart/form-data">
-    <!-- There must be a file input named "file". Multiple inputs are allowed -->
-    <input name="file" type="file" multiple>
-    <button type="submit">Submit</button>
-  </form>
+<!-- POST files into /drive -->
+<form action="drivedemo" method="POST" enctype="multipart/form-data">
+  <!-- There must be a file input named "file". Multiple inputs are allowed -->
+  <input name="file" type="file" multiple />
+  <button type="submit">Submit</button>
+</form>
 ```
 
 Visit `/form.html` and upload a file. This saves the uploaded files in the `path:` you specified.
 
 ::: example href=form.html source=https://github.com/gramener/gramex-guide/blob/master/drivehandler/form.html
-    Try the uploader example
+Try the uploader example
 
 ## DriveHandler XSRF
 
@@ -52,7 +52,7 @@ url:
     pattern: /$YAMLURL/drive
     handler: DriveHandler
     kwargs:
-      path: $GRAMEXDATA/apps/guide/drive-data/  # ... save files here
+      path: $GRAMEXDATA/apps/guide/drive-data/ # ... save files here
       # NOTE: Do not disable xsrf_cookies
 
   drivehandler-upload:
@@ -60,34 +60,33 @@ url:
     handler: FileHandler
     kwargs:
       path: $YAMLPATH/upload.html
-      template: true                # Required to create the XSRF token.
+      template: true # Required to create the XSRF token.
 ```
 
 In `upload.html`, add this HTML:
 
 ```html
-  <!-- POST files into /drive -->
-  <form action="drive2" method="POST" enctype="multipart/form-data">
-    <!-- There must be a file input named "file". Multiple inputs are allowed -->
-    <input name="file" type="file" multiple>
-    <button type="submit">Submit</button>
-    <!-- To avoid XSRF, add an _xsrf key. This REQUIRES FileHandler templates -->
-    <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
-  </form>
+<!-- POST files into /drive -->
+<form action="drive2" method="POST" enctype="multipart/form-data">
+  <!-- There must be a file input named "file". Multiple inputs are allowed -->
+  <input name="file" type="file" multiple />
+  <button type="submit">Submit</button>
+  <!-- To avoid XSRF, add an _xsrf key. This REQUIRES FileHandler templates -->
+  <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}" />
+</form>
 ```
 
 Visit `/upload` (**not** `upload.html`) and upload a file. This saves the uploaded files in the `path:` you specified.
 
 ::: example href=upload source=https://github.com/gramener/gramex-guide/blob/master/drivehandler/upload.html
-    Try the uploader with XSRF
-
+Try the uploader with XSRF
 
 ## File Manager
 
 **v1.60**. File Manager is an app designed to work with DriveHandler and simplifies its usage.
 
 ::: example href=filemanager/ source=https://github.com/gramener/gramex-guide/blob/master/drivehandler/gramex.yaml
-    Try the File Manager
+Try the File Manager
 
 FileManager can be imported in a Gramex app as follows:
 
@@ -114,25 +113,25 @@ import:
     YAMLURL: $YAMLURL/filemanager/
     FILEMANAGER_KWARGS:
       # Show these drives as tabs. These are YAML keys under the url: section
-      drives: ['drive1', 'drive2']
-      title: "MyAwesomeFileManager"             # Title of the File Manager page
-      logo: $YAMLPATH/data/assets/gramener.png  # Logo for the File Manager page
-      theme: '?font-family-base=roboto'         # UI component theme query?
+      drives: ["drive1", "drive2"]
+      title: "MyAwesomeFileManager" # Title of the File Manager page
+      logo: $YAMLPATH/data/assets/gramener.png # Logo for the File Manager page
+      theme: "?font-family-base=roboto" # UI component theme query?
 ```
 
 Once you import the File Manager, the File Manager component can be embedded in any `<div>` in any page:
 
 ```html
-<link rel="stylesheet" href="ui/dropzone/dist/min/dropzone.min.css">
+<link rel="stylesheet" href="ui/dropzone/dist/min/dropzone.min.css" />
 <script src="ui/dropzone/dist/min/dropzone.min.js"></script>
 <script src="ui/moment/min/moment-with-locales.min.js"></script>
 <script src="filemanager/filemanager.js"></script>
 
 <div class="filemanager" data-src="drive"></div>
 <script>
-  Dropzone.autodiscover = false
-  const options = {}
-  $('.filemanager').filemanager(options)
+  Dropzone.autodiscover = false;
+  const options = {};
+  $(".filemanager").filemanager(options);
 </script>
 ```
 
@@ -140,15 +139,16 @@ Once you import the File Manager, the File Manager component can be embedded in 
 
 ```js
 const options = {
-  pageSize: 10,           // Show 10 files at most
-  columns: [              // Choose the columns, order of display and title
-    { name: "file", title: 'File name' },
+  pageSize: 10, // Show 10 files at most
+  columns: [
+    // Choose the columns, order of display and title
+    { name: "file", title: "File name" },
     { name: "size" },
-    { name: 'date' },
-    { name: 'mime', title: 'Type' },
-    { name: 'delete' },
-  ]
-}
+    { name: "date" },
+    { name: "mime", title: "Type" },
+    { name: "delete" },
+  ],
+};
 ```
 
 ## AJAX uploads
@@ -157,7 +157,7 @@ const options = {
 progress bars. For example:
 
 ```html
-<link rel="stylesheet" href="ui/dropzone/dist/min/dropzone.min.css">
+<link rel="stylesheet" href="ui/dropzone/dist/min/dropzone.min.css" />
 <form action="upload" class="dropzone"></form>
 <script src="ui/dropzone/dist/min/dropzone.min.js"></script>
 ```
@@ -203,8 +203,8 @@ url:
     pattern: /$YAMLURL/drive
     handler: DriveHandler
     kwargs:
-      path: $GRAMEXDATA/apps/guide/drive-data/  # ... save files here
-      tags: [category, rating, description]     # Add 3 tags
+      path: $GRAMEXDATA/apps/guide/drive-data/ # ... save files here
+      tags: [category, rating, description] # Add 3 tags
 ```
 
 You can add an `<input name="description">` in your form to allow users to upload a description. [See an example](https://github.com/gramener/gramex-guide/blob/master/drivehandler/form.html).
@@ -223,8 +223,8 @@ url:
     pattern: /$YAMLURL/drive
     handler: DriveHandler
     kwargs:
-      path: $GRAMEXDATA/apps/guide/drive-data/  # ... save files here
-      user_fields: [id, role, hd]               # Capture user.id, user.role, user.hd
+      path: $GRAMEXDATA/apps/guide/drive-data/ # ... save files here
+      user_fields: [id, role, hd] # Capture user.id, user.role, user.hd
 ```
 
 When a user uploads a file, their `id`, `role`, and `hd` attributes will be captured as `user_id`, `user_role` and `user_hd` fields. This allows you to track who uploaded files.
@@ -235,20 +235,19 @@ You can use [FormHandler filters](../formhandler/#formhandler-filters) to filter
 
 - [drive?user_id~=a](drive?user_id~=a&_format=html) lists all files whose `user_id` contains "a"
 
-
 ## Delete files
 
 To delete a file, submit a DELETE HTTP request with an `id:` key. For example:
 
 ```js
-fetch('delete', {
-  method: 'DELETE',
-  headers: { 'Content-Type': 'application/json' },
+fetch("delete", {
+  method: "DELETE",
+  headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
     // Note: values MUST be arrays
     id: [existing_file_id],
-  })
-})
+  }),
+});
 ```
 
 This is exactly how [FormHandler DELETE](../formhandler/#formhandler-delete) works.
@@ -258,17 +257,17 @@ This is exactly how [FormHandler DELETE](../formhandler/#formhandler-delete) wor
 To rename a file or update any other attributes, submit a PUT HTTP request with an `id:` key. For example:
 
 ```js
-fetch('drive', {
-  method: 'PUT',
-  headers: { 'Content-Type': 'application/json' },
+fetch("drive", {
+  method: "PUT",
+  headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
     // Note: values MUST be arrays
     id: [existing_file_id],
-    file: ['new-file-name.ext'],
-    ext: ['.ext'],
-    desc: ['new description'],
-  })
-})
+    file: ["new-file-name.ext"],
+    ext: [".ext"],
+    desc: ["new description"],
+  }),
+});
 ```
 
 Note: You cannot change a file's `id`, `path`, `size` and `date`, nor the `user_*` attributes. This is mainly to rename the file and update tags.
@@ -276,13 +275,17 @@ Note: You cannot change a file's `id`, `path`, `size` and `date`, nor the `user_
 You can **overwrite a file** with a PUT request. For example:
 
 ```js
-const formData = new FormData()
-formData.append('id', existing_file_id)
-formData.append('file', document.querySelector('input#file').files[0], 'filename.ext')
-fetch('drive', {
-  method: 'PUT',
+const formData = new FormData();
+formData.append("id", existing_file_id);
+formData.append(
+  "file",
+  document.querySelector("input#file").files[0],
+  "filename.ext",
+);
+fetch("drive", {
+  method: "PUT",
   body: formData,
-})
+});
 ```
 
 ## Pre-process uploads
@@ -297,7 +300,7 @@ url:
     pattern: /$YAMLURL/drive
     handler: DriveHandler
     kwargs:
-      path: $GRAMEXDATA/apps/guide/drive-data/  # ... save files here
+      path: $GRAMEXDATA/apps/guide/drive-data/ # ... save files here
       prepare: mymodule.prepare(args, handler)
 ```
 
@@ -337,8 +340,16 @@ The contents of the file are in `handler.request.files`, which looks like this:
 
 ```json
 [
-  {"file": "file1.txt", "body": "Bytestring contents of file1.txt", "content_type": "text/plain"},
-  {"file": "file2.txt", "body": "Bytestring contents of file2.txt", "content_type": "text/plain"}
+  {
+    "file": "file1.txt",
+    "body": "Bytestring contents of file1.txt",
+    "content_type": "text/plain"
+  },
+  {
+    "file": "file2.txt",
+    "body": "Bytestring contents of file2.txt",
+    "content_type": "text/plain"
+  }
 ]
 ```
 
@@ -356,7 +367,7 @@ url:
     pattern: /$YAMLURL/drive
     handler: DriveHandler
     kwargs:
-      path: $GRAMEXDATA/apps/guide/drive-data/  # ... save files here
+      path: $GRAMEXDATA/apps/guide/drive-data/ # ... save files here
       modify: mymodule.modify(handler)
 ```
 
@@ -494,8 +505,8 @@ url:
     pattern: /$YAMLURL/drivedemo
     handler: DriveHandler
     kwargs:
-      url: 'postgresql://$USER:$PASS@server/db'
-      table: drive  # Optional. Defaults to "drive"
+      url: "postgresql://$USER:$PASS@server/db"
+      table: drive # Optional. Defaults to "drive"
 ```
 
 Any [FormHandler supported database](../formhandler/#supported-databases) will work.

@@ -22,13 +22,15 @@ makes it easy to translate any content in a page. For example:
   <li lang-target="de">This is translated into <em>German</em></li>
   <li lang-target="nl">This is translated into <em>Dutch</em></li>
 </ul>
-<script>$('[lang-target]').translate({url: './translate'})</script>
+<script>
+  $("[lang-target]").translate({ url: "./translate" });
+</script>
 ```
 
 ... renders:
 
-- Dies wird in übersetzt *Deutsche*
-- Dit is vertaald in *Nederlands*
+- Dies wird in übersetzt _Deutsche_
+- Dit is vertaald in _Nederlands_
 
 [Gramex translate](../../translate/) auto-detects the source languages if you
 leave the `source` blank. This helps when the source data has multiple languages
@@ -36,8 +38,8 @@ leave the `source` blank. This helps when the source data has multiple languages
 
 A few bugs have been fixed.
 
-- The [Translate API](../../translate/#translate-api) returns results *in the
-  same order* as the input.
+- The [Translate API](../../translate/#translate-api) returns results _in the
+  same order_ as the input.
 - Parallel requests are thread-safe.
 
 ## UI components have new colors, utilities and libraries
@@ -47,7 +49,10 @@ A few bugs have been fixed.
 default in `gramex init`. To use it:
 
 ```html
-<link rel="stylesheet" href="ui/@fortawesome/fontawesome-free/css/all.min.css">
+<link
+  rel="stylesheet"
+  href="ui/@fortawesome/fontawesome-free/css/all.min.css"
+/>
 ```
 
 [UI components](../../uicomponents/) now support:
@@ -63,7 +68,6 @@ default in `gramex init`. To use it:
 The new UI theme picker looks like this:
 
 ![Theme picker](theme-picker.png)
-
 
 ## g1 upgraded to 0.13
 

@@ -18,13 +18,13 @@ For example, this configuration maps the URL [total](total) to a FunctionHandler
 
 ```yaml
 url:
-    total:
-        pattern: /total                             # The "total" URL
-        handler: FunctionHandler                    # runs a function
-        kwargs:
-            function: calculations.total(100, 200)  # total() from calculations.py
-            headers:
-                Content-Type: application/json      # Display as JSON
+  total:
+    pattern: /total # The "total" URL
+    handler: FunctionHandler # runs a function
+    kwargs:
+      function: calculations.total(100, 200) # total() from calculations.py
+      headers:
+        Content-Type: application/json # Display as JSON
 ```
 
 It runs `calculations.total()` with the arguments `100, 200` and returns
@@ -37,7 +37,7 @@ def total(*items):
 ```
 
 ::: example href=total source="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py"
-    See `total`
+See `total`
 
 To see all configurations used in this page, see [gramex.yaml](gramex.yaml.source):
 
@@ -64,20 +64,20 @@ Expose it via this `gramex.yaml` configuration:
 
 ```yaml
 url:
-    combinations:
-        pattern: /combinations
-        handler: FunctionHandler
-        kwargs:
-            function: calculations.combinations
-            headers:
-                Content-Type: application/json
+  combinations:
+    pattern: /combinations
+    handler: FunctionHandler
+    kwargs:
+      function: calculations.combinations
+      headers:
+        Content-Type: application/json
 ```
 
 Now, [`combinations?n=10&k=4`](combinations?n=10&k=4) returns 210, the number of ways to pick 4
 items from 10 ignoring order)
 
 ::: example href="combinations?n=10&k=4" source="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py"
-    Try `combinations?n=10&k=4`
+Try `combinations?n=10&k=4`
 
 [`gramex.transforms.handler`](../api/transforms/#gramex.transforms.handler) calculates exposes all function arguments into a REST API. If you
 provide a type hint (e.g. `n: int`), it converts the argument to the correct type.
@@ -99,8 +99,7 @@ def multiply(v: List[int]):
 passed as a list `v = [10, 20, 30]` to return 10 x 20 x 30 = 6,000.
 
 ::: example href="multiply?v=10&v=20&v=30" source="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py"
-    Try `multiply?v=10&v=20&v=30`
-
+Try `multiply?v=10&v=20&v=30`
 
 ## Function output
 
@@ -115,7 +114,7 @@ String and byte outputs are rendered as-is. Other types (int, float, bool, datet
 - `int`, `float`, `np.integer`, `np.float`: rendered as JSON, e.g. `3`, `1.5`
 - `datetime.datetime` and `np.datetime`: rendered as ISO date, e.g. `1997-07-16T19:20:30+01:00`
 - `list`, `tuple`, `np.ndarray`: rendered as JSON arrays, e.g. `[1, "abc", true]`
-- `dict`: rendered as JSON, e.g. `{"x": 1, "y": "abc"}`. Keys *must* be strings
+- `dict`: rendered as JSON, e.g. `{"x": 1, "y": "abc"}`. Keys _must_ be strings
 - `pd.DataFrame`: rendered as JSON as an array of objects (index dropped). Individual values are converted as above
 - `pd.Series`: rendered as JSON as an `{index: value}` object. Individual values are converted as above
 
@@ -123,21 +122,20 @@ String and byte outputs are rendered as-is. Other types (int, float, bool, datet
 
 [Video](https://youtu.be/FPZ1dczw94s){.youtube}
 
-FunctionHandler handles `GET` *and* `POST` requests by default. That is, the
+FunctionHandler handles `GET` _and_ `POST` requests by default. That is, the
 same function is called irrespective of whether the method is `GET` or `POST`.
 
 To change this, add a `methods:` key. For example:
 
 ```yaml
 url:
-    total:
-        pattern: /total
-        handler: FunctionHandler
-        kwargs:
-            function: calculations.total(100, 200)
-            methods: [POST, PUT, DELETE]            # Allow only these 3 HTTP methods
+  total:
+    pattern: /total
+    handler: FunctionHandler
+    kwargs:
+      function: calculations.total(100, 200)
+      methods: [POST, PUT, DELETE] # Allow only these 3 HTTP methods
 ```
-
 
 ## URL path arguments
 
@@ -147,11 +145,11 @@ You can specify wildcards in the URL pattern. For example:
 
 ```yaml
 url:
-    lookup:
-        pattern: /name/([a-z]+)/age/([0-9]+)        # e.g. /name/john/age/21
-        handler: FunctionHandler                    # Runs a function
-        kwargs:
-            function: calculations.name_age         # Run this function
+  lookup:
+    pattern: /name/([a-z]+)/age/([0-9]+) # e.g. /name/john/age/21
+    handler: FunctionHandler # Runs a function
+    kwargs:
+      function: calculations.name_age # Run this function
 ```
 
 When you access `/name/john/age/21`, `john` and `21` can be accessed
@@ -170,21 +168,21 @@ You can pass any options you want to functions. For example, to call
 ```yaml
 url:
   method:
-    pattern: /method          # The URL /method
-    handler: FunctionHandler  # Runs a function
+    pattern: /method # The URL /method
+    handler: FunctionHandler # Runs a function
     kwargs:
-        function: random.randrange(start=0, stop=100)
+      function: random.randrange(start=0, stop=100)
 ```
 
 You can also pass these directly in the `function:`
 
 ```yaml
 url:
-    path:
-        pattern: /path/(.*?)/(.*?)
-        handler: FunctionHandler
-        kwargs:
-            function: handler.path_args
+  path:
+    pattern: /path/(.*?)/(.*?)
+    handler: FunctionHandler
+    kwargs:
+      function: handler.path_args
 ```
 
 Sample output:
@@ -193,7 +191,6 @@ Sample output:
 - [path/age/30](path/age/30) shows `["age", "30"]`
 
 `path_args` is available to [all handlers](../handlers/#basehandler-attributes).
-
 
 ## Function arguments
 
@@ -205,8 +202,8 @@ For example, the [add](add) URL below takes `handler` and sums up numbers you sp
 
 ```html
 <form action="add">
-  <div><input name="x" value="10"></div>
-  <div><input name="x" value="20"></div>
+  <div><input name="x" value="10" /></div>
+  <div><input name="x" value="20" /></div>
   <button type="submit">Add</button>
 </form>
 ```
@@ -215,13 +212,13 @@ To set this up, [gramex.yaml](gramex.yaml.source) used the following configurati
 
 ```yaml
 url:
-    add:
-        pattern: /add                               # The "add" URL
-        handler: FunctionHandler                    # runs a function
-        kwargs:
-            function: calculations.add(handler)     # add() from calculations.py
-            headers:
-                Content-Type: application/json      # Display as JSON
+  add:
+    pattern: /add # The "add" URL
+    handler: FunctionHandler # runs a function
+    kwargs:
+      function: calculations.add(handler) # add() from calculations.py
+      headers:
+        Content-Type: application/json # Display as JSON
 ```
 
 [calculations.add(handler)](calculations.py) is called with the Tornado
@@ -235,13 +232,13 @@ def add(handler):
 ```
 
 ::: example href="add?x=10&x=20&x=30" source="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py"
-    Try `add?x=10&x=20&x=30`
+Try `add?x=10&x=20&x=30`
 
 ## Parse URL arguments
 
 [Video](https://youtu.be/V4ibl-u_SZg){.youtube}
 
-You can manually parse the URL parameters. The URL parameters are stored in ``handler.args`` as a
+You can manually parse the URL parameters. The URL parameters are stored in `handler.args` as a
 dict with Unicode keys and list values. For example:
 
 ```text
@@ -328,11 +325,11 @@ If you have a `download.pdf` in your folder and display it using a function, the
 
 ```yaml
 url:
-    download-pdf:
-        pattern: /download-pdf
-        handler: FunctionHandler
-        kwargs:
-            function: gramex.cache.open('download.pdf', 'bin')
+  download-pdf:
+    pattern: /download-pdf
+    handler: FunctionHandler
+    kwargs:
+      function: gramex.cache.open('download.pdf', 'bin')
 ```
 
 ... will show output like:
@@ -344,8 +341,8 @@ url:
 To render this as a PDF, add this header:
 
 ```yaml
-            headers:
-                Content-Type: application/pdf       # MIME type of download
+headers:
+  Content-Type: application/pdf # MIME type of download
 ```
 
 This displays the file as a PDF in the browser.
@@ -353,7 +350,7 @@ This displays the file as a PDF in the browser.
 Further, to download it (instead of rendering it in the browser), add this header:
 
 ```yaml
-                Content-Disposition: attachment; filename=download.pdf
+Content-Disposition: attachment; filename=download.pdf
 ```
 
 You can also specify this in your function:
@@ -410,7 +407,7 @@ resolved. (Yielded Futures will be rendered in the same order as they are
 yielded.)
 
 ::: example href="slow?x=1&x=2&x=3" source="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py"
-    Try `slow?x=1&x=2&x=3`
+Try `slow?x=1&x=2&x=3`
 
 ## Asynchronous functions
 
@@ -448,9 +445,9 @@ def urls(handler):
 ```
 
 ::: example href="fetch?x=0&x=1&x=2" source="https://github.com/gramener/gramex-guide/blob/master/functionhandler/calculations.py"
-    See `fetch?x=0&x=1&x=2`
+See `fetch?x=0&x=1&x=2`
 
-The simplest way to call *any blocking function* asynchronously is to use a
+The simplest way to call _any blocking function_ asynchronously is to use a
 [ThreadPoolExecutor][ThreadPoolExecutor]. For example, using this code in a
 `FunctionHandler` will run `slow_calculation` in a separate thread without
 blocking Gramex. Gramex provides a global threadpool that you can use. It's at

@@ -33,10 +33,7 @@ url:
 Now visit `/sentiment?text=wrong&text=right` to see the following output:
 
 ```json
-[
-  "NEGATIVE",
-  "POSITIVE"
-]
+["NEGATIVE", "POSITIVE"]
 ```
 
 ## Function pipelines
@@ -66,11 +63,10 @@ url:
 
 This pipeline (i.e. a function with multiple steps) has 2 steps.
 
-When you visit [`/random`](../../function/random), it always runs the 2 steps in order: `random.seed(0)` first, then `random.randint(0, 100)`. It returns the *same random number* every time.
+When you visit [`/random`](../../function/random), it always runs the 2 steps in order: `random.seed(0)` first, then `random.randint(0, 100)`. It returns the _same random number_ every time.
 
 ::: example href=../../function/random source=https://github.com/gramener/gramex-guide/tree/master/function/gramex.yaml
-    Visit /random
-
+Visit /random
 
 To assign the output of a step to a variable, use `{name: ...}`. For example:
 
@@ -81,15 +77,15 @@ url:
     handler: FunctionHandler
     kwargs:
       function:
-        - {name: x, function: random.randint(0, 100)}
-        - {name: y, function: random.randint(0, 100)}
+        - { name: x, function: random.randint(0, 100) }
+        - { name: y, function: random.randint(0, 100) }
         - x + y
 ```
 
 The output will be the sum of 2 random numbers between 0-100 that changes on every reload.
 
 ::: example href=../../function/randomsum source=https://github.com/gramener/gramex-guide/tree/master/function/gramex.yaml
-    Visit /randomsum
+Visit /randomsum
 
 ## Command-line logging control
 
@@ -132,9 +128,9 @@ This allows apps to change the logging level for specific handlers. For example:
 ```yaml
 log:
   loggers:
-    gramex: {level: WARNING}    # Only show warnings form Gramex
-    matplotlib: {level: INFO}   # Ignore matplotlib debug messages
-    passlib: {level: INFO}      # Ignore passlib debug messages
+    gramex: { level: WARNING } # Only show warnings form Gramex
+    matplotlib: { level: INFO } # Ignore matplotlib debug messages
+    passlib: { level: INFO } # Ignore passlib debug messages
 ```
 
 ## API Documentation

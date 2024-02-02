@@ -6,10 +6,10 @@
 module.exports = {
   data: function () {
     return {
-      greeting: 'Hello'
-    }
-  }
-}
+      greeting: "Hello",
+    };
+  },
+};
 </script>
 
 <style scoped>

@@ -18,7 +18,6 @@ Here's a video explaining each step of this tutorial.
   <iframe src="https://www.youtube.com/embed/E1SeoUV8awI" allowfullscreen></iframe>
 </div>
 
-
 ## Create the data
 
 Let's start with the data. The original dataset has every [Harry Potter character's Screen Time](https://data.world/priyankad0993/harry-potter-screen-time/workspace/file?filename=Screen+Time.xlsx). We can take a [simpler dataset](screen-time.xlsx) that has the top 5 characters (by screen time) in each movie.
@@ -69,12 +68,11 @@ At this point (and any other time), you can run `slidesense` on the command line
 Next, we create a rule to copy one slide for each movie using [`copy-slide`](../#copy-slides). It loops through each row in the dataset `data`
 
 ```yaml
-      rules:
-        -
-          copy-slide: data.groupby('Movie', sort=False)
-          transition:
-            type: f'morph'
-            duration: 1
+rules:
+  - copy-slide: data.groupby('Movie', sort=False)
+    transition:
+      type: f'morph'
+      duration: 1
 ```
 
 `data.groupby('Movie', sort=False)` [groups](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.groupby.html)
@@ -85,8 +83,8 @@ We also apply a 1-second `morph` transition for the bars to animate smoothly int
 Next, we set the title of the slide to be the movie name.
 
 ```yaml
-          Title:
-              text: 'copy.key'
+Title:
+  text: "copy.key"
 ```
 
 `copy.key` has the index of `data`. Since we grouped by `movie`, `copy.key` is the same as the `movie`.
@@ -98,11 +96,11 @@ Now, the output will have one slide for each of the movies. The slide title is u
 Next, copy each character name -- once for each character.
 
 ```yaml
-          Name:
-            clone-shape: copy.val
-            add-top: 1.2 * clone.pos
-            name: f"!!{clone.val['Character']} name"
-            text: clone.val['Character']
+Name:
+  clone-shape: copy.val
+  add-top: 1.2 * clone.pos
+  name: f"!!{clone.val['Character']} name"
+  text: clone.val['Character']
 ```
 
 Here, `copy.val` has one row for each movie. This is what it looks like:
@@ -119,13 +117,13 @@ Here, `copy.val` has one row for each movie. This is what it looks like:
 Next, we set the widths of the bars.
 
 ```yaml
-          Bar:
-            clone-shape: copy.val
-            add-top: 1.2 * clone.pos
-            name: f"!!{clone.val['Character']} bar"
-            width: 5 * clone.val['Minutes'] / clone.val['Max Minutes']
-            text: f"{clone.val['Minutes']:.0f} min"
-            fill: "'ACCENT_2' if clone.val['Character'] == 'Albus Dumbledore' else 'ACCENT_4'"
+Bar:
+  clone-shape: copy.val
+  add-top: 1.2 * clone.pos
+  name: f"!!{clone.val['Character']} bar"
+  width: 5 * clone.val['Minutes'] / clone.val['Max Minutes']
+  text: f"{clone.val['Minutes']:.0f} min"
+  fill: "'ACCENT_2' if clone.val['Character'] == 'Albus Dumbledore' else 'ACCENT_4'"
 ```
 
 - `clone-shape: copy.val` clones the shape `Bar` once for each row, i.e. for each character.

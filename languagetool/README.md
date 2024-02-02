@@ -29,7 +29,6 @@ import:
 
 This mounts the app at [languagetool/](languagetool/).
 
-
 ## Usage
 
 LanguageTool accepts two query parameters:
@@ -83,15 +82,13 @@ The LanguageTool app in Gramex can be used with Ajax as follows:
 
 ```js
 function checkGrammar(text) {
-  $.ajax('languagetool/', {data: { q:  text } })
-    .done(function (result) {
-      console.log('Did you mean', result.correction)
-    })
+  $.ajax("languagetool/", { data: { q: text } }).done(function (result) {
+    console.log("Did you mean", result.correction);
+  });
 }
-checkGrammar('Tooo many spellng mistaes!')
+checkGrammar("Tooo many spellng mistaes!");
 // Did you mean "Too many spelling mistakes!"
 ```
-
 
 ### LanguageTool API
 
@@ -112,13 +109,11 @@ def check_grammar(handler):
     raise Return(result['correction'])
 ```
 
-
 ## Examples
 
 1. [The quick brown fox jamp over the lazy dog.](../languagetool/languagetool/?q=The quick brown fox jamp over the lazy dog.)
 2. [how are you](../languagetool/languagetool/?q=how are you)
 3. [I is fine.](../languagetool/languagetool/?q=I is fine.)
-
 
 ## Configuration
 
@@ -126,7 +121,7 @@ The LanguageTool app provides the following configurable [YAML variables](../con
 
 - `LT_PORT`: The port at which the LanguageTool subprocess runs (default: 8081)
 - `LT_ALLOW_ORIGIN`: Set the Access-Control-Allow-Origin header in the HTTP response,
-  used for direct (non-proxy) JavaScript-based access from browsers; (default : "*")
+  used for direct (non-proxy) JavaScript-based access from browsers; (default : "\*")
 - `LT_VERSION`: Version of LanguageTool to use. (default: 4.4)
 - `LT_TARGET`: Location at which to install LanguageTool. (default: `$GRAMEXDATA/languagetool`)
 - `LT_SRC`: URL from which to download LanguageTool.

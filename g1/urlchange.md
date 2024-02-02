@@ -11,7 +11,9 @@ bound directly to DOM events like this:
 <button class="sort">City</button>
 <button class="sort">Sales</button>
 <script>
-  $('.sort').on('click', function(e) { action($(this).text()) })
+  $(".sort").on("click", function (e) {
+    action($(this).text());
+  });
 </script>
 ```
 
@@ -24,7 +26,7 @@ change the URL like this:
 <button href="?_sort=City" class="urlfilter" target="#">City</button>
 <button href="?_sort=Sales" class="urlfilter" target="#">Sales</button>
 <script>
-  $('body').urlfilter()
+  $("body").urlfilter();
 </script>
 ```
 
@@ -32,8 +34,10 @@ Now, changes in the URL should trigger actions:
 
 ```js
 $(window)
-  .on('#?city', function(e, city) { action(city) })   // Listen to #? events
-  .urlchange()                                        // Enable these events
+  .on("#?city", function (e, city) {
+    action(city);
+  }) // Listen to #? events
+  .urlchange(); // Enable these events
 ```
 
 Examples:
@@ -60,7 +64,6 @@ Examples:
 - When the hashkey is reset, `location.hash=''`
   - `.on('#', function(e){})` as the location.hash is now `{}`
 
-
 ## $.urlchange events
 
 - `.on('#', function(e, val) {}` is fired when any part of the URL hash changes.
@@ -70,7 +73,7 @@ Examples:
     then `change={'/':'b', 'y': ['2']}`
   - `e.hash` is the [parsed URL hash](#urlparse) object
   - `e.old` is the previous [parsed URL hash](#urlparse) object
-- `.on('#?', function(e, val) {}` is fired when *any* URL hash **key** changes.
+- `.on('#?', function(e, val) {}` is fired when _any_ URL hash **key** changes.
   - `val` is the changed hash as a [URL](#urlparse) object
   - `e.change` is a dict with the changed key-values
   - `e.hash` is the [parsed URL hash](#urlparse) object

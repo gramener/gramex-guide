@@ -7,13 +7,13 @@ As a service, Gramex can schedule tasks at regular intervals (lowest granularity
 
 ```yaml
 schedule:
-    # your friendly configuration to post a Tweet every day at 7:15 am
-    run-at-your-interval:
-        function: scraper.post_tweet
-        startup: true    # also runs this section when Gramex is instantiated, use if required
-        hours: '7'       # 7th hour of every day
-        minutes: '15'    # 15th minute of that hour
-        thread: true
+  # your friendly configuration to post a Tweet every day at 7:15 am
+  run-at-your-interval:
+    function: scraper.post_tweet
+    startup: true # also runs this section when Gramex is instantiated, use if required
+    hours: "7" # 7th hour of every day
+    minutes: "15" # 15th minute of that hour
+    thread: true
 ```
 
 ## Use-cases

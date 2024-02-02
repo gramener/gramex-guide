@@ -29,7 +29,7 @@ Now, [`comics?name=dee&angle=straight&emotion=smile&pose=super`](comics?name=dee
 ![Sample comic](sample.svg){.img-fluid}
 
 ::: example href=comics?name=dee&angle=straight&emotion=smile&pose=super source=https://github.com/gramener/gramex-guide/blob/master/comichandler/gramex.yaml
-    Try ComicHandler
+Try ComicHandler
 
 This lets you create a variety of comic data stories. For examples, see [gramener.com/datacomics/](https://gramener.com/datacomics/).
 

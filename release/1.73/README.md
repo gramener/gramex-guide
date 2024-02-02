@@ -7,7 +7,6 @@ prefix: 1.73
 
 Gramex 1.73 introduces UIFactory events, InfluxDB support, Comicgen icons and more.
 
-
 ## UIFactory
 
 [UIFactory](../../uifactory/) is now out of beta.
@@ -23,7 +22,7 @@ You can write event listener code inside `<script $onclick>...</script>`, like t
   <button>Click here</button>
   <span>Count: ${count}</span>
   <script $onclick="button">
-    this.count += step
+    this.count += step;
   </script>
 </template>
 ```
@@ -38,11 +37,14 @@ To re-use HTML later, add it into a `<script type="text/html" $block="blockname"
 
 ```html
 <template $name="block-example" greeting="hello">
-  <script type="text/html" $block="one">one says ${greeting}.</script>
-  <script type="text/html" $block="two">two says ${greeting}.</script>
+  <script type="text/html" $block="one">
+    one says ${greeting}.
+  </script>
+  <script type="text/html" $block="two">
+    two says ${greeting}.
+  </script>
 
-  <%= one() %>
-  <%= two({ greeting: 'Ola' }) %>
+  <%= one() %> <%= two({ greeting: 'Ola' }) %>
 </template>
 ```
 
@@ -69,7 +71,6 @@ one says hello. two says Ola.
 
 [![Noto](noto.png){.img-fluid}](https://gramener.com/comicgen/v1/#name=noto)
 
-
 ## OpenAPIHandler supports FormHandlers
 
 You can expose a [FormHandler via OpenAPIHandler](../../openapihandler/#formhandler-openapis).
@@ -89,7 +90,6 @@ This lets you render a [user interface for FormHandler-based data APIs](../../op
 
 [![OpenAPI UI for FormHandler](openapi-formhandler.png)](../../openapihandler/example.html)
 
-
 ## FormHandler InfluxDB support
 
 FormHandler can read from and write into [InfluxDB](https://portal.influxdata.com/downloads/), a time series database.
@@ -100,9 +100,9 @@ url:
     pattern: /data
     handler: FormHandler
     kwargs:
-      url: 'mongodb://$USER:$PASS@$HOST:27017'
-      token: ...  # token for authorization
-      org: ...    # default organization to connect to
+      url: "mongodb://$USER:$PASS@$HOST:27017"
+      token: ... # token for authorization
+      org: ... # default organization to connect to
 ```
 
 ## LogViewer supports custom KPIs
@@ -130,7 +130,7 @@ the next few months, and the status of these items.
 
 - The [Gramex Node.js bridge](../../node/) now works on systems and Docker containers with IPv6
   addresses. Earlier, it would raise a HTTP 401 error.
-- If a Gramex [cache](../../cache/) runs out of memory because a *single* object is larger than its
+- If a Gramex [cache](../../cache/) runs out of memory because a _single_ object is larger than its
   size, it recommends increasing `cache.memory.size` in `gramex.yaml`. Earlier, it reported that it
   couldn't cache, not why.
 
@@ -145,7 +145,7 @@ Every Gramex release is tested for security vulnerabilities using the following 
    [See Bandit results](https://github.com/gramener/gramex/blob/master/reports/bandit.txt)
 2. [npm-audit](https://docs.npmjs.com/cli/v6/commands/npm-audit) tests for front-end JavaScript vulnerabilities.
    [See npm-audit results](https://github.com/gramener/gramex/blob/master/reports/npm-audit.txt)
-3. [Snyk](https://snyk.io/) for front-end and back-end vulnerabiliti  es.
+3. [Snyk](https://snyk.io/) for front-end and back-end vulnerabiliti es.
    [See Synk results](https://github.com/gramener/gramex/blob/master/reports/snyk.txt)
 4. [ClamAV](https://www.clamav.net/) for anti-virus scans.
    [See ClamAV results](https://github.com/gramener/gramex/blob/master/reports/clamav.txt)
@@ -158,7 +158,6 @@ The Gramex code base has:
 - 3,359 lines of JavaScript (same as 1.72)
 - 12,501 lines of test code (43 more than 1.72)
 - 89% test coverage (same as 1.72)
-
 
 ## How to install
 

@@ -15,10 +15,10 @@ url:
     handler: FunctionHandler
     kwargs:
       function: gramex.service.sms['amazonsns'].send(
-              to=handler.get_arg('to'),
-              subject=handler.get_arg('subject'),
-              sender=handler.get_arg('sender', 'Gramex'),
-          )
+        to=handler.get_arg('to'),
+        subject=handler.get_arg('subject'),
+        sender=handler.get_arg('sender', 'Gramex'),
+        )
       # POST method should not require XSRF
       xsrf_cookies: false
       headers:

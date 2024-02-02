@@ -7,7 +7,6 @@ by: TeamGramener
 type: microservice
 ...
 
-
 **v1.84**. [MLPredictor](.) lets you run ML models on dynamic datasets and render the output in a [FormHandler](../formhandler/)-like interface.
 
 You should use MLPredictor if
@@ -66,8 +65,7 @@ The `kwargs:` MLPredictor accepts are:
 - `columns`: List of input columns from `data` to pass to the model. If the model was created with [MLHandler](../mlhandler/), this is optional.
 - `target_col`: Optional name of the predicted column. If the model was created with [MLHandler](../mlhandler/), it picks it from the training dataset. Else defaults to `prediction`.
 
-
-All [FormHandler filters](../formhandler/#formhandler-filters) are applicable, making MLPredictor an good way to predict for different  subsets. For example:
+All [FormHandler filters](../formhandler/#formhandler-filters) are applicable, making MLPredictor an good way to predict for different subsets. For example:
 
 - `/mlpredictor?date=2022-22-02` -- predict all results for a specific date
 - `/mlpredictor?sort=-date&_limit=30` -- predict the 30 most recent results

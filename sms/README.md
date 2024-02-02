@@ -47,7 +47,6 @@ Notes:
 
 [dnc]: http://www.nccptrai.gov.in/nccpregistry/search.misc
 
-
 ## Exotel
 
 Here is a sample config for [Exotel](https://exotel.com/product-sms/):
@@ -56,11 +55,11 @@ Here is a sample config for [Exotel](https://exotel.com/product-sms/):
 sms:
   exotel:
     type: exotel
-    sid: ...            # Account Sid
-    key: ...            # API KEY
-    token: ...          # API TOKEN
-    domain: ...         # Optional. Defaults to api.exotel.com
-    priority: high      # Optional. Can be high or normal. Defaults to high
+    sid: ... # Account Sid
+    key: ... # API KEY
+    token: ... # API TOKEN
+    domain: ... # Optional. Defaults to api.exotel.com
+    priority: high # Optional. Can be high or normal. Defaults to high
 ```
 
 To set up Exotel:
@@ -72,11 +71,11 @@ To set up Exotel:
 3. Visit Settings > [SMS Templates](https://my.exotel.com/gramener5/settings/site#sms-settings).
    Add a transactional template. For example:
    `OTP requested by %s with mobile %s.`. Request approval.
-4. Visit Settings  > [API Settings](https://my.exotel.com/apisettings/site#api-credentials). Add
+4. Visit Settings > [API Settings](https://my.exotel.com/apisettings/site#api-credentials). Add
    the following in `gramex.yaml`.
-      - `sid`: Account Sid
-      - `key`: API KEY
-      - `token`: API TOKEN
+   - `sid`: Account Sid
+   - `key`: API KEY
+   - `token`: API TOKEN
 
 Notes:
 
@@ -87,11 +86,9 @@ Notes:
 
 See the Exotel documentation at <https://developer.exotel.com/api/#send-sms>.
 
-
 ## Twilio
 
 [Twilio SMS](https://www.twilio.com/sms) is on the roadmap.
-
 
 ## Send SMS
 

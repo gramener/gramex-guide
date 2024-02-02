@@ -26,7 +26,7 @@ url:
     handler: MLHandler
     kwargs:
       data:
-        url: $YAMLPATH/titanic.csv  # Path to the training dataset
+        url: $YAMLPATH/titanic.csv # Path to the training dataset
 
       # Path where the serialized model, training data and configuration is
       # saved
@@ -192,10 +192,8 @@ curl -X GET /model?Sex=male&Age=22&SibSp=1&Parch=0&Fare=7.25&Pclass=3&Embarked=S
   </div>
 </div>
 
-
 Note that the URL parameters in the GET query are expected to be fields in the
 training dataset, and can be passed as Python dictionaries or JS objects.
-
 
 ## Getting bulk predictions
 
@@ -350,6 +348,7 @@ curl -X GET /mlhandler?_model
 ```
 
 <button class="btn btn-primary" id="modelparams">See Model Parameters</button>
+
 <div id="paramresult" class="overflow-auto" style="height: 100px"></div>
 <ul class="nav nav-tabs" id="paramsTab" role="tablist">
   <li class="nav-item">
@@ -521,16 +520,16 @@ MLHandler endpoint using a logistic regression to classify this dataset, as
 follows:
 
 ```yaml
-  mlhandler-basiccircles:
-    pattern: /$YAMLURL/circlebasic
-    handler: MLHandler
-    kwargs:
-      xsrf_cookies: false
-      data:
-        url: $YAMLPATH/circles.csv
-      model:
-        class: LogisticRegression
-        target_col: y
+mlhandler-basiccircles:
+  pattern: /$YAMLURL/circlebasic
+  handler: MLHandler
+  kwargs:
+    xsrf_cookies: false
+    data:
+      url: $YAMLPATH/circles.csv
+    model:
+      class: LogisticRegression
+      target_col: y
 ```
 
 Clearly, logistic regression cannot achieve an accuracy of more than 50% on this
@@ -555,17 +554,17 @@ transformation to the MLHandler configuration, use the `transform:` key under
 the `data:` kwarg, as follows:
 
 ```yaml
-  mlhandler-basiccircles:
-    pattern: /$YAMLURL/circlebasic
-    handler: MLHandler
-    kwargs:
-      xsrf_cookies: false
-      data:
-        url: $YAMLPATH/circles.csv
-        transform: mymodule.transform   # The function used to transform the data
-      model:
-        class: LogisticRegression
-        target_col: y
+mlhandler-basiccircles:
+  pattern: /$YAMLURL/circlebasic
+  handler: MLHandler
+  kwargs:
+    xsrf_cookies: false
+    data:
+      url: $YAMLPATH/circles.csv
+      transform: mymodule.transform # The function used to transform the data
+    model:
+      class: LogisticRegression
+      target_col: y
 ```
 
 This will result in the handler transforming the training data, and any incoming
@@ -586,19 +585,20 @@ The following YAML spec shows how to setup an MLHandler instance to model and
 forecast on the [German Interest and Inflation Rate](https://www.statsmodels.org/stable/datasets/generated/interest_inflation.html) dataset. You can download a copy [here](infl?_download=inflation.csv&_format=csv).
 
 ```yaml
-  mlhandler-forecast:
-    pattern: /$YAMLURL/forecast
-    handler: MLHandler
-    kwargs:
-      data:
-        url: $YAMLPATH/inflation.csv  # Inflation dataset
-      model:
-        index_col: index    # Use index column as timestamps
-        target_col: R
-        class: SARIMAX
-        params:
-          order: [7, 1, 0]  # Creates ARIMA estimator with (p,d,q)=(7,1,0)
-                            # Add other parameters similarly
+mlhandler-forecast:
+  pattern: /$YAMLURL/forecast
+  handler: MLHandler
+  kwargs:
+    data:
+      url: $YAMLPATH/inflation.csv # Inflation dataset
+    model:
+      index_col: index # Use index column as timestamps
+      target_col: R
+      class: SARIMAX
+      params:
+        order:
+          [7, 1, 0] # Creates ARIMA estimator with (p,d,q)=(7,1,0)
+          # Add other parameters similarly
 ```
 
 Then, to get the forecast for a specific time period, POST the exogenous data and
@@ -628,12 +628,8 @@ url:
 Now visit `/sentiment?text=wrong&text=right` to see the following output:
 
 ```json
-[
-  "NEGATIVE",
-  "POSITIVE"
-]
+["NEGATIVE", "POSITIVE"]
 ```
-
 
 # Named Entity Recognition
 
@@ -670,40 +666,41 @@ Now visit:
 [
   {
     "text": "Narendra Modi is the PM of India.",
-    "labels": [{
-      "start": 0,
-      "end": 13,
-      "label": "PER"
-    },
-    {
-      "start": 27,
-      "end": 32,
-      "label": "LOC"
-    }
+    "labels": [
+      {
+        "start": 0,
+        "end": 13,
+        "label": "PER"
+      },
+      {
+        "start": 27,
+        "end": 32,
+        "label": "LOC"
+      }
     ]
   },
   {
     "text": "Joe Biden is the President of the United States and lives in Washington DC.",
-    "labels": [{
-      "start": 0,
-      "end": 9,
-      "label": "PER"
-    },
-    {
-      "start": 40,
-      "end": 47,
-      "label": "LOC"
-    },
-    {
-      "start": 61,
-      "end": 74,
-      "label": "LOC"
-    },
+    "labels": [
+      {
+        "start": 0,
+        "end": 9,
+        "label": "PER"
+      },
+      {
+        "start": 40,
+        "end": 47,
+        "label": "LOC"
+      },
+      {
+        "start": 61,
+        "end": 74,
+        "label": "LOC"
+      }
     ]
-   }
+  }
 ]
 ```
-
 
 # FAQs
 

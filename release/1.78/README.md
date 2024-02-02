@@ -23,13 +23,13 @@ function getLength(obj: WindowStates | WindowStates[]) {
 
 ```js
 function getLength(obj) {
-    return obj.length;
+  return obj.length;
 }
 //# sourceMappingURL=typescript.ts?map
 ```
 
 ::: example href=../../filehandler/typescript.ts source="https://github.com/gramener/gramex-guide/blob/master/filehandler/typescript.ts"
-    See typescript.ts
+See typescript.ts
 
 To enable this in your [FileHandler](../../filehandler/#typescript), add:
 
@@ -53,19 +53,20 @@ To specify a time series model, use `class: SARIMAX`. This uses the
 [`SARIMAX` algorithm in `statsmodels`](https://www.statsmodels.org/dev/generated/statsmodels.tsa.statespace.sarimax.SARIMAX.html).
 
 ```yaml
-  mlhandler/forecast:
-    pattern: /$YAMLURL/forecast
-    handler: MLHandler
-    kwargs:
-      data:
-        url: $YAMLPATH/inflation.csv  # Inflation dataset
-      model:
-        index_col: index    # Use index column as timestamps
-        target_col: R
-        class: SARIMAX
-        params:
-          order: [7, 1, 0]  # Creates ARIMA estimator with (p,d,q)=(7,1,0)
-                            # Add other parameters similarly
+mlhandler/forecast:
+  pattern: /$YAMLURL/forecast
+  handler: MLHandler
+  kwargs:
+    data:
+      url: $YAMLPATH/inflation.csv # Inflation dataset
+    model:
+      index_col: index # Use index column as timestamps
+      target_col: R
+      class: SARIMAX
+      params:
+        order:
+          [7, 1, 0] # Creates ARIMA estimator with (p,d,q)=(7,1,0)
+          # Add other parameters similarly
 ```
 
 ## CORS with auth
@@ -83,7 +84,7 @@ url:
     handler: FunctionHandler
     kwargs:
       function: handler.session
-      cors: true  # Enable CORS
+      cors: true # Enable CORS
 ```
 
 You can [restrict CORS](../../deploy/#cors) to specific domains or HTTP methods.
@@ -109,7 +110,7 @@ Any `GET`, `OPTIONS` or other HTTP requests to `/public-read` can be made by any
 `PUT`, `DELETE` can only be made by logged-in users.
 
 ::: example href=../../auth/methods source=https://github.com/gramener/gramex-guide/blob/master/auth/gramex.yaml
-    Auth HTTP methods
+Auth HTTP methods
 
 ## Dynamic SASS imports
 
@@ -145,7 +146,6 @@ The Gramex code base has:
 - 3,364 lines of JavaScript (4 more than 1.77)
 - 12,837 lines of test code (20 more than 1.77)
 - 89% test coverage (same as 1.77)
-
 
 ## How to install
 

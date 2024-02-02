@@ -80,8 +80,8 @@ generate random key names to prevent this.
 
 ```yaml
 url:
-    my-app-$*:                  # The '$*' is replaced by a random value
-        pattern: ...
+  my-app-$*: # The '$*' is replaced by a random value
+    pattern: ...
 ```
 
 Also, if the developer specifies an invalid URL regular expression, like
@@ -111,7 +111,7 @@ its [parameters](../../formhandler/#formhandler-parameters). For example, with
 `pattern: /sales/(\w+)`, you can use this query:
 
 ```yaml
-    query: SELECT {_0}, SUM(revenue) FROM sales GROUP BY {_0}
+query: SELECT {_0}, SUM(revenue) FROM sales GROUP BY {_0}
 ```
 
 The `{_0}` refers to the portion after `/sales/`. So `/sales/city` returns the

@@ -7,10 +7,10 @@ url:
       source: $YAMLPATH/template.pptx
       rules:
         - Internal:
-            Tickets: {text: 100}
-            On time: {text: 84}
-            SLA: {text: f'84%', fill: f'red'}
+            Tickets: { text: 100 }
+            On time: { text: 84 }
+            SLA: { text: f'84%', fill: f'red' }
         - External:
-            Tickets: {text: 200}
-            On time: {text: 196}
-            SLA: {text: f'98%', fill: f'green'}
+            Tickets: { text: 200 }
+            On time: { text: 196 }
+            SLA: { text: f'98%', fill: f'green' }

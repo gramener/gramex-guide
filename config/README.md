@@ -9,14 +9,14 @@ All features of Gramex are controlled by `gramex.yaml`. Here's a simple
 `gramex.yaml` that serves the file `home.html` as the home page.
 
 ```yaml
-url:                        # URL configuration section
-  root:                     # Add a configuration called "root"
-    pattern: /              # It maps the URL / (the home page)...
-    handler: FileHandler    # ... to a Gramex FileHandler
-    kwargs:                 # ... and passes it these arguments:
-      path: home.html       # Use home.html as the path to serve
+url: # URL configuration section
+  root: # Add a configuration called "root"
+    pattern: / # It maps the URL / (the home page)...
+    handler: FileHandler # ... to a Gramex FileHandler
+    kwargs: # ... and passes it these arguments:
+      path: home.html # Use home.html as the path to serve
 app:
-  browser: /                # Open the home page when the app loads
+  browser: / # Open the home page when the app loads
 ```
 
 Create this `home.html` in the same directory:
@@ -101,7 +101,7 @@ app:
 log:
   loggers:
     gramex:
-      level: WARNING      # Gramex capitalizes --log.level
+      level: WARNING # Gramex capitalizes --log.level
 ```
 
 The Gramex logger settings
@@ -112,17 +112,17 @@ The `url:` section maps URLs to content. Here is an example:
 
 ```yaml
 url:
-  homepage:                         # "homepage" can be replaced with any unique name
-    pattern: /                      # Map the URL /
-    handler: FileHandler            # using a built-in FileHandler
-    kwargs:                         # Pass these options to FileHandler
-      path: $YAMLPATH/index.html    # Show the index.html in the same directory as this YAML file
+  homepage: # "homepage" can be replaced with any unique name
+    pattern: / # Map the URL /
+    handler: FileHandler # using a built-in FileHandler
+    kwargs: # Pass these options to FileHandler
+      path: $YAMLPATH/index.html # Show the index.html in the same directory as this YAML file
 
-  hello:                            # A unique name for this mapping
-    pattern: /hello                 # Map the URL /hello
-    handler: FunctionHandler        # using the build-in FunctionHandler
-    kwargs:                         # Pass these options to FunctionHandler
-      function: str("Hello")        # Run the str() function with the argument "Hello"
+  hello: # A unique name for this mapping
+    pattern: /hello # Map the URL /hello
+    handler: FunctionHandler # using the build-in FunctionHandler
+    kwargs: # Pass these options to FunctionHandler
+      function: str("Hello") # Run the str() function with the argument "Hello"
 ```
 
 The `url:` section is a name - mapping dictionary. The names are just unique
@@ -133,9 +133,9 @@ identifiers. The mappings have these keys:
   brackets are passed to the handler as arguments.
 - `handler`: The name of the Tornado [RequestHandler][requesthandler] to run.
   Gramex provides many handlers by default. Here are some commonly used ones:
-    - [FunctionHandler](../functionhandler/): runs any function and renders the output
-    - [FileHandler](../filehandler/): transforms & displays files
-    - [DataHandler](../datahandler/): renders data from databases or files
+  - [FunctionHandler](../functionhandler/): runs any function and renders the output
+  - [FileHandler](../filehandler/): transforms & displays files
+  - [DataHandler](../datahandler/): renders data from databases or files
 - `kwargs`: Keyword arguments to pass to the handler. The arguments varies by handler.
 - `priority`: A number indicating the priority. By default, the mapping has a
   priority of 0. Use 1, 2, etc for higher priority, -1, -2, etc for lower
@@ -155,10 +155,10 @@ class Hello(BaseHandler):
 Now, you can add this configuration to your `url:` section:
 
 ```yaml
-url:                # Do not include this line if you already have it
-  hello:                      # a name you want to give to the handler
-    pattern: /hello           # URL pattern
-    handler: hello.Hello      # class that implements the handler
+url: # Do not include this line if you already have it
+  hello: # a name you want to give to the handler
+    pattern: /hello # URL pattern
+    handler: hello.Hello # class that implements the handler
 ```
 
 This renders "hello world" at the URL [/hello](hello).
@@ -171,13 +171,13 @@ The `kwargs:` section of `url:` accepts a `headers:` key that sets custom HTTP
 headers. For example:
 
 ```yaml
-    kwargs:
-      headers:
-        Content-Type: text/plain            # Display as plain text
-        Access-Control-Allow-Origin: '*'    # Allow CORS (all servers can access via AJAX)
-        X-XSS-Protection: 1; mode=block     # Disable XSS scripting on old browsers
-        # Disable unsafe inline/eval, only allow loading images, fonts, scripts, etc. over https:
-        Content-Security-Policy: 'default-src https:'
+kwargs:
+  headers:
+    Content-Type: text/plain # Display as plain text
+    Access-Control-Allow-Origin: "*" # Allow CORS (all servers can access via AJAX)
+    X-XSS-Protection: 1; mode=block # Disable XSS scripting on old browsers
+    # Disable unsafe inline/eval, only allow loading images, fonts, scripts, etc. over https:
+    Content-Security-Policy: "default-src https:"
 ```
 
 ... adds the Content-Type, CORS and other security settings to the response headers.
@@ -189,10 +189,10 @@ handlers:
   BaseHandler:
     headers:
       # https://www.veracode.com/blog/2014/03/guidelines-for-setting-security-headers
-      X-XSS-Protection: 1; mode=block     # Enable XSS protection
-      X-Content-Type-Options: nosniff     # Browsers should not perform MIME-type sniffing
-      X-Frame-Options: SAMEORIGIN         # Don't place in an iframe from external site
-      Server: false                       # Don't reveal the server
+      X-XSS-Protection: 1; mode=block # Enable XSS protection
+      X-Content-Type-Options: nosniff # Browsers should not perform MIME-type sniffing
+      X-Frame-Options: SAMEORIGIN # Don't place in an iframe from external site
+      Server: false # Don't reveal the server
 ```
 
 ## HTTP Methods
@@ -211,7 +211,6 @@ The `kwargs:` section of `url:` accepts a `methods:` a list of allowed HTTP meth
 If the user requests a non-allowed method, or the underlying handler does not support it, Gramex
 raises a `HTTP 405: Method not allowed` response.
 
-
 ## Logging
 
 The `log:` section defines Gramex's logging behavior. See
@@ -223,7 +222,7 @@ To only log WARNING messages to the console, use:
 log:
   loggers:
     gramex:
-      level: WARNING    # Default is DEBUG. Can be INFO, WARNING, ERROR
+      level: WARNING # Default is DEBUG. Can be INFO, WARNING, ERROR
 ```
 
 From **v1.23**, Gramex also saves all console logs to `logs/gramex.log` under
@@ -233,14 +232,14 @@ From **v1.23**, Gramex also saves all console logs to `logs/gramex.log` under
 log:
   handlers:
     logfile:
-      filename: $GRAMEXDATA/your-app/gramex.log       # Change file location
+      filename: $GRAMEXDATA/your-app/gramex.log # Change file location
 ```
 
 The log file is backed up weekly by default. You can change these [parameters][trfh]:
 
 - `filename`: defaults to `$GRAMEXDATA/logs/gramex.log`
 - `when`: can be `s`, `m`, `h`, `d`, `w0` to `w6` or `midnight`. See [TimedRotatingFileHandler][trfh]. Defaults to `w0`, i.e. Monday
-- `interval`: for example, if this is 6 and `when: h`, the log file is rotated every 6 hours.  Defaults to 1, i.e. every Monday
+- `interval`: for example, if this is 6 and `when: h`, the log file is rotated every 6 hours. Defaults to 1, i.e. every Monday
 - `backupCount`: number of backups to retain. Defaults to 52, i.e. 52 weeks of backup
 - `encoding`: defaults to `utf-8`
 - `utc`: set to `true` to use UTC. Defaults to `false` (i.e. local time)
@@ -272,7 +271,7 @@ To change the location of this file, use `log.handlers.requests.filename`:
 log:
   handlers:
     requests:
-      filename: $GRAMEXDATA/your-app/requests.csv      # The path can point ANYWHERE
+      filename: $GRAMEXDATA/your-app/requests.csv # The path can point ANYWHERE
 ```
 
 To change the columns that are logged, use `log.handlers.requests.keys:`
@@ -317,16 +316,16 @@ storelocations:
     url: sqlite:///$GRAMEXDATA/auth.user.db
     table: userlog
     columns:
-      event: TEXT     # Type of event: login/logout/fail
+      event: TEXT # Type of event: login/logout/fail
       # Except event, these values must be keys for transforms.build_log_info()
-      port: INTEGER   # Port on which Gramex is running
-      uri: TEXT       # URL where the user logged in
-      name: TEXT      # Name of the handler
-      class: TEXT     # Class of the handler (e.g. SimpleAuth, GoogleAuth, etc)
-      datetime: TEXT  # Time of event, ISO8601 encoded (YYYY-MM-DD HH:MM:SSZ)
-      user: TEXT      # User ID (e.g. user name or email address, depending on handler)
-      ip: TEXT        # IP address of the client
-      browser: TEXT   # Browser name
+      port: INTEGER # Port on which Gramex is running
+      uri: TEXT # URL where the user logged in
+      name: TEXT # Name of the handler
+      class: TEXT # Class of the handler (e.g. SimpleAuth, GoogleAuth, etc)
+      datetime: TEXT # Time of event, ISO8601 encoded (YYYY-MM-DD HH:MM:SSZ)
+      user: TEXT # User ID (e.g. user name or email address, depending on handler)
+      ip: TEXT # IP address of the client
+      browser: TEXT # Browser name
 ```
 
 If you use Gramex on multiple servers, change this to a remote database with the same syntax as
@@ -348,7 +347,7 @@ You can use any key from the list of columns in [request logging](#request-loggi
 storelocations:
   userlog:
     columns:
-      event: TEXT   # required
+      event: TEXT # required
       datetime: TEXT
       user: TEXT
       # Add any additional columns here, e.g.
@@ -376,7 +375,7 @@ To change the location of this file, use `log.handlers.user.filename`:
 log:
   handlers:
     user:
-      filename: $GRAMEXDATA/your-app/user.csv     # The path can point ANYWHERE
+      filename: $GRAMEXDATA/your-app/user.csv # The path can point ANYWHERE
 ```
 
 To change the columns that are logged, use `log.handlers.user.keys:`
@@ -392,7 +391,7 @@ For the list of valid keys, see [request logging](#request-logging).
 
 ---
 
-Until **v1.22**, the `log:` section of auth handlers  could be configured to
+Until **v1.22**, the `log:` section of auth handlers could be configured to
 log events like this:
 
 ```yaml
@@ -400,16 +399,15 @@ auth:
   pattern: /$YAMLURL/auth
   handler: SimpleAuth
   kwargs:
-    log:                              # Log this when a user logs in via this handler
-      fields:                         # List of fields:
-        - session.id                  #   handler.session['id']
-        - current_user.id             #   handler.current_user['id']
-        - request.remote_ip           #   handler.request.remote_ip
-        - request.headers.User-Agent  #   handler.request.headers['User-Agent']
+    log: # Log this when a user logs in via this handler
+      fields: # List of fields:
+        - session.id #   handler.session['id']
+        - current_user.id #   handler.current_user['id']
+        - request.remote_ip #   handler.request.remote_ip
+        - request.headers.User-Agent #   handler.request.headers['User-Agent']
 ```
 
 The `log:` key has been **removed since v1.23**.
-
 
 ### Handler logging
 
@@ -421,7 +419,6 @@ Instead, use [request logging](#request-logging) to set up access logs.
 
 Logging to `$GRAMEXDATA/logs/access.csv` has also been disabled since no project
 uses it by default.
-
 
 ## Error handlers
 
@@ -439,7 +436,7 @@ url:
 ```
 
 ::: example href=error-page source=https://github.com/gramener/gramex-guide/blob/master/config/error-page.html
-    Error page example
+Error page example
 
 The error page is rendered as a Tornado template with 3 keyword arguments:
 
@@ -503,7 +500,7 @@ url:
 ```
 
 ::: example href=json-error source=https://github.com/gramener/gramex-guide/blob/master/config/gramex.yaml
-    JSON error example
+JSON error example
 
 The function can be any [expression or pipeline](../function/) that can use `status_code`, `kwargs`
 or `handler`. Its return value is rendered as a string.
@@ -593,7 +590,6 @@ However, you can specify `external: true` to override this:
 You can test this at
 [../auth/ldap2?next=https://gramener.com/](../auth/ldap2?next=https://gramener.com/).
 
-
 ## Scheduling
 
 The `schedule:` section schedules functions to run at specific times or on
@@ -606,12 +602,12 @@ schedules have the following keys:
 It also accepts a timing that is based on the [crontab format][crontab]. Here is
 an example:
 
-- `years`: 2016-2019            # From year 2016 - 2019
-- `months`: 'jan, mar-may, 12'  # In Jan, Mar, Apr, May, Dec
-- `dates`: '1, L'               # On the first and last days
-- `weekdays`: '*'               # 0-6 or SUN-SAT
-- `hours`: '*/3'                # Every 3rd hour
-- `minutes`: '*/5, 59'          # Every 5th minute, and 59th minute
+- `years`: 2016-2019 # From year 2016 - 2019
+- `months`: 'jan, mar-may, 12' # In Jan, Mar, Apr, May, Dec
+- `dates`: '1, L' # On the first and last days
+- `weekdays`: '\*' # 0-6 or SUN-SAT
+- `hours`: '\*/3' # Every 3rd hour
+- `minutes`: '\*/5, 59' # Every 5th minute, and 59th minute
 
 See the [scheduler](../scheduler/) documentation for examples.
 
@@ -623,20 +619,19 @@ The `mime:` section lets you add custom MIME types for extensions. For example:
 
 ```yaml
 mime:
-    .yml: text/yaml
+  .yml: text/yaml
 ```
 
 ... maps the `.yml` extension to the `text/yaml` MIME type. This is used by
 [FileHandler](../filehandler/) and other services to set the `Content-Type`
 header.
 
-
 ## YAML imports
 
 One config file can import another. For example:
 
 ```yaml
-import: another.yaml        # import this YAML file relative to current file path
+import: another.yaml # import this YAML file relative to current file path
 ```
 
 These "copy-paste" the contents of `another.yaml` from the same directory as
@@ -648,10 +643,10 @@ To import multiple files, path can be a list or a wildcard. For example:
 import:
   app:
     path:
-      - another.yaml          # Relative paths are relative to this YAML file
-      - D:/temp/gramex.yaml   # Absolute paths are OK too
-      - '*/gramex.yaml'       # Any gramex.yaml file under an immediate sub-directory
-      - '**/gramex.yaml'      # Any gramex.yaml file under ANY sub-directory
+      - another.yaml # Relative paths are relative to this YAML file
+      - D:/temp/gramex.yaml # Absolute paths are OK too
+      - "*/gramex.yaml" # Any gramex.yaml file under an immediate sub-directory
+      - "**/gramex.yaml" # Any gramex.yaml file under ANY sub-directory
     namespace: [url, schedule, cache, import]
 ```
 
@@ -661,8 +656,8 @@ You can pass variables to the imported file using this syntax:
 import:
   app:
     path: another.yaml
-    var1: value               # $var1 will be replaced with "value"
-    var2: {key: value}        # $var2 will be replaced with {"key": "value"}
+    var1: value # $var1 will be replaced with "value"
+    var2: { key: value } # $var2 will be replaced with {"key": "value"}
 ```
 
 The `$YAMLURL` and `$YAMLPATH` [variables](#yaml-variables) work as expected. But
@@ -683,14 +678,14 @@ imported file's `$YAMLURL` as follows:
 ```yaml
 import:
   app1:
-    path: dir/app.yaml          # YAMLURL is /dir/ by default
-    YAMLURL: /app1/             # YAMLURL is set to /app1/ instead
+    path: dir/app.yaml # YAMLURL is /dir/ by default
+    YAMLURL: /app1/ # YAMLURL is set to /app1/ instead
     # Here are some other options
     # YAMLURL: $YAMLURL         # pattern is $YAMLURL, as if dir/app.yaml were copy-pasted here
     # YAMLURL: /app/dir/        # pattern is /app/dir/
   app2:
-    path: dir/app2.yaml         # Another application
-    YAMLURL: /app2/             # is mounted at /app2/
+    path: dir/app2.yaml # Another application
+    YAMLURL: /app2/ # is mounted at /app2/
 ```
 
 The keys `app1`, `app2`, etc. are just identifiers, not used for anything.
@@ -699,7 +694,7 @@ You can also use imports within sections. For example:
 
 ```yaml
 url:
-  import: app1/gramex.yaml  # Imports app1/gramex.yaml into the url: section
+  import: app1/gramex.yaml # Imports app1/gramex.yaml into the url: section
 ```
 
 Notes:
@@ -735,8 +730,8 @@ When importing another application, use namespaces like this:
 
 ```yaml
 import:
-  app:                          # Some unique name for the app
-    path: another.yaml          # Relative paths are relative to this YAML file
+  app: # Some unique name for the app
+    path: another.yaml # Relative paths are relative to this YAML file
     namespace: [url, schedule, cache, import]
 ```
 
@@ -750,13 +745,12 @@ When building an application for re-use, use wildcard keys like this:
 
 ```yaml
 url:
-  my-app-$*:                  # Note the '$*' in the key
+  my-app-$*: # Note the '$*' in the key
     pattern: ...
 ```
 
 Every `'$*'` in a key is replaced with a random string every time the file is
 loaded -- ensuring that it is unique.
-
 
 ## YAML variables
 
@@ -765,22 +759,22 @@ Templates can use variables. Variables are written as `$VARIABLE` or
 For example:
 
 ```yaml
-import: $HOME/gramex.yaml       # imports gramex.yaml from your home directory
+import: $HOME/gramex.yaml # imports gramex.yaml from your home directory
 ```
 
 You can define or override variables using the `variables:` section like this:
 
 ```yaml
 variables:
-  URLROOT: "/site"                  # Define $URLROOT
-  HOME: {default: "/home"}          # Define $HOME if not defined earlier
-  PATH: $URLROOT/path               # Define $PATH based on $URLROOT
+  URLROOT: "/site" # Define $URLROOT
+  HOME: { default: "/home" } # Define $HOME if not defined earlier
+  PATH: $URLROOT/path # Define $PATH based on $URLROOT
 ```
 
 `$URLROOT` is set to `/site`. If the variable was defined earlier in another
 YAML file or the environment, that value is lost.
 
-`$HOME` is set to `/home` *only if* it was not already defined. It *defaults* to
+`$HOME` is set to `/home` _only if_ it was not already defined. It _defaults_ to
 home, but does not override a previous value.
 
 `$PATH` is set to `/site/path`. Its value is based on the previously defined
@@ -882,12 +876,12 @@ Here's how it works. In the code below, the `first:` and `second:` are identical
 
 ```yaml
 variables:
-  var:                    # Defines $var
+  var: # Defines $var
     key: value
 first:
-  key: default-value      # If no $var is defined, use this key
-  import.merge: $var      # If it's defined, just merge the $var here, overriding key:
-second:                     # The result of first: is the same as second:
+  key: default-value # If no $var is defined, use this key
+  import.merge: $var # If it's defined, just merge the $var here, overriding key:
+second: # The result of first: is the same as second:
   key: value
 ```
 
@@ -896,11 +890,10 @@ You can have multiple `import.merge`s like this:
 ```yaml
 first:
   key: default-value
-  import.merge.first: $var1   # Anything under import.merge.*: is merged
-  import.merge.next: $var2    # Merges happen in order, overriding previous
-  import.merge.last: $var3    # The key text after "import.merge" (e.g. .first, .last) is ignored
+  import.merge.first: $var1 # Anything under import.merge.*: is merged
+  import.merge.next: $var2 # Merges happen in order, overriding previous
+  import.merge.last: $var3 # The key text after "import.merge" (e.g. .first, .last) is ignored
 ```
-
 
 A practical use is when write apps. If you write a FormHandler that will be
 imported by a project:
@@ -950,7 +943,7 @@ auth if 'win' not in sys.platform:
   handler: LDAPAuth
 ```
 
-If ` if ` is present in any key, the portion after `if` is evaluated as a Python
+If `if` is present in any key, the portion after `if` is evaluated as a Python
 [expression or pipeline](../function/). All [YAML variables](#yaml-variables) and common modules
 (`re`, `os`, `sys`, `datetime`, `socket`, `six`) are available to the expression.
 
@@ -975,7 +968,6 @@ key if '/tmp/' in os.getcwd(): value
 # If Gramex was started at a specific time, e.g. on Sunday (7)
 key if datetime.date.today().weekday() == 7: value
 ```
-
 
 ## YAML inheritence
 
@@ -1008,7 +1000,7 @@ key:
 
 Gramex uses 3 different configuration files. The first is Gramex's own
 `gramex.yaml`. The second is the application's. The third is the command line.
-These *update* keys, rather than overwriting them. For example, Gramex's
+These _update_ keys, rather than overwriting them. For example, Gramex's
 `gramex.yaml` has the following `url:` section:
 
 ```yaml
@@ -1127,10 +1119,10 @@ YAML supports multi-line strings. You can wrap text like this:
 
 ```yaml
 query: >
-    SELECT group, SUM(*) FROM table
-    WHERE column > value
-    GROUP BY group
-    ORDER BY group DESC
+  SELECT group, SUM(*) FROM table
+  WHERE column > value
+  GROUP BY group
+  ORDER BY group DESC
 ```
 
 This is more readable than:
@@ -1182,8 +1174,7 @@ url:
   app/google:
     pattern: /google
     handler: GoogleAuth
-    kwargs:
-      ...
+    kwargs: ...
 ```
 
 ... then:

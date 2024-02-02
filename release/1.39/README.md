@@ -22,7 +22,7 @@ def total(handler):
 This returns the result:
 
 ```json
-{"error":null,"result":5}
+{ "error": null, "result": 5 }
 ```
 
 [See the documentation](../../node/).
@@ -30,7 +30,7 @@ This returns the result:
 ## UI Components
 
 - [`opacity-**`](../../uicomponents/#text-opacity) {10, 20 .., 80, 90} classes have been added for defining opacity.
-`.opacity-10` sets opacity to `10%`. Other classes have similar behavior.
+  `.opacity-10` sets opacity to `10%`. Other classes have similar behavior.
 - Accordion examples with `+`, `-` as expand and collapse symbols is added
 
 ## MapViewer
@@ -46,8 +46,8 @@ This returns the result:
 - [FormHandler Table](../../formhandler/flags?_format=table) now supports multiple sorts from the interface.
 - [FormHandler Table](../../formhandler/flags?_format=table) now works with numeric greater than `>`, less than `<` opertions.
 - [FormHandler](../../formhandler/db?_by=Text&_by=Symbols&_format=html&_c=c3%7Csum&_meta=y&_sort=c3%7Csum):
-earlier didn't support `_sort` on `col|agg` columns when using `_by` with SQL engines. This is now fixed.
-[#452](https://code.gramener.com/cto/gramex/issues/452)
+  earlier didn't support `_sort` on `col|agg` columns when using `_by` with SQL engines. This is now fixed.
+  [#452](https://code.gramener.com/cto/gramex/issues/452)
 
 ## Logviewer
 
@@ -57,12 +57,12 @@ And, covers in detail how metrics are calculated, in particular `session` relati
 ## Developer Updates
 
 - [uicomponents](../../uicomponents/) now ships `d3-scale-chromatic.js` -- provides sequential, diverging
-and categorical color schemes designed to work with `d3-scale`’s `d3.scaleOrdinal` and `d3.scaleSequential`.
+  and categorical color schemes designed to work with `d3-scale`’s `d3.scaleOrdinal` and `d3.scaleSequential`.
 
 ## Bug fixes
 
 - Earlier `gramex.cache` size was using `sys.getsizeof`, we now use `gramex.cache.sizeof`.
-This fixes [#444](https://code.gramener.com/cto/gramex/issues/444)
+  This fixes [#444](https://code.gramener.com/cto/gramex/issues/444)
 
 ## Stats
 

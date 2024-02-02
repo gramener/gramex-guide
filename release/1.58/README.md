@@ -20,9 +20,9 @@ prefix: 1.58
 ## Developer updates
 
 - `request` dependency is added to gramex
-Fixes [#201](https://github.com/gramener/gramex/issues/201)
+  Fixes [#201](https://github.com/gramener/gramex/issues/201)
 - `psycopg2` is now optional dependency.
-If you're using PostgreSQL connector, you'd need to install this.
+  If you're using PostgreSQL connector, you'd need to install this.
 
 ## Azure Active Directory
 
@@ -32,7 +32,7 @@ is added to the guide.
 ## Bug fixes
 
 - Since `1.52` a bug was introduced in `FileHandler` that allowed access
-to files beyond parent directory/drive. This is now fixed.
+  to files beyond parent directory/drive. This is now fixed.
 
 ## Statistics
 

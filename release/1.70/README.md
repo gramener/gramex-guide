@@ -7,7 +7,6 @@ prefix: 1.70
 
 Gramex 1.70 introduces support for MongoDB, Bootstrap 5, VueJS, minimal scaffolding, and more.
 
-
 ## MongoDB support
 
 [FormHandler](../../formhandler/) now supports MongoDB as a data source.
@@ -30,7 +29,6 @@ url:
 The contents of the collection can be queried via the `/data` URL. You can also use
 [FormHandler query](../../formhandler/#formhandler-query) feature to construct complex queries.
 
-
 ## Bootstrap 5 support
 
 [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/) is released, and Gramex is ready. You can use
@@ -43,17 +41,16 @@ The contents of the collection can be queried via the `/data` URL. You can also 
 The full list of [UI Components](../../uicomponents/) is available for Bootstrap 5. So, instead of adding the default Bootstrap 4 theme to your HTML:
 
 ```html
-<link rel="stylesheet" href="ui/theme/default.scss">
+<link rel="stylesheet" href="ui/theme/default.scss" />
 ```
 
 ... add the Bootstrap 5 theme instead:
 
 ```html
-<link rel="stylesheet" href="ui/theme/bootstrap5.scss">
+<link rel="stylesheet" href="ui/theme/bootstrap5.scss" />
 ```
 
 That's it. All Bootstrap 5 styles are available.
-
 
 ## VueJS support
 
@@ -66,20 +63,20 @@ The default FileHandler compiles any `.vue` file into CSS. For example, this `he
 </template>
 
 <script>
-module.exports = {
-  data: function () {
-    return {
-      greeting: 'Hello'
-    }
-  }
-}
+  module.exports = {
+    data: function () {
+      return {
+        greeting: "Hello",
+      };
+    },
+  };
 </script>
 
 <style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
+  p {
+    font-size: 2em;
+    text-align: center;
+  }
 </style>
 ```
 
@@ -97,7 +94,6 @@ kwargs:
     vue: '*.vue'    # Compile .vue files into JS
 ```
 
-
 ## Minimal scaffolding
 
 To install the minimal files required to run Gramex, run `gramex init minimal` (instead of `gramex init`) on your terminal.
@@ -110,7 +106,6 @@ It initializes a `git` repository and creates these files:
 
 - `gramex.yaml`: Gramex [configuration](../../config/)
 - `index.html`: default home page
-
 
 ## Other improvements
 

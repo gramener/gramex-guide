@@ -1,45 +1,66 @@
 # $.urlfilter
 
-`$.urlfilter()` allows links to *update* URL query parameters instead of replacing them.
+`$.urlfilter()` allows links to _update_ URL query parameters instead of replacing them.
 
 Example: Let's say the following HTML is on the page `/?city=NY`.
 
 <!-- render:html -->
+
 ```html
 <a class="urlfilter" href="?name=John">Add ?name=John to URL</a>
 <script>
-  $('body').urlfilter()
+  $("body").urlfilter();
 </script>
 ```
 
 Clicking on any `.urlfilter` (trigger) in `body` (container) opens
-`/?city=NY&name=John`. The `href=` in the `.urlfilter` link *updates* the
+`/?city=NY&name=John`. The `href=` in the `.urlfilter` link _updates_ the
 current page URL instead of replacing it.
 
 `data-mode` controls the way the URL is updated by the `href`:
 
-| URL    | href      | default    | `data-mode="add"` | `data-mode="toggle"` | `data-mode="del"` |
-|--------|-----------|------------|-------------------|----------------------|-------------------|
-| `?`    | `?x=1`    | `?x=1`     | `?x=1`            | `?x=1`               | `?`               |
-| `?x=1` | `?x=1`    | `?x=1`     | `?x=1&x=1`        | `?`                  | `?`               |
-| `?x=1` | `?y=1`    | `?x=1&y=1` | `?x=1&y=1`        | `?x=1&y=1`           | `?x=1`            |
-| `?x=1` | `?x=2`    | `?x=2`     | `?x=1&x=2`        | `?x=1&x=2`           | `?x=1`            |
+| URL    | href   | default    | `data-mode="add"` | `data-mode="toggle"` | `data-mode="del"` |
+| ------ | ------ | ---------- | ----------------- | -------------------- | ----------------- |
+| `?`    | `?x=1` | `?x=1`     | `?x=1`            | `?x=1`               | `?`               |
+| `?x=1` | `?x=1` | `?x=1`     | `?x=1&x=1`        | `?`                  | `?`               |
+| `?x=1` | `?y=1` | `?x=1&y=1` | `?x=1&y=1`        | `?x=1&y=1`           | `?x=1`            |
+| `?x=1` | `?x=2` | `?x=2`     | `?x=1&x=2`        | `?x=1&x=2`           | `?x=1`            |
 
 For example:
 
 <!-- render:html -->
+
 ```html
-<li><a class="urlfilter" href="?city=NY">                        Change ?city= to NY</a></li>
-<li><a class="urlfilter" href="?city=NY" data-mode="add">        Add ?city= to NY</a></li>
-<li><a class="urlfilter" href="?city=NY" data-mode="del">        Remove NY from ?city=</a></li>
-<li><a class="urlfilter" href="?city=NY" data-mode="toggle">     Toggle NY in ?city=</a></li>
-<li><a class="urlfilter" href="?city=NY" data-bs-target="pushState">Change ?city= to NY using pushState</a></li>
-<li><a class="urlfilter" href="?city=NY" data-bs-target="#">        Change location.hash, i.e. #?city= to NY</a></li>
+<li><a class="urlfilter" href="?city=NY"> Change ?city= to NY</a></li>
+<li>
+  <a class="urlfilter" href="?city=NY" data-mode="add"> Add ?city= to NY</a>
+</li>
+<li>
+  <a class="urlfilter" href="?city=NY" data-mode="del">
+    Remove NY from ?city=</a
+  >
+</li>
+<li>
+  <a class="urlfilter" href="?city=NY" data-mode="toggle">
+    Toggle NY in ?city=</a
+  >
+</li>
+<li>
+  <a class="urlfilter" href="?city=NY" data-bs-target="pushState"
+    >Change ?city= to NY using pushState</a
+  >
+</li>
+<li>
+  <a class="urlfilter" href="?city=NY" data-bs-target="#">
+    Change location.hash, i.e. #?city= to NY</a
+  >
+</li>
 ```
 
 This works with `input`, `select` and `form` elements as well.
 
 <!-- render:html -->
+
 ```html
 <p><label><input type="checkbox" class="urlfilter" name="a" value="1" data-mode="toggle" data-bs-target="#"> a=1</label></p>
 <p>
@@ -66,14 +87,22 @@ This works with `input`, `select` and `form` elements as well.
 You can target an IFrame or DOM element to change the URL:
 
 <!-- TODO: check these examples. Not working -->
+
 ```html
-<p><a class="urlfilter" href="?city=NY" data-bs-target="iframe">Change iframe URL ?city= NY</a></p>
+<p>
+  <a class="urlfilter" href="?city=NY" data-bs-target="iframe"
+    >Change iframe URL ?city= NY</a
+  >
+</p>
 <iframe src="?country=US"></iframe>
 
-<p><a class="urlfilter" href="?city=NY" data-bs-target=".block">   Use AJAX to load ?city=NY into .block</a></p>
+<p>
+  <a class="urlfilter" href="?city=NY" data-bs-target=".block">
+    Use AJAX to load ?city=NY into .block</a
+  >
+</p>
 <div class="block" src="?country=US"></div>
 ```
-
 
 ## $.urlfilter attributes
 
@@ -103,7 +132,6 @@ Containers support these attributes:
 - `data-selector` defines the triggers, i.e. which nodes $.urlfilter applies to. Default: `.urlfilter`
 - `data-attr` changes which attribute updates the URL. Default: `href`
 - You can also specify `data-mode`, `data-remove` and `data-src`, which acts as the default for all triggers.
-
 
 ## $.urlfilter events
 

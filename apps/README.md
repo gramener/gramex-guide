@@ -120,7 +120,6 @@ gramex run <appname> --listen.port=1234
 gramex run <appname> --listen.port=
 ```
 
-
 ## Updating apps
 
 To update an application, run::

@@ -18,16 +18,16 @@ programmable components. It's like using functions to generate the template
 content. For example, if your `navbar.html` has:
 
 ```html
-  ...
-    <a class="navbar-brand">{{ title }}</a>
-  ...
+...
+<a class="navbar-brand">{{ title }}</a>
+...
 ```
 
 ... you can change the title from the calling template.
 
 ```html
-{% set title = 'Main dashboard' %}
-{% include "navbar.html" %}     <!-- renders title as Main dashboard -->
+{% set title = 'Main dashboard' %} {% include "navbar.html" %}
+<!-- renders title as Main dashboard -->
 ```
 
 Some components you may use commonly across pages are:
@@ -35,7 +35,6 @@ Some components you may use commonly across pages are:
 - `navbar.html`
 - `filters.html`
 - `footer.html`
-
 
 ## Automated translations
 
@@ -48,8 +47,8 @@ returns a JSON list with the translations.
 
 ```json
 [
-  {"q":"Apple","t":"Apfel","source":"en","target":"de"},
-  {"q":"Orange","t":"Orange","source":"en","target":"de"}
+  { "q": "Apple", "t": "Apfel", "source": "en", "target": "de" },
+  { "q": "Orange", "t": "Orange", "source": "en", "target": "de" }
 ]
 ```
 
@@ -112,16 +111,16 @@ modify existing components, or write your CSS more efficiently in SASS.
 
 - The [UI components](../../uicomponents/) page is formatted better.
 - The [Contributing](../../contributing/) page explains how to
-[test Gramex](../../contributing/#test-gramex) more clearly
+  [test Gramex](../../contributing/#test-gramex) more clearly
 
 ## Bugfixes
 
 - Gramex used to lock an `events.db` SQLite database.
-This prevented a large number of Gramex instances (e.g. 32) from running on a single server.
-Now, over 100 instances can run on the same server.
+  This prevented a large number of Gramex instances (e.g. 32) from running on a single server.
+  Now, over 100 instances can run on the same server.
 - Gramex was unable to run subprocesses in a thread since Tornado 5.0.
-As a result, UI components via `bootstraptheme.css` would never load on Python 2.7,
-but work fine on reload. This is fixed.
+  As a result, UI components via `bootstraptheme.css` would never load on Python 2.7,
+  but work fine on reload. This is fixed.
 
 ## Stats
 

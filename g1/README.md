@@ -12,7 +12,7 @@ low overhead, g1 may be for you.
 
 ## Installation
 
-You can add g1 *and its dependencies* with a single script tag:
+You can add g1 _and its dependencies_ with a single script tag:
 
 ```html
 <script src="https://cdn.jsdelivr.net/combine/npm/jquery,npm/lodash,npm/g1"></script>
@@ -45,14 +45,15 @@ You can create dynamic content from data using templates. To create a template:
 This renders your template with your data. For example:
 
 <!-- render:html -->
+
 ```html
 <template class="sample">
   <% list.forEach(function(item) { %>
-    <div>item <%= item %></div>
+  <div>item <%= item %></div>
   <% }) %>
 </template>
 <script>
-  $('template.sample').template({ list: [1, 2, 3] })
+  $("template.sample").template({ list: [1, 2, 3] });
 </script>
 ```
 
@@ -64,7 +65,6 @@ plain HTML and JavaScript. You don't need to learn a new template language.
 - To re-render the template, run `.template()` again with different data.
 
 TODO: show a full-blown example of this.
-
 
 ## URL-based state
 
@@ -79,8 +79,8 @@ For example, `/view=sales&year=2019` may show the sales in year 2019.
 To parse a URL, use [g1.url.parse](url):
 
 ```js
-var url = g1.url.parse(location.href)
-url.searchKey == {"view": "sales", "year": "2019"}
+var url = g1.url.parse(location.href);
+url.searchKey == { view: "sales", year: "2019" };
 ```
 
 This can affect what template to render, and what data to render. For example:
@@ -90,11 +90,11 @@ This can affect what template to render, and what data to render. For example:
 <template class="profit">Profit was <%- data %> in <%- q.year %>.</template>
 <script>
   var data = {
-      sales: {2018: 250, 2019: 260},
-      profit: {2018: 50, 2019: 60}
-  }
-  var q = g1.url.parse(location.href).searchKey
-  $('template.' + q.view).template({ data: data[q.view][q.year], q: q })
+    sales: { 2018: 250, 2019: 260 },
+    profit: { 2018: 50, 2019: 60 },
+  };
+  var q = g1.url.parse(location.href).searchKey;
+  $("template." + q.view).template({ data: data[q.view][q.year], q: q });
 </script>
 ```
 
@@ -102,7 +102,6 @@ When the URL is `?view=sales&year=2019`, it renders "Sales was 260 in 2019."
 When the URL is `?view=profit&year=2018`, it renders "Profit was 50 in 2018."
 
 TODO: show a full-blown example of this.
-
 
 ### Change URL state
 
@@ -112,27 +111,33 @@ To change the state, we change the query. For example:
 - `?view=sales&year=2019`
 
 We can do this using `<a href="?view=sales&year=2019">`. But we usually change
-*only some of the keys* at a time (e.g. change year to 2019 *without* changing
+_only some of the keys_ at a time (e.g. change year to 2019 _without_ changing
 `view`.)
 
 [$().urlfilter()](urlfilter) makes this easier.
-`<a class="urlfilter" href="?year=2019">` changes *just the year* to 2019, and
+`<a class="urlfilter" href="?year=2019">` changes _just the year_ to 2019, and
 keeps other keys constant.
 
 <!-- render:html -->
+
 ```html
 <ul>
-  <li><a class="urlfilter" href="?view=sales">Set ?view=sales, keep the rest</a></li>
-  <li><a class="urlfilter" href="?view=profit">Set ?view=profit, keep the rest</a></li>
-  <li><a class="urlfilter" href="?year=2018">Set ?year=2018, keep the rest</a></li>
+  <li>
+    <a class="urlfilter" href="?view=sales">Set ?view=sales, keep the rest</a>
+  </li>
+  <li>
+    <a class="urlfilter" href="?view=profit">Set ?view=profit, keep the rest</a>
+  </li>
+  <li>
+    <a class="urlfilter" href="?year=2018">Set ?year=2018, keep the rest</a>
+  </li>
 </ul>
 <script>
-  $('body').urlfilter()         // activates URL filtering on the entire page
+  $("body").urlfilter(); // activates URL filtering on the entire page
 </script>
 ```
 
 TODO: show a full-blown example of this.
-
 
 ## Single page apps
 
@@ -147,13 +152,18 @@ For example:
 
 ```js
 $(window)
-    .on('#?view', function (e, view) { console.log('view is', view) })
-    .on('#?year', function (e, year) { console.log('year is', year) })
-    .on('#', function (e, url) { console.log('hash is', url) })
+  .on("#?view", function (e, view) {
+    console.log("view is", view);
+  })
+  .on("#?year", function (e, year) {
+    console.log("year is", year);
+  })
+  .on("#", function (e, url) {
+    console.log("hash is", url);
+  });
 ```
 
 TODO: show a full-blown example of this.
-
 
 ### Virtual DOM
 
@@ -166,7 +176,6 @@ changed elements. This has 3 advantages:
 - The DOM updates faster
 
 TODO: show a full-blown example of this.
-
 
 ## Interactions
 

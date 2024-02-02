@@ -16,10 +16,10 @@ sample configuration for GMail:
 
 ```yaml
 email:
-    gramex-guide-gmail:
-        type: gmail                     # Type of email used is GMail
-        email: gramex.guide@gmail.com   # Generic email ID used to test e-mails
-        password: tlpmupxnhucitpte      # App-specific password created for Gramex guide
+  gramex-guide-gmail:
+    type: gmail # Type of email used is GMail
+    email: gramex.guide@gmail.com # Generic email ID used to test e-mails
+    password: tlpmupxnhucitpte # App-specific password created for Gramex guide
 ```
 
 In the `type:` section of `gramex.yaml` email configuration, the following types
@@ -36,7 +36,7 @@ are supported. You need to add your `email:` and `password:`.
 - `outlook`: [Outlook.com](https://support.office.com/en-us/article/pop-imap-and-smtp-settings-for-outlook-com-d088b986-291d-42b8-9564-9c414e2aa040)
 - `icloud`: [iCloud.com](https://support.apple.com/en-us/ht202304)
 
-You can also connect to *any* SMTP or SMTPS mail server using `type: smtp` or
+You can also connect to _any_ SMTP or SMTPS mail server using `type: smtp` or
 `type: smtps`. This includes:
 
 - [Amazon SES via SMTP](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-smtp.html).
@@ -49,18 +49,18 @@ For example:
 
 ```yaml
 email:
-    amazon-ses:
-        type: smtps
-        host: email-smtp.eu-west-1.amazonaws.com    # AWS SES SMTP server for your region
-        email: '***'                                # IAM access ID
-        password: '***'                             # IAM password
-    client-email:
-        type: smtp              # Use type: smtps for SMTPS servers
-        host: 10.20.30.40       # Host name or IP address of the SMTP server
-        # Optional parameters
-        email: user@domain.com  # Username or email to log into SMTP server
-        password: '***'         # Password for SMTP server
-        port: 587               # For non-standard SMTP port. Default: SMTPS=587, SMTP=25
+  amazon-ses:
+    type: smtps
+    host: email-smtp.eu-west-1.amazonaws.com # AWS SES SMTP server for your region
+    email: "***" # IAM access ID
+    password: "***" # IAM password
+  client-email:
+    type: smtp # Use type: smtps for SMTPS servers
+    host: 10.20.30.40 # Host name or IP address of the SMTP server
+    # Optional parameters
+    email: user@domain.com # Username or email to log into SMTP server
+    password: "***" # Password for SMTP server
+    port: 587 # For non-standard SMTP port. Default: SMTPS=587, SMTP=25
 ```
 
 ## Send email
@@ -107,7 +107,7 @@ with `_`. Here are some commonly used ones:
 See the source in the example below to understand how to use it.
 
 ::: example href=mail source=https://github.com/gramener/gramex-guide/blob/master/email/emailapp.py
-    Try a sample email
+Try a sample email
 
 ## HTML email
 
@@ -171,16 +171,16 @@ service.
 ```yaml
 schedule:
   email-alert:
-    function: project.email_alert()     # Run this function
-    hours: 8                            # at 8am on the system
-    weekdays: mon,tue,wed,thu,fri       # every weekday
+    function: project.email_alert() # Run this function
+    hours: 8 # at 8am on the system
+    weekdays: mon,tue,wed,thu,fri # every weekday
 
 email:
-  email-alert:                          # Define the email service to use
-    type: smtp                          # Connect via SMTP
-    host: mailserver.example.org        # to the mail server
-    email: user@example.org             # with a login ID
-    password: $MAIL_PASSWORD            # password stored in environment variable MAIL_PASSWORD
+  email-alert: # Define the email service to use
+    type: smtp # Connect via SMTP
+    host: mailserver.example.org # to the mail server
+    email: user@example.org # with a login ID
+    password: $MAIL_PASSWORD # password stored in environment variable MAIL_PASSWORD
 ```
 
 The `project.email_alert()` method can use this service to check if there are any
@@ -208,11 +208,11 @@ configuration. For example:
 
 ```yaml
 email:
-    email-test:
-        type: gmail
-        email: gramex.guide@gmail.com
-        password: tlpmupxnhucitpte
-        stub: log           # Don't send emails. Just print them to the console
+  email-test:
+    type: gmail
+    email: gramex.guide@gmail.com
+    password: tlpmupxnhucitpte
+    stub: log # Don't send emails. Just print them to the console
 ```
 
 When an email is sent via the `email-test` service above, it will not actually

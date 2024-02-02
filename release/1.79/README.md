@@ -35,9 +35,9 @@ url:
     kwargs:
       path: dir/
       default_filename:
-        - default.template.html     # Serve this as a template, if it exists
-        - index.html                # Else serve this as HTML
-        - README.md                 # Else serve this as Markdown to HTML
+        - default.template.html # Serve this as a template, if it exists
+        - index.html # Else serve this as HTML
+        - README.md # Else serve this as Markdown to HTML
 ```
 
 ## Relative opens in templates

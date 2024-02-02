@@ -7,8 +7,11 @@ It requires the [bootstrap-select](https://developer.snapappointments.com/bootst
 library and its dependencies.
 
 ```html
-  <link rel="stylesheet" href="ui/bootstrap-select/dist/css/bootstrap-select.min.css">
-  <script src="ui/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<link
+  rel="stylesheet"
+  href="ui/bootstrap-select/dist/css/bootstrap-select.min.css"
+/>
+<script src="ui/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
 ```
 
 Example:
@@ -16,7 +19,7 @@ Example:
 ```html
 <div class="container1"></div>
 <script>
-  $('.container1').dropdown({data: ['Red', 'Green', 'Blue'] })
+  $(".container1").dropdown({ data: ["Red", "Green", "Blue"] });
 </script>
 ```
 
@@ -25,7 +28,7 @@ This renders a dropdown with 3 options -- Red, Green, Blue.
 ```html
 <div class="container2"></div>
 <script>
-  $('.container2').dropdown({ key: 'colors', data: ['Red', 'Green', 'Blue'] })
+  $(".container2").dropdown({ key: "colors", data: ["Red", "Green", "Blue"] });
 </script>
 ```
 
@@ -62,11 +65,11 @@ You can set the default value of the dropdown using the `value:` key.
 ```html
 <div class="dropdown-default"></div>
 <script>
-$('.dropdown-default').dropdown({
-  key: 'colors',
-  data: ['Red', 'Green', 'Blue'],
-  value: $('#color').val(url.searchKey.city)    // Must match data string or .value
-})
+  $(".dropdown-default").dropdown({
+    key: "colors",
+    data: ["Red", "Green", "Blue"],
+    value: $("#color").val(url.searchKey.city), // Must match data string or .value
+  });
 </script>
 ```
 
@@ -75,11 +78,11 @@ By default, the selected dropdown values are appended to URL query string. To ap
 ```html
 <div class="container3"></div>
 <script>
-  $('.container3').dropdown({
-    key: 'colors',
-    data: ['Red', 'Green', 'Blue'],
-    target: '#'
-  })
+  $(".container3").dropdown({
+    key: "colors",
+    data: ["Red", "Green", "Blue"],
+    target: "#",
+  });
 </script>
 ```
 
@@ -88,11 +91,11 @@ To change URL without reloading the page, use `target: 'pushState'`.
 ```html
 <div class="container4"></div>
 <script>
-  $('.container4').dropdown(
-    { key: 'colors',
-      data: ['Red', 'Green', 'Blue'],
-      target: 'pushState'
-    })
+  $(".container4").dropdown({
+    key: "colors",
+    data: ["Red", "Green", "Blue"],
+    target: "pushState",
+  });
 </script>
 ```
 
@@ -101,16 +104,16 @@ To use bootstrap-select options, use `options:`
 ```html
 <div class="container5"></div>
 <script>
-  $('.container5').dropdown({
-    data: ['Red', 'Green', 'Blue'], key: 'colors',
+  $(".container5").dropdown({
+    data: ["Red", "Green", "Blue"],
+    key: "colors",
     options: {
-      style: 'btn-primary',
-      liveSearch: true
-    }
-  })
+      style: "btn-primary",
+      liveSearch: true,
+    },
+  });
 </script>
 ```
-
 
 ## $.dropdown options
 
@@ -126,7 +129,6 @@ To use bootstrap-select options, use `options:`
 - `multiple`: To render a dropdown that supports multi-select. Can be `true` or `false` (Default).
 - `options`: Supports same options as [bootstrap-select options](https://developer.snapappointments.com/bootstrap-select/options/)
 
-
 ## $.dropdown events
 
 - `load` is triggered after dropdown is rendered
@@ -135,16 +137,16 @@ To use bootstrap-select options, use `options:`
 ```html
 <div class="container6"></div>
 <script>
-  $('.container6')
-  .on('load', function() {
-    // Your code here
-  })
-  .on('change', function() {
-    // Your code here
-  })
-  .dropdown({
-    key: 'colors',
-    data: ['Red', 'Green', 'Blue']
-  })
+  $(".container6")
+    .on("load", function () {
+      // Your code here
+    })
+    .on("change", function () {
+      // Your code here
+    })
+    .dropdown({
+      key: "colors",
+      data: ["Red", "Green", "Blue"],
+    });
 </script>
 ```

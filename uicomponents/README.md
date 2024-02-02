@@ -27,15 +27,15 @@ The UI component library ships with pre-defined
 [Bootswatch](https://bootswatch.com/) and [Bootstrap Themes Guide](http://bootstrap.themes.guide/).
 
 ::: example href=../ui/theme/ source="https://github.com/gramener/gramex/tree/master/gramex/apps/ui/theme/"
-    Explore theme gallery
+Explore theme gallery
 
 You can import them in your `style.scss`. For example:
 
 ```scss
 // Include any one of these lines in your .scss file
-@import "theme/bootstrap5";         // Bootstrap 5 default theme
-@import "theme/default";            // Bootstrap 4 default theme
-@import "theme/bootswatch/slate";   // Bootstrap 4 theme
+@import "theme/bootstrap5"; // Bootstrap 5 default theme
+@import "theme/default"; // Bootstrap 4 default theme
+@import "theme/bootswatch/slate"; // Bootstrap 4 theme
 @import "theme/themes-guide/fesca"; // Bootstrap 4 theme
 ```
 
@@ -43,10 +43,10 @@ Or you can link to these directly. For example:
 
 ```html
 <!-- Include any one of these links in your .scss file -->
-<link rel="stylesheet" href="ui/theme/bootstrap5.scss">
-<link rel="stylesheet" href="ui/theme/default.scss">
-<link rel="stylesheet" href="ui/theme/bootswatch/slate.scss">
-<link rel="stylesheet" href="ui/theme/themes-guide/fresca.scss">
+<link rel="stylesheet" href="ui/theme/bootstrap5.scss" />
+<link rel="stylesheet" href="ui/theme/default.scss" />
+<link rel="stylesheet" href="ui/theme/bootswatch/slate.scss" />
+<link rel="stylesheet" href="ui/theme/themes-guide/fresca.scss" />
 ```
 
 ### Custom themes
@@ -56,11 +56,14 @@ You can customize themes by adding
 to the URL. For example:
 
 ```html
-<link rel="stylesheet" href="ui/theme/default.scss?primary=maroon&body-bg=lavender">
+<link
+  rel="stylesheet"
+  href="ui/theme/default.scss?primary=maroon&body-bg=lavender"
+/>
 ```
 
 ::: example href="../ui/theme/default?primary=maroon&amp;body-bg=lavender" source="../ui/theme/default.scss?primary=maroon&amp;body-bg=lavender"
-    Try the custom theme
+Try the custom theme
 
 You can also customize themes by adding these to your `style.scss` file. For example:
 
@@ -72,10 +75,8 @@ $body-bg: lavender;
 
 [See the full list of Bootstrap variables](https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss).
 
-::: example href="https://bootstrap.build/app" target="_blank"
-    Customize with a theme builder
-
-
+::: example href="https://bootstrap.build/app" target="\_blank"
+Customize with a theme builder
 
 ### Theme colors
 
@@ -89,9 +90,9 @@ You can add custom colors to the `$theme-colors` map in your `style.scss` file. 
 ```scss
 $theme-colors: (
     "accent1": coral,
-    "accent2": #3CB371
-)
-@import "theme/default.scss"
+    "accent2": #3cb371,
+  )
+  @import "theme/default.scss";
 ```
 
 You can now use `.bg-accent1`, `.text-accent1`, `.btn-accent1`, `.border-accent1`, etc., and
@@ -99,8 +100,6 @@ similarly for `accent2`.
 
 <button class="btn btn-accent1"><code class="text-white">.btn-accent1</code></button>
 <button class="btn btn-accent2"><code class="text-white">.btn-accent2</code></button>
-
-
 
 ## Libraries
 
@@ -115,13 +114,13 @@ After Gramex 1.84, these URLs redirect to `cdn.jsdelivr.net`.
 For example, `/ui/d3@7/dist/d3.min.js` redirects to <https://cdn.jsdelivr.net/npm/ui/d3@7/dist/d3.min.js>.
 
 ::: example href="libraries" source="https://jsdelivr.net/"
-    Explore UI libraries on CDN
+Explore UI libraries on CDN
 
 ## Typography
 
 ### Text sizes
 
-Bootstrap provides the following *absolute* font-size classes:
+Bootstrap provides the following _absolute_ font-size classes:
 
 - `.display-1`: 6rem
 - `.display-2`: 5.5rem
@@ -134,7 +133,7 @@ Bootstrap provides the following *absolute* font-size classes:
 - `.h5`: 1.25rem
 - `.h6`: 1rem
 
-Gramex UI components adds the following *relative* font-size classes that make a font smaller:
+Gramex UI components adds the following _relative_ font-size classes that make a font smaller:
 
 - `.sm1`: 80% smaller (same as `.small`)
 - `.sm2`: 66.67% smaller
@@ -146,10 +145,10 @@ Gramex UI components adds the following *relative* font-size classes that make a
 ### Text alignment
 
 ::: div class="row" style="height:120px"
-    ::: div class="col-md-6 bg-light text-middle"
-        `.text-middle` aligns text vertically to middle
-    ::: div class="col-md-6 bg-primary text-light"
-        Normal text is aligned to the top
+::: div class="col-md-6 bg-light text-middle"
+`.text-middle` aligns text vertically to middle
+::: div class="col-md-6 bg-primary text-light"
+Normal text is aligned to the top
 
 ### Letter spacing
 
@@ -185,7 +184,6 @@ Gramex UI components adds the following *relative* font-size classes that make a
 - <span class="opacity-20">`.opacity-20` sets `opacity: 20%`</span>
 - <span class="opacity-10">`.opacity-10` sets `opacity: 10%`</span>
 
-
 ## Effects
 
 ### Borders
@@ -193,25 +191,27 @@ Gramex UI components adds the following *relative* font-size classes that make a
 `.border-2` sets `border-width: 2px`.
 
 ::: div class="mb-3"
-    <div class="compact border border-dark">Normal border</div>
-    <div class="compact border border-dark border-2"><code>.border .border-2</code></div>
+
+<div class="compact border border-dark">Normal border</div>
+<div class="compact border border-dark border-2"><code>.border .border-2</code></div>
 
 `.border-top`, `.border-right`, `.border-bottom` and `.border-left` set the respective `border-width` to `1px`.
 
 ::: div class="mb-3"
-    <div class="compact border-dark border-top"><code>.border-top</code></div>
-    <div class="compact border-dark border-right"><code>.border-right</code></div>
-    <div class="compact border-dark border-bottom"><code>.border-bottom</code></div>
-    <div class="compact border-dark border-left"><code>.border-left</code></div>
+
+<div class="compact border-dark border-top"><code>.border-top</code></div>
+<div class="compact border-dark border-right"><code>.border-right</code></div>
+<div class="compact border-dark border-bottom"><code>.border-bottom</code></div>
+<div class="compact border-dark border-left"><code>.border-left</code></div>
 
 `.border-top-0`, `.border-right-0`, `.border-bottom-0` and `.border-left-0` set the respective `border-width` to `0px`.
 
 ::: div class="mb-3"
-    <div class="compact border border-dark border-top-0"><code>.border-top-0</code></div>
-    <div class="compact border border-dark border-right-0"><code>.border-right-0</code></div>
-    <div class="compact border border-dark border-bottom-0"><code>.border-bottom-0</code></div>
-    <div class="compact border border-dark border-left-0"><code>.border-left-0</code></div>
 
+<div class="compact border border-dark border-top-0"><code>.border-top-0</code></div>
+<div class="compact border border-dark border-right-0"><code>.border-right-0</code></div>
+<div class="compact border border-dark border-bottom-0"><code>.border-bottom-0</code></div>
+<div class="compact border border-dark border-left-0"><code>.border-left-0</code></div>
 
 ### Shadow
 
@@ -220,12 +220,10 @@ Gramex UI components adds the following *relative* font-size classes that make a
 <button type="button" class="btn btn-primary">Button without shadow</button>
 <button type="button" class="btn btn-primary shadow">Button with shadow</button>
 
-
 `.text-shadow` adds a text shadow to inline text. For example:
 
 <div class="text-shadow h5">Line without shadow</div>
 <div class="text-shadow h5">Line with text shadow</div>
-
 
 ### Backgrounds
 
@@ -240,12 +238,15 @@ Gramex UI components adds the following *relative* font-size classes that make a
 </style>
 
 Take this sample background image:
+
 <div class="bg wide"></div>
 
 `.bg-no-repeat` sets `background-repeat: no-repeat`, which creates only one copy of the background image.
+
 <div class="bg-no-repeat bg wide"></div>
 
 `.bg-center` centers the background image.
+
 <div class="bg-center bg wide"></div>
 
 Background positioning utilities determine the overall positioning. `.bg-tl` stands for
@@ -269,24 +270,29 @@ USe with `bg-no-repeat` as follows:
 </div>
 
 `.bg-space` sets `background-repeat: space`, which distributes space evenly between background image copies.
+
 <div class="bg-space bg wide"></div>
 
 `.bg-round` sets `background-repeat: round`, which ensures that the background image is not cut off (but may shrink).
+
 <div class="bg-round bg wide"></div>
 
 `.bg-cover` sets `background-size: cover`. The background image will completely fill the element.
+
 <div class="bg-cover bg wide"></div>
 
 `.bg-contain` sets `background-size: contain`. The background image will completely fit in the element.
+
 <div class="bg-contain bg wide"></div>
 
 `.bg-fixed` sets `background-size: fixed`. The background will scroll with the page.
+
 <div class="bg-fixed bg wide"></div>
 
 `.bg-parellax` sets `background-size: parellax`. The background will scroll with the page. This is
 the same as `.bg-center` `.bg-no-repeat` `.bg-fixed` and `.bg-cover`.
-<div class="bg-parellax bg huge" style="background-image: url(https://picsum.photos/id/10/1200)"></div>
 
+<div class="bg-parellax bg huge" style="background-image: url(https://picsum.photos/id/10/1200)"></div>
 
 ### Gradient
 
@@ -382,12 +388,11 @@ Active color classes set the color when you're clicking on an element. **Click t
 ### Cursor styles
 
 - `class="cursor-pointer"`{: class="cursor-pointer"} adds a `cursor: pointer` to any element. Use
-   non-clickable element made clickable using JavaScript.
+  non-clickable element made clickable using JavaScript.
 - [`class="cursor-default"`](.#na){: class="cursor-default"} adds `cursor: default`.
 - [`class="pointer-events-none"`](.#na){: class="pointer-events-none"} sets `pointer-events: none`.
   This disables click and hover events. It's useful on SVG `text` labels to pass clicks to the
   shape behind it.
-
 
 ## Layouts
 
@@ -400,7 +405,6 @@ positioned element.
   <div class="overlay-black pos-t py-1 text-light text-center">.overlay-black</div>
   <div class="overlay-white pos-b py-1 text-dark text-center">.overlay-white</div>
 </div>
-
 
 ### Position
 
@@ -423,7 +427,6 @@ Here's an example of all `.pos-` classes inside a `.position-relative` block:
   <div class="pos-br overlay-black p-2 text-monospace">.pos-br</div>
 </div>
 
-
 <div class="bg-primary d-inline-block position-relative text-white">
   <svg width="320" height="160"></svg>
   <div class="pos-c overlay-black p-2 text-monospace text-center text-middle">.pos-c</div>
@@ -435,16 +438,15 @@ Here's an example of all `.pos-` classes inside a `.position-relative` block:
 
 ### Height
 
-`.h-full` sets  `min-height: 100vh`. To ensure that a page background occupies full height of the screen, use:
+`.h-full` sets `min-height: 100vh`. To ensure that a page background occupies full height of the screen, use:
 
 ```html
-<body class="h-full">
+<body class="h-full"></body>
 ```
 
 ### Z-Index
 
 `.z-9` sets `z-index: 9000`. Use it to place an element on top of others
-
 
 ## Components
 
@@ -477,23 +479,25 @@ creates this divider:
 
 <div class="divider border-primary"></div>
 
-
 You can add any text inside the divider. For example:
 
 ```html
 <div class="divider">Text</div>
-<div class="divider border-dark"><i class="fab fa-2x fa-twitter me-2"></i> Icons</div>
-<div class="divider border-primary"><div class="btn btn-primary round">Buttons</div></div>
+<div class="divider border-dark">
+  <i class="fab fa-2x fa-twitter me-2"></i> Icons
+</div>
+<div class="divider border-primary">
+  <div class="btn btn-primary round">Buttons</div>
+</div>
 ```
 
 <div class="divider">Text</div>
 <div class="divider border-dark"><i class="fab fa-2x fa-twitter me-2"></i> Icons</div>
 <div class="divider border-primary"><div class="btn btn-primary round">Buttons</div></div>
 
-
 ### Tail
 
-`.tail-*` adds a tail to a container. `.tail-tl` adds a tail on the  `t`op side `l`eft position.
+`.tail-*` adds a tail to a container. `.tail-tl` adds a tail on the `t`op side `l`eft position.
 You can use `tail-{side}-{position}`. For example:
 
 <div class="mb-4">
@@ -505,8 +509,6 @@ You can use `tail-{side}-{position}`. For example:
 You can combine tails with `.border`, `.round`, `.shadow` and other styles. For example:
 
 <div class="d-inline-block border border-primary round shadow tail-tc p-3">.tail-tc.border.border-primary.round.shadow</div>
-
-
 
 ## Deprecated
 

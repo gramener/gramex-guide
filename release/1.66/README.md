@@ -14,7 +14,7 @@ more.
 [FormHandler POST](../../formhandler/#formhandler-post) automatically creates a table (if required)
 when inserting a row. But the table structure may not be what you intended.
 
-For example, if the *first* user POSTs:
+For example, if the _first_ user POSTs:
 
 - `?password=123`, the password column becomes an integer, not string
 - `?age=`, the age column becomes a string, not an integer
@@ -23,27 +23,27 @@ Use [`Columns:`](../../formhandler/#formhandler-columns) to define column type w
 tables. For example:
 
 ```yaml
-    handler: FormHandler
-    kwargs:
-      url: 'postgresql://$USER:$PASS@server/db'       # Pick any database
-      table: profile              # Pick any table name to create
-      id: id                      # The "id" column is primary key
-      # Define your table's columns
-      columns:
-        user: TEXT                # Use any SQL type allowed by DB
-        password: VARCHAR(40)     # including customizations
-        age:
-          type: INTEGER           # You can also specify as a dict
-          nullable: true          # Allows NULL values for this field
-          default: 0              # that default to zero
-        id:
-          type: INTEGER           # Define an integer ID column
-          primary_key: true       # as a primary key
-          autoincrement: true     # that auto-increments
+handler: FormHandler
+kwargs:
+  url: "postgresql://$USER:$PASS@server/db" # Pick any database
+  table: profile # Pick any table name to create
+  id: id # The "id" column is primary key
+  # Define your table's columns
+  columns:
+    user: TEXT # Use any SQL type allowed by DB
+    password: VARCHAR(40) # including customizations
+    age:
+      type: INTEGER # You can also specify as a dict
+      nullable: true # Allows NULL values for this field
+      default: 0 # that default to zero
+    id:
+      type: INTEGER # Define an integer ID column
+      primary_key: true # as a primary key
+      autoincrement: true # that auto-increments
 ```
 
 If the `profile` table already has any of these columns, it is left unaltered. Else, the missing
-columns are *added*. No columns are removed.
+columns are _added_. No columns are removed.
 
 ## Fetch inserted rows
 
@@ -120,8 +120,8 @@ into CSS using [node-sass](https://www.npmjs.com/package/node-sass). To enable t
 FileHandler, just add:
 
 ```yaml
-    kwargs:
-      sass: '*.scss, *.sass'
+kwargs:
+  sass: "*.scss, *.sass"
 ```
 
 If you haven't created your own FileHandler, the default FileHandler automatically compiles SASS.
@@ -160,7 +160,9 @@ $dark: #204066;
 // Import the Gramex UI components, which include Bootstrap
 @import "gramexui";
 // Add your custom CSS/SCSS code that overrides Bootstrap / Gramex UI components
-.component { border: 1px solid $dark; }
+.component {
+  border: 1px solid $dark;
+}
 ```
 
 ## Transform multiple file types
@@ -170,17 +172,17 @@ extensions for the same transform. For example, to treat all `template*.html` an
 files as templates, use:
 
 ```yaml
-    kwargs:
-      template: 'template*.html, template*.svg'
+kwargs:
+  template: "template*.html, template*.svg"
 ```
 
-This is useful when you want to render files normally, *except* certain files that are templates.
+This is useful when you want to render files normally, _except_ certain files that are templates.
 
 Similarly, to treat all `*.scss` and `*.sass` files as SASS files, use:
 
 ```yaml
-    kwargs:
-      sass: '*.scss, *.sass'
+kwargs:
+  sass: "*.scss, *.sass"
 ```
 
 File patterns can be joined one or more spaces and/or commas.
@@ -188,10 +190,10 @@ File patterns can be joined one or more spaces and/or commas.
 This can also be used in FileHandler under `kwargs.transform:` like this:
 
 ```yaml
-    kwargs:
-      transform:
-        "*.md, *.markdown":     # Convert .md and .markdown files
-          function: markdown.markdown(content)
+kwargs:
+  transform:
+    "*.md, *.markdown": # Convert .md and .markdown files
+      function: markdown.markdown(content)
 ```
 
 ## Restrict HTTP methods on any handler
@@ -256,7 +258,6 @@ to be in `.gitignore`.
   This happens when using a `modify` to render custom output, for example.
   Now, Gramex does not raise this warning.
 
-
 ## What next
 
 Gramex 1.67 will be released on 1 Dec and will feature:
@@ -280,7 +281,6 @@ Gramex 1.67 will be released on 1 Dec and will feature:
 1. [Python 3.8 support](https://github.com/gramener/gramex/issues/300)
 2. [Notification for errors in alerts](https://github.com/gramener/gramex/issues/292)
 
-
 ## Statistics
 
 The Gramex code base has:
@@ -295,12 +295,12 @@ The Gramex code base has:
 - [Abhilash Madireddy](https://github.com/println2) for
   [restricting HTTP methods on any handler](#restrict-http-methods-on-any-handler)
 - [Mohammed Niyas](https://github.com/mniyas) for
-    [caching database queries](#cache-database-queries) and
-    fixing [redis cache configurations](../../cache/#cache-stores) that have `=` in them
+  [caching database queries](#cache-database-queries) and
+  fixing [redis cache configurations](../../cache/#cache-stores) that have `=` in them
 - Naveen Manukonda for
-    fixing [redis cache configurations](../../cache/#cache-stores) that have `=` in them
+  fixing [redis cache configurations](../../cache/#cache-stores) that have `=` in them
 - [Nikhil Kabbin](https://github.com/nikhilkabbin) for raising
-    [#133](https://github.com/gramener/gramex/issues/323): multi-drive support
+  [#133](https://github.com/gramener/gramex/issues/323): multi-drive support
 
 ## How to install
 

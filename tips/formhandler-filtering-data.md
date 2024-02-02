@@ -12,7 +12,7 @@ You can just point to a CSV, XLSX or HDF file.
 ```yaml
 handler: FormHandler
 kwargs:
-    url: $YAMLPATH/flags.csv
+  url: $YAMLPATH/flags.csv
 ```
 
 The result looks like [this](../formhandler/flags)

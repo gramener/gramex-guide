@@ -18,8 +18,8 @@ url:
         # Get key from https://cloud.google.com/translate/docs/quickstart
         key: ...
         # See list of languages: https://cloud.google.com/translate/docs/languages
-        source: en    # Convert from English
-        target: nl    # Convert to Dutch
+        source: en # Convert from English
+        target: nl # Convert to Dutch
         # Cache results in this FormHandler structure
         cache:
           url: sqlite:///$YAMLPATH/translate.db
@@ -40,9 +40,9 @@ To translate content in a page, use
 <script src="ui/dist/g1/g1.min.js"></script>
 <script>
   // Translate text nodes under element with lang-target=
-  $('[lang-target]').translate({
-    url: './translate',         // Gramex translate URL endpoint
-  })
+  $("[lang-target]").translate({
+    url: "./translate", // Gramex translate URL endpoint
+  });
 </script>
 ```
 
@@ -84,8 +84,8 @@ Example:
 
 ```json
 [
-  {"q":"Apple","t":"appel","source":"en","target":"nl"},
-  {"q":"Orange","t":"Oranje","source":"en","target":"nl"}
+  { "q": "Apple", "t": "appel", "source": "en", "target": "nl" },
+  { "q": "Orange", "t": "Oranje", "source": "en", "target": "nl" }
 ]
 ```
 
@@ -123,7 +123,6 @@ The data is stored in the cache as a table with same 4 columns as the response:
 [See the current cache data](cache?_format=html).
 
 You can allow users to edit this cache using [FormHandler](../formhandler/).
-
 
 ## Translate function
 

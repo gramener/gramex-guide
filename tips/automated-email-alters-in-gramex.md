@@ -11,16 +11,16 @@ service.
 ```yaml
 schedule:
   email-alert:
-    function: app.email_alert()    # Run this function
-    hours: 8                       # at 8am on the system
-    weekdays: mon,tue,wed,thu,fri  # every weekday
+    function: app.email_alert() # Run this function
+    hours: 8 # at 8am on the system
+    weekdays: mon,tue,wed,thu,fri # every weekday
 
 email:
-  email-alert:                      # Define the email service to use
-    type: smtp                      # Connect via SMTP
-    host: 'mailserver.example.org'    # to the mail server
-    email: 'user@example.org'         # with a login ID
-    password: $PASSWORD             # password stored in an environment variable
+  email-alert: # Define the email service to use
+    type: smtp # Connect via SMTP
+    host: "mailserver.example.org" # to the mail server
+    email: "user@example.org" # with a login ID
+    password: $PASSWORD # password stored in an environment variable
 ```
 
 The 1app.email_alert()` method can use this service to check if there are any

@@ -7,7 +7,7 @@ prefix: 1.41
 
 ## Python console
 
-[Admin module](../../admin/admin/) now comes with web-based python console.  This embedded Python console executes within the context of the Gramex instance.
+[Admin module](../../admin/admin/) now comes with web-based python console. This embedded Python console executes within the context of the Gramex instance.
 
 ![Python Console](python-admin-console.gif)
 
@@ -22,7 +22,7 @@ If a `url:` configuration has an error (e.g. the `kwargs` are wrongly specified)
 url:
   invalid:
     pattern: /invalid
-    handler: DBAuth    # do not add any kwargs
+    handler: DBAuth # do not add any kwargs
 ```
 
 We now report error message like
@@ -92,9 +92,9 @@ Gramex [installation](../../install/) instructions are now simplified a bit.
 ## Bug fixes
 
 - Allow SimpleAuth to have no `password:` section.
-Fixes [#482](https://code.gramener.com/cto/gramex/issues/482)
+  Fixes [#482](https://code.gramener.com/cto/gramex/issues/482)
 - Earlier [FormHandler pptx-table](../../formhandler/#formhandler-formats) example threw error due to missing `input.pptx`.
-This is noe fixed [#463](https://code.gramener.com/cto/gramex/issues/482)
+  This is noe fixed [#463](https://code.gramener.com/cto/gramex/issues/482)
 - `gramex.cache.save(excel)` is now fixed to preserve column order
 
 ## Stats

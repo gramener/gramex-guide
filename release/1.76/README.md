@@ -11,11 +11,11 @@ Gramex 1.76 has Python 3.9 support, schedulers that run every second, and more t
 
 Gramex only worked on Python 3.7 so far. This was mainly Tornado 6, SQLAlchemy 1.4 and Pandas 1.0 had breaking changes.
 
-Rather than break backward compatibility, Gramex has been re-written to work with the older *and* newer versions of all of these libraries. Specifically, it works with:
+Rather than break backward compatibility, Gramex has been re-written to work with the older _and_ newer versions of all of these libraries. Specifically, it works with:
 
-- Tornado 5 *and* Tornado 6
-- SQLAlchemy 1.3 *and* SQLAlchemy 1.4
-- Pandas 0.x *and* Pandas 1.x
+- Tornado 5 _and_ Tornado 6
+- SQLAlchemy 1.3 _and_ SQLAlchemy 1.4
+- Pandas 0.x _and_ Pandas 1.x
 
 In future releases, the Gramex Conda package will migrate to Python 3.9, allowing you to use:
 
@@ -37,9 +37,9 @@ For example, this schedule runs every 1 minute 30 seconds:
 
 ```yaml
 schedule:
-    run-at-specific-interval:
-        function: print(time.time())
-        every: 1m 30s
+  run-at-specific-interval:
+    function: print(time.time())
+    every: 1m 30s
 ```
 
 ## Tutorial videos
@@ -61,7 +61,6 @@ The Gramex Guide now has video tutorials explaining most features in several pag
 - [CaptureHandler](../../capturehandler/) handles PhantomJS timeout correctly, using the PhamtomJS API
 - `gramex.cache.open(excel_file)` accepts the `name=` for named range (not the incorrect `defined_name=`)
 - `gramex.data.insert()` converts empty `?args=` to None instead of empty strings, making FormHandler insert operations work across numbers and strings
-
 
 ## Backward compatibility & security
 
@@ -87,7 +86,6 @@ The Gramex code base has:
 - 3,360 lines of JavaScript (1 more than 1.75)
 - 12,774 lines of test code (8 less than 1.75)
 - 89% test coverage (same as 1.75)
-
 
 ## How to install
 

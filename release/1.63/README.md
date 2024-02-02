@@ -5,7 +5,6 @@ prefix: 1.63
 
 <link rel="stylesheet" type="text/css" href="../../node_modules/asciinema-player/resources/public/css/asciinema-player.css">
 
-
 [TOC]
 
 Gramex 1.63 is easier to install with Conda and Docker installations. The Gramex Guide is easier to
@@ -25,7 +24,6 @@ conda install -y -c conda-forge -c gramener gramex  # Install Gramex
 
 <asciinema-player src="../../install/gramex-conda.json" cols="100" rows="20" idle-time-limit="0.5" autoplay="1" font-size="medium" loop="1"></asciinema-player>
 
-
 ## Docker install
 
 To try out new versions, set up a clean version, or deploy apps, use the Docker installation. [Gramex docker containers](https://hub.docker.com/r/gramener/gramex/) are again up to date.
@@ -35,7 +33,6 @@ docker run -it -p 9988:9988 gramener/gramex /bin/bash
 ```
 
 <asciinema-player src="../../install/gramex-docker.json" cols="100" rows="20" idle-time-limit="0.5" autoplay="1" font-size="medium" loop="1"></asciinema-player>
-
 
 ## New Gramex Guide
 
@@ -61,7 +58,6 @@ systems can now be embedded.
 
 The upcoming Gramex IDE is based on Visual Studio Code, and relies on this feature.
 
-
 ## Other features
 
 If you add a key called `comment:` anywhere in `gramex.yaml`, it is ignored. In this example:
@@ -77,7 +73,6 @@ url:
 ... the `comment:` key is ignored. This feature will become more useful when the IDE is released,
 since it'll let you add comments to your configurations for future reference.
 
-
 ## What next
 
 We promised three features in this release that are delayed. These will get pushed mid-September.
@@ -89,7 +84,6 @@ We promised three features in this release that are delayed. These will get push
 In addition, the October 2020 release (1.64) will:
 
 - Add ElasticSearch connectivity for [Log Viewer](../../logviewer/), which will let you log any events and query them
-
 
 ## How to install
 

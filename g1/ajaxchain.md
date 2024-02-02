@@ -4,9 +4,9 @@ Chains AJAX requests. [$.ajax][ajax] fetches a single page, like this:
 
 ```js
 $.ajax({
-  url: 'formhandler',       // Fetch "formhandler" URL
-  data: {_offset: 0}        //    with ?_offset=0
-})
+  url: "formhandler", // Fetch "formhandler" URL
+  data: { _offset: 0 }, //    with ?_offset=0
+});
 ```
 
 `$.ajaxchain` keeps fetching more page using a `chain:` function.
@@ -111,18 +111,21 @@ For example:
 
 ```js
 ajaxchain_instance
-  .on('done', function(e) {           // Called after ALL pages are loaded, or on error
+  .on("done", function (e) {
+    // Called after ALL pages are loaded, or on error
     // Responses are in e.response[0], e.response[1], etc
     // Requests  are in e.request[0],  e.request[1],  etc
   })
-  .on('load', function(e) {           // Called when each page is loaded
+  .on("load", function (e) {
+    // Called when each page is loaded
     // e.response has the response
     // e.request  has the request
   })
-  .on('error', function(e) {          // Called when there's an error
+  .on("error", function (e) {
+    // Called when there's an error
     // e.request  has the request
     // e.exception is set if the .change() function threw an exception
-  })
+  });
 ```
 
 [ajax]: http://api.jquery.com/jQuery.ajax/

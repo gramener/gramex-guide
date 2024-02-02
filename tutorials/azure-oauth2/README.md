@@ -12,7 +12,6 @@ with their Microsoft accounts. Specifically, we will go over how to:
    application,
 2. use the OAuth2 handler to connect a Gramex application to the Azure app.
 
-
 ## Prerequisites
 
 To follow through this tutorial completely, you will need:
@@ -52,8 +51,7 @@ At the bottom of the app registration form, we will need to specify a redirect
 URI. **This must be the fully qualified login URL of your Gramex application**.
 For example, if the login URL of a particular endpoint in your Gramex
 application is `/$YAMLURL/login/`, and you are running Gramex on `localhost:9988`,
-then the redirect  URI to be added here is `http://localhost:9988/login/`.
-
+then the redirect URI to be added here is `http://localhost:9988/login/`.
 
 ### Getting the Client ID and Client Secret
 
@@ -107,13 +105,12 @@ and `AZURE_ACCESS_TOKEN_URL` respectively.
 
 Finally, make sure that your `.secrets.yaml` contains these four variables:
 
-* `AZURE_CLIENT_ID`
-* `AZURE_CLIENT_SECRET`
-* `AZURE_AUTHORIZE_URL`
-* `AZURE_ACCESS_TOKEN_URL`
+- `AZURE_CLIENT_ID`
+- `AZURE_CLIENT_SECRET`
+- `AZURE_AUTHORIZE_URL`
+- `AZURE_ACCESS_TOKEN_URL`
 
 We are now ready to set up the OAuth2 handler
-
 
 ## Setup the Gramex OAuth2 Handler
 
@@ -122,7 +119,7 @@ In your `gramex.yaml`, use the following spec:
 ```yaml
 url:
   azure_oauth-login:
-    pattern: /$YAMLURL/login/  # Login URL - This must map to the redirect URL provided to Azure
+    pattern: /$YAMLURL/login/ # Login URL - This must map to the redirect URL provided to Azure
     handler: OAuth2
     kwargs:
       client_id: $AZURE_CLIENT_ID
@@ -134,11 +131,11 @@ url:
       access_token:
         url: $AZURE_ACCESS_TOKEN_URL
         body:
-          grant_type: 'authorization_code'
+          grant_type: "authorization_code"
       user_info:
-        url: 'https://graph.microsoft.com/v1.0/me'
+        url: "https://graph.microsoft.com/v1.0/me"
         headers:
-          Authorization: 'Bearer {access_token}'
+          Authorization: "Bearer {access_token}"
 ```
 
 Your users can now log in with their Microsoft accounts.

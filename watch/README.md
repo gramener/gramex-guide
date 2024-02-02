@@ -12,14 +12,14 @@ type: library
 The `watch:` section in [gramex.yaml](../gramex.yaml.source) triggers events when files are modified. For example:
 
 ```yaml
-watch:                                  # Define files to watch
-    data-files:                         # Create a watched named data-files
-        paths:                          # Watch for these files
-            - $YAMLPATH/dir/            # - any file under the dir/ subdirectory
-            - $YAMLPATH/*.txt           # - any CSV file under this folder
-            - $YAMLPATH/data.csv        # - data.csv in this folder
-            - data.xslx                 # - data.xlsx from where Gramex was started
-        on_modified: module.function    # When file is changed, call module.function(event)
+watch: # Define files to watch
+  data-files: # Create a watched named data-files
+    paths: # Watch for these files
+      - $YAMLPATH/dir/ # - any file under the dir/ subdirectory
+      - $YAMLPATH/*.txt # - any CSV file under this folder
+      - $YAMLPATH/data.csv # - data.csv in this folder
+      - data.xslx # - data.xlsx from where Gramex was started
+    on_modified: module.function # When file is changed, call module.function(event)
 ```
 
 Each named watch has the following keys:
@@ -45,13 +45,11 @@ def watch_file(event):
     print(event.src_path, event.is_directory, event.event_type)
 ```
 
-
 ## Watching files
 
 Your functions can watch files efficiently. For example, this code will run
 `log()` when `filename.txt` is created, deleted or modified. `log()` will be
 called with a [watchdog event][event].
-
 
 ```python
 from gramex.services.watcher import watch
@@ -102,6 +100,6 @@ for f in `/bin/ls /proc/<proc-id>/fd/`; do readlink -f "/proc/<proc-id>/fd/$f"; 
 Alternatively, you can disable the Watch by setting it as `False` in gramex.yaml. This can be useful in containerized apps where you can't modify the host inotify limit.
 
 ```yaml
-    app:
-        watch: False
+app:
+  watch: False
 ```

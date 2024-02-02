@@ -8,7 +8,6 @@ Gramex is a platform that allows users to create visual storyboards from data.
 This guide creates a simple dashboard for SuperStore, a fictional supermarket.
 We'll analyse the supermarket's sales by product segment, region and category.
 
-
 [TOC]
 
 ## Requirements
@@ -66,7 +65,7 @@ INFO    22-Apr 13:34:26 __init__ PORT Listening on port 9988
 INFO    22-Apr 13:34:26 __init__ 9988 <Ctrl-B> opens the browser...
 ```
 
-**Note**: Gramex may print other lines after this -- so it *may not* be the last line on the log.
+**Note**: Gramex may print other lines after this -- so it _may not_ be the last line on the log.
 
 Open your browser and visit `http://localhost:9988`.
 You'll see "Hello Gramex".
@@ -91,7 +90,6 @@ url:
       url: $YAMLPATH/store-sales.csv
 ```
 
-
 Now visit `http://localhost:9988/data` in your browser.
 You should now see a JSON payload representing the first 1,000 lines of the dataset:
 
@@ -104,11 +102,10 @@ You should now see a JSON payload representing the first 1,000 lines of the data
 ```
 
 You could also visit
-[http://localhost:9988/data?_limit=10&_format=html](http://localhost:9988/data?_limit=10&_format=html)
+[http://localhost:9988/data?\_limit=10&\_format=html](http://localhost:9988/data?_limit=10&_format=html)
 to see the first ten rows as a simple HTML table.
 
 ![Step 1 output](img/step-1-output.png){: width=500}
-
 
 ## Step 2: Lay out some scaffolding
 
@@ -120,8 +117,8 @@ First, add this code into `gramex.yaml`:
 ```yaml
 import:
   ui:
-    path: $GRAMEXAPPS/ui/gramex.yaml    # Import the UI components
-    YAMLURL: $YAMLURL/ui/               # ... at this URL
+    path: $GRAMEXAPPS/ui/gramex.yaml # Import the UI components
+    YAMLURL: $YAMLURL/ui/ # ... at this URL
 ```
 
 This imports the [UI components library](../../uicomponents/), which includes:
@@ -136,16 +133,16 @@ We won't change `gramex.yaml` for the rest of this tutorial. We are done with th
 Now, copy this code into `index.html`. It's a boilerplate that includes the CSS and JS files we'll need.
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <title>SuperStore Sales Dashboard</title>
-  <link rel="stylesheet" href="ui/bootstraptheme.css">
-</head>
-<body>
-  <div class="placeholder">This div shall hold our data</div>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>SuperStore Sales Dashboard</title>
+    <link rel="stylesheet" href="ui/bootstraptheme.css" />
+  </head>
+  <body>
+    <div class="placeholder">This div shall hold our data</div>
+  </body>
   <script src="ui/jquery/dist/jquery.min.js"></script>
   <script src="ui/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="ui/lodash/lodash.min.js"></script>
@@ -169,7 +166,7 @@ To show the data as a table, insert the following lines in
 ```html
 <div class="formhandler" data-src="data"></div>
 <script>
-  $('.formhandler').formhandler({pageSize: 5})
+  $(".formhandler").formhandler({ pageSize: 5 });
 </script>
 ```
 
@@ -189,47 +186,47 @@ The table is interactive. Try playing around with it. Here's a few things you co
 
 ## Step 4: Adding A Chart
 
-Let's add a simple barchart to display data grouped by Segment. Formhandler automatically does the grouping for us simply by changing the URL. Adding a `?_by` query to any FormHandler URL, like [data?_by=Segment](../data?_by=Segment), changes the output: each of our numeric columns now has the sum of all rows having a particular Segment value.
+Let's add a simple barchart to display data grouped by Segment. Formhandler automatically does the grouping for us simply by changing the URL. Adding a `?_by` query to any FormHandler URL, like [data?\_by=Segment](../data?_by=Segment), changes the output: each of our numeric columns now has the sum of all rows having a particular Segment value.
 
-FormHandler lets us do a lot of data querying, filtering and grouping just by editing the URL. See [FormHandler Filters](../../formhandler/#formhandler-filters) for  list of all possible values.
+FormHandler lets us do a lot of data querying, filtering and grouping just by editing the URL. See [FormHandler Filters](../../formhandler/#formhandler-filters) for list of all possible values.
 
 To actually draw the chart, we'll use a library called
 [Vega-lite](https://vega.github.io/vega-lite/). Vega-lite is a really simple to
 use, configuration driven javascript charting library and supports many common
 chart types. To draw a chart, we add a few pieces to our `index.html`.
 
-Add the following *chart specification* to your HTML, followed by some JS code
+Add the following _chart specification_ to your HTML, followed by some JS code
 to render the chart.
 
 ```html
 <div id="chart"></div>
 <script>
-var spec = {
-  "$schema": "https://vega.github.io/schema/vega-lite/v3.json",
-  "description": "A bar chart that sorts the y-values by the x-values.",
-  "width": 360,
-  "height": 200,
-  "data": {"url": "data?_by=Segment"},
-  "mark": "bar",
-  "encoding": {
-    "y": {
-      "field": "Segment",
-      "type": "nominal",
-      "sort": {"encoding": "x"},
-      "axis": {"title": "Segment"}
+  var spec = {
+    $schema: "https://vega.github.io/schema/vega-lite/v3.json",
+    description: "A bar chart that sorts the y-values by the x-values.",
+    width: 360,
+    height: 200,
+    data: { url: "data?_by=Segment" },
+    mark: "bar",
+    encoding: {
+      y: {
+        field: "Segment",
+        type: "nominal",
+        sort: { encoding: "x" },
+        axis: { title: "Segment" },
+      },
+      x: {
+        field: "Sales|sum",
+        type: "quantitative",
+        axis: { title: "Sales" },
+      },
     },
-    "x": {
-      "field": "Sales|sum",
-      "type": "quantitative",
-      "axis": {"title": "Sales"}
-    }
-  }
-}
-var view = new vega.View(vega.parse(vegaLite.compile(spec).spec))
-    .renderer('svg')
-    .initialize('#chart')
+  };
+  var view = new vega.View(vega.parse(vegaLite.compile(spec).spec))
+    .renderer("svg")
+    .initialize("#chart")
     .hover()
-    .run()
+    .run();
 </script>
 ```
 
@@ -240,7 +237,6 @@ After saving the file, when we open
 
 [View source](output/2/index.html){: class="source"}
 
-
 Details of the specification can be found in the vega-lite [docs](https://vega.github.io/vega-lite/docs/), but some things to note:
 
 - the spec consists of a bunch of nested fields, `width`, `height`, `data`, etc
@@ -248,8 +244,6 @@ Details of the specification can be found in the vega-lite [docs](https://vega.g
 - We've set the x and y axis values to `Sales|sum` and `Segment` respectively,
   telling Vega-lite to plot those quantities from the data that FormHandler
   returns.
-
-
 
 ## Step 5: Appearance and Final Touches
 
@@ -264,18 +258,17 @@ the div to draw the chart, the x-axis column name and the title of the chart.
 
 ```js
 function render_charts(chartid, xfield, title) {
-  spec.title.text = title
-  spec.encoding.x.field = xfield
+  spec.title.text = title;
+  spec.encoding.x.field = xfield;
   var view = new vega.View(vega.parse(vegaLite.compile(spec).spec))
-    .renderer('svg')
+    .renderer("svg")
     .initialize(chartid)
     .hover()
-    .run()
+    .run();
 }
-render_charts('#chart1', 'Sales|sum', 'Sales by Segment')
-render_charts('#chart2', 'Quantity|sum', 'Quantity by Segment')
+render_charts("#chart1", "Sales|sum", "Sales by Segment");
+render_charts("#chart2", "Quantity|sum", "Quantity by Segment");
 ```
-
 
 Here are a few more ways in which we can tweak our dashboard:
 
@@ -293,7 +286,6 @@ To see more of what Gramex's functionality and features, including how to build 
 - the rest of our [tutorials](../),
 - our [demos](https://gramener.com/demo), and,
 - our detailed [documentation](../../).
-
 
 ## Troubleshooting
 

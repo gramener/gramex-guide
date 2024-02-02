@@ -36,7 +36,6 @@ This caches each table's schema. This can cause a problem if 2 instances of Gram
 
 This is now fixed. Instance 1 will read the list of columns from the table before inserting columns.
 
-
 ## Better computed variables
 
 `gramex.yaml` can contain [computed variables](../../config/#computed-variables), for example:
@@ -51,7 +50,6 @@ variables:
 This sets `SERVERNAME` to the contents of `/etc/hostname`. But if the file does not exist, it would throw an error, and Gramex would not start.
 
 This is now fixed. If the `function:` raises an exception, Gramex logs it and uses the default value.
-
 
 ## Transform variable arguments
 
@@ -77,12 +75,10 @@ action = build_transform({'function': 'x + 1'}, vars={'x': 0}, kwargs=True, iter
 
 ... roughly compiles to:
 
-
 ```python
 def transform(x=0, **kwargs):
     return x + 1
 ```
-
 
 ## Deprecations
 
@@ -95,7 +91,6 @@ def transform(x=0, **kwargs):
 - Gramex uses [Node.js](../../node/) to compile [SASS](../../filehandler/#sass) and [Vue](../../filehandler/#vue) files.
   This caches files in [`$GRAMEXDATA`](../../config/#predefined-variables) under a `pynode` directory.
   If this directory does not exist, Gramex creates it.
-
 
 ## Backward compatibility & security
 

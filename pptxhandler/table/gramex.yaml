@@ -23,9 +23,9 @@ url:
                 - Name
                 - Indication
                 - '<p align="right">FY2018</p>'
-                - ''
+                - ""
                 - '<p align="right">FY2017</p>'
-                - ''
+                - ""
                 - '<p align="right">Growth</p>'
               text:
                 Name: cell.val

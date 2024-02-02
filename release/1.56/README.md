@@ -52,18 +52,18 @@ g1 is upgraded from 0.17.0 to 0.17.1, which introduces
 
 - [$().template()](../../g1/template) exposes variables `$node` (the source node) and `$data` (its `data-` attributes)
 - [$.urlchange](../../g1/urlchange) emits a `#?` event when any URL query key
-changes. This is in addition to the `#?<key>` and `#` events.
+  changes. This is in addition to the `#?<key>` and `#` events.
 
 - UI components now include support responsive font sizes.
-You can enable with `?enable-responsive-font-sizes=true` (default: false)
+  You can enable with `?enable-responsive-font-sizes=true` (default: false)
 
 Other UI components have also been updated to the latest patch versions.
 
 ## Other enhancements
 
 - [pptxhandler](../../pptxhandler) now supports styling specific table columns, all other take default style.
-And, in grouped charts, dataframe column order is preserved.
-Via [@nivedita.deshmukh](https://code.gramener.com/nivedita.deshmukh)
+  And, in grouped charts, dataframe column order is preserved.
+  Via [@nivedita.deshmukh](https://code.gramener.com/nivedita.deshmukh)
 
 ## Bug fixes
 

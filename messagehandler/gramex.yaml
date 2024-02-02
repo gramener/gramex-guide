@@ -1,8 +1,8 @@
 email:
   gramex-guide-messages:
     type: gmail
-    email: gramex.guide@gmail.com       # Generic email ID used to test e-mails
-    password: tlpmupxnhucitpte          # App-specific password created for Gramex guide
+    email: gramex.guide@gmail.com # Generic email ID used to test e-mails
+    password: tlpmupxnhucitpte # App-specific password created for Gramex guide
 
 url:
   messagehandler/comments:
@@ -18,8 +18,8 @@ url:
         to: TEXT
       alert:
         service: gramex-guide-messages
-        to: '{{ to }}'
-        subject: 'Message: {{ body }}'
+        to: "{{ to }}"
+        subject: "Message: {{ body }}"
         html: >
           {% import pandas as pd %}
           {% import time %}

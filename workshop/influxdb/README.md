@@ -25,7 +25,6 @@ To follow through this tutorial completely, you will need:
 2. An InfluxDB server
 3. The InfluxDB Python client
 
-
 We recommend running InfluxDB via Docker, as follows:
 
 ```bash
@@ -55,7 +54,6 @@ floats. These are acoustically tracked submersible devices left in the ocean,
 and their movements are tracked over a period of time to study oceanic currents.
 
 The data looks like this:
-
 
 <table class="table table-striped">
   <thead>
@@ -164,25 +162,28 @@ Next, create a file named `index.html` in the folder, with the following
 content:
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-     crossorigin=""/>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
     <style>
       html,
       body {
-          height: 100%;
-          width: 100%;
+        height: 100%;
+        width: 100%;
       }
       body {
-          margin: 0;
+        margin: 0;
       }
       #map {
-          width: 100%;
-          height: 100%;
+        width: 100%;
+        height: 100%;
       }
     </style>
   </head>
@@ -190,35 +191,38 @@ content:
     <div id="map"></div>
   </body>
   <script src="https://d3js.org/d3.v3.min.js" type="text/javascript"></script>
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-   crossorigin=""></script>
+  <script
+    src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""
+  ></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
   <script>
-    var map = L.map('map')
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
-    }).addTo(map)
+    var map = L.map("map");
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>',
+    }).addTo(map);
     map.fitBounds([
       [67, 147],
-      [-63, -189]
-    ])
+      [-63, -189],
+    ]);
 
-    var data = null
-    var polyLines = {}
-    var colors = {}
+    var data = null;
+    var polyLines = {};
+    var colors = {};
 
-    const updatePath = function(name, latlongs, colors) {
-      let lat = _.filter(latlongs, {_field: 'lat'})[0]._value
-      let lon = _.filter(latlongs, {_field: 'long'})[0]._value
+    const updatePath = function (name, latlongs, colors) {
+      let lat = _.filter(latlongs, { _field: "lat" })[0]._value;
+      let lon = _.filter(latlongs, { _field: "long" })[0]._value;
       if (name in polyLines) {
-        polyLines[name].addLatLng([lat, lon])
+        polyLines[name].addLatLng([lat, lon]);
       } else {
-        polyLines[name] = L.polyline([[lat, lon]], {color: colors[name]})
-        polyLines[name].addTo(map)
+        polyLines[name] = L.polyline([[lat, lon]], { color: colors[name] });
+        polyLines[name].addTo(map);
       }
-    }
+    };
     // More JS goes here.
   </script>
 </html>
@@ -226,10 +230,10 @@ content:
 
 Note that we have:
 
-* added some empty variables to accommodate data later,
-* added a function that renders the path of a float on the map, and
-* left a placeholder comment to accommodate more Javascript code
-as we develop the application through the following steps.
+- added some empty variables to accommodate data later,
+- added a function that renders the path of a float on the map, and
+- left a placeholder comment to accommodate more Javascript code
+  as we develop the application through the following steps.
 
 Run Gramex in this folder, and a browser window should open with a map:
 
@@ -238,31 +242,30 @@ Run Gramex in this folder, and a browser window should open with a map:
 If you visit the [`/data`](http://localhost:9988/data) endpoint in the browser,
 you should see some data coming into InfluxDB as follows:
 
-
 ```js
 [
   {
-    "_start": 1632727879731,
-    "_stop": 1635319879731,
-    "_time": 1635319879185,
-    "_value": 15.0,
-    "_field": "day",
-    "_measurement": "latlong",
-    "exp": "ACALACE"
-  }, {
-    "_start": 1632727879731,
-    "_stop": 1635319879731,
-    "_time": 1635319873012,
-    "_value": 9.0,
-    "_field": "day",
-    "_measurement": "latlong",
-    "exp": "BOUNCE"
+    _start: 1632727879731,
+    _stop: 1635319879731,
+    _time: 1635319879185,
+    _value: 15.0,
+    _field: "day",
+    _measurement: "latlong",
+    exp: "ACALACE",
+  },
+  {
+    _start: 1632727879731,
+    _stop: 1635319879731,
+    _time: 1635319873012,
+    _value: 9.0,
+    _field: "day",
+    _measurement: "latlong",
+    exp: "BOUNCE",
   }, // etc
-]
+];
 ```
 
 As you refresh the page a few more times, you should see more and more records.
-
 
 ### Step 3: Plotting the Data on the Map
 
@@ -275,20 +278,22 @@ To do this, add the following code at the end of the `<script>` tag in
 position for the following code.
 
 ```javascript
-    var colors = _.zipObject(
-      ['TROATL', 'BOUNCE', 'ACALACE', 'CLIMODE', 'DIMES1', 'DIMES2'],
-      ["red", "green", "blue", "yellow", "black", "magenta"]
-    )
-    var puller = setInterval(function() {
-      // Get data accumulated in the last one second
-      $.getJSON('data?_offset=-1s').done(function(d) {
-        let latest = _.groupBy(_.filter(d, i => ['lat', 'long'].includes(i._field)), 'exp')
-        for (const [expname, latlongs] of Object.entries(latest)) {
-          updatePath(expname, latlongs, colors)
-        }
-      })
-    }, 1000)  // Run this every second
-
+var colors = _.zipObject(
+  ["TROATL", "BOUNCE", "ACALACE", "CLIMODE", "DIMES1", "DIMES2"],
+  ["red", "green", "blue", "yellow", "black", "magenta"],
+);
+var puller = setInterval(function () {
+  // Get data accumulated in the last one second
+  $.getJSON("data?_offset=-1s").done(function (d) {
+    let latest = _.groupBy(
+      _.filter(d, (i) => ["lat", "long"].includes(i._field)),
+      "exp",
+    );
+    for (const [expname, latlongs] of Object.entries(latest)) {
+      updatePath(expname, latlongs, colors);
+    }
+  });
+}, 1000); // Run this every second
 ```
 
 Refresh the page, and you should see a visualization that looks like this:

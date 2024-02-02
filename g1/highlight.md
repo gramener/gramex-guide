@@ -15,7 +15,6 @@ Example:
 </script>
 ```
 
-
 ## $.highlight attributes
 
 When we run `$('body').highlight()`, the `body` is called a "container". It
@@ -32,7 +31,6 @@ Highlight containers support these attributes:
 
 - `data-selector=` is a selector that picks the triggers for highlight. Default: `[data-toggle="highlight"]`
 - Any other `data-*` attribute acts as a default `data-*` attribute for the trigger.
-
 
 ## $.highlight events
 

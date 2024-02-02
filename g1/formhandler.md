@@ -5,9 +5,9 @@ An interactive table component for [FormHandler][formhandler] data.
 ```html
 <div class="formhandler" data-src="formhandler-url" data-page-size="10"></div>
 <script>
-$('.formhandler').formhandler({
-  pageSize: 20
-})
+  $(".formhandler").formhandler({
+    pageSize: 20,
+  });
 </script>
 ```
 
@@ -165,6 +165,7 @@ Features to be implemented:
 ## $.formhandler events
 
 - `load` is fired on the source when the template is rendered. Attributes:
+
   - `formdata`: the FormHandler data
   - `meta`: the FormHandler metadata
   - `args`: the URL query parameters passed to the request
@@ -191,11 +192,11 @@ returns an object with these keys:
 For example:
 
 ```js
-$('.formhandler').formhandler()
-var data = $('.formhandler').data('formhandler')
-data.data   // data displayed by component
-data.meta   // metadata returned by the FormHandler
-data.args   // args passed to the FormHandler
+$(".formhandler").formhandler();
+var data = $(".formhandler").data("formhandler");
+data.data; // data displayed by component
+data.meta; // metadata returned by the FormHandler
+data.args; // args passed to the FormHandler
 ```
 
 ## $.formhandler examples
@@ -205,7 +206,7 @@ data.args   // args passed to the FormHandler
 ```html
 <div class="formhandler" data-src="./data"></div>
 <script>
-  $('.formhandler').formhandler()
+  $(".formhandler").formhandler();
 </script>
 ```
 
@@ -214,11 +215,11 @@ data.args   // args passed to the FormHandler
 ```html
 <div class="formhandler" data-src="./data"></div>
 <script>
-  $('.formhandler')
-    .on('load', function(data, meta, args, options) {
-      console.log('data inside formhandler table: ', data)
+  $(".formhandler")
+    .on("load", function (data, meta, args, options) {
+      console.log("data inside formhandler table: ", data);
     })
-    .formhandler()
+    .formhandler();
 </script>
 ```
 
@@ -244,83 +245,88 @@ data.args   // args passed to the FormHandler
 ### Customize inputs in edit mode
 
 ```html
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css"/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css"
+/>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
 
 <div class="edit-fh" data-src="./data"></div>
 <script>
-      $('.edit-fh').formhandler({
-        columns: [
-          {
-            name: 'ID',
-            editable: false     // Disable edit for column "ID" because it is a primary key and cannot be edited.
+  $(".edit-fh")
+    .formhandler({
+      columns: [
+        {
+          name: "ID",
+          editable: false, // Disable edit for column "ID" because it is a primary key and cannot be edited.
+        },
+        {
+          name: "Continent", // Defaults to editable: false
+        },
+        {
+          name: "c1",
+          editable: {
+            input: "number",
+            // keys and values in `attrs` will be added as
+            // <input type="number" min=10 max=100 placeholder="Age"/>
+            attrs: {
+              min: 10,
+              max: 100,
+              placeholder: "Age",
+            },
+            validationMessage: "Age must be between 0-100",
           },
-          {
-            name: 'Continent'  // Defaults to editable: false
+        },
+        {
+          name: "Stripes",
+          editable: {
+            input: "select", // renders a default select dropdown as <select class="form-control form-control-sm">...</select>
+            options: [
+              // `options` is mandatory because `input` is "select"
+              "Vertical",
+              "Horizontal",
+              "Diagonal",
+            ],
           },
-          {
-            name: 'c1',
-            editable: {
-              input: 'number',
-              // keys and values in `attrs` will be added as
-              // <input type="number" min=10 max=100 placeholder="Age"/>
-              attrs: {
-                min: 10,
-                max: 100,
-                placeholder: 'Age'
-              },
-              validationMessage: 'Age must be between 0-100'
-            }
+        },
+        {
+          name: "Shapes",
+          editable: {
+            input: "select",
+            options: ["Circle", "Crescent", "Triangle", "Stars"],
+            attrs: {
+              class: "select-example-basic", // To render the dropdown as select2 library dropdown, add class attribute as identifier
+              name: "shapes",
+            },
           },
-          {
-            name: 'Stripes',
-            editable: {
-              input: 'select',  // renders a default select dropdown as <select class="form-control form-control-sm">...</select>
-              options: [        // `options` is mandatory because `input` is "select"
-                'Vertical',
-                'Horizontal',
-                'Diagonal'
-              ]
-            }
+        },
+        {
+          name: "date_col",
+          editable: {
+            input: "text",
+            attrs: {
+              // To edit column "date_col" using a date picker widget using "bootstrap-datepicker" library, add class attribute as identifier
+              class: "datepicker-example form-control form-control-sm",
+            },
           },
-          {
-            name: 'Shapes',
-            editable: {
-              input: 'select',
-              options: [
-                'Circle',
-                'Crescent',
-                'Triangle',
-                'Stars'
-              ],
-              attrs: {
-                class: 'select-example-basic',  // To render the dropdown as select2 library dropdown, add class attribute as identifier
-                name: 'shapes'
-              }
-            }
-          },
-          {
-            name: 'date_col',
-            editable: {
-              input: 'text',
-              attrs: { // To edit column "date_col" using a date picker widget using "bootstrap-datepicker" library, add class attribute as identifier
-                class: 'datepicker-example form-control form-control-sm'
-              }
-            }
-          }
-        ]
-      }).on('editmode', function () {
-        // turns <select class="select-example-basic">...</select> to select2 dropdown widget
-        $('.select-example-basic').select2()
-        // turns <input type="text" class="datepicker-example"/> to bootstrap-datepicker calendar widget
-        $('.datepicker-example').datepicker({
-          format: 'dd-mm-yyyy',
-          todayHighlight: true,
-          autoclose: true
-        })
-      })
+        },
+      ],
+    })
+    .on("editmode", function () {
+      // turns <select class="select-example-basic">...</select> to select2 dropdown widget
+      $(".select-example-basic").select2();
+      // turns <input type="text" class="datepicker-example"/> to bootstrap-datepicker calendar widget
+      $(".datepicker-example").datepicker({
+        format: "dd-mm-yyyy",
+        todayHighlight: true,
+        autoclose: true,
+      });
+    });
 </script>
 ```

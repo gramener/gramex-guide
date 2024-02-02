@@ -60,16 +60,19 @@ via virtualdom:
 
 ```html
 <script type="text/html" data-engine="vdom">
-  <div class="red-ball" style="transition: all 1s ease;margin-left:<%= x %>px"></div>
+  <div
+    class="red-ball"
+    style="transition: all 1s ease;margin-left:<%= x %>px"
+  ></div>
 </script>
 <script>
-var x = 300
-// Re-rendering the template just updates the changed styles / attributes.
-// DOM elements are not deleted. Just updated.
-setInterval(function() {
-  $('script[type="text/html"]').template({x: x})
-  x = 300 - x
-}, 2000)
+  var x = 300;
+  // Re-rendering the template just updates the changed styles / attributes.
+  // DOM elements are not deleted. Just updated.
+  setInterval(function () {
+    $('script[type="text/html"]').template({ x: x });
+    x = 300 - x;
+  }, 2000);
 </script>
 ```
 
@@ -81,14 +84,19 @@ setInterval(function() {
 ![Search demo](search.gif)
 
 ```html
-<input type="search" data-search="@text" data-bs-target=".list li" data-hide-class="d-none">
+<input
+  type="search"
+  data-search="@text"
+  data-bs-target=".list li"
+  data-hide-class="d-none"
+/>
 <ul class="list">
   <li>First item</li>
   <li>Second item</li>
   <li>Third item</li>
 </ul>
 <script>
-$('body').search()
+  $("body").search();
 </script>
 ```
 

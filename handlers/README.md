@@ -19,9 +19,9 @@ You can use this in `gramex.yaml` to map it to [custom](custom):
 
 ```yaml
 url:
-    handler/custom:
-        pattern: /$YAMLURL/custom
-        handler: handlerutil.CustomHandler
+  handler/custom:
+    pattern: /$YAMLURL/custom
+    handler: handlerutil.CustomHandler
 ```
 
 Extending `BaseHandler` automatically provides these features:
@@ -41,7 +41,6 @@ Extending `BaseHandler` automatically provides these features:
 **Note**: when naming your Python script, avoid namespaces such as `services.` or
 `handlers.` -- these are already used by Gramex, and will not reflect your custom
 handler.
-
 
 ## Initialization
 
@@ -69,13 +68,12 @@ class SetupHandler(BaseHandler):
 
 ```yaml
 url:
-    handler/setup:
-        pattern: /$YAMLURL/setup
-        handler: handlerutil.SetupHandler
-        kwargs:                     # This is passed to setup() and initialize() as **kwargs
-            name: ABC
+  handler/setup:
+    pattern: /$YAMLURL/setup
+    handler: handlerutil.SetupHandler
+    kwargs: # This is passed to setup() and initialize() as **kwargs
+      name: ABC
 ```
-
 
 ## BaseHandler Attributes
 
@@ -121,7 +119,7 @@ These attributes are available to all Gramex handlers via Tornado:
   - `handler.request.body`: Request body, if present, as a byte string.
   - `handler.request.remote_ip`: Client's IP address as a string. Uses `X-Real-Ip` or `X-Forwarded-For` header
   - `handler.request.protocol`: The protocol used, either "http" or "https"
-  - `handler.request.host`: The requested hostname, usually taken from the ``Host`` header.
+  - `handler.request.host`: The requested hostname, usually taken from the `Host` header.
   - `handler.request.files`: dict-like file names mapped to `HTTPFile` class which has
     - `.filename`: uploaded file name
     - `.body`: file content as byte string

@@ -53,8 +53,8 @@ url:
 Now, we'll set up a rule that copies the slide for each year.
 
 ```yaml
-      rules:
-        - copy-slide: data.groupby('year')
+rules:
+  - copy-slide: data.groupby('year')
 ```
 
 This copies the slide for each year. The variable `copy.key` holds the year. `copy.val` has the data for the year.
@@ -62,8 +62,8 @@ This copies the slide for each year. The variable `copy.key` holds the year. `co
 Next, let's set the year on each slide:
 
 ```yaml
-          'Year':
-            text: copy.key
+"Year":
+  text: copy.key
 ```
 
 ![Year displayed on slide](year.png){.img-fluid}
@@ -71,8 +71,8 @@ Next, let's set the year on each slide:
 Now, we'll create a new dataset called `margins`. This has the data for each year, indexed by state.
 
 ```yaml
-          data:
-            margins: copy.val.set_index('state')
+data:
+  margins: copy.val.set_index('state')
 ```
 
 `margins` looks like this. For example, `margins['AL']` has the data for Alabama.
@@ -82,12 +82,12 @@ Now, we'll create a new dataset called `margins`. This has the data for each yea
 We'll color each state shape with a color scale for the party. Add this under `data:`
 
 ```yaml
-            color: >
-              {
-                'democrat': gramex.scale.color(domain=[-20, 50], range='Blues'),
-                'republican': gramex.scale.color(domain=[-20, 50], range='Reds'),
-                'democratic-farmer-labor': gramex.scale.color(domain=[-20, 50], range='Purples'),
-              }
+color: >
+  {
+    'democrat': gramex.scale.color(domain=[-20, 50], range='Blues'),
+    'republican': gramex.scale.color(domain=[-20, 50], range='Reds'),
+    'democratic-farmer-labor': gramex.scale.color(domain=[-20, 50], range='Purples'),
+  }
 ```
 
 Now `colors['democrat'](5)` returns the color for a 5% democrat margin (a light blue color.)
@@ -99,8 +99,8 @@ Now `colors['democrat'](5)` returns the color for a 5% democrat margin (a light 
 We'll use this to color each state based on the winning party and margin.
 
 ```yaml
-          '??':
-            fill: color[margins['party'][shape.name]](c)
+"??":
+  fill: color[margins['party'][shape.name]](c)
 ```
 
 - `??` selects all shapes with 2 letters (e.g. `AL`, `AK`, `AR`, `AZ`)
@@ -111,7 +111,7 @@ We'll use this to color each state based on the winning party and margin.
 Next, we'll add the margin to the text
 
 ```yaml
-            text: f'<p><a font-size="11 pt">{shape.name}</a></p><p><a font-size="8 pt">{margins["margin"][shape.name]}%</a></p>'
+text: f'<p><a font-size="11 pt">{shape.name}</a></p><p><a font-size="8 pt">{margins["margin"][shape.name]}%</a></p>'
 ```
 
 - `<p><a font-size="11 pt">{shape.name}</a></p>` is the first line. It shows the state code in 11 pt
@@ -120,14 +120,14 @@ Next, we'll add the margin to the text
 Finally, we'll set the color scales:
 
 ```yaml
-          Dem-0: {fill: 'color["democrat"](0)'}
-          Rep-0: {fill: 'color["republican"](0)'}
-          Dem-10: {fill: 'color["democrat"](10)'}
-          Rep-10: {fill: 'color["republican"](10)'}
-          Dem-20: {fill: 'color["democrat"](20)'}
-          Rep-20: {fill: 'color["republican"](20)'}
-          Dem-50: {fill: 'color["democrat"](50)'}
-          Rep-50: {fill: 'color["republican"](50)'}
+Dem-0: { fill: 'color["democrat"](0)' }
+Rep-0: { fill: 'color["republican"](0)' }
+Dem-10: { fill: 'color["democrat"](10)' }
+Rep-10: { fill: 'color["republican"](10)' }
+Dem-20: { fill: 'color["democrat"](20)' }
+Rep-20: { fill: 'color["republican"](20)' }
+Dem-50: { fill: 'color["democrat"](50)' }
+Rep-50: { fill: 'color["republican"](50)' }
 ```
 
 [This is the final configuration](gramex.yaml.source){.source}

@@ -1,5 +1,5 @@
 ---
-title:  Cache and open files
+title: Cache and open files
 prefix: Tip
 ...
 

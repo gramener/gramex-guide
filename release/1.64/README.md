@@ -3,7 +3,6 @@ title: Gramex 1.64 release notes
 prefix: 1.64
 ...
 
-
 [TOC]
 
 Gramex 1.64 makes deployment easier, with better support multiple apps per server, multiple logins per app, and secure and offline deployment.
@@ -43,7 +42,7 @@ You can now define a **different cookie for each app**. Configure `app1/` as fol
 ```yaml
 app:
   session:
-    cookie: app1-sid    # Use 'app1-sid' cookie for this app instead of 'sid'
+    cookie: app1-sid # Use 'app1-sid' cookie for this app instead of 'sid'
 ```
 
 ## Multiple logins for the same app
@@ -51,8 +50,8 @@ app:
 A user may need to log in with multiple accounts. E.g. to share charts on
 multiple social media via
 [Google](../../auth/#google-auth),
-[Facebook]((../../auth/#facebook-auth)),
-[Twitter](../../auth/#twitter-auth), *and*
+[Facebook](<(../../auth/#facebook-auth)>),
+[Twitter](../../auth/#twitter-auth), _and_
 [Database Auth](../../auth/#database-auth).
 
 The documentation on [multiple logins](../../auth/#multiple-logins) explains how to set this up,
@@ -60,13 +59,12 @@ along with a [demo](../../auth/multi)
 
 [![Multiple login demo](multi-login.gif)](../../auth/multi)
 
-
 ## Deploy secrets securely
 
 Passwords, access tokens, and other sensitive information needs to be protected. Gramex now
 supports a `.secrets.yaml` file where you can save these securely.
 
-If you can edit files on the server (directly, or via CI), add an *uncommitted* `.secrets.yaml`
+If you can edit files on the server (directly, or via CI), add an _uncommitted_ `.secrets.yaml`
 file with your secrets, like this:
 
 ```yaml
@@ -85,11 +83,11 @@ url:
     pattern: /$YAMLURL/login/
     handler: GoogleAuth
     kwargs:
-      key: add-your-key-directly    # This is not a secret
-      secret: $GOOGLE_AUTH_SECRET   # This comes from .secrets.yaml
+      key: add-your-key-directly # This is not a secret
+      secret: $GOOGLE_AUTH_SECRET # This comes from .secrets.yaml
 ```
 
-If you can't edit files on the server, you can pick up *encrypted* secrets from a public URL in 3 steps.
+If you can't edit files on the server, you can pick up _encrypted_ secrets from a public URL in 3 steps.
 
 1. Encrypt your secrets using this **[secret encryption tool](../../deploy/secrets)**
 2. Store the encrypted secret anywhere publicly (e.g. at [PasteBin](https://pastebin.com/) or [Github](https://gist.github.com/))
@@ -97,7 +95,7 @@ If you can't edit files on the server, you can pick up *encrypted* secrets from 
 
 ```yaml
 SECRET_URL: https://pastebin.com/raw/h75e4mWx
-SECRET_KEY: SECRETKEY     # Replace with your secret key
+SECRET_KEY: SECRETKEY # Replace with your secret key
 ```
 
 When Gramex loads, it loads `SECRET_URL` (ignoring comments beginning with `#`) and decrypts it using your `SECRET_KEY`.
@@ -141,12 +139,12 @@ CaptureHandler reloads a page to take a screenshot. This can be slow. To avoid t
 Trigger the download as follows:
 
 ```js
-html2canvas(document.querySelector('.chart'))     // Pick the element to download
-  .then(canvas => {
-    canvas.toBlob(blob => {
-      saveAs(blob, 'chart.png')                   // Pick your filename
-    })
-  })
+html2canvas(document.querySelector(".chart")) // Pick the element to download
+  .then((canvas) => {
+    canvas.toBlob((blob) => {
+      saveAs(blob, "chart.png"); // Pick your filename
+    });
+  });
 ```
 
 **[Try the demo](../../capturehandler/html2canvas.html)**
@@ -157,10 +155,10 @@ To protect an entire app, i.e. [**add auth on all pages**](../../auth/#authoriza
 
 ```yaml
 app:
-  auth: true    # All pages require login -- including CSS/images on login page!
+  auth: true # All pages require login -- including CSS/images on login page!
 ```
 
-**Use with caution**. This will be used as the default auth on *every* handler.
+**Use with caution**. This will be used as the default auth on _every_ handler.
 The CSS/JS/images on your login page won't appear unless you set `auth: false` on those URLs.
 
 ## Tutorial on building an ML classifier

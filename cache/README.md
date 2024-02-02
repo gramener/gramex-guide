@@ -21,12 +21,12 @@ Here is an example of how to use `Cache-Control:`:
 ```yaml
 url:
   cache-example:
-    pattern: /$YAMLURL/path       # Pick any pattern
-    handler: FileHandler          # and handler
+    pattern: /$YAMLURL/path # Pick any pattern
+    handler: FileHandler # and handler
     kwargs:
-        path: $YAMLPATH/path              # Pass it any arguments
-        headers:                          # Define HTTP headers
-            Cache-Control: max-age=3600   # Keep page in browser cache for 1 hour (3600 seconds)
+      path: $YAMLPATH/path # Pass it any arguments
+      headers: # Define HTTP headers
+        Cache-Control: max-age=3600 # Keep page in browser cache for 1 hour (3600 seconds)
 ```
 
 The cache is used by browsers as well as proxies. You can also specify these
@@ -46,7 +46,7 @@ indicative. Change them based on your needs.
   <br>`Cache-Control: "public, max-age=86400"`
 - **Shared dashboards**: cache publicly for an hour. Data refreshes slowly.
   <br>`Cache-Control: "public, max-age=3600"`
-- **User dashboards**: cache *privately* for an hour.
+- **User dashboards**: cache _privately_ for an hour.
   <br>`Cache-Control: "private, max-age=3600"`
 - **Real-time pages**: Never cache this page anywhere.
   <br>`Cache-Control: "no-cache, no-store"`
@@ -66,10 +66,10 @@ time it is called:
 
 ```yaml
 random:
-    pattern: /$YAMLURL/random
-    handler: FunctionHandler
-    kwargs:
-        function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
+  pattern: /$YAMLURL/random
+  handler: FunctionHandler
+  kwargs:
+    function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
 ```
 
 But adding the `cache:` to this URL caches it the first time it is called. When
@@ -77,11 +77,11 @@ But adding the `cache:` to this URL caches it the first time it is called. When
 
 ```yaml
 random-cached:
-    pattern: /$YAMLURL/random-cached
-    handler: FunctionHandler
-    kwargs:
-        function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
-    cache: true
+  pattern: /$YAMLURL/random-cached
+  handler: FunctionHandler
+  kwargs:
+    function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
+  cache: true
 ```
 
 ### Cache keys
@@ -99,20 +99,20 @@ only cache the path.
 
 ```yaml
 cache-full-url:
-    pattern: /$YAMLURL/cache-full-url
-    handler: FunctionHandler
-    kwargs:
-        function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
-    cache:
-        key: request.uri          # This is the default cache key
+  pattern: /$YAMLURL/cache-full-url
+  handler: FunctionHandler
+  kwargs:
+    function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
+  cache:
+    key: request.uri # This is the default cache key
 
 cache-only-path:
-    pattern: /$YAMLURL/cache-only-path
-    handler: FunctionHandler
-    kwargs:
-        function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
-    cache:
-        key: request.path     # only use the request path, not arguments
+  pattern: /$YAMLURL/cache-only-path
+  handler: FunctionHandler
+  kwargs:
+    function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
+  cache:
+    key: request.path # only use the request path, not arguments
 ```
 
 The key can accept multiple values. The values can either be:
@@ -120,7 +120,7 @@ The key can accept multiple values. The values can either be:
 - `request.<attr>`: For example, `request.uri` returns the URI request. Valid attributes are:
   - `request.uri`: The default mechanism = `request.path` + `request.uri`
   - `request.path`: Same cache irrespective of query parameters
-  - `request.query`:  Same cache irrespective of URL path
+  - `request.query`: Same cache irrespective of URL path
   - `request.remote_ip`: Different caches for each client IP address
   - `request.protocol`: Different caches for "http" vs "https"
   - `request.host`: Different caches when serving on multiple domain names
@@ -152,7 +152,6 @@ provides it if your user table has an `id` column. But you can use any other
 attribute instead of `id` -- e.g. `user.email` for Google, `user.screen_name`
 for Twitter, etc.
 
-
 ### Cache expiry
 
 You can specify a expiry duration. For example [cache-expiry](cache-expiry)
@@ -160,13 +159,13 @@ caches the response for 5 seconds.
 
 ```yaml
 cache-expiry:
-    pattern: /$YAMLURL/cache-expiry
-    handler: FunctionHandler
-    kwargs:
-        function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
-    cache:
-        expiry:
-            duration: 5             # Cache the request for 5 seconds
+  pattern: /$YAMLURL/cache-expiry
+  handler: FunctionHandler
+  kwargs:
+    function: random.choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'])
+  cache:
+    expiry:
+      duration: 5 # Cache the request for 5 seconds
 ```
 
 By default, the cache expires either after 10 years, or when the cache store
@@ -192,19 +191,19 @@ root `cache:` section as follows:
 
 ```yaml
 cache:
-    small-in-memory-cache:      # Define a name for the cache
-        type: memory            # This is an in-memory cache
-        size: 100000            # Just allow 100K of data in the cache
+  small-in-memory-cache: # Define a name for the cache
+    type: memory # This is an in-memory cache
+    size: 100000 # Just allow 100K of data in the cache
 
-    big-disk-cache:             # Define a name for the cache
-        type: disk              # This is an on-disk cache
-        path: $YAMLPATH/.cache  # Location of the disk cache directory
-        size: 1000000000        # Allow ~1GB of data in the cache
+  big-disk-cache: # Define a name for the cache
+    type: disk # This is an on-disk cache
+    path: $YAMLPATH/.cache # Location of the disk cache directory
+    size: 1000000000 # Allow ~1GB of data in the cache
 
-    distributed-cache:          # Define a name for the cache
-        type: redis             # This is a redis cache
-        path: localhost:6379:0  # Connection string for Redis instance
-        size: 1000000000        # Allow ~1GB of data in the cache
+  distributed-cache: # Define a name for the cache
+    type: redis # This is a redis cache
+    path: localhost:6379:0 # Connection string for Redis instance
+    size: 1000000000 # Allow ~1GB of data in the cache
 ```
 
 **Memory caches are the default**. Gramex has a 500 MB in-memory cache called `memory`
@@ -214,9 +213,9 @@ used by [gramex.cache.open](#data-caching). To change its size, use:
 
 ```yaml
 cache:
-    memory:                 # This is the name of the pre-defined Gramex cache
-        type: memory        # This is an in-memory cache
-        size: 5000000       # Just allow 5MB of data in the cache instead of 500 MB (default)
+  memory: # This is the name of the pre-defined Gramex cache
+    type: memory # This is an in-memory cache
+    size: 5000000 # Just allow 5MB of data in the cache instead of 500 MB (default)
 ```
 
 **Disk caches** are based on the [diskcache](http://www.grantjenks.com/docs/diskcache/) library. When
@@ -236,18 +235,17 @@ cache with `default: true` is used as the default cache.
 
 ```yaml
 cache:
-    memory:
-        default: false      # Don't use memory as the default cache
-    different-memory-cache:
-        type: memory
-        size: 1000000000    # Allow ~1GB of data in the cache
-        default: true
+  memory:
+    default: false # Don't use memory as the default cache
+  different-memory-cache:
+    type: memory
+    size: 1000000000 # Allow ~1GB of data in the cache
+    default: true
 ```
 
 **Note**: Persistent caches like `disk` and `redis` pickle Python objects. Some objects (e.g.
 Tornado templates) are not pickle-able. These caches do not cache such objects, ignoring them with
 a log error. Use `memory` cache if you need to cache pickle-able objects.
-
 
 Your functions can access these caches from `cache` object in `gramex.service`.
 For example, the default in-memory Gramex cache is at
@@ -273,24 +271,23 @@ to cache the `node_modules` and `assets` directories, use this configuration:
 
 ```yaml
 static_files:
-    pattern: /$YAMLURL/(node_modules/.*|assets/.*)    # Map all static files
-    handler: FileHandler
-    kwargs:
-    path: $YAMLPATH/                              # from under this directory
-    headers:
-        Cache-Control: "public, max-age=315360000"  # Cache for 10 years on the browser
-    cache: true                                     # Also cache on the server
+  pattern: /$YAMLURL/(node_modules/.*|assets/.*) # Map all static files
+  handler: FileHandler
+  kwargs:
+  path: $YAMLPATH/ # from under this directory
+  headers:
+    Cache-Control: "public, max-age=315360000" # Cache for 10 years on the browser
+  cache: true # Also cache on the server
 ```
 
 To force a refresh, append `?v=xx` where `xx` is a new number. (The use of `?v=`
 is arbitrary. You can use any query parameter instead of `v`.)
 
-
 ## Data caching
 
 [Video](https://youtu.be/Q8Ehhsd0j_E){.youtube}
 
-[`gramex.cache.open`]((https://gramener.com/gramex/guide/api/cache/#gramex.cache.open))
+[`gramex.cache.open`](<(https://gramener.com/gramex/guide/api/cache/#gramex.cache.open)>)
 opens files and caches them unless they are changed. You can
 use this to load any type of file. For example:
 
@@ -299,7 +296,7 @@ import gramex.cache
 data = gramex.cache.open('data.csv', encoding='utf-8')
 ```
 
-This loads `data.csv`  using `pd.read_csv('data.csv', encoding='utf-8')`. The
+This loads `data.csv` using `pd.read_csv('data.csv', encoding='utf-8')`. The
 next time this is called, if `data.csv` in unchanged, the cached results are
 returned.
 
@@ -397,7 +394,6 @@ data = gramex.cache.open('template.txt', mode='rb', encoding=None, errors=None)
 [pickle-load]: https://docs.python.org/2/library/pickle.html#pickle.load
 [hashlib]: https://docs.python.org/3/library/hashlib.html
 
-
 ## Query caching
 
 [`gramex.cache.query`](https://gramener.com/gramex/guide/api/cache/#gramex.cache.query)
@@ -435,7 +431,6 @@ data = gramex.cache.query(query, engine, state=lambda: os.stat('.updated').st_mt
 
 [read_sql]: https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_sql.html
 
-
 ## Module caching
 
 The Python `import` statement loads a module only once. If it has been loaded, it
@@ -449,7 +444,7 @@ reloads them module every time, even if nothing has changed. If the module has
 any large calculations, this slows things down.
 
 Instead, use [`gramex.cache.reload_module(module_name)`](https://gramener.com/gramex/guide/api/cache/#gramex.cache.reload_module).
-This is like `importlib.reload`, but it reloads *only if the file has changed.*
+This is like `importlib.reload`, but it reloads _only if the file has changed._
 
 For example, you can use it in a FunctionHandler:
 
@@ -466,15 +461,13 @@ def my_function_handler(handler):
 You can use it inside a template:
 
 ```html
-{% import my_utils %}
-{% import gramex.cache %}
-{% set gramex.cache.reload_module(my_utils) %}
-(Now my_utils.method() will have the latest saved code)
+{% import my_utils %} {% import gramex.cache %} {% set
+gramex.cache.reload_module(my_utils) %} (Now my_utils.method() will have the
+latest saved code)
 ```
 
 In both these cases, whenever `my_utils.py` is updated, the latest version will
 be used to render the FunctionHandler or template.
-
 
 ## Subprocess streaming
 
@@ -501,7 +494,7 @@ def function_handler(handler):
 All keyword arguments supported by `subprocess.Popen` are supported here.
 
 Streaming is supported. This lets you read the contents of stdout and stderr
-*while the program runs*. Example:
+_while the program runs_. Example:
 
 ```python
 @tornado.gen.coroutine

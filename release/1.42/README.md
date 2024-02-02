@@ -5,7 +5,6 @@ prefix: 1.42
 
 [TOC]
 
-
 ## Admin Module
 
 From v1.42, Gramex ships with an admin page. To include it in your page, use:
@@ -13,8 +12,8 @@ From v1.42, Gramex ships with an admin page. To include it in your page, use:
 ```yaml
 import:
   admin/admin:
-    path: $GRAMEXAPPS/admin2/gramex.yaml    # Note the "admin2" instead of "admin"
-    YAMLURL: /$YAMLURL/admin/               # URL to show the admin page at
+    path: $GRAMEXAPPS/admin2/gramex.yaml # Note the "admin2" instead of "admin"
+    YAMLURL: /$YAMLURL/admin/ # URL to show the admin page at
 ```
 
 Note the `admin2` instead of `admin`
@@ -25,12 +24,12 @@ You can configure the admin page as follows:
 import:
   admin/admin-kwargs:
     path: $GRAMEXAPPS/admin2/gramex.yaml
-    YAMLURL: /$YAMLURL/admin-kwargs/        # URL to show the admin page at
+    YAMLURL: /$YAMLURL/admin-kwargs/ # URL to show the admin page at
     ADMIN_KWARGS:
-      logo: https://gramener.com/uistatic/gramener.png      # Logo URL
-      title: Admin  Page Options                            # Navbar title
-      components: [info, users, shell]                      # Components to show
-      theme: '?primary=%2320186f&dark=%2320186f&font-family-base=roboto&body-bg=%23f8f8f8'  # Bootstrap theme query
+      logo: https://gramener.com/uistatic/gramener.png # Logo URL
+      title: Admin  Page Options # Navbar title
+      components: [info, users, shell] # Components to show
+      theme: "?primary=%2320186f&dark=%2320186f&font-family-base=roboto&body-bg=%23f8f8f8" # Bootstrap theme query
 ```
 
 The `ADMIN_KWARGS` section accepts the following parameters:
@@ -65,11 +64,11 @@ This allows you to ship gramex applications to machines that aren't always conne
 ## Bug fixes
 
 - In some versions of Python, the dict order is not defined.
-`WebSocketHandler` constructs methods dynamically and needs method order. This is now fixed.
+  `WebSocketHandler` constructs methods dynamically and needs method order. This is now fixed.
 - When multiple requests are sent to CaptureHandler simultaneously. Downloads get mixed up.
-This is now plugged. [#494](https://code.gramener.com/cto/gramex/issues/494)
+  This is now plugged. [#494](https://code.gramener.com/cto/gramex/issues/494)
 - If a `schedule` is changed, all schedules are stopped. Changed schedules are re-created.
-Unchanged schedules should be scheduled again. This is noe fixed.
+  Unchanged schedules should be scheduled again. This is noe fixed.
 
 ## Stats
 

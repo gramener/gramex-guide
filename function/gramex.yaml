@@ -12,6 +12,6 @@ url:
     handler: FunctionHandler
     kwargs:
       function:
-        - {name: x, function: 'random.randint(0, 100)'}
-        - {name: y, function: 'random.randint(0, 100)'}
+        - { name: x, function: "random.randint(0, 100)" }
+        - { name: y, function: "random.randint(0, 100)" }
         - x + y

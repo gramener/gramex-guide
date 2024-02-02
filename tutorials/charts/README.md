@@ -69,9 +69,8 @@ common operation used to aggregate a metric (in this case, sales) across two dim
 Do play around with the sample application to get an
 better idea of our goal for this tutorial. Specifically, take a look at how:
 
-* Applying filters on the 'Region' and 'Category' changes the chart.
-* Clicking on different cells in the chart changes the table.
-
+- Applying filters on the 'Region' and 'Category' changes the chart.
+- Clicking on different cells in the chart changes the table.
 
 ### Outcome
 
@@ -85,8 +84,6 @@ After finishing this tutorial, you will have an application like this:
 
 [View Source](../charts/output/4/index.html){: class="source"}
 
-
-
 ### Requirements
 
 This tutorial assumes that you have gone through the
@@ -97,7 +94,6 @@ will be building on:
 2. how they introduce [changes in the URL](../dashboards#step-2-detecting-changes-in-the-url), and
 3. how we use this to [effect changes in the charts](../dashboards#step-3-redrawing-charts-on-url-changes).
 
-
 ## Step 0: Basic Layout and Scaffolding
 
 To begin with, let's just reproduce some of what we did in the last tutorial, beginning
@@ -107,8 +103,8 @@ Add the FormHandler table to your application by adding the following code in th
 
 ```html
 <div class="formhandler" data-src="data"></div>
-  <script>
-    $('.formhandler').formhandler({pageSize: 5})
+<script>
+  $(".formhandler").formhandler({ pageSize: 5 });
 </script>
 ```
 
@@ -122,7 +118,6 @@ placeholder for the chart in your page as follows:
 We will be rendering the chart through a javascript
 function, similar to the `draw_charts` function from the previous tutorial.
 
-
 ## Step 1: Performing the Cross-Tabulation with FormHandler
 
 FormHandler can be used to [transform a dataset](../../formhandler#formhandler-transforms)
@@ -132,14 +127,13 @@ in a variety of ways. In this example, we will use FormHandler's
 Add the following to <kbd>gramex.yaml</kbd> to create a HTTP resource which cross-tabulates the data.
 
 ```yaml
-  store-sales-ctab:
-    pattern: /$YAMLURL/store-sales-ctab
-    handler: FormHandler
-    kwargs:
-      url: $YAMLPATH/store-sales.csv
-      modify: data.groupby(['Category', 'Region'])['Sales'].sum().reset_index()
+store-sales-ctab:
+  pattern: /$YAMLURL/store-sales-ctab
+  handler: FormHandler
+  kwargs:
+    url: $YAMLPATH/store-sales.csv
+    modify: data.groupby(['Category', 'Region'])['Sales'].sum().reset_index()
 ```
-
 
 In the snippet above, we are creating a new endpoint to serve the cross-tabulated data. After
 saving `gramex.yaml`, visit
@@ -149,17 +143,16 @@ combination of a region and a product category, as follows:
 
 ```js
 [
-  {"Category":"Furniture","Region":"Central","Sales":130887.5002000001},
-  {"Category":"Office Supplies","Region":"East","Sales":125007.708},
-  {"Category":"Technology","Region":"South","Sales":97852.945},
+  { Category: "Furniture", Region: "Central", Sales: 130887.5002000001 },
+  { Category: "Office Supplies", Region: "East", Sales: 125007.708 },
+  { Category: "Technology", Region: "South", Sales: 97852.945 },
   // etc
-]
+];
 ```
 
 _Note_: The transforms supported by FormHandler work seamlessly with
 [pandas](https://pandas.pydata.org). Almost evey transformation can be expressed as a
 pandas expression. See [FormHandler documentation](../../formhandler) for details.
-
 
 ## Step 2: Drawing the Chart
 
@@ -169,57 +162,59 @@ a different specification for the color table chart.
 Add the following Vega specification for a heatmap chart to your <kbd>index.html</kbd>.
 
 ```js
-  var spec = {
-    "width": 360,
-    "height": 270,
-    "data": {"url": "store-sales-ctab"},
-    "$schema": "https://vega.github.io/schema/vega-lite/v3.json",
-    "encoding": {
-      "y": {"field": "Category", "type": "nominal"},
-      "x": {"field": "Region", "type": "nominal"}
-    },
-    "layer": [
-      {
-        "mark": "rect",
-        "selection": {"brush": {"type": "interval"}},
-        "encoding": {
-          "color": {"field": "Sales", "type": "quantitative",
-            "legend": {"format": "0.1s"}}
-        }
+var spec = {
+  width: 360,
+  height: 270,
+  data: { url: "store-sales-ctab" },
+  $schema: "https://vega.github.io/schema/vega-lite/v3.json",
+  encoding: {
+    y: { field: "Category", type: "nominal" },
+    x: { field: "Region", type: "nominal" },
+  },
+  layer: [
+    {
+      mark: "rect",
+      selection: { brush: { type: "interval" } },
+      encoding: {
+        color: {
+          field: "Sales",
+          type: "quantitative",
+          legend: { format: "0.1s" },
+        },
       },
-      {
-        "mark": "text",
-        "encoding": {
-          "text": {"field": "Sales", "type": "quantitative"},
-          "color": {
-            "condition": {"test": "datum['Sales'] < 100000", "value": "black"},
-            "value": "white"
-          }
-        }
-      }
-    ]
-  }
+    },
+    {
+      mark: "text",
+      encoding: {
+        text: { field: "Sales", type: "quantitative" },
+        color: {
+          condition: { test: "datum['Sales'] < 100000", value: "black" },
+          value: "white",
+        },
+      },
+    },
+  ],
+};
 ```
 
 Next, let's write a function to compile this specification into a Vega view and draw the
 chart. Add the following function to <kbd>index.html</kbd> to compile the chart specification into a Vega view and draw the chart.
 
 ```js
-  function draw_chart() {
-    var view = new vega.View(vega.parse(vl.compile(spec).spec))
-      .renderer('svg')
-      .initialize('#chart')
-      .hover()
-      .run()
-  }
-  draw_chart()
+function draw_chart() {
+  var view = new vega.View(vega.parse(vl.compile(spec).spec))
+    .renderer("svg")
+    .initialize("#chart")
+    .hover()
+    .run();
+}
+draw_chart();
 ```
 
 At this point, you should be able to see the chart. Again, as in the previous tutorial,
 the next step is to redraw the chart on URL changes.
 
 [View Source](../charts/output/2/index.html){: class="source"}
-
 
 ## Step 3: Redrawing Charts on URL Changes
 
@@ -234,26 +229,26 @@ table and apply them to the cross-tab endpoints. This, too, involves setting the
 Add the following function to <kbd>index.html</kbd> to get URL changes and apply them to the chart spec.
 
 ```js
-  var baseDataURL = spec.data.url  // keep the original URL handy
-  function redrawChartFromURL(e) {
-    if (e.hash.search) { // if the URL hash contains filters, add them to the spec's URL
-      spec.data.url = baseDataURL + '?' + e.hash.search
-    } else { spec.data.url = baseDataURL }  // otherwise restore to the original URL
-    draw_chart()  // draw the chart
-  }
-  $('body').urlfilter({target: 'pushState'})
-  $(window).on('#?', redrawChartFromURL)
-    .urlchange()
+var baseDataURL = spec.data.url; // keep the original URL handy
+function redrawChartFromURL(e) {
+  if (e.hash.search) {
+    // if the URL hash contains filters, add them to the spec's URL
+    spec.data.url = baseDataURL + "?" + e.hash.search;
+  } else {
+    spec.data.url = baseDataURL;
+  } // otherwise restore to the original URL
+  draw_chart(); // draw the chart
+}
+$("body").urlfilter({ target: "pushState" });
+$(window).on("#?", redrawChartFromURL).urlchange();
 ```
 
 [View Source](../charts/output/3/index.html){: class="source"}
-
 
 At this point, the chart should redraw itself based on the table filters. As an example,
 try setting the `Region` column to `South`. The chart should contain only one column now.
 Similarly, try filtering by some columns except `Category` or `Region`, and the sales
 values in the chart should change.
-
 
 ## Step 4: Filtering the Table on Chart Interactions
 
@@ -268,10 +263,10 @@ amounts to:
 3. redrawing the table according to this query.
 
 ```js
-  function filterTableOnClick(event, item) {
-    var query = {"Region": item.datum.Region, "Category": item.datum.Category}
-    var url = g1.url.parse(location.hash.replace('#', ''))
-  }
+function filterTableOnClick(event, item) {
+  var query = { Region: item.datum.Region, Category: item.datum.Category };
+  var url = g1.url.parse(location.hash.replace("#", ""));
+}
 ```
 
 We need to run this function on _every click_ that is registered on the chart. Therefore,
@@ -280,14 +275,14 @@ inside the `draw_chart` function, we need to add the event listener within the f
 well.
 
 ```js
-  function draw_chart() {
-    var view = new vega.View(vega.parse(vl.compile(spec).spec))
-      .renderer('svg')
-      .initialize('#chart')
-      .hover()
-      .run()
-    view.addEventListener('click', filterTableOnClick)
-  }
+function draw_chart() {
+  var view = new vega.View(vega.parse(vl.compile(spec).spec))
+    .renderer("svg")
+    .initialize("#chart")
+    .hover()
+    .run();
+  view.addEventListener("click", filterTableOnClick);
+}
 ```
 
 [View Source](../charts/output/4/index.html){: class="source"}

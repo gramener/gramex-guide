@@ -16,7 +16,7 @@ url:
     pattern: /$YAMLURL/upload
     handler: UploadHandler
     kwargs:
-      path: $GRAMEXDATA/apps/guide/upload/    # ... save files here
+      path: $GRAMEXDATA/apps/guide/upload/ # ... save files here
 ```
 
 By default, `.meta.db` keystore is created in `kwargs:path` directory to store uploaded files' info.
@@ -37,22 +37,22 @@ url:
 
 The `type:` can define any valid store type as seen in [session data](../auth/#session-data).
 
-Note: Till **1.37**  `type: hdf5` was the default. From **1.38** onwards `type:sqlite` is defaulted.
+Note: Till **1.37** `type: hdf5` was the default. From **1.38** onwards `type:sqlite` is defaulted.
 
 Any file posted with a name of `file` is uploaded. Here is a sample HTML form:
 
 ```html
-  <form action="upload" method="POST" enctype="multipart/form-data">
-    <input name="file" type="file">
-    <button type="submit">Submit</button>
-    <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
-  </form>
+<form action="upload" method="POST" enctype="multipart/form-data">
+  <input name="file" type="file" />
+  <button type="submit">Submit</button>
+  <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}" />
+</form>
 ```
 
 (See the [XSRF](../filehandler/#xsrf) documentation to understand `xsrf_token`.)
 
 ::: example href=form source=https://github.com/gramener/gramex-guide/blob/master/uploadhandler/form.html
-    Try the uploader example
+Try the uploader example
 
 After the file is uploaded, users can be redirected via the `redirect:` config
 documented the [redirection configuration](../config/#redirection).
@@ -63,7 +63,7 @@ documented the [redirection configuration](../config/#redirection).
 progress bars. For example:
 
 ```html
-<link rel="stylesheet" href="ui/dropzone/dist/min/dropzone.min.css">
+<link rel="stylesheet" href="ui/dropzone/dist/min/dropzone.min.css" />
 <form action="upload" class="dropzone"></form>
 <script src="ui/dropzone/dist/min/dropzone.min.js"></script>
 ```
@@ -84,10 +84,10 @@ the example below:
 
 ```html
 <form action="upload" method="POST" enctype="multipart/form-data">
-  <input name="file" type="file">
+  <input name="file" type="file" />
   <button type="submit">Submit</button>
-  <input type="hidden" name="save" value="folder/data.csv">
-  <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
+  <input type="hidden" name="save" value="folder/data.csv" />
+  <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}" />
 </form>
 ```
 
@@ -130,7 +130,7 @@ url:
     handler: UploadHandler
     kwargs:
       path: $GRAMEXDATA/apps/guide/
-      methods: get                   # GET /upload returns file info as JSON
+      methods: get # GET /upload returns file info as JSON
 ```
 
 The list of files uploaded can be retrieved from the [upload](upload) URL, along
@@ -164,10 +164,10 @@ To delete a file, submit a POST request to the UploadHandler with a `delete`
 key. Here is a sample AJAX request:
 
 ```js
-$.ajax('upload', {
-  method: 'POST',
-  data: {'delete': 'path/to/file.xlsx'}   // Must match 'file' in uploader.info()
-})
+$.ajax("upload", {
+  method: "POST",
+  data: { delete: "path/to/file.xlsx" }, // Must match 'file' in uploader.info()
+});
 ```
 
 ## Upload arguments
@@ -187,17 +187,17 @@ url:
     handler: UploadHandler
     kwargs:
       path: ...
-      keys:                     # Define what query parameters to use
-        file: [file, upload]    # Use <input id="file"> and/or <input id="upload">
-        delete: [del, rm]       # Use <input id="del"> and/or <input id="rm">
-        save: [save]            # Use <input id="save"> to specify the save location
+      keys: # Define what query parameters to use
+        file: [file, upload] # Use <input id="file"> and/or <input id="upload">
+        delete: [del, rm] # Use <input id="del"> and/or <input id="rm">
+        save: [save] # Use <input id="save"> to specify the save location
 ```
 
 To prevent users from changing or setting the filename, use:
 
 ```yaml
-    keys:
-      save: []    # No field names can override the user provided filename
+keys:
+  save: [] # No field names can override the user provided filename
 ```
 
 ## Transform uploads

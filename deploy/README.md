@@ -47,15 +47,15 @@ Add the following to `.gitlab-ci.yml` in your repository.
 # Reference: http://doc.gitlab.com/ce/ci/yaml/README.html
 deploy:
   stage: deploy
-  script: deploy                          # Run the Gramener deployment script
-  only: [master, /dev-.*/]                # List branches to deploy as a list or RegExs
+  script: deploy # Run the Gramener deployment script
+  only: [master, /dev-.*/] # List branches to deploy as a list or RegExs
   variables:
-    SERVER: ubuntu@uat.gramener.com       # Deploy to uat.gramener.com/app-name/
-    URL: app-name                         # Change this to your app-name
-    SETUP: gramex setup .                 # You can use any setup script here
-    VERSION: py3v1                        # py3v1 or static
-    WEBSOCKET: enabled                    # Optional: websocket support
-    CORS: enabled                         # Optional: open CORS access
+    SERVER: ubuntu@uat.gramener.com # Deploy to uat.gramener.com/app-name/
+    URL: app-name # Change this to your app-name
+    SETUP: gramex setup . # You can use any setup script here
+    VERSION: py3v1 # py3v1 or static
+    WEBSOCKET: enabled # Optional: websocket support
+    CORS: enabled # Optional: open CORS access
 ```
 
 You may change the following keys:
@@ -120,8 +120,8 @@ url:
     pattern: /$YAMLURL/login/
     handler: GoogleAuth
     kwargs:
-      key: add-your-key-directly    # This is not a secret
-      secret: $GOOGLE_AUTH_SECRET   # This comes from .secrets.yaml
+      key: add-your-key-directly # This is not a secret
+      secret: $GOOGLE_AUTH_SECRET # This comes from .secrets.yaml
 ```
 
 You can also access it in code (e.g. in [FunctionHandler](../functionhandler/)) as `gramex.config.variables['PASSWORD']`, etc. For example:
@@ -168,7 +168,7 @@ Any secrets in the main file override the secrets in an imported file.
 
 ### .secrets.yaml URLs
 
-If you can't edit files on the server, you can pick up *encrypted* secrets from a public URL in 3 steps.
+If you can't edit files on the server, you can pick up _encrypted_ secrets from a public URL in 3 steps.
 
 1. Encrypt your secrets using this **[secret encryption tool](secrets)**
 2. Store the encrypted secret anywhere publicly (e.g. at [PasteBin](https://pastebin.com/) or [Github](https://gist.github.com/))
@@ -176,7 +176,7 @@ If you can't edit files on the server, you can pick up *encrypted* secrets from 
 
 ```yaml
 SECRETS_URL: https://pastebin.com/raw/h75e4mWx
-SECRETS_KEY: SECRETKEY     # Replace with your secret key
+SECRETS_KEY: SECRETKEY # Replace with your secret key
 ```
 
 When Gramex loads, it loads `SECRETS_URL` (ignoring comments beginning with `#`) and decrypts it using your `SECRETS_KEY`. The above URL has 2 secrets: `REMOTE_SECRET1` and `REMOTE_SECRET2`, which you can use as variables.
@@ -190,7 +190,7 @@ This lets you securely modify the secrets without accessing the server.
 ```yaml
 script:
   # List environment variables to export
-  - 'secrets KEY1 KEY2 ... > .secrets.yaml'
+  - "secrets KEY1 KEY2 ... > .secrets.yaml"
   # Continue with your deployment script
 ```
 
@@ -215,7 +215,6 @@ Run the image using:
 ```bash
 docker run -p 9988:9988 my-app:latest
 ```
-
 
 ## Windows Service
 
@@ -352,8 +351,8 @@ python yourproject_service.py remove
 
 Here are some common Windows administration actions when deploying on Windows server:
 
-- [Create a separate domain user to run Gramex](https://msdn.microsoft.com/en-in/library/aa545262(v=cs.70).aspx).
-  Note: Domain users are different from [local users](https://msdn.microsoft.com/en-us/library/aa545420(v=cs.70).aspx)
+- [Create a separate domain user to run Gramex](<https://msdn.microsoft.com/en-in/library/aa545262(v=cs.70).aspx>).
+  Note: Domain users are different from [local users](<https://msdn.microsoft.com/en-us/library/aa545420(v=cs.70).aspx>)
 - [Allow the domain user to log in via remote desktop](https://serverfault.com/a/483656/293853)
 - [Give the user permission to run a service](https://support.microsoft.com/en-in/help/288129/how-to-grant-users-rights-to-manage-services-in-windows-2000)
   using [subinacl](http://go.microsoft.com/fwlink/?LinkId=23418).
@@ -421,7 +420,6 @@ sudo journalctl -u your-app             # See the logs on your app
 To run a scheduled task on Linux, use
 [crontab](https://www.geeksforgeeks.org/crontab-in-linux-with-examples/)
 
-
 ## Proxy servers
 
 Gramex is often deployed behind a reverse proxy. This allows a web server (like
@@ -441,11 +439,11 @@ Here's a checklist
    [proxy_pass](http://nginx.org/en/docs/http/websocket.html) on nginx, and
    [mod_proxy_wstunnel](https://httpd.apache.org/docs/2.4/mod/mod_proxy_wstunnel.html) on Apache
 3. **Increase proxy timeout** via
-  [proxy_read_timeout](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_read_timeout) on nginx, and
-  [ProxyTimeout](https://httpd.apache.org/docs/2.4/mod/mod_proxy.html#proxytimeout) on Apache.
+   [proxy_read_timeout](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_read_timeout) on nginx, and
+   [ProxyTimeout](https://httpd.apache.org/docs/2.4/mod/mod_proxy.html#proxytimeout) on Apache.
 4. **Increase upload file size** via
-  [client_max_body_size](http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size) on nginx, and
-  [LimitRequestBody](https://httpd.apache.org/docs/2.4/mod/core.html#limitrequestbody) on Apache.
+   [client_max_body_size](http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size) on nginx, and
+   [LimitRequestBody](https://httpd.apache.org/docs/2.4/mod/core.html#limitrequestbody) on Apache.
 5. **Set up proxy caching** via
    [proxy_cache](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache) on nginx, and
    [mod_cache](https://httpd.apache.org/docs/2.4/mod/mod_cache.html) on Apache.
@@ -686,11 +684,11 @@ import: */gramex.yaml   # Import all gramex.yaml from 1st-level sub-directories
 
 ```yaml
 url:
-    page-name:
-        pattern: /$YAMLURL/page         # Note the /$YAMLURL prefix
-        handler: FileHandler
-        kwargs:
-            path: $YAMLPATH/page.html   # Note the $YAMLPATH prefix
+  page-name:
+    pattern: /$YAMLURL/page # Note the /$YAMLURL prefix
+    handler: FileHandler
+    kwargs:
+      path: $YAMLPATH/page.html # Note the $YAMLPATH prefix
 ```
 
 When you run Gramex from `/app/`, the pattern becomes `/page` (`$YAMLURL` is `.`)
@@ -704,7 +702,7 @@ You can modify the app name using `../new-app-name`. For example, this pattern
 directs the URL `/new-app-name/page` to `/app/page.html`.
 
 ```yaml
-    pattern: /$YAMLURL/../new-app-name/page
+pattern: /$YAMLURL/../new-app-name/page
 ```
 
 You also need this in [redirection URLs](https://learn.gramener.com/guide/config/#redirection).
@@ -716,11 +714,11 @@ url:
     pattern: /$YAMLURL/simple
     handler: SimpleAuth
     kwargs:
-      credentials: {alpha: alpha}
-      redirect: {url: /$YAMLURL/}        # Note the $YAMLURL here
+      credentials: { alpha: alpha }
+      redirect: { url: /$YAMLURL/ } # Note the $YAMLURL here
 ```
 
-Using `/$YAMLURL/` redirects users back to *this* app's home page, rather than
+Using `/$YAMLURL/` redirects users back to _this_ app's home page, rather than
 the global home page (which may be `uat.gramener.com/`.)
 
 **Tips**:
@@ -728,7 +726,6 @@ the global home page (which may be `uat.gramener.com/`.)
 - `/$YAMLURL/` will always have a `/` before and after it.
 - `pattern:` must always start with `/$YAMLURL/`
 - `url:` generally starts with `/$YAMLURL/`
-
 
 ### Using relative URLs
 
@@ -744,31 +741,31 @@ to the application root. For example, this can be:
 
 ```yaml
 url:
-    deploy-url:
-        pattern: /$YAMLURL/url/(.*)               # Any URL under this directory
-        handler: FileHandler                      # is rendered as a FileHandler
-        kwargs:
-            path: $YAMLPATH/template.html         # Using this template
-            transform:
-                "template.html":
-                    # APP_ROOT is the path to the root of the application
-                    function: template(content, APP_ROOT='/'))
+  deploy-url:
+    pattern: /$YAMLURL/url/(.*) # Any URL under this directory
+    handler: FileHandler # is rendered as a FileHandler
+    kwargs:
+      path: $YAMLPATH/template.html # Using this template
+      transform:
+        "template.html":
+          # APP_ROOT is the path to the root of the application
+          function: template(content, APP_ROOT='/'))
 ```
 
 Now you can use the `APP_ROOT` to locate static files in the template:
 
 ```html
-<link rel="stylesheet" href="{{ APP_ROOT }}/style.css">
+<link rel="stylesheet" href="{{ APP_ROOT }}/style.css" />
 ```
 
 If your app is behind a proxy server, the URL may not be `/`. In that case, pass the
 [`X-Gramex-Root` HTTP header](#proxy-servers), and combine with `$YAMLURL` to locate your app root.
 
 ```yaml
-            transform:
-                "template.html":
-                    # APP_ROOT is the path to the root of the application
-                    function: template(content, APP_ROOT=handler.gramex_root + r'$YAMLURL')
+transform:
+  "template.html":
+    # APP_ROOT is the path to the root of the application
+    function: template(content, APP_ROOT=handler.gramex_root + r'$YAMLURL')
 ```
 
 To test this, open the following URLs:
@@ -790,10 +787,10 @@ When using a `FileHandler` like this:
 ```yaml
 url:
   app-home:
-    pattern: /                  # This is hard-coded
+    pattern: / # This is hard-coded
     handler: FileHandler
     kwargs:
-      path: index.html          # This is hard-coded
+      path: index.html # This is hard-coded
 ```
 
 ... the locations are specified relative to where Gramex is running. To make it
@@ -805,7 +802,7 @@ url:
     pattern: /$YAMLURL/
     handler: FileHandler
     kwargs:
-      path: $YAMLPATH/index.html        # Path is relative to this directory
+      path: $YAMLPATH/index.html # Path is relative to this directory
 ```
 
 **Tips**:
@@ -814,7 +811,6 @@ url:
 - `path:` must always start with a `$YAMLPATH/`
 - `url:` for DataHandler or QueryHandler can use it for SQLite or Blaze objects.
   For example, `url: sqlite:///$YAMLPATH/sql.db`.
-
 
 ## Security
 
@@ -846,7 +842,7 @@ The most common security options are pre-configured in `$GRAMEXPATH/deploy.yaml`
   - Config formats: `.yml`, `.yaml`, `.ini`
   - Data formats: `.jsonl`, `.csv`, `.xlsx`, `.db`, `.xls`, `.h5`, `.xml`, `.shp`, `.shx`, `.dbf`, `.prj`, `.idx`, `.zip`, `.7z`
 - Only allows content and front-end files, specifically:
-  - Document formats: `.md`, `.markdown`, `.html`, `.txt`, `.pdf`,  `.rst`, `.pptx`, `.docx` (no `.doc`, `.ppt`, nor Excel files)
+  - Document formats: `.md`, `.markdown`, `.html`, `.txt`, `.pdf`, `.rst`, `.pptx`, `.docx` (no `.doc`, `.ppt`, nor Excel files)
   - Image formats: `png`, `.svg`, `.jp*g`, `.gif`, `.ico`
   - Media formats: `.mp3`, `.mp4`, `.avi`, `.flv`, .`mkv`
   - Font formats: `.ttf`, `.woff*`, `.eot`, `.otf`
@@ -891,9 +887,9 @@ To generate a [Content Security Policy nonce value](https://developer.mozilla.or
 in your template, use this code in your [template](../filehandler/#templates):
 
 ```html
-{% from gramex.config import random_string %}
-{% set nonce = random_string(size=10) %}
-{% set handler.set_header('Content-Security-Policy', f"object-src 'self'; script-src 'self' 'nonce-{nonce}'") %}
+{% from gramex.config import random_string %} {% set nonce =
+random_string(size=10) %} {% set handler.set_header('Content-Security-Policy',
+f"object-src 'self'; script-src 'self' 'nonce-{nonce}'") %}
 <script nonce="{{ nonce }}">
   // ...
 </script>
@@ -910,7 +906,6 @@ To check for application vulnerabilities, run tools such as:
 
 The best way to set up Gramex as an HTTP server is to run it behind a
 [Proxy Server](#proxy-servers) like nginx or Apache.
-
 
 ```nginx
 server {
@@ -949,19 +944,18 @@ server {
   }
 ```
 
-
 ### Direct HTTPS server
 
-To set up Gramex *directly* as a HTTPS server (**not recommended for production**), create a
+To set up Gramex _directly_ as a HTTPS server (**not recommended for production**), create a
 certificate file and a key file, both in PEM format. Use the following settings in `gramex.yaml`:
 
 ```yaml
 app:
-    listen:
-        port: 443
-        ssl_options:
-            certfile: "path/to/certificate.pem"
-            keyfile: "path/to/privatekey.pem"
+  listen:
+    port: 443
+    ssl_options:
+      certfile: "path/to/certificate.pem"
+      keyfile: "path/to/privatekey.pem"
 ```
 
 You can then connect to `https://your-gramex-server/`.
@@ -985,7 +979,6 @@ and is meant for `localhost`.)
 All browsers will report that this connection is not trusted, since it is a
 self-signed certificate. Ignore the warning proceed to the website.
 
-
 ## CORS
 
 **New in 1.78**. When one server sends a request to another server via browser JavaScript, we need to enable
@@ -1000,17 +993,17 @@ url:
     handler: FunctionHandler
     kwargs:
       function: handler.session
-      cors: true  # Enable CORS
+      cors: true # Enable CORS
 ```
 
 `cors: true` is a shortcut for:
 
 ```yaml
-      cors:
-        origins: '*'      # Allow from all servers
-        methods: '*'      # Allow all HTTP methods
-        headers: '*'      # Allow all default HTTP headers
-        auth: true        # Allow cookies
+cors:
+  origins: "*" # Allow from all servers
+  methods: "*" # Allow all HTTP methods
+  headers: "*" # Allow all default HTTP headers
+  auth: true # Allow cookies
 ```
 
 `cors:` can have the following keys:
@@ -1029,14 +1022,14 @@ url:
 For example, this CORS page can be accessed from any server via AJAX / fetch.
 
 ::: example href=cors source=https://github.com/gramener/gramex-guide/tree/master/deploy/gramex.yaml
-    CORS page
+CORS page
 
 On any page, you can run this JS code:
 
 ```js
-fetch('https://gramener.com/gramex/guide/deploy/cors', { method: 'POST' })
-  .then(r => r.text())
-  .then(console.log)
+fetch("https://gramener.com/gramex/guide/deploy/cors", { method: "POST" })
+  .then((r) => r.text())
+  .then(console.log);
 ```
 
 This will send a POST request to the CORS page, and print the response.
@@ -1054,9 +1047,9 @@ So, if you have:
 ... then you can send a POST request from `x.example.com` to `y.example.com` like this:
 
 ```js
-fetch('https//y.example.com', { method: 'POST', credentials: 'include' })
-  .then(r => r.text())
-  .then(console.log)
+fetch("https//y.example.com", { method: "POST", credentials: "include" })
+  .then((r) => r.text())
+  .then(console.log);
 ```
 
 Note: For CORS to work on [CaptureHandler](../capturehandler/) with authentication, pass a
@@ -1092,12 +1085,12 @@ explicitly allow your file.
 
 ```yaml
 url:
-  myapp/allow-files:                        # Create/modify a handler to allow files
+  myapp/allow-files: # Create/modify a handler to allow files
     pattern: /$YAMLURL/data/(.*)
     handler: FileHandler
     kwargs:
       path: $YAMLPATH/data/
-      allow: ['data.csv', '*.xlsx']         # Explicitly allow required types
+      allow: ["data.csv", "*.xlsx"] # Explicitly allow required types
 ```
 
 **Do not use a custom `deploy.yaml`** in your project. Import from `$GRAMEXPATH`
@@ -1129,11 +1122,11 @@ url:            # THIS IS WRONG!
 Ensure that each project's URL handler is pre-fixed with a unique ID:
 
 ```yaml
-url:            # THIS IS RIGHT
-    app1/data:  # This is defined by app1
-        ...
-    app2/data:  # This is defined by app2 -- does not conflict with app1/data
-        ...
+url: # THIS IS RIGHT
+  app1/data: # This is defined by app1
+    ...
+  app2/data: # This is defined by app2 -- does not conflict with app1/data
+    ...
 ```
 
 ### Import conflict
@@ -1142,28 +1135,28 @@ If your app and another app both `import:` the same YAML script, the namespaces
 inside those will obviously collide:
 
 ```yaml
-import:                                     # THIS IS WRONG!
-    app1/ui:                                # app1
-        path: $GRAMEXAPPS/ui/gramex.yaml    # imports UI components
-        YAMLURL: $YAMLURL/app1/ui/          # at /app1/ui/
-    app2/ui:                                # app2
-        path: $GRAMEXAPPS/ui/gramex.yaml    # imports UI components
-        YAMLURL: $YAMLURL/app2/ui/          # at /app2/ui/
+import: # THIS IS WRONG!
+  app1/ui: # app1
+    path: $GRAMEXAPPS/ui/gramex.yaml # imports UI components
+    YAMLURL: $YAMLURL/app1/ui/ # at /app1/ui/
+  app2/ui: # app2
+    path: $GRAMEXAPPS/ui/gramex.yaml # imports UI components
+    YAMLURL: $YAMLURL/app2/ui/ # at /app2/ui/
 ```
 
 Add the [namespace](../config/#imports) key to avoid collision in specified
 sections. A safe use is `namespace: [url, cache, schedule, watch]`
 
 ```yaml
-import:                                     # THIS IS RIGHT
-    app1/ui:                                # app1
-        namespace: [url]                    # ensures names in url: are unique
-        path: $GRAMEXAPPS/ui/gramex.yaml
-        YAMLURL: $YAMLURL/app1/ui/
-    app2/ui:                                # app2
-        namespace: [url]                    # ensures names in url: are unique
-        path: $GRAMEXAPPS/ui/gramex.yaml
-        YAMLURL: $YAMLURL/app2/ui/
+import: # THIS IS RIGHT
+  app1/ui: # app1
+    namespace: [url] # ensures names in url: are unique
+    path: $GRAMEXAPPS/ui/gramex.yaml
+    YAMLURL: $YAMLURL/app1/ui/
+  app2/ui: # app2
+    namespace: [url] # ensures names in url: are unique
+    path: $GRAMEXAPPS/ui/gramex.yaml
+    YAMLURL: $YAMLURL/app2/ui/
 ```
 
 ### Python file conflict
@@ -1272,6 +1265,6 @@ Ensure that no keys duplicated across `gramex.yaml` files and restart gramex.
 - `No service named xxx`: Your `gramex.yaml` has an extra top-level key called
   `xxx` which is not valid. It should probably be indented under some other
   section.
-- `cannot set up log`:  The `log:` section has an error. It may not be a dict,
+- `cannot set up log`: The `log:` section has an error. It may not be a dict,
   or refer to a file / folder that cannot be accessed, etc.
 - `Gramex 1.xx.x is available`: A newer version of Gramex is available. Upgrade

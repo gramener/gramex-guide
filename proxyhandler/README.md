@@ -28,13 +28,13 @@ For example:
 
 ```yaml
 url:
-    proxyhandler/github:
-        pattern: /$YAMLURL/github/(.*)          # Send all requests for github/
-        handler: ProxyHandler
-        kwargs:
-            url: https://api.github.com/{0}     # {0} is replaced with what's in (.*)
-            request_headers:
-                User-Agent: true                # also send the user's browser info
+  proxyhandler/github:
+    pattern: /$YAMLURL/github/(.*) # Send all requests for github/
+    handler: ProxyHandler
+    kwargs:
+      url: https://api.github.com/{0} # {0} is replaced with what's in (.*)
+      request_headers:
+        User-Agent: true # also send the user's browser info
 ```
 
 This forwards [github/search/users](github/search/users?q=mark) to `https://api.github.com/search/users`. For example:
@@ -86,13 +86,13 @@ This configuration proxies the Google APIs at `googleapis.com`:
 
 ```yaml
 url:
-    proxyhandler/google:
-        pattern: /$YAMLURL/google/(.*)
-        handler: ProxyHandler
-        kwargs:
-            url: https://www.googleapis.com/{0}
-            request_headers:
-                Authorization: 'Bearer {handler.session[google_access_token]}'
+  proxyhandler/google:
+    pattern: /$YAMLURL/google/(.*)
+    handler: ProxyHandler
+    kwargs:
+      url: https://www.googleapis.com/{0}
+      request_headers:
+        Authorization: "Bearer {handler.session[google_access_token]}"
 ```
 
 To access the Google APIs, set up a [Google Auth handler](../auth/#google-auth).
@@ -103,7 +103,7 @@ lists the permissions you need. Here is the
 ### Google Services
 
 ::: example href=../auth/google?next=../proxyhandler/ source=https://github.com/gramener/gramex-guide/blob/master/auth/
-    Log into Google
+Log into Google
 
 Once logged in, you can:
 
@@ -134,7 +134,6 @@ Once logged in, you can:
 - Access the [Natural Language API](https://cloud.google.com/natural-language/docs/)
   - [v1 API discovery](googlelanguage/$discovery/rest?version=v1)
 
-
 ### Google Translate
 
 **Note**: Use the [Gramex translate](../translate/) functionality to cache & edit translations.
@@ -143,14 +142,14 @@ You can set up a secret key to access the
 [Google Translate API](https://cloud.google.com/translate/docs/quickstart):
 
 ```yaml
-    proxyhandler/googletranslate:
-        pattern: /$YAMLURL/googletranslate
-        handler: ProxyHandler
-        kwargs:
-            url: https://translation.googleapis.com/language/translate/v2
-            default:
-              # Get key from https://cloud.google.com/translate/docs/quickstart
-              key: ...
+proxyhandler/googletranslate:
+  pattern: /$YAMLURL/googletranslate
+  handler: ProxyHandler
+  kwargs:
+    url: https://translation.googleapis.com/language/translate/v2
+    default:
+      # Get key from https://cloud.google.com/translate/docs/quickstart
+      key: ...
 ```
 
 Now you can translate across [languages](https://cloud.google.com/translate/docs/languages):
@@ -169,37 +168,37 @@ and [reference](https://developers.google.com/custom-search/json-api/v1/referenc
 fetch search results.
 
 ```yaml
-    proxyhandler/googlesearch:
-        pattern: /$YAMLURL/googlesearch
-        handler: ProxyHandler
-        kwargs:
-          url: https://www.googleapis.com/customsearch/v1
-          default:
-            key: ...        # Your API key
-            cx: ...         # Your custom search engine ID
+proxyhandler/googlesearch:
+  pattern: /$YAMLURL/googlesearch
+  handler: ProxyHandler
+  kwargs:
+    url: https://www.googleapis.com/customsearch/v1
+    default:
+      key: ... # Your API key
+      cx: ... # Your custom search engine ID
 ```
 
 Here are some examples of searches:
 
 - [Gramener mentions last week when searching from the US](googlesearch?q=gramener&dateRestrict=1w&gl=us)
 - [Pages related to gramener.com](googlesearch?relatedSite=gramener.com&q=)
-[Google Translate API](https://cloud.google.com/translate/docs/quickstart):
+  [Google Translate API](https://cloud.google.com/translate/docs/quickstart):
 
 ### Google Cloud NLP
 
 You can also analyze text using [NLP](https://cloud.google.com/natural-language/docs/):
 
 ```yaml
-    proxyhandler/googlelanguage:
-        pattern: /$YAMLURL/googlelanguage/(.*)
-        handler: ProxyHandler
-        kwargs:
-            url: https://language.googleapis.com/{0}
-            method: POST
-            request_headers:
-              "*": true
-            default:
-              key: ...
+proxyhandler/googlelanguage:
+  pattern: /$YAMLURL/googlelanguage/(.*)
+  handler: ProxyHandler
+  kwargs:
+    url: https://language.googleapis.com/{0}
+    method: POST
+    request_headers:
+      "*": true
+    default:
+      key: ...
 ```
 
 Sending a POST request to `googlelanguage/v1/documents:analyzeEntities` with
@@ -226,7 +225,6 @@ this JSON content analyzes the entities:
 
 <div class="codehilite"><pre id="entity-result">Click the button above to see the result</pre></div>
 
-
 To analyze the sentiment of text, send a POST request to
 `googlelanguage/v1/documents:analyzeSentiment` with this JSON content:
 
@@ -251,26 +249,25 @@ To analyze the sentiment of text, send a POST request to
 
 <div class="codehilite"><pre id="sentiment-result">Click the button above to see the result</pre></div>
 
-
 ## Facebook ProxyHandler
 
 This configuration proxies the Facebook Graph API at `graph.facebook.com`:
 
 ```yaml
 url:
-    proxyhandler/facebook:
-        pattern: /$YAMLURL/facebook/(.*)
-        handler: ProxyHandler
-        kwargs:
-            url: https://graph.facebook.com/{0}
-            default:
-                access_token: '{handler.session[user][access_token]}'
+  proxyhandler/facebook:
+    pattern: /$YAMLURL/facebook/(.*)
+    handler: ProxyHandler
+    kwargs:
+      url: https://graph.facebook.com/{0}
+      default:
+        access_token: "{handler.session[user][access_token]}"
 ```
 
 To access the Facebook APIs, set up a [Facebook Auth handler](../auth/#facebook-auth).
 
 ::: example href=../auth/facebook source=https://github.com/gramener/gramex-guide/blob/master/auth/
-    Log into Facebook
+Log into Facebook
 
 Once logged in, you can:
 
@@ -279,7 +276,6 @@ Once logged in, you can:
 - [Access your friends](facebook/me/friends)
 - [Access your photos](facebook/me/photos)
 
-
 ## Proxy sites
 
 This configuration mirrors <https://gramener.com/gramex/> at [gramex/](gramex/), but
@@ -287,17 +283,17 @@ only allows authenticated users.
 
 ```yaml
 url:
-    proxyhandler/gramener.com:
-        pattern: /$YAMLURL/(gramex/.*|ui/.*|node_modules/.*|style.css|common.js|img-2019|)
-        handler: ProxyHandler
-        kwargs:
-            url: https://gramener.com/{0}
-            auth: true
-        cache:
-            expiry: {duration: 300}
+  proxyhandler/gramener.com:
+    pattern: /$YAMLURL/(gramex/.*|ui/.*|node_modules/.*|style.css|common.js|img-2019|)
+    handler: ProxyHandler
+    kwargs:
+      url: https://gramener.com/{0}
+      auth: true
+    cache:
+      expiry: { duration: 300 }
 ```
 
-All requests to the URLs gramex/*, ui/*, node_modules/*, etc are redirected
+All requests to the URLs gramex/_, ui/_, node_modules/\*, etc are redirected
 to `gramener.com/` - but only if the user is logged in. This lets us expose
 internal applications to users who are logged in via Gramex.
 
@@ -305,7 +301,7 @@ Further, it caches the response for 300s (5 min) -- making this an authenticated
 caching reverse proxy.
 
 ::: example href=gramex/ source="https://github.com/gramener/gramex-guide/blob/master/proxyhandler/gramex.yaml"
-    Proxied Gramex page
+Proxied Gramex page
 
 **NOTE**: the page won't display perfectly unless all URLs are fully mapped.
 
@@ -344,8 +340,6 @@ Some sample uses:
 - Replace argument values.
 
 ## ProxyHandler modify
-
-
 
 <script src="proxyhandler.js"></script>
 

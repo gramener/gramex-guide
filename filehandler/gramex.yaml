@@ -3,7 +3,7 @@ url:
     pattern: /$YAMLURL/xsrf
     handler: FunctionHandler
     kwargs:
-      function: handler.xsrf_token.decode('utf-8')  # Return the XSRF token
+      function: handler.xsrf_token.decode('utf-8') # Return the XSRF token
   filehandler-form:
     pattern: /$YAMLURL/form.html
     handler: FileHandler
@@ -11,7 +11,7 @@ url:
       path: $YAMLPATH/form.html
       template: true
       error:
-        403: {path: $YAMLPATH/403.html}
+        403: { path: $YAMLPATH/403.html }
   filehandler-template:
     pattern: /$YAMLURL/template
     handler: FileHandler
@@ -19,7 +19,7 @@ url:
       path: $YAMLPATH/template.html
       template: true
   yaml-extensions:
-    pattern: /$YAMLURL/yaml/(.*)                # Any URL starting with yaml
-    handler: FileHandler                        # uses this handler
+    pattern: /$YAMLURL/yaml/(.*) # Any URL starting with yaml
+    handler: FileHandler # uses this handler
     kwargs:
       path: "$YAMLURL/*.yaml"

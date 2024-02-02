@@ -42,7 +42,6 @@ the `link:` attribute in [FormHandler](../../g1/formhandler) columns.
 
 [Vega is upgraded to 5.0](https://github.com/vega/vega/releases/tag/v5.0.0).
 
-
 ## Templates support UI modules
 
 Tornado supports a feature called
@@ -53,8 +52,8 @@ This lets you import template files like calling functions.
 You can use:
 
 ```html
-This is the parent template.
-{% module Template('embedded.html', var1=..., var2=...) %} -- this template is embedded here.
+This is the parent template. {% module Template('embedded.html', var1=...,
+var2=...) %} -- this template is embedded here.
 ```
 
 ## Statistics

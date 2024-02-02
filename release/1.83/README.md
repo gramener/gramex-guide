@@ -43,37 +43,39 @@ Now visit:
 [
   {
     "text": "Narendra Modi is the PM of India.",
-    "labels": [{
-      "start": 0,
-      "end": 13,
-      "label": "PER"
-    },
-    {
-      "start": 27,
-      "end": 32,
-      "label": "LOC"
-    }
+    "labels": [
+      {
+        "start": 0,
+        "end": 13,
+        "label": "PER"
+      },
+      {
+        "start": 27,
+        "end": 32,
+        "label": "LOC"
+      }
     ]
   },
   {
     "text": "Joe Biden is the President of the United States and lives in Washington DC.",
-    "labels": [{
-      "start": 0,
-      "end": 9,
-      "label": "PER"
-    },
-    {
-      "start": 40,
-      "end": 47,
-      "label": "LOC"
-    },
-    {
-      "start": 61,
-      "end": 74,
-      "label": "LOC"
-    },
+    "labels": [
+      {
+        "start": 0,
+        "end": 9,
+        "label": "PER"
+      },
+      {
+        "start": 40,
+        "end": 47,
+        "label": "LOC"
+      },
+      {
+        "start": 61,
+        "end": 74,
+        "label": "LOC"
+      }
     ]
-   }
+  }
 ]
 ```
 

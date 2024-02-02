@@ -27,8 +27,7 @@ url:
 ```
 
 ::: example href=example source=https://github.com/gramener/gramex-guide/blob/master/ratelimit/gramex.yaml
-    Rate limit example
-
+Rate limit example
 
 ## Rate limit keys
 
@@ -68,15 +67,15 @@ url:
 `keys` can also be defined with functions. For example:
 
 ```yaml
-        keys:
-          # Restrict by user's email domain name
-          - function: handler.current_user.email.split('@')[-1]
-          # Refresh every 10 days
-          - function: pd.Timestamp.utcnow().ceil(freq='10D').isoformat()
-            expiry: int((pd.Timestamp.utcnow().ceil(freq='10D') - pd.Timestamp.utcnow()).total_seconds())
-          # Refresh every 30 minutes
-          - function: pd.Timestamp.utcnow().ceil(freq='30T').isoformat()
-            expiry: int((pd.Timestamp.utcnow().ceil(freq='30T') - pd.Timestamp.utcnow()).total_seconds())
+keys:
+  # Restrict by user's email domain name
+  - function: handler.current_user.email.split('@')[-1]
+  # Refresh every 10 days
+  - function: pd.Timestamp.utcnow().ceil(freq='10D').isoformat()
+    expiry: int((pd.Timestamp.utcnow().ceil(freq='10D') - pd.Timestamp.utcnow()).total_seconds())
+  # Refresh every 30 minutes
+  - function: pd.Timestamp.utcnow().ceil(freq='30T').isoformat()
+    expiry: int((pd.Timestamp.utcnow().ceil(freq='30T') - pd.Timestamp.utcnow()).total_seconds())
 ```
 
 - `function` returns the key
@@ -173,7 +172,7 @@ To use a Redis store, use:
 app:
   ratelimit:
     type: redis
-    path: localhost:6379:1  # Redis server:port:db (default: localhost:6379:0)
+    path: localhost:6379:1 # Redis server:port:db (default: localhost:6379:0)
     # flush: 30   # Redis stores are live. No flush required
     purge: 3600
 ```
@@ -194,7 +193,6 @@ returns a rate limit object like this:
 
 If there are [multiple rate limits](#multiple-rate-limits), it picks the one with least remaining usage.
 
-
 ## Multiple rate limits
 
 **v1.91**. `ratelimit` can be an array of rate limit configurations. For example, to set 2 limit:
@@ -203,13 +201,13 @@ If there are [multiple rate limits](#multiple-rate-limits), it picks the one wit
 - 100 requests / day globally
 
 ```yaml
-      ratelimit:
-        - pool: daily-user-pool
-          keys: [daily, user]
-          limit: 30
-        - pool: daily-pool
-          keys: [daily]
-          limit: 100
+ratelimit:
+  - pool: daily-user-pool
+    keys: [daily, user]
+    limit: 30
+  - pool: daily-pool
+    keys: [daily]
+    limit: 100
 ```
 
 1. When Alice visits, her `daily-user-pool` becomes 9, and the `daily-pool` becomes 99

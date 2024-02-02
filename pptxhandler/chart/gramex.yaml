@@ -5,7 +5,7 @@ url:
     kwargs:
       version: 2
       source: $YAMLPATH/template.pptx
-      data: {url: $YAMLPATH/social-media-platform.csv}
+      data: { url: $YAMLPATH/social-media-platform.csv }
       rules:
         - Column Chart:
             chart:

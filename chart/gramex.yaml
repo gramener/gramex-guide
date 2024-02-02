@@ -1,7 +1,7 @@
 import:
   ui:
-    path: $GRAMEXAPPS/ui/gramex.yaml    # Import the UI components
-    YAMLURL: $YAMLURL/ui/               # ... at this URL
+    path: $GRAMEXAPPS/ui/gramex.yaml # Import the UI components
+    YAMLURL: $YAMLURL/ui/ # ... at this URL
 
 url:
   gallery-data:
@@ -10,7 +10,7 @@ url:
     kwargs:
       path: $YAMLPATH/data/
       headers:
-        Access-Control-Allow-Origin: '*'
+        Access-Control-Allow-Origin: "*"
 
   towns-data:
     pattern: /$YAMLURL/towns
@@ -18,4 +18,4 @@ url:
     kwargs:
       url: $YAMLPATH/data/towns.xlsx
       headers:
-        Access-Control-Allow-Origin: '*'
+        Access-Control-Allow-Origin: "*"

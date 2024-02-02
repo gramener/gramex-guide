@@ -23,7 +23,7 @@ url:
 ```
 
 ::: example href=cashflow source="https://github.com/gramener/gramex-guide/blob/master/formhandler/cashflow/"
-    Try it with the FormHandler tutorial
+Try it with the FormHandler tutorial
 
 ## Supported files
 
@@ -66,25 +66,25 @@ Other data formats supported are:
 The type is automatically detected from the extension. Override it using `ext:`. For example:
 
 ```yaml
-    url: /path/to/file.txt      # This is a CSV with .txt extension
-    ext: csv                    # Force reading it as a CSV file
+url: /path/to/file.txt # This is a CSV with .txt extension
+ext: csv # Force reading it as a CSV file
 ```
 
 You can read from a HTTP or HTTPS URL. Use `ext:` to specify the extension of the file.
 
 ```yaml
-    # This URL is read once and cached forever
-    url: https://learn.gramener.com/guide/formhandler/flags.csv
-    ext: csv          # Explicitly specify the extension for URL
+# This URL is read once and cached forever
+url: https://learn.gramener.com/guide/formhandler/flags.csv
+ext: csv # Explicitly specify the extension for URL
 ```
 
 This is cached permanently unless the URL is changed or the server is restarted. You change the URL using
 [FormHandler parameters](#formhandler-parameters) like below:
 
 ```yaml
-    # URL is reloaded when you change ?v=... (or server is restarted)
-    url: https://learn.gramener.com/guide/formhandler/flags.csv?version={v}
-    ext: csv          # Explicitly specify the extension for HTTP(S) urls
+# URL is reloaded when you change ?v=... (or server is restarted)
+url: https://learn.gramener.com/guide/formhandler/flags.csv?version={v}
+ext: csv # Explicitly specify the extension for HTTP(S) urls
 ```
 
 ## Supported databases
@@ -97,8 +97,8 @@ You can read from almost any database as well. To do this, specify `url:` as an
 Here is an example for SQLite:
 
 ```yaml
-    url: 'sqlite:///D:/path/to/file.db'
-    table: sales
+url: "sqlite:///D:/path/to/file.db"
+table: sales
 ```
 
 Most databases require additional libraries to be installed. For example, PostgreSQL requires
@@ -240,7 +240,6 @@ With additional libraries, FormHandler can connect to
   - Install: `pip install sqlalchemy-vertica-python`
   - Use: `url: 'vertica+vertica_python://$USER:$PASS@$HOST/$DATABASE'`
 
-
 ## FormHandler filters
 
 [Video](https://youtu.be/1DAcuxjW0FM){.youtube}
@@ -260,21 +259,21 @@ The URL supports operators for filtering rows. The operators can be combined.
 - [?c1<=10](flags?c1<=10&_format=html) ► c1 < 10 (not <= 10)
 - [?c1<~=10](flags?c1<~=10&_format=html) ► c1 <= 10. The `~` acts like an `=`
 - [?c1>=10&c1<=20](flags?c1>=10&c1<=20&_format=html) ► c1 > 10 AND c1 < 20
-- [?Name~=United](flags?Name~=United&_format=html) ► Name matches &_format=html
+- [?Name~=United](flags?Name~=United&_format=html) ► Name matches &\_format=html
 - [?Name!~=United](flags?Name!~=United&_format=html) ► Name does NOT match United
-- [?Name*=united](flags?Name*=united&_format=html) ► Name matches case INSENSITIVE &_format=html
-- [?Name!*=united](flags?Name!*=united&_format=html) ► Name does NOT match case INSENSITIVE united
+- [?Name\*=united](flags?Name*=united&_format=html) ► Name matches case INSENSITIVE &\_format=html
+- [?Name!\*=united](flags?Name!*=united&_format=html) ► Name does NOT match case INSENSITIVE united
 - [?Name~=United&Continent=Asia](flags?Name~=United&Continent=Asia&_format=html) ► Name matches United AND Continent is Asia
 
 To control the output, you can use these control arguments:
 
-- Limit rows: [?_limit=10](flags?_limit=10&_format=html) ► show only 10 rows
-- Offset rows: [?_offset=10&_limit=10](flags?_offset=10&_limit=10&_format=html) ► show only 10 rows starting, skipping the first 10 rows
-- Sort by columns: [?_sort=Continent&_sort=Name](flags?_sort=Continent&_sort=Name&_format=html) ► sort first by Continent (ascending) then Name (ascending)
-- Sort order: [?_sort=-Continent&_sort=-ID](flags?_sort=-Continent&_sort=-ID&_format=html) ► sort first by Continent (descending) then ID (descending)
-- Specific columns: [?_c=Continent&_c=Name](flags?_c=Continent&_c=Name&_format=html) ► show only the Continent and Names columns
-- Exclude columns: [?_c=-Continent&_c=-Name](flags?_c=-Continent&_c=-Name&_format=html) ► show all columns except the Continent and Names columns
-- Add metadata: [?_meta=y](flags?_c=-Continent&_offset=10&_limit=10&_format=html&_meta=y) ► return all available metadata as HTTP headers
+- Limit rows: [?\_limit=10](flags?_limit=10&_format=html) ► show only 10 rows
+- Offset rows: [?\_offset=10&\_limit=10](flags?_offset=10&_limit=10&_format=html) ► show only 10 rows starting, skipping the first 10 rows
+- Sort by columns: [?\_sort=Continent&\_sort=Name](flags?_sort=Continent&_sort=Name&_format=html) ► sort first by Continent (ascending) then Name (ascending)
+- Sort order: [?\_sort=-Continent&\_sort=-ID](flags?_sort=-Continent&_sort=-ID&_format=html) ► sort first by Continent (descending) then ID (descending)
+- Specific columns: [?\_c=Continent&\_c=Name](flags?_c=Continent&_c=Name&_format=html) ► show only the Continent and Names columns
+- Exclude columns: [?\_c=-Continent&\_c=-Name](flags?_c=-Continent&_c=-Name&_format=html) ► show all columns except the Continent and Names columns
+- Add metadata: [?\_meta=y](flags?_c=-Continent&_offset=10&_limit=10&_format=html&_meta=y) ► return all available metadata as HTTP headers
 
 Note: You can use `FormHandler` to render specific columns in navbar filters using `?_c=`.
 
@@ -307,24 +306,23 @@ Note: `argstype` values can also include an `{expanding: true}` to treat values 
 This is used in [FormHandler queries](#formhandler-query) to
 [prevent SQL injection](#preventing-sql-injection) in the `IN` operator.
 
-
 ## FormHandler groupby
 
 [Video](https://youtu.be/1DAcuxjW0FM?t=620){.youtube}
 
 **v1.38**. The URL supports grouping by columns using `?_by=col`. For example:
 
-- [?_by=Continent](flags?_by=Continent&_format=html): group by Continent, and sum all numeric columns.
+- [?\_by=Continent](flags?_by=Continent&_format=html): group by Continent, and sum all numeric columns.
   ([Test on SQLite](db?_by=Continent&_format=html))
-- [?_by=Text](flags?_by=Text&_format=html): group by Text, and sum all numeric columns.
+- [?\_by=Text](flags?_by=Text&_format=html): group by Text, and sum all numeric columns.
   ([Test on SQLite](db?_by=Text&_format=html))
-- [?_by=Text&_by=Symbols](flags?_by=Text&_by=Symbols&_format=html): group by Text *and* by Symbols.
+- [?\_by=Text&\_by=Symbols](flags?_by=Text&_by=Symbols&_format=html): group by Text _and_ by Symbols.
   ([Test on SQLite](db?_by=Text&_by=Symbols&_format=html))
 
 You can specify custom aggregations using `?_c=col|aggregation`. For example:
 
-- [?_by=Continent&_c=Name|count](flags?_by=Continent&_c=Name|count&_format=html): group by Continent, count names of countries
-- [?_by=Continent&_c=Name|count&_c=c1|min&_c=c1|avg&_c=c1|max&_c=c1|sum](flags?_by=Continent&_c=Name|count&_c=c1|min&_c=c1|avg&_c=c1|max&_c=c1|sum&_format=html)
+- [?\_by=Continent&\_c=Name|count](flags?_by=Continent&_c=Name|count&_format=html): group by Continent, count names of countries
+- [?\_by=Continent&\_c=Name|count&\_c=c1|min&\_c=c1|avg&\_c=c1|max&\_c=c1|sum](flags?_by=Continent&_c=Name|count&_c=c1|min&_c=c1|avg&_c=c1|max&_c=c1|sum&_format=html)
   - `_by=Continent`: group by "Continent"
   - `_c=Name|count`: count values in "Name"
   - `_c=c1|min`: min value of "c1" in each continent
@@ -343,21 +341,20 @@ Apart from `count`, `min`, `avg`, `max`, and `sum`, you can use any aggregation 
 
 To aggregate the entire table, use an empty `?by=`. For example:
 
-- Excel: [_by=&_c=c1|avg&_c=c2|count](flags?_by=&_c=c1|avg&_c=c2|count)
-- SQLite: [_by=&_c=c3|avg&_c=c2|count&c1>=90](db?_by=&_c=c3|avg&_c=c2|count&c1>=90)
+- Excel: [\_by=&\_c=c1|avg&\_c=c2|count](flags?_by=&_c=c1|avg&_c=c2|count)
+- SQLite: [\_by=&\_c=c3|avg&\_c=c2|count&c1>=90](db?_by=&_c=c3|avg&_c=c2|count&c1>=90)
 
 Filters apply BEFORE grouping. For example:
 
-- [?c1>=80&_by=Continent&_c=Name|count](flags?c1>=80&_by=Continent&_c=Name|count&_format=html): count of countries by continent where c1 > 80
+- [?c1>=80&\_by=Continent&\_c=Name|count](flags?c1>=80&_by=Continent&_c=Name|count&_format=html): count of countries by continent where c1 > 80
 
 To filter AFTER grouping, filter by the AGGREGATE column names instead. For example:
 
-- [?_by=Continent&_c=Name|count&Name|count>=30](flags?_by=Continent&_c=Name|count&Name|count>=30&_format=html): count of countries by continent where count of countries is > 30
+- [?\_by=Continent&\_c=Name|count&Name|count>=30](flags?_by=Continent&_c=Name|count&Name|count>=30&_format=html): count of countries by continent where count of countries is > 30
 
-Sorting (`?_sort=`) and pagination (`?_limit=` and `?_offset=`) apply *after* the group by.
+Sorting (`?_sort=`) and pagination (`?_limit=` and `?_offset=`) apply _after_ the group by.
 
-- [?_by=Continent&_sort=Continent&_offset=2&_limit=2](flags?_by=Continent&_sort=Continent&_offset=2&_limit=2&_format=html): count of countries by continent sorted by Continent, 2 per page
-
+- [?\_by=Continent&\_sort=Continent&\_offset=2&\_limit=2](flags?_by=Continent&_sort=Continent&_offset=2&_limit=2&_format=html): count of countries by continent sorted by Continent, 2 per page
 
 ## FormHandler formats
 
@@ -366,10 +363,10 @@ Sorting (`?_sort=`) and pagination (`?_limit=` and `?_offset=`) apply *after* th
 By default, FormHandler renders data as JSON. Use `?_format=` to change that.
 
 - Default: [flags](flags)
-- HTML: [flags?_format=html](flags?_format=html)
-- CSV: [flags?_format=csv](flags?_format=csv)
-- JSON: [flags?_format=json](flags?_format=json)
-- XLSX: [flags?_format=xlsx](flags?_format=xlsx)
+- HTML: [flags?\_format=html](flags?_format=html)
+- CSV: [flags?\_format=csv](flags?_format=csv)
+- JSON: [flags?\_format=json](flags?_format=json)
+- XLSX: [flags?\_format=xlsx](flags?_format=xlsx)
 
 You can also create custom PPTX downloads using FormHandler. For example, this
 configuration adds a custom PPTX format called `pptx-table`:
@@ -381,16 +378,16 @@ formhandler-flags:
   kwargs:
     url: flags.csv
     formats:
-      pptx-table:                 # Define a format called pptx-table
-        format: pptx              # It generates a PPTX output
-        source: input.pptx        # ... based on input.pptx
-        change-table:             # The first rule to apply...
-          Table:                  # ... takes all shapes named Table
-            table:                # ... runs a "table" command (to update tables)
-              data: data['data']  # ... using flags data (default name is 'data)
+      pptx-table: # Define a format called pptx-table
+        format: pptx # It generates a PPTX output
+        source: input.pptx # ... based on input.pptx
+        change-table: # The first rule to apply...
+          Table: # ... takes all shapes named Table
+            table: # ... runs a "table" command (to update tables)
+              data: data['data'] # ... using flags data (default name is 'data)
 ```
 
-- Download the output at [flags?_format=pptx-table](flags?_format=pptx-table&_limit=10&_c=ID&_c=Name&_c=Continent&_c=Stripes).
+- Download the output at [flags?\_format=pptx-table](flags?_format=pptx-table&_limit=10&_c=ID&_c=Name&_c=Continent&_c=Stripes).
 - Download the [input.pptx](input.pptx) used as a template
 
 ### Date parsing
@@ -413,7 +410,7 @@ formhandler-dateparse:
 
 By default, datetimes are rendered in JSON as
 [`epoch`](https://en.wikipedia.org/wiki/Unix_time) times, i.e. time in
-milliseconds from 1-Jan-1980 UTC.  Use `formats.date_format: iso` to change this
+milliseconds from 1-Jan-1980 UTC. Use `formats.date_format: iso` to change this
 to ISO. This returns something like `2019-01-01T00:00:00.000Z`.
 
 ```yaml
@@ -424,7 +421,7 @@ formhandler-...:
     url: ...
     formats:
       json:
-        date_format: iso            # Convert to ISO format instead of epoch
+        date_format: iso # Convert to ISO format instead of epoch
 ```
 
 The ISO format can capture the time zone and is more human readable. Both ISO
@@ -436,8 +433,10 @@ and epoch can be converted into JavaScript date objects via `new Date(date)`.
 table component. To use it, add the following code:
 
 ```html
-<link rel="stylesheet" href="ui/bootstraptheme.css"/>     <!-- Add bootstrap -->
-<div class="formhandler" data-src="flags"></div>          <!-- Insert component here -->
+<link rel="stylesheet" href="ui/bootstraptheme.css" />
+<!-- Add bootstrap -->
+<div class="formhandler" data-src="flags"></div>
+<!-- Insert component here -->
 <!-- Include JS dependencies  -->
 <script src="ui/lodash/lodash.min.js"></script>
 <script src="ui/jquery/dist/jquery.min.js"></script>
@@ -446,14 +445,14 @@ table component. To use it, add the following code:
 <script src="ui/g1/dist/g1.min.js"></script>
 <script>
   // Render the FormHandler table
-  $('.formhandler').formhandler()
+  $(".formhandler").formhandler();
 </script>
 ```
 
 This requires the [UI components library](../uicomponents/) mounted at `ui/`.
 
 ::: example href=table.html source="https://github.com/gramener/gramex-guide/blob/master/formhandler/table.html"
-    FormHandler table example
+FormHandler table example
 
 You can configure the data attributes:
 
@@ -482,9 +481,9 @@ You can export data in Excel/CSV/JSON/HTML formats by passing the following para
 - `_limit`: Maximum data limit as present in `fh-data-count` in your request headers
 - `format`: Available options are `xlsx`, `csv`, `json`, `html`
 
-In the above case, if you want to download `xlsx` data and has `fh-data-count`=196; visit [flags?_limit=196&_format=xlsx&_meta=y]([flags?_limit=196&_format=xlsx&_meta=y]).
+In the above case, if you want to download `xlsx` data and has `fh-data-count`=196; visit [flags?\_limit=196&\_format=xlsx&\_meta=y]([flags?_limit=196&_format=xlsx&_meta=y]).
 
-You can also pass the count as a variable viz. `data_count` = `<fh-data-count>`. In this case, you can visit [flags?_limit=data_count&_format=xlsx&_meta=y]([flags?_limit=data_count&_format=xlsx&_meta=y]) to download data.
+You can also pass the count as a variable viz. `data_count` = `<fh-data-count>`. In this case, you can visit [flags?\_limit=data_count&\_format=xlsx&\_meta=y]([flags?_limit=data_count&_format=xlsx&_meta=y]) to download data.
 
 ## FormHandler charts
 
@@ -501,20 +500,20 @@ formhandler-chart:
     url: flags.csv
     function: data.groupby('Continent').sum().reset_index()
     formats:
-      barchart:                       # Define a format called barchart
-        format: seaborn               # This uses seaborn as the format
-        chart: barplot                # Chart can be any standard seaborn chart
-        ext: png                      # Use a matplot backend (svg, pdf, png)
-        width: 400                    # Image width in pixels. Default 640px
-        height: 300                   # Image height in pixels. Default 480px
-        dpi: 48                       # Image resolution (dots per inch). Default 96
-        x: Continent                  # additional parameters are passed to barplot()
+      barchart: # Define a format called barchart
+        format: seaborn # This uses seaborn as the format
+        chart: barplot # Chart can be any standard seaborn chart
+        ext: png # Use a matplot backend (svg, pdf, png)
+        width: 400 # Image width in pixels. Default 640px
+        height: 300 # Image height in pixels. Default 480px
+        dpi: 48 # Image resolution (dots per inch). Default 96
+        x: Continent # additional parameters are passed to barplot()
         y: c1
         headers:
-          Content-Type: image/png     # Render as a PNG image
+          Content-Type: image/png # Render as a PNG image
 ```
 
-The URL [chart?_format=barchart][barchart] renders the chart image.
+The URL [chart?\_format=barchart][barchart] renders the chart image.
 
 [![Bar plot][barchart]][barchart]
 
@@ -523,7 +522,7 @@ To insert an SVG via AJAX, set `ext: svg` and load it via AJAX.
 ```html
 <div id="barchart-svg"></div>
 <script>
-$('#barchart-svg').load('chart?_format=barchart-svg')
+  $("#barchart-svg").load("chart?_format=barchart-svg");
 </script>
 ```
 
@@ -536,8 +535,8 @@ The format options are formatted using the URL arguments via `{arg}`
 example:
 
 ```yaml
-      x: '{xcol}'   # The X axis for barplot comes from ?xcol=
-      y: '{ycol}'   # The Y axis for barplot comes from ?ycol=
+x: "{xcol}" # The X axis for barplot comes from ?xcol=
+y: "{ycol}" # The Y axis for barplot comes from ?ycol=
 ```
 
 The URL `?xcol=Continent&ycol=c3` draws c3 vs Continents:
@@ -547,8 +546,8 @@ The URL `?xcol=Continent&ycol=c3` draws c3 vs Continents:
 Image dimensions can be controlled via URL arguments. For example:
 
 ```yaml
-      width: '{width}'  # The width of barplot comes from ?width=
-      height: 200       # The height of barplot is fixed
+width: "{width}" # The width of barplot comes from ?width=
+height: 200 # The height of barplot is fixed
 ```
 
 [![c2 by Continent 400 wide][barplot-400]][barplot-400]
@@ -583,7 +582,7 @@ More chart types can be created. See the [Seaborn API](https://seaborn.pydata.or
 
 ### Plotting entire data
 
-By default, FormHandler chart shows you the filtered data. To plot entire data, ensure  that you do not pass `_limit` and `_offset` parameters. Passing those parameters would plot the filtered data viz. [chart?_format=barchart&_limit=6&_offset=2](chart?_format=barchart&_limit=4&_offset=2) would select 4 Continents (due to `_limit=4`) and skip the first 2 Continents (due to `_offset=2`) replacing it with next 2 (if available).
+By default, FormHandler chart shows you the filtered data. To plot entire data, ensure that you do not pass `_limit` and `_offset` parameters. Passing those parameters would plot the filtered data viz. [chart?\_format=barchart&\_limit=6&\_offset=2](chart?_format=barchart&_limit=4&_offset=2) would select 4 Continents (due to `_limit=4`) and skip the first 2 Continents (due to `_offset=2`) replacing it with next 2 (if available).
 
 More examples to be added.
 
@@ -624,7 +623,7 @@ url:
             ...   # The rest of the Vega spec comes here
 ```
 
-When you visit [vega-1?_format=barchart](vega-1?_format=barchart) it renders JavaScript that creates the chart. To include it on your page, just add `<script src="vega-1?_format=barchart" data-id="chart1"></script>` where you want to include the chart, like below:
+When you visit [vega-1?\_format=barchart](vega-1?_format=barchart) it renders JavaScript that creates the chart. To include it on your page, just add `<script src="vega-1?_format=barchart" data-id="chart1"></script>` where you want to include the chart, like below:
 
 ```html
 <script src="vega-1?_format=barchart" data-id="chart1"></script>
@@ -638,24 +637,28 @@ To manipulate the `Vega` object, use this:
 
 ```js
 //  Returns the vega object
-var view = document.querySelector('#chart1').vega
+var view = document.querySelector("#chart1").vega;
 ```
 
 To redraw the chart with new data (e.g. `vega-1?_format=barchart&Continent!=Africa`)
 
 ```js
-var url = 'vega-1?_format=json&Continent!=Africa'
+var url = "vega-1?_format=json&Continent!=Africa";
 fetch(url)
-  .then(r => r.json())
-  .then(function(new_data) {
-    const view = document.querySelector('#chart1').vega
+  .then((r) => r.json())
+  .then(function (new_data) {
+    const view = document.querySelector("#chart1").vega;
     // Suppose, Vega spec in above example uses `data` as (name)[https://vega.github.io/vega/docs/data/]
 
     // Remove old data from namespace `data`
-    view.remove('data', function(d) {return true}).run()
+    view
+      .remove("data", function (d) {
+        return true;
+      })
+      .run();
     // Insert new values into namespace `data`
-    view.insert('data', new_data).run()
-  })
+    view.insert("data", new_data).run();
+  });
 ```
 
 Note: For Vega-Lite, default dataset namespace is `source_0`
@@ -673,18 +676,18 @@ url:
       url: flags.csv
       function: data.groupby('Continent').sum().reset_index()
       default:
-        COL_METRIC: c1                   # COL_METRIC defaults to c1
-        COL_DIMENSION: Continent         # COL_DIMENSION defaults to Continent
-        CHART_TYPE: bar                  # CHART_TYPE defaults to bar
+        COL_METRIC: c1 # COL_METRIC defaults to c1
+        COL_DIMENSION: Continent # COL_DIMENSION defaults to Continent
+        CHART_TYPE: bar # CHART_TYPE defaults to bar
       formats:
         barchart:
           format: vega-lite
           spec:
             "$schema": "https://vega.github.io/schema/vega-lite/v2.json"
-            mark: '{CHART_TYPE}'
+            mark: "{CHART_TYPE}"
             encoding:
-              x: {field: '{COL_DIMENSION}', type: ordinal}     # COL_DIMENSION set to dim for ?COL_METRIC=dim
-              y: {field: '{COL_METRIC}', type: quantitative}   # COL_METRIC set to val for ?COL_METRIC=val
+              x: { field: "{COL_DIMENSION}", type: ordinal } # COL_DIMENSION set to dim for ?COL_METRIC=dim
+              y: { field: "{COL_METRIC}", type: quantitative } # COL_METRIC set to val for ?COL_METRIC=val
 ```
 
 Using the above endpoint, below url draws `bar` chart with `y=c4` and `x=Continent`
@@ -694,7 +697,7 @@ Using the above endpoint, below url draws `bar` chart with `y=c4` and `x=Contine
 ```
 
 ::: example href=vega-examples source="https://github.com/gramener/gramex-guide/blob/master/formhandler/vega.yaml"
-    FormHandler Vega Chart examples
+FormHandler Vega Chart examples
 
 Similarly, [Vega-Lite](https://vega.github.io/vega-lite/) charts are also supported. Use `format: vega-lite` instead of `format: vega`. To include it on your page, just add `<script src="...?_format=barchart"></script>` where you want to include the chart, like below:
 
@@ -706,7 +709,7 @@ Similarly, [Vega-Lite](https://vega.github.io/vega-lite/) charts are also suppor
 ```
 
 ::: example href=vega-lite-examples source="https://github.com/gramener/gramex-guide/blob/master/formhandler/vega-lite.yaml"
-    FormHandler Vega Lite Chart examples
+FormHandler Vega Lite Chart examples
 
 Similarly, Use `format: vegam` for [Vegam](https://www.npmjs.com/package/vegam) charts.
 
@@ -719,20 +722,19 @@ Similarly, Use `format: vegam` for [Vegam](https://www.npmjs.com/package/vegam) 
 ```
 
 ::: example href=vegam-examples source="https://github.com/gramener/gramex-guide/blob/master/formhandler/vegam.yaml"
-    FormHandler Vegam Chart examples
+FormHandler Vegam Chart examples
 
 ## FormHandler downloads
 
 [Video](https://youtu.be/B9lt92GoOmk){.youtube}
 
-
 CSV and XLSX formats are downloaded as `data.csv` and `data.xlsx` by default.
 You can specify `?_download=` to download any format as any filename.
 
-- Default is data.xlsx: [flags?_format=xlsx](flags?_format=xlsx)
-- Download as filename.xlsx: [flags?_format=xlsx&_download=filename.xlsx](flags?_format=xlsx&_download=filename.xlsx)
-- Download JSON as filename.json: [flags?_download=filename.json](flags?_download=filename.json)
-- Download HTML as filename.html: [flags?_format=html&_download=filename.html](flags?_format=html&_download=filename.html)
+- Default is data.xlsx: [flags?\_format=xlsx](flags?_format=xlsx)
+- Download as filename.xlsx: [flags?\_format=xlsx&\_download=filename.xlsx](flags?_format=xlsx&_download=filename.xlsx)
+- Download JSON as filename.json: [flags?\_download=filename.json](flags?_download=filename.json)
+- Download HTML as filename.html: [flags?\_format=html&\_download=filename.html](flags?_format=html&_download=filename.html)
 
 ## FormHandler metadata
 
@@ -758,14 +760,26 @@ FormHandler is designed to work without JavaScript. For example:
 
 ```html
 <form action="flags">
-  <p><label><input name="Name~"> Search for country name</label></p>
-  <p><label><input name="c1>~" type="number" min="0" max="100"> Min c1 value</label></p>
-  <p><label><input name="c1<~" type="number" min="0" max="100"> Max c1 value</label></p>
-  <p><select name="_sort">
-    <option value="c1">Sort by c1 ascending</option>
-    <option value="-c2">Sort by c1 descending</option>
-  </select></p>
-  <input type="hidden" name="_format" value="html">
+  <p>
+    <label><input name="Name~" /> Search for country name</label>
+  </p>
+  <p>
+    <label
+      ><input name="c1>~" type="number" min="0" max="100" /> Min c1 value</label
+    >
+  </p>
+  <p>
+    <label
+      ><input name="c1<~" type="number" min="0" max="100" /> Max c1 value</label
+    >
+  </p>
+  <p>
+    <select name="_sort">
+      <option value="c1">Sort by c1 ascending</option>
+      <option value="-c2">Sort by c1 descending</option>
+    </select>
+  </p>
+  <input type="hidden" name="_format" value="html" />
   <button type="submit">Filter</button>
 </form>
 ```
@@ -823,7 +837,7 @@ This `prepare:` method or expression replaces the `?c=` with `?Cross=`. So
 `prepare(args, key, handler)` is the function signature. You can use:
 
 - `args`: (dict) URL query parameters as lists of strings. E.g. `?x=1&y=2` becomes `{'x': ['1'], 'y': ['2']}`. `args` has [default values](#formhandler-defaults)
-merged in
+  merged in
 - `key`: (str) Name of dataset if you have [multiple datasets](#formhandler-multiple-datasets). Defaults to `"data"`
 - `handler`: FormHandler instance
 
@@ -836,7 +850,6 @@ Some sample uses:
   `handler.current_user` inside the `prepare:` expression
 - Add/modify/delete arguments based on external data.
 - Replace argument values.
-
 
 ## FormHandler functions
 
@@ -863,7 +876,7 @@ This runs the following steps:
    (FormHandler object). You can access URL query parameters via `handler.args`
 3. Filter the data using the URL query parameters
 
-That this transforms the data *before filtering*.
+That this transforms the data _before filtering_.
 e.g. [filtering for c1 > 1000](continent?c1>=1000) filters on the totals, not individual rows.
 To transform the data after filtering, use [modify](#formhandler-modify).
 
@@ -892,7 +905,7 @@ url:
 
 Here, `modify:` returns the sum of numeric columns, rather than the data itself.
 
-`modify:` runs *after filtering*. e.g. the [Asia result](totals?Continent=Asia) shows totals only for Asia. To transform the data before filtering, use [function](#formhandler-functions).
+`modify:` runs _after filtering_. e.g. the [Asia result](totals?Continent=Asia) shows totals only for Asia. To transform the data before filtering, use [function](#formhandler-functions).
 
 `modify:` can be any expression / function that uses `data` & `handler`. For single datasets, `data` is a DataFrame. `modify:` should return a DataFrame.
 
@@ -929,7 +942,7 @@ url:
       symbols:
         url: sqlite:///database.sqlite3
         table: flags
-        query: 'SELECT Continent, COUNT(DISTINCT Symbols) AS dsymbols FROM flags GROUP BY Continent'
+        query: "SELECT Continent, COUNT(DISTINCT Symbols) AS dsymbols FROM flags GROUP BY Continent"
         # Modify ONLY this query. Adds rank column to symbols dataset
         modify: data.assign(rank=data['dsymbols'].rank())
       colors:
@@ -942,20 +955,19 @@ url:
 `modify:` can modify the results of [FormHandler edit](#formhandler-edits) methods too. E.g. The `modify:` below returns the number of URL query parameters passed.
 
 ```yaml
-  formhandler-edits-multidata-modify:
-    pattern: /edits-multidata-modify
-    handler: FormHandler
-    kwargs:
-      sql:
-        url: mysql+pymysql://root@$MYSQL_SERVER/DB?charset=utf8
-        table: sales
-        id: [city, product]
-        modify: len(handler.args.keys())
+formhandler-edits-multidata-modify:
+  pattern: /edits-multidata-modify
+  handler: FormHandler
+  kwargs:
+    sql:
+      url: mysql+pymysql://root@$MYSQL_SERVER/DB?charset=utf8
+      table: sales
+      id: [city, product]
+      modify: len(handler.args.keys())
 ```
 
 `modify:` can be any expression/function that uses `data` -- count of records edited and `handler` --
 `handler.args` contains [data submitted](#formhandler-edits) by the user.
-
 
 ## FormHandler query
 
@@ -968,7 +980,7 @@ url:
     handler: FormHandler
     kwargs:
       url: sqlite:///database.sqlite3
-      query: 'SELECT Continent, COUNT(*) AS num, SUM(c1) FROM flags GROUP BY Continent'
+      query: "SELECT Continent, COUNT(*) AS num, SUM(c1) FROM flags GROUP BY Continent"
 ```
 
 ... returns the query result. [FormHandler filters](#formhandler-filters) apply
@@ -980,7 +992,7 @@ on top of this query. For example:
 Queries bind URL arguments as parameters. `:city` will be replaced by the value of `?city=`. For example:
 
 ```yaml
-      query: SELECT * FROM sales WHERE city = :city
+query: SELECT * FROM sales WHERE city = :city
 ```
 
 For `?city=New York` it returns all rows where `city = "New York"`.
@@ -989,16 +1001,16 @@ This is [SQL-injection safe](#preventing-sql-injection).
 To specific a default city, use:
 
 ```yaml
-      query: SELECT * from sales where city = :city
-      default:
-        city: New York
+query: SELECT * from sales where city = :city
+default:
+  city: New York
 ```
 
 To specify parameters programmatically, create a [prepare function](#formhandler-prepare). For example:
 
 ```yaml
-      query: SELECT * from sales where city = :city
-      prepare: mymodule.set_city(handler, args)
+query: SELECT * from sales where city = :city
+prepare: mymodule.set_city(handler, args)
 ```
 
 ```python
@@ -1009,7 +1021,7 @@ def set_city(handler, args):
 **WARNING**:
 
 1. `query` loads the full result into memory. So keep the result small.
-2. Don't use [`{}` parameter substitution](#formhandler-parameters) for  `query`.
+2. Don't use [`{}` parameter substitution](#formhandler-parameters) for `query`.
    Values with spaces won't work, to avoid [SQL injection](https://en.wikipedia.org/wiki/SQL_injection) attack.
    Use `:<name>` as described above.
 3. Use the correct SQL flavour. E.g. SQL Server uses `SELECT TOP 10 FROM table`
@@ -1044,7 +1056,7 @@ For dynamic queries, use `queryfunction:` instead of `query:`.
 This can be any expression that returns a `query` string. For example:
 
 ```yaml
-      queryfunction: mymodule.sales_query(args)
+queryfunction: mymodule.sales_query(args)
 ```
 
 ```python
@@ -1199,10 +1211,9 @@ url:
       url: flags.csv
       function: data.groupby('Continent').sum().reset_index()
       default:
-        _limit: 10                  # By default, limit to 10 rows, i.e. ?_limit=10
-        Continent: [Europe, Asia]   # Same as ?Continent=Europe&Continent=Asia
+        _limit: 10 # By default, limit to 10 rows, i.e. ?_limit=10
+        Continent: [Europe, Asia] # Same as ?Continent=Europe&Continent=Asia
 ```
-
 
 ## FormHandler validation
 
@@ -1226,7 +1237,6 @@ def validate(args, handler):
 
 This will raise a HTTP 400 Bad Request error if you use `?city=` without
 `?state=`, or if a non-admin user requests `?city=`.
-
 
 ## FormHandler multiple datasets
 
@@ -1256,8 +1266,8 @@ Multiple datasets as formatted as below:
 By default, [filters](#formhandler-filters) apply to all datasets. You can
 restrict filters to a single dataset by prefixing it with a `<key>:`. For example:
 
-- [multidata?_limit=2](multidata?_limit=2&_format=html) shows 2 rows on both datasets
-- [multidata?stripes:_limit=2](multidata?stripes:_limit=2&_format=html) shows 2 rows only on the stripes dataset
+- [multidata?\_limit=2](multidata?_limit=2&_format=html) shows 2 rows on both datasets
+- [multidata?stripes:\_limit=2](multidata?stripes:_limit=2&_format=html) shows 2 rows only on the stripes dataset
 
 FormHandler runs database filters as co-routines. These queries do not block
 other requests, and run across datasets in parallel.
@@ -1273,10 +1283,10 @@ FormHandler allows listing files in a directory. To set this up, use a `dir://`
 URL like this: `url: dir:///path/to/directory`:
 
 ```yaml
-    pattern: /dir
-    handler: FormHandler
-    kwargs:
-      url: dir:///D:/temp/    # Point to any directory
+pattern: /dir
+handler: FormHandler
+kwargs:
+  url: dir:///D:/temp/ # Point to any directory
 ```
 
 Here is a sample output:
@@ -1287,11 +1297,11 @@ Here is a sample output:
 This URL is interpolatable using arguments as well for example:
 
 ```yaml
-    pattern: /dir/(.*)
-    handler: FormHandler
-    kwargs:
-      url: dir:///D:/temp/{_0}    # /dir/abc points to abc/ under this directory
-    # url: dir:///D:/temp/{root}  # /dir/?root=abc points to abc/ under this directory
+pattern: /dir/(.*)
+handler: FormHandler
+kwargs:
+  url: dir:///D:/temp/{_0} # /dir/abc points to abc/ under this directory
+# url: dir:///D:/temp/{root}  # /dir/?root=abc points to abc/ under this directory
 ```
 
 The arguments are escaped and cannot contain `../` and other mechanisms to go
@@ -1300,22 +1310,22 @@ beyond the root directory specified.
 ## FormHandler templates
 
 The output of FormHandler can be rendered as a custom template using the
-`template` format. For example, this creates a ``text`` format:
+`template` format. For example, this creates a `text` format:
 
 ```yaml
-    pattern: text
-    handler: FormHandler
-    kwargs:
-      url: flags.csv
-      formats:
-        text:
-          format: template
-          template: text-template.txt
-          headers:
-              Content-Type: text/plain
+pattern: text
+handler: FormHandler
+kwargs:
+  url: flags.csv
+  formats:
+    text:
+      format: template
+      template: text-template.txt
+      headers:
+        Content-Type: text/plain
 ```
 
-Here is the output of [?_format=text&_limit=10](flags?_format=text&_limit=10).
+Here is the output of [?\_format=text&\_limit=10](flags?_format=text&_limit=10).
 
 The file [text-template.txt](text-template.txt) is rendered as a Gramex
 template using the following variables:
@@ -1345,20 +1355,20 @@ A POST, PUT or DELETE operation immediately writes back to the underlying `url`.
 For example, this writes back to an Excel file:
 
 ```yaml
-      # Saves data to Sheet1 of file.xlsx with plant & machine id as keys
-      url: /path/to/file.xlsx
-      sheet_name: Sheet1
-      id: [plant, machine id]
+# Saves data to Sheet1 of file.xlsx with plant & machine id as keys
+url: /path/to/file.xlsx
+sheet_name: Sheet1
+id: [plant, machine id]
 ```
 
 This writes back to an Oracle Database:
 
 ```yaml
-      # Saves to "sales" table of Oracle DB with month, product & city as keys
-      # Typically, the primary keys of "sales" should be the same as `id` here
-      url: 'oracle://$USER:$PASS@server/db'           # Reads from Oracle
-      table: sales
-      id: [month, product, city]
+# Saves to "sales" table of Oracle DB with month, product & city as keys
+# Typically, the primary keys of "sales" should be the same as `id` here
+url: "oracle://$USER:$PASS@server/db" # Reads from Oracle
+table: sales
+id: [month, product, city]
 ```
 
 To add or delete multiple values, repeat the keys. For example:
@@ -1398,10 +1408,12 @@ This form adds a row to the data.
 ```html
 <!-- flags.csv has ID, Name, Text and many other fields -->
 <form action="flags-add" method="POST" enctype="multipart/form-data">
-  <label for="ID">ID</label>     <input type="text" name="ID" value="XXX">
-  <label for="Name">Name</label> <input type="text" name="Name" value="New country">
-  <label for="Text">Text</label> <input type="text" name="Text" value="New text">
-  <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}">
+  <label for="ID">ID</label> <input type="text" name="ID" value="XXX" />
+  <label for="Name">Name</label>
+  <input type="text" name="Name" value="New country" />
+  <label for="Text">Text</label>
+  <input type="text" name="Text" value="New text" />
+  <input type="hidden" name="_xsrf" value="{{ handler.xsrf_token }}" />
   <button type="submit" class="btn btn-submit">Submit</button>
 </form>
 ```
@@ -1438,18 +1450,18 @@ When you insert multiple rows, the number of rows inserted is returned in the
 **v1.85**. To render a template, e.g. to acknowledge submitting a form, use [FormHandler templates](#formhandler-templates). For example:
 
 ```yaml
-    handler: FormHandler
-    kwargs:
-      url: 'postgresql://$USER:$PASS@server/db'
-      table: sales
-      default:
-        _format: submit-template
-      formats:
-        submit-template:
-          format: template
-          template: $YAMLPATH/template-file.html
-          headers:
-              Content-Type: text/html
+handler: FormHandler
+kwargs:
+  url: "postgresql://$USER:$PASS@server/db"
+  table: sales
+  default:
+    _format: submit-template
+  formats:
+    submit-template:
+      format: template
+      template: $YAMLPATH/template-file.html
+      headers:
+        Content-Type: text/html
 ```
 
 `template-file.html` can be any [Tornado template](../filehandler/#templates). It has access to the
@@ -1472,7 +1484,7 @@ for an AJAX example.
 A [POST request](#formhandler-post) automatically creates a table (if required) when inserting a
 row. But the table structure may not be what you intended.
 
-For example, if the *first* user POSTs:
+For example, if the _first_ user POSTs:
 
 - `?password=123`, the password column becomes an integer, not string
 - `?age=`, the age column becomes a string, not an integer
@@ -1481,27 +1493,27 @@ Use [`Columns:`](../../formhandler/#formhandler-columns) to define column type w
 tables. For example:
 
 ```yaml
-    handler: FormHandler
-    kwargs:
-      url: 'postgresql://$USER:$PASS@server/db'       # Pick any database
-      table: profile              # Pick any table name to create
-      id: id                      # The "id" column is primary key
-      # Define your table's columns
-      columns:
-        user: TEXT                # Use any SQL type allowed by DB
-        password: VARCHAR(40)     # including customizations
-        age:
-          type: INTEGER           # You can also specify as a dict
-          nullable: true          # Allows NULL values for this field
-          default: 0              # that default to zero
-        timestamp:
-          type: TIMESTAMP
-          default:                # Defaults can also be SQLAlchemy functions
-            function: func.now()  # e.g. the current time
-        id:
-          type: INTEGER           # Define an integer ID column
-          primary_key: true       # as a primary key
-          autoincrement: true     # that auto-increments
+handler: FormHandler
+kwargs:
+  url: "postgresql://$USER:$PASS@server/db" # Pick any database
+  table: profile # Pick any table name to create
+  id: id # The "id" column is primary key
+  # Define your table's columns
+  columns:
+    user: TEXT # Use any SQL type allowed by DB
+    password: VARCHAR(40) # including customizations
+    age:
+      type: INTEGER # You can also specify as a dict
+      nullable: true # Allows NULL values for this field
+      default: 0 # that default to zero
+    timestamp:
+      type: TIMESTAMP
+      default: # Defaults can also be SQLAlchemy functions
+        function: func.now() # e.g. the current time
+    id:
+      type: INTEGER # Define an integer ID column
+      primary_key: true # as a primary key
+      autoincrement: true # that auto-increments
 ```
 
 The supported keys are:
@@ -1517,11 +1529,10 @@ The supported keys are:
     ([Ref](https://docs.sqlalchemy.org/en/14/core/defaults.html#client-invoked-sql-expressions))
 
 If the `profile` table already has any of these columns, it is left unaltered. Else, the missing
-columns are *added*. No columns are removed.
+columns are _added_. No columns are removed.
 
 This uses [gramex.data.alter()](https://gramener.com/gramex/guide/api/data/#gramex.data.alter)
 behind the scenes to add columns.
-
 
 ### FormHandler PUT
 
@@ -1529,26 +1540,26 @@ This PUT request updates an existing row in the data.
 
 ```js
 // flags.csv has ID, Name, Text and many other fields
-fetch('flags-edit', {
-  method: 'PUT',
-  data: {ID: 'XXX', Name: 'Country 1', Text: 'Text ' + Math.random()}
-})
+fetch("flags-edit", {
+  method: "PUT",
+  data: { ID: "XXX", Name: "Country 1", Text: "Text " + Math.random() },
+});
 ```
 
 This requires primary keys to be defined in the FormHandler as follows:
 
 ```yaml
-    pattern: /flags
-    handler: FormHandler
-    kwargs:
-      url: /path/to/flags.csv
-      id: ID                  # Primary key column is "ID"
+pattern: /flags
+handler: FormHandler
+kwargs:
+  url: /path/to/flags.csv
+  id: ID # Primary key column is "ID"
 ```
 
 You may specify multiple primary keys using a list. For example:
 
 ```yaml
-      id: [state, city]     # "state" + "city" is the primary key
+id: [state, city] # "state" + "city" is the primary key
 ```
 
 If the `id` columns do not exist in the data, or are not passed in the URL,
@@ -1566,14 +1577,14 @@ If you are using [multiple datasets](#formhandler-multiple-datasets), add an
 `id:` list to each dataset. For example:
 
 ```yaml
-  excel:
-      url: /path/to/file.xlsx
-      sheet_name: Sheet1
-      id: [plant, machine id]
-  oracle:
-      url: 'oracle://$USER:$PASS@server/db'
-      table: sales
-      id: [month, product, city]
+excel:
+  url: /path/to/file.xlsx
+  sheet_name: Sheet1
+  id: [plant, machine id]
+oracle:
+  url: "oracle://$USER:$PASS@server/db"
+  table: sales
+  id: [month, product, city]
 ```
 
 The PUT request can also be made by subbmitting a HTML form.
@@ -1598,9 +1609,11 @@ This DELETE request deletes existing rows in the data.
 ```html
 <!-- flags.csv has Name as a column -->
 <form action="flags-delete" method="POST" enctype="multipart/form-data">
-  <input type="hidden" name="x-http-method-override" value="DELETE">
-  <label for="Name">Name</label> <input type="checkbox" name="Name" value="Country 1" checked>
-  <label for="Name">Name</label> <input type="checkbox" name="Name" value="Country 2">
+  <input type="hidden" name="x-http-method-override" value="DELETE" />
+  <label for="Name">Name</label>
+  <input type="checkbox" name="Name" value="Country 1" checked />
+  <label for="Name">Name</label>
+  <input type="checkbox" name="Name" value="Country 2" />
   <button type="submit" class="btn btn-submit">Submit</button>
 </form>
 ```
@@ -1637,16 +1650,16 @@ These two approaches are the same:
 
 ```js
 // Send using `application/www-url-form-encoded` or `multipart/form-data`
-fetch('flags-edit?ID=XXX&Name=Country 1', {
-  method: 'PUT',
-})
+fetch("flags-edit?ID=XXX&Name=Country 1", {
+  method: "PUT",
+});
 
 // Send using `application/json`
-fetch('flags-edit', {
-  method: 'PUT',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ID: ['XXX'], Name: ['Country 1']})    // Note: values are arrays
-})
+fetch("flags-edit", {
+  method: "PUT",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ ID: ["XXX"], Name: ["Country 1"] }), // Note: values are arrays
+});
 ```
 
 When using jQuery, the former is easier. But when using
@@ -1654,11 +1667,11 @@ When using jQuery, the former is easier. But when using
 or other AJAX / server-side libraries, `application/json` may be easier.
 
 ```js
-fetch('flags-edit', {
-  method: 'POST',
-  headers: {'content-type': 'application/json'},
-  body: JSON.stringify({ID: ['XXX'], Name: ['Country 1']})    // Note: values are arrays
-})
+fetch("flags-edit", {
+  method: "POST",
+  headers: { "content-type": "application/json" },
+  body: JSON.stringify({ ID: ["XXX"], Name: ["Country 1"] }), // Note: values are arrays
+});
 ```
 
 ### Custom HTTP Headers

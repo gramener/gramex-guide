@@ -40,10 +40,10 @@ The Redis cache uses Redis as a back-end. It is fast, persistent and distributed
 
 ```yaml
 cache:
-    distributed-cache:          # Define a name for the cache
-        type: redis             # This is a redis cache
-        path: localhost:6379:0  # Connection string for Redis instance
-        size: 1000000000        # Allow ~1GB of data in the cache
+  distributed-cache: # Define a name for the cache
+    type: redis # This is a redis cache
+    path: localhost:6379:0 # Connection string for Redis instance
+    size: 1000000000 # Allow ~1GB of data in the cache
 ```
 
 Thanks [Niyas](@https://github.com/mniyas)!
@@ -55,15 +55,14 @@ take you to a different app, post-login (particularly when you deploy multiple a
 server). This is fixed in 1.61. Your app will redirect to your own app's login page, not the
 default `/login/` of the server.
 
-
 Some Gramex instances raised a [UnicodeError](https://github.com/gramener/gramex/issues/142) when
 running Gramex. This is also resolved.
 
 ## Use Python expressions in YAML
 
-Handlers like [FunctionHandler](../../functionhandler/) or [FormHandler](../../formhandler/) only allowed Python *functions* in YAML, like `function: mymodule.my_method()` or `modify: data.sort_values()`.
+Handlers like [FunctionHandler](../../functionhandler/) or [FormHandler](../../formhandler/) only allowed Python _functions_ in YAML, like `function: mymodule.my_method()` or `modify: data.sort_values()`.
 
-Now, you can also use *expressions*. For example, `function: 1 + 2` or `modify: data.T`.
+Now, you can also use _expressions_. For example, `function: 1 + 2` or `modify: data.T`.
 
 ## Bug fixes
 

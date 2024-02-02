@@ -13,7 +13,6 @@ Gramex 1.93 is mainly a bug-fix release for FormHandler, error handlers, and OTP
 - **Forbidden error templates do not fail.** [Error handlers](../../config/#error-handlers) show the user info as YAML. But if the info is not serializable (e.g. it has a function), these fail. This is fixed.
 - **OTP override does not delete custom attributes**. Using an OTP overwrote all use attr attributes available from the OTP table (e.g. `email`, `id`). For [EmailAuth](../../emailauth/) this also cleared essential keys when these attributes were empty. This is fixed. [#759](https://github.com/gramener/gramex/issues/759)
 
-
 ## Backward compatibility & security
 
 Gramex 1.93 is backward compatible with [previous releases](../) unless the release notes say otherwise.

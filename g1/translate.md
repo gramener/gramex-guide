@@ -11,9 +11,9 @@ based on [Google Translate](https://cloud.google.com/translate/docs/reference/re
 </div>
 <script>
   // Translate text nodes under element with lang-target=
-  $('[lang-target]').translate({
-    url: './translate',         // The Gramex translate URL endpoint
-  })
+  $("[lang-target]").translate({
+    url: "./translate", // The Gramex translate URL endpoint
+  });
 </script>
 ```
 
@@ -25,8 +25,8 @@ based on [Google Translate](https://cloud.google.com/translate/docs/reference/re
   <h2>This will also be translated</h2>
 </body>
 <script>
-  $('body').translate({target: 'nl', url: '...'})   // Translates h1, h2 to Dutch (nl)
-  $('h1').translate({target: 'de', url: '...'})     // Translates only h1 to German (de)
+  $("body").translate({ target: "nl", url: "..." }); // Translates h1, h2 to Dutch (nl)
+  $("h1").translate({ target: "de", url: "..." }); // Translates only h1 to German (de)
 </script>
 ```
 
@@ -36,9 +36,11 @@ example:
 
 ```html
 <div lang="en" lang-target="nl">Translate from English to Dutch</div>
-<div lang-target="hi">Translate from auto-detected source language to Hindi</div>
+<div lang-target="hi">
+  Translate from auto-detected source language to Hindi
+</div>
 <script>
-  $('div').translate({url: '...'})      // Translates as per the description above
+  $("div").translate({ url: "..." }); // Translates as per the description above
 </script>
 ```
 
@@ -56,18 +58,18 @@ For example:
 <!-- Translates from English to Hindi using ./translate?... as the endpoint -->
 <p lang="en" lang-target="hi" lang-url="./translate">...</p>
 <script>
-  $('[lang-target]').translate()
+  $("[lang-target]").translate();
 </script>
 ```
 
 This is the same as
 
 ```js
-$('p').translate({
-  source: 'en',           // same as lang=
-  target: 'hi',           // same as lang-target=
-  url: './translate'      // same as lang-url=
-})
+$("p").translate({
+  source: "en", // same as lang=
+  target: "hi", // same as lang-target=
+  url: "./translate", // same as lang-url=
+});
 ```
 
 ## $.translate events
@@ -85,14 +87,16 @@ that was translated. The event has these attributes:
 For example:
 
 ```js
-$('[lang-to]').translate()
-  .on('translate', function(e) {       // Triggered on each [lang-to] node
+$("[lang-to]")
+  .translate()
+  .on("translate", function (e) {
+    // Triggered on each [lang-to] node
     // e.target is the translated node
     // e.translate[0].q is the first source text
     // e.translate[0].t is the first translated text
     // etc.
   })
-  .translate()
+  .translate();
 ```
 
 If the translation results in a HTTP error, it fires an `error` event on each

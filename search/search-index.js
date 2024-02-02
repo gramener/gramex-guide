@@ -1,17 +1,17 @@
 // Creates search-index.json as a lunr index
 // Usage: node search-index.js
-var fs = require('fs')
-var path = require('path')
-var lunr = require('lunr')
-var glob = require('glob')
-var marked = require('marked')
-var fm = require('front-matter')
-var root = path.join(__dirname, '..')
+var fs = require("fs");
+var path = require("path");
+var lunr = require("lunr");
+var glob = require("glob");
+var marked = require("marked");
+var fm = require("front-matter");
+var root = path.join(__dirname, "..");
 
-var index = []
-var docs = []
-var metadataList = []
-glob("*/*.md", { cwd: root, ignore: ['**/api/**'] }, function (err, files) {
+var index = [];
+var docs = [];
+var metadataList = [];
+glob("*/*.md", { cwd: root, ignore: ["**/api/**"] }, function (err, files) {
   files.forEach(function (file) {
     var text = fs.readFileSync(path.join(root, file), "utf8");
     var content = fm(text);
@@ -58,34 +58,33 @@ glob("*/*.md", { cwd: root, ignore: ['**/api/**'] }, function (err, files) {
     JSON.stringify({
       docs: docs,
       index: idx.toJSON(),
-    }) + "\n"
+    }) + "\n",
   );
 
   fs.writeFileSync(
     path.join(__dirname, "meta.json"),
-    JSON.stringify(metadataList) + "\n"
+    JSON.stringify(metadataList) + "\n",
   );
 });
 
 function url(file, title) {
-  var slug = title.toLowerCase().replace(/[^\w]+/g, '-')
-  return file.replace(/README.md/, '') + '#' + slug
+  var slug = title.toLowerCase().replace(/[^\w]+/g, "-");
+  return file.replace(/README.md/, "") + "#" + slug;
 }
 
 function add_doc(title, prefix, body, file) {
-  index.push({ title: title, body: body.join(' '), id: docs.length })
-  docs.push({ title: title, prefix: prefix, link: url(file, title) })
+  index.push({ title: title, body: body.join(" "), id: docs.length });
+  docs.push({ title: title, prefix: prefix, link: url(file, title) });
 }
 
 function add_meta(title, metadata, file) {
-  var link = 'https://learn.gramener.com/guide/'
-  var entry = { title: title, link: link + url(file, title) }
-  var match = metadataList.find(row => row.prefix == metadata.prefix)
-  if (match)
-    match.info.push(entry)
+  var link = "https://learn.gramener.com/guide/";
+  var entry = { title: title, link: link + url(file, title) };
+  var match = metadataList.find((row) => row.prefix == metadata.prefix);
+  if (match) match.info.push(entry);
   else {
-    metadata.info = [entry]
-    metadata.link = link + url(file, '')
-    metadataList.push(metadata)
+    metadata.info = [entry];
+    metadata.link = link + url(file, "");
+    metadataList.push(metadata);
   }
 }

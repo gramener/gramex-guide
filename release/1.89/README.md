@@ -90,7 +90,7 @@ $ gramex features
 The columns are:
 
 - `type`: The type of feature. One of `MS` (microservice), `KWARG` (configuration), `SVC` (service).
-   `ERR-MS` indicates a custom or missing microservice
+  `ERR-MS` indicates a custom or missing microservice
 - `feature`: The name of the feature
 - `count`: The number of times the feature is used
 
@@ -101,7 +101,6 @@ You can render the output in different formats:
 - `--format=json` prints a JSON file
 
 Pass multiple folders, e.g. `gramex features /project1/ /project2/`, to sum features used across folders.
-
 
 ## Measure code complexity
 
@@ -129,7 +128,6 @@ Put another way, without Gramex, the project would have a complexity of 122 + 34
 
 Gramex reduces 2,782 / 3,249 = 86% of the code.
 
-
 ## Backward compatibility & security
 
 Gramex 1.89 is backward compatible with [previous releases](../) unless the release notes say otherwise.
@@ -154,7 +152,7 @@ The Gramex code base has:
 
 - 22,391 lines of Python (207 more than 1.88)
 - 3,626 lines of JavaScript (same as 1.88)
-- 15,303  lines of test code (167 more than 1.88)
+- 15,303 lines of test code (167 more than 1.88)
 - We are migrating to pytest from nose. Code coverage will be reported post migration.
 
 ## How to install

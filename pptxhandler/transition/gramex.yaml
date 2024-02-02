@@ -8,7 +8,7 @@ url:
       data:
         incidents:
           url: $YAMLPATH/incidents.csv
-          transform: data.iloc[0]           # take 1st row which has Executive level numbers
+          transform: data.iloc[0] # take 1st row which has Executive level numbers
       rules:
         - Total:
             text: f'{incidents.Total:,.0f}'
@@ -22,7 +22,7 @@ url:
             text: f'{incidents.P4:,.0f}'
           Title:
             text: f'Out of a total {incidents.Total:,.0f} incidents this month, {incidents.P1:,.0f} incidents need priority action'
-        - slide-number: 2                   # Set a 0.5s wipe-top transition for slide 2
+        - slide-number: 2 # Set a 0.5s wipe-top transition for slide 2
           transition:
             type: f'wipe top'
             duration: 0.5

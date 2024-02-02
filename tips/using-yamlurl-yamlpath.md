@@ -8,7 +8,7 @@ Suppose you create a gramex.yaml like this:
 ```yaml
 url:
   app-home:
-    pattern: /          # The home page
+    pattern: / # The home page
     handler: ...
 ```
 
@@ -29,8 +29,8 @@ url:
     pattern: /$YAMLURL/simple
     handler: SimpleAuth
     kwargs:
-      credentials: {alpha: alpha}
-      redirect: {url: /$YAMLURL/}        # Note the $YAMLURL here
+      credentials: { alpha: alpha }
+      redirect: { url: /$YAMLURL/ } # Note the $YAMLURL here
 ```
 
 Using `/$YAMLURL/` redirects users back to this app's home page, rather than the
@@ -52,10 +52,10 @@ When using a `FileHandler` like this:
 ```yaml
 url:
   app-home:
-    pattern: /                  # This is hard-coded
+    pattern: / # This is hard-coded
     handler: FileHandler
     kwargs:
-      path: index.html          # This is hard-coded
+      path: index.html # This is hard-coded
 ```
 
 ... the locations are specified relative to where Gramex is running. To make it
@@ -67,7 +67,7 @@ url:
     pattern: /$YAMLURL/
     handler: FileHandler
     kwargs:
-      path: $YAMLPATH/index.html        # Path is relative to this directory
+      path: $YAMLPATH/index.html # Path is relative to this directory
 ```
 
 Tips:

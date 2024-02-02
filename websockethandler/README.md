@@ -16,22 +16,22 @@ Here is a sample configuration:
 
 ```yaml
 url:
-    pingbot:
-        pattern: /pingbot
-        handler: WebSocketHandler
-        kwargs:
-            open:                               # When websocket is opened
-                function: pingbot.open          #   call open(handler) in pingbot.py
-            on_message:                         # When client sends a message
-                function: pingbot.on_message    #   call on_message(handler, msg) in pingbot.py
-            on_close:                           # When websocket is closed
-                function: pingbot.on_close      #   call on_close(handler) in pingbot.py
-            origins:                            # Optional: Allow only from these domains.
-                - gramener.com                  # If unspecified, all domains are allowed.
-                - localhost
-                - 127.0.0.1
-            # You can also add the auth: configuration like other handlers. For example:
-            # auth: true
+  pingbot:
+    pattern: /pingbot
+    handler: WebSocketHandler
+    kwargs:
+      open: # When websocket is opened
+        function: pingbot.open #   call open(handler) in pingbot.py
+      on_message: # When client sends a message
+        function: pingbot.on_message #   call on_message(handler, msg) in pingbot.py
+      on_close: # When websocket is closed
+        function: pingbot.on_close #   call on_close(handler) in pingbot.py
+      origins: # Optional: Allow only from these domains.
+        - gramener.com # If unspecified, all domains are allowed.
+        - localhost
+        - 127.0.0.1
+      # You can also add the auth: configuration like other handlers. For example:
+      # auth: true
 ```
 
 `open`, `on_message` and `on_close` are [expressions or pipelines](../function/).
@@ -54,16 +54,16 @@ Paste this in a browser's JavaScript console. You should see the message returne
 
 ```js
 // Open the websocket
-var url = location.href.replace(/^http/, 'ws') + 'pingbot'
-var ws = new WebSocket(url)
+var url = location.href.replace(/^http/, "ws") + "pingbot";
+var ws = new WebSocket(url);
 
 // When we receive any message, log it to the console
-ws.onmessage = console.log
+ws.onmessage = console.log;
 
 // Send a message to the server a second later.
-setTimeout(function() {
-  ws.send('Hello world')
-}, 1000)
+setTimeout(function () {
+  ws.send("Hello world");
+}, 1000);
 
 // You may use ws.close() to close the socket. Sockets automatically close
 // when the user closes the page, so this is not often used.
@@ -105,35 +105,37 @@ url:
 ... and this JavaScript in [messages.html](https://github.com/gramener/gramex-guide/blob/master/websockethandler/messages.html):
 
 ```js
-    // Set up websockets. When we receive a message, add it to the screen
-    var url = location.href.replace(/^http/, 'ws').replace(/\/[^/]*$/, '/messages')
-    var ws = new WebSocket(url)
-    var chats = document.querySelector('#chats')
-    ws.onmessage = function (event) {
-      chats.insertAdjacentHTML("beforeend", `<li>${event.data}</li>`);
-    }
+// Set up websockets. When we receive a message, add it to the screen
+var url = location.href.replace(/^http/, "ws").replace(/\/[^/]*$/, "/messages");
+var ws = new WebSocket(url);
+var chats = document.querySelector("#chats");
+ws.onmessage = function (event) {
+  chats.insertAdjacentHTML("beforeend", `<li>${event.data}</li>`);
+};
 
-    // When the user types a message, send it to the server
-    var input = document.querySelector('#message')
-    input.focus()
-    document.querySelector('form').addEventListener('submit', function (e) {
-      e.preventDefault()
-      ws.send(input.value)
-      input.value = ''
-    }, false)
+// When the user types a message, send it to the server
+var input = document.querySelector("#message");
+input.focus();
+document.querySelector("form").addEventListener(
+  "submit",
+  function (e) {
+    e.preventDefault();
+    ws.send(input.value);
+    input.value = "";
+  },
+  false,
+);
 ```
 
 ::: example href=messages.html source=https://github.com/gramener/gramex-guide/blob/master/websockethandler/messages.py
-    Messages example
-
+Messages example
 
 You can also have the server trigger scheduled messages using Tornado's
 [PeriodicCallback](https://www.tornadoweb.org/en/stable/ioloop.html#tornado.ioloop.PeriodicCallback).
 The example below shows how to send an idle message at random intervals.
 
 ::: example href=chat.html source=https://github.com/gramener/gramex-guide/blob/master/websockethandler/websocketchat.py
-    Chatbot example
-
+Chatbot example
 
 ## Websockets via nginx
 

@@ -1,19 +1,19 @@
 url:
   deploy-url:
-    pattern: /$YAMLURL/url/(.*)               # Any URL under this directory
-    handler: FileHandler                      # is rendered as a FileHandler
+    pattern: /$YAMLURL/url/(.*) # Any URL under this directory
+    handler: FileHandler # is rendered as a FileHandler
     kwargs:
-      path: $YAMLPATH/template.html         # Using this template
+      path: $YAMLPATH/template.html # Using this template
       transform:
         "template.html":
           # Convert to a Tornado template
           # APP_ROOT is the path to the root of the application
           function: template(content, APP_ROOT=handler.request.headers.get('X-Gramex-Root', '/') + r'$GUIDE_ROOT')
   gramex-config-file:
-    pattern: /$YAMLURL/config                 # Map config under current URL
+    pattern: /$YAMLURL/config # Map config under current URL
     handler: FileHandler
     kwargs:
-      path: $GRAMEXPATH/gramex.yaml         # to the core Gramex config ile
+      path: $GRAMEXPATH/gramex.yaml # to the core Gramex config ile
   deploy-secrets:
     pattern: /$YAMLURL/secrets
     handler: FileHandler

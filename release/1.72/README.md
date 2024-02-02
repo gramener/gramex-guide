@@ -7,7 +7,6 @@ prefix: 1.72
 
 Gramex 1.72 introduces OpenAPI support, a root cause algorithm, charts in UIFactory, and more.
 
-
 ## OpenAPI support
 
 [OpenAPIHandler](../../openapihandler/) automatically generates documentation for your APIs.
@@ -43,20 +42,19 @@ def compare(
     return True if sum(x) > sum(y) else False
 ```
 
-
 ## TopCause analysis
 
-TopCause is an algorithm that answers the question ***What's the single biggest change I can make to improve my outcome?***.
+TopCause is an algorithm that answers the question **_What's the single biggest change I can make to improve my outcome?_**.
 
 Say a Rugby team is recruiting for heavy people, and have [weight data](../../topcause/weight.csv) like this.
 
-| male  |  age  | height | weight |
-| :---: | :---: | :----: | :----: |
-|   1   | 90.0  | 151.7  |  47.8  |
-|   0   | 90.0  | 139.7  |  36.4  |
-|   0   | 90.0  | 136.5  |  31.8  |
-|   1   | 20.0  | 156.8  |  53.0  |
-|   0   | 10.0  | 145.4  |  41.2  |
+| male | age  | height | weight |
+| :--: | :--: | :----: | :----: |
+|  1   | 90.0 | 151.7  |  47.8  |
+|  0   | 90.0 | 139.7  |  36.4  |
+|  0   | 90.0 | 136.5  |  31.8  |
+|  1   | 20.0 | 156.8  |  53.0  |
+|  0   | 10.0 | 145.4  |  41.2  |
 
 If they want to know **What's the single biggest driver of weight?**, TopCause can answer that.
 
@@ -75,24 +73,23 @@ def drivers():
 
 This returns:
 
-|        | value | gain  |    p     | type  |
-| :----: | :---: | :---: | :------: | :---: |
-| weight | 55.0  | 16.9  | 1.8e-267 |  num  |
-| height | 164.5 | 12.7  | 8.4e-13  |  num  |
-|  male  |  NaN  |  NaN  |  0.057   |  num  |
-|  age   |  NaN  |  NaN  |  0.453   |  num  |
+|        | value | gain |    p     | type |
+| :----: | :---: | :--: | :------: | :--: |
+| weight | 55.0  | 16.9 | 1.8e-267 | num  |
+| height | 164.5 | 12.7 | 8.4e-13  | num  |
+|  male  |  NaN  | NaN  |  0.057   | num  |
+|  age   |  NaN  | NaN  |  0.453   | num  |
 
 ... and it indicates that:
 
 1. **weight** has the biggest impact on weight (obviously) -- let's ignore this
 2. **height** has the second biggest impact on weight. Specifically:
-    - **value**: Picking people with the (high) height of 164.5 cm
-    - **gain**: This can increase average weight by 12.7 kg.
-    - **p**: The probability of error is small (8E-13), i.e. height definitely impacts weight
-    - **type**. This column was treated as a number
+   - **value**: Picking people with the (high) height of 164.5 cm
+   - **gain**: This can increase average weight by 12.7 kg.
+   - **p**: The probability of error is small (8E-13), i.e. height definitely impacts weight
+   - **type**. This column was treated as a number
 3. **male** does not impact weight with enough confidence. There's a 5.7% chance it doesn't. (The default cutoff is 5%)
 4. **age** does not impact weight with enough confidence. There's a 45.3% chance it doesn't.
-
 
 ## UIFactory charts
 
@@ -100,8 +97,13 @@ This returns:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/uifactory@0.0.16" import="https://cdn.jsdelivr.net/npm/uifactory@0.0.16/src/vega-chart.html"></script>
-<vega-chart spec="https://vega.github.io/editor/spec/vega-lite/bar_diverging_stack_transform.vl.json"></vega-chart>
+<script
+  src="https://cdn.jsdelivr.net/npm/uifactory@0.0.16"
+  import="https://cdn.jsdelivr.net/npm/uifactory@0.0.16/src/vega-chart.html"
+></script>
+<vega-chart
+  spec="https://vega.github.io/editor/spec/vega-lite/bar_diverging_stack_transform.vl.json"
+></vega-chart>
 ```
 
 This embeds a chart in-place:
@@ -149,7 +151,6 @@ curl -X POST 'localhost:9988/mongodb?date.={"year": 2020, "month": 12}'
 This feature is in beta, and only the core capability is released. A collection of templates will
 be shared in the next release, and documented.
 
-
 ## Release process
 
 The [Gramex release process](../release/#release-process) is documented.
@@ -160,12 +161,11 @@ The [Gramex release process](../release/#release-process) is documented.
 
 [![Gramex release process](../gramex-release-process.svg){:.img-fluid}](../gramex-release-process.pptx)
 
-
 ## Bug fixes
 
 - The [Gramex Node.js bridge](../../node/) now works on systems and Docker containers with IPv6
   addresses. Earlier, it would raise a HTTP 401 error.
-- If a Gramex [cache](../../cache/) runs out of memory because a *single* object is larger than its
+- If a Gramex [cache](../../cache/) runs out of memory because a _single_ object is larger than its
   size, it recommends increasing `cache.memory.size` in `gramex.yaml`. Earlier, it reported that it
   couldn't cache, not why.
 
@@ -180,7 +180,7 @@ Every Gramex release is tested for security vulnerabilities using the following 
    [See Bandit results](https://github.com/gramener/gramex/blob/master/reports/bandit.txt)
 2. [npm-audit](https://docs.npmjs.com/cli/v6/commands/npm-audit) tests for front-end JavaScript vulnerabilities.
    [See npm-audit results](https://github.com/gramener/gramex/blob/master/reports/npm-audit.txt)
-3. [Snyk](https://snyk.io/) for front-end and back-end vulnerabiliti  es.
+3. [Snyk](https://snyk.io/) for front-end and back-end vulnerabiliti es.
    [See Synk results](https://github.com/gramener/gramex/blob/master/reports/snyk.txt)
 4. [ClamAV](https://www.clamav.net/) for anti-virus scans.
    [See ClamAV results](https://github.com/gramener/gramex/blob/master/reports/clamav.txt)
@@ -193,7 +193,6 @@ The Gramex code base has:
 - 3,359 lines of JavaScript (2 less than 1.71)
 - 12,458 lines of test code (138 more than 1.71)
 - 89% test coverage (same as 1.71)
-
 
 ## How to install
 

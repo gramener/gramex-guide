@@ -25,18 +25,19 @@ When the user performs an action capture the state as form-encoded URL query. Fo
 You can use the [@gramex/url](https://www.npmjs.com/package/@gramex/url) package to encode/decode state:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@gramex/url/url.min.js"><script>
-<script>
-const query = gramex.url.encode({city: ['Rome', 'Oslo'], top: 10})
-const state = gramex.url.decode(query)
+<script src="https://cdn.jsdelivr.net/npm/@gramex/url/url.min.js">
+  <script>
+  <script>
+  const query = gramex.url.encode({city: ['Rome', 'Oslo'], top: 10})
+  const state = gramex.url.decode(query)
 </script>
 ```
 
 If you only have single values for keys, use [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams):
 
 ```js
-const query = (new URLSearchParams({city: 'Rome', top: 10})).toString()
-const state = Object.fromEntries(new URLSearchParams(query))
+const query = new URLSearchParams({ city: "Rome", top: 10 }).toString();
+const state = Object.fromEntries(new URLSearchParams(query));
 ```
 
 ## Store state as a search string
@@ -47,8 +48,8 @@ const state = Object.fromEntries(new URLSearchParams(query))
 
 ```html
 <form>
-  <label>City: <input name="city" value="Rome"></label>
-  <label>Top: <input name="top" value="10"></label>
+  <label>City: <input name="city" value="Rome" /></label>
+  <label>Top: <input name="top" value="10" /></label>
   <button type="submit">Submit</button>
 </form>
 ```
@@ -56,16 +57,16 @@ const state = Object.fromEntries(new URLSearchParams(query))
 Use [`window.location.search`](https://developer.mozilla.org/en-US/docs/Web/API/Location/search) to reload the page with the new state:
 
 ```js
-const query = (new URLSearchParams({city: 'Rome', top: 10})).toString()
-window.location.search = query
+const query = new URLSearchParams({ city: "Rome", top: 10 }).toString();
+window.location.search = query;
 // This will immediately reload the page with ?city=Rome&top=10
 ```
 
 On page load, you can access the query via `window.location.search`:
 
 ```js
-const query = window.location.search
-const state = Object.fromEntries(new URLSearchParams(query))
+const query = window.location.search;
+const state = Object.fromEntries(new URLSearchParams(query));
 // Now do what you want with the state, e.g. update the page filters
 ```
 
@@ -76,17 +77,17 @@ const state = Object.fromEntries(new URLSearchParams(query))
 Use [`window.location.hash`](https://developer.mozilla.org/en-US/docs/Web/API/Location/hash) to update the page without reloading:
 
 ```js
-window.addEventListener('hashchange', renderPage)
+window.addEventListener("hashchange", renderPage);
 
 function renderPage() {
-  const query = window.location.hash.slice(2)
-  const state = Object.fromEntries(new URLSearchParams(query))
+  const query = window.location.hash.slice(2);
+  const state = Object.fromEntries(new URLSearchParams(query));
   // Now do what you want with the state, e.g. update the page filters
 }
-render()
+render();
 
-const query = (new URLSearchParams({city: 'Rome', top: 10})).toString()
-window.location.hash = '?' + query
+const query = new URLSearchParams({ city: "Rome", top: 10 }).toString();
+window.location.hash = "?" + query;
 ```
 
 When listening to filter changes or button clicks, **NEVER** update the page directly.

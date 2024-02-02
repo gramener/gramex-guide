@@ -63,14 +63,14 @@ url:
     pattern: /$YAMLURL/model/(.*?)/(.*?)
     handler: ModelHandler
     kwargs:
-      path: $YAMLPATH     # Folder with model files
+      path: $YAMLPATH # Folder with model files
 ```
 
 This folder may contain multiple models. In our example, it would have `iris.pkl`. The endpoint for
 this model is [`model/iris/`](model/iris/), which shows basic model information.
 
 ::: example href=model/iris/ source=https://github.com/gramener/gramex-guide/blob/master/modelhandler/gramex.yaml
-    See the Iris model info
+See the Iris model info
 
 To classify using the model, visit
 [`model/iris/?sepal_width=1&sepal_length=2&petal_width=3&petal_length=4`](model/iris/?sepal_width=1&sepal_length=2&petal_width=3&petal_length=4).
@@ -116,7 +116,6 @@ This returns a JSON list with the inputs and the result:
   <button type="submit" class="btn btn-primary">Try it out</button>
 </form>
 
-
 You can classify as many inputs as required by repeating the parameters. For example:
 
 ```text
@@ -154,12 +153,12 @@ returns:
 ```
 
 ::: example href="model/iris/?sepal_width=1.2&amp;sepal_length=2.4&amp;petal_width=3.2&amp;petal_length=4.2&amp;sepal_width=4.4&amp;sepal_length=5.7&amp;petal_width=0.4&amp;petal_length=1.5&amp;sepal_width=7.2&amp;sepal_length=3.6&amp;petal_width=6.1&amp;petal_length=2.5" source="https://github.com/gramener/gramex-guide/blob/master/modelhandler/gramex.yaml"
-    Try classifying multiple values
+Try classifying multiple values
 
 Notes:
 
 - To create a model send a PUT/POST request to `/model/<name>/` with the following
-URL Query Parameters or JSON Body Arguments
+  URL Query Parameters or JSON Body Arguments
   - `model_class`: the scikit-learn class of the model you want to train
   - `url`: any valid formhandler URL, Currently, you can't send a file to the endpoint.
     If using a database, add a query/queryfunction/table as you would for formhandler.
@@ -169,11 +168,11 @@ URL Query Parameters or JSON Body Arguments
   - `labels (optional)`: list of possible output values
 - creating a model, will not train by default - just create the model object and save it to disk.
 - Send a PUT/POST Request with `Model-Retrain: true` in the request headers to train
-the model on the training data.
+  the model on the training data.
 - To get predictions, send a GET/POST Request to `/model/name/` with the input columns
-as URL Query Parameters/JSON Body Arguments.
+  as URL Query Parameters/JSON Body Arguments.
 - Multiple predictions are available by sending lists through URL Query Parameters/JSON Body Arguments.
-JSON Body Arguments can be formatted as follows
+  JSON Body Arguments can be formatted as follows
 
 ```JSON
 {
@@ -187,9 +186,9 @@ URL Query Parameters can be sent as they usually are in formhandler -
 `/model/<name>/?col1=val1&col2=val2&col1=val3..`
 
 - You can view training data by sending a GET request to `/model/<name>/data`
-and passing formhandler filters/extensions as URL query parameters
+  and passing formhandler filters/extensions as URL query parameters
 - You can edit/add to/Delete training data by sending the respective
-PUT/POST/DELETE Request to `/model/<name>/data`
+  PUT/POST/DELETE Request to `/model/<name>/data`
 - Sending a DELETE Request to `/model/<name>/` will delete the model.
 
 ## Example Usage
@@ -261,7 +260,7 @@ groupmeans accepts the following parameters-
 - `groups` : non-empty iterable containing category column names in data
 - `numbers` : non-empty iterable containing numeric column names in data
 - `cutoff` : ignore anything with prob > cutoff. `cutoff=None` ignores significance checks,
-speeding it up a LOT.
+  speeding it up a LOT.
 - `quantile` : number that represents target improvement. Defaults to `.95`.
   - The `diff` returned is the % impact of everyone moving to the 95th percentile
 - `minsize` : each group should contain at least `minsize` values.

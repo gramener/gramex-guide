@@ -14,7 +14,7 @@ In this dataset of National Achievement Survey results of class 8th Students fro
 
 <a href="nas?_format=csv">Download data for this example</a>
 
-Here's the distribution  two columns in our dataset, Gender and the Father's Education across all the student's marks.
+Here's the distribution two columns in our dataset, Gender and the Father's Education across all the student's marks.
 By some examination, we can see there isn't much difference between the average scores between girls and boys, leading us to believe that Gender is perhaps not very impactful on the students' marks.
 
 On the other hand, as the father's education increases from illiteracy to a college degree or better, both girls' and boys' average scores increase steadily.
@@ -30,11 +30,11 @@ It can be used to quickly identify the most significant factors onto a metric al
 ## Exploratory analysis
 
 ::: example href=form.html source=https://github.com/gramener/gramex-guide/blob/master/groupmeans/
-    Explore the data yourself
+Explore the data yourself
 
 <!-- TODO: Allow users to pick from a pre-defined set of segments: Boys/Girls. Below Poverty, Siblings -->
 
 ## Upload your data
 
 ::: example href=custom-explore source=https://github.com/gramener/gramex-guide/blob/master/groupmeans/
-    Upload your own csv and explore
+Upload your own csv and explore

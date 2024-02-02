@@ -34,7 +34,7 @@ url:
     pattern: /$YAMLURL/model/(.*?)/(.*?)
     handler: ModelHandler
     kwargs:
-      path: $YAMLPATH  # The local directory to store model files/training data etc.
+      path: $YAMLPATH # The local directory to store model files/training data etc.
 ```
 
 You could submit URL query parameters like `FormHandler`
@@ -81,12 +81,11 @@ This will make `handler` related debugging easier.
 
 [![vega-g](../1.41/python-admin-console.gif)](../../admin/admin-kwargs/?tab=shell)
 
-
 ## Developer Updates
 
 ### bootstrap.bundle.js
 
-[`gramex init`](../../init/) uses `bootstrap.bundle.js` in  instead of adding `popper.js`
+[`gramex init`](../../init/) uses `bootstrap.bundle.js` in instead of adding `popper.js`
 
 You can use
 

@@ -7,7 +7,6 @@ prefix: 1.71
 
 Gramex 1.71 introduces ComicHandler to serve comics as an API, security fixes, and more.
 
-
 ## ComicHandler serves comics
 
 [ComicHandler](../../comichandler/) serves comics as SVG files. It's based on the [Comicgen](https://gramener.com/comicgen/) library. Here's how to create a ComicHandler:
@@ -25,7 +24,6 @@ Now, [`name=dee&angle=straight&emotion=smile&pose=super`](name=dee&angle=straigh
 
 This lets you create a variety of comic data stories. For examples, see [gramener.com/datacomics/](https://gramener.com/datacomics/).
 
-
 ## More robust security
 
 Gramex passes security tests from 4 security testing tools:
@@ -38,11 +36,9 @@ Gramex passes security tests from 4 security testing tools:
 Future releases will be tested against these.
 [See the results.](https://github.com/gramener/gramex/tree/master/reports)
 
-
 ## Specify URL where Gramex is running
 
 If you're redirected to the wrong page after logging in, this feature may help fix that issue.
-
 
 If you run Gramex at `example.com` on port 9988, and use an
 [nginx proxy](../../deploy/#nginx-reverse-proxy) to redirect `/project` to that port:
@@ -63,12 +59,10 @@ If you run Gramex at `example.com` on port 9988, and use an
     }
 ```
 
-
 Now, redirects are interpreted **relative to** `/project/`.
 
 So `example.com/project/login?next=/` will now redirect the user to `example./project/` instead of
 `example.com`.
-
 
 ## Gramex prefers npm over yarn
 
@@ -80,8 +74,6 @@ Specifically, when you run [`gramex install`](../../install/):
 2. Else if `yarn.lock` exists, it runs `yarn install`
 3. Else if `package.json` exists, it runs `npm install` -- not `yarn install`
 
-
-
 ## JSONHandler escapes slashes in keys
 
 [JSONHandler](../../jsonhandler/) now supports
@@ -92,25 +84,22 @@ Earlier, if there was a key called `"home/page"`, there was no way to directly f
 Now, you can fetch `"home\/page"` instead. The `\/` escapes slashes.
 [Read more](../../jsonhandler/#escaping-slash-in-keys).
 
-
 ## Deprecations
 
 `gramex.cache.open()` no longer reads XML, RSS, ATOM or SVG files as lxml trees. This is a rarely (perhaps never) used feature.
 
 You can still use `ext="txt"` to open them as text files, or use your own custom transform to read them.
 
-
 ## Bug fixes
 
 - [Session inactive expiry](../../auth/#inactive-expiry) did not work with Redis cache -- because
-  we were saving the session *before* updating the last active time. This is fixed.
+  we were saving the session _before_ updating the last active time. This is fixed.
 - [pynode.node.js()](../../node/) installs npm packages into a new directory `$GRAMEXDATA/pynode/` by default.
   So, Gramex's own `gramex/apps/pynode/package.json` source code is not affected when users install new libraries.
 - The [Gramex Windows Service](../../deploy/#windows-service) writes logs to a `service.log` in the
   current folder. This helps debug Windows services messages.
 - MongoDB object IDs are converted into strings. [#430](https://github.com/gramener/gramex/issues/430)
 - We've fully switched to Python 3 and eliminated the `six` package
-
 
 ## Backward compatibility & security
 
@@ -136,7 +125,6 @@ The Gramex code base has:
 - 3,361 lines of JavaScript (86 less than 1.70)
 - 12,320 lines of test code (64 more than 1.70)
 - 89% test coverage (same as 1.70)
-
 
 ## How to install
 

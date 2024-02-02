@@ -6,7 +6,7 @@ create common GIS applications using configurations.
 Mapviewer requires `npm install leaflet d3 d3-scale-chromatic g1`.
 
 ```html
-<link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
+<link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css" />
 <script src="node_modules/leaflet/dist/leaflet.js"></script>
 <script src="node_modules/d3/build/d3.js"></script>
 <script src="node_modules/d3-scale-chromatic/dist/d3-scale-chromatic.min.js"></script>
@@ -19,11 +19,14 @@ This creates a simple base map:
 <div id="base-map" style="height:300px"></div>
 <script>
   var map = g1.mapviewer({
-    id: 'base-map',
+    id: "base-map",
     layers: {
-      worldMap: { type: 'tile', url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' }
-    }
-  })
+      worldMap: {
+        type: "tile",
+        url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      },
+    },
+  });
 </script>
 ```
 
@@ -33,42 +36,47 @@ attribute.
 
 ```html
 <div id="geojson-map" style="height:300px">
-<script>
-  var map = g1.mapviewer({
-    id: 'geojson-map',
-    layers: {
-      worldMap: { type: 'tile', url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' },
-      indiaGeojson: {
-        type: 'geojson',
-        url: 'india-states.geojson',
-        link: {
-          url: 'state_score.json',    // Load data from this file
-          dataKey: 'name',            // Join this column from the URL (data)
-          mapKey: 'ST_NM'             // with this property in the GeoJSON
+  <script>
+    var map = g1.mapviewer({
+      id: "geojson-map",
+      layers: {
+        worldMap: {
+          type: "tile",
+          url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         },
-        options: {
-          style: {
-            fillColor: '#a00',
-            fillOpacity: 1
-          }
+        indiaGeojson: {
+          type: "geojson",
+          url: "india-states.geojson",
+          link: {
+            url: "state_score.json", // Load data from this file
+            dataKey: "name", // Join this column from the URL (data)
+            mapKey: "ST_NM", // with this property in the GeoJSON
+          },
+          options: {
+            style: {
+              fillColor: "#a00",
+              fillOpacity: 1,
+            },
+          },
+          tooltip: function (prop) {
+            // On hover, show this HTML tooltip
+            return prop.ST_NM + ": " + prop.TOT_P;
+          },
+          attrs: {
+            fillColor: {
+              // Fill the regions
+              metric: "score", // with the "score" column from state_score.json
+              scheme: "RdYlGn", // using a RdYlGn gradient
+            },
+          },
         },
-        tooltip: function(prop) {   // On hover, show this HTML tooltip
-          return prop.ST_NM + ': ' + prop.TOT_P
-        },
-        attrs: {
-          fillColor: {                // Fill the regions
-            metric: 'score',          // with the "score" column from state_score.json
-            scheme: 'RdYlGn'           // using a RdYlGn gradient
-          }
-        }
-      }
-    }
-  })
-</script>
+      },
+    });
+  </script>
+</div>
 ```
 
 **Note**: You can use `type: 'topojson'` when loading TopoJSON maps.
-
 
 ## g1.mapviewer options
 
@@ -163,7 +171,6 @@ Adds a html label on the map. `options` is an object with following properties
 - `style`: Defaults to `bottom-left`. Specify styles for the `html`
 - `position`: (Optional) Specifies the position of `html` on the map
 
-
 `removeLayer(layerName)`
 Removes the layer from the map and returns the layer if the layer exists on the map, else throws an error.
 Note: This function will remove the layer from the map only. The layer object still exists in memory. Use `addLayer(layerName)` to add the layer back to the map.
@@ -172,7 +179,6 @@ Note: This function will remove the layer from the map only. The layer object st
 
 - `addLayer(layerName)` if `layerName` layer does not exist on map, adds the layer to the map.
 - `addLayer(layerName, layerConfig)` will creates a new layer with `layerConfig` options and adds it to the map.
-
 
 ## g1.mapviewer events
 
@@ -188,20 +194,24 @@ This creates a set of markers for each row in [cities.json](../mapviewer/cities.
 
 ```html
 <div id="marker-map" style="height:300px">
-<script>
-  var map = g1.mapviewer({
-    id: 'marker-map',
-    layers: {
-      worldMap: { type: 'tile', url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' },
-      cityMarkers: {
-        type: 'marker',
-        url: 'cities.json',
-        latitude: 'lat',
-        longitude: 'long',
-      }
-    }
-  })
-</script>
+  <script>
+    var map = g1.mapviewer({
+      id: "marker-map",
+      layers: {
+        worldMap: {
+          type: "tile",
+          url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        },
+        cityMarkers: {
+          type: "marker",
+          url: "cities.json",
+          latitude: "lat",
+          longitude: "long",
+        },
+      },
+    });
+  </script>
+</div>
 ```
 
 This creates a set of circle markers for each row in [cities.json](../mapviewer/cities.json).
@@ -209,26 +219,30 @@ You can apply styles based on any attribute or function.
 
 ```html
 <div id="circle-marker-map" style="height:300px">
-<script>
-  var map = g1.mapviewer({
-    id: 'circle-marker-map',
-    layers: {
-      worldMap: { type: 'tile', url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' },
-      cityMarkers: {
-        type: 'circleMarker',
-        url: 'cities.json',
-        latitude: 'lat',
-        longitude: 'long',
-        attrs: {
-          fillColor: {
-            metric: 'pollution',
-            scheme: 'RdYlGn'
-          }
-        }
-      }
-    }
-  })
-</script>
+  <script>
+    var map = g1.mapviewer({
+      id: "circle-marker-map",
+      layers: {
+        worldMap: {
+          type: "tile",
+          url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        },
+        cityMarkers: {
+          type: "circleMarker",
+          url: "cities.json",
+          latitude: "lat",
+          longitude: "long",
+          attrs: {
+            fillColor: {
+              metric: "pollution",
+              scheme: "RdYlGn",
+            },
+          },
+        },
+      },
+    });
+  </script>
+</div>
 ```
 
 This adds legend to the map
@@ -237,44 +251,50 @@ This adds legend to the map
 <div id="choropleth" class="map"></div>
 <script>
   var choro_map = g1.mapviewer({
-    id: 'choropleth',
+    id: "choropleth",
     legend: {
-      position: 'topright',
-      format: 'd',
+      position: "topright",
+      format: "d",
       shape: d3.symbolCircle,
       size: 100,
-      scale: d3.scaleLinear().domain([10, 20, 30]).range(['red', 'yellow', 'green']),
-      orient: 'horizontal',
+      scale: d3
+        .scaleLinear()
+        .domain([10, 20, 30])
+        .range(["red", "yellow", "green"]),
+      orient: "horizontal",
       width: 300,
-      height: 100
+      height: 100,
     },
     layers: {
-      worldMap2: { type: 'tile', url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' },
+      worldMap2: {
+        type: "tile",
+        url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      },
       indiaGeojson: {
-        type: 'geojson',
-        url: 'india-states.geojson',
+        type: "geojson",
+        url: "india-states.geojson",
         link: {
-          url: 'state_score.json',
-          dataKey: 'name',
-          mapKey: 'ST_NM'
+          url: "state_score.json",
+          dataKey: "name",
+          mapKey: "ST_NM",
         },
         options: {
           style: {
-            fillColor: '#ccc',
-            fillOpacity: 1
-          }
+            fillColor: "#ccc",
+            fillOpacity: 1,
+          },
         },
         attrs: {
           fillColor: {
-            metric: 'score',
-            scale: 'linear',
+            metric: "score",
+            scale: "linear",
             domain: [10, 20, 30],
-            range: ['red', 'yellow', 'green'],
-          }
-        }
-      }
-    }
-  })
+            range: ["red", "yellow", "green"],
+          },
+        },
+      },
+    },
+  });
 </script>
 ```
 
@@ -282,53 +302,63 @@ Drilldown feature example:
 
 ```html
 <div id="geojson-map" style="height:300px">
-<script>
-  var map = g1.mapviewer({
-    id: 'geojson-map',
-    layers: {
-      worldMap: { type: 'tile', url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png' },
-      indiaGeojson: {
-        type: 'geojson',
-        url: 'india-states.geojson',
-        link: {
-          url: 'state_score.json',    // Load data from this file
-          dataKey: 'name',            // Join this column from the URL (data)
-          mapKey: 'ST_NM'             // with this property in the GeoJSON
+  <script>
+    var map = g1.mapviewer({
+      id: "geojson-map",
+      layers: {
+        worldMap: {
+          type: "tile",
+          url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         },
-        tooltip: function(prop) {   // On hover, show this HTML tooltip
-          return prop.ST_NM + ': ' + prop.TOT_P
-        },
-        attrs: {
-          fillColor: {                // Fill the regions
-            metric: 'score',          // with the "score" column state_score.json
-            range: 'RdYlGn'           // using a RdYlGn gradient
-          }
-        }
-      }
-    },
-    drilldown: {
-      rootLayer: 'indiaGeojson',
-      levels: [
-        {
-          layerName: function(properties) {return properties['STATE'] + '-layer'},
-          layerOptions: {
-            url: function(properties) {return properties['STATE'] + '-census.json'},
-            type: 'geojson',
-            attrs: {
-              fillColor: {
-                metric: 'DT_CEN_CD',
-                range: 'RdYlGn'
-              }
+        indiaGeojson: {
+          type: "geojson",
+          url: "india-states.geojson",
+          link: {
+            url: "state_score.json", // Load data from this file
+            dataKey: "name", // Join this column from the URL (data)
+            mapKey: "ST_NM", // with this property in the GeoJSON
+          },
+          tooltip: function (prop) {
+            // On hover, show this HTML tooltip
+            return prop.ST_NM + ": " + prop.TOT_P;
+          },
+          attrs: {
+            fillColor: {
+              // Fill the regions
+              metric: "score", // with the "score" column state_score.json
+              range: "RdYlGn", // using a RdYlGn gradient
             },
-            tooltip: function (properties) {
-              return 'DISTRICT: ' + properties['DISTRICT']
-            }
-          }
-        }
-      ]
-    }
-  })
-</script>
+          },
+        },
+      },
+      drilldown: {
+        rootLayer: "indiaGeojson",
+        levels: [
+          {
+            layerName: function (properties) {
+              return properties["STATE"] + "-layer";
+            },
+            layerOptions: {
+              url: function (properties) {
+                return properties["STATE"] + "-census.json";
+              },
+              type: "geojson",
+              attrs: {
+                fillColor: {
+                  metric: "DT_CEN_CD",
+                  range: "RdYlGn",
+                },
+              },
+              tooltip: function (properties) {
+                return "DISTRICT: " + properties["DISTRICT"];
+              },
+            },
+          },
+        ],
+      },
+    });
+  </script>
+</div>
 ```
 
 Examples showing usage of mismatch label:
@@ -338,31 +368,28 @@ Examples showing usage of mismatch label:
 <div id="mismatch_map" class="map"></div>
 <script>
   var custom_mismatch_map = g1.mapviewer({
-    id: 'custom-mismatch-map',
+    id: "custom-mismatch-map",
     layers: {
       indiaGeojson: {
-        type: 'geojson',
-        url: 'india-states.geojson',
+        type: "geojson",
+        url: "india-states.geojson",
         link: {
           url: state_scores,
-          dataKey: 'name',
-          mapKey: 'ST_NM',
-          mismatch: function (mismatch_array ) {
+          dataKey: "name",
+          mapKey: "ST_NM",
+          mismatch: function (mismatch_array) {
             // Render custom message
-            var custom_message = `<h2>List of Data Merge Mismatches</h2>`
-            custom_message += `<table>`
-            mismatch_array.forEach(function(obj){
-              custom_message +=  `<tr><td>${obj.feature.properties.ST_NM}</td></tr>`
-            })
-            custom_message += `</table>`
-            $('.error-pane')
-              .html(custom_message)
-          }
-        }
-      }
-    }
-  })
-
+            var custom_message = `<h2>List of Data Merge Mismatches</h2>`;
+            custom_message += `<table>`;
+            mismatch_array.forEach(function (obj) {
+              custom_message += `<tr><td>${obj.feature.properties.ST_NM}</td></tr>`;
+            });
+            custom_message += `</table>`;
+            $(".error-pane").html(custom_message);
+          },
+        },
+      },
+    },
+  });
 </script>
-
 ```

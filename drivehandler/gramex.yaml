@@ -8,19 +8,19 @@ url:
     pattern: /$YAMLURL/drivedemo
     handler: DriveHandler
     kwargs:
-        path: $GRAMEXDATA/apps/guide/drive-data/
-        tags: [desc]
-        user_fields: [id]
-        xsrf_cookies: false
+      path: $GRAMEXDATA/apps/guide/drive-data/
+      tags: [desc]
+      user_fields: [id]
+      xsrf_cookies: false
 
   drivehandler/drive:
     pattern: /$YAMLURL/drive
     handler: DriveHandler
     kwargs:
-        path: $GRAMEXDATA/apps/guide/drive-data/
-        tags: [desc]
-        user_fields: [id]
-        xsrf_cookies: false
+      path: $GRAMEXDATA/apps/guide/drive-data/
+      tags: [desc]
+      user_fields: [id]
+      xsrf_cookies: false
 
   drivehandler/upload:
     pattern: /$YAMLURL/upload

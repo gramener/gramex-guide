@@ -49,7 +49,6 @@ It has 4 columns:
 
 ## Create the rules
 
-
 Let's set up a basic `gramex.yaml` file that loads the template and the data.
 
 ```yaml
@@ -65,11 +64,11 @@ url:
 Next, we load the data.
 
 ```yaml
-      data:
-        sales:
-          url: '$YAMLPATH/sales.csv'
-          transform: data.set_index('month')
-        max_visitors: {function: sales.values.max()}
+data:
+  sales:
+    url: "$YAMLPATH/sales.csv"
+    transform: data.set_index('month')
+  max_visitors: { function: sales.values.max() }
 ```
 
 `sales` is loaded from [sales.csv](sales.csv). But we also set the `month` column as the index.
@@ -81,11 +80,11 @@ Next, we create one slide for each month using [`copy-slide`](../#copy-slides). 
 each row in the dataset `sales`.
 
 ```yaml
-      rules:
-        - copy-slide: sales
-          transition:
-            type: f'morph'
-            duration: 1
+rules:
+  - copy-slide: sales
+    transition:
+      type: f'morph'
+      duration: 1
 ```
 
 We also apply a 1-second `morph` transition for the bars to animate smoothly into each other.
@@ -93,12 +92,12 @@ We also apply a 1-second `morph` transition for the bars to animate smoothly int
 Next, we set the widths of the bars.
 
 ```yaml
-          '!!Visitors Bar':
-              width: (copy.val['visitors'] / max_visitors) * 3
-          '!!Leads Bar':
-              width: (copy.val['leads'] / max_visitors) * 3
-          '!!Cart Bar':
-              width: (copy.val['cart'] / max_visitors) * 3
+"!!Visitors Bar":
+  width: (copy.val['visitors'] / max_visitors) * 3
+"!!Leads Bar":
+  width: (copy.val['leads'] / max_visitors) * 3
+"!!Cart Bar":
+  width: (copy.val['cart'] / max_visitors) * 3
 ```
 
 `copy.val` has the value of each row in `sales`. Dividing by `max_visitors`, we get a number
@@ -110,12 +109,12 @@ units](../#length-units) are inches.
 Then, we set the text of the labels on the right.
 
 ```yaml
-          '!!Visitors Value':
-              text: copy.val['visitors']
-          '!!Leads Value':
-              text: copy.val['leads']
-          '!!Cart Value':
-              text: copy.val['cart']
+"!!Visitors Value":
+  text: copy.val['visitors']
+"!!Leads Value":
+  text: copy.val['leads']
+"!!Cart Value":
+  text: copy.val['cart']
 ```
 
 ![Labels are set](bars-labels.png){.img-fluid}
@@ -123,8 +122,8 @@ Then, we set the text of the labels on the right.
 Finally, we show the month on the title.
 
 ```yaml
-          Month:
-              text: 'copy.key'
+Month:
+  text: "copy.key"
 ```
 
 ![Title is set](bars-labels-title.png){.img-fluid}

@@ -22,7 +22,7 @@ test schedules, and to run them on demand.
 ### Admin UI for Alert
 
 The [Admin UI for Alert](../../admin/admin/schedule) tells you which alerts will
-run when, and lets you *preview the emails* as well as manually trigger them.
+run when, and lets you _preview the emails_ as well as manually trigger them.
 This is useful to test alerts, and to run them on demand.
 
 ![Admin UI for Alert - preview](admin-alert-preview.gif)
@@ -32,7 +32,7 @@ This is useful to test alerts, and to run them on demand.
 ### Admin components URL changed
 
 **This is a breaking change**. If you use the [admin page](../../admin/) with
-*components* using JavaScript, the URLs have changed. You should:
+_components_ using JavaScript, the URLs have changed. You should:
 
 - Replace `admin/users` with `admin/users-data`
 - Replace `admin/webshell` with `admin/webshell-data`
@@ -41,12 +41,11 @@ This is useful to test alerts, and to run them on demand.
 For example:
 
 ```js
-  // This works before 1.54, but NOT from 1.54
-  $('.users').formhandler({ src: 'admin/users' })
-  // Replace it with:
-  $('.users').formhandler({ src: 'admin/users-data' })
+// This works before 1.54, but NOT from 1.54
+$(".users").formhandler({ src: "admin/users" });
+// Replace it with:
+$(".users").formhandler({ src: "admin/users-data" });
 ```
-
 
 ## LanguageTool app
 
@@ -66,7 +65,7 @@ and [Parquet](https://parquet.apache.org/) files.
 ### Feather
 
 Feather is a data format that can be used to exchange data between Python, R,
-Julia and other languages. It is *extremely fast*, and is authored by
+Julia and other languages. It is _extremely fast_, and is authored by
 Wes McKinney (author of Pandas) and Hadley Wickham (author of ggplot2). On their
 machines, it reads data at 600MB/s.
 
@@ -89,9 +88,9 @@ list or dict. However, JSON is also used to store DataFrames. For example:
 
 ```json
 [
-  {"name": "Alpha", "age": 50},
-  {"name": "Beta", "age": 40},
-  {"name": "Gamma", "age": 30},
+  { "name": "Alpha", "age": 50 },
+  { "name": "Beta", "age": 40 },
+  { "name": "Gamma", "age": 30 }
 ]
 ```
 
@@ -99,10 +98,9 @@ Gramex can now read JSON files as Pandas DataFrames if they have an extension
 `.jsondata`. These can be processed by [FormHandler](../../formhandler/) like
 a CSV or Excel file.
 
-
 ## FormHandler parameters
 
-[FormHandler](../../formhandler/) now allows substitution of *any* kwargs with
+[FormHandler](../../formhandler/) now allows substitution of _any_ kwargs with
 the URL query parameters and path arguments. This opens up many interesting
 possibilities.
 
@@ -123,8 +121,8 @@ url:
     pattern: /$YAMLURL/(.*?)
     handler: FormHandler
     kwargs:
-      url: '$YAMLPATH/{_0}.xlsx'  # This is picked up from the pattern (.*?)
-      sheet_name: '{sheet}'       # This is picked up from the URL ?sheet=
+      url: "$YAMLPATH/{_0}.xlsx" # This is picked up from the pattern (.*?)
+      sheet_name: "{sheet}" # This is picked up from the URL ?sheet=
 ```
 
 ... then the URL `/file1?sheet=Sheet1` displays contents from `file1.xlsx`
@@ -135,26 +133,24 @@ This is also useful to pick table names from the URL path or query parameters.
 
 ![Excel Formhandler](excel-formhandler.png)
 
-
 ## FormHandler creates tables with primary keys
 
 [FormHandler](../../formhandler/) has the capability to create tables
-automatically when a table is inserted. Now it creates the tables *with primary
-keys defined* as per the configuration. For example:
+automatically when a table is inserted. Now it creates the tables _with primary
+keys defined_ as per the configuration. For example:
 
 ```yaml
-  formhandler-data:
-    pattern: /$YAMLURL/data
-    handler: FormHandler
-    kwargs:
-      url: mysql+pymysql://root@$MYSQL_SERVER/DB?charset=utf8
-      table: sales
-      id: [city, product]
+formhandler-data:
+  pattern: /$YAMLURL/data
+  handler: FormHandler
+  kwargs:
+    url: mysql+pymysql://root@$MYSQL_SERVER/DB?charset=utf8
+    table: sales
+    id: [city, product]
 ```
 
 When you POST a row into `/data`, the `sales` table will be auto-created, with
-columns as per the row, *with `city` and `product` as primary keys*.
-
+columns as per the row, _with `city` and `product` as primary keys_.
 
 ## Statistics
 

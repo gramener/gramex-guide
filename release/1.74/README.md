@@ -7,7 +7,6 @@ prefix: 1.74
 
 Gramex 1.74's admin app lets administrators add new users, welcome them via email, add custom fields and roles for users based on rules, and more.
 
-
 ## Add new users on Admin app
 
 [Admin app's user management component](../../admin/#sign-up-users-with-a-welcome-email) lets administrators add new users via the user interface.
@@ -22,7 +21,7 @@ import:
     path: $GRAMEXAPPS/admin2/gramex.yaml
     YAMLURL: /$YAMLURL/admin-user/
     ADMIN_KWARGS:
-      authhandler: login        # Manages users via the url: key named "login"
+      authhandler: login # Manages users via the url: key named "login"
       signup:
         email_subject: Welcome {user} to {org}
         email_body: |
@@ -52,10 +51,10 @@ To enable this, [add a `rules:` section to the auth handler](../../auth/#add-att
 url:
   auth:
     pattern: /$YAMLURL/login
-    handler: SimpleAuth           # Any auth handler works
+    handler: SimpleAuth # Any auth handler works
     kwargs:
       rules:
-        url: sqlite:///path/to/rules.db   # Connect to rules DB / file
+        url: sqlite:///path/to/rules.db # Connect to rules DB / file
         table: rules
 ```
 
@@ -70,8 +69,8 @@ This runs when the component is rendered.
 ```html
 <template $name="repeat-script" icon="X" value="30">
   <script $inline>
-    let count = +value
-    let result = isNaN(count) ? 'error' : icon.repeat(count)
+    let count = +value;
+    let result = isNaN(count) ? "error" : icon.repeat(count);
   </script>
   ${result}
 </template>

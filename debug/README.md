@@ -37,10 +37,10 @@ configurations (including any imported files). If you have a
 
 ```yaml
 url:
-    pattern: /$YAMLURL/func/
-    handler: FunctionHandler
-    kwargs:
-        function: yourmodule.run
+  pattern: /$YAMLURL/func/
+  handler: FunctionHandler
+  kwargs:
+    function: yourmodule.run
 ```
 
 When `yourmodule.py` is reloaded, the FunctionHandler automatically recompiles
@@ -83,7 +83,6 @@ On Windows, you need to run `python -m gramex --settings.debug` instead,
 due to a [Tornado issue](https://github.com/bokeh/bokeh/issues/8529#issuecomment-451328922).
 
 [debug-mode]: http://www.tornadoweb.org/en/stable/guide/running.html?highlight=debug#debug-mode-and-automatic-reloading
-
 
 ## Python debugger
 
@@ -136,7 +135,6 @@ l or list         # List the code
 h or help         # Help -- list available commands
 ```
 
-
 ## Print statements
 
 [Video](https://youtu.be/YfwtllON8gw){.youtube}
@@ -175,7 +173,6 @@ It pretty-prints complex variables. For example:
 
 Remember to remove all print statements before committing your code.
 
-
 ## Tracing
 
 [Video](https://youtu.be/RqIRbn49lC0){.youtube}
@@ -203,7 +200,6 @@ module.py(7):     return x + y
 ```
 
 Remember to remove all trace statements before committing your code.
-
 
 ## Profiling
 
@@ -235,7 +231,6 @@ I 05-May 08:16:38 debug:54 0.012s ran some_code() [module.function:58]
 The log message includes the time taken to get to the line (e.g. `0.102s`), the
 message logged, and the `module.function:line-number` from where the `timer()`
 was called.
-
 
 `Timer()` is similar to `timer()`, but shows the time for an block of code. For
 example:

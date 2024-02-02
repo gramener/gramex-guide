@@ -5,15 +5,13 @@ prefix: Edition
 
 ## Gramex comes in 3 editions
 
-
-|                     |            Community            |              Lite             |         Enterprise         |
-|---------------------|---------------------------------|-------------------------------|----------------------------|
-|        **Best for** |        Trying out Gramex        | 1 full-featured data solution | Multiple apps across teams |
-|        **Features** | Data connectors, Models, Charts |  + Enterprise Authentication  |  + IDE, DevOps, Licensing  |
-| **# licensed apps** |               None              |              One              |          Unlimited         |
-|             **IDE** |          Not available          |         Not available         |         5 licenses         |
-|   **Price / month** |               Free              |          $3,999 / app         |           $8,999           |
-
+|                     | Community                       | Lite                          | Enterprise                 |
+| ------------------- | ------------------------------- | ----------------------------- | -------------------------- |
+| **Best for**        | Trying out Gramex               | 1 full-featured data solution | Multiple apps across teams |
+| **Features**        | Data connectors, Models, Charts | + Enterprise Authentication   | + IDE, DevOps, Licensing   |
+| **# licensed apps** | None                            | One                           | Unlimited                  |
+| **IDE**             | Not available                   | Not available                 | 5 licenses                 |
+| **Price / month**   | Free                            | $3,999 / app                  | $8,999                     |
 
 ## When to use the Enterprise edition
 
@@ -27,7 +25,6 @@ Use the Enterprise Edition if
   Install the Community Edition
 </a>
 
-
 ## When to use the Lite Edition
 
 Use the Lite Edition if
@@ -39,7 +36,6 @@ Use the Lite Edition if
   Request a Gramex Lite Demo
 </a>
 
-
 ## When to use the Community Edition
 
 Use Community Edition if
@@ -50,7 +46,6 @@ Use Community Edition if
 <a class="btn btn-large btn-primary" href="https://gramex.gramener.com/">
   Try the Enterprise Edition
 </a>
-
 
 ## Switch between editions easily
 

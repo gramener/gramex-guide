@@ -14,15 +14,15 @@ see the results of an `nslookup www.google.com`, add this to `gramex.yaml`:
 
 ```yaml
 url:
-    nslookup-google:
-        pattern: /nslookup-google             # At this URL
-        handler: ProcessHandler               # run a process
-        kwargs:
-            args: nslookup www.google.com     # The full command to run
-            shell: true                       # using the shell
-            buffer: line                      # Show the result line by line
-            headers:
-                Content-Type: text/x-plain    # as a text file
+  nslookup-google:
+    pattern: /nslookup-google # At this URL
+    handler: ProcessHandler # run a process
+    kwargs:
+      args: nslookup www.google.com # The full command to run
+      shell: true # using the shell
+      buffer: line # Show the result line by line
+      headers:
+        Content-Type: text/x-plain # as a text file
 ```
 
 See the results of this at [nslookup-google](nslookup-google).
@@ -40,7 +40,6 @@ updates.)
 After the handler executes, users can be redirected via the `redirect:` config
 documented the [redirection configuration](../config/#redirection).
 
-
 ## ProcessHandler redirection
 
 You can redirect `stdout` and `stderr` from the process. For example, this URL
@@ -50,19 +49,19 @@ You can redirect `stdout` and `stderr` from the process. For example, this URL
 
 ```yaml
 url:
-    nslookup-google-file:
-        pattern: /nslookup-google-file
-        handler: ProcessHandler
-        kwargs:
-            args: nslookup -n 4 www.google.com
-            shell: true
-            buffer: line
-            stdout:
-                - $YAMLPATH/nslookup.txt    # Redirect to nslookup.txt in same folder as YAML file
-                - pipe                  # Additionally, display the output
-            stderr: false               # Hide the stderr output
-            headers:
-                Content-Type: text/x-plain
+  nslookup-google-file:
+    pattern: /nslookup-google-file
+    handler: ProcessHandler
+    kwargs:
+      args: nslookup -n 4 www.google.com
+      shell: true
+      buffer: line
+      stdout:
+        - $YAMLPATH/nslookup.txt # Redirect to nslookup.txt in same folder as YAML file
+        - pipe # Additionally, display the output
+      stderr: false # Hide the stderr output
+      headers:
+        Content-Type: text/x-plain
 ```
 
 [processhandler]: https://gramener.com/gramex/guide/api/handlers/#gramex.handlers.ProcessHandler

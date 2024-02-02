@@ -5,13 +5,14 @@ fetch(index.dataset["url"])
   .then((data) => {
     const result = [];
     for (let [page, frags] of Object.entries(data)) {
-      if (page == ".")
-        page = "Home"
-      result.push(`<a class="fw-bold text-uppercase" href="${prefix}${page}">${page}</a><ul>`);
+      if (page == ".") page = "Home";
+      result.push(
+        `<a class="fw-bold text-uppercase" href="${prefix}${page}">${page}</a><ul>`,
+      );
       for (let [frag, terms] of Object.entries(frags)) {
         for (let term of Object.keys(terms))
           result.push(
-            `<li><a class="small" href="${prefix}${page}#${frag}">${term}</a></li>`
+            `<li><a class="small" href="${prefix}${page}#${frag}">${term}</a></li>`,
           );
       }
       result.push(`</ul>`);

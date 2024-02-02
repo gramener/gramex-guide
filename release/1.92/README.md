@@ -11,7 +11,6 @@ Gramex 1.92 adds ChatGPTHandler, OTP custom keys and Excel Hyperlink support.
 
 [ChatGPTHandler](../../chatgpthandler/) provides interface to OpenAI's chat API.
 
-
 ```yaml
 url:
   chatgpthandler:
@@ -20,6 +19,7 @@ url:
     kwargs:
       key: sz-....
 ```
+
 Replace the `key` with your [OpenAI API key](https://platform.openai.com/account/api-keys)
 
 This opens a WebSocket connection to `/chat`. You can read more about how to send messages to it [here](../../chatgpthandler/)
@@ -43,7 +43,7 @@ You can populate these columns using keyword arguments to `handler.otp()` and `h
 `gramex.cache.open()` now extracts hyperlinks from an Excel column. For example, this Excel file `city-sales.xlsx` has a "City" column with hyperlinks.
 
 | Country | City                                                      | Sales |
-|---------|-----------------------------------------------------------|-------|
+| ------- | --------------------------------------------------------- | ----- |
 | Italy   | <a href="https://en.wikipedia.org/wiki/Rome">Rome</a>     | 10    |
 | Norway  | <a href="https://en.wikipedia.org/wiki/Oslo">Oslo</a>     | 20    |
 | UK      | <a href="https://en.wikipedia.org/wiki/London">London</a> | 30    |
@@ -52,7 +52,7 @@ You can populate these columns using keyword arguments to `handler.otp()` and `h
 Using `gramex.cache.open('city-sales.xlsx', links=True)` will read it as a DataFrame with a new `City_links` column with the hyperlinks.
 
 | Country | City   | Sales | City_link                            |
-|---------|--------|-------|--------------------------------------|
+| ------- | ------ | ----- | ------------------------------------ |
 | Italy   | Rome   | 10    | https://en.wikipedia.org/wiki/Rome   |
 | Norway  | Oslo   | 20    | https://en.wikipedia.org/wiki/Oslo   |
 | UK      | London | 30    | https://en.wikipedia.org/wiki/London |

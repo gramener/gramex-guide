@@ -35,7 +35,6 @@ Run `gramex`. This will start Gramex and show an output like this:
 
 Open <http://localhost:9988/> in your browser, and you should see the sample app.
 
-
 ## Minimal init
 
 To install the minimal files required to run Gramex, run `gramex init minimal` on your terminal.

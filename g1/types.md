@@ -4,12 +4,11 @@
 
 ```js
 var data = [
-  {a: 1, b: 1.1, c: 'c', d: '2014-04-04', e: true, f: new Date()},
-  {a: 2, b: 2},
-]
-g.types(data)                   // {"a":"number","b":"number","c":"string","d":"string","e":"boolean","f":"date"}
-g1.types(data, {convert: true})   // {"a":"number","b":"number","c":"string","d":"date","e":"boolean","f":"date"}
-
+  { a: 1, b: 1.1, c: "c", d: "2014-04-04", e: true, f: new Date() },
+  { a: 2, b: 2 },
+];
+g.types(data); // {"a":"number","b":"number","c":"string","d":"string","e":"boolean","f":"date"}
+g1.types(data, { convert: true }); // {"a":"number","b":"number","c":"string","d":"date","e":"boolean","f":"date"}
 ```
 
 ## g1.types options
@@ -37,5 +36,5 @@ Rules:
   - If all values can be converted to Date -> `date`
   - Else if all values can be converted to numbers -> `number`
   - Else if all values are bools -> `boolean`
-  - Else if there are no values or is undefined or null  -> `null`
+  - Else if there are no values or is undefined or null -> `null`
   - Else -> `string`

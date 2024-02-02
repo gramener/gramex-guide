@@ -15,9 +15,9 @@ The setup is very simple:
 
 ```yaml
 url:
-    auth/login:
-        pattern: /$YAMLURL/login
-        handler: IntegratedAuth
+  auth/login:
+    pattern: /$YAMLURL/login
+    handler: IntegratedAuth
 ```
 
 When the user visits `/login`, it will automatically log the user in. The `handler.current_user` object looks like this:
