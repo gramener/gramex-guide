@@ -46,7 +46,7 @@ def create_user_database(url, table, user, password, salt, excel):
 
 def store_value(handler):
     # B311: we're not using randint for cryptographic use -- it's to demonstrate session storage
-    handler.session.setdefault('randkey', random.randint(0, 1000))  # nosec B311
+    handler.session.setdefault('randkey', random.randint(0, 1000))  # nosec B311 # noqa: S311
     return json.dumps(handler.session, indent=4, cls=CustomJSONEncoder)
 
 

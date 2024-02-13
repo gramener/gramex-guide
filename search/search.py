@@ -76,7 +76,7 @@ if __name__ == '__main__':
     result = {}
     index_file = os.path.join(folder, 'search.json')
     if os.path.exists(index_file):
-        with open(index_file, 'r') as handle:  # noqa: for Py2 & Py3 compatibility
+        with open(index_file, 'r') as handle:
             try:
                 result = json.load(handle)
             except ValueError:
