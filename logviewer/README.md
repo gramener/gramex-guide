@@ -19,7 +19,6 @@ import:
   logviewer:
     path: $GRAMEXAPPS/logviewer/gramex.yaml # Source of the app
     YAMLURL: $YAMLURL/log/ # Location to mount at
-    auth: ... # Restrict access as required
 ```
 
 This configuration mounts the app at [log/](log/):
@@ -105,6 +104,8 @@ import:
       auth: # Add auth to layout page
         login_url: /$YAMLURL/login
     LOGVIEWER_FORMHANDLER_KWARGS:
+      auth: # Add auth to data
+        login_url: /$YAMLURL/login
       headers:
         Cache-Control: public, max-age=3600 # cached for 1 hour
     LOGVIEWER_FORMHANDLER_QUERIES:
@@ -264,10 +265,6 @@ First add the query for custom KPI to the gramex.yaml file as shown. You also ne
 logviewer:
   path: $GRAMEXAPPS/logviewer/gramex.yaml
   YAMLURL: $YAMLURL/log/
-  auth:
-    login_url: /$YAMLURL/google
-    membership:
-      - { hd: [gramener.com] }
   LOGVIEWER_FORMHANDLER_QUERIES: # add custom query
     kpi-customview: SELECT COUNT(duration_count) AS value
       FROM {table}
@@ -356,10 +353,6 @@ You can add your own custom KPIs and Visuals. Add more queries to your gramex.ya
 logviewer:
   path: $GRAMEXAPPS/logviewer/gramex.yaml
   YAMLURL: $YAMLURL/log/
-  auth:
-    login_url: /$YAMLURL/google
-    membership:
-      - { hd: [gramener.com] }
   LOGVIEWER_FORMHANDLER_QUERIES: # add custom queries
     kpi-customview: SELECT COUNT(duration_count) AS value
       FROM {table}
