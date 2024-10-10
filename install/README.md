@@ -17,7 +17,7 @@ You can try Gramex without installing using the [Gramex IDE](https://gramex.gram
 There are 3 ways to install the Gramex Community Edition.
 
 1. [**Docker**](#docker-install). Best to try out new versions, or to deploy apps.
-2. [**Conda**](#conda-install) (**RECOMMENDED**). Best for beginners and Python developers
+2. [**Mamba**](#mamba-install) (**RECOMMENDED**). Best for beginners and Python developers
 3. [**Pip**](#pip-install). Best for people contributing to Gramex
 
 ## Docker install
@@ -66,16 +66,16 @@ To remove the Gramex docker image, run:
 docker rmi gramener/gramex
 ```
 
-## Conda install
+## Mamba install
 
-1. Install [Anaconda3][anaconda]. (See [archives](https://repo.anaconda.com/archive/) for older versions).
-2. Install [node.js][nodejs] 12 or later from the [node.js download page][nodejs].
+1. Install [Miniforge3](https://github.com/conda-forge/miniforge).
+2. Install [node.js](https://nodejs.org/en/download/) 20 or later.
 
 On the Anaconda prompt, run:
 
 ```bash
-conda create -y --name gramex python=3.9            # Create a new environment
-conda activate gramex                               # Activate it
+mamba create -y --name gramex python=3.11
+mamba activate gramex
 pip install --upgrade gramex
 gramex setup --all
 ```
@@ -96,7 +96,7 @@ gramex setup --all
 To remove the Gramex environment, run:
 
 ```bash
-conda env remove -n gramex
+mamba env remove -n gramex
 ```
 
 ## Pip install
@@ -146,7 +146,7 @@ pip uninstall gramex
 Gramex Enterprise is offered under a [commercial license](../license/) and
 provides enterprise security features.
 
-To install it, [install Gramex first](#conda-install).
+To install it, [install Gramex first](#mamba-install).
 
 Then run:
 
@@ -175,10 +175,10 @@ pip uninstall gramexenterprise
 
 Open a terminal where you can run Gramex.
 
-If you installed via [Conda](#conda-install) or [Pip](#pip-install):
+If you installed via [Mamba](#mamba-install) or [Pip](#pip-install):
 
-1. Open your Anaconda Prompt / Command Prompt / shell.
-2. Run `conda activate gramex` to activate the Gramex environment
+1. Open your Mamba Prompt / Command Prompt / shell.
+2. Run `mamba activate gramex` to activate the Gramex environment
 
 If you inslled via [Docker](#docker-install):
 
@@ -215,7 +215,6 @@ Now you're ready to move to the [quickstart tutorial](../tutorials/quickstart/)
 If Gramex does not install:
 
 - If you are behind a HTTP proxy, use `pip install --proxy=http://{proxy-host}:{port} ...`.
-  You can use [conda with a proxy][conda-proxy] too.
 
 If Gramex does not run:
 
@@ -233,7 +232,3 @@ If Gramex does not run:
 Install [`Gramex Snippets` extension](https://marketplace.visualstudio.com/items?itemName=gramener.gramexsnippets) for VSCode IDE for Gramex related code snippets.
 
 <script src="../node_modules/asciinema-player/resources/public/js/asciinema-player.js"></script>
-
-[anaconda]: https://repo.anaconda.com/archive/
-[conda-proxy]: https://conda.io/docs/user-guide/configuration/use-winxp-with-proxy.html
-[nodejs]: https://nodejs.org/en/download/
