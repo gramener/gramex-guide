@@ -704,13 +704,19 @@ Now visit:
 
 # FAQs
 
-## How to get the accuracy score of my model?
+## How to get the score of a model?
 
 When trying to see the accuracy of a new dataset against an existing model, use `?_action=score`. Specifically, POST the new data to the MLHandler endpoint, with `?_action=score`.
 
 ```bash
 # Check the score of a dataset - test.csv - against an existing model
 curl -X POST -F "file=@test.csv" 'http://localhost:9988/mlhandler?_action=score'
+```
+
+Specific scoring metrics can be specified as well, use ?_metric=__  where the name of the desired metric can be mentioned. This method can support all the scoring metrics provided by the Sklearn library. 
+```bash
+# Check the score of a dataset - test.csv - with a specified metric against an existing model
+curl -X POST -F "file=@test.csv" 'http://localhost:9988/mlhandler?_action=score&_metric=recall'
 ```
 
 ## How to download a model?
