@@ -776,3 +776,129 @@ curl -X DELETE 'http://localhost:9988/mlhandler?_model'
 
 This will cause MLHandler to return an HTTP 404 on subsequent requests to the same
 endpoint, until an `?_action=train` or `?_action=retrain` is requested.
+
+# Sentiment Analysis with MLHandler
+
+To use MLHandler's sentiment
+analysis functionality, install [pytorch](https://pytorch.org) and [transformers](https://huggingface.co/transformers/), as follows:
+
+```bash
+pip install torch
+pip install transformers
+```
+
+To set up a Gramex service for performing sentiment analysis, use the following
+configuration:
+
+```yaml
+url:
+  sentiment-analysis:
+    pattern: /$YAMLURL/
+    handler: MLHandler
+    kwargs:
+      backend: transformers
+      task: sentiment-analysis
+      xsrf_cookies: false
+```
+
+## Getting predictions
+
+`GET` sentiments of short pieces of text as follows:
+
+```bash
+curl -X GET --data-urlencode "text=This movie is so bad, it's good." http://localhost:9988/
+```
+
+The output will be:
+```json
+[
+  {
+    "label": "POSITIVE",
+    "score": 0.9997316002845764
+  }
+]
+```
+
+Files containing text to be classified can also be `POST`ed to the endpoint, with `_action=predict`. Any file supported by `gramex.cache.open` will work. (Download a sample [here](https://drive.google.com/file/d/146MXfbBNpC8xI0Txpra3xs25WHpHk73k/view?usp=sharing).)
+
+```bash
+curl -X POST -F "file=@sentiment.csv" http://localhost:9988/?_action=predict
+```
+
+The output will be:
+
+```json
+[
+  {
+    "label": "POSITIVE",
+    "score": 0.9997316002845764
+  },
+  {
+    "label": "NEGATIVE",
+    "score": 0.9974692463874817
+  },
+  // etc.
+]
+```
+
+## Measuring model performance
+
+Files containing the `text` and `label` fields can be `POSTED` to the endpoint
+with `_action=score` to get the [ROC AUC score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) of the model against the dataset. (Download a sample dataset [here](https://drive.google.com/file/d/146MXfbBNpC8xI0Txpra3xs25WHpHk73k/view?usp=sharing)).
+
+```bash
+curl -X POST -F "file=@sentiment.csv" http://localhost:9988/?_action=score
+```
+
+The output will be something like:
+
+```json
+{
+  "roc_auc": 0.9929
+}
+```
+
+## Training the model
+
+The model can be trained on a dataset by setting `_action=train`, and `POST`ing the file.
+
+```bash
+curl -X POST -F "file=@sentiment_score.json" http://localhost:9988/?_action=train
+```
+
+The output will show the score of the trained model on the dataset:
+
+```json
+{
+  "roc_auc": 0.8
+}
+```
+
+Multiple training options for the transformer are supported, including the number of epochs, batch size and weight decay. These can all be specified in the `POST` request as follows:
+
+```bash
+# Train for three epochs instead of the default 1
+curl -X POST -F "file=@sentiment.csv" http://localhost:9988/?_action=train&num_train_epochs=3
+```
+
+The output is the score of the trained model on the dataset after 3 epochs:
+
+```json
+{
+  "roc_auc": 0.98
+}
+```
+
+```bash
+# Change the batch size to 32 instead of the default 16
+curl -X POST -F "file=@sentiment.csv" \
+	http://localhost:9988/?_action=train&per_device_train_batch_size=32&num_train_epochs=3
+```
+
+The output is the score of the trained model on the dataset after 3 epochs and a batch size of 32:
+
+```json
+{
+  "roc_auc": 0.99
+}
+```
